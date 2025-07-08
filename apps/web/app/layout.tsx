@@ -82,6 +82,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+};
+
+export const viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
     { media: '(prefers-color-scheme: dark)', color: '#0A0E27' },

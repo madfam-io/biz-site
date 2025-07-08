@@ -55,7 +55,7 @@ const nextConfig = {
   },
 
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false, // Disabled to avoid critters dependency issue
     scrollRestoration: true,
   }
 };

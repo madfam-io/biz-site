@@ -86,7 +86,6 @@ export type Environment = 'development' | 'staging' | 'production';
 
 export class FeatureFlagProvider {
   private environment: Environment;
-  private userGroup?: string;
   private userId?: string;
 
   constructor(environment?: string, userId?: string) {

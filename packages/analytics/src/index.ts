@@ -1,4 +1,4 @@
-import Plausible, { PlausibleOptions, EventOptions, PlausibleTrackerReturn } from 'plausible-tracker';
+import Plausible, { PlausibleOptions } from 'plausible-tracker';
 
 export interface AnalyticsConfig {
   domain: string;
@@ -44,8 +44,7 @@ export interface LeadProps {
 
 class Analytics {
   private static instance: Analytics;
-  private plausible: PlausibleTrackerReturn | null = null;
-  private config: AnalyticsConfig | null = null;
+  private plausible: ReturnType<typeof Plausible> | null = null;
 
   private constructor() {}
 
@@ -62,8 +61,6 @@ class Analytics {
       return;
     }
 
-    this.config = config;
-    
     const options: PlausibleOptions = {
       domain: config.domain,
       apiHost: config.apiHost || 'https://plausible.io',
@@ -77,17 +74,14 @@ class Analytics {
   }
 
   // Page views
-  trackPageView(url?: string, referrer?: string): void {
+  trackPageView(): void {
     if (!this.plausible) {
       console.warn('Analytics not initialized');
       return;
     }
 
-    const options: EventOptions = {};
-    if (url) options.url = url;
-    if (referrer) options.referrer = referrer;
-
-    this.plausible.trackPageview(options);
+    // Plausible automatically tracks the current page
+    this.plausible.trackPageview();
   }
 
   // Service inquiry tracking
