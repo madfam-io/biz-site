@@ -1,0 +1,145 @@
+{
+  "common": {
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "products": "Products",
+      "about": "About",
+      "contact": "Contact",
+      "allServices": "All services",
+      "freeConsultation": "Free consultation"
+    },
+    "cta": {
+      "learnMore": "Learn more",
+      "getQuote": "Get quote",
+      "scheduleConsultation": "Schedule consultation",
+      "requestProposal": "Request proposal",
+      "viewDemo": "View demo",
+      "downloadPortfolio": "Download portfolio",
+      "downloadBrochure": "Download brochure"
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Where AI meets human creativity",
+      "subtitle": "MADFAM transforms businesses with AI-powered solutions. From 3D design to strategic vCTO partnerships, we deliver innovation at every level.",
+      "exploreServices": "Explore services",
+      "viewProducts": "View products"
+    },
+    "services": {
+      "title": "5-tier services",
+      "subtitle": "From quick solutions to strategic transformation, we have the perfect level for your needs.",
+      "viewAll": "View all services"
+    },
+    "products": {
+      "title": "Our products",
+      "subtitle": "Revolutionary platforms that automate and optimize your business",
+      "spark": {
+        "description": "AI orchestration platform that connects, automates, and optimizes all your business processes in one place."
+      },
+      "penny": {
+        "description": "Intelligent process automation that learns, adapts, and continuously improves your workflow."
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your business?",
+      "subtitle": "Discover how MADFAM can take your company to the next level with AI and creativity.",
+      "scheduleFree": "Schedule free consultation"
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Services designed for every stage of your growth",
+      "subtitle": "From quick solutions to complete strategic transformation. Find the perfect level to boost your business with AI."
+    },
+    "comparison": {
+      "title": "Compare our services",
+      "features": "Features",
+      "priceFrom": "Price from",
+      "duration": "Duration",
+      "idealFor": "Ideal for"
+    },
+    "notSure": {
+      "title": "Not sure which level you need?",
+      "subtitle": "Our team will help you identify the perfect solution for your company",
+      "cta": "Schedule free assessment"
+    },
+    "level3": {
+      "hero": {
+        "badge": "Level 3 - Consulting",
+        "title": "Transform your company with expert AI consulting",
+        "scheduleInitial": "Schedule initial consultation",
+        "downloadCase": "Download case study",
+        "typicalDuration": "typical duration",
+        "satisfaction": "client satisfaction"
+      },
+      "benefits": {
+        "title": "What you get with our consulting service?",
+        "subtitle": "More than advice: a strategic partner for your digital transformation",
+        "items": {
+          "strategy": {
+            "title": "Personalized strategy",
+            "description": "Digital transformation roadmap adapted to your industry and specific objectives."
+          },
+          "training": {
+            "title": "Comprehensive training",
+            "description": "Practical workshops for your team to master AI tools."
+          },
+          "metrics": {
+            "title": "Impact metrics",
+            "description": "Clear KPIs to measure the ROI of your digital transformation."
+          },
+          "continuous": {
+            "title": "Continuous improvement",
+            "description": "Monthly follow-up sessions to optimize results."
+          }
+        }
+      },
+      "process": {
+        "title": "Our proven process",
+        "subtitle": "A structured approach to ensure measurable results",
+        "steps": {
+          "diagnosis": {
+            "title": "Initial diagnosis",
+            "description": "Deep analysis of your current processes and improvement opportunities."
+          },
+          "strategy": {
+            "title": "Strategy design",
+            "description": "Creation of a transformation plan with clear and achievable objectives."
+          },
+          "implementation": {
+            "title": "Guided implementation",
+            "description": "Workshops and practical training for your team."
+          },
+          "optimization": {
+            "title": "Continuous optimization",
+            "description": "Monthly monitoring and adjustments based on results."
+          }
+        }
+      },
+      "included": {
+        "title": "Everything included in your consulting",
+        "investment": "Investment",
+        "from": "From",
+        "projectDuration": "3-6 month project",
+        "paymentPlan": "Payment plan available",
+        "guaranteedROI": "Guaranteed ROI in 6 months",
+        "postSupport": "Post-implementation support",
+        "requestProposal": "Request proposal"
+      },
+      "testimonials": {
+        "title": "What our clients say"
+      },
+      "cta": {
+        "title": "Ready to transform your company?",
+        "subtitle": "Schedule a free 30-minute consultation to explore how we can help you",
+        "scheduleNow": "Schedule consultation now"
+      }
+    }
+  }
+}

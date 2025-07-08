@@ -1,0 +1,145 @@
+{
+  "common": {
+    "nav": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "products": "Productos",
+      "about": "Nosotros",
+      "contact": "Contacto",
+      "allServices": "Todos los servicios",
+      "freeConsultation": "Consulta gratuita"
+    },
+    "cta": {
+      "learnMore": "Conocer más",
+      "getQuote": "Obtener cotización",
+      "scheduleConsultation": "Agendar consulta",
+      "requestProposal": "Solicitar propuesta",
+      "viewDemo": "Ver demo",
+      "downloadPortfolio": "Descargar portafolio",
+      "downloadBrochure": "Descargar brochure"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados",
+      "privacy": "Privacidad",
+      "terms": "Términos"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Donde la IA encuentra la creatividad humana",
+      "subtitle": "MADFAM transforma empresas con soluciones impulsadas por IA. Desde diseño 3D hasta asociaciones estratégicas vCTO, entregamos innovación en cada nivel.",
+      "exploreServices": "Explorar servicios",
+      "viewProducts": "Ver productos"
+    },
+    "services": {
+      "title": "Servicios de 5 niveles",
+      "subtitle": "Desde soluciones rápidas hasta transformación estratégica, tenemos el nivel perfecto para tus necesidades.",
+      "viewAll": "Ver todos los servicios"
+    },
+    "products": {
+      "title": "Nuestros productos",
+      "subtitle": "Plataformas revolucionarias que automatizan y optimizan tu negocio",
+      "spark": {
+        "description": "Plataforma de orquestación de IA que conecta, automatiza y optimiza todos tus procesos empresariales en un solo lugar."
+      },
+      "penny": {
+        "description": "Automatización inteligente de procesos que aprende, adapta y mejora continuamente tu flujo de trabajo."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para transformar tu negocio?",
+      "subtitle": "Descubre cómo MADFAM puede llevar tu empresa al siguiente nivel con IA y creatividad.",
+      "scheduleFree": "Agendar consulta gratuita"
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Servicios diseñados para cada etapa de tu crecimiento",
+      "subtitle": "Desde soluciones rápidas hasta transformación estratégica completa. Encuentra el nivel perfecto para impulsar tu negocio con IA."
+    },
+    "comparison": {
+      "title": "Compara nuestros servicios",
+      "features": "Características",
+      "priceFrom": "Precio desde",
+      "duration": "Duración",
+      "idealFor": "Ideal para"
+    },
+    "notSure": {
+      "title": "¿No estás seguro qué nivel necesitas?",
+      "subtitle": "Nuestro equipo te ayudará a identificar la solución perfecta para tu empresa",
+      "cta": "Agendar evaluación gratuita"
+    },
+    "level3": {
+      "hero": {
+        "badge": "Nivel 3 - Consulting",
+        "title": "Transforma tu empresa con consultoría experta en IA",
+        "scheduleInitial": "Agendar consulta inicial",
+        "downloadCase": "Descargar caso de estudio",
+        "typicalDuration": "duración típica",
+        "satisfaction": "satisfacción cliente"
+      },
+      "benefits": {
+        "title": "¿Qué obtienes con nuestro servicio de consultoría?",
+        "subtitle": "Más que asesoría: un socio estratégico para tu transformación digital",
+        "items": {
+          "strategy": {
+            "title": "Estrategia personalizada",
+            "description": "Roadmap de transformación digital adaptado a tu industria y objetivos específicos."
+          },
+          "training": {
+            "title": "Capacitación integral",
+            "description": "Workshops prácticos para que tu equipo domine las herramientas de IA."
+          },
+          "metrics": {
+            "title": "Métricas de impacto",
+            "description": "KPIs claros para medir el ROI de tu transformación digital."
+          },
+          "continuous": {
+            "title": "Mejora continua",
+            "description": "Sesiones de seguimiento mensuales para optimizar resultados."
+          }
+        }
+      },
+      "process": {
+        "title": "Nuestro proceso probado",
+        "subtitle": "Un enfoque estructurado para garantizar resultados medibles",
+        "steps": {
+          "diagnosis": {
+            "title": "Diagnóstico inicial",
+            "description": "Análisis profundo de tus procesos actuales y oportunidades de mejora."
+          },
+          "strategy": {
+            "title": "Diseño de estrategia",
+            "description": "Creación de un plan de transformación con objetivos claros y alcanzables."
+          },
+          "implementation": {
+            "title": "Implementación guiada",
+            "description": "Workshops y capacitación práctica para tu equipo."
+          },
+          "optimization": {
+            "title": "Optimización continua",
+            "description": "Seguimiento mensual y ajustes basados en resultados."
+          }
+        }
+      },
+      "included": {
+        "title": "Todo lo que incluye tu consultoría",
+        "investment": "Inversión",
+        "from": "Desde",
+        "projectDuration": "Proyecto de 3-6 meses",
+        "paymentPlan": "Plan de pagos disponible",
+        "guaranteedROI": "ROI garantizado en 6 meses",
+        "postSupport": "Soporte post-implementación",
+        "requestProposal": "Solicitar propuesta"
+      },
+      "testimonials": {
+        "title": "Lo que dicen nuestros clientes"
+      },
+      "cta": {
+        "title": "¿Listo para transformar tu empresa?",
+        "subtitle": "Agenda una consulta gratuita de 30 minutos para explorar cómo podemos ayudarte",
+        "scheduleNow": "Agendar consulta ahora"
+      }
+    }
+  }
+}
