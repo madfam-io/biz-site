@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Poppins, Space_Mono } from 'next/font/google';
+import { Navbar } from '@/components/Navbar';
 import './globals.css';
 
 const inter = Inter({
@@ -94,7 +95,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable} ${spaceMono.variable}`}>
       <body className="font-body antialiased">
-        {children}
+        <Navbar />
+        <div className="pt-16">
+          {children}
+        </div>
       </body>
     </html>
   );
