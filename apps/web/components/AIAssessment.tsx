@@ -184,6 +184,10 @@ export function AIAssessment() {
   const question = assessmentQuestions[currentQuestion];
   const progress = ((currentQuestion + 1) / assessmentQuestions.length) * 100;
 
+  if (!question) {
+    return null;
+  }
+
   return (
     <div className="max-w-2xl mx-auto">
       <div className="mb-8">

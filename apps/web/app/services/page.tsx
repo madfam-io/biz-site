@@ -1,6 +1,5 @@
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
-import { ServiceCard } from '@/components/ServiceCard';
 
 export default function ServicesPage() {
   const allServices = Object.values(serviceTiers);

@@ -19,8 +19,9 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./*"],
       "@madfam/ui": ["../../packages/ui/src"],
       "@madfam/core": ["../../packages/core/src"],
       "@madfam/analytics": ["../../packages/analytics/src"],
