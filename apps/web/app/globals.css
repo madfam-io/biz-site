@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --color-sun: #FFD93D;
+    --color-leaf: #6BCB77;
+    --color-lavender: #9B59B6;
+    --color-obsidian: #0A0E27;
+    --color-pearl: #FAFAFA;
+
+    /* Semantic Colors */
+    --color-primary: var(--color-obsidian);
+    --color-secondary: var(--color-sun);
+    --color-success: var(--color-leaf);
+    --color-creative: var(--color-lavender);
+    --color-surface: var(--color-pearl);
+
+    /* Typography */
+    --font-poppins: 'Poppins';
+    --font-inter: 'Inter';
+    --font-space-mono: 'Space Mono';
+  }
+
+
+  body {
+    @apply bg-surface text-obsidian;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles */
+  *:focus {
+    @apply outline-none;
+  }
+
+  *:focus-visible {
+    @apply ring-2 ring-lavender ring-offset-2 ring-offset-surface;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-section;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-lavender to-sun bg-clip-text text-transparent;
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100;
+    @apply hover:shadow-md transition-shadow duration-200;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+}

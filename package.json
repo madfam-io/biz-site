@@ -1,0 +1,34 @@
+{
+  "name": "madfam-corporate",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MADFAM Corporate Website - AI-driven consultancy and product studio",
+  "author": "MADFAM <hello@madfam.io>",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:staging": "NEXT_PUBLIC_ENV=staging turbo build",
+    "build:production": "turbo build --env-mode=production",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "clean": "turbo clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^1.11.3",
+    "prettier": "^3.2.4",
+    "@types/node": "^20.11.5"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.14.1"
+}
