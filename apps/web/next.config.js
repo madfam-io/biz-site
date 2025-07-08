@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+const isStaging = process.env.NEXT_PUBLIC_ENV === 'staging';
+
 const nextConfig = {
-  output: process.env.NEXT_PUBLIC_ENV === 'staging' ? 'export' : undefined,
+  output: isStaging ? 'export' : undefined,
+  basePath: isStaging ? '/biz-site' : '',
+  assetPrefix: isStaging ? '/biz-site/' : '',
   reactStrictMode: true,
   swcMinify: true,
   transpilePackages: ['@madfam/ui', '@madfam/core', '@madfam/analytics', '@madfam/i18n'],

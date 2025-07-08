@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Poppins, Space_Mono } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import './globals.css';
 
 const inter = Inter({
@@ -98,6 +99,7 @@ export default function RootLayout({
         <Navbar />
         <div className="pt-16">
           {children}
+          <Footer />
         </div>
       </body>
     </html>
