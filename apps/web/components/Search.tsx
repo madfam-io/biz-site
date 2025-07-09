@@ -248,7 +248,7 @@ export function Search() {
         aria-label="Search"
       >
         <SearchIcon className="w-4 h-4" />
-        <span className="hidden sm:inline">Buscar</span>
+        <span className="hidden sm:inline">{t('search.button')}</span>
         <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs font-sans bg-gray-100 dark:bg-gray-800 rounded">
           <span>⌘</span>K
         </kbd>
@@ -278,11 +278,7 @@ export function Search() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder={locale === 'en-US' 
-                    ? "Search services, products, pages..." 
-                    : locale === 'pt-BR' 
-                    ? "Buscar serviços, produtos, páginas..."
-                    : "Buscar servicios, productos, páginas..."}
+                  placeholder={t('search.placeholder')}
                   className="flex-1 bg-transparent outline-none text-lg placeholder:text-gray-400"
                 />
                 <button
@@ -297,7 +293,7 @@ export function Search() {
               <div className="max-h-[400px] overflow-y-auto">
                 {loading ? (
                   <div className="p-8 text-center text-gray-500">
-                    {locale === 'en-US' ? 'Searching...' : locale === 'pt-BR' ? 'Buscando...' : 'Buscando...'}
+                    {t('search.searching')}
                   </div>
                 ) : results.length > 0 ? (
                   <div className="p-2">
@@ -329,39 +325,27 @@ export function Search() {
                 ) : query.trim() ? (
                   <div className="p-8 text-center">
                     <p className="text-gray-500 dark:text-gray-400">
-                      {locale === 'en-US' 
-                        ? `No results found for "${query}"`
-                        : locale === 'pt-BR'
-                        ? `Nenhum resultado encontrado para "${query}"`
-                        : `No se encontraron resultados para "${query}"`}
+                      {t('search.noResultsFor', { query })}
                     </p>
                     <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
-                      {locale === 'en-US'
-                        ? 'Try different search terms'
-                        : locale === 'pt-BR'
-                        ? 'Tente com outros termos de busca'
-                        : 'Intenta con otros términos de búsqueda'}
+                      {t('search.tryDifferentTerms')}
                     </p>
                   </div>
                 ) : (
                   <div className="p-8 text-center text-gray-400 dark:text-gray-500">
-                    <p>{locale === 'en-US' 
-                      ? 'Start typing to search'
-                      : locale === 'pt-BR'
-                      ? 'Comece a digitar para buscar'
-                      : 'Empieza a escribir para buscar'}</p>
+                    <p>{t('search.startTyping')}</p>
                     <div className="flex items-center justify-center gap-4 mt-4 text-sm">
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">↑↓</kbd>
-                        {locale === 'en-US' ? 'Navigate' : locale === 'pt-BR' ? 'Navegar' : 'Navegar'}
+                        {t('search.navigate')}
                       </span>
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Enter</kbd>
-                        {locale === 'en-US' ? 'Select' : locale === 'pt-BR' ? 'Selecionar' : 'Seleccionar'}
+                        {t('search.select')}
                       </span>
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Esc</kbd>
-                        {locale === 'en-US' ? 'Close' : locale === 'pt-BR' ? 'Fechar' : 'Cerrar'}
+                        {t('search.close')}
                       </span>
                     </div>
                   </div>

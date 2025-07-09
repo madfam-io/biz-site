@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, Settings, X } from 'lucide-react';
 import { Button } from '@madfam/ui';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -12,6 +14,7 @@ interface CookiePreferences {
 }
 
 export function CookieConsent() {
+  const t = useTranslations('cookies');
   const [showBanner, setShowBanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
@@ -113,11 +116,10 @@ export function CookieConsent() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-heading font-semibold mb-2">
-                        Usamos cookies 🍪
+                        {t('banner.title')} 🍪
                       </h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-                        Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y personalizar el contenido. 
-                        Puedes aceptar todas las cookies o personalizar tus preferencias.
+                        {t('banner.description')}
                       </p>
                       
                       <div className="flex flex-col sm:flex-row gap-3">
@@ -127,7 +129,7 @@ export function CookieConsent() {
                           onClick={acceptAll}
                           className="w-full sm:w-auto"
                         >
-                          Aceptar todas
+                          {t('banner.acceptAll')}
                         </Button>
                         <Button
                           variant="outline"
@@ -135,21 +137,21 @@ export function CookieConsent() {
                           onClick={acceptNecessary}
                           className="w-full sm:w-auto"
                         >
-                          Solo necesarias
+                          {t('banner.necessaryOnly')}
                         </Button>
                         <button
                           onClick={() => setShowSettings(true)}
                           className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                         >
                           <Settings className="w-4 h-4" />
-                          Personalizar
+                          {t('banner.customize')}
                         </button>
                       </div>
                     </div>
                     <button
                       onClick={() => setShowBanner(false)}
                       className="flex-shrink-0 p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-                      aria-label="Cerrar banner de cookies"
+                      aria-label={t('banner.closeAriaLabel')}
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -160,7 +162,7 @@ export function CookieConsent() {
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-lg font-heading font-semibold">
-                      Preferencias de cookies
+                      {t('settings.title')}
                     </h3>
                     <button
                       onClick={() => setShowSettings(false)}
@@ -182,10 +184,10 @@ export function CookieConsent() {
                       />
                       <div className="flex-1">
                         <label htmlFor="necessary" className="block font-medium mb-1">
-                          Cookies necesarias
+                          {t('settings.necessary.title')}
                         </label>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Estas cookies son esenciales para el funcionamiento del sitio web y no se pueden desactivar.
+                          {t('settings.necessary.description')}
                         </p>
                       </div>
                     </div>
@@ -201,10 +203,10 @@ export function CookieConsent() {
                       />
                       <div className="flex-1">
                         <label htmlFor="analytics" className="block font-medium mb-1 cursor-pointer">
-                          Cookies de análisis
+                          {t('settings.analytics.title')}
                         </label>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Nos ayudan a entender cómo los visitantes interactúan con el sitio web, recopilando información de forma anónima.
+                          {t('settings.analytics.description')}
                         </p>
                       </div>
                     </div>
@@ -220,10 +222,10 @@ export function CookieConsent() {
                       />
                       <div className="flex-1">
                         <label htmlFor="marketing" className="block font-medium mb-1 cursor-pointer">
-                          Cookies de marketing
+                          {t('settings.marketing.title')}
                         </label>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Se utilizan para rastrear visitantes en diferentes sitios web y mostrar anuncios relevantes.
+                          {t('settings.marketing.description')}
                         </p>
                       </div>
                     </div>
@@ -236,7 +238,7 @@ export function CookieConsent() {
                       onClick={savePreferences}
                       className="flex-1"
                     >
-                      Guardar preferencias
+                      {t('settings.save')}
                     </Button>
                     <Button
                       variant="outline"
@@ -244,7 +246,7 @@ export function CookieConsent() {
                       onClick={() => setShowSettings(false)}
                       className="flex-1"
                     >
-                      Cancelar
+                      {t('settings.cancel')}
                     </Button>
                   </div>
                 </div>
@@ -253,15 +255,18 @@ export function CookieConsent() {
               {/* Privacy Policy Link */}
               <div className="px-6 py-3 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-800">
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  Para más información, consulta nuestra{' '}
-                  <a href="/privacy" className="underline hover:text-gray-700 dark:hover:text-gray-300">
-                    Política de Privacidad
-                  </a>
-                  {' '}y{' '}
-                  <a href="/terms" className="underline hover:text-gray-700 dark:hover:text-gray-300">
-                    Términos y Condiciones
-                  </a>
-                  .
+                  {t.rich('footer.text', {
+                    privacy: (chunks) => (
+                      <Link href="/privacy" className="underline hover:text-gray-700 dark:hover:text-gray-300">
+                        {chunks}
+                      </Link>
+                    ),
+                    terms: (chunks) => (
+                      <Link href="/terms" className="underline hover:text-gray-700 dark:hover:text-gray-300">
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
                 </p>
               </div>
             </div>

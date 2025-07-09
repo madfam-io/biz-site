@@ -580,6 +580,34 @@
   "cookies": {
     "title": "Cookie Policy",
     "lastUpdated": "Last updated",
+    "banner": {
+      "title": "We use cookies",
+      "description": "We use cookies to improve your experience, analyze site traffic, and personalize content. You can accept all cookies or customize your preferences.",
+      "acceptAll": "Accept all",
+      "necessaryOnly": "Necessary only",
+      "customize": "Customize",
+      "closeAriaLabel": "Close cookie banner"
+    },
+    "settings": {
+      "title": "Cookie preferences",
+      "save": "Save preferences",
+      "cancel": "Cancel",
+      "necessary": {
+        "title": "Necessary cookies",
+        "description": "These cookies are essential for the website to function and cannot be disabled."
+      },
+      "analytics": {
+        "title": "Analytics cookies",
+        "description": "Help us understand how visitors interact with the website by collecting information anonymously."
+      },
+      "marketing": {
+        "title": "Marketing cookies",
+        "description": "Used to track visitors across websites and display relevant advertisements."
+      }
+    },
+    "footer": {
+      "text": "For more information, see our <privacy>Privacy Policy</privacy> and <terms>Terms and Conditions</terms>."
+    },
     "sections": {
       "whatAreCookies": {
         "title": "What are cookies",
@@ -630,19 +658,35 @@
   "calculator": {
     "title": "ROI Calculator",
     "subtitle": "Calculate the return on investment in digital transformation",
+    "calculate": "Calculate ROI",
+    "instructions": "Adjust the values and press \"Calculate ROI\" to see your estimated results",
+    "disclaimer": "Calculations based on industry averages and current client results. Actual results may vary depending on specific implementation.",
     "inputs": {
       "employees": "Number of employees",
+      "employeeHours": "Employee hours per month",
       "revenue": "Annual revenue",
       "industry": "Industry",
-      "currentCosts": "Current operational costs",
-      "automationGoals": "Automation goals"
+      "currentCosts": "Current monthly operational costs",
+      "automationGoals": "Automation goals",
+      "projectsPerMonth": "Projects per month",
+      "avgProjectValue": "Average project value"
     },
     "results": {
       "title": "Your estimated ROI",
-      "savings": "Annual savings",
+      "savings": "Estimated monthly savings",
       "efficiency": "Efficiency increase",
       "payback": "Payback period",
-      "totalBenefit": "Total 3-year benefit"
+      "totalBenefit": "Total 3-year benefit",
+      "timeRecovered": "Time saved",
+      "roi": "Expected ROI"
+    },
+    "units": {
+      "hours": "hours",
+      "hoursShort": "hrs",
+      "hoursPerMonth": "hours/month",
+      "months": "months",
+      "employees": "employees",
+      "projects": "projects"
     },
     "cta": {
       "getDetailed": "Get detailed analysis",
@@ -721,15 +765,21 @@
   },
   "auth": {
     "signin": {
-      "title": "Sign In",
+      "title": "Sign in to MADFAM Admin",
       "subtitle": "Access your MADFAM account",
-      "email": "Email",
+      "email": "Email address",
       "password": "Password",
       "rememberMe": "Remember me",
       "forgotPassword": "Forgot your password?",
       "signIn": "Sign in",
       "noAccount": "Don't have an account?",
-      "signUp": "Sign up"
+      "signUp": "Sign up",
+      "errors": {
+        "invalidEmail": "Invalid email address",
+        "passwordLength": "Password must be at least 8 characters",
+        "invalidCredentials": "Invalid email or password",
+        "generic": "An error occurred. Please try again."
+      }
     }
   },
   "dashboard": {
@@ -739,5 +789,17 @@
     "projects": "Projects",
     "analytics": "Analytics",
     "settings": "Settings"
+  },
+  "search": {
+    "button": "Search",
+    "placeholder": "Search services, products, pages...",
+    "searching": "Searching...",
+    "noResults": "No results found. Try a different search term.",
+    "noResultsFor": "No results found for \"{query}\"",
+    "tryDifferentTerms": "Try different search terms",
+    "startTyping": "Start typing to search",
+    "navigate": "Navigate",
+    "select": "Select",
+    "close": "Close"
   }
 }

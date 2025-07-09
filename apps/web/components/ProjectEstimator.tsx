@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { Calculator, ChevronLeft, DollarSign, Clock, Users } from 'lucide-react';
 import { Button } from '@madfam/ui';
 import { ServiceTier } from '@madfam/core';
+import { useTranslations } from 'next-intl';
+import { useCurrencyFormatter, useNumberFormatter } from '@/lib/formatting';
 
 interface ProjectRequirements {
   projectType: string;

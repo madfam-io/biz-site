@@ -101,14 +101,14 @@ export default function CookiesPage({ params: { locale } }: { params: { locale: 
               <li>Block all cookies</li>
               <li>Block third-party cookies</li>
               <li>Clear all cookies when you close your browser</li>
-              <li>Open a 'private browsing' or 'incognito' session</li>
+              <li>Open a &apos;private browsing&apos; or &apos;incognito&apos; session</li>
             </ul>
           </section>
 
           <section className="mt-8">
             <Heading level={2}>Cookie Settings</Heading>
             <p>
-              You can manage your cookie preferences at any time by clicking the "Cookie Settings" button in the footer 
+              You can manage your cookie preferences at any time by clicking the &quot;Cookie Settings&quot; button in the footer 
               of our website or through the cookie consent banner when you first visit our site.
             </p>
           </section>

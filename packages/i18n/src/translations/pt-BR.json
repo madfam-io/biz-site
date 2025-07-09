@@ -464,6 +464,34 @@
   "cookies": {
     "title": "Política de cookies",
     "lastUpdated": "Última atualização",
+    "banner": {
+      "title": "Usamos cookies",
+      "description": "Usamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar o conteúdo. Você pode aceitar todos os cookies ou personalizar suas preferências.",
+      "acceptAll": "Aceitar todos",
+      "necessaryOnly": "Apenas necessários",
+      "customize": "Personalizar",
+      "closeAriaLabel": "Fechar banner de cookies"
+    },
+    "settings": {
+      "title": "Preferências de cookies",
+      "save": "Salvar preferências",
+      "cancel": "Cancelar",
+      "necessary": {
+        "title": "Cookies necessários",
+        "description": "Esses cookies são essenciais para o funcionamento do site e não podem ser desativados."
+      },
+      "analytics": {
+        "title": "Cookies analíticos",
+        "description": "Nos ajudam a entender como os visitantes interagem com o site, coletando informações anonimamente."
+      },
+      "marketing": {
+        "title": "Cookies de marketing",
+        "description": "Usados para rastrear visitantes em diferentes sites e exibir anúncios relevantes."
+      }
+    },
+    "footer": {
+      "text": "Para mais informações, consulte nossa <privacy>Política de Privacidade</privacy> e <terms>Termos e Condições</terms>."
+    },
     "sections": {
       "whatAreCookies": {
         "title": "O que são cookies",
@@ -551,19 +579,35 @@
   "calculator": {
     "title": "Calculadora de ROI",
     "subtitle": "Calcule o retorno do investimento em transformação digital",
+    "calculate": "Calcular ROI",
+    "instructions": "Ajuste os valores e pressione \"Calcular ROI\" para ver seus resultados estimados",
+    "disclaimer": "Cálculos baseados em médias da indústria e resultados de clientes atuais. Os resultados reais podem variar dependendo da implementação específica.",
     "inputs": {
       "employees": "Número de funcionários",
+      "employeeHours": "Horas de funcionários por mês",
       "revenue": "Receita anual",
       "industry": "Indústria",
-      "currentCosts": "Custos operacionais atuais",
-      "automationGoals": "Metas de automação"
+      "currentCosts": "Custos operacionais mensais atuais",
+      "automationGoals": "Metas de automação",
+      "projectsPerMonth": "Projetos por mês",
+      "avgProjectValue": "Valor médio por projeto"
     },
     "results": {
       "title": "Seu ROI estimado",
-      "savings": "Economia anual",
+      "savings": "Economia mensal estimada",
       "efficiency": "Aumento de eficiência",
       "payback": "Período de retorno",
-      "totalBenefit": "Benefício total em 3 anos"
+      "totalBenefit": "Benefício total em 3 anos",
+      "timeRecovered": "Tempo economizado",
+      "roi": "ROI esperado"
+    },
+    "units": {
+      "hours": "horas",
+      "hoursShort": "hrs",
+      "hoursPerMonth": "horas/mês",
+      "months": "meses",
+      "employees": "funcionários",
+      "projects": "projetos"
     },
     "cta": {
       "getDetailed": "Obter análise detalhada",
@@ -642,15 +686,21 @@
   },
   "auth": {
     "signin": {
-      "title": "Entrar",
+      "title": "Entrar no MADFAM Admin",
       "subtitle": "Acesse sua conta MADFAM",
-      "email": "E-mail",
+      "email": "Endereço de e-mail",
       "password": "Senha",
       "rememberMe": "Lembrar-me",
       "forgotPassword": "Esqueceu sua senha?",
       "signIn": "Entrar",
       "noAccount": "Não tem uma conta?",
-      "signUp": "Cadastre-se"
+      "signUp": "Cadastre-se",
+      "errors": {
+        "invalidEmail": "Endereço de e-mail inválido",
+        "passwordLength": "A senha deve ter pelo menos 8 caracteres",
+        "invalidCredentials": "E-mail ou senha inválidos",
+        "generic": "Ocorreu um erro. Por favor, tente novamente."
+      }
     }
   },
   "dashboard": {
@@ -739,5 +789,17 @@
       "demo": "Solicitar demonstração",
       "trial": "Teste grátis por 14 dias"
     }
+  },
+  "search": {
+    "button": "Buscar",
+    "placeholder": "Buscar serviços, produtos, páginas...",
+    "searching": "Buscando...",
+    "noResults": "Nenhum resultado encontrado. Tente um termo diferente.",
+    "noResultsFor": "Nenhum resultado encontrado para \"{query}\"",
+    "tryDifferentTerms": "Tente com outros termos de busca",
+    "startTyping": "Comece a digitar para buscar",
+    "navigate": "Navegar",
+    "select": "Selecionar",
+    "close": "Fechar"
   }
 }

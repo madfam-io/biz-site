@@ -21,7 +21,7 @@ export default function PrivacyPage({ params: { locale } }: { params: { locale: 
           <div className="max-w-4xl mx-auto prose prose-lg">
             <h2>1. Introducción</h2>
             <p>
-              En MADFAM ("nosotros", "nuestro" o "la empresa"), valoramos y respetamos tu privacidad. 
+              En MADFAM (&quot;nosotros&quot;, &quot;nuestro&quot; o &quot;la empresa&quot;), valoramos y respetamos tu privacidad. 
               Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos 
               tu información personal cuando utilizas nuestro sitio web y servicios.
             </p>

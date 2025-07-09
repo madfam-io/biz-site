@@ -580,6 +580,34 @@
   "cookies": {
     "title": "Política de Cookies",
     "lastUpdated": "Última actualización",
+    "banner": {
+      "title": "Usamos cookies",
+      "description": "Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y personalizar el contenido. Puedes aceptar todas las cookies o personalizar tus preferencias.",
+      "acceptAll": "Aceptar todas",
+      "necessaryOnly": "Solo necesarias",
+      "customize": "Personalizar",
+      "closeAriaLabel": "Cerrar banner de cookies"
+    },
+    "settings": {
+      "title": "Preferencias de cookies",
+      "save": "Guardar preferencias",
+      "cancel": "Cancelar",
+      "necessary": {
+        "title": "Cookies necesarias",
+        "description": "Estas cookies son esenciales para el funcionamiento del sitio web y no se pueden desactivar."
+      },
+      "analytics": {
+        "title": "Cookies de análisis",
+        "description": "Nos ayudan a entender cómo los visitantes interactúan con el sitio web, recopilando información de forma anónima."
+      },
+      "marketing": {
+        "title": "Cookies de marketing",
+        "description": "Se utilizan para rastrear visitantes en diferentes sitios web y mostrar anuncios relevantes."
+      }
+    },
+    "footer": {
+      "text": "Para más información, consulta nuestra <privacy>Política de Privacidad</privacy> y <terms>Términos y Condiciones</terms>."
+    },
     "sections": {
       "whatAreCookies": {
         "title": "Qué son las cookies",
@@ -630,19 +658,35 @@
   "calculator": {
     "title": "Calculadora de ROI",
     "subtitle": "Calcula el retorno de inversión en transformación digital",
+    "calculate": "Calcular ROI",
+    "instructions": "Ajusta los valores y presiona \"Calcular ROI\" para ver tus resultados estimados",
+    "disclaimer": "Cálculos basados en promedios de la industria y resultados de clientes actuales. Los resultados reales pueden variar según la implementación específica.",
     "inputs": {
       "employees": "Número de empleados",
+      "employeeHours": "Horas de empleados por mes",
       "revenue": "Ingresos anuales",
       "industry": "Industria",
-      "currentCosts": "Costos operativos actuales",
-      "automationGoals": "Objetivos de automatización"
+      "currentCosts": "Costos operativos mensuales actuales",
+      "automationGoals": "Objetivos de automatización",
+      "projectsPerMonth": "Proyectos por mes",
+      "avgProjectValue": "Valor promedio por proyecto"
     },
     "results": {
       "title": "Tu ROI estimado",
-      "savings": "Ahorro anual",
+      "savings": "Ahorro mensual estimado",
       "efficiency": "Aumento de eficiencia",
       "payback": "Período de recuperación",
-      "totalBenefit": "Beneficio total a 3 años"
+      "totalBenefit": "Beneficio total a 3 años",
+      "timeRecovered": "Tiempo ahorrado",
+      "roi": "ROI esperado"
+    },
+    "units": {
+      "hours": "horas",
+      "hoursShort": "hrs",
+      "hoursPerMonth": "horas/mes",
+      "months": "meses",
+      "employees": "empleados",
+      "projects": "proyectos"
     },
     "cta": {
       "getDetailed": "Obtener análisis detallado",
@@ -721,15 +765,21 @@
   },
   "auth": {
     "signin": {
-      "title": "Iniciar Sesión",
+      "title": "Iniciar sesión en MADFAM Admin",
       "subtitle": "Accede a tu cuenta MADFAM",
-      "email": "Email",
+      "email": "Correo electrónico",
       "password": "Contraseña",
       "rememberMe": "Recordarme",
       "forgotPassword": "¿Olvidaste tu contraseña?",
       "signIn": "Iniciar sesión",
       "noAccount": "¿No tienes una cuenta?",
-      "signUp": "Regístrate"
+      "signUp": "Regístrate",
+      "errors": {
+        "invalidEmail": "Dirección de correo inválida",
+        "passwordLength": "La contraseña debe tener al menos 8 caracteres",
+        "invalidCredentials": "Correo o contraseña inválidos",
+        "generic": "Ocurrió un error. Por favor intenta de nuevo."
+      }
     }
   },
   "dashboard": {
@@ -739,5 +789,17 @@
     "projects": "Proyectos",
     "analytics": "Analíticas",
     "settings": "Configuración"
+  },
+  "search": {
+    "button": "Buscar",
+    "placeholder": "Buscar servicios, productos, páginas...",
+    "searching": "Buscando...",
+    "noResults": "No se encontraron resultados. Intenta con otro término.",
+    "noResultsFor": "No se encontraron resultados para \"{query}\"",
+    "tryDifferentTerms": "Intenta con otros términos de búsqueda",
+    "startTyping": "Empieza a escribir para buscar",
+    "navigate": "Navegar",
+    "select": "Seleccionar",
+    "close": "Cerrar"
   }
 }

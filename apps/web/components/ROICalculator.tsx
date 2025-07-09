@@ -5,12 +5,17 @@ import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, DollarSign, Clock } from 'lucide-react';
 import { Button } from '@madfam/ui';
 import { ServiceTier } from '@madfam/core';
+import { useTranslations } from 'next-intl';
+import { useCurrencyFormatter, useNumberFormatter } from '@/lib/formatting';
 
 interface ROICalculatorProps {
   serviceTier?: ServiceTier;
 }
 
 export function ROICalculator({ serviceTier }: ROICalculatorProps) {
+  const t = useTranslations('calculator');
+  const { formatCurrency } = useCurrencyFormatter();
+  const { formatNumber } = useNumberFormatter();
   const [formData, setFormData] = useState({
     currentCosts: 50000,
     employeeHours: 160,
@@ -80,26 +85,19 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
     });
   };
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('es-MX', {
-      style: 'currency',
-      currency: 'MXN',
-      minimumFractionDigits: 0,
-    }).format(value);
-  };
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
       <div className="flex items-center gap-3 mb-6">
         <Calculator className="w-8 h-8 text-sun" />
-        <h3 className="font-heading text-2xl">Calculadora de ROI</h3>
+        <h3 className="font-heading text-2xl">{t('title')}</h3>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div>
             <label className="block text-sm font-medium mb-2">
-              Costos operativos mensuales actuales
+              {t('inputs.currentCosts')}
             </label>
             <input
               type="range"
@@ -117,7 +115,7 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Horas de empleados por mes
+              {t('inputs.employeeHours')}
             </label>
             <input
               type="range"
@@ -129,13 +127,13 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
               className="w-full"
             />
             <div className="text-right mt-1 font-mono text-sun">
-              {formData.employeeHours} horas
+              {formatNumber(formData.employeeHours)} {t('units.hours')}
             </div>
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Proyectos por mes
+              {t('inputs.projectsPerMonth')}
             </label>
             <input
               type="range"
@@ -146,13 +144,13 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
               className="w-full"
             />
             <div className="text-right mt-1 font-mono text-sun">
-              {formData.projectsPerMonth} proyectos
+              {formatNumber(formData.projectsPerMonth)} {t('units.projects')}
             </div>
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Valor promedio por proyecto
+              {t('inputs.avgProjectValue')}
             </label>
             <input
               type="range"
@@ -173,7 +171,7 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
             variant="creative"
             className="w-full"
           >
-            Calcular ROI
+            {t('calculate')}
           </Button>
         </div>
 
@@ -187,7 +185,7 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
               <div className="bg-gradient-to-r from-sun/10 to-leaf/10 dark:from-sun/20 dark:to-leaf/20 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <DollarSign className="w-6 h-6 text-sun" />
-                  <h4 className="font-semibold">Ahorro mensual estimado</h4>
+                  <h4 className="font-semibold">{t('results.savings')}</h4>
                 </div>
                 <p className="text-3xl font-heading text-sun">
                   {formatCurrency(results.monthlySavings)}
@@ -197,30 +195,29 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
               <div className="bg-gradient-to-r from-lavender/10 to-sun/10 dark:from-lavender/20 dark:to-sun/20 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="w-6 h-6 text-lavender" />
-                  <h4 className="font-semibold">Tiempo ahorrado</h4>
+                  <h4 className="font-semibold">{t('results.timeRecovered')}</h4>
                 </div>
                 <p className="text-3xl font-heading text-lavender">
-                  {results.timeSaved} horas/mes
+                  {formatNumber(results.timeSaved)} {t('units.hoursPerMonth')}
                 </p>
               </div>
 
               <div className="bg-gradient-to-r from-leaf/10 to-lavender/10 dark:from-leaf/20 dark:to-lavender/20 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <TrendingUp className="w-6 h-6 text-leaf" />
-                  <h4 className="font-semibold">ROI esperado</h4>
+                  <h4 className="font-semibold">{t('results.roi')}</h4>
                 </div>
                 <p className="text-3xl font-heading text-leaf">
                   {results.roiPercentage}%
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  Período de recuperación: {results.paybackPeriod} meses
+                  {t('results.payback')}: {formatNumber(results.paybackPeriod)} {t('units.months')}
                 </p>
               </div>
 
               <div className="mt-6 p-4 bg-obsidian/5 dark:bg-obsidian/20 rounded-lg">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  * Cálculos basados en promedios de la industria y resultados de clientes actuales.
-                  Los resultados reales pueden variar según la implementación específica.
+                  * {t('disclaimer')}
                 </p>
               </div>
             </motion.div>
@@ -229,7 +226,7 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
               <div className="text-center">
                 <Calculator className="w-16 h-16 text-gray-300 dark:text-gray-700 mx-auto mb-4" />
                 <p className="text-gray-500 dark:text-gray-400">
-                  Ajusta los valores y presiona "Calcular ROI" para ver tus resultados estimados
+                  {t('instructions')}
                 </p>
               </div>
             </div>

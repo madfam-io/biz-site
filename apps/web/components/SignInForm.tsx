@@ -7,18 +7,22 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@madfam/ui';
+import { useTranslations } from 'next-intl';
 
-const signInSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
+const createSignInSchema = (t: any) => z.object({
+  email: z.string().email(t('auth.signin.errors.invalidEmail')),
+  password: z.string().min(8, t('auth.signin.errors.passwordLength')),
 });
 
 type SignInFormData = z.infer<typeof signInSchema>;
 
 export function SignInForm() {
   const router = useRouter();
+  const t = useTranslations();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  
+  const signInSchema = createSignInSchema(t);
 
   const {
     register,
@@ -40,14 +44,14 @@ export function SignInForm() {
       });
 
       if (result?.error) {
-        setError('Invalid email or password');
+        setError(t('auth.signin.errors.invalidCredentials'));
         return;
       }
 
       router.push('/dashboard');
       router.refresh();
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      setError(t('auth.signin.errors.generic'));
     } finally {
       setIsLoading(false);
     }
@@ -58,21 +62,21 @@ export function SignInForm() {
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to MADFAM Admin
+            {t('auth.signin.title')}
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email" className="sr-only">
-                Email address
+                {t('auth.signin.email')}
               </label>
               <input
                 {...register('email')}
                 type="email"
                 autoComplete="email"
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                placeholder={t('auth.signin.email')}
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -80,14 +84,14 @@ export function SignInForm() {
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
-                Password
+                {t('auth.signin.password')}
               </label>
               <input
                 {...register('password')}
                 type="password"
                 autoComplete="current-password"
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
+                placeholder={t('auth.signin.password')}
               />
               {errors.password && (
                 <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
@@ -107,7 +111,7 @@ export function SignInForm() {
               loading={isLoading}
               className="group relative w-full flex justify-center"
             >
-              Sign in
+              {t('auth.signin.signIn')}
             </Button>
           </div>
         </form>
