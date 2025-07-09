@@ -74,7 +74,9 @@
     "cta": {
       "title": "Ready to transform your business?",
       "subtitle": "Discover how MADFAM can take your company to the next level with AI and creativity.",
-      "scheduleFree": "Schedule free consultation"
+      "scheduleFree": "Schedule free consultation",
+      "getStarted": "Get started",
+      "learnMore": "Learn more"
     }
   },
   "services": {
