@@ -2,7 +2,7 @@ import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier, ServiceTierConfig } from '@madfam/core';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { getLocalizedContent, type Locale } from '@madfam/i18n';
+import { getLocalizedContent, getLocalizedUrl, type Locale } from '@madfam/i18n';
 
 export default function ServicesPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
@@ -200,7 +200,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                   {t('notSure.getEstimate')}
                 </Button>
               </a>
-              <a href={`/${locale}${locale === 'es-MX' ? '/contacto' : '/contact'}`}>
+              <a href={getLocalizedUrl('contact', currentLocale)}>
                 <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-obsidian">
                   {t('notSure.cta')}
                 </Button>

@@ -18,7 +18,7 @@ export const i18nConfig = {
       '/products': '/productos',
       '/about': '/nosotros',
       '/contact': '/contacto',
-      '/services/level-1-essentials': '/servicios/nivel-1-essentials',
+      '/services/level-1-essentials': '/servicios/nivel-1-esenciales',
       '/services/level-2-advanced': '/servicios/nivel-2-avanzado',
       '/services/level-3-consulting': '/servicios/nivel-3-consultoria',
       '/services/level-4-platforms': '/servicios/nivel-4-plataformas',

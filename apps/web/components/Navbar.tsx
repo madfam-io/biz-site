@@ -7,28 +7,19 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { DarkModeToggle } from './DarkModeToggle';
 import { Search } from './Search';
 import { useTranslations, useLocale } from 'next-intl';
-import { i18nConfig } from '@madfam/i18n';
+import { getLocalizedUrl } from '@madfam/i18n';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = useTranslations('common.nav');
-  const locale = useLocale();
-
-  // Helper function to get localized route
-  const getLocalizedRoute = (route: string) => {
-    if (locale === 'es-MX') {
-      const spanishRoutes = i18nConfig.routes['es-MX'];
-      return spanishRoutes[route as keyof typeof spanishRoutes] || route;
-    }
-    return route;
-  };
+  const locale = useLocale() as any;
 
   const navigation = [
     { name: t('home'), href: `/${locale}` },
-    { name: t('services'), href: `/${locale}${getLocalizedRoute('/services')}` },
-    { name: t('products'), href: `/${locale}${getLocalizedRoute('/products')}` },
-    { name: t('about'), href: `/${locale}${getLocalizedRoute('/about')}` },
-    { name: t('contact'), href: `/${locale}${getLocalizedRoute('/contact')}` },
+    { name: t('services'), href: getLocalizedUrl('services', locale) },
+    { name: t('products'), href: getLocalizedUrl('products', locale) },
+    { name: t('about'), href: getLocalizedUrl('about', locale) },
+    { name: t('contact'), href: getLocalizedUrl('contact', locale) },
   ];
 
   return (
