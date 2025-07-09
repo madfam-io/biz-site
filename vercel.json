@@ -1,5 +1,7 @@
 {
   "framework": "nextjs",
-  "buildCommand": "pnpm build --filter=@madfam/web",
-  "outputDirectory": "apps/web/.next"
+  "rootDirectory": "apps/web",
+  "buildCommand": "cd ../.. && pnpm build --filter=@madfam/web",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet ."
 }

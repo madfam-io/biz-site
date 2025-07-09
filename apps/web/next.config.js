@@ -4,14 +4,14 @@ const nextConfig = {
   swcMinify: true,
   transpilePackages: ['@madfam/ui', '@madfam/core', '@madfam/analytics', '@madfam/i18n'],
   
-  // Use static export for GitHub Pages, default for Vercel
+  // Use static export only for GitHub Pages
   output: process.env.DEPLOY_TARGET === 'github-pages' ? 'export' : undefined,
   
-  // Configure base path for GitHub Pages
+  // Configure base path only for GitHub Pages
   basePath: process.env.DEPLOY_TARGET === 'github-pages' ? '/biz-site' : '',
   
-  // Disable server-side features for static export
-  trailingSlash: process.env.DEPLOY_TARGET === 'github-pages',
+  // Add trailing slash only for static export
+  trailingSlash: process.env.DEPLOY_TARGET === 'github-pages' ? true : false,
   
   images: {
     formats: ['image/avif', 'image/webp'],
