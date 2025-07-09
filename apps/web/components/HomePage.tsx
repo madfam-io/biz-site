@@ -1,25 +1,12 @@
 'use client';
 
 import { Button, Container, Heading } from '@madfam/ui';
-import { serviceTiers, ServiceTier } from '@madfam/core';
 import { AnimatedText } from '@/components/AnimatedText';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { useTranslations } from 'next-intl';
 
 export function HomePage() {
   const t = useTranslations();
-  const featuredServices = [
-    serviceTiers[ServiceTier.L1_ESSENTIALS],
-    serviceTiers[ServiceTier.L3_CONSULTING],
-    serviceTiers[ServiceTier.L5_STRATEGIC],
-  ];
-
-  const stats = [
-    { value: 100, suffix: '+', label: 'Proyectos completados' },
-    { value: 95, suffix: '%', label: 'Satisfacción del cliente' },
-    { value: 50, suffix: '+', label: 'Empresas transformadas' },
-    { value: 3.5, suffix: 'x', label: 'ROI promedio', decimals: 1 },
-  ];
 
   return (
     <main className="min-h-screen">
