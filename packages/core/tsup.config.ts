@@ -8,9 +8,9 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   external: ['zod'],
-  noExternal: [/^\.\/|^\.\.\//],
+  treeshake: true,
+  target: 'es2022',
   esbuildOptions(options) {
-    options.bundle = true;
-    options.platform = 'node';
+    options.resolveExtensions = ['.ts', '.js'];
   },
 });
