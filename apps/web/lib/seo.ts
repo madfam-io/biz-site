@@ -7,7 +7,7 @@ export interface SEOConfig {
   image?: string;
   url?: string;
   type?: 'website' | 'article' | 'product' | 'service';
-  locale?: 'es-MX' | 'en-US';
+  locale?: 'es-MX' | 'en-US' | 'pt-BR';
   alternateLocales?: string[];
   publishedTime?: string;
   modifiedTime?: string;
@@ -110,7 +110,7 @@ export class SEOService {
     serviceName: string,
     serviceDescription: string,
     serviceTier: string,
-    locale: 'es-MX' | 'en-US' = 'es-MX'
+    locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'
   ): Metadata {
     const content = {
       'es-MX': {
@@ -139,6 +139,20 @@ export class SEOService {
           'LATAM',
         ],
       },
+      'pt-BR': {
+        title: `${serviceName} | Serviços ${serviceTier} | MADFAM`,
+        description: serviceDescription,
+        keywords: [
+          'transformação digital',
+          'automação',
+          'inteligência artificial',
+          'consultoria tecnológica',
+          'desenvolvimento de software',
+          'México',
+          'Brasil',
+          'LATAM',
+        ],
+      },
     };
 
     const t = content[locale];
@@ -156,7 +170,7 @@ export class SEOService {
   generateProductMetadata(
     productName: string,
     productDescription: string,
-    locale: 'es-MX' | 'en-US' = 'es-MX'
+    locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'
   ): Metadata {
     const content = {
       'es-MX': {
@@ -185,6 +199,19 @@ export class SEOService {
           'PENNY',
         ],
       },
+      'pt-BR': {
+        title: `${productName} | Produtos MADFAM`,
+        description: productDescription,
+        keywords: [
+          'software empresarial',
+          'plataformas digitais',
+          'automação de processos',
+          'inteligência artificial',
+          'transformação digital',
+          'SPARK',
+          'PENNY',
+        ],
+      },
     };
 
     const t = content[locale];
@@ -205,7 +232,7 @@ export class SEOService {
     author: string,
     publishedTime: string,
     tags: string[],
-    locale: 'es-MX' | 'en-US' = 'es-MX'
+    locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'
   ): Metadata {
     return this.generateMetadata({
       title,
@@ -220,7 +247,7 @@ export class SEOService {
     });
   }
 
-  generateHomeMetadata(locale: 'es-MX' | 'en-US' = 'es-MX'): Metadata {
+  generateHomeMetadata(locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'): Metadata {
     const content = {
       'es-MX': {
         title: 'MADFAM | Transformación Digital e Inteligencia Artificial en México',
@@ -252,6 +279,22 @@ export class SEOService {
           'PENNY',
           '3D design',
           'strategic consulting',
+        ],
+      },
+      'pt-BR': {
+        title: 'MADFAM | Transformação Digital e Soluções de IA no México',
+        description: 'Especialistas em transformação digital, automação inteligente e desenvolvimento de software empresarial. Do design 3D aos serviços estratégicos de vCTO. Serviços L1-L5 no México e LATAM.',
+        keywords: [
+          'transformação digital México',
+          'inteligência artificial LATAM',
+          'automação empresarial',
+          'consultoria tecnológica',
+          'desenvolvimento software México',
+          'vCTO',
+          'SPARK',
+          'PENNY',
+          'design 3D',
+          'consultoria estratégica',
         ],
       },
     };

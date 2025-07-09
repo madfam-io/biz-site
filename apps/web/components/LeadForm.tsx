@@ -6,17 +6,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@madfam/ui';
 import { ServiceTier } from '@madfam/core';
+import { useTranslations, useLocale } from 'next-intl';
 
-const leadFormSchema = z.object({
-  name: z.string().min(2, 'Nombre debe tener al menos 2 caracteres'),
-  email: z.string().email('Email inválido'),
+const createLeadFormSchema = (t: any) => z.object({
+  name: z.string().min(2, t('errors.nameMin')),
+  email: z.string().email(t('errors.emailInvalid')),
   company: z.string().optional(),
   phone: z.string().optional(),
   tier: z.nativeEnum(ServiceTier).optional(),
   message: z.string().optional(),
 });
 
-type LeadFormData = z.infer<typeof leadFormSchema>;
+type LeadFormData = z.infer<ReturnType<typeof createLeadFormSchema>>;
 
 interface LeadFormProps {
   tier?: ServiceTier;
@@ -27,6 +28,10 @@ interface LeadFormProps {
 export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const t = useTranslations('leadForm');
+  const locale = useLocale();
+  
+  const leadFormSchema = createLeadFormSchema(t);
 
   const {
     register,
@@ -65,7 +70,7 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
         body: JSON.stringify({
           ...data,
           source,
-          preferredLanguage: 'es-MX', // Could be dynamic based on locale
+          preferredLanguage: locale,
         }),
       });
 
@@ -91,14 +96,14 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-            Nombre completo *
+            {t('fields.name')} *
           </label>
           <input
             {...register('name')}
             type="text"
             id="name"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-            placeholder="Juan Pérez"
+            placeholder={t('placeholders.name')}
           />
           {errors.name && (
             <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
@@ -107,14 +112,14 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email corporativo *
+            {t('fields.email')} *
           </label>
           <input
             {...register('email')}
             type="email"
             id="email"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-            placeholder="juan@empresa.com"
+            placeholder={t('placeholders.email')}
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -125,27 +130,27 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-            Empresa
+            {t('fields.company')}
           </label>
           <input
             {...register('company')}
             type="text"
             id="company"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-            placeholder="Nombre de tu empresa"
+            placeholder={t('placeholders.company')}
           />
         </div>
 
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-            Teléfono
+            {t('fields.phone')}
           </label>
           <input
             {...register('phone')}
             type="tel"
             id="phone"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-            placeholder="+52 55 1234 5678"
+            placeholder={t('placeholders.phone')}
           />
         </div>
       </div>
@@ -153,40 +158,40 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
       {!tier && (
         <div>
           <label htmlFor="tier" className="block text-sm font-medium text-gray-700 mb-2">
-            Servicio de interés
+            {t('fields.tier')}
           </label>
           <select
             {...register('tier')}
             id="tier"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
           >
-            <option value="">Selecciona un servicio</option>
-            <option value={ServiceTier.L1_ESSENTIALS}>L1 - Essentials (Diseño 3D)</option>
-            <option value={ServiceTier.L2_ADVANCED}>L2 - Advanced (Diseño paramétrico)</option>
-            <option value={ServiceTier.L3_CONSULTING}>L3 - Consulting (Workshops)</option>
-            <option value={ServiceTier.L4_PLATFORMS}>L4 - Platforms (SPARK/PENNY)</option>
-            <option value={ServiceTier.L5_STRATEGIC}>L5 - Strategic (vCTO)</option>
+            <option value="">{t('tiers.select')}</option>
+            <option value={ServiceTier.L1_ESSENTIALS}>{t('tiers.l1')}</option>
+            <option value={ServiceTier.L2_ADVANCED}>{t('tiers.l2')}</option>
+            <option value={ServiceTier.L3_CONSULTING}>{t('tiers.l3')}</option>
+            <option value={ServiceTier.L4_PLATFORMS}>{t('tiers.l4')}</option>
+            <option value={ServiceTier.L5_STRATEGIC}>{t('tiers.l5')}</option>
           </select>
         </div>
       )}
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          ¿Cómo podemos ayudarte?
+          {t('fields.message')}
         </label>
         <textarea
           {...register('message')}
           id="message"
           rows={4}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-          placeholder="Cuéntanos sobre tu proyecto o necesidades..."
+          placeholder={t('placeholders.message')}
         />
       </div>
 
       {submitStatus === 'success' && (
         <div className="p-4 bg-leaf/10 border border-leaf/20 rounded-lg">
           <p className="text-leaf font-medium">
-            ¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.
+            {t('messages.success')}
           </p>
         </div>
       )}
@@ -194,14 +199,14 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
       {submitStatus === 'error' && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
           <p className="text-red-600 font-medium">
-            Hubo un error al enviar el formulario. Por favor intenta de nuevo.
+            {t('messages.error')}
           </p>
         </div>
       )}
 
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">
-          * Campos requeridos
+          * {t('requiredFields')}
         </p>
         <Button
           type="submit"
@@ -210,7 +215,7 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
           loading={isSubmitting}
           disabled={isSubmitting || submitStatus === 'success'}
         >
-          Enviar solicitud
+          {t('submit')}
         </Button>
       </div>
     </form>

@@ -6,15 +6,17 @@ interface CurrencyConfig {
   symbol?: string;
 }
 
+const DEFAULT_CURRENCY_CONFIG: CurrencyConfig = { locale: 'en-US', currency: 'USD', symbol: '$' };
+
 const CURRENCY_BY_LOCALE: Record<string, CurrencyConfig> = {
-  'en-US': { locale: 'en-US', currency: 'USD', symbol: '$' },
+  'en-US': DEFAULT_CURRENCY_CONFIG,
   'es-MX': { locale: 'es-MX', currency: 'MXN', symbol: '$' },
   'pt-BR': { locale: 'pt-BR', currency: 'BRL', symbol: 'R$' },
 };
 
 export function useCurrencyFormatter() {
   const locale = useLocale();
-  const config = CURRENCY_BY_LOCALE[locale] || CURRENCY_BY_LOCALE['en-US'];
+  const config = CURRENCY_BY_LOCALE[locale] || DEFAULT_CURRENCY_CONFIG;
 
   const formatCurrency = (amount: number, options?: Intl.NumberFormatOptions) => {
     return new Intl.NumberFormat(config.locale, {
@@ -162,7 +164,7 @@ export function useDateFormatter() {
 
 // Non-hook versions for server components or non-component contexts
 export function getCurrencyFormatter(locale: string) {
-  const config = CURRENCY_BY_LOCALE[locale] || CURRENCY_BY_LOCALE['en-US'];
+  const config = CURRENCY_BY_LOCALE[locale] || DEFAULT_CURRENCY_CONFIG;
 
   const formatCurrency = (amount: number, options?: Intl.NumberFormatOptions) => {
     return new Intl.NumberFormat(config.locale, {

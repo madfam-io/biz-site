@@ -6,7 +6,7 @@ import { Calculator, ChevronLeft, DollarSign, Clock, Users } from 'lucide-react'
 import { Button } from '@madfam/ui';
 import { ServiceTier } from '@madfam/core';
 import { useTranslations } from 'next-intl';
-import { useCurrencyFormatter, useNumberFormatter } from '@/lib/formatting';
+import { useCurrencyFormatter } from '@/lib/formatting';
 
 interface ProjectRequirements {
   projectType: string;
@@ -25,41 +25,48 @@ interface ProjectEstimate {
   suggestedFeatures: string[];
 }
 
-const projectTypes = [
-  { id: 'web-app', name: 'Aplicación Web', icon: '🌐' },
-  { id: 'mobile-app', name: 'App Móvil', icon: '📱' },
-  { id: 'ecommerce', name: 'E-commerce', icon: '🛒' },
-  { id: 'automation', name: 'Automatización', icon: '🤖' },
-  { id: 'consulting', name: 'Consultoría', icon: '💡' },
-  { id: 'custom', name: 'Proyecto Personalizado', icon: '🎯' },
+const getProjectTypes = (t: any) => [
+  { id: 'web-app', name: t('projectTypes.webApp'), icon: '🌐' },
+  { id: 'mobile-app', name: t('projectTypes.mobileApp'), icon: '📱' },
+  { id: 'ecommerce', name: t('projectTypes.ecommerce'), icon: '🛒' },
+  { id: 'automation', name: t('projectTypes.automation'), icon: '🤖' },
+  { id: 'consulting', name: t('projectTypes.consulting'), icon: '💡' },
+  { id: 'custom', name: t('projectTypes.custom'), icon: '🎯' },
 ];
 
-const features = [
-  { id: 'ai-integration', name: 'Integración de IA', category: 'tech' },
-  { id: 'real-time', name: 'Tiempo Real', category: 'tech' },
-  { id: 'payment', name: 'Procesamiento de Pagos', category: 'business' },
-  { id: 'analytics', name: 'Analytics Avanzado', category: 'business' },
-  { id: 'multi-language', name: 'Multi-idioma', category: 'ux' },
-  { id: 'offline', name: 'Funcionalidad Offline', category: 'ux' },
-  { id: 'notifications', name: 'Notificaciones Push', category: 'engagement' },
-  { id: 'social-login', name: 'Login Social', category: 'auth' },
-  { id: 'api', name: 'API REST/GraphQL', category: 'tech' },
-  { id: 'admin-panel', name: 'Panel de Administración', category: 'management' },
+const getFeatures = (t: any) => [
+  { id: 'ai-integration', name: t('features.aiIntegration'), category: 'tech' },
+  { id: 'real-time', name: t('features.realTime'), category: 'tech' },
+  { id: 'payment', name: t('features.payment'), category: 'business' },
+  { id: 'analytics', name: t('features.analytics'), category: 'business' },
+  { id: 'multi-language', name: t('features.multiLanguage'), category: 'ux' },
+  { id: 'offline', name: t('features.offline'), category: 'ux' },
+  { id: 'notifications', name: t('features.notifications'), category: 'engagement' },
+  { id: 'social-login', name: t('features.socialLogin'), category: 'auth' },
+  { id: 'api', name: t('features.api'), category: 'tech' },
+  { id: 'admin-panel', name: t('features.adminPanel'), category: 'management' },
 ];
 
-const industries = [
-  'Retail',
-  'Fintech',
-  'Salud',
-  'Educación',
-  'Manufactura',
-  'Servicios',
-  'Gobierno',
-  'ONG',
-  'Otro',
+const getIndustries = (t: any) => [
+  t('industries.retail'),
+  t('industries.fintech'),
+  t('industries.health'),
+  t('industries.education'),
+  t('industries.manufacturing'),
+  t('industries.services'),
+  t('industries.government'),
+  t('industries.ngo'),
+  t('industries.other'),
 ];
 
 export function ProjectEstimator() {
+  const t = useTranslations('estimator');
+  const { formatCurrency } = useCurrencyFormatter();
+  
+  const projectTypes = getProjectTypes(t);
+  const features = getFeatures(t);
+  const industries = getIndustries(t);
+  
   const [step, setStep] = useState(1);
   const [requirements, setRequirements] = useState<ProjectRequirements>({
     projectType: '',
@@ -146,23 +153,23 @@ export function ProjectEstimator() {
     // Recommend team based on project
     const recommendedTeam = [];
     if (requirements.projectType === 'mobile-app') {
-      recommendedTeam.push('Desarrollador iOS/Android', 'Diseñador UI/UX');
+      recommendedTeam.push(t('team.iosDeveloper'), t('team.uiDesigner'));
     }
     if (requirements.features.includes('ai-integration')) {
-      recommendedTeam.push('Ingeniero de IA/ML');
+      recommendedTeam.push(t('team.aiEngineer'));
     }
     if (requirements.complexity === 'complex') {
-      recommendedTeam.push('Arquitecto de Software', 'Project Manager');
+      recommendedTeam.push(t('team.softwareArchitect'), t('team.projectManager'));
     }
-    recommendedTeam.push('Desarrollador Full Stack', 'QA Engineer');
+    recommendedTeam.push(t('team.fullStackDeveloper'), t('team.qaEngineer'));
 
     // Suggest additional features
     const suggestedFeatures = [];
     if (!requirements.features.includes('analytics') && requirements.projectType !== 'consulting') {
-      suggestedFeatures.push('Analytics Dashboard');
+      suggestedFeatures.push(t('suggestions.analyticsDashboard'));
     }
     if (!requirements.features.includes('api') && ['web-app', 'mobile-app'].includes(requirements.projectType)) {
-      suggestedFeatures.push('API para Integraciones Futuras');
+      suggestedFeatures.push(t('suggestions.futureApi'));
     }
 
     setEstimate({
@@ -174,20 +181,13 @@ export function ProjectEstimator() {
     });
   };
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('es-MX', {
-      style: 'currency',
-      currency: 'MXN',
-      minimumFractionDigits: 0,
-    }).format(value);
-  };
 
   const renderStep = () => {
     switch (step) {
       case 1:
         return (
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold mb-4">¿Qué tipo de proyecto necesitas?</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('steps.projectType.title')}</h3>
             <div className="grid sm:grid-cols-2 gap-4">
               {projectTypes.map((type) => (
                 <button
@@ -213,12 +213,12 @@ export function ProjectEstimator() {
       case 2:
         return (
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold mb-4">¿Cuál es la complejidad del proyecto?</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('steps.complexity.title')}</h3>
             <div className="space-y-3">
               {[
-                { value: 'simple', label: 'Simple', description: 'Funcionalidad básica, diseño estándar' },
-                { value: 'medium', label: 'Medio', description: 'Funciones personalizadas, integración moderada' },
-                { value: 'complex', label: 'Complejo', description: 'Arquitectura avanzada, múltiples integraciones' },
+                { value: 'simple', label: t('complexity.simple.label'), description: t('complexity.simple.description') },
+                { value: 'medium', label: t('complexity.medium.label'), description: t('complexity.medium.description') },
+                { value: 'complex', label: t('complexity.complex.label'), description: t('complexity.complex.description') },
               ].map((option) => (
                 <button
                   key={option.value}
@@ -243,7 +243,7 @@ export function ProjectEstimator() {
       case 3:
         return (
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold mb-4">¿Qué características necesitas?</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('steps.features.title')}</h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {features.map((feature) => (
                 <label
@@ -281,7 +281,7 @@ export function ProjectEstimator() {
               variant="primary"
               className="w-full"
             >
-              Continuar
+              {t('continue')}
             </Button>
           </div>
         );
@@ -289,12 +289,12 @@ export function ProjectEstimator() {
       case 4:
         return (
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold mb-4">¿Cuál es tu línea de tiempo?</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('steps.timeline.title')}</h3>
             <div className="space-y-3">
               {[
-                { value: 'urgent', label: 'Urgente', description: 'Necesito empezar de inmediato' },
-                { value: 'normal', label: 'Normal', description: '1-2 meses para empezar' },
-                { value: 'flexible', label: 'Flexible', description: 'Sin prisa específica' },
+                { value: 'urgent', label: t('timeline.urgent.label'), description: t('timeline.urgent.description') },
+                { value: 'normal', label: t('timeline.normal.label'), description: t('timeline.normal.description') },
+                { value: 'flexible', label: t('timeline.flexible.label'), description: t('timeline.flexible.description') },
               ].map((option) => (
                 <button
                   key={option.value}
@@ -319,7 +319,7 @@ export function ProjectEstimator() {
       case 5:
         return (
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold mb-4">¿En qué industria operas?</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('steps.industry.title')}</h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {industries.map((industry) => (
                 <button
@@ -349,13 +349,13 @@ export function ProjectEstimator() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
-            <h3 className="text-lg font-semibold mb-4">Tu estimación personalizada</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('results.title')}</h3>
             
             {/* Cost Estimate */}
             <div className="bg-gradient-to-r from-sun/10 to-leaf/10 dark:from-sun/20 dark:to-leaf/20 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
                 <DollarSign className="w-6 h-6 text-sun" />
-                <h4 className="font-semibold">Inversión estimada</h4>
+                <h4 className="font-semibold">{t('results.investment')}</h4>
               </div>
               <p className="text-2xl font-heading">
                 {formatCurrency(estimate.estimatedCost.min)} - {formatCurrency(estimate.estimatedCost.max)}
@@ -366,10 +366,10 @@ export function ProjectEstimator() {
             <div className="bg-gradient-to-r from-lavender/10 to-sun/10 dark:from-lavender/20 dark:to-sun/20 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
                 <Clock className="w-6 h-6 text-lavender" />
-                <h4 className="font-semibold">Duración estimada</h4>
+                <h4 className="font-semibold">{t('results.duration')}</h4>
               </div>
               <p className="text-2xl font-heading">
-                {estimate.estimatedDuration.min} - {estimate.estimatedDuration.max} meses
+                {estimate.estimatedDuration.min} - {estimate.estimatedDuration.max} {t('results.months')}
               </p>
             </div>
 
@@ -377,7 +377,7 @@ export function ProjectEstimator() {
             <div className="bg-gradient-to-r from-leaf/10 to-lavender/10 dark:from-leaf/20 dark:to-lavender/20 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
                 <Users className="w-6 h-6 text-leaf" />
-                <h4 className="font-semibold">Equipo recomendado</h4>
+                <h4 className="font-semibold">{t('results.recommendedTeam')}</h4>
               </div>
               <ul className="space-y-1">
                 {estimate.recommendedTeam.map((role, index) => (
@@ -392,7 +392,7 @@ export function ProjectEstimator() {
             {/* Suggested Features */}
             {estimate.suggestedFeatures.length > 0 && (
               <div className="p-4 bg-obsidian/5 dark:bg-obsidian/20 rounded-lg">
-                <p className="text-sm font-medium mb-2">También podrías considerar:</p>
+                <p className="text-sm font-medium mb-2">{t('results.alsoConsider')}</p>
                 <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                   {estimate.suggestedFeatures.map((feature, index) => (
                     <li key={index}>• {feature}</li>
@@ -408,7 +408,7 @@ export function ProjectEstimator() {
                 className="flex-1"
                 onClick={() => window.location.href = '/contact'}
               >
-                Solicitar propuesta detallada
+                {t('results.requestProposal')}
               </Button>
               <Button
                 variant="outline"
@@ -425,7 +425,7 @@ export function ProjectEstimator() {
                   setEstimate(null);
                 }}
               >
-                Hacer otra estimación
+                {t('results.anotherEstimate')}
               </Button>
             </div>
           </motion.div>
@@ -440,17 +440,17 @@ export function ProjectEstimator() {
     <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
       <div className="flex items-center gap-3 mb-6">
         <Calculator className="w-8 h-8 text-sun" />
-        <h2 className="font-heading text-2xl">Estimador de Proyectos</h2>
+        <h2 className="font-heading text-2xl">{t('title')}</h2>
       </div>
 
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex justify-between mb-2">
           <span className="text-sm text-gray-600 dark:text-gray-400">
-            Paso {step} de 6
+            {t('progress.step')} {step} {t('progress.of')} 6
           </span>
           <span className="text-sm text-gray-600 dark:text-gray-400">
-            {Math.round((step / 6) * 100)}% completado
+            {Math.round((step / 6) * 100)}% {t('progress.completed')}
           </span>
         </div>
         <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
@@ -473,7 +473,7 @@ export function ProjectEstimator() {
           className="mt-6 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
-          Volver
+          {t('back')}
         </button>
       )}
     </div>

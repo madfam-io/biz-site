@@ -1,14 +1,15 @@
-'use client';
-
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import Link from 'next/link';
 import { ServiceCard } from '@/components/ServiceCard';
-import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
+import { getLocalizedContent, type Locale } from '@madfam/i18n';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 export default function Level4PlatformsPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L4_PLATFORMS];
-  const t = useTypedTranslations('services');
+  const t = useTranslations('services');
   const currentLocale = locale as Locale;
   
   // Get localized content from service object
@@ -319,7 +320,7 @@ export default function Level4PlatformsPage({ params: { locale } }: { params: { 
 
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <div className="text-5xl mb-4">💬</div>
-              <blockquote className="text-lg mb-6 italic">"{roi.testimonial.quote}"</blockquote>
+              <blockquote className="text-lg mb-6 italic">&quot;{roi.testimonial.quote}&quot;</blockquote>
               <div>
                 <p className="font-semibold">{roi.testimonial.author}</p>
                 <p className="text-obsidian/60">{roi.testimonial.role}</p>

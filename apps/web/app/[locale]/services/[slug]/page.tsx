@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation';
 import { getServiceLevelFromSlug, type Locale } from '@madfam/i18n';
-import dynamic from 'next/dynamic';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-// Dynamically import service level components
-const Level1Page = dynamic(() => import('../level-1-essentials/page'));
-const Level2Page = dynamic(() => import('../level-2-advanced/page'));
-const Level3Page = dynamic(() => import('../level-3-consulting/page'));
-const Level4Page = dynamic(() => import('../level-4-platforms/page'));
-const Level5Page = dynamic(() => import('../level-5-strategic/page'));
+// Import service level components directly (they're now server components)
+import Level1Page from '../level-1-essentials/page';
+import Level2Page from '../level-2-advanced/page';
+import Level3Page from '../level-3-consulting/page';
+import Level4Page from '../level-4-platforms/page';
+import Level5Page from '../level-5-strategic/page';
 
 interface ServicePageProps {
   params: {
@@ -28,6 +28,7 @@ const serviceComponents: Record<string, any> = {
 export default function ServicePage({ params }: ServicePageProps) {
   const { locale, slug } = params;
   const currentLocale = locale as Locale;
+  unstable_setRequestLocale(locale);
   
   // Get the English slug from the localized slug
   const englishSlug = getServiceLevelFromSlug(slug, currentLocale);

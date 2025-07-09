@@ -14,7 +14,7 @@ const createSignInSchema = (t: any) => z.object({
   password: z.string().min(8, t('auth.signin.errors.passwordLength')),
 });
 
-type SignInFormData = z.infer<typeof signInSchema>;
+type SignInFormData = z.infer<ReturnType<typeof createSignInSchema>>;
 
 export function SignInForm() {
   const router = useRouter();

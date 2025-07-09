@@ -5,7 +5,7 @@ import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { serviceTiers } from '@madfam/core';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
 
 interface SearchResult {
@@ -25,6 +25,7 @@ export function Search() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const locale = useLocale() as Locale;
+  const t = useTranslations('search');
 
   // Mock search data - in production, this would come from an API
   const searchableContent: SearchResult[] = [
@@ -248,7 +249,7 @@ export function Search() {
         aria-label="Search"
       >
         <SearchIcon className="w-4 h-4" />
-        <span className="hidden sm:inline">{t('search.button')}</span>
+        <span className="hidden sm:inline">{t('button')}</span>
         <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs font-sans bg-gray-100 dark:bg-gray-800 rounded">
           <span>⌘</span>K
         </kbd>
@@ -278,7 +279,7 @@ export function Search() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder={t('search.placeholder')}
+                  placeholder={t('placeholder')}
                   className="flex-1 bg-transparent outline-none text-lg placeholder:text-gray-400"
                 />
                 <button
@@ -293,7 +294,7 @@ export function Search() {
               <div className="max-h-[400px] overflow-y-auto">
                 {loading ? (
                   <div className="p-8 text-center text-gray-500">
-                    {t('search.searching')}
+                    {t('searching')}
                   </div>
                 ) : results.length > 0 ? (
                   <div className="p-2">
@@ -325,27 +326,27 @@ export function Search() {
                 ) : query.trim() ? (
                   <div className="p-8 text-center">
                     <p className="text-gray-500 dark:text-gray-400">
-                      {t('search.noResultsFor', { query })}
+                      {t('noResultsFor', { query })}
                     </p>
                     <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
-                      {t('search.tryDifferentTerms')}
+                      {t('tryDifferentTerms')}
                     </p>
                   </div>
                 ) : (
                   <div className="p-8 text-center text-gray-400 dark:text-gray-500">
-                    <p>{t('search.startTyping')}</p>
+                    <p>{t('startTyping')}</p>
                     <div className="flex items-center justify-center gap-4 mt-4 text-sm">
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">↑↓</kbd>
-                        {t('search.navigate')}
+                        {t('navigate')}
                       </span>
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Enter</kbd>
-                        {t('search.select')}
+                        {t('select')}
                       </span>
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Esc</kbd>
-                        {t('search.close')}
+                        {t('close')}
                       </span>
                     </div>
                   </div>

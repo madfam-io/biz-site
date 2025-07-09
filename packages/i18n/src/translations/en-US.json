@@ -801,5 +801,220 @@
     "navigate": "Navigate",
     "select": "Select",
     "close": "Close"
+  },
+  "leadForm": {
+    "fields": {
+      "name": "Full name",
+      "email": "Corporate email",
+      "company": "Company",
+      "phone": "Phone",
+      "tier": "Service of interest",
+      "message": "How can we help you?"
+    },
+    "placeholders": {
+      "name": "John Doe",
+      "email": "john@company.com",
+      "company": "Your company name",
+      "phone": "+1 555 123 4567",
+      "message": "Tell us about your project or needs..."
+    },
+    "tiers": {
+      "select": "Select a service",
+      "l1": "L1 - Essentials (3D Design)",
+      "l2": "L2 - Advanced (Parametric Design)",
+      "l3": "L3 - Consulting (Workshops)",
+      "l4": "L4 - Platforms (SPARK/PENNY)",
+      "l5": "L5 - Strategic (vCTO)"
+    },
+    "errors": {
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Invalid email"
+    },
+    "messages": {
+      "success": "Thank you for your interest! We'll contact you soon.",
+      "error": "There was an error submitting the form. Please try again."
+    },
+    "requiredFields": "Required fields",
+    "submit": "Send request"
+  },
+  "estimator": {
+    "title": "Project Estimator",
+    "continue": "Continue",
+    "back": "Back",
+    "progress": {
+      "step": "Step",
+      "of": "of",
+      "completed": "completed"
+    },
+    "steps": {
+      "projectType": {
+        "title": "What type of project do you need?"
+      },
+      "complexity": {
+        "title": "What is the project complexity?"
+      },
+      "features": {
+        "title": "What features do you need?"
+      },
+      "timeline": {
+        "title": "What is your timeline?"
+      },
+      "industry": {
+        "title": "What industry do you operate in?"
+      }
+    },
+    "projectTypes": {
+      "webApp": "Web Application",
+      "mobileApp": "Mobile App",
+      "ecommerce": "E-commerce",
+      "automation": "Automation",
+      "consulting": "Consulting",
+      "custom": "Custom Project"
+    },
+    "complexity": {
+      "simple": {
+        "label": "Simple",
+        "description": "Basic functionality, standard design"
+      },
+      "medium": {
+        "label": "Medium",
+        "description": "Custom features, moderate integration"
+      },
+      "complex": {
+        "label": "Complex",
+        "description": "Advanced architecture, multiple integrations"
+      }
+    },
+    "features": {
+      "aiIntegration": "AI Integration",
+      "realTime": "Real Time",
+      "payment": "Payment Processing",
+      "analytics": "Advanced Analytics",
+      "multiLanguage": "Multi-language",
+      "offline": "Offline Functionality",
+      "notifications": "Push Notifications",
+      "socialLogin": "Social Login",
+      "api": "REST/GraphQL API",
+      "adminPanel": "Admin Panel"
+    },
+    "timeline": {
+      "urgent": {
+        "label": "Urgent",
+        "description": "Need to start immediately"
+      },
+      "normal": {
+        "label": "Normal",
+        "description": "1-2 months to start"
+      },
+      "flexible": {
+        "label": "Flexible",
+        "description": "No specific rush"
+      }
+    },
+    "industries": {
+      "retail": "Retail",
+      "fintech": "Fintech",
+      "health": "Healthcare",
+      "education": "Education",
+      "manufacturing": "Manufacturing",
+      "services": "Services",
+      "government": "Government",
+      "ngo": "NGO",
+      "other": "Other"
+    },
+    "results": {
+      "title": "Your personalized estimate",
+      "investment": "Estimated investment",
+      "duration": "Estimated duration",
+      "months": "months",
+      "recommendedTeam": "Recommended team",
+      "alsoConsider": "You might also consider:",
+      "requestProposal": "Request detailed proposal",
+      "anotherEstimate": "Make another estimate"
+    },
+    "team": {
+      "iosDeveloper": "iOS/Android Developer",
+      "uiDesigner": "UI/UX Designer",
+      "aiEngineer": "AI/ML Engineer",
+      "softwareArchitect": "Software Architect",
+      "projectManager": "Project Manager",
+      "fullStackDeveloper": "Full Stack Developer",
+      "qaEngineer": "QA Engineer"
+    },
+    "suggestions": {
+      "analyticsDashboard": "Analytics Dashboard",
+      "futureApi": "API for Future Integrations"
+    }
+  },
+  "assessment": {
+    "progress": {
+      "question": "Question",
+      "of": "of",
+      "completed": "completed"
+    },
+    "results": {
+      "title": "Your assessment results",
+      "learnMore": "Learn more about",
+      "retake": "Retake assessment"
+    },
+    "questions": {
+      "currentTech": {
+        "question": "What is your company's current technology level?",
+        "basic": "Basic - Mostly manual tools",
+        "intermediate": "Intermediate - Some digital tools",
+        "advanced": "Advanced - Multiple integrated systems",
+        "cuttingEdge": "Cutting Edge - Existing AI and automation"
+      },
+      "teamSize": {
+        "question": "What is your technical team size?",
+        "small": "1-5 people",
+        "medium": "6-20 people",
+        "large": "21-50 people",
+        "enterprise": "More than 50 people"
+      },
+      "aiInterest": {
+        "question": "Which AI area interests you most?",
+        "automation": "Process automation",
+        "analytics": "Predictive analytics",
+        "customer": "Customer experience",
+        "operations": "Operational optimization"
+      },
+      "timeline": {
+        "question": "What is your implementation horizon?",
+        "immediate": "Immediate (0-3 months)",
+        "short": "Short term (3-6 months)",
+        "medium": "Medium term (6-12 months)",
+        "long": "Long term (12+ months)"
+      },
+      "budget": {
+        "question": "What is your estimated budget for digital transformation?",
+        "low": "Less than $5k USD",
+        "medium": "$5k - $25k USD",
+        "high": "$25k - $50k USD",
+        "enterprise": "More than $50k USD"
+      }
+    },
+    "recommendations": {
+      "l1": {
+        "title": "Essential design services",
+        "description": "Start with professional 3D and graphic design services."
+      },
+      "l2": {
+        "title": "Advanced design solutions",
+        "description": "Parametric design and interactive experiences to innovate."
+      },
+      "l3": {
+        "title": "Specialized consulting and training",
+        "description": "Workshops and consulting will help define your AI strategy."
+      },
+      "l4": {
+        "title": "Enterprise platform implementation",
+        "description": "Time to implement SPARK or PENNY to scale your operation."
+      },
+      "l5": {
+        "title": "Complete strategic transformation",
+        "description": "Your company is ready for a vCTO partnership and comprehensive transformation."
+      }
+    }
   }
 }

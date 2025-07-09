@@ -1,14 +1,15 @@
-'use client';
-
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import Link from 'next/link';
 import { ServiceCard } from '@/components/ServiceCard';
-import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
+import { getLocalizedContent, type Locale } from '@madfam/i18n';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 export default function Level1EssentialsPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L1_ESSENTIALS];
-  const t = useTypedTranslations('services');
+  const t = useTranslations('services');
   const currentLocale = locale as Locale;
   
   // Get localized content from service object

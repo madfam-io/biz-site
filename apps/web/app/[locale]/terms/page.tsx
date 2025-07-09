@@ -21,7 +21,7 @@ export default function TermsPage({ params: { locale } }: { params: { locale: st
           <div className="max-w-4xl mx-auto prose prose-lg">
             <h2>1. Aceptación de los Términos</h2>
             <p>
-              Al acceder y utilizar los servicios de MADFAM ("nosotros", "nuestro" o "la empresa"), 
+              Al acceder y utilizar los servicios de MADFAM (&quot;nosotros&quot;, &quot;nuestro&quot; o &quot;la empresa&quot;), 
               aceptas estar sujeto a estos Términos y Condiciones. Si no estás de acuerdo con alguna 
               parte de estos términos, no debes usar nuestros servicios.
             </p>

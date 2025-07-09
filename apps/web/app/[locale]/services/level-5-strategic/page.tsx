@@ -1,11 +1,11 @@
-'use client';
-
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ServiceCard } from '@/components/ServiceCard';
 import { getLocalizedContent, type Locale } from '@madfam/i18n';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export default function Level5StrategicPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L5_STRATEGIC];
   const currentLocale = locale as Locale;
   

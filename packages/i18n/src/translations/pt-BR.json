@@ -801,5 +801,220 @@
     "navigate": "Navegar",
     "select": "Selecionar",
     "close": "Fechar"
+  },
+  "leadForm": {
+    "fields": {
+      "name": "Nome completo",
+      "email": "E-mail corporativo",
+      "company": "Empresa",
+      "phone": "Telefone",
+      "tier": "Serviço de interesse",
+      "message": "Como podemos ajudar?"
+    },
+    "placeholders": {
+      "name": "João Silva",
+      "email": "joao@empresa.com",
+      "company": "Nome da sua empresa",
+      "phone": "+55 11 9876 5432",
+      "message": "Conte-nos sobre seu projeto ou necessidades..."
+    },
+    "tiers": {
+      "select": "Selecione um serviço",
+      "l1": "L1 - Essentials (Design 3D)",
+      "l2": "L2 - Advanced (Design paramétrico)",
+      "l3": "L3 - Consulting (Workshops)",
+      "l4": "L4 - Platforms (SPARK/PENNY)",
+      "l5": "L5 - Strategic (vCTO)"
+    },
+    "errors": {
+      "nameMin": "Nome deve ter pelo menos 2 caracteres",
+      "emailInvalid": "E-mail inválido"
+    },
+    "messages": {
+      "success": "Obrigado pelo seu interesse! Entraremos em contato em breve.",
+      "error": "Houve um erro ao enviar o formulário. Por favor, tente novamente."
+    },
+    "requiredFields": "Campos obrigatórios",
+    "submit": "Enviar solicitação"
+  },
+  "estimator": {
+    "title": "Estimador de Projetos",
+    "continue": "Continuar",
+    "back": "Voltar",
+    "progress": {
+      "step": "Passo",
+      "of": "de",
+      "completed": "concluído"
+    },
+    "steps": {
+      "projectType": {
+        "title": "Que tipo de projeto você precisa?"
+      },
+      "complexity": {
+        "title": "Qual é a complexidade do projeto?"
+      },
+      "features": {
+        "title": "Quais recursos você precisa?"
+      },
+      "timeline": {
+        "title": "Qual é seu prazo?"
+      },
+      "industry": {
+        "title": "Em qual indústria você opera?"
+      }
+    },
+    "projectTypes": {
+      "webApp": "Aplicação Web",
+      "mobileApp": "App Móvel",
+      "ecommerce": "E-commerce",
+      "automation": "Automação",
+      "consulting": "Consultoria",
+      "custom": "Projeto Personalizado"
+    },
+    "complexity": {
+      "simple": {
+        "label": "Simples",
+        "description": "Funcionalidade básica, design padrão"
+      },
+      "medium": {
+        "label": "Médio",
+        "description": "Funções personalizadas, integração moderada"
+      },
+      "complex": {
+        "label": "Complexo",
+        "description": "Arquitetura avançada, múltiplas integrações"
+      }
+    },
+    "features": {
+      "aiIntegration": "Integração de IA",
+      "realTime": "Tempo Real",
+      "payment": "Processamento de Pagamentos",
+      "analytics": "Analytics Avançado",
+      "multiLanguage": "Multi-idioma",
+      "offline": "Funcionalidade Offline",
+      "notifications": "Notificações Push",
+      "socialLogin": "Login Social",
+      "api": "API REST/GraphQL",
+      "adminPanel": "Painel Administrativo"
+    },
+    "timeline": {
+      "urgent": {
+        "label": "Urgente",
+        "description": "Preciso começar imediatamente"
+      },
+      "normal": {
+        "label": "Normal",
+        "description": "1-2 meses para começar"
+      },
+      "flexible": {
+        "label": "Flexível",
+        "description": "Sem pressa específica"
+      }
+    },
+    "industries": {
+      "retail": "Varejo",
+      "fintech": "Fintech",
+      "health": "Saúde",
+      "education": "Educação",
+      "manufacturing": "Manufatura",
+      "services": "Serviços",
+      "government": "Governo",
+      "ngo": "ONG",
+      "other": "Outro"
+    },
+    "results": {
+      "title": "Sua estimativa personalizada",
+      "investment": "Investimento estimado",
+      "duration": "Duração estimada",
+      "months": "meses",
+      "recommendedTeam": "Equipe recomendada",
+      "alsoConsider": "Você também pode considerar:",
+      "requestProposal": "Solicitar proposta detalhada",
+      "anotherEstimate": "Fazer outra estimativa"
+    },
+    "team": {
+      "iosDeveloper": "Desenvolvedor iOS/Android",
+      "uiDesigner": "Designer UI/UX",
+      "aiEngineer": "Engenheiro de IA/ML",
+      "softwareArchitect": "Arquiteto de Software",
+      "projectManager": "Gerente de Projeto",
+      "fullStackDeveloper": "Desenvolvedor Full Stack",
+      "qaEngineer": "Engenheiro de QA"
+    },
+    "suggestions": {
+      "analyticsDashboard": "Dashboard de Analytics",
+      "futureApi": "API para Integrações Futuras"
+    }
+  },
+  "assessment": {
+    "progress": {
+      "question": "Pergunta",
+      "of": "de",
+      "completed": "concluído"
+    },
+    "results": {
+      "title": "Resultados da sua avaliação",
+      "learnMore": "Saiba mais sobre",
+      "retake": "Refazer avaliação"
+    },
+    "questions": {
+      "currentTech": {
+        "question": "Qual é o nível tecnológico atual da sua empresa?",
+        "basic": "Básico - Principalmente ferramentas manuais",
+        "intermediate": "Intermediário - Algumas ferramentas digitais",
+        "advanced": "Avançado - Múltiplos sistemas integrados",
+        "cuttingEdge": "Vanguarda - IA e automação existente"
+      },
+      "teamSize": {
+        "question": "Qual é o tamanho da sua equipe técnica?",
+        "small": "1-5 pessoas",
+        "medium": "6-20 pessoas",
+        "large": "21-50 pessoas",
+        "enterprise": "Mais de 50 pessoas"
+      },
+      "aiInterest": {
+        "question": "Qual área de IA mais lhe interessa?",
+        "automation": "Automação de processos",
+        "analytics": "Análise preditiva",
+        "customer": "Experiência do cliente",
+        "operations": "Otimização operacional"
+      },
+      "timeline": {
+        "question": "Qual é seu horizonte de implementação?",
+        "immediate": "Imediato (0-3 meses)",
+        "short": "Curto prazo (3-6 meses)",
+        "medium": "Médio prazo (6-12 meses)",
+        "long": "Longo prazo (12+ meses)"
+      },
+      "budget": {
+        "question": "Qual é seu orçamento estimado para transformação digital?",
+        "low": "Menos de R$ 30k",
+        "medium": "R$ 30k - R$ 150k",
+        "high": "R$ 150k - R$ 300k",
+        "enterprise": "Mais de R$ 300k"
+      }
+    },
+    "recommendations": {
+      "l1": {
+        "title": "Serviços essenciais de design",
+        "description": "Comece com serviços profissionais de design 3D e gráfico."
+      },
+      "l2": {
+        "title": "Soluções avançadas de design",
+        "description": "Design paramétrico e experiências interativas para inovar."
+      },
+      "l3": {
+        "title": "Consultoria e treinamento especializado",
+        "description": "Workshops e consultoria ajudarão a definir sua estratégia de IA."
+      },
+      "l4": {
+        "title": "Implementação de plataformas empresariais",
+        "description": "É hora de implementar SPARK ou PENNY para escalar sua operação."
+      },
+      "l5": {
+        "title": "Transformação estratégica completa",
+        "description": "Sua empresa está pronta para uma parceria vCTO e transformação abrangente."
+      }
+    }
   }
 }

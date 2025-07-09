@@ -1,14 +1,15 @@
-'use client';
-
 import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ROICalculator } from '@/components/ROICalculator';
 import { ServiceStructuredData } from '@/components/StructuredData';
-import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
+import { getLocalizedContent, type Locale } from '@madfam/i18n';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 export default function Level3ConsultingPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L3_CONSULTING];
-  const t = useTypedTranslations('services');
+  const t = useTranslations('services');
   const currentLocale = locale as Locale;
   
   // Get localized content from service object
@@ -250,7 +251,7 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
                     </svg>
                   </div>
                   <p className="text-lg text-obsidian/80 mb-6 italic">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </p>
                   <div>
                     <p className="font-semibold">{testimonial.author}</p>

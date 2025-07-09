@@ -8,7 +8,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  return seoService.generateHomeMetadata(locale as 'es-MX' | 'en-US');
+  return seoService.generateHomeMetadata(locale as 'es-MX' | 'en-US' | 'pt-BR');
 }
 
 export default function Page({ params: { locale } }: { params: { locale: string } }) {
