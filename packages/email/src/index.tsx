@@ -67,7 +67,7 @@ export class EmailService {
   }
 
   async renderWelcomeEmail(data: WelcomeEmailData): Promise<EmailTemplate> {
-    const html = await render(WelcomeEmail(data));
+    const html = await render(<WelcomeEmail {...data} />);
     const text = this.htmlToText(html);
     const subject = this.getSubject('welcome', data);
 
@@ -75,7 +75,7 @@ export class EmailService {
   }
 
   async renderAssessmentResultsEmail(data: AssessmentResultsEmailData): Promise<EmailTemplate> {
-    const html = await render(AssessmentResultsEmail(data));
+    const html = await render(<AssessmentResultsEmail {...data} />);
     const text = this.htmlToText(html);
     const subject = this.getSubject('assessment-results', data);
 
@@ -83,7 +83,7 @@ export class EmailService {
   }
 
   async renderROIResultsEmail(data: ROIResultsEmailData): Promise<EmailTemplate> {
-    const html = await render(ROIResultsEmail(data));
+    const html = await render(<ROIResultsEmail {...data} />);
     const text = this.htmlToText(html);
     const subject = this.getSubject('roi-results', data);
 
