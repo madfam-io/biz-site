@@ -12,6 +12,7 @@ import { getLocalizedUrl } from '@madfam/i18n';
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = useTranslations('common.nav');
+  const tCommon = useTranslations('common');
   const locale = useLocale() as any;
 
   const navigation = [
@@ -52,14 +53,14 @@ export function Navbar() {
             <DarkModeToggle />
             <LanguageSwitcher />
             <div className="w-px h-6 bg-gray-200 dark:bg-gray-700" />
-            <Link href="/assessment">
+            <Link href={`/${locale}/assessment`}>
               <Button variant="ghost" size="sm">
-                Evaluación IA
+                {tCommon('aiAssessment')}
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link href={getLocalizedUrl('contact', locale)}>
               <Button variant="creative" size="sm">
-                Consulta gratuita
+                {tCommon('freeConsultation')}
               </Button>
             </Link>
           </div>
@@ -101,14 +102,14 @@ export function Navbar() {
                   <LanguageSwitcher />
                   <DarkModeToggle />
                 </div>
-                <Link href="/assessment" onClick={() => setMobileMenuOpen(false)}>
+                <Link href={`/${locale}/assessment`} onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="outline" size="sm" className="w-full">
-                    Evaluación IA
+                    {tCommon('aiAssessment')}
                   </Button>
                 </Link>
-                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                <Link href={getLocalizedUrl('contact', locale)} onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="creative" size="sm" className="w-full">
-                    Consulta gratuita
+                    {tCommon('freeConsultation')}
                   </Button>
                 </Link>
               </div>

@@ -1,7 +1,10 @@
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function NotFound() {
+  const t = useTranslations('notFound');
+  
   return (
     <main className="min-h-screen flex items-center justify-center">
       <section className="relative overflow-hidden">
@@ -22,42 +25,41 @@ export default function NotFound() {
             </div>
 
             <Heading level={1} className="mb-4">
-              Ups, esta página no existe
+              {t('heading')}
             </Heading>
             
             <p className="text-xl text-obsidian/70 mb-8">
-              Parece que te has perdido en el espacio digital. No te preocupes, 
-              hasta los mejores exploradores necesitan un mapa a veces.
+              {t('description')}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-12">
               <Link href="/">
                 <Button variant="creative" size="lg">
-                  Volver al inicio
+                  {t('goHome')}
                 </Button>
               </Link>
               <Link href="/services">
                 <Button variant="outline" size="lg">
-                  Explorar servicios
+                  {t('exploreServices')}
                 </Button>
               </Link>
             </div>
 
             {/* Helpful links */}
             <div className="pt-8 border-t border-gray-200">
-              <p className="text-sm text-obsidian/60 mb-4">Enlaces útiles:</p>
+              <p className="text-sm text-obsidian/60 mb-4">{t('helpfulLinks')}</p>
               <div className="flex flex-wrap gap-6 justify-center text-sm">
                 <Link href="/products" className="text-lavender hover:text-lavender/80 transition-colors">
-                  Productos
+                  {t('products')}
                 </Link>
                 <Link href="/about" className="text-lavender hover:text-lavender/80 transition-colors">
-                  Nosotros
+                  {t('about')}
                 </Link>
                 <Link href="/contact" className="text-lavender hover:text-lavender/80 transition-colors">
-                  Contacto
+                  {t('contact')}
                 </Link>
                 <Link href="/assessment" className="text-lavender hover:text-lavender/80 transition-colors">
-                  Evaluación IA
+                  {t('aiAssessment')}
                 </Link>
               </div>
             </div>

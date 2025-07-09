@@ -1,37 +1,28 @@
 import Link from 'next/link';
 import { Container } from '@madfam/ui';
 import { useTranslations, useLocale } from 'next-intl';
-import { i18nConfig } from '@madfam/i18n';
+import { getLocalizedUrl } from '@madfam/i18n';
 
 export function Footer() {
   const t = useTranslations();
-  const locale = useLocale();
-
-  // Helper function to get localized route
-  const getLocalizedRoute = (route: string) => {
-    if (locale === 'es-MX') {
-      const spanishRoutes = i18nConfig.routes['es-MX'];
-      return spanishRoutes[route as keyof typeof spanishRoutes] || route;
-    }
-    return route;
-  };
+  const locale = useLocale() as any;
 
   const navigation = {
     servicios: [
-      { name: 'L1 - Essentials', href: `/${locale}${getLocalizedRoute('/services/level-1-essentials')}` },
-      { name: 'L2 - Advanced', href: `/${locale}${getLocalizedRoute('/services/level-2-advanced')}` },
-      { name: 'L3 - Consulting', href: `/${locale}${getLocalizedRoute('/services/level-3-consulting')}` },
-      { name: 'L4 - Platforms', href: `/${locale}${getLocalizedRoute('/services/level-4-platforms')}` },
-      { name: 'L5 - Strategic', href: `/${locale}${getLocalizedRoute('/services/level-5-strategic')}` },
+      { name: t('footer.services.l1'), href: getLocalizedUrl('services.level1', locale) },
+      { name: t('footer.services.l2'), href: getLocalizedUrl('services.level2', locale) },
+      { name: t('footer.services.l3'), href: getLocalizedUrl('services.level3', locale) },
+      { name: t('footer.services.l4'), href: getLocalizedUrl('services.level4', locale) },
+      { name: t('footer.services.l5'), href: getLocalizedUrl('services.level5', locale) },
     ],
     productos: [
-      { name: 'SPARK', href: `/${locale}${getLocalizedRoute('/products')}#spark` },
-      { name: 'PENNY', href: `/${locale}${getLocalizedRoute('/products')}#penny` },
+      { name: 'SPARK', href: `${getLocalizedUrl('products', locale)}#spark` },
+      { name: 'PENNY', href: `${getLocalizedUrl('products', locale)}#penny` },
       { name: t('footer.products.documentation'), href: `/${locale}/docs` },
       { name: 'API', href: `/${locale}/api` },
     ],
     empresa: [
-      { name: t('footer.company.about'), href: `/${locale}${getLocalizedRoute('/about')}` },
+      { name: t('footer.company.about'), href: getLocalizedUrl('about', locale) },
       { name: t('footer.company.blog'), href: `/${locale}/blog` },
       { name: t('footer.company.caseStudies'), href: `/${locale}/case-studies` },
       { name: t('footer.company.careers'), href: `/${locale}/careers` },
@@ -40,14 +31,14 @@ export function Footer() {
       { name: t('footer.resources.assessment'), href: `/${locale}/assessment` },
       { name: t('footer.resources.calculator'), href: `/${locale}/calculator` },
       { name: t('footer.resources.guides'), href: `/${locale}/guides` },
-      { name: t('footer.resources.contact'), href: `/${locale}${getLocalizedRoute('/contact')}` },
+      { name: t('footer.resources.contact'), href: getLocalizedUrl('contact', locale) },
     ],
   };
 
   const social = [
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/madfam', icon: 'in' },
-    { name: 'Twitter', href: 'https://twitter.com/madfam_io', icon: 'X' },
-    { name: 'GitHub', href: 'https://github.com/madfam-io', icon: 'gh' },
+    { name: t('footer.social.linkedin'), href: 'https://linkedin.com/company/madfam', icon: 'in' },
+    { name: t('footer.social.twitter'), href: 'https://twitter.com/madfam_io', icon: 'X' },
+    { name: t('footer.social.github'), href: 'https://github.com/madfam-io', icon: 'gh' },
   ];
 
   return (

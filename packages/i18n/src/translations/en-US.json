@@ -9,6 +9,9 @@
       "allServices": "All services",
       "freeConsultation": "Free consultation"
     },
+    "learnMore": "Learn more",
+    "aiAssessment": "AI Assessment",
+    "freeConsultation": "Free consultation",
     "cta": {
       "learnMore": "Learn more",
       "getQuote": "Get quote",
@@ -30,6 +33,18 @@
       "products": "Products", 
       "company": "Company",
       "resources": "Resources"
+    },
+    "services": {
+      "l1": "3D Design & Graphics",
+      "l2": "Parametric Design",
+      "l3": "AI Consulting",
+      "l4": "Enterprise Platforms",
+      "l5": "vCTO Partnership"
+    },
+    "social": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub"
     },
     "products": {
       "documentation": "Documentation"
@@ -549,6 +564,18 @@
     "codeExamples": "Code examples",
     "authExample": "Authentication example",
     "assessmentExample": "Assessment submission",
+    "categories": {
+      "authentication": "Authentication",
+      "assessment": "AI Assessment",
+      "calculator": "ROI Calculator",
+      "leads": "Lead Management"
+    },
+    "docs": {
+      "authGuide": "Authentication Guide",
+      "rateLimits": "Rate Limits & Quotas",
+      "errorCodes": "Error Codes Reference",
+      "sdks": "SDKs & Libraries"
+    },
     "rateLimiting": {
       "title": "Rate limiting",
       "subtitle": "API requests are limited to ensure fair use and system stability.",
@@ -785,10 +812,16 @@
   "dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome back",
+    "role": "Role",
     "overview": "Overview",
     "projects": "Projects",
     "analytics": "Analytics",
-    "settings": "Settings"
+    "settings": "Settings",
+    "metrics": {
+      "totalLeads": "Total Leads",
+      "newThisWeek": "New This Week",
+      "conversionRate": "Conversion Rate"
+    }
   },
   "search": {
     "button": "Search",
@@ -1016,5 +1049,29 @@
         "description": "Your company is ready for a vCTO partnership and comprehensive transformation."
       }
     }
+  },
+  "error": {
+    "title": "Error",
+    "heading": "Oops! Something went wrong",
+    "description": "We're sorry, but an unexpected error has occurred. Please try again or contact our support team if the problem persists.",
+    "tryAgain": "Try again",
+    "goHome": "Go to homepage",
+    "needHelp": "Need help?",
+    "contactSupport": "Contact our support team",
+    "supportEmail": "support@madfam.io",
+    "errorLabel": "Error",
+    "digestLabel": "Error ID"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "heading": "404 - Page not found",
+    "description": "Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.",
+    "goHome": "Back to homepage",
+    "exploreServices": "Explore our services",
+    "helpfulLinks": "Helpful links",
+    "products": "Products",
+    "about": "About us",
+    "contact": "Contact",
+    "aiAssessment": "AI Assessment"
   }
 }

@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Error({
   error,
@@ -11,6 +12,9 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const t = useTranslations('error');
+  const locale = useLocale();
+  
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
@@ -31,17 +35,16 @@ export default function Error({
             <div className="mb-8">
               <div className="text-8xl mb-4">⚠️</div>
               <div className="text-6xl font-heading font-bold">
-                <span className="text-leaf">Oops!</span>
+                <span className="text-leaf">{t('title')}</span>
               </div>
             </div>
 
             <Heading level={1} className="mb-4">
-              Algo salió mal
+              {t('heading')}
             </Heading>
             
             <p className="text-xl text-obsidian/70 mb-8">
-              Encontramos un error inesperado. Nuestro equipo técnico ha sido notificado 
-              y está trabajando para solucionarlo.
+              {t('description')}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-8">
@@ -50,11 +53,11 @@ export default function Error({
                 size="lg"
                 onClick={() => reset()}
               >
-                Intentar de nuevo
+                {t('tryAgain')}
               </Button>
-              <Link href="/">
+              <Link href={`/${locale}`}>
                 <Button variant="outline" size="lg">
-                  Ir al inicio
+                  {t('goHome')}
                 </Button>
               </Link>
             </div>
@@ -63,11 +66,11 @@ export default function Error({
             {process.env.NODE_ENV === 'development' && (
               <div className="mt-8 p-4 bg-red-50 rounded-lg text-left">
                 <p className="text-sm font-mono text-red-600 mb-2">
-                  Error: {error.message}
+                  {t('errorLabel')} {error.message}
                 </p>
                 {error.digest && (
                   <p className="text-xs text-red-500">
-                    Digest: {error.digest}
+                    {t('digestLabel')} {error.digest}
                   </p>
                 )}
               </div>
@@ -75,11 +78,11 @@ export default function Error({
 
             {/* Support info */}
             <div className="mt-12 p-6 bg-gray-50 rounded-2xl">
-              <p className="text-sm text-obsidian/60 mb-2">¿Necesitas ayuda?</p>
+              <p className="text-sm text-obsidian/60 mb-2">{t('needHelp')}</p>
               <p className="text-sm">
-                Contacta a nuestro equipo de soporte:{' '}
-                <a href="mailto:soporte@madfam.io" className="text-lavender hover:text-lavender/80">
-                  soporte@madfam.io
+                {t('contactSupport')}{' '}
+                <a href={`mailto:${t('supportEmail')}`} className="text-lavender hover:text-lavender/80">
+                  {t('supportEmail')}
                 </a>
               </p>
             </div>

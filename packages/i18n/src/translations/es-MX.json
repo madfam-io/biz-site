@@ -9,6 +9,9 @@
       "allServices": "Todos los servicios",
       "freeConsultation": "Consulta gratuita"
     },
+    "learnMore": "Conocer más",
+    "aiAssessment": "Evaluación IA",
+    "freeConsultation": "Consulta gratuita",
     "cta": {
       "learnMore": "Conocer más",
       "getQuote": "Obtener cotización",
@@ -30,6 +33,18 @@
       "products": "Productos",
       "company": "Empresa",
       "resources": "Recursos"
+    },
+    "services": {
+      "l1": "Diseño 3D y Gráfico",
+      "l2": "Diseño Paramétrico",
+      "l3": "Consultoría IA",
+      "l4": "Plataformas Empresariales",
+      "l5": "Asociación vCTO"
+    },
+    "social": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub"
     },
     "products": {
       "documentation": "Documentación"
@@ -549,6 +564,18 @@
     "codeExamples": "Ejemplos de código",
     "authExample": "Ejemplo de autenticación",
     "assessmentExample": "Envío de evaluación",
+    "categories": {
+      "authentication": "Autenticación",
+      "assessment": "Evaluación IA",
+      "calculator": "Calculadora ROI",
+      "leads": "Gestión de Leads"
+    },
+    "docs": {
+      "authGuide": "Guía de Autenticación",
+      "rateLimits": "Límites y Cuotas",
+      "errorCodes": "Referencia de Códigos de Error",
+      "sdks": "SDKs y Librerías"
+    },
     "rateLimiting": {
       "title": "Límite de solicitudes",
       "subtitle": "Las solicitudes de API están limitadas para garantizar un uso justo y la estabilidad del sistema.",
@@ -785,10 +812,16 @@
   "dashboard": {
     "title": "Panel",
     "welcome": "Bienvenido de vuelta",
+    "role": "Rol",
     "overview": "Resumen",
     "projects": "Proyectos",
     "analytics": "Analíticas",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "metrics": {
+      "totalLeads": "Leads Totales",
+      "newThisWeek": "Nuevos Esta Semana",
+      "conversionRate": "Tasa de Conversión"
+    }
   },
   "search": {
     "button": "Buscar",
@@ -1016,5 +1049,29 @@
         "description": "Tu empresa está lista para una asociación vCTO y transformación integral."
       }
     }
+  },
+  "error": {
+    "title": "Error",
+    "heading": "¡Ups! Algo salió mal",
+    "description": "Lo sentimos, pero ha ocurrido un error inesperado. Por favor, intenta de nuevo o contacta a nuestro equipo de soporte si el problema persiste.",
+    "tryAgain": "Intentar de nuevo",
+    "goHome": "Ir al inicio",
+    "needHelp": "¿Necesitas ayuda?",
+    "contactSupport": "Contacta a nuestro equipo de soporte",
+    "supportEmail": "soporte@madfam.io",
+    "errorLabel": "Error",
+    "digestLabel": "ID de error"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "heading": "404 - Página no encontrada",
+    "description": "Lo sentimos, no pudimos encontrar la página que buscas. Es posible que haya sido movida o eliminada.",
+    "goHome": "Volver al inicio",
+    "exploreServices": "Explorar nuestros servicios",
+    "helpfulLinks": "Enlaces útiles",
+    "products": "Productos",
+    "about": "Acerca de nosotros",
+    "contact": "Contacto",
+    "aiAssessment": "Evaluación IA"
   }
 }
