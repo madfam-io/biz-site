@@ -1,0 +1,24 @@
+# Development Dockerfile
+FROM node:20-alpine AS base
+RUN apk add --no-cache libc6-compat
+RUN corepack enable && corepack prepare pnpm@latest --activate
+WORKDIR /app
+
+# Copy package files
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY packages/*/package.json ./packages/
+COPY apps/*/package.json ./apps/
+
+# Install dependencies
+RUN pnpm install
+
+# Copy source code
+COPY . .
+
+WORKDIR /app/apps/web
+
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["pnpm", "dev"]
