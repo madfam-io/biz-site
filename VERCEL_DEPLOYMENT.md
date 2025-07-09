@@ -22,8 +22,11 @@ This tells Vercel to treat `apps/web` as the root of your Next.js application.
 The root `vercel.json` is configured to:
 ```json
 {
+  "framework": "nextjs",
   "installCommand": "pnpm install",
-  "buildCommand": "pnpm turbo build --filter=@madfam/web"
+  "buildCommand": "pnpm turbo build --filter=@madfam/web",
+  "outputDirectory": "apps/web/.next",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet ."
 }
 ```
 
