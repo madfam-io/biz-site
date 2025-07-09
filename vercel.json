@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm turbo build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": null,
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet"
+}
