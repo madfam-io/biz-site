@@ -83,10 +83,7 @@ const assessmentSchema = z.object({
   leadId: z.string().optional(),
 });
 
-// Schema for getting assessment questions
-const getAssessmentSchema = z.object({
-  assessmentId: z.string().optional(),
-});
+// Schema for getting assessment questions (removed - unused)
 
 // Calculate assessment score and recommendations
 function calculateAssessmentResults(answers: Record<string, number>) {
