@@ -46,6 +46,7 @@ const config: Config = {
         'scale-in': 'scaleIn 0.5s ease-out',
         'float': 'float 6s ease-in-out infinite',
         'shimmer': 'shimmer 2s ease-in-out infinite',
+        'spin-slow': 'spin 20s linear infinite',
       },
       keyframes: {
         fadeUp: {
