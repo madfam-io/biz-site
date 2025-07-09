@@ -3,6 +3,8 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from '@madfam/ui';
 import { ServiceTierConfig } from '@madfam/core';
 import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import { i18nConfig } from '@madfam/i18n';
 
 interface ServiceCardProps {
   service: ServiceTierConfig;
@@ -11,6 +13,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service, featured = false }: ServiceCardProps) {
   const router = useRouter();
+  const locale = useLocale();
 
   const colorClasses = {
     leaf: 'bg-leaf/20 text-leaf',
@@ -78,7 +81,20 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
           variant={featured ? 'creative' : 'primary'}
           size="md"
           className="w-full"
-          onClick={() => router.push(`/services/${service.id}`)}
+          onClick={() => {
+            let route = `/services/${service.id}`;
+            
+            // Translate route if needed
+            if (locale === 'es-MX') {
+              const spanishRoutes = i18nConfig.routes['es-MX'];
+              const translatedRoute = spanishRoutes[route as keyof typeof spanishRoutes];
+              if (translatedRoute) {
+                route = translatedRoute;
+              }
+            }
+            
+            router.push(`/${locale}${route}`);
+          }}
         >
           {service.cta.text}
         </Button>

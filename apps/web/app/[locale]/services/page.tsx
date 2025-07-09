@@ -194,12 +194,12 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
               {t('notSure.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/estimator">
+              <a href={`/${locale}/estimator`}>
                 <Button variant="secondary" size="lg">
                   {t('notSure.getEstimate')}
                 </Button>
               </a>
-              <a href="/contact">
+              <a href={`/${locale}${locale === 'es-MX' ? '/contacto' : '/contact'}`}>
                 <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-obsidian">
                   {t('notSure.cta')}
                 </Button>

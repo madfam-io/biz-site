@@ -29,12 +29,21 @@ const nextConfig = {
     // Generate rewrites from i18n configuration
     const rewrites = [];
     
-    // Spanish rewrites
+    // Spanish rewrites - main pages
     rewrites.push(
       { source: '/es-MX/servicios', destination: '/es-MX/services' },
       { source: '/es-MX/productos', destination: '/es-MX/products' },
       { source: '/es-MX/nosotros', destination: '/es-MX/about' },
       { source: '/es-MX/contacto', destination: '/es-MX/contact' },
+    );
+    
+    // Spanish rewrites - service subpages
+    rewrites.push(
+      { source: '/es-MX/servicios/nivel-1-essentials', destination: '/es-MX/services/level-1-essentials' },
+      { source: '/es-MX/servicios/nivel-2-avanzado', destination: '/es-MX/services/level-2-advanced' },
+      { source: '/es-MX/servicios/nivel-3-consultoria', destination: '/es-MX/services/level-3-consulting' },
+      { source: '/es-MX/servicios/nivel-4-plataformas', destination: '/es-MX/services/level-4-platforms' },
+      { source: '/es-MX/servicios/nivel-5-estrategico', destination: '/es-MX/services/level-5-strategic' },
     );
     
     // TODO: Portuguese rewrites (when translations are complete)
@@ -43,6 +52,11 @@ const nextConfig = {
     //   { source: '/pt-BR/produtos', destination: '/pt-BR/products' },
     //   { source: '/pt-BR/sobre', destination: '/pt-BR/about' },
     //   { source: '/pt-BR/contato', destination: '/pt-BR/contact' },
+    //   { source: '/pt-BR/servicos/nivel-1-essenciais', destination: '/pt-BR/services/level-1-essentials' },
+    //   { source: '/pt-BR/servicos/nivel-2-avancado', destination: '/pt-BR/services/level-2-advanced' },
+    //   { source: '/pt-BR/servicos/nivel-3-consultoria', destination: '/pt-BR/services/level-3-consulting' },
+    //   { source: '/pt-BR/servicos/nivel-4-plataformas', destination: '/pt-BR/services/level-4-platforms' },
+    //   { source: '/pt-BR/servicos/nivel-5-estrategico', destination: '/pt-BR/services/level-5-strategic' },
     // );
     
     return rewrites;
