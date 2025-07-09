@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Poppins, Space_Mono } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { DarkModeScript } from './dark-mode-script';
 import './globals.css';
 
 const inter = Inter({
@@ -98,7 +99,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable} ${spaceMono.variable}`}>
-      <body className="font-body antialiased">
+      <head>
+        <DarkModeScript />
+      </head>
+      <body className="font-body antialiased bg-white dark:bg-obsidian text-obsidian dark:text-pearl transition-colors">
         <Navbar />
         <div className="pt-16">
           {children}

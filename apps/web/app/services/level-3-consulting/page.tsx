@@ -1,5 +1,6 @@
 import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
+import { ROICalculator } from '@/components/ROICalculator';
 
 export default function Level3ConsultingPage() {
   const service = serviceTiers[ServiceTier.L3_CONSULTING];
@@ -243,6 +244,22 @@ export default function Level3ConsultingPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ROI Calculator */}
+      <section className="section">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <Heading level={2} className="text-center mb-4">
+              Calcula tu retorno de inversión
+            </Heading>
+            <p className="text-center text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
+              Usa nuestra calculadora interactiva para estimar el impacto que nuestros servicios de consultoría 
+              pueden tener en tu negocio.
+            </p>
+            <ROICalculator serviceTier={ServiceTier.L3_CONSULTING} />
           </div>
         </Container>
       </section>

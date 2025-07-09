@@ -37,7 +37,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-obsidian text-white">
+    <footer className="bg-gray-50 dark:bg-obsidian text-obsidian dark:text-white border-t border-gray-200 dark:border-gray-800">
       <Container>
         <div className="py-12 lg:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -48,7 +48,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white/70 hover:text-white transition-colors"
+                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -64,7 +64,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white/70 hover:text-white transition-colors"
+                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -80,7 +80,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white/70 hover:text-white transition-colors"
+                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -96,7 +96,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-white/70 hover:text-white transition-colors"
+                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
                     >
                       {item.name}
                     </Link>

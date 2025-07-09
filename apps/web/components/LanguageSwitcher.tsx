@@ -1,0 +1,100 @@
+"use client";
+
+import { useRouter, usePathname } from 'next/navigation';
+import { ChevronDown } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { i18nConfig } from '@madfam/i18n';
+
+export function LanguageSwitcher() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  
+  // For now, we'll detect locale from pathname
+  const locale = pathname.split('/').find(segment => i18nConfig.locales.includes(segment as any)) || i18nConfig.defaultLocale;
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const switchLocale = (newLocale: string) => {
+    // Remove current locale from pathname
+    const segments = pathname.split('/');
+    const currentLocaleIndex = segments.findIndex(segment => i18nConfig.locales.includes(segment as any));
+    
+    if (currentLocaleIndex !== -1) {
+      segments[currentLocaleIndex] = newLocale;
+    } else {
+      // If no locale in path, add it
+      segments.splice(1, 0, newLocale);
+    }
+    
+    const newPath = segments.join('/') || '/';
+    router.push(newPath);
+    setIsOpen(false);
+  };
+
+  const currentLocaleName = i18nConfig.localeNames[locale as keyof typeof i18nConfig.localeNames] || locale;
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+        aria-label="Language switcher"
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+      >
+        <span className="text-lg" role="img" aria-label={currentLocaleName}>
+          {locale === 'es-MX' ? '🇲🇽' : '🇺🇸'}
+        </span>
+        <span className="hidden sm:inline">{currentLocaleName}</span>
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50">
+          <div className="py-1" role="menu" aria-orientation="vertical">
+            {i18nConfig.locales.map((loc) => {
+              const localeName = i18nConfig.localeNames[loc as keyof typeof i18nConfig.localeNames];
+              const isActive = locale === loc;
+              
+              return (
+                <button
+                  key={loc}
+                  onClick={() => switchLocale(loc)}
+                  className={`
+                    w-full text-left px-4 py-2 text-sm flex items-center gap-3
+                    ${isActive 
+                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white' 
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    }
+                    transition-colors
+                  `}
+                  role="menuitem"
+                  lang={loc}
+                >
+                  <span className="text-lg" role="img" aria-label={localeName}>
+                    {loc === 'es-MX' ? '🇲🇽' : '🇺🇸'}
+                  </span>
+                  <span>{localeName}</span>
+                  {isActive && (
+                    <span className="ml-auto text-sun">✓</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
