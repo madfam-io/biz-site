@@ -1,3 +1,5 @@
+'use client';
+
 import { type Locale } from '@madfam/i18n';
 import {
   Container,
@@ -11,12 +13,12 @@ import {
   TestimonialGrid,
   Newsletter,
 } from '@madfam/ui';
-import { unstable_setRequestLocale } from 'next-intl/server';
+// import { useTranslations } from 'next-intl'; // TODO: Use when replacing ternary operators
 import { logServiceInquiry } from '@/lib/logger';
 
 export default function SparkProductPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const currentLocale = locale as Locale;
+  // const t = useTranslations('products.spark'); // TODO: Replace ternary operators with translations
 
   const sparkFeatures = [
     {
@@ -870,9 +872,9 @@ export default function SparkProductPage({ params: { locale } }: { params: { loc
                     ? 'Inscrever'
                     : 'Suscribirse'
               }
-              onSubscribe={async email => {
+              onSubscribe={async _email => {
                 // TODO: Implement newsletter subscription
-                console.log('Newsletter subscription:', email);
+                // console.log('Newsletter subscription:', _email);
               }}
             />
           </div>

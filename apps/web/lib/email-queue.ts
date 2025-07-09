@@ -19,7 +19,7 @@ export class EmailQueueProcessor {
   constructor() {
     // Start processing queue immediately
     this.processQueue();
-    
+
     // Process queue every 30 seconds
     this.processingInterval = setInterval(() => {
       this.processQueue();
@@ -42,7 +42,7 @@ export class EmailQueueProcessor {
         take: 10, // Process 10 at a time
       });
 
-      console.log(`Processing ${pendingEmails.length} pending emails`);
+      // console.log(`Processing ${pendingEmails.length} pending emails`);
 
       for (const email of pendingEmails) {
         await this.processEmail(email);
@@ -65,7 +65,7 @@ export class EmailQueueProcessor {
       // TODO: Implement actual email sending
       // For now, just mock the email sending
       const mockSuccess = true; // In production, this would be actual email sending
-      
+
       if (mockSuccess) {
         // Mark as sent
         await prisma.emailQueue.update({
@@ -77,7 +77,7 @@ export class EmailQueueProcessor {
           },
         });
 
-        console.log(`Email sent successfully: ${email.id}`);
+        // console.log(`Email sent successfully: ${email.id}`);
       } else {
         // Mark as failed
         await prisma.emailQueue.update({
@@ -92,7 +92,7 @@ export class EmailQueueProcessor {
       }
     } catch (error) {
       console.error(`Email processing error for ${email.id}:`, error);
-      
+
       // Mark as failed
       await prisma.emailQueue.update({
         where: { id: email.id },

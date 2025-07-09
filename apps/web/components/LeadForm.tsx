@@ -1,15 +1,15 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ServiceTier, logger } from '@madfam/core';
 import { useFormTracking, useConversionTracking, useErrorTracking } from '@madfam/analytics';
+import { ServiceTier, logger } from '@madfam/core';
 import { Button } from '@madfam/ui';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-const createLeadFormSchema = (t: any) =>
+const createLeadFormSchema = (t: (key: string) => string) =>
   z.object({
     name: z.string().min(2, t('errors.nameMin')),
     email: z.string().email(t('errors.emailInvalid')),

@@ -1,7 +1,7 @@
 'use client';
 
-import { ServiceTier } from '@madfam/core';
 import { useConversionTracking, useEngagementTracking } from '@madfam/analytics';
+import { ServiceTier } from '@madfam/core';
 import { useEffect } from 'react';
 
 interface ServicePageAnalyticsProps {
@@ -80,13 +80,13 @@ export function ServicePageAnalytics({
     return () => {
       delete (window as any).trackServicePageEvent;
     };
-  }, [serviceTier, trackServiceFunnelStep, trackPurchaseIntent]);
+  }, [serviceTier, trackServiceFunnelStep, trackPurchaseIntent, trackPricingView, trackCTAClick]);
 
   return null; // This component doesn't render anything
 }
 
 // Utility function to throttle scroll events
-function throttle(func: Function, limit: number) {
+function throttle(func: (...args: any[]) => void, limit: number) {
   let inThrottle: boolean;
   return function (this: any, ...args: any[]) {
     if (!inThrottle) {

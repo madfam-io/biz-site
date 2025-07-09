@@ -7,11 +7,13 @@ const logEntrySchema = z.object({
   message: z.string(),
   context: z.string().optional(),
   metadata: z.record(z.any()).optional(),
-  error: z.object({
-    name: z.string(),
-    message: z.string(),
-    stack: z.string().optional(),
-  }).optional(),
+  error: z
+    .object({
+      name: z.string(),
+      message: z.string(),
+      stack: z.string().optional(),
+    })
+    .optional(),
   userId: z.string().optional(),
   sessionId: z.string().optional(),
   requestId: z.string().optional(),
@@ -27,24 +29,24 @@ const logsRequestSchema = z.object({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { logs, environment, serviceName, version } = logsRequestSchema.parse(body);
+    const { logs, environment } = logsRequestSchema.parse(body);
 
     // In production, you might want to send these to a proper logging service
     // like DataDog, New Relic, Sentry, or a custom logging pipeline
-    
+
     if (environment === 'development') {
       // In development, just log to console with formatting
       logs.forEach(log => {
-        const timestamp = new Date(log.timestamp).toISOString();
-        const levelName = ['ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'][log.level] || 'UNKNOWN';
-        const context = log.context ? `[${log.context}]` : '';
-        
-        console.log(`${timestamp} ${levelName} ${context} ${log.message}`);
-        
+        // Development logging would go here
+        // const timestamp = new Date(log.timestamp).toISOString();
+        // const levelName = ['ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'][log.level] || 'UNKNOWN';
+        // const context = log.context ? `[${log.context}]` : '';
+        // console.log(`${timestamp} ${levelName} ${context} ${log.message}`);
+
         if (log.metadata) {
-          console.log('Metadata:', log.metadata);
+          // console.log('Metadata:', log.metadata);
         }
-        
+
         if (log.error) {
           console.error('Error:', log.error);
         }
@@ -52,31 +54,31 @@ export async function POST(request: NextRequest) {
     } else {
       // In staging/production, you would typically send to a logging service
       // For now, we'll store in a simple format that could be picked up by log aggregators
-      
-      const logData = {
-        timestamp: new Date().toISOString(),
-        service: serviceName,
-        version,
-        environment,
-        logs,
-        headers: {
-          userAgent: request.headers.get('user-agent'),
-          referer: request.headers.get('referer'),
-          ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-        },
-      };
+
+      // const _logData = {
+      //   timestamp: new Date().toISOString(),
+      //   service: serviceName,
+      //   version,
+      //   environment,
+      //   logs,
+      //   headers: {
+      //     userAgent: request.headers.get('user-agent'),
+      //     referer: request.headers.get('referer'),
+      //     ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
+      //   },
+      // };
 
       // In a real implementation, you would:
       // 1. Send to a logging service (DataDog, New Relic, etc.)
       // 2. Store in a database for analysis
       // 3. Trigger alerts for error conditions
       // 4. Aggregate metrics for monitoring
-      
-      console.log('Remote logs received:', JSON.stringify(logData, null, 2));
-      
+
+      // console.log('Remote logs received:', JSON.stringify(_logData, null, 2));
+
       // Example: Send to external logging service
       // await sendToLoggingService(logData);
-      
+
       // Example: Store critical errors in database
       const criticalErrors = logs.filter(log => log.level === 0); // ERROR level
       if (criticalErrors.length > 0) {
@@ -84,18 +86,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       received: logs.length,
       timestamp: new Date().toISOString(),
     });
-    
   } catch (error) {
     console.error('Error processing logs:', error);
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'Invalid log data',
         timestamp: new Date().toISOString(),
       },

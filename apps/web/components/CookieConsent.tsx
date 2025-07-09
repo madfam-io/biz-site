@@ -41,12 +41,12 @@ export function CookieConsent() {
     // This is where you would enable/disable analytics and marketing scripts
     if (prefs.analytics) {
       // Enable analytics (e.g., Plausible, Google Analytics)
-      console.log('Analytics cookies enabled');
+      // console.log('Analytics cookies enabled');
     }
 
     if (prefs.marketing) {
       // Enable marketing cookies
-      console.log('Marketing cookies enabled');
+      // console.log('Marketing cookies enabled');
     }
   };
 

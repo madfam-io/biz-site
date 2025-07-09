@@ -149,7 +149,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const event: WebhookEvent = body;
 
-    console.log('Received webhook event:', event.event);
+    // console.log('Received webhook event:', event.event);
 
     // Route to appropriate handler
     switch (event.event) {

@@ -1,3 +1,5 @@
+'use client';
+
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { getLocalizedContent, type Locale } from '@madfam/i18n';
 import {
@@ -12,7 +14,6 @@ import {
   Hero,
 } from '@madfam/ui';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
 import { ServiceStructuredData } from '@/components/StructuredData';
 import { logServiceInquiry } from '@/lib/logger';
 
@@ -21,7 +22,7 @@ export default function Level3ConsultingPage({
 }: {
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(locale);
+  // unstable_setRequestLocale(locale); // Not needed in client component
   const service = serviceTiers[ServiceTier.L3_CONSULTING];
   const t = useTranslations('services');
   const currentLocale = locale as Locale;

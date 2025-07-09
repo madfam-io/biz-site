@@ -1,7 +1,7 @@
 'use client';
 
-import { ServiceTier } from '@madfam/core';
 import { useFeatureTracking, useConversionTracking } from '@madfam/analytics';
+import { ServiceTier } from '@madfam/core';
 import { Button } from '@madfam/ui';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, DollarSign, Clock } from 'lucide-react';
