@@ -61,12 +61,13 @@ export class EmailService {
       },
     };
 
-    const language = data.language || 'es-MX';
-    return subjects[language][template as keyof typeof subjects[typeof language]] || 'MADFAM Notification';
+    const language: 'es-MX' | 'en-US' = data.language || 'es-MX';
+    const subjectMap = subjects[language];
+    return subjectMap[template as keyof typeof subjectMap] || 'MADFAM Notification';
   }
 
   async renderWelcomeEmail(data: WelcomeEmailData): Promise<EmailTemplate> {
-    const html = render(WelcomeEmail(data));
+    const html = await render(WelcomeEmail(data));
     const text = this.htmlToText(html);
     const subject = this.getSubject('welcome', data);
 
@@ -74,7 +75,7 @@ export class EmailService {
   }
 
   async renderAssessmentResultsEmail(data: AssessmentResultsEmailData): Promise<EmailTemplate> {
-    const html = render(AssessmentResultsEmail(data));
+    const html = await render(AssessmentResultsEmail(data));
     const text = this.htmlToText(html);
     const subject = this.getSubject('assessment-results', data);
 
@@ -82,7 +83,7 @@ export class EmailService {
   }
 
   async renderROIResultsEmail(data: ROIResultsEmailData): Promise<EmailTemplate> {
-    const html = render(ROIResultsEmail(data));
+    const html = await render(ROIResultsEmail(data));
     const text = this.htmlToText(html);
     const subject = this.getSubject('roi-results', data);
 
