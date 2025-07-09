@@ -6,16 +6,19 @@ import { Container, Button } from '@madfam/ui';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { DarkModeToggle } from './DarkModeToggle';
 import { Search } from './Search';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const t = useTranslations('common.nav');
+  const locale = useLocale();
 
   const navigation = [
-    { name: 'Inicio', href: '/' },
-    { name: 'Servicios', href: '/services' },
-    { name: 'Productos', href: '/products' },
-    { name: 'Nosotros', href: '/about' },
-    { name: 'Contacto', href: '/contact' },
+    { name: t('home'), href: `/${locale}` },
+    { name: t('services'), href: `/${locale}/services` },
+    { name: t('products'), href: `/${locale}/products` },
+    { name: t('about'), href: `/${locale}/about` },
+    { name: t('contact'), href: `/${locale}/contact` },
   ];
 
   return (
@@ -24,7 +27,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="font-heading text-xl font-bold text-obsidian dark:text-pearl">
+            <Link href={`/${locale}`} className="font-heading text-xl font-bold text-obsidian dark:text-pearl">
               MADFAM
             </Link>
           </div>

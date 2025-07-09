@@ -4,6 +4,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { i18nConfig } from '@madfam/i18n';
+import { translatePathname } from '@/lib/route-translations';
 
 export function LanguageSwitcher() {
   const router = useRouter();
@@ -29,19 +30,8 @@ export function LanguageSwitcher() {
   }, []);
 
   const switchLocale = (newLocale: string) => {
-    // Remove current locale from pathname
-    const segments = pathname.split('/').filter(Boolean);
-    const currentLocaleIndex = segments.findIndex(segment => i18nConfig.locales.includes(segment as any));
-    
-    let newPath;
-    if (currentLocaleIndex === 0) {
-      // Replace existing locale
-      segments[0] = newLocale;
-      newPath = '/' + segments.join('/');
-    } else {
-      // Add locale to the beginning
-      newPath = '/' + newLocale + pathname;
-    }
+    // Use route translation utility to properly handle route translations
+    const newPath = translatePathname(pathname, newLocale);
     
     router.push(newPath);
     setIsOpen(false);
