@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ServiceTier, logger } from '@madfam/core';
+import { useFormTracking, useConversionTracking, useErrorTracking } from '@madfam/analytics';
 import { Button } from '@madfam/ui';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
@@ -32,6 +33,11 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
   const t = useTranslations('leadForm');
   const locale = useLocale();
 
+  // Analytics hooks
+  const { trackContactStarted, trackContactCompleted, trackLeadCaptured } = useFormTracking();
+  const { trackServiceFunnelStep, trackPurchaseIntent } = useConversionTracking();
+  const { trackError } = useErrorTracking();
+
   const leadFormSchema = createLeadFormSchema(t);
 
   const {
@@ -50,6 +56,19 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
+    // Track form submission start
+    trackContactStarted('lead-form', data.tier);
+
+    // Track funnel step - user is showing interest
+    if (data.tier) {
+      trackServiceFunnelStep('contact', data.tier, { source });
+    }
+
+    // Track purchase intent if tier is provided
+    if (data.tier) {
+      trackPurchaseIntent(data.tier);
+    }
+
     // In staging environment, simulate submission without API call
     if (process.env.NEXT_PUBLIC_ENV === 'staging') {
       logger.info('Staging environment - Lead form submission', 'LEAD_FORM', {
@@ -62,6 +81,24 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
 
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Track successful form completion (staging)
+      trackContactCompleted('lead-form', data.tier, 85); // Mock lead score
+
+      // Track lead captured
+      trackLeadCaptured({
+        tier: data.tier,
+        source,
+        form: 'lead-form',
+      });
+
+      // Track funnel conversion step
+      if (data.tier) {
+        trackServiceFunnelStep('conversion', data.tier, {
+          source,
+          environment: 'staging',
+        });
+      }
 
       setSubmitStatus('success');
       reset();
@@ -90,10 +127,32 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
           leadId: result.leadId,
           locale,
         });
+
+        // Track successful form completion
+        trackContactCompleted('lead-form', data.tier, result.leadScore);
+
+        // Track lead captured
+        trackLeadCaptured({
+          tier: data.tier,
+          source,
+          form: 'lead-form',
+        });
+
+        // Track funnel conversion step
+        if (data.tier) {
+          trackServiceFunnelStep('conversion', data.tier, {
+            source,
+            leadId: result.leadId,
+          });
+        }
+
         setSubmitStatus('success');
         reset();
         onSuccess?.();
       } else {
+        // Track error
+        trackError('Lead form submission failed', 'form-submission', 'medium');
+
         logger.warn('Lead form submission failed', 'LEAD_FORM', {
           tier: data.tier,
           source,
@@ -103,6 +162,9 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
         setSubmitStatus('error');
       }
     } catch (error) {
+      // Track error
+      trackError('Lead form submission error', 'form-submission', 'high');
+
       logger.error('Lead form submission error', error as Error, 'LEAD_FORM', {
         tier: data.tier,
         source,

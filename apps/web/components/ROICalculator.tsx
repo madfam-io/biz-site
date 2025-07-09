@@ -1,6 +1,7 @@
 'use client';
 
 import { ServiceTier } from '@madfam/core';
+import { useFeatureTracking, useConversionTracking } from '@madfam/analytics';
 import { Button } from '@madfam/ui';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, DollarSign, Clock } from 'lucide-react';
@@ -16,6 +17,10 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
   const t = useTranslations('calculator');
   const { formatCurrency } = useCurrencyFormatter();
   const { formatNumber } = useNumberFormatter();
+
+  // Analytics hooks
+  const { trackCalculatorUsed } = useFeatureTracking();
+  const { trackPurchaseIntent } = useConversionTracking();
   const [formData, setFormData] = useState({
     currentCosts: 50000,
     employeeHours: 160,
@@ -41,6 +46,12 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
 
   const calculateROI = () => {
     const { currentCosts, employeeHours, projectsPerMonth, averageProjectValue } = formData;
+
+    // Track calculator usage
+    trackCalculatorUsed({
+      type: 'roi',
+      result: undefined, // Will be set after calculation
+    });
 
     // Base calculations vary by service tier
     let efficiencyGain = 0.2; // 20% base efficiency gain
@@ -77,12 +88,25 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
     const roiPercentage = ((totalBenefit * 12 - investment) / investment) * 100;
     const paybackPeriod = investment / totalBenefit;
 
-    setResults({
+    const calculatedResults = {
       monthlySavings: Math.round(monthlySavings),
       timeSaved: Math.round(timeSaved),
       roiPercentage: Math.round(roiPercentage),
       paybackPeriod: Math.round(paybackPeriod * 10) / 10,
+    };
+
+    setResults(calculatedResults);
+
+    // Track calculator usage with result
+    trackCalculatorUsed({
+      type: 'roi',
+      result: calculatedResults.roiPercentage,
     });
+
+    // Track purchase intent if ROI is positive
+    if (calculatedResults.roiPercentage > 0 && serviceTier) {
+      trackPurchaseIntent(serviceTier, investment);
+    }
   };
 
   return (

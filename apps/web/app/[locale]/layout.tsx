@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { AuthProvider } from '@/components/AuthProvider';
 import { CookieConsent } from '@/components/CookieConsent';
 import { Footer } from '@/components/Footer';
+import { GlobalAnalytics } from '@/components/GlobalAnalytics';
 import { LoggerProvider } from '@/components/LoggerProvider';
 import { Navbar } from '@/components/Navbar';
 import { OrganizationStructuredData } from '@/components/StructuredData';
@@ -32,6 +33,7 @@ export default async function LocaleLayout({
       <AuthProvider>
         <NextIntlClientProvider messages={messages}>
           <OrganizationStructuredData />
+          <GlobalAnalytics />
           <Navbar />
           <div className="pt-16">
             {children}
