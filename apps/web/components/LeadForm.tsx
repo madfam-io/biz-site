@@ -44,6 +44,20 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
+    // In staging environment, simulate submission without API call
+    if (process.env.NEXT_PUBLIC_ENV === 'staging') {
+      console.log('Staging environment - Lead form submission:', data);
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setSubmitStatus('success');
+      reset();
+      onSuccess?.();
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/leads', {
         method: 'POST',
