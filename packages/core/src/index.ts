@@ -1,6 +1,6 @@
 // Core exports
 // Services
-export * from './services/tiers';
+export { ServiceTier, type ServiceTierConfig, serviceTiers } from './services/tiers';
 
 // Features
-export * from './features/flags';
+export { featureFlags, type FeatureFlag, type Environment, FeatureFlagProvider } from './features/flags';
