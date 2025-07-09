@@ -1,6 +1,6 @@
 // Core exports
 // Services
-export * from './services';
+export { ServiceTier, type ServiceTierConfig, serviceTiers } from './services/tiers.js';
 
 // Features
-export * from './features';
+export { featureFlags, type FeatureFlag, type Environment, FeatureFlagProvider } from './features/flags.js';
