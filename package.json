@@ -30,7 +30,8 @@
   "devDependencies": {
     "turbo": "^1.11.3",
     "prettier": "^3.2.4",
-    "@types/node": "^20.11.5"
+    "@types/node": "^20.11.5",
+    "next": "14.2.8"
   },
   "engines": {
     "node": ">=20.0.0",
