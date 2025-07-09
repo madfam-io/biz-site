@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Container, Button } from '@madfam/ui';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { DarkModeToggle } from './DarkModeToggle';
+import { Search } from './Search';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,6 +44,7 @@ export function Navbar() {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            <Search />
             <DarkModeToggle />
             <LanguageSwitcher />
             <div className="w-px h-6 bg-gray-200 dark:bg-gray-700" />
@@ -88,6 +90,9 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="pt-4 border-t border-gray-100 dark:border-gray-700 space-y-2">
+                <div className="px-4 py-2">
+                  <Search />
+                </div>
                 <div className="px-4 py-2 flex items-center justify-between">
                   <LanguageSwitcher />
                   <DarkModeToggle />

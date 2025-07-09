@@ -159,9 +159,18 @@ export default function ServicesPage() {
             <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
               Nuestro equipo te ayudará a identificar la solución perfecta para tu empresa
             </p>
-            <Button variant="secondary" size="lg">
-              Agendar evaluación gratuita
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/estimator">
+                <Button variant="secondary" size="lg">
+                  Obtener estimación instantánea
+                </Button>
+              </a>
+              <a href="/contact">
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-obsidian">
+                  Agendar evaluación gratuita
+                </Button>
+              </a>
+            </div>
           </div>
         </Container>
       </section>

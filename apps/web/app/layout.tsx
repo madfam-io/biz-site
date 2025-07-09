@@ -3,6 +3,7 @@ import { Inter, Poppins, Space_Mono } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { DarkModeScript } from './dark-mode-script';
+import { CookieConsent } from '@/components/CookieConsent';
 import './globals.css';
 
 const inter = Inter({
@@ -108,6 +109,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+        <CookieConsent />
       </body>
     </html>
   );
