@@ -2,7 +2,7 @@ name: Deploy to Staging (GitHub Pages)
 
 on:
   push:
-    branches: [staging, develop]
+    branches: [main, staging, develop]
   pull_request:
     branches: [main]
 
@@ -69,7 +69,7 @@ jobs:
           cp out/index.html out/404.html || echo "Note: index.html not found, skipping 404.html creation"
 
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/staging'
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
