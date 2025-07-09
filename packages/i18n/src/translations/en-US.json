@@ -24,6 +24,31 @@
       "terms": "Terms"
     }
   },
+  "footer": {
+    "sections": {
+      "services": "Services",
+      "products": "Products",
+      "company": "Company",
+      "resources": "Resources"
+    },
+    "products": {
+      "documentation": "Documentation"
+    },
+    "company": {
+      "about": "About",
+      "blog": "Blog",
+      "caseStudies": "Case Studies",
+      "careers": "Careers"
+    },
+    "resources": {
+      "assessment": "AI Assessment",
+      "calculator": "ROI Calculator",
+      "guides": "Guides",
+      "contact": "Contact"
+    },
+    "tagline": "Where AI meets human creativity",
+    "cookies": "Cookies"
+  },
   "home": {
     "hero": {
       "title": "Where AI meets human creativity",

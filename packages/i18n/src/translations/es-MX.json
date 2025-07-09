@@ -24,6 +24,31 @@
       "terms": "Términos"
     }
   },
+  "footer": {
+    "sections": {
+      "services": "Servicios",
+      "products": "Productos",
+      "company": "Empresa",
+      "resources": "Recursos"
+    },
+    "products": {
+      "documentation": "Documentación"
+    },
+    "company": {
+      "about": "Nosotros",
+      "blog": "Blog",
+      "caseStudies": "Casos de éxito",
+      "careers": "Carreras"
+    },
+    "resources": {
+      "assessment": "Evaluación IA",
+      "calculator": "Calculadora ROI",
+      "guides": "Guías",
+      "contact": "Contacto"
+    },
+    "tagline": "Donde la IA encuentra la creatividad humana",
+    "cookies": "Cookies"
+  },
   "home": {
     "hero": {
       "title": "Donde la IA encuentra la creatividad humana",

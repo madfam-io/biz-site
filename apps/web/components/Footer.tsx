@@ -1,32 +1,46 @@
 import Link from 'next/link';
 import { Container } from '@madfam/ui';
+import { useTranslations, useLocale } from 'next-intl';
+import { i18nConfig } from '@madfam/i18n';
 
 export function Footer() {
+  const t = useTranslations();
+  const locale = useLocale();
+
+  // Helper function to get localized route
+  const getLocalizedRoute = (route: string) => {
+    if (locale === 'es-MX') {
+      const spanishRoutes = i18nConfig.routes['es-MX'];
+      return spanishRoutes[route as keyof typeof spanishRoutes] || route;
+    }
+    return route;
+  };
+
   const navigation = {
     servicios: [
-      { name: 'L1 - Essentials', href: '/services/level-1-essentials' },
-      { name: 'L2 - Advanced', href: '/services/level-2-advanced' },
-      { name: 'L3 - Consulting', href: '/services/level-3-consulting' },
-      { name: 'L4 - Platforms', href: '/services/level-4-platforms' },
-      { name: 'L5 - Strategic', href: '/services/level-5-strategic' },
+      { name: 'L1 - Essentials', href: `/${locale}${getLocalizedRoute('/services/level-1-essentials')}` },
+      { name: 'L2 - Advanced', href: `/${locale}${getLocalizedRoute('/services/level-2-advanced')}` },
+      { name: 'L3 - Consulting', href: `/${locale}${getLocalizedRoute('/services/level-3-consulting')}` },
+      { name: 'L4 - Platforms', href: `/${locale}${getLocalizedRoute('/services/level-4-platforms')}` },
+      { name: 'L5 - Strategic', href: `/${locale}${getLocalizedRoute('/services/level-5-strategic')}` },
     ],
     productos: [
-      { name: 'SPARK', href: '/products#spark' },
-      { name: 'PENNY', href: '/products#penny' },
-      { name: 'Documentación', href: '/docs' },
-      { name: 'API', href: '/api' },
+      { name: 'SPARK', href: `/${locale}${getLocalizedRoute('/products')}#spark` },
+      { name: 'PENNY', href: `/${locale}${getLocalizedRoute('/products')}#penny` },
+      { name: t('footer.products.documentation'), href: `/${locale}/docs` },
+      { name: 'API', href: `/${locale}/api` },
     ],
     empresa: [
-      { name: 'Nosotros', href: '/about' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Casos de éxito', href: '/case-studies' },
-      { name: 'Carreras', href: '/careers' },
+      { name: t('footer.company.about'), href: `/${locale}${getLocalizedRoute('/about')}` },
+      { name: t('footer.company.blog'), href: `/${locale}/blog` },
+      { name: t('footer.company.caseStudies'), href: `/${locale}/case-studies` },
+      { name: t('footer.company.careers'), href: `/${locale}/careers` },
     ],
     recursos: [
-      { name: 'Evaluación IA', href: '/assessment' },
-      { name: 'Calculadora ROI', href: '/calculator' },
-      { name: 'Guías', href: '/guides' },
-      { name: 'Contacto', href: '/contact' },
+      { name: t('footer.resources.assessment'), href: `/${locale}/assessment` },
+      { name: t('footer.resources.calculator'), href: `/${locale}/calculator` },
+      { name: t('footer.resources.guides'), href: `/${locale}/guides` },
+      { name: t('footer.resources.contact'), href: `/${locale}${getLocalizedRoute('/contact')}` },
     ],
   };
 
@@ -42,7 +56,7 @@ export function Footer() {
         <div className="py-12 lg:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-heading text-lg mb-4">Servicios</h3>
+              <h3 className="font-heading text-lg mb-4">{t('footer.sections.services')}</h3>
               <ul className="space-y-3">
                 {navigation.servicios.map((item) => (
                   <li key={item.name}>
@@ -58,7 +72,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-heading text-lg mb-4">Productos</h3>
+              <h3 className="font-heading text-lg mb-4">{t('footer.sections.products')}</h3>
               <ul className="space-y-3">
                 {navigation.productos.map((item) => (
                   <li key={item.name}>
@@ -74,7 +88,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-heading text-lg mb-4">Empresa</h3>
+              <h3 className="font-heading text-lg mb-4">{t('footer.sections.company')}</h3>
               <ul className="space-y-3">
                 {navigation.empresa.map((item) => (
                   <li key={item.name}>
@@ -90,7 +104,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-heading text-lg mb-4">Recursos</h3>
+              <h3 className="font-heading text-lg mb-4">{t('footer.sections.resources')}</h3>
               <ul className="space-y-3">
                 {navigation.recursos.map((item) => (
                   <li key={item.name}>
@@ -112,7 +126,7 @@ export function Footer() {
                 <span className="font-heading text-2xl font-bold">MADFAM</span>
                 <span className="text-white/50">•</span>
                 <p className="text-white/70">
-                  Donde la IA encuentra la creatividad humana
+                  {t('footer.tagline')}
                 </p>
               </div>
 
@@ -148,16 +162,16 @@ export function Footer() {
 
             <div className="mt-8 pt-8 border-t border-white/10">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-                <p>© 2024 MADFAM. Todos los derechos reservados.</p>
+                <p>© 2024 MADFAM. {t('common.footer.rights')}</p>
                 <div className="flex gap-6">
-                  <Link href="/privacy" className="hover:text-white/70 transition-colors">
-                    Privacidad
+                  <Link href={`/${locale}/privacy`} className="hover:text-white/70 transition-colors">
+                    {t('common.footer.privacy')}
                   </Link>
-                  <Link href="/terms" className="hover:text-white/70 transition-colors">
-                    Términos
+                  <Link href={`/${locale}/terms`} className="hover:text-white/70 transition-colors">
+                    {t('common.footer.terms')}
                   </Link>
-                  <Link href="/cookies" className="hover:text-white/70 transition-colors">
-                    Cookies
+                  <Link href={`/${locale}/cookies`} className="hover:text-white/70 transition-colors">
+                    {t('footer.cookies')}
                   </Link>
                 </div>
               </div>
