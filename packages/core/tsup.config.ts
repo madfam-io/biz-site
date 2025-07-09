@@ -8,4 +8,9 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   external: ['zod'],
+  noExternal: [/^\.\/|^\.\.\//],
+  esbuildOptions(options) {
+    options.bundle = true;
+    options.platform = 'node';
+  },
 });
