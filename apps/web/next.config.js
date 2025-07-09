@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: process.env.NEXT_PUBLIC_ENV === 'staging' ? 'export' : undefined,
   reactStrictMode: true,
   swcMinify: true,
   transpilePackages: ['@madfam/ui', '@madfam/core', '@madfam/analytics', '@madfam/i18n'],
@@ -9,7 +8,6 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     minimumCacheTTL: 31536000,
-    unoptimized: process.env.NEXT_PUBLIC_ENV === 'staging', // For GitHub Pages
   },
 
   async headers() {
