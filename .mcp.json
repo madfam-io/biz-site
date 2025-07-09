@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-context7"],
+      "env": {},
+      "description": "Access to library documentation"
+    },
+    "sequential": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-sequential"],
+      "env": {},
+      "description": "Multi-step reasoning capabilities"
+    },
+    "magic": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-magic"],
+      "env": {},
+      "description": "AI-generated UI components"
+    },
+    "puppeteer": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "env": {},
+      "description": "Browser testing and automation"
+    }
+  }
+}
