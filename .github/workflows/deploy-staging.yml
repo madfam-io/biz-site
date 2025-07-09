@@ -46,18 +46,27 @@ jobs:
       - name: Build for staging
         env:
           NEXT_PUBLIC_ENV: staging
-          NEXT_PUBLIC_API_URL: ${{ secrets.STAGING_API_URL }}
-          NEXT_PUBLIC_FEATURE_FLAGS: ${{ secrets.STAGING_FEATURES }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.STAGING_API_URL || 'https://staging.madfam.io/api' }}
+          NEXT_PUBLIC_FEATURE_FLAGS: ${{ secrets.STAGING_FEATURES || 'staging' }}
           DEPLOY_TARGET: github-pages
         run: |
           cd apps/web
           pnpm build:staging
+          # Verify static export was created
+          if [ ! -d "out" ]; then
+            echo "Error: Static export directory 'out' not found!"
+            exit 1
+          fi
+          echo "Static export created successfully"
+          ls -la out/
 
       - name: Prepare static export
         run: |
           cd apps/web
+          # Add .nojekyll to prevent Jekyll processing
           touch out/.nojekyll
-          echo 'staging.madfam.io' > out/CNAME
+          # Create 404.html from index.html for client-side routing
+          cp out/index.html out/404.html || echo "Note: index.html not found, skipping 404.html creation"
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/staging'
@@ -65,4 +74,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./apps/web/out
-          cname: staging.madfam.io
