@@ -4,6 +4,7 @@ import { ROICalculator } from '@/components/ROICalculator';
 import { ServiceStructuredData } from '@/components/StructuredData';
 import { seoService } from '@/lib/seo';
 import { Metadata } from 'next';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
   return seoService.generateServiceMetadata(
@@ -14,7 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
   );
 }
 
-export default function Level3ConsultingPage() {
+export default function Level3ConsultingPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L3_CONSULTING];
 
   const benefits = [

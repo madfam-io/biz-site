@@ -1,7 +1,9 @@
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default function ServicesPage() {
+export default function ServicesPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const allServices = Object.values(serviceTiers);
 
   return (

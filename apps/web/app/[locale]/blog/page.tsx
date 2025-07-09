@@ -1,5 +1,7 @@
 import { Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 // Mock blog data - in production, this would come from a CMS or database
 const blogPosts = [
@@ -32,16 +34,19 @@ const blogPosts = [
   },
 ];
 
-export default function BlogPage() {
+export default function BlogPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
+  const t = useTranslations('blog');
+  
   return (
     <main className="min-h-screen py-20">
       <Container>
         <div className="max-w-4xl mx-auto">
           <Heading level={1} className="mb-4">
-            Blog & Insights
+            {t('title')}
           </Heading>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">
-            Thoughts, stories and ideas from the MADFAM team about technology, innovation, and business transformation.
+            {t('subtitle')}
           </p>
 
           <div className="space-y-12">
@@ -52,7 +57,7 @@ export default function BlogPage() {
                     {post.category}
                   </span>
                   <time dateTime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
-                  <span>{post.readTime}</span>
+                  <span>{post.readTime.replace('min read', t('minRead'))}</span>
                 </div>
                 
                 <h2 className="text-2xl font-bold mb-3 hover:text-lavender transition-colors">
@@ -67,13 +72,13 @@ export default function BlogPage() {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500 dark:text-gray-500">
-                    By {post.author}
+                    {t('by')} {post.author}
                   </span>
                   <Link 
                     href={`/blog/${post.id}`}
                     className="text-lavender hover:text-lavender/80 font-medium transition-colors"
                   >
-                    Read more →
+                    {t('readMore')} →
                   </Link>
                 </div>
               </article>

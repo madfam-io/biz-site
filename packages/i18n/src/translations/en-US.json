@@ -141,5 +141,160 @@
         "scheduleNow": "Schedule consultation now"
       }
     }
+  },
+  "careers": {
+    "title": "Join the MADFAM Team",
+    "subtitle": "We're building the future of business transformation. Join us in creating innovative solutions that help companies thrive in the digital age.",
+    "culture": {
+      "title": "Our Culture",
+      "innovation": {
+        "title": "Innovation First",
+        "description": "We embrace new technologies and creative solutions to solve complex problems."
+      },
+      "collaboration": {
+        "title": "Collaborative Spirit",
+        "description": "We believe in the power of teamwork and value diverse perspectives."
+      },
+      "growth": {
+        "title": "Growth Mindset",
+        "description": "We're committed to continuous learning and personal development."
+      }
+    },
+    "benefits": {
+      "title": "Benefits & Perks",
+      "list": {
+        "health": "Comprehensive health insurance",
+        "pto": "Flexible PTO policy",
+        "remote": "Remote-first culture",
+        "learning": "Learning & development budget",
+        "bonus": "Performance bonuses",
+        "home": "Home office stipend"
+      }
+    },
+    "positions": {
+      "title": "Open Positions",
+      "department": "Department",
+      "location": "Location",
+      "type": "Type",
+      "applyNow": "Apply Now"
+    },
+    "cta": {
+      "title": "Don't see the right position?",
+      "subtitle": "We're always looking for talented individuals. Send us your resume and let's talk!",
+      "sendResume": "Send Your Resume"
+    }
+  },
+  "blog": {
+    "title": "Blog & Insights",
+    "subtitle": "Thoughts, stories and ideas from the MADFAM team about technology, innovation, and business transformation.",
+    "readMore": "Read more",
+    "by": "By",
+    "minRead": "min read"
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "subtitle": "Real-world success stories of how we've helped businesses transform and thrive in the digital age.",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "results": "Results",
+    "readFullCase": "Read full case study"
+  },
+  "docs": {
+    "title": "Documentation",
+    "subtitle": "Everything you need to know about working with MADFAM's services and platforms.",
+    "searchPlaceholder": "Search documentation...",
+    "categories": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "description": "Quick start guides and overview of our services"
+      },
+      "api": {
+        "title": "API Documentation",
+        "description": "Technical documentation for our APIs and integrations"
+      },
+      "guides": {
+        "title": "Guides & Tutorials",
+        "description": "Step-by-step guides for common use cases"
+      },
+      "resources": {
+        "title": "Resources",
+        "description": "Additional resources and support materials"
+      }
+    },
+    "popularTopics": "Popular Topics",
+    "needHelp": {
+      "title": "Need Help?",
+      "subtitle": "Can't find what you're looking for? Our support team is here to help.",
+      "contactSupport": "Contact Support",
+      "viewFaq": "View FAQ"
+    }
+  },
+  "api": {
+    "title": "API Reference",
+    "subtitle": "Complete reference for MADFAM API endpoints, authentication, and integration examples.",
+    "baseUrl": "Base URL",
+    "authentication": "Authentication",
+    "assessment": "Assessment",
+    "calculator": "Calculator",
+    "leads": "Leads",
+    "codeExamples": "Code Examples",
+    "authExample": "Authentication Example",
+    "assessmentExample": "Assessment Submission",
+    "rateLimiting": {
+      "title": "Rate Limiting",
+      "subtitle": "API requests are limited to ensure fair usage and system stability.",
+      "perMinute": "Requests per minute",
+      "perHour": "Requests per hour",
+      "perDay": "Requests per day"
+    }
+  },
+  "guides": {
+    "title": "Guides & Tutorials",
+    "subtitle": "Step-by-step guides to help you make the most of MADFAM's services and build amazing solutions.",
+    "featured": {
+      "badge": "Featured Guide",
+      "title": "Complete Integration Tutorial",
+      "description": "Learn how to integrate MADFAM services from start to finish with our comprehensive tutorial.",
+      "startTutorial": "Start Tutorial"
+    },
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "videoTutorials": {
+      "title": "Video Tutorials",
+      "description": "Prefer learning through video? Check out our YouTube channel for video tutorials and demos.",
+      "watchYoutube": "Watch on YouTube"
+    }
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "lastUpdated": "Last updated",
+    "sections": {
+      "whatAreCookies": {
+        "title": "What Are Cookies",
+        "description": "Cookies are small text files that are placed on your computer or mobile device when you visit our website. They are widely used to make websites work more efficiently and provide a better user experience."
+      },
+      "howWeUse": {
+        "title": "How We Use Cookies",
+        "description": "We use cookies for the following purposes:",
+        "essential": "Essential Cookies",
+        "analytics": "Analytics Cookies",
+        "preference": "Preference Cookies",
+        "marketing": "Marketing Cookies"
+      },
+      "managing": {
+        "title": "Managing Cookies",
+        "description": "You can control and manage cookies through your browser settings. Please note that removing or blocking cookies may impact your user experience and some parts of our website may no longer be fully accessible."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "If you have questions about our use of cookies or this policy, please contact us at:",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address"
+      }
+    }
   }
 }

@@ -1,6 +1,8 @@
 import { Container, Heading } from '@madfam/ui';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default function PrivacyPage() {
+export default function PrivacyPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   return (
     <main className="min-h-screen">
       <section className="pt-20 pb-16 bg-gradient-to-br from-obsidian/5 to-lavender/5">

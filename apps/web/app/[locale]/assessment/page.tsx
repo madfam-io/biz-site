@@ -1,7 +1,9 @@
 import { Container, Heading } from '@madfam/ui';
 import { AIAssessment } from '@/components/AIAssessment';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default function AssessmentPage() {
+export default function AssessmentPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   return (
     <main className="min-h-screen">
       {/* Hero Section */}

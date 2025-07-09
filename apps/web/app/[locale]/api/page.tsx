@@ -1,5 +1,7 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 const apiEndpoints = [
   {
@@ -105,17 +107,20 @@ const response = await fetch('https://api.madfam.io/api/assessment', {
 });`,
 };
 
-export default function ApiPage() {
+export default function ApiPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
+  const t = useTranslations('api');
+  
   return (
     <main className="min-h-screen py-20">
       <Container>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Heading level={1} className="mb-4">
-              API Reference
+              {t('title')}
             </Heading>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Complete reference for MADFAM API endpoints, authentication, and integration examples.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -141,7 +146,7 @@ export default function ApiPage() {
 
           {/* Base URL */}
           <Card className="mb-12 p-6 bg-gray-50 dark:bg-gray-900">
-            <h3 className="font-semibold mb-2">Base URL</h3>
+            <h3 className="font-semibold mb-2">{t('baseUrl')}</h3>
             <code className="text-lg font-mono">https://api.madfam.io</code>
           </Card>
 
@@ -182,11 +187,11 @@ export default function ApiPage() {
           {/* Code Examples */}
           <div className="mt-16">
             <Heading level={2} className="mb-8">
-              Code Examples
+              {t('codeExamples')}
             </Heading>
             <div className="space-y-8">
               <div>
-                <h3 className="font-semibold mb-4">Authentication</h3>
+                <h3 className="font-semibold mb-4">{t('authExample')}</h3>
                 <Card className="p-6 bg-gray-50 dark:bg-gray-900">
                   <pre className="overflow-x-auto">
                     <code className="text-sm font-mono">{codeExamples.auth}</code>
@@ -194,7 +199,7 @@ export default function ApiPage() {
                 </Card>
               </div>
               <div>
-                <h3 className="font-semibold mb-4">Assessment Submission</h3>
+                <h3 className="font-semibold mb-4">{t('assessmentExample')}</h3>
                 <Card className="p-6 bg-gray-50 dark:bg-gray-900">
                   <pre className="overflow-x-auto">
                     <code className="text-sm font-mono">{codeExamples.assessment}</code>
@@ -207,23 +212,23 @@ export default function ApiPage() {
           {/* Rate Limits */}
           <Card className="mt-16 p-8">
             <Heading level={3} className="mb-4">
-              Rate Limiting
+              {t('rateLimiting.title')}
             </Heading>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              API requests are limited to ensure fair usage and system stability.
+              {t('rateLimiting.subtitle')}
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
                 <div className="text-2xl font-bold text-lavender">100</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Requests per minute</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('rateLimiting.perMinute')}</div>
               </div>
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
                 <div className="text-2xl font-bold text-lavender">1000</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Requests per hour</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('rateLimiting.perHour')}</div>
               </div>
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
                 <div className="text-2xl font-bold text-lavender">10000</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Requests per day</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('rateLimiting.perDay')}</div>
               </div>
             </div>
           </Card>

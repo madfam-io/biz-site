@@ -2,8 +2,10 @@ import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import Link from 'next/link';
 import { ServiceCard } from '@/components/ServiceCard';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default function Level1EssentialsPage() {
+export default function Level1EssentialsPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L1_ESSENTIALS];
   const otherServices = [
     serviceTiers[ServiceTier.L2_ADVANCED],

@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
 import { Container, Heading } from '@madfam/ui';
 import { ProjectEstimator } from '@/components/ProjectEstimator';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'Estimador de Proyectos - MADFAM',
   description: 'Obtén una estimación instantánea para tu proyecto de transformación digital. Precio, tiempo y equipo recomendado.',
 };
 
-export default function EstimatorPage() {
+export default function EstimatorPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   return (
     <main className="py-section">
       <Container>

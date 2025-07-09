@@ -1,7 +1,9 @@
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default function AboutPage() {
+export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const team = [
     {
       name: 'Aldo Ruiz Luna',

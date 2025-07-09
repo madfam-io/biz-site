@@ -1,5 +1,7 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 const guides = [
   {
@@ -100,23 +102,26 @@ const guides = [
   },
 ];
 
-const difficultyColors = {
-  Beginner: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
-  Intermediate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400',
-  Advanced: 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400',
-};
-
-export default function GuidesPage() {
+export default function GuidesPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
+  const t = useTranslations('guides');
+  
+  const difficultyColors = {
+    [t('difficulty.beginner')]: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
+    [t('difficulty.intermediate')]: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400',
+    [t('difficulty.advanced')]: 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400',
+  };
+  
   return (
     <main className="min-h-screen py-20">
       <Container>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Heading level={1} className="mb-4">
-              Guides & Tutorials
+              {t('title')}
             </Heading>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Step-by-step guides to help you make the most of MADFAM's services and build amazing solutions.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -124,19 +129,19 @@ export default function GuidesPage() {
           <Card className="mb-12 p-8 bg-gradient-to-br from-lavender/10 to-sun/10">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-2xl">⭐</span>
-              <span className="text-sm font-semibold text-lavender">Featured Guide</span>
+              <span className="text-sm font-semibold text-lavender">{t('featured.badge')}</span>
             </div>
             <Heading level={3} className="mb-2">
-              Complete Integration Tutorial
+              {t('featured.title')}
             </Heading>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Learn how to integrate MADFAM services from start to finish with our comprehensive tutorial.
+              {t('featured.description')}
             </p>
             <Link 
               href="/guides/complete-integration"
               className="inline-flex items-center text-lavender hover:text-lavender/80 font-medium"
             >
-              Start Tutorial →
+              {t('featured.startTutorial')} →
             </Link>
           </Card>
 
@@ -188,12 +193,12 @@ export default function GuidesPage() {
           {/* Video Tutorials */}
           <div className="mt-16">
             <Heading level={2} className="mb-8 text-center">
-              Video Tutorials
+              {t('videoTutorials.title')}
             </Heading>
             <Card className="p-8 text-center">
               <div className="mb-4 text-5xl">🎥</div>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Prefer learning through video? Check out our YouTube channel for video tutorials and demos.
+                {t('videoTutorials.description')}
               </p>
               <Link 
                 href="https://youtube.com/@madfam"
@@ -201,7 +206,7 @@ export default function GuidesPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-lavender hover:text-lavender/80 font-medium"
               >
-                Watch on YouTube
+                {t('videoTutorials.watchYoutube')}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>

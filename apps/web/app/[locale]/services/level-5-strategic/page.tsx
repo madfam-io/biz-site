@@ -1,8 +1,10 @@
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ServiceCard } from '@/components/ServiceCard';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default function Level5StrategicPage() {
+export default function Level5StrategicPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L5_STRATEGIC];
   const otherServices = [
     serviceTiers[ServiceTier.L3_CONSULTING],

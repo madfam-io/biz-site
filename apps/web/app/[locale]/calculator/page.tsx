@@ -2,13 +2,15 @@ import { Metadata } from 'next';
 import { Container, Heading } from '@madfam/ui';
 import { ROICalculator } from '@/components/ROICalculator';
 import { ServiceTier } from '@madfam/core';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'Calculadora de ROI - MADFAM',
   description: 'Descubre el retorno de inversión potencial de nuestros servicios de transformación digital y consultoría AI.',
 };
 
-export default function CalculatorPage() {
+export default function CalculatorPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   return (
     <main className="py-section">
       <Container>

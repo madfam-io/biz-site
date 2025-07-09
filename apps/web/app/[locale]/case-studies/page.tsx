@@ -1,5 +1,7 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 const caseStudies = [
   {
@@ -46,17 +48,20 @@ const caseStudies = [
   },
 ];
 
-export default function CaseStudiesPage() {
+export default function CaseStudiesPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
+  const t = useTranslations('caseStudies');
+  
   return (
     <main className="min-h-screen py-20">
       <Container>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Heading level={1} className="mb-4">
-              Case Studies
+              {t('title')}
             </Heading>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Real-world success stories of how we've helped businesses transform and thrive in the digital age.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -81,7 +86,7 @@ export default function CaseStudiesPage() {
                     <div className="space-y-4 mb-6">
                       <div>
                         <h3 className="font-semibold text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-2">
-                          Challenge
+                          {t('challenge')}
                         </h3>
                         <p className="text-gray-600 dark:text-gray-400">
                           {study.challenge}
@@ -90,7 +95,7 @@ export default function CaseStudiesPage() {
                       
                       <div>
                         <h3 className="font-semibold text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-2">
-                          Solution
+                          {t('solution')}
                         </h3>
                         <p className="text-gray-600 dark:text-gray-400">
                           {study.solution}
@@ -100,7 +105,7 @@ export default function CaseStudiesPage() {
                     
                     <div className="mb-6">
                       <h3 className="font-semibold text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-3">
-                        Results
+                        {t('results')}
                       </h3>
                       <ul className="space-y-2">
                         {study.results.map((result, index) => (
@@ -118,7 +123,7 @@ export default function CaseStudiesPage() {
                       href={`/case-studies/${study.id}`}
                       className="inline-flex items-center text-lavender hover:text-lavender/80 font-medium transition-colors"
                     >
-                      Read full case study →
+                      {t('readFullCase')} →
                     </Link>
                   </div>
                   

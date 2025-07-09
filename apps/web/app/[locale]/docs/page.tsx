@@ -1,60 +1,65 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-const documentationSections = [
-  {
-    title: 'Getting Started',
-    description: 'Quick start guides and overview of our services',
-    items: [
-      { title: 'Introduction to MADFAM', href: '/docs/intro' },
-      { title: 'Service Overview', href: '/docs/services' },
-      { title: 'Platform Architecture', href: '/docs/architecture' },
-      { title: 'Security & Compliance', href: '/docs/security' },
-    ],
-  },
-  {
-    title: 'API Documentation',
-    description: 'Technical documentation for our APIs and integrations',
-    items: [
-      { title: 'API Reference', href: '/api' },
-      { title: 'Authentication', href: '/docs/auth' },
-      { title: 'Rate Limiting', href: '/docs/rate-limits' },
-      { title: 'Webhooks', href: '/docs/webhooks' },
-    ],
-  },
-  {
-    title: 'Guides & Tutorials',
-    description: 'Step-by-step guides for common use cases',
-    items: [
-      { title: 'Integration Guides', href: '/guides' },
-      { title: 'Best Practices', href: '/docs/best-practices' },
-      { title: 'Migration Guide', href: '/docs/migration' },
-      { title: 'Troubleshooting', href: '/docs/troubleshooting' },
-    ],
-  },
-  {
-    title: 'Resources',
-    description: 'Additional resources and support materials',
-    items: [
-      { title: 'Case Studies', href: '/case-studies' },
-      { title: 'Blog & Updates', href: '/blog' },
-      { title: 'Support Center', href: '/docs/support' },
-      { title: 'Community Forum', href: '/docs/community' },
-    ],
-  },
-];
+export default function DocsPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
+  const t = useTranslations('docs');
+  
+  const documentationSections = [
+    {
+      title: t('categories.gettingStarted.title'),
+      description: t('categories.gettingStarted.description'),
+      items: [
+        { title: 'Introduction to MADFAM', href: '/docs/intro' },
+        { title: 'Service Overview', href: '/docs/services' },
+        { title: 'Platform Architecture', href: '/docs/architecture' },
+        { title: 'Security & Compliance', href: '/docs/security' },
+      ],
+    },
+    {
+      title: t('categories.api.title'),
+      description: t('categories.api.description'),
+      items: [
+        { title: 'API Reference', href: '/api' },
+        { title: 'Authentication', href: '/docs/auth' },
+        { title: 'Rate Limiting', href: '/docs/rate-limits' },
+        { title: 'Webhooks', href: '/docs/webhooks' },
+      ],
+    },
+    {
+      title: t('categories.guides.title'),
+      description: t('categories.guides.description'),
+      items: [
+        { title: 'Integration Guides', href: '/guides' },
+        { title: 'Best Practices', href: '/docs/best-practices' },
+        { title: 'Migration Guide', href: '/docs/migration' },
+        { title: 'Troubleshooting', href: '/docs/troubleshooting' },
+      ],
+    },
+    {
+      title: t('categories.resources.title'),
+      description: t('categories.resources.description'),
+      items: [
+        { title: 'Case Studies', href: '/case-studies' },
+        { title: 'Blog & Updates', href: '/blog' },
+        { title: 'Support Center', href: '/docs/support' },
+        { title: 'Community Forum', href: '/docs/community' },
+      ],
+    },
+  ];
 
-export default function DocsPage() {
   return (
     <main className="min-h-screen py-20">
       <Container>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <Heading level={1} className="mb-4">
-              Documentation
+              {t('title')}
             </Heading>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Everything you need to know about working with MADFAM's services and platforms.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -63,7 +68,7 @@ export default function DocsPage() {
             <div className="relative">
               <input
                 type="search"
-                placeholder="Search documentation..."
+                placeholder={t('searchPlaceholder')}
                 className="w-full px-4 py-3 pl-12 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-lavender"
               />
               <svg
@@ -112,7 +117,7 @@ export default function DocsPage() {
           {/* Popular Topics */}
           <div className="mt-16">
             <Heading level={2} className="mb-8 text-center">
-              Popular Topics
+              {t('popularTopics')}
             </Heading>
             <div className="flex flex-wrap gap-3 justify-center">
               {[
@@ -139,23 +144,23 @@ export default function DocsPage() {
           {/* Help Section */}
           <Card className="mt-16 p-8 text-center bg-gradient-to-br from-lavender/10 to-sun/10">
             <Heading level={3} className="mb-4">
-              Need Help?
+              {t('needHelp.title')}
             </Heading>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Can't find what you're looking for? Our support team is here to help.
+              {t('needHelp.subtitle')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
                 className="px-6 py-3 bg-lavender text-white rounded-lg hover:bg-lavender/90 transition-colors"
               >
-                Contact Support
+                {t('needHelp.contactSupport')}
               </Link>
               <Link
                 href="/docs/faq"
                 className="px-6 py-3 border border-lavender text-lavender rounded-lg hover:bg-lavender/10 transition-colors"
               >
-                View FAQ
+                {t('needHelp.viewFaq')}
               </Link>
             </div>
           </Card>

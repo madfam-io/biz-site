@@ -1,4 +1,5 @@
 import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 interface Product {
   id: string;
@@ -82,7 +83,8 @@ const products: Product[] = [
   },
 ];
 
-export default function ProductsPage() {
+export default function ProductsPage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   return (
     <main className="min-h-screen">
       {/* Hero Section */}

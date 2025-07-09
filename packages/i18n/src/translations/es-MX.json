@@ -141,5 +141,160 @@
         "scheduleNow": "Agendar consulta ahora"
       }
     }
+  },
+  "careers": {
+    "title": "Únete al equipo MADFAM",
+    "subtitle": "Estamos construyendo el futuro de la transformación empresarial. Únete a nosotros para crear soluciones innovadoras que ayuden a las empresas a prosperar en la era digital.",
+    "culture": {
+      "title": "Nuestra cultura",
+      "innovation": {
+        "title": "Innovación primero",
+        "description": "Adoptamos nuevas tecnologías y soluciones creativas para resolver problemas complejos."
+      },
+      "collaboration": {
+        "title": "Espíritu colaborativo",
+        "description": "Creemos en el poder del trabajo en equipo y valoramos las perspectivas diversas."
+      },
+      "growth": {
+        "title": "Mentalidad de crecimiento",
+        "description": "Estamos comprometidos con el aprendizaje continuo y el desarrollo personal."
+      }
+    },
+    "benefits": {
+      "title": "Beneficios y ventajas",
+      "list": {
+        "health": "Seguro médico integral",
+        "pto": "Política flexible de días libres",
+        "remote": "Cultura remota primero",
+        "learning": "Presupuesto de aprendizaje y desarrollo",
+        "bonus": "Bonos por desempeño",
+        "home": "Estipendio para oficina en casa"
+      }
+    },
+    "positions": {
+      "title": "Posiciones abiertas",
+      "department": "Departamento",
+      "location": "Ubicación",
+      "type": "Tipo",
+      "applyNow": "Aplicar ahora"
+    },
+    "cta": {
+      "title": "¿No ves la posición adecuada?",
+      "subtitle": "Siempre estamos buscando personas talentosas. ¡Envíanos tu currículum y hablemos!",
+      "sendResume": "Enviar tu currículum"
+    }
+  },
+  "blog": {
+    "title": "Blog e insights",
+    "subtitle": "Pensamientos, historias e ideas del equipo MADFAM sobre tecnología, innovación y transformación empresarial.",
+    "readMore": "Leer más",
+    "by": "Por",
+    "minRead": "min de lectura"
+  },
+  "caseStudies": {
+    "title": "Casos de éxito",
+    "subtitle": "Historias reales de cómo hemos ayudado a las empresas a transformarse y prosperar en la era digital.",
+    "challenge": "Desafío",
+    "solution": "Solución",
+    "results": "Resultados",
+    "readFullCase": "Leer caso completo"
+  },
+  "docs": {
+    "title": "Documentación",
+    "subtitle": "Todo lo que necesitas saber para trabajar con los servicios y plataformas de MADFAM.",
+    "searchPlaceholder": "Buscar documentación...",
+    "categories": {
+      "gettingStarted": {
+        "title": "Comenzando",
+        "description": "Guías de inicio rápido y descripción general de nuestros servicios"
+      },
+      "api": {
+        "title": "Documentación API",
+        "description": "Documentación técnica para nuestras APIs e integraciones"
+      },
+      "guides": {
+        "title": "Guías y tutoriales",
+        "description": "Guías paso a paso para casos de uso comunes"
+      },
+      "resources": {
+        "title": "Recursos",
+        "description": "Recursos adicionales y materiales de apoyo"
+      }
+    },
+    "popularTopics": "Temas populares",
+    "needHelp": {
+      "title": "¿Necesitas ayuda?",
+      "subtitle": "¿No encuentras lo que buscas? Nuestro equipo de soporte está aquí para ayudarte.",
+      "contactSupport": "Contactar soporte",
+      "viewFaq": "Ver preguntas frecuentes"
+    }
+  },
+  "api": {
+    "title": "Referencia API",
+    "subtitle": "Referencia completa para los endpoints de la API de MADFAM, autenticación y ejemplos de integración.",
+    "baseUrl": "URL base",
+    "authentication": "Autenticación",
+    "assessment": "Evaluación",
+    "calculator": "Calculadora",
+    "leads": "Prospectos",
+    "codeExamples": "Ejemplos de código",
+    "authExample": "Ejemplo de autenticación",
+    "assessmentExample": "Envío de evaluación",
+    "rateLimiting": {
+      "title": "Límite de tasa",
+      "subtitle": "Las solicitudes de API están limitadas para garantizar un uso justo y la estabilidad del sistema.",
+      "perMinute": "Solicitudes por minuto",
+      "perHour": "Solicitudes por hora",
+      "perDay": "Solicitudes por día"
+    }
+  },
+  "guides": {
+    "title": "Guías y tutoriales",
+    "subtitle": "Guías paso a paso para ayudarte a aprovechar al máximo los servicios de MADFAM y crear soluciones increíbles.",
+    "featured": {
+      "badge": "Guía destacada",
+      "title": "Tutorial completo de integración",
+      "description": "Aprende a integrar los servicios de MADFAM de principio a fin con nuestro tutorial completo.",
+      "startTutorial": "Comenzar tutorial"
+    },
+    "difficulty": {
+      "beginner": "Principiante",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado"
+    },
+    "videoTutorials": {
+      "title": "Tutoriales en video",
+      "description": "¿Prefieres aprender a través de videos? Visita nuestro canal de YouTube para tutoriales y demos en video.",
+      "watchYoutube": "Ver en YouTube"
+    }
+  },
+  "cookies": {
+    "title": "Política de cookies",
+    "lastUpdated": "Última actualización",
+    "sections": {
+      "whatAreCookies": {
+        "title": "¿Qué son las cookies?",
+        "description": "Las cookies son pequeños archivos de texto que se colocan en tu computadora o dispositivo móvil cuando visitas nuestro sitio web. Se utilizan ampliamente para hacer que los sitios web funcionen de manera más eficiente y brindar una mejor experiencia de usuario."
+      },
+      "howWeUse": {
+        "title": "Cómo usamos las cookies",
+        "description": "Usamos cookies para los siguientes propósitos:",
+        "essential": "Cookies esenciales",
+        "analytics": "Cookies analíticas",
+        "preference": "Cookies de preferencia",
+        "marketing": "Cookies de marketing"
+      },
+      "managing": {
+        "title": "Gestión de cookies",
+        "description": "Puedes controlar y administrar las cookies a través de la configuración de tu navegador. Ten en cuenta que eliminar o bloquear las cookies puede afectar tu experiencia de usuario y es posible que algunas partes de nuestro sitio web ya no sean completamente accesibles."
+      },
+      "contact": {
+        "title": "Contáctanos",
+        "description": "Si tienes preguntas sobre nuestro uso de cookies o esta política, contáctanos en:",
+        "email": "Correo electrónico",
+        "phone": "Teléfono",
+        "address": "Dirección"
+      }
+    }
   }
 }
