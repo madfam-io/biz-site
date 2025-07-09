@@ -6,55 +6,41 @@ This monorepo requires specific configuration for successful Vercel deployment.
 
 This error occurs because Vercel looks for Next.js in the root `package.json`, but in our monorepo structure, Next.js is installed in `apps/web/package.json`.
 
-## Solution Options
+## Solution (Verified Working Approach)
 
-### Option 1: Configure Root Directory in Vercel Dashboard (Recommended)
+### Configure Root Directory in Vercel Dashboard
 
 1. Go to your Vercel project settings
 2. Under "General" → "Root Directory", click "Edit"
 3. Set the value to `apps/web`
 4. Save the changes
+5. Trigger a new deployment
 
-This tells Vercel to treat `apps/web` as the root of your Next.js application.
+This tells Vercel to treat `apps/web` as the root of your Next.js application, allowing it to properly detect Next.js from the correct package.json file.
 
-### Option 2: Use Root-Level vercel.json (Current Configuration)
+**Important**: Do not use a root-level vercel.json file as it can interfere with Vercel's auto-detection in monorepo setups.
 
-The root `vercel.json` is configured to:
-```json
-{
-  "framework": "nextjs",
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm turbo build --filter=@madfam/web",
-  "outputDirectory": "apps/web/.next",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet ."
-}
-```
+### Why This Works
 
-This uses Turborepo to build only the web app while maintaining the monorepo structure.
-
-### Option 3: Use App-Level vercel.json
-
-There's also a `vercel.json` in `apps/web/` that explicitly sets:
-```json
-{
-  "framework": "nextjs",
-  "outputDirectory": ".next"
-}
-```
-
-If you use this approach, set the Root Directory to `apps/web` in Vercel Dashboard.
+- Vercel will look for package.json in the specified root directory (`apps/web`)
+- It will properly detect Next.js as a dependency
+- The build process will use the monorepo's root for installing dependencies
+- Turborepo will handle the build orchestration automatically
 
 ## Deployment Steps
 
 1. **For new Vercel projects:**
    - Import your Git repository
    - When prompted, set Root Directory to `apps/web`
-   - Vercel should auto-detect Next.js framework
+   - Vercel will auto-detect Next.js framework
+   - Leave all other settings as default
    - Deploy
 
 2. **For existing Vercel projects:**
    - Go to Project Settings → General
    - Update Root Directory to `apps/web`
+   - Ensure Framework Preset shows "Next.js" (should auto-detect)
+   - Clear build cache if needed (Settings → Advanced → Delete Build Cache)
    - Trigger a new deployment
 
 ## Monorepo Structure
@@ -90,14 +76,27 @@ If deployment still fails:
    cat apps/web/package.json | grep next
    ```
 
-2. **Check Vercel build logs for specific errors**
+2. **Check Framework Preset in Vercel:**
+   - Go to Settings → General → Build & Development Settings
+   - Ensure Framework Preset is set to "Next.js" not "Other"
+   - If it shows "Other", manually select "Next.js"
 
-3. **Try clearing Vercel cache:**
+3. **Clear Vercel cache:**
    - In Vercel Dashboard → Settings → Advanced → Delete Build Cache
+   - This forces a fresh build
 
-4. **Ensure pnpm version matches:**
+4. **Verify Root Directory:**
+   - Ensure Root Directory is exactly `apps/web` (no leading or trailing slashes)
+   - The directory path is case-sensitive
+
+5. **Check pnpm version:**
    - Root `package.json` specifies `"packageManager": "pnpm@8.14.1"`
    - Vercel should use this version automatically
+
+6. **Common Mistakes to Avoid:**
+   - Don't use a root-level vercel.json with monorepos
+   - Don't add Next.js to root package.json (unnecessary)
+   - Don't use relative paths in Root Directory setting
 
 ## Additional Resources
 

@@ -1,0 +1,44 @@
+# Ignore non-web apps in monorepo
+apps/cms
+services
+
+# Development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Documentation
+docs
+*.md
+
+# Git
+.git
+.gitignore
+
+# Dependencies (Vercel will install fresh)
+node_modules
+.pnpm-store
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage
+.nyc_output
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cache directories
+.turbo
+.next/cache
