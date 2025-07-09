@@ -4,8 +4,8 @@ const nextConfig = {
   swcMinify: true,
   transpilePackages: ['@madfam/ui', '@madfam/core', '@madfam/analytics', '@madfam/i18n'],
   
-  // Use static export for GitHub Pages, standalone for production
-  output: process.env.DEPLOY_TARGET === 'github-pages' ? 'export' : 'standalone',
+  // Use static export for GitHub Pages, default for Vercel
+  output: process.env.DEPLOY_TARGET === 'github-pages' ? 'export' : undefined,
   
   // Configure base path for GitHub Pages
   basePath: process.env.DEPLOY_TARGET === 'github-pages' ? '/biz-site' : '',

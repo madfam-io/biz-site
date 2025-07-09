@@ -1,5 +1,3 @@
 {
-  "buildCommand": "pnpm build --filter=@madfam/web",
-  "installCommand": "pnpm install",
-  "outputDirectory": "apps/web/.next"
+  "rootDirectory": "apps/web"
 }
