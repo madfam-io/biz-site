@@ -3,12 +3,22 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   transpilePackages: ['@madfam/ui', '@madfam/core', '@madfam/analytics', '@madfam/i18n'],
-  output: 'standalone',
+  
+  // Use static export for GitHub Pages, standalone for production
+  output: process.env.DEPLOY_TARGET === 'github-pages' ? 'export' : 'standalone',
+  
+  // Configure base path for GitHub Pages
+  basePath: process.env.DEPLOY_TARGET === 'github-pages' ? '/biz-site' : '',
+  
+  // Disable server-side features for static export
+  trailingSlash: process.env.DEPLOY_TARGET === 'github-pages',
   
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     minimumCacheTTL: 31536000,
+    // Disable image optimization for static export
+    unoptimized: process.env.DEPLOY_TARGET === 'github-pages',
   },
 
   async headers() {

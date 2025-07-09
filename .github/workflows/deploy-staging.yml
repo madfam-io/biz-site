@@ -48,13 +48,14 @@ jobs:
           NEXT_PUBLIC_ENV: staging
           NEXT_PUBLIC_API_URL: ${{ secrets.STAGING_API_URL }}
           NEXT_PUBLIC_FEATURE_FLAGS: ${{ secrets.STAGING_FEATURES }}
-        run: |
-          pnpm build:staging
-
-      - name: Export static site
+          DEPLOY_TARGET: github-pages
         run: |
           cd apps/web
-          pnpm export
+          pnpm build:staging
+
+      - name: Prepare static export
+        run: |
+          cd apps/web
           touch out/.nojekyll
           echo 'staging.madfam.io' > out/CNAME
 

@@ -4,6 +4,8 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { DarkModeScript } from './dark-mode-script';
 import { CookieConsent } from '@/components/CookieConsent';
+import { OrganizationStructuredData } from '@/components/StructuredData';
+import { seoService } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({
@@ -26,65 +28,7 @@ const spaceMono = Space_Mono({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'MADFAM - AI-Driven Consultancy & Product Studio',
-    template: '%s | MADFAM',
-  },
-  description:
-    'Transform your business with MADFAM\'s AI-powered solutions. From 3D design to strategic vCTO partnerships, we deliver innovation at every level.',
-  keywords: [
-    'AI consultancy',
-    'digital transformation',
-    'product studio',
-    'SPARK platform',
-    'PENNY automation',
-    '3D design',
-    'Mexico tech',
-    'LATAM innovation',
-  ],
-  authors: [{ name: 'MADFAM', url: 'https://madfam.io' }],
-  creator: 'MADFAM',
-  metadataBase: new URL('https://madfam.io'),
-  openGraph: {
-    type: 'website',
-    locale: 'es_MX',
-    alternateLocale: ['en_US', 'pt_BR'],
-    url: 'https://madfam.io',
-    siteName: 'MADFAM',
-    title: 'MADFAM - AI-Driven Consultancy & Product Studio',
-    description:
-      'Transform your business with MADFAM\'s AI-powered solutions. From 3D design to strategic vCTO partnerships.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'MADFAM - Where AI meets Human Creativity',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'MADFAM - AI-Driven Consultancy & Product Studio',
-    description:
-      'Transform your business with MADFAM\'s AI-powered solutions.',
-    site: '@madfam_io',
-    creator: '@madfam_io',
-    images: ['/twitter-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-};
+export const metadata: Metadata = seoService.generateHomeMetadata('es-MX');
 
 export const viewport = {
   themeColor: [
@@ -104,6 +48,7 @@ export default function RootLayout({
         <DarkModeScript />
       </head>
       <body className="font-body antialiased bg-white dark:bg-obsidian text-obsidian dark:text-pearl transition-colors">
+        <OrganizationStructuredData />
         <Navbar />
         <div className="pt-16">
           {children}

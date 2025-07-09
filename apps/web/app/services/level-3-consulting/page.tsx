@@ -1,6 +1,18 @@
 import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ROICalculator } from '@/components/ROICalculator';
+import { ServiceStructuredData } from '@/components/StructuredData';
+import { seoService } from '@/lib/seo';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return seoService.generateServiceMetadata(
+    'Consultoría en Transformación Digital',
+    'Roadmap personalizado, capacitación de equipos y métricas de impacto para tu transformación digital',
+    'L3 - Consulting',
+    'es-MX'
+  );
+}
 
 export default function Level3ConsultingPage() {
   const service = serviceTiers[ServiceTier.L3_CONSULTING];
@@ -69,7 +81,13 @@ export default function Level3ConsultingPage() {
   ];
 
   return (
-    <main className="min-h-screen">
+    <>
+      <ServiceStructuredData
+        name="Consultoría en Transformación Digital"
+        description="Roadmap personalizado, capacitación de equipos y métricas de impacto para tu transformación digital"
+        serviceType="Consulting"
+      />
+      <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 bg-gradient-to-br from-lavender/10 to-sun/10">
         <Container>
@@ -290,5 +308,6 @@ export default function Level3ConsultingPage() {
         </Container>
       </section>
     </main>
+    </>
   );
 }

@@ -2,6 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { ServiceTier } from '@madfam/core';
 import { analytics } from '@madfam/analytics';
+import { prisma } from '@/lib/prisma';
+import { LeadSource, LeadStatus, ServiceTier as PrismaServiceTier } from '@prisma/client';
+
+// Map between core ServiceTier and Prisma ServiceTier
+const serviceTierMap: Record<ServiceTier, PrismaServiceTier> = {
+  [ServiceTier.L1_ESSENTIALS]: PrismaServiceTier.L1_ESSENTIALS,
+  [ServiceTier.L2_ADVANCED]: PrismaServiceTier.L2_ADVANCED,
+  [ServiceTier.L3_CONSULTING]: PrismaServiceTier.L3_CONSULTING,
+  [ServiceTier.L4_PLATFORMS]: PrismaServiceTier.L4_PLATFORMS,
+  [ServiceTier.L5_STRATEGIC]: PrismaServiceTier.L5_STRATEGIC,
+};
 
 // Lead schema validation
 const leadSchema = z.object({
@@ -60,9 +71,6 @@ function calculateLeadScore(lead: LeadData): number {
   return Math.min(score, 100); // Cap at 100
 }
 
-// Simulate lead storage (in production, this would be a database)
-const leads: Array<LeadData & { id: string; score: number; createdAt: Date }> = [];
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -73,16 +81,38 @@ export async function POST(request: NextRequest) {
     // Calculate lead score
     const score = calculateLeadScore(validatedData);
     
-    // Create lead record
-    const lead = {
-      id: `lead_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      ...validatedData,
-      score,
-      createdAt: new Date(),
-    };
+    // Extract user agent and IP for tracking
+    const userAgent = request.headers.get('user-agent') || undefined;
+    const ipAddress = request.headers.get('x-forwarded-for')?.split(',')[0] || 
+                     request.headers.get('x-real-ip') || 
+                     undefined;
     
-    // Store lead (in production, save to database)
-    leads.push(lead);
+    // Split name into firstName and lastName
+    const nameParts = validatedData.name.split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ') || undefined;
+    
+    // Create lead in database
+    const lead = await prisma.lead.create({
+      data: {
+        email: validatedData.email,
+        firstName,
+        lastName,
+        company: validatedData.company,
+        phone: validatedData.phone,
+        tier: validatedData.tier ? serviceTierMap[validatedData.tier] : PrismaServiceTier.L1_ESSENTIALS,
+        message: validatedData.message,
+        source: LeadSource.WEBSITE,
+        score,
+        status: LeadStatus.NEW,
+        userAgent,
+        ipAddress,
+        // Store additional metadata
+        utmSource: (validatedData.metadata?.utm_source as string) || undefined,
+        utmMedium: (validatedData.metadata?.utm_medium as string) || undefined,
+        utmCampaign: (validatedData.metadata?.utm_campaign as string) || undefined,
+      },
+    });
     
     // Track analytics
     analytics.trackLeadCaptured({
@@ -91,20 +121,57 @@ export async function POST(request: NextRequest) {
       form: 'main-lead-form',
     });
     
-    // In production, you would:
-    // 1. Save to database
-    // 2. Send to CRM
-    // 3. Trigger n8n webhook
-    // 4. Send confirmation email
+    // Track in database analytics
+    await prisma.analyticsEvent.create({
+      data: {
+        event: 'lead_captured',
+        properties: {
+          leadId: lead.id,
+          tier: lead.tier,
+          score: lead.score,
+          source: lead.source,
+        },
+        url: request.headers.get('referer') || undefined,
+        userAgent,
+        ipAddress,
+      },
+    });
     
-    // Simulate n8n webhook (in production, use actual webhook)
+    // Queue welcome email
+    await prisma.emailQueue.create({
+      data: {
+        to: [lead.email],
+        subject: validatedData.preferredLanguage === 'es-MX' 
+          ? 'Bienvenido a MADFAM' 
+          : 'Welcome to MADFAM',
+        template: 'welcome',
+        data: {
+          name: validatedData.name,
+          language: validatedData.preferredLanguage,
+          tier: lead.tier,
+        },
+      },
+    });
+    
+    // Trigger n8n webhook
     if (process.env.N8N_WEBHOOK_URL) {
       fetch(process.env.N8N_WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-API-Key': process.env.N8N_API_KEY || '',
+        },
         body: JSON.stringify({
           event: 'lead.created',
-          data: lead,
+          data: {
+            id: lead.id,
+            email: lead.email,
+            name: validatedData.name,
+            company: lead.company,
+            tier: lead.tier,
+            score: lead.score,
+            source: lead.source,
+          },
         }),
       }).catch(console.error);
     }
@@ -143,22 +210,67 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Get leads (protected endpoint - in production, add authentication)
+// Get leads (protected endpoint)
 export async function GET(request: NextRequest) {
-  // In production, check authentication
-  const authHeader = request.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.API_SECRET}`) {
+  try {
+    // Check authentication
+    const authHeader = request.headers.get('authorization');
+    if (authHeader !== `Bearer ${process.env.API_SECRET}`) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+    
+    // Parse query parameters
+    const { searchParams } = new URL(request.url);
+    const page = parseInt(searchParams.get('page') || '1');
+    const limit = parseInt(searchParams.get('limit') || '20');
+    const status = searchParams.get('status') as LeadStatus | null;
+    const tier = searchParams.get('tier') as PrismaServiceTier | null;
+    
+    // Build where clause
+    const where = {
+      ...(status && { status }),
+      ...(tier && { tier }),
+    };
+    
+    // Fetch leads with pagination
+    const [leads, total] = await Promise.all([
+      prisma.lead.findMany({
+        where,
+        orderBy: [
+          { score: 'desc' },
+          { createdAt: 'desc' },
+        ],
+        skip: (page - 1) * limit,
+        take: limit,
+        include: {
+          notes: {
+            orderBy: { createdAt: 'desc' },
+            take: 1,
+          },
+          activities: {
+            orderBy: { createdAt: 'desc' },
+            take: 5,
+          },
+        },
+      }),
+      prisma.lead.count({ where }),
+    ]);
+    
+    return NextResponse.json({
+      leads,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    });
+  } catch (error) {
+    console.error('Error fetching leads:', error);
     return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
+      { error: 'Failed to fetch leads' },
+      { status: 500 }
     );
   }
-  
-  // Return leads sorted by score
-  const sortedLeads = [...leads].sort((a, b) => b.score - a.score);
-  
-  return NextResponse.json({
-    leads: sortedLeads,
-    total: leads.length,
-  });
 }
