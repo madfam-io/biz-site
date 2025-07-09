@@ -25,6 +25,29 @@ const nextConfig = {
     unoptimized: process.env.DEPLOY_TARGET === 'github-pages',
   },
 
+  async rewrites() {
+    // Generate rewrites from i18n configuration
+    const rewrites = [];
+    
+    // Spanish rewrites
+    rewrites.push(
+      { source: '/es-MX/servicios', destination: '/es-MX/services' },
+      { source: '/es-MX/productos', destination: '/es-MX/products' },
+      { source: '/es-MX/nosotros', destination: '/es-MX/about' },
+      { source: '/es-MX/contacto', destination: '/es-MX/contact' },
+    );
+    
+    // TODO: Portuguese rewrites (when translations are complete)
+    // rewrites.push(
+    //   { source: '/pt-BR/servicos', destination: '/pt-BR/services' },
+    //   { source: '/pt-BR/produtos', destination: '/pt-BR/products' },
+    //   { source: '/pt-BR/sobre', destination: '/pt-BR/about' },
+    //   { source: '/pt-BR/contato', destination: '/pt-BR/contact' },
+    // );
+    
+    return rewrites;
+  },
+
   async headers() {
     return [
       {

@@ -1,0 +1,174 @@
+{
+  "common": {
+    "nav": {
+      "home": "Início",
+      "services": "Serviços",
+      "products": "Produtos",
+      "about": "Sobre",
+      "contact": "Contato",
+      "allServices": "Todos os serviços",
+      "freeConsultation": "Consulta gratuita"
+    },
+    "cta": {
+      "learnMore": "Saiba mais",
+      "getQuote": "Obter cotação",
+      "scheduleConsultation": "Agendar consulta",
+      "requestProposal": "Solicitar proposta",
+      "viewDemo": "Ver demonstração",
+      "downloadPortfolio": "Baixar portfólio",
+      "downloadBrochure": "Baixar brochura"
+    },
+    "footer": {
+      "rights": "Todos os direitos reservados",
+      "privacy": "Privacidade",
+      "terms": "Termos"
+    }
+  },
+  "footer": {
+    "sections": {
+      "services": "Serviços",
+      "products": "Produtos",
+      "company": "Empresa",
+      "resources": "Recursos"
+    },
+    "products": {
+      "documentation": "Documentação"
+    },
+    "company": {
+      "about": "Sobre",
+      "blog": "Blog",
+      "caseStudies": "Casos de sucesso",
+      "careers": "Carreiras"
+    },
+    "resources": {
+      "assessment": "Avaliação IA",
+      "calculator": "Calculadora ROI",
+      "guides": "Guias",
+      "contact": "Contato"
+    },
+    "tagline": "Onde a IA encontra a criatividade humana",
+    "cookies": "Cookies"
+  },
+  "home": {
+    "hero": {
+      "title": "Onde a IA encontra a criatividade humana",
+      "subtitle": "MADFAM transforma negócios com soluções alimentadas por IA. Do design 3D às parcerias estratégicas vCTO, oferecemos inovação em todos os níveis.",
+      "exploreServices": "Explorar serviços",
+      "viewProducts": "Ver produtos"
+    },
+    "services": {
+      "title": "Serviços de 5 níveis",
+      "subtitle": "De soluções rápidas à transformação estratégica, temos o nível perfeito para suas necessidades.",
+      "viewAll": "Ver todos os serviços"
+    },
+    "products": {
+      "title": "Nossos produtos",
+      "subtitle": "Plataformas revolucionárias que automatizam e otimizam seu negócio",
+      "spark": {
+        "description": "Plataforma de orquestração IA que conecta, automatiza e otimiza todos os seus processos de negócio em um só lugar."
+      },
+      "penny": {
+        "description": "Automação inteligente de processos que aprende, adapta e melhora continuamente seu fluxo de trabalho."
+      }
+    },
+    "cta": {
+      "title": "Pronto para transformar seu negócio?",
+      "subtitle": "Descubra como a MADFAM pode levar sua empresa ao próximo nível com IA e criatividade.",
+      "scheduleFree": "Agendar consulta gratuita",
+      "getStarted": "Começar",
+      "learnMore": "Saiba mais"
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Serviços projetados para cada estágio do seu crescimento",
+      "titleHighlight": "cada estágio do seu crescimento",
+      "subtitle": "De soluções rápidas à transformação estratégica completa. Encontre o nível perfeito para impulsionar seu negócio com IA."
+    },
+    "comparison": {
+      "title": "Compare nossos serviços",
+      "features": "Características",
+      "priceFrom": "Preço a partir de",
+      "duration": "Duração",
+      "idealFor": "Ideal para"
+    },
+    "notSure": {
+      "title": "Não tem certeza de qual nível precisa?",
+      "subtitle": "Nossa equipe ajudará você a identificar a solução perfeita para sua empresa",
+      "cta": "Agendar avaliação gratuita",
+      "getEstimate": "Obter estimativa instantânea"
+    },
+    "level3": {
+      "hero": {
+        "badge": "Nível 3 - Consultoria",
+        "title": "Transforme sua empresa com consultoria especializada em IA",
+        "scheduleInitial": "Agendar consulta inicial",
+        "downloadCase": "Baixar caso de estudo",
+        "typicalDuration": "duração típica",
+        "satisfaction": "satisfação do cliente"
+      },
+      "benefits": {
+        "title": "O que você obtém com nosso serviço de consultoria?",
+        "subtitle": "Mais que consultoria: um parceiro estratégico para sua transformação digital",
+        "items": {
+          "strategy": {
+            "title": "Estratégia personalizada",
+            "description": "Roadmap de transformação digital adaptado ao seu setor e objetivos específicos."
+          },
+          "training": {
+            "title": "Treinamento abrangente",
+            "description": "Workshops práticos para sua equipe dominar as ferramentas de IA."
+          },
+          "metrics": {
+            "title": "Métricas de impacto",
+            "description": "KPIs claros para medir o ROI da sua transformação digital."
+          },
+          "continuous": {
+            "title": "Melhoria contínua",
+            "description": "Sessões de acompanhamento mensais para otimizar resultados."
+          }
+        }
+      },
+      "process": {
+        "title": "Nosso processo comprovado",
+        "subtitle": "Uma abordagem estruturada para garantir resultados mensuráveis",
+        "steps": {
+          "diagnosis": {
+            "title": "Diagnóstico inicial",
+            "description": "Análise profunda dos seus processos atuais e oportunidades de melhoria."
+          },
+          "strategy": {
+            "title": "Design da estratégia",
+            "description": "Criação de um plano de transformação com objetivos claros e alcançáveis."
+          },
+          "implementation": {
+            "title": "Implementação guiada",
+            "description": "Workshops e treinamento prático para sua equipe."
+          },
+          "optimization": {
+            "title": "Otimização contínua",
+            "description": "Acompanhamento mensal e ajustes baseados em resultados."
+          }
+        }
+      },
+      "included": {
+        "title": "Tudo incluído na sua consultoria",
+        "investment": "Investimento",
+        "from": "A partir de",
+        "projectDuration": "Projeto de 3-6 meses",
+        "paymentPlan": "Plano de pagamento disponível",
+        "guaranteedROI": "ROI garantido em 6 meses",
+        "postSupport": "Suporte pós-implementação",
+        "requestProposal": "Solicitar proposta"
+      },
+      "testimonials": {
+        "title": "O que nossos clientes dizem"
+      },
+      "cta": {
+        "title": "Pronto para transformar sua empresa?",
+        "subtitle": "Agende uma consulta gratuita de 30 minutos para explorar como podemos ajudá-lo",
+        "scheduleNow": "Agendar consulta agora"
+      }
+    }
+  }
+}

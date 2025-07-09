@@ -8,9 +8,10 @@ export const i18nConfig = {
   localeNames: {
     'es-MX': 'Español (México)',
     'en-US': 'English (US)',
+    'pt-BR': 'Português (Brasil)',
   },
   
-  // Route translations
+  // Route translations - maps canonical routes to localized routes
   routes: {
     'es-MX': {
       '/services': '/servicios',
@@ -23,8 +24,19 @@ export const i18nConfig = {
       '/services/level-4-platforms': '/servicios/nivel-4-plataformas',
       '/services/level-5-strategic': '/servicios/nivel-5-estrategico',
     },
+    'pt-BR': {
+      '/services': '/servicos',
+      '/products': '/produtos',
+      '/about': '/sobre',
+      '/contact': '/contato',
+      '/services/level-1-essentials': '/servicos/nivel-1-essenciais',
+      '/services/level-2-advanced': '/servicos/nivel-2-avancado',
+      '/services/level-3-consulting': '/servicos/nivel-3-consultoria',
+      '/services/level-4-platforms': '/servicos/nivel-4-plataformas',
+      '/services/level-5-strategic': '/servicos/nivel-5-estrategico',
+    },
     'en-US': {
-      // English routes are the default
+      // English routes are the canonical/default routes
     },
   },
 } as const;
