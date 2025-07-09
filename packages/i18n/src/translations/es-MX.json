@@ -348,6 +348,45 @@
         "title": "Impacto medible",
         "subtitle": "Resultados que transforman negocios"
       }
+    },
+    "tier1": {
+      "title": "L1 - Esenciales",
+      "description": "Diseño 3D y soluciones IA rápidas para necesidades inmediatas",
+      "features": {
+        "0": "Modelado 3D y Renderizado",
+        "1": "Diseño Gráfico",
+        "2": "Animaciones Básicas"
+      },
+      "cta": "Obtener Cotización"
+    },
+    "tier2": {
+      "title": "L2 - Avanzado",
+      "description": "Diseño paramétrico y experiencias interactivas transformadoras",
+      "features": {
+        "0": "Diseño Paramétrico",
+        "1": "Experiencias AR/VR",
+        "2": "Visualización de Datos 3D"
+      },
+      "cta": "Agendar Demo"
+    },
+    "tier3": {
+      "title": "L3 - Consultoría",
+      "description": "Transforma tu empresa con consultoría especializada en IA",
+      "features": {
+        "0": "Estrategia Personalizada",
+        "1": "Capacitación Integral",
+        "2": "Métricas de Impacto"
+      },
+      "cta": "Agendar Consulta"
+    },
+    "tier5": {
+      "title": "L5 - Estratégico",
+      "description": "Asociación vCTO para liderar tu transformación digital",
+      "features": {
+        "0": "Estrategia Tecnológica",
+        "1": "Arquitectura Empresarial"
+      },
+      "cta": "Agendar Reunión Ejecutiva"
     }
   },
   "about": {
@@ -662,24 +701,74 @@
     }
   },
   "assessment": {
-    "title": "Evaluación de Madurez IA",
-    "subtitle": "Descubre el potencial de IA de tu empresa en solo 5 minutos",
-    "intro": "Responde algunas preguntas sobre tus procesos actuales y objetivos para recibir un informe personalizado con recomendaciones específicas para tu negocio.",
-    "start": "Comenzar evaluación",
-    "questions": {
-      "current": "Situación actual",
-      "goals": "Objetivos",
-      "challenges": "Desafíos",
-      "timeline": "Cronograma"
+    "progress": {
+      "question": "Pregunta",
+      "of": "de",
+      "completed": "completado"
     },
     "results": {
-      "title": "Tu informe de madurez IA",
-      "score": "Puntuación",
-      "level": "Nivel",
-      "recommendations": "Recomendaciones",
-      "nextSteps": "Próximos pasos",
-      "downloadReport": "Descargar informe completo",
-      "scheduleConsultation": "Agendar consultoría"
+      "title": "Resultados de tu evaluación",
+      "learnMore": "Conocer más sobre",
+      "retake": "Realizar evaluación nuevamente"
+    },
+    "questions": {
+      "currentTech": {
+        "question": "¿Cuál es el nivel tecnológico actual de tu empresa?",
+        "basic": "Básico - Principalmente herramientas manuales",
+        "intermediate": "Intermedio - Algunas herramientas digitales",
+        "advanced": "Avanzado - Múltiples sistemas integrados",
+        "cuttingEdge": "Vanguardia - IA y automatización existente"
+      },
+      "teamSize": {
+        "question": "¿Cuál es el tamaño de tu equipo técnico?",
+        "small": "1-5 personas",
+        "medium": "6-20 personas",
+        "large": "21-50 personas",
+        "enterprise": "Más de 50 personas"
+      },
+      "aiInterest": {
+        "question": "¿Qué área de IA te interesa más?",
+        "automation": "Automatización de procesos",
+        "analytics": "Análisis predictivo",
+        "customer": "Experiencia del cliente",
+        "operations": "Optimización operativa"
+      },
+      "timeline": {
+        "question": "¿Cuál es tu horizonte de implementación?",
+        "immediate": "Inmediato (0-3 meses)",
+        "short": "Corto plazo (3-6 meses)",
+        "medium": "Mediano plazo (6-12 meses)",
+        "long": "Largo plazo (12+ meses)"
+      },
+      "budget": {
+        "question": "¿Cuál es tu presupuesto estimado para transformación digital?",
+        "low": "Menos de $100k MXN",
+        "medium": "$100k - $500k MXN",
+        "high": "$500k - $1M MXN",
+        "enterprise": "Más de $1M MXN"
+      }
+    },
+    "recommendations": {
+      "l1": {
+        "title": "Servicios esenciales de diseño",
+        "description": "Comienza con servicios de diseño 3D y gráfico profesional."
+      },
+      "l2": {
+        "title": "Soluciones avanzadas de diseño",
+        "description": "Diseño paramétrico y experiencias interactivas para innovar."
+      },
+      "l3": {
+        "title": "Consultoría y capacitación especializada",
+        "description": "Workshops y consultoría te ayudarán a definir tu estrategia de IA."
+      },
+      "l4": {
+        "title": "Implementación de plataformas empresariales",
+        "description": "Es momento de implementar SPARK o PENNY para escalar tu operación."
+      },
+      "l5": {
+        "title": "Transformación estratégica completa",
+        "description": "Tu empresa está lista para una asociación vCTO y transformación integral."
+      }
     }
   },
   "calculator": {
@@ -869,186 +958,6 @@
     },
     "requiredFields": "Campos requeridos",
     "submit": "Enviar solicitud"
-  },
-  "estimator": {
-    "title": "Estimador de Proyectos",
-    "continue": "Continuar",
-    "back": "Volver",
-    "progress": {
-      "step": "Paso",
-      "of": "de",
-      "completed": "completado"
-    },
-    "steps": {
-      "projectType": {
-        "title": "¿Qué tipo de proyecto necesitas?"
-      },
-      "complexity": {
-        "title": "¿Cuál es la complejidad del proyecto?"
-      },
-      "features": {
-        "title": "¿Qué características necesitas?"
-      },
-      "timeline": {
-        "title": "¿Cuál es tu línea de tiempo?"
-      },
-      "industry": {
-        "title": "¿En qué industria operas?"
-      }
-    },
-    "projectTypes": {
-      "webApp": "Aplicación Web",
-      "mobileApp": "App Móvil",
-      "ecommerce": "E-commerce",
-      "automation": "Automatización",
-      "consulting": "Consultoría",
-      "custom": "Proyecto Personalizado"
-    },
-    "complexity": {
-      "simple": {
-        "label": "Simple",
-        "description": "Funcionalidad básica, diseño estándar"
-      },
-      "medium": {
-        "label": "Medio",
-        "description": "Funciones personalizadas, integración moderada"
-      },
-      "complex": {
-        "label": "Complejo",
-        "description": "Arquitectura avanzada, múltiples integraciones"
-      }
-    },
-    "features": {
-      "aiIntegration": "Integración de IA",
-      "realTime": "Tiempo Real",
-      "payment": "Procesamiento de Pagos",
-      "analytics": "Analytics Avanzado",
-      "multiLanguage": "Multi-idioma",
-      "offline": "Funcionalidad Offline",
-      "notifications": "Notificaciones Push",
-      "socialLogin": "Login Social",
-      "api": "API REST/GraphQL",
-      "adminPanel": "Panel de Administración"
-    },
-    "timeline": {
-      "urgent": {
-        "label": "Urgente",
-        "description": "Necesito empezar de inmediato"
-      },
-      "normal": {
-        "label": "Normal",
-        "description": "1-2 meses para empezar"
-      },
-      "flexible": {
-        "label": "Flexible",
-        "description": "Sin prisa específica"
-      }
-    },
-    "industries": {
-      "retail": "Retail",
-      "fintech": "Fintech",
-      "health": "Salud",
-      "education": "Educación",
-      "manufacturing": "Manufactura",
-      "services": "Servicios",
-      "government": "Gobierno",
-      "ngo": "ONG",
-      "other": "Otro"
-    },
-    "results": {
-      "title": "Tu estimación personalizada",
-      "investment": "Inversión estimada",
-      "duration": "Duración estimada",
-      "months": "meses",
-      "recommendedTeam": "Equipo recomendado",
-      "alsoConsider": "También podrías considerar:",
-      "requestProposal": "Solicitar propuesta detallada",
-      "anotherEstimate": "Hacer otra estimación"
-    },
-    "team": {
-      "iosDeveloper": "Desarrollador iOS/Android",
-      "uiDesigner": "Diseñador UI/UX",
-      "aiEngineer": "Ingeniero de IA/ML",
-      "softwareArchitect": "Arquitecto de Software",
-      "projectManager": "Project Manager",
-      "fullStackDeveloper": "Desarrollador Full Stack",
-      "qaEngineer": "QA Engineer"
-    },
-    "suggestions": {
-      "analyticsDashboard": "Analytics Dashboard",
-      "futureApi": "API para Integraciones Futuras"
-    }
-  },
-  "assessment": {
-    "progress": {
-      "question": "Pregunta",
-      "of": "de",
-      "completed": "completado"
-    },
-    "results": {
-      "title": "Resultados de tu evaluación",
-      "learnMore": "Conocer más sobre",
-      "retake": "Realizar evaluación nuevamente"
-    },
-    "questions": {
-      "currentTech": {
-        "question": "¿Cuál es el nivel tecnológico actual de tu empresa?",
-        "basic": "Básico - Principalmente herramientas manuales",
-        "intermediate": "Intermedio - Algunas herramientas digitales",
-        "advanced": "Avanzado - Múltiples sistemas integrados",
-        "cuttingEdge": "Vanguardia - IA y automatización existente"
-      },
-      "teamSize": {
-        "question": "¿Cuál es el tamaño de tu equipo técnico?",
-        "small": "1-5 personas",
-        "medium": "6-20 personas",
-        "large": "21-50 personas",
-        "enterprise": "Más de 50 personas"
-      },
-      "aiInterest": {
-        "question": "¿Qué área de IA te interesa más?",
-        "automation": "Automatización de procesos",
-        "analytics": "Análisis predictivo",
-        "customer": "Experiencia del cliente",
-        "operations": "Optimización operativa"
-      },
-      "timeline": {
-        "question": "¿Cuál es tu horizonte de implementación?",
-        "immediate": "Inmediato (0-3 meses)",
-        "short": "Corto plazo (3-6 meses)",
-        "medium": "Mediano plazo (6-12 meses)",
-        "long": "Largo plazo (12+ meses)"
-      },
-      "budget": {
-        "question": "¿Cuál es tu presupuesto estimado para transformación digital?",
-        "low": "Menos de $100k MXN",
-        "medium": "$100k - $500k MXN",
-        "high": "$500k - $1M MXN",
-        "enterprise": "Más de $1M MXN"
-      }
-    },
-    "recommendations": {
-      "l1": {
-        "title": "Servicios esenciales de diseño",
-        "description": "Comienza con servicios de diseño 3D y gráfico profesional."
-      },
-      "l2": {
-        "title": "Soluciones avanzadas de diseño",
-        "description": "Diseño paramétrico y experiencias interactivas para innovar."
-      },
-      "l3": {
-        "title": "Consultoría y capacitación especializada",
-        "description": "Workshops y consultoría te ayudarán a definir tu estrategia de IA."
-      },
-      "l4": {
-        "title": "Implementación de plataformas empresariales",
-        "description": "Es momento de implementar SPARK o PENNY para escalar tu operación."
-      },
-      "l5": {
-        "title": "Transformación estratégica completa",
-        "description": "Tu empresa está lista para una asociación vCTO y transformación integral."
-      }
-    }
   },
   "error": {
     "title": "Error",
