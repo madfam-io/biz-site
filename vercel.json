@@ -2,5 +2,23 @@
   "framework": "nextjs",
   "buildCommand": "pnpm build --filter=@madfam/web",
   "installCommand": "pnpm install --frozen-lockfile",
-  "outputDirectory": "apps/web/.next"
+  "outputDirectory": "apps/web/.next",
+  "rewrites": [
+    {
+      "source": "/es-MX/servicios",
+      "destination": "/es-MX/services"
+    },
+    {
+      "source": "/es-MX/productos", 
+      "destination": "/es-MX/products"
+    },
+    {
+      "source": "/es-MX/nosotros",
+      "destination": "/es-MX/about"
+    },
+    {
+      "source": "/es-MX/contacto",
+      "destination": "/es-MX/contact"
+    }
+  ]
 }
