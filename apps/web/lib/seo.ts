@@ -147,7 +147,7 @@ export class SEOService {
       title: t.title,
       description: t.description,
       keywords: t.keywords,
-      type: 'service',
+      type: 'website',
       locale,
       url: `/services/${serviceName.toLowerCase().replace(/\s+/g, '-')}`,
     });
@@ -193,7 +193,7 @@ export class SEOService {
       title: t.title,
       description: t.description,
       keywords: t.keywords,
-      type: 'product',
+      type: 'website',
       locale,
       url: `/products/${productName.toLowerCase().replace(/\s+/g, '-')}`,
     });

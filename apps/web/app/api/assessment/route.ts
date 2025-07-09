@@ -104,8 +104,11 @@ function calculateAssessmentResults(answers: Record<string, number>) {
     totalScore += weightedScore;
     totalWeight += question.weight;
     
-    categoryScores[question.category].score += weightedScore;
-    categoryScores[question.category].weight += question.weight;
+    const categoryData = categoryScores[question.category];
+    if (categoryData) {
+      categoryData.score += weightedScore;
+      categoryData.weight += question.weight;
+    }
   });
 
   // Normalize score to 0-100
@@ -263,9 +266,9 @@ export async function POST(request: NextRequest) {
     });
 
     // Track analytics
-    analytics.trackAssessmentCompleted({
+    analytics.trackAssessmentComplete({
       score: results.score,
-      tier: results.tier,
+      recommendation: results.tier,
     });
 
     // Track in database analytics

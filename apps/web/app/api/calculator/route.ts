@@ -3,8 +3,7 @@ import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 import { analytics } from '@madfam/analytics';
 
-// Calculator types
-type CalculatorType = 'roi' | 'project_estimate';
+// Calculator types (removed unused type)
 
 // ROI Calculator schema
 const roiCalculatorSchema = z.object({
@@ -256,7 +255,7 @@ export async function POST(request: NextRequest) {
     
     // Track analytics
     analytics.trackCalculatorUsed({
-      type: validatedData.type,
+      type: validatedData.type === 'project_estimate' ? 'project' : validatedData.type,
     });
     
     // Track in database analytics
