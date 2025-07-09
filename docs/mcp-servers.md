@@ -1,145 +1,200 @@
-# MCP Server Configuration
-
-This document describes the Model Context Protocol (MCP) servers configured for the MADFAM business site project.
+# MCP Servers Documentation
 
 ## Overview
 
-MCP servers extend Claude Code's capabilities by providing access to specialized tools and services. Our project uses four MCP servers to enhance development workflow:
+Model Context Protocol (MCP) servers extend Claude Code's capabilities by providing specialized tools and integrations. This document covers the four MCP servers configured for this project.
 
-1. **Context7** - Access to library documentation
-2. **Sequential** - Multi-step reasoning capabilities
-3. **Magic** - AI-generated UI components
-4. **Puppeteer** - Browser testing and automation
+## Configured MCP Servers
+
+### 1. Context7 - Library Documentation Access
+
+**Purpose**: Provides instant access to documentation for JavaScript/TypeScript libraries and frameworks.
+
+**Command**: `npx -y mcp-context7`
+
+**Use Cases**:
+
+- Quickly look up API documentation for React, Vue, Next.js, etc.
+- Find code examples and best practices
+- Search for specific methods or configurations
+- Explore library features without leaving Claude Code
+
+**Example Commands**:
+
+- "Show me the React useEffect documentation"
+- "What are the Next.js 14 routing patterns?"
+- "Find examples of Tailwind CSS grid layouts"
+
+### 2. Sequential - Multi-Step Reasoning
+
+**Purpose**: Enhances Claude's ability to break down complex problems into manageable steps and maintain context across multi-step operations.
+
+**Command**: `npx -y mcp-sequential`
+
+**Use Cases**:
+
+- Planning complex feature implementations
+- Debugging multi-layered issues
+- Creating step-by-step migration plans
+- Architecting system designs
+
+**Example Commands**:
+
+- "Plan the migration from JavaScript to TypeScript for this project"
+- "Create a step-by-step plan for implementing user authentication"
+- "Debug this complex state management issue systematically"
+
+### 3. Magic - AI-Generated UI Components
+
+**Purpose**: Rapidly generates UI components and layouts based on descriptions.
+
+**Command**: `npx -y mcp-magic`
+
+**Use Cases**:
+
+- Quick prototyping of UI components
+- Generating boilerplate code for common patterns
+- Creating responsive layouts
+- Building form components with validation
+
+**Example Commands**:
+
+- "Generate a hero section with animated gradient background"
+- "Create a multi-step form component with validation"
+- "Build a responsive navigation menu with mobile hamburger"
+
+### 4. Puppeteer - Browser Testing & Automation
+
+**Purpose**: Provides browser automation capabilities for testing, screenshots, and web scraping.
+
+**Command**: `npx -y @modelcontextprotocol/server-puppeteer`
+
+**Use Cases**:
+
+- Capturing screenshots of web pages
+- Running end-to-end tests
+- Automating form submissions
+- Testing responsive designs
+- Performance testing
+
+**Example Commands**:
+
+- "Take a screenshot of the homepage at mobile and desktop sizes"
+- "Test the contact form submission flow"
+- "Check if all links on the page are working"
 
 ## Configuration
 
-The MCP servers are configured in two locations:
+### User-Level Configuration
 
-### 1. User Configuration (`.claude.json`)
-
-Located at: `~/.claude.json`
-
-This file contains your personal Claude Code settings, including MCP server configurations for this project.
-
-### 2. Project Configuration (`.mcp.json`)
-
-Located at: `/Users/aldoruizluna/labspace/biz-site/.mcp.json`
-
-This file is checked into version control and ensures all team members have access to the same MCP tools.
-
-## Server Details
-
-### Context7
-
-- **Purpose**: Provides access to library documentation
-- **Command**: `npx -y mcp-context7`
-- **Use Cases**:
-  - Quick access to documentation for dependencies
-  - API reference lookup
-  - Code examples from documentation
-
-### Sequential
-
-- **Purpose**: Enables multi-step reasoning capabilities
-- **Command**: `npx -y mcp-sequential`
-- **Use Cases**:
-  - Complex problem-solving workflows
-  - Step-by-step implementation planning
-  - Breaking down large tasks into manageable steps
-
-### Magic
-
-- **Purpose**: Generates AI-powered UI components
-- **Command**: `npx -y mcp-magic`
-- **Use Cases**:
-  - Rapid UI prototyping
-  - Component generation based on descriptions
-  - Design system integration
-
-### Puppeteer
-
-- **Purpose**: Browser automation and testing
-- **Command**: `npx -y @modelcontextprotocol/server-puppeteer`
-- **Use Cases**:
-  - End-to-end testing
-  - Screenshot generation
-  - Web scraping for content migration
-  - Performance testing
-
-## Usage
-
-Once configured, these MCP servers are automatically available in Claude Code. You can interact with them through natural language commands:
-
-```
-# Example: Using Context7
-"Show me the Next.js documentation for App Router"
-
-# Example: Using Sequential
-"Let's plan the implementation of the multilingual feature step by step"
-
-# Example: Using Magic
-"Generate a hero section component with a gradient background and CTA button"
-
-# Example: Using Puppeteer
-"Take a screenshot of the homepage in all three languages"
-```
-
-## Troubleshooting
-
-### Server Not Starting
-
-If an MCP server fails to start:
-
-1. Ensure you have Node.js installed
-2. Check internet connectivity (servers are installed via npx)
-3. Restart Claude Code
-
-### Configuration Not Loading
-
-1. Verify the `.mcp.json` file exists in the project root
-2. Check JSON syntax is valid
-3. Ensure you've reloaded Claude Code after configuration changes
-
-### Permission Issues
-
-If you encounter permission errors:
-
-```bash
-# Fix npm permissions
-sudo chown -R $(whoami) ~/.npm
-```
-
-## Adding New Servers
-
-To add a new MCP server:
-
-1. Edit `.mcp.json` and add the server configuration:
+MCP servers are configured in `~/.claude.json` under your project's path:
 
 ```json
 {
-  "mcpServers": {
-    "new-server": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "mcp-new-server"],
-      "env": {},
-      "description": "Description of what this server does"
+  "/path/to/your/project": {
+    "mcpServers": {
+      "context7": {
+        "command": "npx",
+        "args": ["-y", "mcp-context7"],
+        "description": "Access to library documentation"
+      }
+      // ... other servers
     }
   }
 }
 ```
 
-2. Restart Claude Code to load the new configuration
+### Project-Level Configuration
+
+For team collaboration, configurations are stored in `.mcp.json` at the project root:
+
+```json
+{
+  "mcpServers": {
+    // Server configurations
+  }
+}
+```
+
+## Getting Started
+
+1. **Restart Claude Code** after configuration changes
+2. **Test each server** with simple commands to ensure they're working
+3. **Check server status** if commands aren't recognized
+
+## Troubleshooting
+
+### Server Not Responding
+
+1. Check if the server is properly configured in `~/.claude.json`
+2. Restart Claude Code
+3. Verify npx can download and run the package
+4. Check network connectivity
+
+### Command Not Recognized
+
+1. Ensure you're using the correct command syntax
+2. Verify the server is loaded (check Claude Code logs)
+3. Try a simpler command first
+
+### Performance Issues
+
+1. MCP servers run as separate processes
+2. First run may be slow due to package download
+3. Subsequent runs use cached packages
 
 ## Security Considerations
 
 - MCP servers run with the same permissions as Claude Code
-- Only use trusted MCP servers from verified sources
-- Review server documentation before installation
-- Environment variables in `env` should not contain sensitive data in project-scoped configurations
+- Only install trusted MCP servers
+- Review server permissions before granting access
+- Use `npx -y` to avoid global installations
 
-## Resources
+## Best Practices
 
-- [Model Context Protocol Documentation](https://modelcontextprotocol.io/)
-- [Claude Code MCP Guide](https://docs.anthropic.com/en/docs/claude-code/mcp)
-- [MCP Server Registry](https://github.com/modelcontextprotocol/servers)
+1. **Use the right tool**: Each server has specific strengths
+2. **Combine servers**: Use multiple servers together for complex tasks
+3. **Cache awareness**: First runs download packages; be patient
+4. **Error handling**: If a server fails, try alternative approaches
+
+## Advanced Usage
+
+### Combining Multiple Servers
+
+Example workflow using multiple servers:
+
+1. Use **Sequential** to plan a feature
+2. Use **Context7** to research library documentation
+3. Use **Magic** to generate UI components
+4. Use **Puppeteer** to test the implementation
+
+### Custom Workflows
+
+Create project-specific workflows that leverage MCP servers:
+
+```bash
+# Example: Full feature development workflow
+1. Plan with Sequential
+2. Research with Context7
+3. Generate with Magic
+4. Test with Puppeteer
+```
+
+## Additional Resources
+
+- [MCP Protocol Documentation](https://modelcontextprotocol.com)
+- [Claude Code Documentation](https://docs.anthropic.com/claude-code)
+- [NPX Documentation](https://docs.npmjs.com/cli/v7/commands/npx)
+
+## Contributing
+
+To add new MCP servers to the project:
+
+1. Test the server locally
+2. Add configuration to `.mcp.json`
+3. Update this documentation
+4. Submit a pull request
+
+---
+
+Last updated: January 2025

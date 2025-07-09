@@ -1,32 +1,24 @@
 {
   "mcpServers": {
     "context7": {
-      "type": "stdio",
       "command": "npx",
       "args": ["-y", "mcp-context7"],
-      "env": {},
-      "description": "Access to library documentation"
+      "description": "Access to library documentation - quickly search and retrieve documentation for any JavaScript/TypeScript library"
     },
     "sequential": {
-      "type": "stdio",
       "command": "npx",
       "args": ["-y", "mcp-sequential"],
-      "env": {},
-      "description": "Multi-step reasoning capabilities"
+      "description": "Multi-step reasoning capabilities - helps break down complex problems into manageable steps"
     },
     "magic": {
-      "type": "stdio",
       "command": "npx",
       "args": ["-y", "mcp-magic"],
-      "env": {},
-      "description": "AI-generated UI components"
+      "description": "AI-generated UI components - rapidly prototype and generate React/Vue/HTML components"
     },
     "puppeteer": {
-      "type": "stdio",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
-      "env": {},
-      "description": "Browser testing and automation"
+      "description": "Browser testing and automation - capture screenshots, run E2E tests, and automate browser tasks"
     }
   }
 }
