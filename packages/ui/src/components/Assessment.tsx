@@ -39,6 +39,32 @@ export interface AssessmentProps {
   questions: AssessmentQuestion[];
   onComplete?: (result: AssessmentResult) => void;
   className?: string;
+  locale?: 'es' | 'en-US' | 'pt-BR';
+  translations?: {
+    resultTitle: string;
+    levelLabel: string;
+    recommendationsTitle: string;
+    recommendedServiceTitle: string;
+    recommendedServiceDescription: string;
+    restartButton: string;
+    requestConsultationButton: string;
+    previousButton: string;
+    nextButton: string;
+    finishButton: string;
+    categoryLabels: {
+      strategy: string;
+      technology: string;
+      data: string;
+      culture: string;
+      processes: string;
+    };
+    levelDescriptions: {
+      beginner: string;
+      intermediate: string;
+      advanced: string;
+      expert: string;
+    };
+  };
 }
 
 const defaultQuestions: AssessmentQuestion[] = [
@@ -154,12 +180,49 @@ const defaultQuestions: AssessmentQuestion[] = [
   },
 ];
 
+const getDefaultTranslations = (locale: 'es' | 'en-US' | 'pt-BR' = 'es') => ({
+  resultTitle: locale === 'en-US' ? 'Assessment Results' : locale === 'pt-BR' ? 'Resultados da Avaliação' : 'Resultado de tu Evaluación',
+  levelLabel: locale === 'en-US' ? 'Level' : locale === 'pt-BR' ? 'Nível' : 'Nivel',
+  recommendationsTitle: locale === 'en-US' ? 'Recommendations for your company' : locale === 'pt-BR' ? 'Recomendações para sua empresa' : 'Recomendaciones para tu empresa',
+  recommendedServiceTitle: locale === 'en-US' ? 'Recommended Service' : locale === 'pt-BR' ? 'Serviço Recomendado' : 'Servicio Recomendado',
+  recommendedServiceDescription: locale === 'en-US' ? 'Based on your maturity level, this service best fits your current needs' : locale === 'pt-BR' ? 'Baseado no seu nível de maturidade, este serviço se adapta melhor às suas necessidades atuais' : 'Basado en tu nivel de madurez, este servicio se adapta mejor a tus necesidades actuales',
+  restartButton: locale === 'en-US' ? 'Retake assessment' : locale === 'pt-BR' ? 'Refazer avaliação' : 'Volver a evaluar',
+  requestConsultationButton: locale === 'en-US' ? 'Request consultation' : locale === 'pt-BR' ? 'Solicitar consulta' : 'Solicitar consulta',
+  previousButton: locale === 'en-US' ? 'Previous' : locale === 'pt-BR' ? 'Anterior' : 'Anterior',
+  nextButton: locale === 'en-US' ? 'Next' : locale === 'pt-BR' ? 'Próximo' : 'Siguiente',
+  finishButton: locale === 'en-US' ? 'Finish' : locale === 'pt-BR' ? 'Finalizar' : 'Finalizar',
+  categoryLabels: {
+    strategy: locale === 'en-US' ? 'Strategy' : locale === 'pt-BR' ? 'Estratégia' : 'Estrategia',
+    technology: locale === 'en-US' ? 'Technology' : locale === 'pt-BR' ? 'Tecnologia' : 'Tecnología',
+    data: locale === 'en-US' ? 'Data' : locale === 'pt-BR' ? 'Dados' : 'Datos',
+    culture: locale === 'en-US' ? 'Culture' : locale === 'pt-BR' ? 'Cultura' : 'Cultura',
+    processes: locale === 'en-US' ? 'Processes' : locale === 'pt-BR' ? 'Processos' : 'Procesos',
+  },
+  levelDescriptions: {
+    beginner: locale === 'en-US' ? 'beginner' : locale === 'pt-BR' ? 'iniciante' : 'principiante',
+    intermediate: locale === 'en-US' ? 'intermediate' : locale === 'pt-BR' ? 'intermediário' : 'intermedio',
+    advanced: locale === 'en-US' ? 'advanced' : locale === 'pt-BR' ? 'avançado' : 'avanzado',
+    expert: locale === 'en-US' ? 'expert' : locale === 'pt-BR' ? 'especialista' : 'experto',
+  },
+});
+
 export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
-  ({ title = 'Evaluación de Madurez en IA', description, questions = defaultQuestions, onComplete, className }, ref) => {
+  ({ 
+    title, 
+    description, 
+    questions = defaultQuestions, 
+    onComplete, 
+    className,
+    locale = 'es',
+    translations 
+  }, ref) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState<Record<string, string>>({});
     const [result, setResult] = useState<AssessmentResult | null>(null);
     const [showResult, setShowResult] = useState(false);
+    
+    const t = translations || getDefaultTranslations(locale);
+    const defaultTitle = locale === 'en-US' ? 'AI Readiness Assessment' : locale === 'pt-BR' ? 'Avaliação de Maturidade em IA' : 'Evaluación de Madurez en IA';
 
     const handleAnswer = (questionId: string, value: string) => {
       setAnswers(prev => ({ ...prev, [questionId]: value }));
@@ -300,7 +363,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
       return (
         <Card ref={ref} className={cn('w-full max-w-4xl mx-auto', className)}>
           <CardHeader>
-            <CardTitle className="text-center">Resultado de tu Evaluación</CardTitle>
+            <CardTitle className="text-center">{t.resultTitle}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-8">
@@ -312,13 +375,10 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                   </div>
                 </div>
                 <h3 className="text-2xl font-heading font-bold mb-2">
-                  Nivel: {result.level.charAt(0).toUpperCase() + result.level.slice(1)}
+                  {t.levelLabel}: {result.level.charAt(0).toUpperCase() + result.level.slice(1)}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Tu empresa está en un nivel {result.level === 'expert' ? 'experto' : 
-                    result.level === 'advanced' ? 'avanzado' : 
-                    result.level === 'intermediate' ? 'intermedio' : 'principiante'} 
-                  de madurez en IA
+                  {locale === 'en-US' ? 'Your company is at a' : locale === 'pt-BR' ? 'Sua empresa está em um nível' : 'Tu empresa está en un nivel'} {t.levelDescriptions[result.level]} {locale === 'en-US' ? 'level of AI maturity' : locale === 'pt-BR' ? 'de maturidade em IA' : 'de madurez en IA'}
                 </p>
               </div>
 
@@ -328,11 +388,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                   <div key={category} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium capitalize">
-                        {category === 'strategy' ? 'Estrategia' :
-                         category === 'technology' ? 'Tecnología' :
-                         category === 'data' ? 'Datos' :
-                         category === 'culture' ? 'Cultura' :
-                         'Procesos'}
+                        {t.categoryLabels[category as keyof typeof t.categoryLabels]}
                       </span>
                       <span className="text-sm font-bold">{Math.round(score)}%</span>
                     </div>
@@ -347,8 +403,8 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
               </div>
 
               {/* Recommendations */}
-              <div className="bg-gradient-to-r from-lavender/10 to-sun/10 rounded-lg p-6">
-                <h4 className="text-lg font-heading font-bold mb-4">Recomendaciones para tu empresa</h4>
+              <div className="bg-gradient-to-r from-lavender/10 to-sun/10 dark:from-lavender/20 dark:to-sun/20 rounded-lg p-6">
+                <h4 className="text-lg font-heading font-bold mb-4">{t.recommendationsTitle}</h4>
                 <ul className="space-y-2">
                   {result.recommendations.map((rec, index) => (
                     <li key={index} className="flex items-start">
@@ -363,7 +419,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
 
               {/* Recommended Service */}
               <div className="bg-gradient-to-r from-obsidian to-lavender rounded-lg p-6 text-white text-center">
-                <h4 className="text-lg font-heading font-bold mb-2">Servicio Recomendado</h4>
+                <h4 className="text-lg font-heading font-bold mb-2">{t.recommendedServiceTitle}</h4>
                 <p className="text-2xl font-bold mb-2">
                   {result.recommendedTier === 'L5_STRATEGIC' ? 'L5 - Strategic' :
                    result.recommendedTier === 'L4_PLATFORMS' ? 'L4 - Platforms' :
@@ -372,14 +428,14 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                    'L1 - Essentials'}
                 </p>
                 <p className="text-sm opacity-90 mb-4">
-                  Basado en tu nivel de madurez, este servicio se adapta mejor a tus necesidades actuales
+                  {t.recommendedServiceDescription}
                 </p>
                 <div className="flex gap-4 justify-center">
                   <Button variant="secondary" onClick={handleRestart}>
-                    Volver a evaluar
+                    {t.restartButton}
                   </Button>
                   <Button variant="outline" className="border-white text-white hover:bg-white hover:text-obsidian">
-                    Solicitar consulta
+                    {t.requestConsultationButton}
                   </Button>
                 </div>
               </div>
@@ -398,9 +454,9 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
       <Card ref={ref} className={cn('w-full max-w-2xl mx-auto', className)}>
         <CardHeader>
           <div className="flex items-center justify-between mb-4">
-            <CardTitle>{title}</CardTitle>
-            <span className="text-sm text-gray-500">
-              {currentQuestion + 1} de {questions.length}
+            <CardTitle>{title || defaultTitle}</CardTitle>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {currentQuestion + 1} {locale === 'en-US' ? 'of' : locale === 'pt-BR' ? 'de' : 'de'} {questions.length}
             </span>
           </div>
           {description && (
@@ -450,13 +506,13 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                 onClick={handlePrevious}
                 disabled={currentQuestion === 0}
               >
-                Anterior
+                {t.previousButton}
               </Button>
               <Button
                 onClick={handleNext}
                 disabled={!currentAnswer}
               >
-                {currentQuestion === questions.length - 1 ? 'Finalizar' : 'Siguiente'}
+                {currentQuestion === questions.length - 1 ? t.finishButton : t.nextButton}
               </Button>
             </div>
           </div>

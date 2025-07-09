@@ -377,6 +377,7 @@ export default function AssessmentPage() {
             title={currentLocale === 'en-US' ? 'AI Readiness Assessment' : currentLocale === 'pt-BR' ? 'Avaliação de Maturidade em IA' : 'Evaluación de Madurez en IA'}
             description={currentLocale === 'en-US' ? 'Answer these strategic questions to understand your company\'s current AI maturity level' : currentLocale === 'pt-BR' ? 'Responda estas perguntas estratégicas para entender o nível atual de maturidade em IA da sua empresa' : 'Responde estas preguntas estratégicas para entender el nivel actual de madurez en IA de tu empresa'}
             questions={assessmentQuestions}
+            locale={currentLocale}
             onComplete={handleAssessmentComplete}
           />
         </Container>
