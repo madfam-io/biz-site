@@ -1,11 +1,5 @@
-import type { Metadata } from 'next';
 import { Inter, Poppins, Space_Mono } from 'next/font/google';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
 import { DarkModeScript } from './dark-mode-script';
-import { CookieConsent } from '@/components/CookieConsent';
-import { OrganizationStructuredData } from '@/components/StructuredData';
-import { seoService } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({
@@ -28,8 +22,6 @@ const spaceMono = Space_Mono({
   display: 'swap',
 });
 
-export const metadata: Metadata = seoService.generateHomeMetadata('es-MX');
-
 export const viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
@@ -39,22 +31,18 @@ export const viewport = {
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${poppins.variable} ${spaceMono.variable}`}>
+    <html lang={params.locale} className={`${inter.variable} ${poppins.variable} ${spaceMono.variable}`}>
       <head>
         <DarkModeScript />
       </head>
       <body className="font-body antialiased bg-white dark:bg-obsidian text-obsidian dark:text-pearl transition-colors">
-        <OrganizationStructuredData />
-        <Navbar />
-        <div className="pt-16">
-          {children}
-          <Footer />
-        </div>
-        <CookieConsent />
+        {children}
       </body>
     </html>
   );

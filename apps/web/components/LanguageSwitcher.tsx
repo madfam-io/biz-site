@@ -11,8 +11,11 @@ export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   
-  // For now, we'll detect locale from pathname
-  const locale = pathname.split('/').find(segment => i18nConfig.locales.includes(segment as any)) || i18nConfig.defaultLocale;
+  // Detect locale from pathname
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const locale = pathSegments[0] && i18nConfig.locales.includes(pathSegments[0] as any) 
+    ? pathSegments[0] 
+    : i18nConfig.defaultLocale;
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -27,17 +30,19 @@ export function LanguageSwitcher() {
 
   const switchLocale = (newLocale: string) => {
     // Remove current locale from pathname
-    const segments = pathname.split('/');
+    const segments = pathname.split('/').filter(Boolean);
     const currentLocaleIndex = segments.findIndex(segment => i18nConfig.locales.includes(segment as any));
     
-    if (currentLocaleIndex !== -1) {
-      segments[currentLocaleIndex] = newLocale;
+    let newPath;
+    if (currentLocaleIndex === 0) {
+      // Replace existing locale
+      segments[0] = newLocale;
+      newPath = '/' + segments.join('/');
     } else {
-      // If no locale in path, add it
-      segments.splice(1, 0, newLocale);
+      // Add locale to the beginning
+      newPath = '/' + newLocale + pathname;
     }
     
-    const newPath = segments.join('/') || '/';
     router.push(newPath);
     setIsOpen(false);
   };

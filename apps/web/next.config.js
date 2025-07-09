@@ -47,21 +47,6 @@ const nextConfig = {
     ];
   },
 
-  async rewrites() {
-    return {
-      beforeFiles: [
-        // Locale rewrites
-        {
-          source: '/servicios/:path*',
-          destination: '/es-MX/services/:path*',
-        },
-        {
-          source: '/productos/:path*',
-          destination: '/es-MX/products/:path*',
-        },
-      ],
-    };
-  },
 
   experimental: {
     optimizeCss: false, // Disabled to avoid critters dependency issue
