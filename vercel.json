@@ -1,6 +1,5 @@
 {
-  "buildCommand": "pnpm turbo build --filter=@madfam/web",
-  "outputDirectory": "apps/web/.next",
+  "buildCommand": "pnpm turbo build",
   "installCommand": "pnpm install",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet ."
+  "framework": "nextjs"
 }
