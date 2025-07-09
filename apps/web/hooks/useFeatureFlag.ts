@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FeatureFlagProvider } from '@madfam/core';
+import { FeatureFlagProvider, logger } from '@madfam/core';
 
 // Cache for feature flags to avoid multiple provider instances
 let flagProvider: FeatureFlagProvider | null = null;
@@ -60,7 +60,11 @@ export function useFeatureFlag(
         flagCache.set(flagKey, { value: enabled, timestamp: Date.now() });
         setIsEnabled(enabled);
       } catch (error) {
-        console.error(`Error checking feature flag ${flagKey}:`, error);
+        logger.error(`Error checking feature flag ${flagKey}`, error as Error, 'FEATURE_FLAG', {
+          flagKey,
+          fallbackValue,
+          useApi,
+        });
         setIsEnabled(fallbackValue);
       } finally {
         setIsLoading(false);
@@ -70,9 +74,9 @@ export function useFeatureFlag(
     checkFlag();
   }, [flagKey, useApi, fallbackValue]);
 
-  // In development, log feature flag status
-  if (process.env.NODE_ENV === 'development' && !isLoading) {
-    console.log(`Feature flag '${flagKey}': ${isEnabled ? 'enabled' : 'disabled'}`);
+  // Log feature flag status
+  if (!isLoading) {
+    logger.featureFlag(flagKey, isEnabled, { fallbackValue, useApi });
   }
 
   return isEnabled;
@@ -97,7 +101,7 @@ export function useFeatureFlags(): Record<string, boolean> {
         };
         setFlags(allFlags);
       } catch (error) {
-        console.error('Error loading feature flags:', error);
+        logger.error('Error loading feature flags', error as Error, 'FEATURE_FLAG');
       }
     };
 
@@ -123,7 +127,9 @@ export function useFeatureFlagsMultiple(flagKeys: string[]): Record<string, bool
         
         setFlags(results);
       } catch (error) {
-        console.error('Error checking feature flags:', error);
+        logger.error('Error checking multiple feature flags', error as Error, 'FEATURE_FLAG', {
+          flagKeys,
+        });
         // Set all flags to false on error
         const results: Record<string, boolean> = {};
         for (const key of flagKeys) {

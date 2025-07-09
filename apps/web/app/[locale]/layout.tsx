@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { CookieConsent } from '@/components/CookieConsent';
 import { OrganizationStructuredData } from '@/components/StructuredData';
 import { AuthProvider } from '@/components/AuthProvider';
+import { LoggerProvider } from '@/components/LoggerProvider';
 import { locales, getMessages } from '@/i18n.config';
 
 export function generateStaticParams() {
@@ -27,16 +28,18 @@ export default async function LocaleLayout({
   const messages = getMessages(locale);
 
   return (
-    <AuthProvider>
-      <NextIntlClientProvider messages={messages}>
-        <OrganizationStructuredData />
-        <Navbar />
-        <div className="pt-16">
-          {children}
-          <Footer />
-        </div>
-        <CookieConsent />
-      </NextIntlClientProvider>
-    </AuthProvider>
+    <LoggerProvider>
+      <AuthProvider>
+        <NextIntlClientProvider messages={messages}>
+          <OrganizationStructuredData />
+          <Navbar />
+          <div className="pt-16">
+            {children}
+            <Footer />
+          </div>
+          <CookieConsent />
+        </NextIntlClientProvider>
+      </AuthProvider>
+    </LoggerProvider>
   );
 }

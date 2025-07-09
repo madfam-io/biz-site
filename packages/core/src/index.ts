@@ -3,6 +3,9 @@
 // Service Tiers
 export * from './services';
 
+// Logger
+export * from './logger';
+
 // Feature Flags
 export interface FeatureFlag {
   key: string;

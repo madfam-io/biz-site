@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { Button } from '@madfam/ui';
 import { ServiceTier } from '@madfam/core';
 import { useTranslations, useLocale } from 'next-intl';
+import { logger } from '@madfam/core';
 
 const createLeadFormSchema = (t: any) => z.object({
   name: z.string().min(2, t('errors.nameMin')),
@@ -51,7 +52,13 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
 
     // In staging environment, simulate submission without API call
     if (process.env.NEXT_PUBLIC_ENV === 'staging') {
-      console.log('Staging environment - Lead form submission:', data);
+      logger.info('Staging environment - Lead form submission', 'LEAD_FORM', {
+        tier: data.tier,
+        source,
+        hasCompany: !!data.company,
+        hasPhone: !!data.phone,
+        locale,
+      });
       
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -77,14 +84,30 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
       const result = await response.json();
 
       if (result.success) {
+        logger.userAction('Lead form submitted successfully', {
+          tier: data.tier,
+          source,
+          leadId: result.leadId,
+          locale,
+        });
         setSubmitStatus('success');
         reset();
         onSuccess?.();
       } else {
+        logger.warn('Lead form submission failed', 'LEAD_FORM', {
+          tier: data.tier,
+          source,
+          error: result.error,
+          locale,
+        });
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Form submission error:', error);
+      logger.error('Lead form submission error', error as Error, 'LEAD_FORM', {
+        tier: data.tier,
+        source,
+        locale,
+      });
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

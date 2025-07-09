@@ -1,10 +1,10 @@
-import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
+import { Container, Heading, Button, Card, CardContent, ServiceCard, ROICalculator, LeadForm, Testimonial, TestimonialGrid, Hero } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
-import { ROICalculator } from '@/components/ROICalculator';
 import { ServiceStructuredData } from '@/components/StructuredData';
 import { getLocalizedContent, type Locale } from '@madfam/i18n';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
+import { logServiceInquiry } from '@/lib/logger';
 
 export default function Level3ConsultingPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
@@ -68,14 +68,52 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
 
   const testimonials = [
     {
-      quote: currentLocale === 'en-US' ? 'MADFAM completely transformed the way we work. The workshops were incredibly practical.' : currentLocale === 'pt-BR' ? 'MADFAM transformou completamente nossa forma de trabalhar. Os workshops foram incrivelmente práticos.' : 'MADFAM transformó completamente nuestra forma de trabajar. Los workshops fueron increíblemente prácticos.',
-      author: 'María González',
-      role: 'CTO, TechCorp México',
+      id: 'maria-gonzalez',
+      content: currentLocale === 'en-US' ? 'MADFAM completely transformed the way we work. The workshops were incredibly practical and the team provided ongoing support throughout implementation.' : currentLocale === 'pt-BR' ? 'MADFAM transformou completamente nossa forma de trabalhar. Os workshops foram incrivelmente práticos e a equipe forneceu suporte contínuo durante a implementação.' : 'MADFAM transformó completamente nuestra forma de trabajar. Los workshops fueron increíblemente prácticos y el equipo brindó soporte continuo durante la implementación.',
+      author: {
+        name: 'María González',
+        role: 'CTO',
+        company: 'TechCorp México',
+        image: '/testimonials/maria-gonzalez.jpg',
+      },
+      rating: 5,
+      service: 'L3 - Consulting',
+      results: [
+        { 
+          metric: currentLocale === 'en-US' ? 'Efficiency gain' : currentLocale === 'pt-BR' ? 'Ganho de eficiência' : 'Ganancia de eficiencia', 
+          value: '45%', 
+          description: currentLocale === 'en-US' ? 'In process automation' : currentLocale === 'pt-BR' ? 'Na automação de processos' : 'En automatización de procesos' 
+        },
+        { 
+          metric: currentLocale === 'en-US' ? 'Cost reduction' : currentLocale === 'pt-BR' ? 'Redução de custos' : 'Reducción de costos', 
+          value: '30%', 
+          description: currentLocale === 'en-US' ? 'In operational costs' : currentLocale === 'pt-BR' ? 'Em custos operacionais' : 'En costos operacionales' 
+        },
+      ],
     },
     {
-      quote: currentLocale === 'en-US' ? 'The ROI was evident from the first month. We automated processes that took days in minutes.' : currentLocale === 'pt-BR' ? 'O ROI foi evidente desde o primeiro mês. Automatizamos processos que levavam dias em minutos.' : 'El ROI fue evidente desde el primer mes. Automatizamos procesos que tomaban días en minutos.',
-      author: 'Carlos Ramírez',
-      role: currentLocale === 'en-US' ? 'Innovation Director, Industrial Group' : currentLocale === 'pt-BR' ? 'Diretor de Inovação, Grupo Industrial' : 'Director de Innovación, Grupo Industrial',
+      id: 'carlos-ramirez',
+      content: currentLocale === 'en-US' ? 'The ROI was evident from the first month. We automated processes that took days in minutes. The strategic guidance was invaluable.' : currentLocale === 'pt-BR' ? 'O ROI foi evidente desde o primeiro mês. Automatizamos processos que levavam dias em minutos. A orientação estratégica foi inestimável.' : 'El ROI fue evidente desde el primer mes. Automatizamos procesos que tomaban días en minutos. La guía estratégica fue invaluable.',
+      author: {
+        name: 'Carlos Ramírez',
+        role: currentLocale === 'en-US' ? 'Innovation Director' : currentLocale === 'pt-BR' ? 'Diretor de Inovação' : 'Director de Innovación',
+        company: currentLocale === 'en-US' ? 'Industrial Group' : currentLocale === 'pt-BR' ? 'Grupo Industrial' : 'Grupo Industrial',
+        image: '/testimonials/carlos-ramirez.jpg',
+      },
+      rating: 5,
+      service: 'L3 - Consulting',
+      results: [
+        { 
+          metric: 'ROI', 
+          value: '320%', 
+          description: currentLocale === 'en-US' ? 'In first 6 months' : currentLocale === 'pt-BR' ? 'Nos primeiros 6 meses' : 'En los primeros 6 meses' 
+        },
+        { 
+          metric: currentLocale === 'en-US' ? 'Time saved' : currentLocale === 'pt-BR' ? 'Tempo economizado' : 'Tiempo ahorrado', 
+          value: '120', 
+          description: currentLocale === 'en-US' ? 'Hours per week' : currentLocale === 'pt-BR' ? 'Horas por semana' : 'Horas por semana' 
+        },
+      ],
     },
   ];
 
@@ -88,46 +126,35 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
       />
       <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-lavender/10 to-sun/10">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="mb-6">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-lavender/20 text-lavender">
-                  {t('level3.hero.badge')}
-                </span>
-              </div>
-              <Heading level={1} className="mb-6">
-                {t('level3.hero.title')}
-              </Heading>
-              <p className="text-xl text-obsidian/70 mb-8">
-                {serviceDescription}
-              </p>
-              <div className="flex flex-wrap gap-4 mb-8">
-                <Button variant="creative" size="lg">
-                  {t('level3.hero.scheduleInitial')}
-                </Button>
-                <Button variant="outline" size="lg">
-                  {t('level3.hero.downloadCase')}
-                </Button>
-              </div>
-              <div className="flex items-center gap-6 text-sm text-obsidian/60">
-                <div>
-                  <span className="font-semibold text-obsidian">3-6 {currentLocale === 'en-US' ? 'months' : currentLocale === 'pt-BR' ? 'meses' : 'meses'}</span> {t('level3.hero.typicalDuration')}
-                </div>
-                <div>
-                  <span className="font-semibold text-obsidian">87%</span> {t('level3.hero.satisfaction')}
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-lavender/20 to-sun/20 flex items-center justify-center">
-                <span className="text-[200px] opacity-20">💡</span>
-              </div>
-            </div>
+      <Hero
+        variant="service"
+        title={t('level3.hero.title')}
+        subtitle={t('level3.hero.badge')}
+        description={serviceDescription}
+        cta={{
+          primary: {
+            text: t('level3.hero.scheduleInitial'),
+            href: '#consultation',
+            variant: 'creative',
+          },
+          secondary: {
+            text: t('level3.hero.downloadCase'),
+            href: '#case-study',
+            variant: 'outline',
+          },
+        }}
+        background="gradient"
+        className="pt-20"
+      >
+        <div className="flex items-center gap-6 text-sm text-white/80">
+          <div>
+            <span className="font-semibold text-white">3-6 {currentLocale === 'en-US' ? 'months' : currentLocale === 'pt-BR' ? 'meses' : 'meses'}</span> {t('level3.hero.typicalDuration')}
           </div>
-        </Container>
-      </section>
+          <div>
+            <span className="font-semibold text-white">87%</span> {t('level3.hero.satisfaction')}
+          </div>
+        </div>
+      </Hero>
 
       {/* Benefits Section */}
       <section className="section">
@@ -241,26 +268,7 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
             {t('level3.testimonials.title')}
           </Heading>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} variant="elevated">
-                <CardContent className="p-8">
-                  <div className="mb-6">
-                    <svg className="w-10 h-10 text-lavender/20" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                  </div>
-                  <p className="text-lg text-obsidian/80 mb-6 italic">
-                    &quot;{testimonial.quote}&quot;
-                  </p>
-                  <div>
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-obsidian/60">{testimonial.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <TestimonialGrid testimonials={testimonials} columns={2} />
         </Container>
       </section>
 
@@ -274,7 +282,48 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
             <p className="text-center text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
               {currentLocale === 'en-US' ? 'Use our interactive calculator to estimate the impact our consulting services can have on your business.' : currentLocale === 'pt-BR' ? 'Use nossa calculadora interativa para estimar o impacto que nossos serviços de consultoria podem ter em seu negócio.' : 'Usa nuestra calculadora interactiva para estimar el impacto que nuestros servicios de consultoría pueden tener en tu negocio.'}
             </p>
-            <ROICalculator serviceTier={ServiceTier.L3_CONSULTING} />
+            <ROICalculator 
+              serviceTier="L3_CONSULTING" 
+              title={currentLocale === 'en-US' ? 'L3 Consulting ROI Calculator' : currentLocale === 'pt-BR' ? 'Calculadora ROI L3 Consultoria' : 'Calculadora ROI L3 Consultoría'}
+              onCalculate={(results) => {
+                logServiceInquiry('L3_CONSULTING', 'roi-calculator', {
+                  results,
+                  locale: currentLocale,
+                });
+              }}
+            />
+          </div>
+        </Container>
+      </section>
+
+      {/* Consultation Form */}
+      <section id="consultation" className="section bg-pearl">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <Heading level={2} className="mb-4">
+                {currentLocale === 'en-US' ? 'Schedule your strategic consultation' : currentLocale === 'pt-BR' ? 'Agende sua consulta estratégica' : 'Agenda tu consulta estratégica'}
+              </Heading>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                {currentLocale === 'en-US' ? 'Get a personalized assessment of your business needs and learn how our consulting services can drive your transformation.' : currentLocale === 'pt-BR' ? 'Obtenha uma avaliação personalizada das necessidades do seu negócio e saiba como nossos serviços de consultoria podem impulsionar sua transformação.' : 'Obtén una evaluación personalizada de las necesidades de tu negocio y aprende cómo nuestros servicios de consultoría pueden impulsar tu transformación.'}
+              </p>
+            </div>
+            
+            <LeadForm
+              variant="progressive"
+              tier="L3_CONSULTING"
+              source="service-page-consultation"
+              title={currentLocale === 'en-US' ? 'Request consultation' : currentLocale === 'pt-BR' ? 'Solicitar consulta' : 'Solicitar consulta'}
+              description={currentLocale === 'en-US' ? 'Tell us about your business and we\'ll create a customized strategy proposal' : currentLocale === 'pt-BR' ? 'Conte-nos sobre seu negócio e criaremos uma proposta de estratégia personalizada' : 'Cuéntanos sobre tu negocio y crearemos una propuesta de estrategia personalizada'}
+              submitText={currentLocale === 'en-US' ? 'Schedule consultation' : currentLocale === 'pt-BR' ? 'Agendar consulta' : 'Agendar consulta'}
+              onSubmit={async (data) => {
+                logServiceInquiry('L3_CONSULTING', 'consultation-form', {
+                  ...data,
+                  locale: currentLocale,
+                });
+                // TODO: Implement actual form submission
+              }}
+            />
           </div>
         </Container>
       </section>
