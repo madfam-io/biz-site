@@ -3,9 +3,20 @@
 ![MADFAM](https://img.shields.io/badge/MADFAM-AI%20%2B%20Creativity-9B59B6)
 ![Next.js](https://img.shields.io/badge/Next.js-14.2-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue)
+![Node.js](https://img.shields.io/badge/Node.js-20.x-green)
 ![License](https://img.shields.io/badge/License-Proprietary-red)
 
-The official corporate website for MADFAM - where AI meets human creativity. Built with Next.js 14, TypeScript, and a modern monorepo architecture.
+> **The official corporate website for MADFAM** - where AI meets human creativity. Built with Next.js 14, TypeScript, and a modern monorepo architecture.
+
+**🌟 Key Highlights:**
+
+- 🤖 AI-driven consultancy services across 5 tiers
+- 🚀 Premium products: SPARK & PENNY platforms
+- 🌐 Full internationalization (Spanish, English, Portuguese)
+- 📊 Privacy-first analytics with enterprise-grade security
+- 🎨 Modern design system with dark/light mode support
+
+**📅 Last Updated:** July 2025
 
 ## 🚀 Quick Start
 
@@ -46,6 +57,7 @@ madfam-corporate/
 ## 🎯 Key Features
 
 ### Service Tiers
+
 - **L1 Essentials** - 3D design and graphics
 - **L2 Advanced** - Parametric design
 - **L3 Consulting** - Workshops & training
@@ -53,32 +65,41 @@ madfam-corporate/
 - **L5 Strategic** - vCTO partnerships
 
 ### Products
+
 - **SPARK** - AI orchestration platform
 - **PENNY** - Process automation tool
 
 ### Technical Features
-- 🌐 Internationalization (Spanish/English)
-- 📊 Privacy-first analytics with Plausible
-- 🎨 Custom design system with Tailwind CSS
-- 📱 Mobile-first responsive design
-- 🚀 Optimized for 95+ Lighthouse scores
-- 🔒 Enterprise-grade security
-- 📈 Lead generation with AI scoring
+
+- 🌐 **Internationalization**: Spanish (es-MX), English (en-US), Portuguese (pt-BR)
+- 📊 **Privacy-first analytics** with Plausible
+- 🎨 **Custom design system** with Tailwind CSS and dark/light mode
+- 📱 **Mobile-first responsive design** optimized for all devices
+- 🚀 **Performance optimized** for 95+ Lighthouse scores
+- 🔒 **Enterprise-grade security** with CSP and security headers
+- 📈 **AI-powered lead generation** with intelligent scoring
+- 🧪 **Comprehensive testing** with Vitest and React Testing Library
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS, CSS Modules
-- **State**: React hooks, Context API
-- **Forms**: React Hook Form, Zod validation
-- **Analytics**: Plausible Analytics
-- **Deployment**: Vercel (production), GitHub Pages (staging)
-- **CI/CD**: GitHub Actions
-- **Monorepo**: Turborepo, pnpm workspaces
+| Category       | Technology            | Version | Purpose                         |
+| -------------- | --------------------- | ------- | ------------------------------- |
+| **Frontend**   | Next.js               | 14.2.8  | React framework with App Router |
+| **Language**   | TypeScript            | 5.4+    | Type-safe development           |
+| **Styling**    | Tailwind CSS          | 3.4+    | Utility-first CSS framework     |
+| **State**      | React Context         | 18+     | Global state management         |
+| **Forms**      | React Hook Form + Zod | Latest  | Form handling and validation    |
+| **Analytics**  | Plausible             | Latest  | Privacy-first analytics         |
+| **CMS**        | Payload CMS           | 3.0+    | Headless content management     |
+| **Testing**    | Vitest + RTL          | Latest  | Unit and integration testing    |
+| **Deployment** | Vercel + GitHub Pages | Latest  | Production and staging          |
+| **CI/CD**      | GitHub Actions        | Latest  | Automated workflows             |
+| **Monorepo**   | Turborepo + pnpm      | Latest  | Workspace management            |
 
 ## 🚢 Deployment
 
 ### Staging (GitHub Pages)
+
 ```bash
 git checkout staging
 pnpm build:staging
@@ -86,6 +107,7 @@ pnpm build:staging
 ```
 
 ### Production (Vercel)
+
 ```bash
 git checkout main
 git tag v1.0.0

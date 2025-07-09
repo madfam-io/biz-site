@@ -15,7 +15,7 @@ Company: MADFAM
 Tagline: "Where AI meets human creativity"
 Industry: AI Consultancy & Product Development
 Location: Mexico City (serving globally)
-Languages: Spanish (primary), English (secondary)
+Languages: Spanish (es-MX), English (en-US), Portuguese (pt-BR)
 ```
 
 ## Architecture Summary
@@ -32,6 +32,7 @@ monorepo/
 ## Key Business Concepts
 
 ### Service Tiers (5 Levels)
+
 1. **L1 Essentials** - Basic 3D design & graphics
 2. **L2 Advanced** - Parametric design
 3. **L3 Consulting** - Workshops & training
@@ -39,6 +40,7 @@ monorepo/
 5. **L5 Strategic** - vCTO partnerships
 
 ### Products
+
 - **SPARK**: AI orchestration platform
 - **PENNY**: Process automation tool
 
@@ -52,6 +54,7 @@ monorepo/
 4. Update navigation in `Navbar.tsx` and `Footer.tsx`
 
 Example:
+
 ```tsx
 import { Container, Heading, Button } from '@madfam/ui';
 
@@ -73,6 +76,7 @@ export default function NewPage() {
 3. Follow existing patterns (props interface, forwarded refs)
 
 Template:
+
 ```tsx
 import { forwardRef } from 'react';
 import { cn } from '../lib/utils';
@@ -83,9 +87,7 @@ interface ComponentProps {
 
 export const Component = forwardRef<HTMLDivElement, ComponentProps>(
   ({ className, ...props }, ref) => {
-    return (
-      <div ref={ref} className={cn('base-styles', className)} {...props} />
-    );
+    return <div ref={ref} className={cn('base-styles', className)} {...props} />;
   }
 );
 
@@ -99,6 +101,7 @@ Component.displayName = 'Component';
 3. Return consistent response format
 
 Template:
+
 ```ts
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -111,15 +114,12 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validated = schema.parse(body);
-    
+
     // Logic here
-    
+
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json(
-      { success: false, message: 'Error' },
-      { status: 400 }
-    );
+    return NextResponse.json({ success: false, message: 'Error' }, { status: 400 });
   }
 }
 ```
@@ -127,6 +127,7 @@ export async function POST(request: NextRequest) {
 ## Design System
 
 ### Colors
+
 - **Primary**: Obsidian (#0A0E27)
 - **Secondary**: Sun (#FFD93D)
 - **Accent**: Lavender (#9B59B6)
@@ -134,29 +135,34 @@ export async function POST(request: NextRequest) {
 - **Surface**: Pearl (#FAFAFA)
 
 ### Typography
+
 - **Headings**: Poppins
 - **Body**: Inter
 - **Code**: Space Mono
 
 ### Spacing
+
 8px grid system: `xs: 0.5rem`, `sm: 1rem`, `md: 2rem`, `lg: 3rem`, `xl: 4rem`
 
 ## Code Conventions
 
 ### Imports Order
+
 1. React/Next.js
 2. External packages
-3. Internal packages (@madfam/*)
+3. Internal packages (@madfam/\*)
 4. Relative imports
 5. Types
 
 ### Component Structure
+
 1. Interfaces/Types
 2. Component definition
 3. Subcomponents
 4. Exports
 
 ### Naming
+
 - Components: PascalCase
 - Files: PascalCase for components, kebab-case for pages
 - Functions: camelCase
@@ -173,12 +179,20 @@ export async function POST(request: NextRequest) {
 ## Internationalization
 
 Default language: Spanish (es-MX)
+Supported locales: es-MX, en-US, pt-BR
 
 Usage:
+
 ```tsx
-// In components
-const { t } = useTranslation();
-<h1>{t('home.hero.title')}</h1>
+// In client components
+import { useTranslations } from 'next-intl';
+const t = useTranslations('home');
+<h1>{t('hero.title')}</h1>;
+
+// In server components
+import { getTranslations } from 'next-intl/server';
+const t = await getTranslations('home');
+<h1>{t('hero.title')}</h1>;
 
 // Translation keys follow pattern:
 // [page].[section].[element]
@@ -213,6 +227,7 @@ pnpm test:e2e
 ## Environment Variables
 
 Required:
+
 ```
 NEXT_PUBLIC_ENV=development|staging|production
 NEXT_PUBLIC_API_URL=
@@ -220,6 +235,7 @@ NEXT_PUBLIC_PLAUSIBLE_DOMAIN=
 ```
 
 Optional:
+
 ```
 N8N_WEBHOOK_URL=
 API_SECRET=
@@ -229,8 +245,9 @@ DATABASE_URL=
 ## Common Patterns
 
 ### Lead Capture
+
 ```tsx
-<LeadForm 
+<LeadForm
   tier={ServiceTier.L3_CONSULTING}
   source="service-page"
   onSuccess={() => router.push('/thank-you')}
@@ -238,6 +255,7 @@ DATABASE_URL=
 ```
 
 ### Feature Flags
+
 ```tsx
 const showFeature = useFeatureFlag('NEW_FEATURE');
 if (showFeature) {
@@ -246,26 +264,30 @@ if (showFeature) {
 ```
 
 ### Analytics Events
+
 ```tsx
 analytics.trackServiceInquiry({
   tier: 'consulting',
-  source: 'hero-cta'
+  source: 'hero-cta',
 });
 ```
 
 ## Troubleshooting
 
 ### Build Errors
+
 1. Check TypeScript: `pnpm typecheck`
 2. Clear cache: `pnpm clean`
 3. Reinstall: `rm -rf node_modules && pnpm install`
 
 ### Import Errors
+
 - Ensure `baseUrl` is set in tsconfig
 - Check package exports in index files
 - Verify monorepo package names
 
 ### Style Issues
+
 - Use Tailwind classes, not inline styles
 - Follow mobile-first approach
 - Check for purged classes in production
@@ -318,5 +340,13 @@ pnpm analyze          # Analyze bundle size
 
 ---
 
-Last Updated: January 2024
-Next Review: February 2024
+**Last Updated:** July 2025  
+**Next Review:** August 2025
+
+**AI Assistant Notes:**
+
+- This document is optimized for AI assistants working on the MADFAM codebase
+- All examples are current and tested
+- Follow the patterns established in existing code
+- Always consider multilingual support (es-MX, en-US, pt-BR)
+- Maintain consistency with design system and conventions

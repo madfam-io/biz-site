@@ -38,7 +38,7 @@ enum ServiceTier {
   L2_ADVANCED = 'advanced',
   L3_CONSULTING = 'consulting',
   L4_PLATFORMS = 'platforms',
-  L5_STRATEGIC = 'strategic'
+  L5_STRATEGIC = 'strategic',
 }
 ```
 
@@ -96,23 +96,23 @@ const featureFlags = {
   NEW_LEAD_SCORING: {
     development: true,
     staging: true,
-    production: false
+    production: false,
   },
   INTERACTIVE_CALCULATOR: {
     development: true,
     staging: true,
-    production: true
+    production: true,
   },
   CHAT_SUPPORT: {
     development: true,
     staging: false,
-    production: false
+    production: false,
   },
   PORTUGUESE_LOCALE: {
     development: true,
     staging: true,
-    production: false
-  }
+    production: false,
+  },
 };
 ```
 
@@ -125,7 +125,7 @@ import { ServiceTier, serviceTiers } from '@madfam/core';
 
 function ServiceSelector() {
   const tiers = Object.values(serviceTiers);
-  
+
   return (
     <select>
       {tiers.map(tier => (
@@ -158,11 +158,11 @@ function useFeatureFlag(flagKey: string): boolean {
 // Usage
 function MyComponent() {
   const showNewFeature = useFeatureFlag('NEW_LEAD_SCORING');
-  
+
   if (showNewFeature) {
     return <NewFeature />;
   }
-  
+
   return <OldFeature />;
 }
 ```
@@ -233,11 +233,13 @@ interface ServiceInquiry {
 ### Adding New Features
 
 1. **New Service Tier**
+
    - Update `ServiceTier` enum
    - Add configuration to `serviceTiers` object
    - Update translations
 
 2. **New Feature Flag**
+
    - Add to `featureFlags` object
    - Set environment defaults
    - Document usage
@@ -260,15 +262,18 @@ pnpm test:coverage
 ## Best Practices
 
 1. **Type Safety**
+
    - Use enums for fixed values
    - Define interfaces for all data structures
    - Avoid `any` type
 
 2. **Internationalization**
+
    - Include both Spanish and English text
    - Use consistent naming (field/fieldEn)
 
 3. **Feature Flags**
+
    - Default to false in production
    - Test thoroughly in staging
    - Document rollout strategy
@@ -282,22 +287,61 @@ pnpm test:coverage
 
 Planned additions to the core package:
 
-- Lead scoring algorithm
-- ROI calculation models
-- Service recommendation engine
-- Pricing calculators
-- Business rules engine
+- **Lead scoring algorithm** - Advanced AI-driven lead qualification
+- **ROI calculation models** - Service-specific ROI projections
+- **Service recommendation engine** - Intelligent tier suggestions
+- **Pricing calculators** - Dynamic pricing based on requirements
+- **Business rules engine** - Configurable business logic
+
+## API Reference
+
+### Core Classes
+
+#### FeatureFlagProvider
+
+```typescript
+class FeatureFlagProvider {
+  isEnabled(flagKey: string): boolean;
+  getAllFlags(): Record<string, boolean>;
+  getEnvironment(): 'development' | 'staging' | 'production';
+}
+```
+
+#### ServiceTierUtils
+
+```typescript
+class ServiceTierUtils {
+  static getByLevel(level: number): ServiceTierConfig | undefined;
+  static getRecommendedTier(requirements: string[]): ServiceTier;
+  static calculatePrice(tier: ServiceTier, requirements: object): number;
+}
+```
 
 ## Contributing
 
 When contributing to the core package:
 
-1. Maintain backward compatibility
-2. Update all affected packages
-3. Add comprehensive tests
-4. Document new features
-5. Update TypeScript definitions
+1. **Maintain backward compatibility** - Never break existing APIs
+2. **Update all affected packages** - Ensure monorepo consistency
+3. **Add comprehensive tests** - Cover edge cases and error paths
+4. **Document new features** - Update this README and inline docs
+5. **Update TypeScript definitions** - Keep types accurate and complete
+
+## Package Information
+
+| Property         | Value                     |
+| ---------------- | ------------------------- |
+| **Package Name** | @madfam/core              |
+| **Version**      | 0.1.0                     |
+| **Last Updated** | July 2025                 |
+| **Dependencies** | Minimal (TypeScript only) |
+| **Bundle Size**  | < 10KB                    |
 
 ## License
 
 Part of MADFAM monorepo - All rights reserved.
+
+---
+
+**Maintained by**: MADFAM Core Team  
+**Next Review**: August 2025

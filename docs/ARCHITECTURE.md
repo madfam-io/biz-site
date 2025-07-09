@@ -11,22 +11,22 @@ graph TB
     subgraph "Client"
         Browser[Web Browser]
     end
-    
+
     subgraph "CDN Layer"
         CF[Cloudflare CDN]
     end
-    
+
     subgraph "Application Layer"
         Next[Next.js App]
         API[API Routes]
     end
-    
+
     subgraph "Services"
         Analytics[Plausible Analytics]
         N8N[n8n Workflows]
         CMS[Payload CMS]
     end
-    
+
     Browser --> CF
     CF --> Next
     Next --> API
@@ -98,13 +98,55 @@ Components follow a hierarchical structure:
 
 The business logic is organized around a 5-tier service model:
 
+```mermaid
+graph LR
+    L1[L1 Essentials<br/>3D Design] --> L2[L2 Advanced<br/>Parametric Design]
+    L2 --> L3[L3 Consulting<br/>Workshops & Training]
+    L3 --> L4[L4 Platforms<br/>SPARK & PENNY]
+    L4 --> L5[L5 Strategic<br/>vCTO Partnership]
+
+    style L1 fill:#6BCB77
+    style L2 fill:#FFD93D
+    style L3 fill:#9B59B6
+    style L4 fill:#0A0E27,color:#fff
+    style L5 fill:#FF6B6B
+```
+
+### 4. Data Flow Architecture
+
+```mermaid
+flowchart TD
+    A[User Interaction] --> B{Client/Server?}
+    B -->|Client| C[React Component]
+    B -->|Server| D[Next.js API Route]
+
+    C --> E[Client State]
+    C --> F[Form Validation]
+
+    D --> G[Business Logic]
+    G --> H[External Services]
+    G --> I[Database]
+
+    H --> J[Analytics]
+    H --> K[n8n Automation]
+    H --> L[CMS]
+
+    F --> M[Lead Generation]
+    M --> N[Score Calculation]
+    N --> O[Notification]
+
+    style A fill:#FFD93D
+    style M fill:#9B59B6
+    style O fill:#6BCB77
+```
+
 ```typescript
 enum ServiceTier {
   L1_ESSENTIALS = 'essentials',
   L2_ADVANCED = 'advanced',
   L3_CONSULTING = 'consulting',
   L4_PLATFORMS = 'platforms',
-  L5_STRATEGIC = 'strategic'
+  L5_STRATEGIC = 'strategic',
 }
 ```
 
@@ -193,6 +235,7 @@ Development → Staging → Production
 ### Feature Flags
 
 Feature flags enable:
+
 - Progressive rollouts
 - A/B testing
 - Quick rollbacks
@@ -203,9 +246,9 @@ const features = {
   NEW_LEAD_SCORING: {
     development: true,
     staging: true,
-    production: false
-  }
-}
+    production: false,
+  },
+};
 ```
 
 ## Scalability Considerations
@@ -225,35 +268,39 @@ const features = {
 ## Future Architecture Plans
 
 ### Phase 1 (Current)
+
 - Static site with API routes
 - Basic lead capture
 - Manual content updates
 
 ### Phase 2 (Q2 2024)
+
 - Payload CMS integration
 - Advanced lead scoring
 - n8n workflow automation
 
 ### Phase 3 (Q3 2024)
+
 - AI-powered content
 - Personalization engine
 - Advanced analytics
 
 ### Phase 4 (Q4 2024)
+
 - Multi-region deployment
 - Real-time features
 - Mobile app (React Native)
 
 ## Decision Log
 
-| Decision | Rationale | Date |
-|----------|-----------|------|
-| Next.js 14 | Latest features, App Router | 2024-01 |
-| Monorepo | Code sharing, atomic changes | 2024-01 |
-| Tailwind CSS | Utility-first, performance | 2024-01 |
-| Plausible | Privacy-first analytics | 2024-01 |
-| TypeScript | Type safety, DX | 2024-01 |
-| Vercel | Next.js optimization | 2024-01 |
+| Decision     | Rationale                    | Date    |
+| ------------ | ---------------------------- | ------- |
+| Next.js 14   | Latest features, App Router  | 2024-01 |
+| Monorepo     | Code sharing, atomic changes | 2024-01 |
+| Tailwind CSS | Utility-first, performance   | 2024-01 |
+| Plausible    | Privacy-first analytics      | 2024-01 |
+| TypeScript   | Type safety, DX              | 2024-01 |
+| Vercel       | Next.js optimization         | 2024-01 |
 
 ## References
 
