@@ -55,6 +55,7 @@
   "services": {
     "hero": {
       "title": "Servicios diseñados para cada etapa de tu crecimiento",
+      "titleHighlight": "cada etapa de tu crecimiento",
       "subtitle": "Desde soluciones rápidas hasta transformación estratégica completa. Encuentra el nivel perfecto para impulsar tu negocio con IA."
     },
     "comparison": {
@@ -67,7 +68,8 @@
     "notSure": {
       "title": "¿No estás seguro qué nivel necesitas?",
       "subtitle": "Nuestro equipo te ayudará a identificar la solución perfecta para tu empresa",
-      "cta": "Agendar evaluación gratuita"
+      "cta": "Agendar evaluación gratuita",
+      "getEstimate": "Obtener estimación instantánea"
     },
     "level3": {
       "hero": {

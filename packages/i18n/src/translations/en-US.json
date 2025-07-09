@@ -55,6 +55,7 @@
   "services": {
     "hero": {
       "title": "Services designed for every stage of your growth",
+      "titleHighlight": "every stage of your growth",
       "subtitle": "From quick solutions to complete strategic transformation. Find the perfect level to boost your business with AI."
     },
     "comparison": {
@@ -67,7 +68,8 @@
     "notSure": {
       "title": "Not sure which level you need?",
       "subtitle": "Our team will help you identify the perfect solution for your company",
-      "cta": "Schedule free assessment"
+      "cta": "Schedule free assessment",
+      "getEstimate": "Get instant estimate"
     },
     "level3": {
       "hero": {
