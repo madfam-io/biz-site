@@ -1,7 +1,7 @@
 import { buildConfig } from 'payload/config';
 import { webpackBundler } from '@payloadcms/bundler-webpack';
 import { postgresAdapter } from '@payloadcms/db-postgres';
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { slateEditor } from '@payloadcms/richtext-slate';
 
 // Collections
 import { Services } from './src/collections/Services';
@@ -20,7 +20,7 @@ export default buildConfig({
     user: 'users',
     bundler: webpackBundler(),
   },
-  editor: lexicalEditor({}),
+  editor: slateEditor({}),
   collections: [
     Services,
     Products,
