@@ -4,11 +4,9 @@ import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ROICalculator } from '@/components/ROICalculator';
 import { ServiceStructuredData } from '@/components/StructuredData';
-import { unstable_setRequestLocale } from 'next-intl/server';
 import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
 
 export default function Level3ConsultingPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L3_CONSULTING];
   const t = useTypedTranslations('services');
   const currentLocale = locale as Locale;

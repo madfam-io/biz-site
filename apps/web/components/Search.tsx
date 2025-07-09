@@ -5,6 +5,8 @@ import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { serviceTiers } from '@madfam/core';
+import { useLocale } from 'next-intl';
+import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
 
 interface SearchResult {
   id: string;
@@ -22,67 +24,121 @@ export function Search() {
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const locale = useLocale() as Locale;
 
   // Mock search data - in production, this would come from an API
   const searchableContent: SearchResult[] = [
     // Services
-    ...Object.values(serviceTiers).map(service => ({
-      id: service.id,
-      title: service.name,
-      description: service.description,
-      type: 'service' as const,
-      url: `/services/level-${service.level}-${service.id}`,
-    })),
+    ...Object.values(serviceTiers).map(service => {
+      const localizedSlug = getLocalizedServiceSlug(service.id, locale);
+      const baseRoute = locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
+      
+      return {
+        id: service.id,
+        title: getLocalizedContent(service.name, locale),
+        description: getLocalizedContent(service.description, locale),
+        type: 'service' as const,
+        url: `/${locale}/${baseRoute}/${localizedSlug}`,
+      };
+    }),
     // Products
     {
       id: 'spark',
       title: 'SPARK',
-      description: 'Plataforma de orquestación de IA para automatizar flujos de trabajo',
-      type: 'product',
-      url: '/products#spark',
+      description: locale === 'en-US' 
+        ? 'AI orchestration platform to automate workflows'
+        : locale === 'pt-BR' 
+        ? 'Plataforma de orquestração de IA para automatizar fluxos de trabalho'
+        : 'Plataforma de orquestación de IA para automatizar flujos de trabajo',
+      type: 'product' as const,
+      url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#spark`,
     },
     {
       id: 'penny',
       title: 'PENNY',
-      description: 'Asistente de automatización de procesos con IA',
-      type: 'product',
-      url: '/products#penny',
+      description: locale === 'en-US'
+        ? 'AI-powered process automation assistant'
+        : locale === 'pt-BR'
+        ? 'Assistente de automação de processos com IA'
+        : 'Asistente de automatización de procesos con IA',
+      type: 'product' as const,
+      url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#penny`,
     },
     // Pages
     {
       id: 'about',
-      title: 'Acerca de MADFAM',
-      description: 'Conoce nuestra misión, visión y equipo',
-      type: 'page',
-      url: '/about',
+      title: locale === 'en-US' 
+        ? 'About MADFAM' 
+        : locale === 'pt-BR' 
+        ? 'Sobre MADFAM'
+        : 'Acerca de MADFAM',
+      description: locale === 'en-US'
+        ? 'Learn about our mission, vision and team'
+        : locale === 'pt-BR'
+        ? 'Conheça nossa missão, visão e equipe'
+        : 'Conoce nuestra misión, visión y equipo',
+      type: 'page' as const,
+      url: `/${locale}/${locale === 'es-MX' ? 'nosotros' : locale === 'pt-BR' ? 'sobre' : 'about'}`,
     },
     {
       id: 'contact',
-      title: 'Contacto',
-      description: 'Ponte en contacto con nuestro equipo',
-      type: 'page',
-      url: '/contact',
+      title: locale === 'en-US'
+        ? 'Contact'
+        : locale === 'pt-BR'
+        ? 'Contato'
+        : 'Contacto',
+      description: locale === 'en-US'
+        ? 'Get in touch with our team'
+        : locale === 'pt-BR'
+        ? 'Entre em contato com nossa equipe'
+        : 'Ponte en contacto con nuestro equipo',
+      type: 'page' as const,
+      url: `/${locale}/${locale === 'es-MX' ? 'contacto' : locale === 'pt-BR' ? 'contato' : 'contact'}`,
     },
     {
       id: 'assessment',
-      title: 'Evaluación de IA',
-      description: 'Descubre el potencial de IA para tu negocio',
-      type: 'page',
-      url: '/assessment',
+      title: locale === 'en-US'
+        ? 'AI Assessment'
+        : locale === 'pt-BR'
+        ? 'Avaliação de IA'
+        : 'Evaluación de IA',
+      description: locale === 'en-US'
+        ? 'Discover the AI potential for your business'
+        : locale === 'pt-BR'
+        ? 'Descubra o potencial de IA para seu negócio'
+        : 'Descubre el potencial de IA para tu negocio',
+      type: 'page' as const,
+      url: `/${locale}/${locale === 'es-MX' ? 'evaluacion' : locale === 'pt-BR' ? 'avaliacao' : 'assessment'}`,
     },
     {
       id: 'calculator',
-      title: 'Calculadora de ROI',
-      description: 'Calcula el retorno de inversión de nuestros servicios',
-      type: 'page',
-      url: '/calculator',
+      title: locale === 'en-US'
+        ? 'ROI Calculator'
+        : locale === 'pt-BR'
+        ? 'Calculadora de ROI'
+        : 'Calculadora de ROI',
+      description: locale === 'en-US'
+        ? 'Calculate the return on investment of our services'
+        : locale === 'pt-BR'
+        ? 'Calcule o retorno do investimento de nossos serviços'
+        : 'Calcula el retorno de inversión de nuestros servicios',
+      type: 'page' as const,
+      url: `/${locale}/${locale === 'es-MX' ? 'calculadora' : locale === 'pt-BR' ? 'calculadora' : 'calculator'}`,
     },
     {
       id: 'estimator',
-      title: 'Estimador de Proyectos',
-      description: 'Obtén una cotización instantánea para tu proyecto',
-      type: 'page',
-      url: '/estimator',
+      title: locale === 'en-US'
+        ? 'Project Estimator'
+        : locale === 'pt-BR'
+        ? 'Estimador de Projetos'
+        : 'Estimador de Proyectos',
+      description: locale === 'en-US'
+        ? 'Get an instant quote for your project'
+        : locale === 'pt-BR'
+        ? 'Obtenha uma cotação instantânea para seu projeto'
+        : 'Obtén una cotización instantánea para tu proyecto',
+      type: 'page' as const,
+      url: `/${locale}/${locale === 'es-MX' ? 'estimador' : locale === 'pt-BR' ? 'estimador' : 'estimator'}`,
     },
   ];
 
@@ -165,10 +221,10 @@ export function Search() {
 
   const getTypeLabel = (type: SearchResult['type']) => {
     const labels = {
-      service: 'Servicio',
-      product: 'Producto',
-      page: 'Página',
-      article: 'Artículo',
+      service: locale === 'en-US' ? 'Service' : locale === 'pt-BR' ? 'Serviço' : 'Servicio',
+      product: locale === 'en-US' ? 'Product' : locale === 'pt-BR' ? 'Produto' : 'Producto',
+      page: locale === 'en-US' ? 'Page' : locale === 'pt-BR' ? 'Página' : 'Página',
+      article: locale === 'en-US' ? 'Article' : locale === 'pt-BR' ? 'Artigo' : 'Artículo',
     };
     return labels[type];
   };
@@ -222,7 +278,11 @@ export function Search() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Buscar servicios, productos, páginas..."
+                  placeholder={locale === 'en-US' 
+                    ? "Search services, products, pages..." 
+                    : locale === 'pt-BR' 
+                    ? "Buscar serviços, produtos, páginas..."
+                    : "Buscar servicios, productos, páginas..."}
                   className="flex-1 bg-transparent outline-none text-lg placeholder:text-gray-400"
                 />
                 <button
@@ -237,7 +297,7 @@ export function Search() {
               <div className="max-h-[400px] overflow-y-auto">
                 {loading ? (
                   <div className="p-8 text-center text-gray-500">
-                    Buscando...
+                    {locale === 'en-US' ? 'Searching...' : locale === 'pt-BR' ? 'Buscando...' : 'Buscando...'}
                   </div>
                 ) : results.length > 0 ? (
                   <div className="p-2">
@@ -269,27 +329,39 @@ export function Search() {
                 ) : query.trim() ? (
                   <div className="p-8 text-center">
                     <p className="text-gray-500 dark:text-gray-400">
-                      No se encontraron resultados para "{query}"
+                      {locale === 'en-US' 
+                        ? `No results found for "${query}"`
+                        : locale === 'pt-BR'
+                        ? `Nenhum resultado encontrado para "${query}"`
+                        : `No se encontraron resultados para "${query}"`}
                     </p>
                     <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
-                      Intenta con otros términos de búsqueda
+                      {locale === 'en-US'
+                        ? 'Try different search terms'
+                        : locale === 'pt-BR'
+                        ? 'Tente com outros termos de busca'
+                        : 'Intenta con otros términos de búsqueda'}
                     </p>
                   </div>
                 ) : (
                   <div className="p-8 text-center text-gray-400 dark:text-gray-500">
-                    <p>Empieza a escribir para buscar</p>
+                    <p>{locale === 'en-US' 
+                      ? 'Start typing to search'
+                      : locale === 'pt-BR'
+                      ? 'Comece a digitar para buscar'
+                      : 'Empieza a escribir para buscar'}</p>
                     <div className="flex items-center justify-center gap-4 mt-4 text-sm">
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">↑↓</kbd>
-                        Navegar
+                        {locale === 'en-US' ? 'Navigate' : locale === 'pt-BR' ? 'Navegar' : 'Navegar'}
                       </span>
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Enter</kbd>
-                        Seleccionar
+                        {locale === 'en-US' ? 'Select' : locale === 'pt-BR' ? 'Selecionar' : 'Seleccionar'}
                       </span>
                       <span className="flex items-center gap-1">
                         <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Esc</kbd>
-                        Cerrar
+                        {locale === 'en-US' ? 'Close' : locale === 'pt-BR' ? 'Fechar' : 'Cerrar'}
                       </span>
                     </div>
                   </div>

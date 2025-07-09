@@ -3,17 +3,13 @@
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ServiceCard } from '@/components/ServiceCard';
-import { unstable_setRequestLocale } from 'next-intl/server';
-import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
+import { getLocalizedContent, type Locale } from '@madfam/i18n';
 
 export default function Level5StrategicPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L5_STRATEGIC];
-  const t = useTypedTranslations('services');
   const currentLocale = locale as Locale;
   
   // Get localized content from service object
-  const serviceName = getLocalizedContent(service.name, currentLocale);
   const serviceDescription = getLocalizedContent(service.description, currentLocale);
   const otherServices = [
     serviceTiers[ServiceTier.L3_CONSULTING],

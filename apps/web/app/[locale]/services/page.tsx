@@ -2,22 +2,23 @@ import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier, ServiceTierConfig } from '@madfam/core';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
+import { getLocalizedContent, type Locale } from '@madfam/i18n';
 
 export default function ServicesPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   const t = useTranslations('services');
+  const currentLocale = locale as Locale;
   const allServices = Object.values(serviceTiers);
   
   // Helper function to get localized service data
   const getLocalizedServiceData = (service: ServiceTierConfig) => {
-    const isEnglish = locale === 'en-US';
     return {
-      name: isEnglish ? service.nameEn : service.name,
-      description: isEnglish ? service.descriptionEn : service.description,
-      features: isEnglish ? service.featuresEn : service.features,
-      idealFor: isEnglish ? service.idealForEn : service.idealFor,
-      duration: isEnglish ? service.durationEn : service.duration,
-      ctaText: isEnglish ? service.cta.textEn : service.cta.text,
+      name: getLocalizedContent(service.name, currentLocale),
+      description: getLocalizedContent(service.description, currentLocale),
+      features: getLocalizedContent(service.features, currentLocale),
+      idealFor: getLocalizedContent(service.idealFor, currentLocale),
+      duration: service.duration ? getLocalizedContent(service.duration, currentLocale) : undefined,
+      ctaText: getLocalizedContent(service.cta.text, currentLocale),
     };
   };
 

@@ -503,6 +503,7 @@
     },
     "values": {
       "title": "Nossos valores",
+      "subtitle": "Os princípios que guiam cada decisão, projeto e relacionamento na MADFAM",
       "innovation": "Inovação constante",
       "integrity": "Integridade absoluta",
       "collaboration": "Colaboração genuína",
@@ -520,7 +521,10 @@
     "cta": {
       "title": "Pronto para transformar seu negócio?",
       "subtitle": "Junte-se a centenas de empresas que já revolucionaram suas operações com a MADFAM.",
-      "scheduleCall": "Agendar uma conversa"
+      "scheduleCall": "Agendar uma conversa",
+      "viewOpportunities": "Ver oportunidades",
+      "seeWork": "Conheça nosso trabalho",
+      "joinTeam": "Junte-se ao time"
     }
   },
   "assessment": {
