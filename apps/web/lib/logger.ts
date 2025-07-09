@@ -43,7 +43,7 @@ export function logAPICall(
   status: number, 
   metadata?: Record<string, any>
 ) {
-  apiLogger.apiCall(endpoint, method, duration, status, metadata);
+  appLogger.apiCall(endpoint, method, duration, status, metadata);
 }
 
 export function logPerformanceMetric(
@@ -52,7 +52,7 @@ export function logPerformanceMetric(
   unit: string = 'ms', 
   metadata?: Record<string, any>
 ) {
-  performanceLogger.performanceMetric(metric, value, unit, metadata);
+  appLogger.performanceMetric(metric, value, unit, metadata);
 }
 
 // Error logging with automatic error boundary integration
@@ -77,12 +77,12 @@ export function logFormSubmission(
   metadata?: Record<string, any>, 
   userId?: string
 ) {
-  const logger = userId ? formLogger.withUserId(userId) : formLogger;
+  const logger = userId ? appLogger.withUserId(userId) : appLogger;
   
   if (success) {
     logger.userAction(`Form submitted: ${formName}`, metadata);
   } else {
-    logger.warn(`Form submission failed: ${formName}`, metadata);
+    logger.warn(`Form submission failed: ${formName}`, 'FORM', metadata);
   }
 }
 
@@ -92,7 +92,7 @@ export function logFormValidationError(
   error: string, 
   metadata?: Record<string, any>
 ) {
-  formLogger.debug(`Form validation error: ${formName}.${field}`, {
+  appLogger.debug(`Form validation error: ${formName}.${field}`, 'FORM', {
     ...metadata,
     field,
     error,
@@ -150,8 +150,8 @@ export function logAnalyticsEvent(
   properties?: Record<string, any>, 
   userId?: string
 ) {
-  const logger = userId ? analyticsLogger.withUserId(userId) : analyticsLogger;
-  logger.info(`Analytics event: ${event}`, {
+  const logger = userId ? appLogger.withUserId(userId) : appLogger;
+  logger.info(`Analytics event: ${event}`, 'ANALYTICS', {
     event,
     properties,
     timestamp: Date.now(),
@@ -176,8 +176,8 @@ export function initializePerformanceMonitoring() {
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
         logPerformanceMetric('LCP', entry.startTime, 'ms', {
-          element: entry.element?.tagName,
-          id: entry.element?.id,
+          element: (entry as any).element?.tagName,
+          id: (entry as any).element?.id,
           url: window.location.href,
         });
       }

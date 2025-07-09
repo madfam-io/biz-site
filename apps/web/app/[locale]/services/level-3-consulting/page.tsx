@@ -1,4 +1,4 @@
-import { Container, Heading, Button, Card, CardContent, ServiceCard, ROICalculator, LeadForm, Testimonial, TestimonialGrid, Hero } from '@madfam/ui';
+import { Container, Heading, Button, Card, CardContent, ROICalculator, LeadForm, TestimonialGrid, Hero } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ServiceStructuredData } from '@/components/StructuredData';
 import { getLocalizedContent, type Locale } from '@madfam/i18n';
@@ -240,13 +240,13 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
               </ul>
             </div>
             <div className="bg-gradient-to-br from-obsidian to-obsidian/90 text-white rounded-2xl p-8">
-              <h3 className="font-heading text-2xl mb-4">{t('level3.included.investment')}</h3>
+              <h3 className="font-heading text-2xl mb-4">{currentLocale === 'en-US' ? 'Investment' : currentLocale === 'pt-BR' ? 'Investimento' : 'Inversión'}</h3>
               <div className="mb-6">
-                <p className="text-sm opacity-80">{t('level3.included.from')}</p>
+                <p className="text-sm opacity-80">{currentLocale === 'en-US' ? 'Starting from' : currentLocale === 'pt-BR' ? 'A partir de' : 'Desde'}</p>
                 <p className="text-4xl font-heading font-bold">
                   ${service.startingPrice.toLocaleString()} {service.currency}
                 </p>
-                <p className="text-sm opacity-80 mt-2">{t('level3.included.projectDuration')}</p>
+                <p className="text-sm opacity-80 mt-2">{currentLocale === 'en-US' ? 'per project' : currentLocale === 'pt-BR' ? 'por projeto' : 'por proyecto'}</p>
               </div>
               <div className="space-y-2 mb-6">
                 <p className="text-sm opacity-80">✓ {t('level3.included.paymentPlan')}</p>

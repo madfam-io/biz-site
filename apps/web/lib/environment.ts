@@ -20,6 +20,13 @@ export const environment = {
              (process.env.DEPLOY_TARGET === 'github-pages' ? 'https://api.madfam.io' : '/api'),
   },
   
+  // CMS configuration
+  cms: {
+    url: process.env.NEXT_PUBLIC_CMS_URL || 
+         (process.env.DEPLOY_TARGET === 'github-pages' ? 'https://cms.madfam.io' : 'http://localhost:3001'),
+    enabled: process.env.DEPLOY_TARGET !== 'github-pages',
+  },
+  
   // External services
   services: {
     plausible: {

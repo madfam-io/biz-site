@@ -114,7 +114,8 @@ export async function GET() {
   });
 }
 
-// Example function to send logs to external service
+// Example function to send logs to external service - commented out for now
+/*
 async function sendToLoggingService(logData: any) {
   // Example implementations:
   
@@ -139,6 +140,7 @@ async function sendToLoggingService(logData: any) {
     for (const error of errors) {
       // Send to Sentry
       // Sentry.captureException(new Error(error.message), { extra: error.metadata });
+      console.log('Error logged:', error.message);
     }
   }
   
@@ -158,3 +160,4 @@ async function sendToLoggingService(logData: any) {
     }
   }
 }
+*/

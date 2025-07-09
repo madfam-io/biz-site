@@ -80,7 +80,8 @@ export function useLoadingState<T>(
     return () => {
       cancelled = true;
     };
-  }, deps);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchFn, ...deps]);
 
   return { data, loading, error };
 }

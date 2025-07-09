@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,7 +28,7 @@ export function Search() {
   const t = useTranslations('search');
 
   // Mock search data - in production, this would come from an API
-  const searchableContent: SearchResult[] = [
+  const searchableContent: SearchResult[] = useMemo(() => [
     // Services
     ...Object.values(serviceTiers).map(service => {
       const localizedSlug = getLocalizedServiceSlug(service.id, locale);
@@ -141,7 +141,7 @@ export function Search() {
       type: 'page' as const,
       url: `/${locale}/${locale === 'es-MX' ? 'estimador' : locale === 'pt-BR' ? 'estimador' : 'estimator'}`,
     },
-  ];
+  ], [locale]);
 
   // Handle search
   const performSearch = useCallback((searchQuery: string) => {
@@ -162,7 +162,7 @@ export function Search() {
       setResults(filtered);
       setLoading(false);
     }, 300);
-  }, []);
+  }, [searchableContent]);
 
   // Debounced search
   useEffect(() => {

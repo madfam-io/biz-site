@@ -39,7 +39,7 @@ export interface AssessmentProps {
   questions: AssessmentQuestion[];
   onComplete?: (result: AssessmentResult) => void;
   className?: string;
-  locale?: 'es' | 'en-US' | 'pt-BR';
+  locale?: 'es-MX' | 'en-US' | 'pt-BR';
   translations?: {
     resultTitle: string;
     levelLabel: string;
@@ -180,7 +180,7 @@ const defaultQuestions: AssessmentQuestion[] = [
   },
 ];
 
-const getDefaultTranslations = (locale: 'es' | 'en-US' | 'pt-BR' = 'es') => ({
+const getDefaultTranslations = (locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX') => ({
   resultTitle: locale === 'en-US' ? 'Assessment Results' : locale === 'pt-BR' ? 'Resultados da Avaliação' : 'Resultado de tu Evaluación',
   levelLabel: locale === 'en-US' ? 'Level' : locale === 'pt-BR' ? 'Nível' : 'Nivel',
   recommendationsTitle: locale === 'en-US' ? 'Recommendations for your company' : locale === 'pt-BR' ? 'Recomendações para sua empresa' : 'Recomendaciones para tu empresa',
@@ -213,7 +213,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
     questions = defaultQuestions, 
     onComplete, 
     className,
-    locale = 'es',
+    locale = 'es-MX',
     translations 
   }, ref) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);

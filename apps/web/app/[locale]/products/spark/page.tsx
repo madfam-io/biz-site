@@ -1,12 +1,10 @@
-import { Container, Heading, Button, Card, CardContent, ProductCard, Hero, LeadForm, ROICalculator, TestimonialGrid, Newsletter } from '@madfam/ui';
+import { Container, Heading, Button, Card, CardContent, Hero, LeadForm, ROICalculator, TestimonialGrid, Newsletter } from '@madfam/ui';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
 import { logServiceInquiry } from '@/lib/logger';
 import { type Locale } from '@madfam/i18n';
 
 export default function SparkProductPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
-  const t = useTranslations('products');
   const currentLocale = locale as Locale;
 
   const sparkFeatures = [

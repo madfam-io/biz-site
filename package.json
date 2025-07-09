@@ -25,17 +25,32 @@
     "typecheck": "turbo typecheck",
     "docker:dev": "docker-compose up web-dev",
     "docker:prod": "docker-compose up web",
-    "docker:build": "docker-compose build"
+    "docker:build": "docker-compose build",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "turbo": "^1.11.3",
-    "prettier": "^3.2.4",
     "@types/node": "^20.11.5",
-    "next": "14.2.8"
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "next": "14.2.8",
+    "prettier": "^3.2.4",
+    "turbo": "^1.11.3"
   },
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=8.0.0"
   },
-  "packageManager": "pnpm@8.14.1"
+  "packageManager": "pnpm@8.14.1",
+  "lint-staged": {
+    "apps/web/**/*.{ts,tsx,js,jsx}": [
+      "pnpm --filter @madfam/web lint --fix",
+      "pnpm --filter @madfam/web typecheck"
+    ],
+    "apps/cms/**/*.{ts,js}": [
+      "cd apps/cms && npm run lint"
+    ],
+    "**/*.{ts,tsx,js,jsx,json,md}": [
+      "prettier --write"
+    ]
+  }
 }
