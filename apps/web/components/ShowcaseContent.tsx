@@ -1,19 +1,19 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { 
-  Button, 
-  Hero, 
-  CTA, 
-  Features, 
-  ServiceCard, 
-  ProductCard, 
+import {
+  Button,
+  Hero,
+  CTA,
+  Features,
+  ServiceCard,
+  ProductCard,
   TestimonialCard,
   Container,
-  Heading
+  Heading,
 } from '@madfam/ui';
-import { FeatureFlag, FeatureFlagDebug } from '@/components/FeatureFlag';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { FeatureFlag, FeatureFlagDebug } from '@/components/FeatureFlag';
 
 export function ShowcaseContent() {
   const t = useTranslations();
@@ -43,19 +43,19 @@ export function ShowcaseContent() {
       icon: <CubeIcon />,
       title: t('services.tier1.features.0'),
       description: t('services.tier1.description'),
-      link: { text: t('common.learnMore'), href: '/services/level-1-essentials' }
+      link: { text: t('common.learnMore'), href: '/services/level-1-essentials' },
     },
     {
       icon: <SparkIcon />,
       title: t('services.tier2.features.0'),
       description: t('services.tier2.description'),
-      badge: 'Popular'
+      badge: 'Popular',
     },
     {
       icon: <RocketIcon />,
       title: t('services.tier3.features.0'),
-      description: t('services.tier3.description')
-    }
+      description: t('services.tier3.description'),
+    },
   ];
 
   return (
@@ -71,10 +71,7 @@ export function ShowcaseContent() {
               <h1 className="text-2xl font-bold text-obsidian dark:text-pearl">
                 Component Showcase
               </h1>
-              <Button
-                variant="ghost"
-                onClick={() => setDarkMode(!darkMode)}
-              >
+              <Button variant="ghost" onClick={() => setDarkMode(!darkMode)}>
                 {darkMode ? '☀️' : '🌙'} Toggle Dark Mode
               </Button>
             </div>
@@ -91,12 +88,12 @@ export function ShowcaseContent() {
             primary: {
               text: t('home.hero.cta'),
               href: '#services',
-              variant: 'creative'
+              variant: 'creative',
             },
             secondary: {
               text: t('common.learnMore'),
-              href: '#features'
-            }
+              href: '#features',
+            },
           }}
           background="gradient"
         />
@@ -115,8 +112,12 @@ export function ShowcaseContent() {
               <Button variant="ghost">Ghost</Button>
               <Button variant="danger">Danger</Button>
               <Button variant="success">Success</Button>
-              <Button variant="primary" loading>Loading</Button>
-              <Button variant="primary" icon={<SparkIcon />}>With Icon</Button>
+              <Button variant="primary" loading>
+                Loading
+              </Button>
+              <Button variant="primary" icon={<SparkIcon />}>
+                With Icon
+              </Button>
             </div>
           </Container>
         </section>
@@ -136,7 +137,7 @@ export function ShowcaseContent() {
                 features={[
                   t('services.tier1.features.0'),
                   t('services.tier1.features.1'),
-                  t('services.tier1.features.2')
+                  t('services.tier1.features.2'),
                 ]}
                 cta={{ text: t('services.tier1.cta'), href: '#' }}
                 icon={<CubeIcon />}
@@ -148,7 +149,7 @@ export function ShowcaseContent() {
                 features={[
                   t('services.tier3.features.0'),
                   t('services.tier3.features.1'),
-                  t('services.tier3.features.2')
+                  t('services.tier3.features.2'),
                 ]}
                 cta={{ text: t('services.tier3.cta'), href: '#', variant: 'creative' }}
                 badge="Recommended"
@@ -158,10 +159,7 @@ export function ShowcaseContent() {
                 tier="L5"
                 title={t('services.tier5.title')}
                 description={t('services.tier5.description')}
-                features={[
-                  t('services.tier5.features.0'),
-                  t('services.tier5.features.1')
-                ]}
+                features={[t('services.tier5.features.0'), t('services.tier5.features.1')]}
                 cta={{ text: t('services.tier5.cta'), href: '#' }}
                 icon={<RocketIcon />}
               />
@@ -170,8 +168,8 @@ export function ShowcaseContent() {
         </section>
 
         {/* Feature Flag Example */}
-        <FeatureFlag 
-          flag="INTERACTIVE_CALCULATOR" 
+        <FeatureFlag
+          flag="INTERACTIVE_CALCULATOR"
           fallback={
             <section className="py-16">
               <Container>
@@ -188,7 +186,9 @@ export function ShowcaseContent() {
             <Container>
               <div className="text-center p-8 bg-gradient-to-r from-lavender to-sun text-white rounded-lg">
                 <h3 className="text-2xl font-bold mb-4">ROI Calculator Active!</h3>
-                <p>This section is shown because the INTERACTIVE_CALCULATOR feature flag is enabled.</p>
+                <p>
+                  This section is shown because the INTERACTIVE_CALCULATOR feature flag is enabled.
+                </p>
               </div>
             </Container>
           </section>
@@ -208,12 +208,12 @@ export function ShowcaseContent() {
                 features={[
                   { icon: <SparkIcon />, text: t('products.spark.features.0') },
                   { text: t('products.spark.features.1') },
-                  { text: t('products.spark.features.2') }
+                  { text: t('products.spark.features.2') },
                 ]}
                 badge={{ text: 'NEW', variant: 'new' }}
                 cta={{
                   primary: { text: t('common.getStarted'), href: '#' },
-                  secondary: { text: t('common.learnMore'), href: '#' }
+                  secondary: { text: t('common.learnMore'), href: '#' },
                 }}
                 logo={<SparkIcon />}
               />
@@ -223,11 +223,11 @@ export function ShowcaseContent() {
                 description={t('products.penny.shortDescription')}
                 features={[
                   { text: t('products.penny.features.0') },
-                  { text: t('products.penny.features.1') }
+                  { text: t('products.penny.features.1') },
                 ]}
                 badge={{ text: 'BETA', variant: 'beta' }}
                 cta={{
-                  primary: { text: t('common.tryFree'), href: '#' }
+                  primary: { text: t('common.tryFree'), href: '#' },
                 }}
                 gradient="from-sun/10 to-leaf/10"
                 logo={<CubeIcon />}
@@ -258,18 +258,18 @@ export function ShowcaseContent() {
               <TestimonialCard
                 quote="MADFAM transformed our operations with their AI solutions. The ROI was evident within weeks."
                 author={{
-                  name: "Maria González",
-                  role: "CEO",
-                  company: "TechCorp México"
+                  name: 'Maria González',
+                  role: 'CEO',
+                  company: 'TechCorp México',
                 }}
                 rating={5}
               />
               <TestimonialCard
                 quote="The team's expertise in both AI and design thinking sets them apart. Highly recommended!"
                 author={{
-                  name: "Carlos Rivera",
-                  role: "Innovation Director",
-                  company: "StartupMX"
+                  name: 'Carlos Rivera',
+                  role: 'Innovation Director',
+                  company: 'StartupMX',
                 }}
                 rating={5}
                 variant="featured"
@@ -277,9 +277,9 @@ export function ShowcaseContent() {
               <TestimonialCard
                 quote="Professional, innovative, and results-driven. MADFAM is our go-to AI partner."
                 author={{
-                  name: "Ana Martínez",
-                  role: "CTO",
-                  company: "FinTech Solutions"
+                  name: 'Ana Martínez',
+                  role: 'CTO',
+                  company: 'FinTech Solutions',
                 }}
                 rating={4}
                 variant="compact"
@@ -296,7 +296,7 @@ export function ShowcaseContent() {
           cta={{
             text: t('home.cta.button'),
             href: '/contact',
-            variant: 'primary'
+            variant: 'primary',
           }}
           background="gradient"
         />

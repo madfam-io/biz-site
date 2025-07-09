@@ -1,15 +1,15 @@
-import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier, ServiceTierConfig } from '@madfam/core';
-import { unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
 import { getLocalizedContent, getLocalizedUrl, type Locale } from '@madfam/i18n';
+import { Container, Heading, Button } from '@madfam/ui';
+import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export default function ServicesPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   const t = useTranslations('services');
   const currentLocale = locale as Locale;
   const allServices = Object.values(serviceTiers);
-  
+
   // Helper function to get localized service data
   const getLocalizedServiceData = (service: ServiceTierConfig) => {
     return {
@@ -32,9 +32,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
               {t('hero.title').replace(t('hero.titleHighlight'), '')}{' '}
               <span className="gradient-text">{t('hero.titleHighlight')}</span>
             </Heading>
-            <p className="text-xl text-obsidian/70 mb-8">
-              {t('hero.subtitle')}
-            </p>
+            <p className="text-xl text-obsidian/70 mb-8">{t('hero.subtitle')}</p>
           </div>
         </Container>
       </section>
@@ -62,10 +60,8 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                     <Heading level={2} className="mb-4">
                       {localizedData.name}
                     </Heading>
-                    <p className="text-lg text-obsidian/70 mb-6">
-                      {localizedData.description}
-                    </p>
-                    
+                    <p className="text-lg text-obsidian/70 mb-6">{localizedData.description}</p>
+
                     <div className="space-y-4 mb-8">
                       <h3 className="font-heading text-lg font-semibold">
                         {locale === 'en-US' ? 'Includes:' : 'Incluye:'}
@@ -90,9 +86,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                         </p>
                       </div>
                       {localizedData.duration && (
-                        <div className="text-sm text-obsidian/60">
-                          • {localizedData.duration}
-                        </div>
+                        <div className="text-sm text-obsidian/60">• {localizedData.duration}</div>
                       )}
                     </div>
 
@@ -127,13 +121,13 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
             <Heading level={2} className="text-center mb-12">
               {t('comparison.title')}
             </Heading>
-            
+
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b-2 border-gray-200">
                     <th className="text-left py-4 px-4">{t('comparison.features')}</th>
-                    {allServices.map((service) => {
+                    {allServices.map(service => {
                       const localizedData = getLocalizedServiceData(service);
                       return (
                         <th key={service.id} className="text-center py-4 px-4">
@@ -149,7 +143,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                 <tbody>
                   <tr className="border-b border-gray-100">
                     <td className="py-4 px-4 font-medium">{t('comparison.priceFrom')}</td>
-                    {allServices.map((service) => (
+                    {allServices.map(service => (
                       <td key={service.id} className="text-center py-4 px-4">
                         ${service.startingPrice.toLocaleString()} {service.currency}
                       </td>
@@ -157,7 +151,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-4 px-4 font-medium">{t('comparison.duration')}</td>
-                    {allServices.map((service) => {
+                    {allServices.map(service => {
                       const localizedData = getLocalizedServiceData(service);
                       return (
                         <td key={service.id} className="text-center py-4 px-4">
@@ -168,7 +162,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-4 px-4 font-medium">{t('comparison.idealFor')}</td>
-                    {allServices.map((service) => {
+                    {allServices.map(service => {
                       const localizedData = getLocalizedServiceData(service);
                       return (
                         <td key={service.id} className="text-center py-4 px-4 text-sm">
@@ -191,9 +185,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
             <Heading level={2} className="text-white mb-4">
               {t('notSure.title')}
             </Heading>
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              {t('notSure.subtitle')}
-            </p>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">{t('notSure.subtitle')}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={`/${locale}/estimator`}>
                 <Button variant="secondary" size="lg">
@@ -201,7 +193,11 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                 </Button>
               </a>
               <a href={getLocalizedUrl('contact', currentLocale)}>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-obsidian">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white text-white hover:bg-white hover:text-obsidian"
+                >
                   {t('notSure.cta')}
                 </Button>
               </a>

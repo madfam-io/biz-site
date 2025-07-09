@@ -43,8 +43,8 @@
   "packageManager": "pnpm@8.14.1",
   "lint-staged": {
     "apps/web/**/*.{ts,tsx,js,jsx}": [
-      "pnpm --filter @madfam/web lint --fix",
-      "pnpm --filter @madfam/web typecheck"
+      "cd apps/web && pnpm lint --fix",
+      "cd apps/web && pnpm typecheck"
     ],
     "apps/cms/**/*.{ts,js}": [
       "cd apps/cms && npm run lint"

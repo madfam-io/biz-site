@@ -1,7 +1,6 @@
 import { Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { getPublishedBlogPosts, type BlogPost } from '@/lib/cms';
 import { environment } from '@/lib/environment';
 
@@ -25,7 +24,8 @@ const fallbackBlogPosts: CommonBlogPost[] = [
   {
     id: '1',
     title: 'The Future of AI in Business Transformation',
-    excerpt: 'Explore how artificial intelligence is reshaping the business landscape and creating new opportunities for growth and innovation.',
+    excerpt:
+      'Explore how artificial intelligence is reshaping the business landscape and creating new opportunities for growth and innovation.',
     publishedDate: '2024-03-15',
     author: { name: 'MADFAM Team', id: '1', email: 'team@madfam.io' },
     slug: 'future-ai-business-transformation',
@@ -38,7 +38,8 @@ const fallbackBlogPosts: CommonBlogPost[] = [
   {
     id: '2',
     title: 'Building Scalable Digital Platforms: A Technical Guide',
-    excerpt: 'Learn the key architectural principles and best practices for building platforms that can grow with your business.',
+    excerpt:
+      'Learn the key architectural principles and best practices for building platforms that can grow with your business.',
     publishedDate: '2024-03-10',
     author: { name: 'MADFAM Engineering', id: '2', email: 'engineering@madfam.io' },
     slug: 'building-scalable-digital-platforms',
@@ -51,7 +52,8 @@ const fallbackBlogPosts: CommonBlogPost[] = [
   {
     id: '3',
     title: 'Customer Success Story: Transforming Operations with Automation',
-    excerpt: 'How we helped a leading manufacturer reduce operational costs by 40% through intelligent automation solutions.',
+    excerpt:
+      'How we helped a leading manufacturer reduce operational costs by 40% through intelligent automation solutions.',
     publishedDate: '2024-03-05',
     author: { name: 'MADFAM Team', id: '1', email: 'team@madfam.io' },
     slug: 'customer-success-automation',
@@ -73,34 +75,36 @@ function calculateReadTime(content: string): string {
 export default async function BlogPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations('blog');
-  
+
   // Fetch blog posts from CMS or use fallback data
   let blogPosts: CommonBlogPost[] = fallbackBlogPosts;
-  
+
   if (environment.cms.enabled) {
     try {
       const cmsData = await getPublishedBlogPosts(locale, 10);
       if (cmsData.docs.length > 0) {
         // Transform CMS data to common interface
-        blogPosts = cmsData.docs.map((post: BlogPost): CommonBlogPost => ({
-          id: post.id,
-          title: post.title,
-          excerpt: post.excerpt,
-          publishedDate: post.publishedDate,
-          author: post.author,
-          slug: post.slug,
-          tags: post.tags,
-          status: post.status,
-          createdAt: post.createdAt,
-          updatedAt: post.updatedAt,
-          content: post.content,
-        }));
+        blogPosts = cmsData.docs.map(
+          (post: BlogPost): CommonBlogPost => ({
+            id: post.id,
+            title: post.title,
+            excerpt: post.excerpt,
+            publishedDate: post.publishedDate,
+            author: post.author,
+            slug: post.slug,
+            tags: post.tags,
+            status: post.status,
+            createdAt: post.createdAt,
+            updatedAt: post.updatedAt,
+            content: post.content,
+          })
+        );
       }
     } catch (error) {
       console.warn('Failed to fetch blog posts from CMS, using fallback data:', error);
     }
   }
-  
+
   return (
     <main className="min-h-screen py-20">
       <Container>
@@ -108,9 +112,7 @@ export default async function BlogPage({ params: { locale } }: { params: { local
           <Heading level={1} className="mb-4">
             {t('title')}
           </Heading>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">
-            {t('subtitle')}
-          </p>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">{t('subtitle')}</p>
 
           {blogPosts.length === 0 ? (
             <div className="text-center py-12">
@@ -120,13 +122,18 @@ export default async function BlogPage({ params: { locale } }: { params: { local
             </div>
           ) : (
             <div className="space-y-12">
-              {blogPosts.map((post) => {
+              {blogPosts.map(post => {
                 const category = post.tags?.[0]?.tag || 'General';
-                const readTime = post.content ? calculateReadTime(JSON.stringify(post.content)) : '5 min read';
+                const readTime = post.content
+                  ? calculateReadTime(JSON.stringify(post.content))
+                  : '5 min read';
                 const authorName = typeof post.author === 'object' ? post.author.name : post.author;
-                
+
                 return (
-                  <article key={post.id} className="border-b border-gray-200 dark:border-gray-800 pb-12 last:border-0">
+                  <article
+                    key={post.id}
+                    className="border-b border-gray-200 dark:border-gray-800 pb-12 last:border-0"
+                  >
                     <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
                       <span className="px-3 py-1 bg-lavender/10 text-lavender rounded-full">
                         {category}
@@ -136,22 +143,18 @@ export default async function BlogPage({ params: { locale } }: { params: { local
                       </time>
                       <span>{readTime.replace('min read', t('minRead'))}</span>
                     </div>
-                    
+
                     <h2 className="text-2xl font-bold mb-3 hover:text-lavender transition-colors">
-                      <Link href={`/${locale}/blog/${post.slug}`}>
-                        {post.title}
-                      </Link>
+                      <Link href={`/${locale}/blog/${post.slug}`}>{post.title}</Link>
                     </h2>
-                    
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      {post.excerpt}
-                    </p>
-                    
+
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">{post.excerpt}</p>
+
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500 dark:text-gray-500">
                         {t('by')} {authorName}
                       </span>
-                      <Link 
+                      <Link
                         href={`/${locale}/blog/${post.slug}`}
                         className="text-lavender hover:text-lavender/80 font-medium transition-colors"
                       >

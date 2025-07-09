@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Container, Button } from '@madfam/ui';
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { DarkModeToggle } from './DarkModeToggle';
-import { Search } from './Search';
-import { useTranslations, useLocale } from 'next-intl';
 import { getLocalizedUrl } from '@madfam/i18n';
+import { Container, Button } from '@madfam/ui';
+import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { useState } from 'react';
+import { DarkModeToggle } from './DarkModeToggle';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { Search } from './Search';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,14 +29,17 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href={`/${locale}`} className="font-heading text-xl font-bold text-obsidian dark:text-pearl">
+            <Link
+              href={`/${locale}`}
+              className="font-heading text-xl font-bold text-obsidian dark:text-pearl"
+            >
               MADFAM
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
+            {navigation.map(item => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -72,9 +75,19 @@ export function Navbar() {
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -84,7 +97,7 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800">
             <div className="flex flex-col space-y-4">
-              {navigation.map((item) => (
+              {navigation.map(item => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -107,7 +120,10 @@ export function Navbar() {
                     {tCommon('aiAssessment')}
                   </Button>
                 </Link>
-                <Link href={getLocalizedUrl('contact', locale)} onClick={() => setMobileMenuOpen(false)}>
+                <Link
+                  href={getLocalizedUrl('contact', locale)}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <Button variant="creative" size="sm" className="w-full">
                     {tCommon('freeConsultation')}
                   </Button>

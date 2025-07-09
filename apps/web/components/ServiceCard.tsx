@@ -1,10 +1,18 @@
 'use client';
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from '@madfam/ui';
 import { ServiceTierConfig } from '@madfam/core';
+import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+  Button,
+} from '@madfam/ui';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
 
 interface ServiceCardProps {
   service: ServiceTierConfig;
@@ -27,10 +35,14 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
   const localizedDescription = getLocalizedContent(service.description, locale);
   const localizedFeatures = getLocalizedContent(service.features, locale);
   const localizedCta = getLocalizedContent(service.cta.text, locale);
-  const localizedDuration = service.duration ? getLocalizedContent(service.duration, locale) : undefined;
+  const localizedDuration = service.duration
+    ? getLocalizedContent(service.duration, locale)
+    : undefined;
 
-  const recommendedText = locale === 'en-US' ? 'RECOMMENDED' : locale === 'pt-BR' ? 'RECOMENDADO' : 'RECOMENDADO';
-  const includesText = locale === 'en-US' ? 'Includes:' : locale === 'pt-BR' ? 'Inclui:' : 'Incluye:';
+  const recommendedText =
+    locale === 'en-US' ? 'RECOMMENDED' : locale === 'pt-BR' ? 'RECOMENDADO' : 'RECOMENDADO';
+  const includesText =
+    locale === 'en-US' ? 'Includes:' : locale === 'pt-BR' ? 'Inclui:' : 'Incluye:';
   const fromText = locale === 'en-US' ? 'From' : locale === 'pt-BR' ? 'A partir de' : 'Desde';
 
   return (
@@ -59,9 +71,7 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
           <CardTitle className="mb-2">
             L{service.level} - {localizedName}
           </CardTitle>
-          <CardDescription className="text-base">
-            {localizedDescription}
-          </CardDescription>
+          <CardDescription className="text-base">{localizedDescription}</CardDescription>
         </div>
 
         <div className="space-y-2">
@@ -81,9 +91,7 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
           <p className="text-2xl font-heading font-bold text-obsidian">
             ${service.startingPrice.toLocaleString()} {service.currency}
           </p>
-          {localizedDuration && (
-            <p className="text-sm text-gray-500">{localizedDuration}</p>
-          )}
+          {localizedDuration && <p className="text-sm text-gray-500">{localizedDuration}</p>}
         </div>
       </CardContent>
       <CardFooter>
@@ -93,7 +101,8 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
           className="w-full"
           onClick={() => {
             const localizedSlug = getLocalizedServiceSlug(service.id, locale);
-            const baseRoute = locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
+            const baseRoute =
+              locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
             router.push(`/${locale}/${baseRoute}/${localizedSlug}`);
           }}
         >

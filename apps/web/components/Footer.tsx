@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { Container } from '@madfam/ui';
-import { useTranslations, useLocale } from 'next-intl';
 import { getLocalizedUrl } from '@madfam/i18n';
+import { Container } from '@madfam/ui';
+import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function Footer() {
   const t = useTranslations();
@@ -49,7 +49,7 @@ export function Footer() {
             <div>
               <h3 className="font-heading text-lg mb-4">{t('footer.sections.services')}</h3>
               <ul className="space-y-3">
-                {navigation.servicios.map((item) => (
+                {navigation.servicios.map(item => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -65,7 +65,7 @@ export function Footer() {
             <div>
               <h3 className="font-heading text-lg mb-4">{t('footer.sections.products')}</h3>
               <ul className="space-y-3">
-                {navigation.productos.map((item) => (
+                {navigation.productos.map(item => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -81,7 +81,7 @@ export function Footer() {
             <div>
               <h3 className="font-heading text-lg mb-4">{t('footer.sections.company')}</h3>
               <ul className="space-y-3">
-                {navigation.empresa.map((item) => (
+                {navigation.empresa.map(item => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -97,7 +97,7 @@ export function Footer() {
             <div>
               <h3 className="font-heading text-lg mb-4">{t('footer.sections.resources')}</h3>
               <ul className="space-y-3">
-                {navigation.recursos.map((item) => (
+                {navigation.recursos.map(item => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -116,13 +116,11 @@ export function Footer() {
               <div className="flex items-center gap-4">
                 <span className="font-heading text-2xl font-bold">MADFAM</span>
                 <span className="text-white/50">•</span>
-                <p className="text-white/70">
-                  {t('footer.tagline')}
-                </p>
+                <p className="text-white/70">{t('footer.tagline')}</p>
               </div>
 
               <div className="flex items-center gap-6">
-                {social.map((item) => (
+                {social.map(item => (
                   <a
                     key={item.name}
                     href={item.href}
@@ -155,13 +153,19 @@ export function Footer() {
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
                 <p>© 2024 MADFAM. {t('common.footer.rights')}</p>
                 <div className="flex gap-6">
-                  <Link href={`/${locale}/privacy`} className="hover:text-white/70 transition-colors">
+                  <Link
+                    href={`/${locale}/privacy`}
+                    className="hover:text-white/70 transition-colors"
+                  >
                     {t('common.footer.privacy')}
                   </Link>
                   <Link href={`/${locale}/terms`} className="hover:text-white/70 transition-colors">
                     {t('common.footer.terms')}
                   </Link>
-                  <Link href={`/${locale}/cookies`} className="hover:text-white/70 transition-colors">
+                  <Link
+                    href={`/${locale}/cookies`}
+                    className="hover:text-white/70 transition-colors"
+                  >
                     {t('footer.cookies')}
                   </Link>
                 </div>

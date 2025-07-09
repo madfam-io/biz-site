@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
 import { ServiceTier } from '@madfam/core';
+import { describe, it, expect } from 'vitest';
 
 // Mock lead scoring function (copied from API route)
 function calculateLeadScore(lead: any): number {
@@ -8,7 +8,12 @@ function calculateLeadScore(lead: any): number {
   // Email domain scoring
   if (lead.email) {
     const domain = lead.email.split('@')[1];
-    if (domain && !domain.includes('gmail') && !domain.includes('hotmail') && !domain.includes('yahoo')) {
+    if (
+      domain &&
+      !domain.includes('gmail') &&
+      !domain.includes('hotmail') &&
+      !domain.includes('yahoo')
+    ) {
       score += 20; // Business email
     }
   }
@@ -49,7 +54,7 @@ describe('Lead Scoring Algorithm', () => {
       email: 'john@gmail.com',
       name: 'John Doe',
     };
-    
+
     const businessLead = {
       email: 'john@company.com',
       name: 'John Doe',
@@ -98,7 +103,8 @@ describe('Lead Scoring Algorithm', () => {
       company: 'Fortune 500 Corp',
       phone: '+1234567890',
       tier: ServiceTier.L5_STRATEGIC,
-      message: 'We need a comprehensive digital transformation strategy with immediate implementation.',
+      message:
+        'We need a comprehensive digital transformation strategy with immediate implementation.',
     };
 
     expect(calculateLeadScore(perfectLead)).toBe(100);

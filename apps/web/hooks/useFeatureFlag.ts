@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
 import { FeatureFlagProvider, logger } from '@madfam/core';
+import { useEffect, useState } from 'react';
 
 // Cache for feature flags to avoid multiple provider instances
 let flagProvider: FeatureFlagProvider | null = null;
-let flagCache: Map<string, { value: boolean; timestamp: number }> = new Map();
+const flagCache: Map<string, { value: boolean; timestamp: number }> = new Map();
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 function getFlagProvider(): FeatureFlagProvider {
@@ -18,10 +18,7 @@ export interface UseFeatureFlagOptions {
   fallbackValue?: boolean;
 }
 
-export function useFeatureFlag(
-  flagKey: string, 
-  options: UseFeatureFlagOptions = {}
-): boolean {
+export function useFeatureFlag(flagKey: string, options: UseFeatureFlagOptions = {}): boolean {
   const { useApi = false, fallbackValue = false } = options;
   const [isEnabled, setIsEnabled] = useState(fallbackValue);
   const [isLoading, setIsLoading] = useState(true);
@@ -120,11 +117,11 @@ export function useFeatureFlagsMultiple(flagKeys: string[]): Record<string, bool
       try {
         const provider = getFlagProvider();
         const results: Record<string, boolean> = {};
-        
+
         for (const key of flagKeys) {
           results[key] = provider.isEnabled(key);
         }
-        
+
         setFlags(results);
       } catch (error) {
         logger.error('Error checking multiple feature flags', error as Error, 'FEATURE_FLAG', {

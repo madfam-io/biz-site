@@ -1,22 +1,22 @@
 'use client';
 
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ServiceTier, logger } from '@madfam/core';
+import { Button } from '@madfam/ui';
+import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Button } from '@madfam/ui';
-import { ServiceTier } from '@madfam/core';
-import { useTranslations, useLocale } from 'next-intl';
-import { logger } from '@madfam/core';
 
-const createLeadFormSchema = (t: any) => z.object({
-  name: z.string().min(2, t('errors.nameMin')),
-  email: z.string().email(t('errors.emailInvalid')),
-  company: z.string().optional(),
-  phone: z.string().optional(),
-  tier: z.nativeEnum(ServiceTier).optional(),
-  message: z.string().optional(),
-});
+const createLeadFormSchema = (t: any) =>
+  z.object({
+    name: z.string().min(2, t('errors.nameMin')),
+    email: z.string().email(t('errors.emailInvalid')),
+    company: z.string().optional(),
+    phone: z.string().optional(),
+    tier: z.nativeEnum(ServiceTier).optional(),
+    message: z.string().optional(),
+  });
 
 type LeadFormData = z.infer<ReturnType<typeof createLeadFormSchema>>;
 
@@ -31,7 +31,7 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const t = useTranslations('leadForm');
   const locale = useLocale();
-  
+
   const leadFormSchema = createLeadFormSchema(t);
 
   const {
@@ -59,10 +59,10 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
         hasPhone: !!data.phone,
         locale,
       });
-      
+
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       setSubmitStatus('success');
       reset();
       onSuccess?.();
@@ -128,9 +128,7 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
             placeholder={t('placeholders.name')}
           />
-          {errors.name && (
-            <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-          )}
+          {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
         </div>
 
         <div>
@@ -144,9 +142,7 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
             placeholder={t('placeholders.email')}
           />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-          )}
+          {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
         </div>
       </div>
 
@@ -213,24 +209,18 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
 
       {submitStatus === 'success' && (
         <div className="p-4 bg-leaf/10 border border-leaf/20 rounded-lg">
-          <p className="text-leaf font-medium">
-            {t('messages.success')}
-          </p>
+          <p className="text-leaf font-medium">{t('messages.success')}</p>
         </div>
       )}
 
       {submitStatus === 'error' && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-red-600 font-medium">
-            {t('messages.error')}
-          </p>
+          <p className="text-red-600 font-medium">{t('messages.error')}</p>
         </div>
       )}
 
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">
-          * {t('requiredFields')}
-        </p>
+        <p className="text-sm text-gray-500">* {t('requiredFields')}</p>
         <Button
           type="submit"
           variant="primary"

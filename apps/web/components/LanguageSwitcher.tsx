@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRouter, usePathname } from 'next/navigation';
-import { ChevronDown } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
 import { i18nConfig } from '@madfam/i18n';
+import { ChevronDown } from 'lucide-react';
+import { useRouter, usePathname } from 'next/navigation';
+import { useState, useRef, useEffect } from 'react';
 import { translatePathname } from '@/lib/route-translations';
 
 export function LanguageSwitcher() {
@@ -11,12 +11,13 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
+
   // Detect locale from pathname
   const pathSegments = pathname.split('/').filter(Boolean);
-  const locale = pathSegments[0] && i18nConfig.locales.includes(pathSegments[0] as any) 
-    ? pathSegments[0] 
-    : i18nConfig.defaultLocale;
+  const locale =
+    pathSegments[0] && i18nConfig.locales.includes(pathSegments[0] as any)
+      ? pathSegments[0]
+      : i18nConfig.defaultLocale;
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -32,12 +33,13 @@ export function LanguageSwitcher() {
   const switchLocale = (newLocale: string) => {
     // Use route translation utility to properly handle route translations
     const newPath = translatePathname(pathname, newLocale);
-    
+
     router.push(newPath);
     setIsOpen(false);
   };
 
-  const currentLocaleName = i18nConfig.localeNames[locale as keyof typeof i18nConfig.localeNames] || locale;
+  const currentLocaleName =
+    i18nConfig.localeNames[locale as keyof typeof i18nConfig.localeNames] || locale;
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -58,19 +60,20 @@ export function LanguageSwitcher() {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50">
           <div className="py-1" role="menu" aria-orientation="vertical">
-            {i18nConfig.locales.map((loc) => {
+            {i18nConfig.locales.map(loc => {
               const localeName = i18nConfig.localeNames[loc as keyof typeof i18nConfig.localeNames];
               const isActive = locale === loc;
-              
+
               return (
                 <button
                   key={loc}
                   onClick={() => switchLocale(loc)}
                   className={`
                     w-full text-left px-4 py-2 text-sm flex items-center gap-3
-                    ${isActive 
-                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white' 
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    ${
+                      isActive
+                        ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                     }
                     transition-colors
                   `}
@@ -81,9 +84,7 @@ export function LanguageSwitcher() {
                     {loc === 'es-MX' ? '🇲🇽' : loc === 'pt-BR' ? '🇧🇷' : '🇺🇸'}
                   </span>
                   <span>{localeName}</span>
-                  {isActive && (
-                    <span className="ml-auto text-sun">✓</span>
-                  )}
+                  {isActive && <span className="ml-auto text-sun">✓</span>}
                 </button>
               );
             })}

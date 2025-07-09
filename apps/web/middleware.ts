@@ -1,10 +1,10 @@
-import createMiddleware from 'next-intl/middleware';
 import { i18nConfig } from '@madfam/i18n';
+import createMiddleware from 'next-intl/middleware';
 
 export default createMiddleware({
   locales: i18nConfig.locales,
   defaultLocale: i18nConfig.defaultLocale,
-  localePrefix: 'always'
+  localePrefix: 'always',
 });
 
 export const config = {
@@ -12,5 +12,5 @@ export const config = {
   // - API routes
   // - Static files
   // - Internal Next.js routes
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };

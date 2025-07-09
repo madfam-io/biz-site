@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
+import { ServiceTier } from '@madfam/core';
+import { Button } from '@madfam/ui';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, DollarSign, Clock } from 'lucide-react';
-import { Button } from '@madfam/ui';
-import { ServiceTier } from '@madfam/core';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { useCurrencyFormatter, useNumberFormatter } from '@/lib/formatting';
 
 interface ROICalculatorProps {
@@ -41,11 +41,11 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
 
   const calculateROI = () => {
     const { currentCosts, employeeHours, projectsPerMonth, averageProjectValue } = formData;
-    
+
     // Base calculations vary by service tier
     let efficiencyGain = 0.2; // 20% base efficiency gain
     let costReduction = 0.15; // 15% base cost reduction
-    
+
     switch (serviceTier) {
       case ServiceTier.L1_ESSENTIALS:
         efficiencyGain = 0.15;
@@ -71,8 +71,8 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
 
     const monthlySavings = currentCosts * costReduction;
     const timeSaved = employeeHours * efficiencyGain;
-    const additionalRevenue = (projectsPerMonth * efficiencyGain) * averageProjectValue;
-    const totalBenefit = monthlySavings + (additionalRevenue / 12);
+    const additionalRevenue = projectsPerMonth * efficiencyGain * averageProjectValue;
+    const totalBenefit = monthlySavings + additionalRevenue / 12;
     const investment = servicePricing[serviceTier || ServiceTier.L3_CONSULTING];
     const roiPercentage = ((totalBenefit * 12 - investment) / investment) * 100;
     const paybackPeriod = investment / totalBenefit;
@@ -85,7 +85,6 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
     });
   };
 
-
   return (
     <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
       <div className="flex items-center gap-3 mb-6">
@@ -96,16 +95,14 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
       <div className="grid md:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium mb-2">
-              {t('inputs.currentCosts')}
-            </label>
+            <label className="block text-sm font-medium mb-2">{t('inputs.currentCosts')}</label>
             <input
               type="range"
               min="10000"
               max="500000"
               step="5000"
               value={formData.currentCosts}
-              onChange={(e) => setFormData({ ...formData, currentCosts: Number(e.target.value) })}
+              onChange={e => setFormData({ ...formData, currentCosts: Number(e.target.value) })}
               className="w-full"
             />
             <div className="text-right mt-1 font-mono text-sun">
@@ -114,16 +111,14 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              {t('inputs.employeeHours')}
-            </label>
+            <label className="block text-sm font-medium mb-2">{t('inputs.employeeHours')}</label>
             <input
               type="range"
               min="40"
               max="500"
               step="10"
               value={formData.employeeHours}
-              onChange={(e) => setFormData({ ...formData, employeeHours: Number(e.target.value) })}
+              onChange={e => setFormData({ ...formData, employeeHours: Number(e.target.value) })}
               className="w-full"
             />
             <div className="text-right mt-1 font-mono text-sun">
@@ -132,15 +127,13 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              {t('inputs.projectsPerMonth')}
-            </label>
+            <label className="block text-sm font-medium mb-2">{t('inputs.projectsPerMonth')}</label>
             <input
               type="range"
               min="1"
               max="20"
               value={formData.projectsPerMonth}
-              onChange={(e) => setFormData({ ...formData, projectsPerMonth: Number(e.target.value) })}
+              onChange={e => setFormData({ ...formData, projectsPerMonth: Number(e.target.value) })}
               className="w-full"
             />
             <div className="text-right mt-1 font-mono text-sun">
@@ -149,16 +142,16 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              {t('inputs.avgProjectValue')}
-            </label>
+            <label className="block text-sm font-medium mb-2">{t('inputs.avgProjectValue')}</label>
             <input
               type="range"
               min="5000"
               max="200000"
               step="5000"
               value={formData.averageProjectValue}
-              onChange={(e) => setFormData({ ...formData, averageProjectValue: Number(e.target.value) })}
+              onChange={e =>
+                setFormData({ ...formData, averageProjectValue: Number(e.target.value) })
+              }
               className="w-full"
             />
             <div className="text-right mt-1 font-mono text-sun">
@@ -166,11 +159,7 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
             </div>
           </div>
 
-          <Button
-            onClick={calculateROI}
-            variant="creative"
-            className="w-full"
-          >
+          <Button onClick={calculateROI} variant="creative" className="w-full">
             {t('calculate')}
           </Button>
         </div>
@@ -207,27 +196,21 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
                   <TrendingUp className="w-6 h-6 text-leaf" />
                   <h4 className="font-semibold">{t('results.roi')}</h4>
                 </div>
-                <p className="text-3xl font-heading text-leaf">
-                  {results.roiPercentage}%
-                </p>
+                <p className="text-3xl font-heading text-leaf">{results.roiPercentage}%</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                   {t('results.payback')}: {formatNumber(results.paybackPeriod)} {t('units.months')}
                 </p>
               </div>
 
               <div className="mt-6 p-4 bg-obsidian/5 dark:bg-obsidian/20 rounded-lg">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  * {t('disclaimer')}
-                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">* {t('disclaimer')}</p>
               </div>
             </motion.div>
           ) : (
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
                 <Calculator className="w-16 h-16 text-gray-300 dark:text-gray-700 mx-auto mb-4" />
-                <p className="text-gray-500 dark:text-gray-400">
-                  {t('instructions')}
-                </p>
+                <p className="text-gray-500 dark:text-gray-400">{t('instructions')}</p>
               </div>
             </div>
           )}

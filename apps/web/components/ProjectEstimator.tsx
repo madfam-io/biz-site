@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
+import { ServiceTier } from '@madfam/core';
+import { Button } from '@madfam/ui';
 import { motion } from 'framer-motion';
 import { Calculator, ChevronLeft, DollarSign, Clock, Users } from 'lucide-react';
-import { Button } from '@madfam/ui';
-import { ServiceTier } from '@madfam/core';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { useCurrencyFormatter } from '@/lib/formatting';
 
 interface ProjectRequirements {
@@ -62,11 +62,11 @@ const getIndustries = (t: any) => [
 export function ProjectEstimator() {
   const t = useTranslations('estimator');
   const { formatCurrency } = useCurrencyFormatter();
-  
+
   const projectTypes = getProjectTypes(t);
   const features = getFeatures(t);
   const industries = getIndustries(t);
-  
+
   const [step, setStep] = useState(1);
   const [requirements, setRequirements] = useState<ProjectRequirements>({
     projectType: '',
@@ -83,19 +83,19 @@ export function ProjectEstimator() {
     const baseCosts = {
       'web-app': { min: 50000, max: 150000 },
       'mobile-app': { min: 80000, max: 200000 },
-      'ecommerce': { min: 100000, max: 300000 },
-      'automation': { min: 30000, max: 100000 },
-      'consulting': { min: 50000, max: 200000 },
-      'custom': { min: 100000, max: 500000 },
+      ecommerce: { min: 100000, max: 300000 },
+      automation: { min: 30000, max: 100000 },
+      consulting: { min: 50000, max: 200000 },
+      custom: { min: 100000, max: 500000 },
     };
 
     const baseDurations = {
       'web-app': { min: 2, max: 4 },
       'mobile-app': { min: 3, max: 6 },
-      'ecommerce': { min: 3, max: 6 },
-      'automation': { min: 1, max: 3 },
-      'consulting': { min: 2, max: 6 },
-      'custom': { min: 3, max: 12 },
+      ecommerce: { min: 3, max: 6 },
+      automation: { min: 1, max: 3 },
+      consulting: { min: 2, max: 6 },
+      custom: { min: 3, max: 12 },
     };
 
     // Complexity multipliers
@@ -116,8 +116,10 @@ export function ProjectEstimator() {
     const featureCosts = 5000;
 
     // Calculate base values
-    const projectBase = baseCosts[requirements.projectType as keyof typeof baseCosts] || baseCosts.custom;
-    const durationBase = baseDurations[requirements.projectType as keyof typeof baseDurations] || baseDurations.custom;
+    const projectBase =
+      baseCosts[requirements.projectType as keyof typeof baseCosts] || baseCosts.custom;
+    const durationBase =
+      baseDurations[requirements.projectType as keyof typeof baseDurations] || baseDurations.custom;
 
     // Apply multipliers
     const complexityMultiplier = complexityMultipliers[requirements.complexity];
@@ -126,8 +128,12 @@ export function ProjectEstimator() {
 
     // Calculate final estimates
     const estimatedCost = {
-      min: Math.round((projectBase.min * complexityMultiplier * timelineMultiplier) + featureAddition),
-      max: Math.round((projectBase.max * complexityMultiplier * timelineMultiplier) + featureAddition),
+      min: Math.round(
+        projectBase.min * complexityMultiplier * timelineMultiplier + featureAddition
+      ),
+      max: Math.round(
+        projectBase.max * complexityMultiplier * timelineMultiplier + featureAddition
+      ),
     };
 
     const estimatedDuration = {
@@ -168,7 +174,10 @@ export function ProjectEstimator() {
     if (!requirements.features.includes('analytics') && requirements.projectType !== 'consulting') {
       suggestedFeatures.push(t('suggestions.analyticsDashboard'));
     }
-    if (!requirements.features.includes('api') && ['web-app', 'mobile-app'].includes(requirements.projectType)) {
+    if (
+      !requirements.features.includes('api') &&
+      ['web-app', 'mobile-app'].includes(requirements.projectType)
+    ) {
       suggestedFeatures.push(t('suggestions.futureApi'));
     }
 
@@ -181,7 +190,6 @@ export function ProjectEstimator() {
     });
   };
 
-
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -189,7 +197,7 @@ export function ProjectEstimator() {
           <div className="space-y-6">
             <h3 className="text-lg font-semibold mb-4">{t('steps.projectType.title')}</h3>
             <div className="grid sm:grid-cols-2 gap-4">
-              {projectTypes.map((type) => (
+              {projectTypes.map(type => (
                 <button
                   key={type.id}
                   onClick={() => {
@@ -216,10 +224,22 @@ export function ProjectEstimator() {
             <h3 className="text-lg font-semibold mb-4">{t('steps.complexity.title')}</h3>
             <div className="space-y-3">
               {[
-                { value: 'simple', label: t('complexity.simple.label'), description: t('complexity.simple.description') },
-                { value: 'medium', label: t('complexity.medium.label'), description: t('complexity.medium.description') },
-                { value: 'complex', label: t('complexity.complex.label'), description: t('complexity.complex.description') },
-              ].map((option) => (
+                {
+                  value: 'simple',
+                  label: t('complexity.simple.label'),
+                  description: t('complexity.simple.description'),
+                },
+                {
+                  value: 'medium',
+                  label: t('complexity.medium.label'),
+                  description: t('complexity.medium.description'),
+                },
+                {
+                  value: 'complex',
+                  label: t('complexity.complex.label'),
+                  description: t('complexity.complex.description'),
+                },
+              ].map(option => (
                 <button
                   key={option.value}
                   onClick={() => {
@@ -233,7 +253,9 @@ export function ProjectEstimator() {
                   }`}
                 >
                   <div className="font-medium">{option.label}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{option.description}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    {option.description}
+                  </div>
                 </button>
               ))}
             </div>
@@ -245,7 +267,7 @@ export function ProjectEstimator() {
           <div className="space-y-6">
             <h3 className="text-lg font-semibold mb-4">{t('steps.features.title')}</h3>
             <div className="grid sm:grid-cols-2 gap-3">
-              {features.map((feature) => (
+              {features.map(feature => (
                 <label
                   key={feature.id}
                   className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
@@ -257,7 +279,7 @@ export function ProjectEstimator() {
                   <input
                     type="checkbox"
                     checked={requirements.features.includes(feature.id)}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.checked) {
                         setRequirements({
                           ...requirements,
@@ -266,7 +288,7 @@ export function ProjectEstimator() {
                       } else {
                         setRequirements({
                           ...requirements,
-                          features: requirements.features.filter((f) => f !== feature.id),
+                          features: requirements.features.filter(f => f !== feature.id),
                         });
                       }
                     }}
@@ -276,11 +298,7 @@ export function ProjectEstimator() {
                 </label>
               ))}
             </div>
-            <Button
-              onClick={() => setStep(4)}
-              variant="primary"
-              className="w-full"
-            >
+            <Button onClick={() => setStep(4)} variant="primary" className="w-full">
               {t('continue')}
             </Button>
           </div>
@@ -292,10 +310,22 @@ export function ProjectEstimator() {
             <h3 className="text-lg font-semibold mb-4">{t('steps.timeline.title')}</h3>
             <div className="space-y-3">
               {[
-                { value: 'urgent', label: t('timeline.urgent.label'), description: t('timeline.urgent.description') },
-                { value: 'normal', label: t('timeline.normal.label'), description: t('timeline.normal.description') },
-                { value: 'flexible', label: t('timeline.flexible.label'), description: t('timeline.flexible.description') },
-              ].map((option) => (
+                {
+                  value: 'urgent',
+                  label: t('timeline.urgent.label'),
+                  description: t('timeline.urgent.description'),
+                },
+                {
+                  value: 'normal',
+                  label: t('timeline.normal.label'),
+                  description: t('timeline.normal.description'),
+                },
+                {
+                  value: 'flexible',
+                  label: t('timeline.flexible.label'),
+                  description: t('timeline.flexible.description'),
+                },
+              ].map(option => (
                 <button
                   key={option.value}
                   onClick={() => {
@@ -309,7 +339,9 @@ export function ProjectEstimator() {
                   }`}
                 >
                   <div className="font-medium">{option.label}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{option.description}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    {option.description}
+                  </div>
                 </button>
               ))}
             </div>
@@ -321,7 +353,7 @@ export function ProjectEstimator() {
           <div className="space-y-6">
             <h3 className="text-lg font-semibold mb-4">{t('steps.industry.title')}</h3>
             <div className="grid sm:grid-cols-2 gap-3">
-              {industries.map((industry) => (
+              {industries.map(industry => (
                 <button
                   key={industry}
                   onClick={() => {
@@ -350,7 +382,7 @@ export function ProjectEstimator() {
             className="space-y-6"
           >
             <h3 className="text-lg font-semibold mb-4">{t('results.title')}</h3>
-            
+
             {/* Cost Estimate */}
             <div className="bg-gradient-to-r from-sun/10 to-leaf/10 dark:from-sun/20 dark:to-leaf/20 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
@@ -358,7 +390,8 @@ export function ProjectEstimator() {
                 <h4 className="font-semibold">{t('results.investment')}</h4>
               </div>
               <p className="text-2xl font-heading">
-                {formatCurrency(estimate.estimatedCost.min)} - {formatCurrency(estimate.estimatedCost.max)}
+                {formatCurrency(estimate.estimatedCost.min)} -{' '}
+                {formatCurrency(estimate.estimatedCost.max)}
               </p>
             </div>
 
@@ -369,7 +402,8 @@ export function ProjectEstimator() {
                 <h4 className="font-semibold">{t('results.duration')}</h4>
               </div>
               <p className="text-2xl font-heading">
-                {estimate.estimatedDuration.min} - {estimate.estimatedDuration.max} {t('results.months')}
+                {estimate.estimatedDuration.min} - {estimate.estimatedDuration.max}{' '}
+                {t('results.months')}
               </p>
             </div>
 
@@ -406,7 +440,7 @@ export function ProjectEstimator() {
               <Button
                 variant="primary"
                 className="flex-1"
-                onClick={() => window.location.href = '/contact'}
+                onClick={() => (window.location.href = '/contact')}
               >
                 {t('results.requestProposal')}
               </Button>
@@ -430,7 +464,7 @@ export function ProjectEstimator() {
             </div>
           </motion.div>
         ) : null;
-      
+
       default:
         return null;
     }

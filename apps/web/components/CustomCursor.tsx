@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -60,7 +60,7 @@ export function CustomCursor() {
           damping: 30,
         }}
       />
-      
+
       {/* Cursor trail */}
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 border-2 border-sun/50 rounded-full pointer-events-none z-50"

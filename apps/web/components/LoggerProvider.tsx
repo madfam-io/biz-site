@@ -1,8 +1,8 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { initializePerformanceMonitoring, logPageView, cleanupLogger } from '@/lib/logger';
-import { usePathname } from 'next/navigation';
 
 export function LoggerProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

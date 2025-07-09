@@ -1,6 +1,6 @@
 import { Container, Heading, Card, CardContent } from '@madfam/ui';
-import { LeadForm } from '@/components/LeadForm';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { LeadForm } from '@/components/LeadForm';
 
 export default function ContactPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
@@ -11,12 +11,11 @@ export default function ContactPage({ params: { locale } }: { params: { locale: 
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <Heading level={1} className="mb-6">
-              Hablemos sobre tu{' '}
-              <span className="gradient-text">próximo proyecto</span>
+              Hablemos sobre tu <span className="gradient-text">próximo proyecto</span>
             </Heading>
             <p className="text-xl text-obsidian/70">
-              Estamos listos para ayudarte a transformar tu empresa con IA.
-              Cuéntanos tus necesidades y encontraremos la solución perfecta.
+              Estamos listos para ayudarte a transformar tu empresa con IA. Cuéntanos tus
+              necesidades y encontraremos la solución perfecta.
             </p>
           </div>
         </Container>

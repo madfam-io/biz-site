@@ -19,8 +19,11 @@ export default function ProductsLoading() {
 
         {/* Product Cards Skeleton */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8">
+          {[...Array(2)].map((_, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8"
+            >
               <SkeletonContainer>
                 <div className="flex items-start gap-4 mb-6">
                   <Skeleton variant="rounded" width={64} height={64} />
@@ -33,8 +36,8 @@ export default function ProductsLoading() {
                 <Skeleton width="90%" />
                 <Skeleton width="95%" className="mb-6" />
                 <div className="space-y-3 mb-8">
-                  {[...Array(4)].map((_, j) => (
-                    <div key={j} className="flex gap-3">
+                  {[...Array(4)].map((__, featureIndex) => (
+                    <div key={featureIndex} className="flex gap-3">
                       <Skeleton variant="circular" width={24} height={24} />
                       <Skeleton width="80%" />
                     </div>
@@ -48,8 +51,8 @@ export default function ProductsLoading() {
 
         {/* Features Grid Skeleton */}
         <div className="grid md:grid-cols-3 gap-8">
-          {[...Array(3)].map((_, i) => (
-            <CardSkeleton key={i} />
+          {[...Array(3)].map((_, gridIndex) => (
+            <CardSkeleton key={gridIndex} />
           ))}
         </div>
       </Container>

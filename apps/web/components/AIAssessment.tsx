@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { Button, Card, CardContent, Heading } from '@madfam/ui';
 import { analytics } from '@madfam/analytics';
+import { Button, Card, CardContent, Heading } from '@madfam/ui';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 
 interface Question {
   id: string;
@@ -71,7 +71,7 @@ const getAssessmentQuestions = (t: any): Question[] => [
 export function AIAssessment() {
   const t = useTranslations('assessment');
   const assessmentQuestions = getAssessmentQuestions(t);
-  
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [score, setScore] = useState(0);
@@ -94,7 +94,7 @@ export function AIAssessment() {
 
   const showAssessmentResults = (finalScore: number) => {
     setShowResults(true);
-    
+
     // Track completion
     analytics.trackAssessmentComplete({
       score: finalScore,
@@ -150,7 +150,7 @@ export function AIAssessment() {
 
   if (showResults) {
     const recommendation = getRecommendation(score);
-    
+
     return (
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
@@ -165,7 +165,9 @@ export function AIAssessment() {
 
         <Card variant="elevated" className="mb-8">
           <CardContent className="p-8 text-center">
-            <div className={`inline-block px-4 py-2 rounded-full bg-${recommendation.color}/20 text-${recommendation.color} font-medium mb-4`}>
+            <div
+              className={`inline-block px-4 py-2 rounded-full bg-${recommendation.color}/20 text-${recommendation.color} font-medium mb-4`}
+            >
               {recommendation.tier}
             </div>
             <h3 className="font-heading text-2xl mb-4">{recommendation.title}</h3>
@@ -197,9 +199,12 @@ export function AIAssessment() {
       <div className="mb-8">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm text-gray-600">
-            {t('progress.question')} {currentQuestion + 1} {t('progress.of')} {assessmentQuestions.length}
+            {t('progress.question')} {currentQuestion + 1} {t('progress.of')}{' '}
+            {assessmentQuestions.length}
           </span>
-          <span className="text-sm text-gray-600">{Math.round(progress)}% {t('progress.completed')}</span>
+          <span className="text-sm text-gray-600">
+            {Math.round(progress)}% {t('progress.completed')}
+          </span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
@@ -213,7 +218,7 @@ export function AIAssessment() {
         <CardContent className="p-8">
           <h3 className="font-heading text-xl mb-6">{question.question}</h3>
           <div className="space-y-3">
-            {question.options.map((option) => (
+            {question.options.map(option => (
               <button
                 key={option.value}
                 onClick={() => handleAnswer(question.id, option.value, option.points)}

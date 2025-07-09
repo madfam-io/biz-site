@@ -1,10 +1,9 @@
 import { Container, Heading, Card } from '@madfam/ui';
+import Image from 'next/image';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { getPublishedCaseStudies, type CaseStudy } from '@/lib/cms';
 import { environment } from '@/lib/environment';
-import Image from 'next/image';
 
 // Common case study interface for consistency
 type CommonCaseStudy = {
@@ -49,7 +48,7 @@ const fallbackCaseStudies: CommonCaseStudy[] = [
     featuredImage: undefined,
   },
   {
-    id: '2', 
+    id: '2',
     title: 'Building a Next-Gen Trading Platform',
     client: 'FinTech Innovations',
     industry: 'Financial Services',
@@ -88,39 +87,45 @@ const fallbackCaseStudies: CommonCaseStudy[] = [
   },
 ];
 
-export default async function CaseStudiesPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function CaseStudiesPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations('caseStudies');
-  
+
   // Fetch case studies from CMS or use fallback data
   let caseStudies: CommonCaseStudy[] = fallbackCaseStudies;
-  
+
   if (environment.cms.enabled) {
     try {
       const cmsData = await getPublishedCaseStudies(locale, 10);
       if (cmsData.docs.length > 0) {
         // Transform CMS data to common interface
-        caseStudies = cmsData.docs.map((study: CaseStudy): CommonCaseStudy => ({
-          id: study.id,
-          title: study.title,
-          client: study.client,
-          industry: study.industry,
-          challenge: study.challenge,
-          solution: study.solution,
-          results: study.results,
-          slug: study.slug,
-          status: study.status,
-          publishedDate: study.publishedDate,
-          createdAt: study.createdAt,
-          updatedAt: study.updatedAt,
-          featuredImage: study.featuredImage,
-        }));
+        caseStudies = cmsData.docs.map(
+          (study: CaseStudy): CommonCaseStudy => ({
+            id: study.id,
+            title: study.title,
+            client: study.client,
+            industry: study.industry,
+            challenge: study.challenge,
+            solution: study.solution,
+            results: study.results,
+            slug: study.slug,
+            status: study.status,
+            publishedDate: study.publishedDate,
+            createdAt: study.createdAt,
+            updatedAt: study.updatedAt,
+            featuredImage: study.featuredImage,
+          })
+        );
       }
     } catch (error) {
       console.warn('Failed to fetch case studies from CMS, using fallback data:', error);
     }
   }
-  
+
   return (
     <main className="min-h-screen py-20">
       <Container>
@@ -142,43 +147,37 @@ export default async function CaseStudiesPage({ params: { locale } }: { params: 
             </div>
           ) : (
             <div className="grid gap-8 md:gap-12">
-              {caseStudies.map((study) => (
+              {caseStudies.map(study => (
                 <Card key={study.id} className="overflow-hidden">
                   <div className="md:grid md:grid-cols-2 md:gap-8">
                     <div className="p-8">
                       <div className="flex items-center gap-4 mb-4">
-                        <span className="text-sm font-medium text-lavender">
-                          {study.industry}
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          {study.client}
-                        </span>
+                        <span className="text-sm font-medium text-lavender">{study.industry}</span>
+                        <span className="text-sm text-gray-500">{study.client}</span>
                       </div>
-                      
-                      <h2 className="text-2xl font-bold mb-4">
-                        {study.title}
-                      </h2>
-                      
+
+                      <h2 className="text-2xl font-bold mb-4">{study.title}</h2>
+
                       <div className="space-y-4 mb-6">
                         <div>
                           <h3 className="font-semibold text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-2">
                             {t('challenge')}
                           </h3>
-                          <p className="text-gray-600 dark:text-gray-400">
-                            {study.challenge}
-                          </p>
+                          <p className="text-gray-600 dark:text-gray-400">{study.challenge}</p>
                         </div>
-                        
+
                         <div>
                           <h3 className="font-semibold text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-2">
                             {t('solution')}
                           </h3>
                           <p className="text-gray-600 dark:text-gray-400">
-                            {typeof study.solution === 'string' ? study.solution : 'Custom solution implementation'}
+                            {typeof study.solution === 'string'
+                              ? study.solution
+                              : 'Custom solution implementation'}
                           </p>
                         </div>
                       </div>
-                      
+
                       <div className="mb-6">
                         <h3 className="font-semibold text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-3">
                           {t('results')}
@@ -188,21 +187,23 @@ export default async function CaseStudiesPage({ params: { locale } }: { params: 
                             <li key={index} className="flex items-start">
                               <span className="text-sun mr-2">✓</span>
                               <span className="text-gray-600 dark:text-gray-400">
-                                {typeof result === 'string' ? result : `${result.value} ${result.description}`}
+                                {typeof result === 'string'
+                                  ? result
+                                  : `${result.value} ${result.description}`}
                               </span>
                             </li>
                           ))}
                         </ul>
                       </div>
-                      
-                      <Link 
+
+                      <Link
                         href={`/${locale}/case-studies/${study.slug}`}
                         className="inline-flex items-center text-lavender hover:text-lavender/80 font-medium transition-colors"
                       >
                         {t('readFullCase')} →
                       </Link>
                     </div>
-                    
+
                     <div className="bg-gray-100 dark:bg-gray-900 h-64 md:h-auto relative">
                       {study.featuredImage ? (
                         <Image

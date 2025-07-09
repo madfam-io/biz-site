@@ -1,6 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { analytics } from '@madfam/analytics';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { apiClient } from '@/lib/api-client';
 import { LeadForm } from '../LeadForm';
 
 // Mock the API client
@@ -16,9 +18,6 @@ vi.mock('@madfam/analytics', () => ({
     trackLeadFormSubmitted: vi.fn(),
   },
 }));
-
-import { apiClient } from '@/lib/api-client';
-import { analytics } from '@madfam/analytics';
 
 describe('LeadForm Component', () => {
   const user = userEvent.setup();
@@ -81,7 +80,10 @@ describe('LeadForm Component', () => {
     await user.type(screen.getByLabelText(/email/i), 'juan@empresa.com');
     await user.type(screen.getByLabelText(/empresa/i), 'Tech Corp');
     await user.type(screen.getByLabelText(/teléfono/i), '+525512345678');
-    await user.type(screen.getByLabelText(/mensaje/i), 'Estamos interesados en servicios de consultoría');
+    await user.type(
+      screen.getByLabelText(/mensaje/i),
+      'Estamos interesados en servicios de consultoría'
+    );
 
     // Submit the form
     const submitButton = screen.getByRole('button', { name: /enviar consulta/i });

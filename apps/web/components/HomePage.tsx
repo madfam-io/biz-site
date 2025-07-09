@@ -1,9 +1,9 @@
 'use client';
 
 import { Button, Container, Heading } from '@madfam/ui';
+import { useTranslations } from 'next-intl';
 import { AnimatedText } from '@/components/AnimatedText';
 import { ScrollProgress } from '@/components/ScrollProgress';
-import { useTranslations } from 'next-intl';
 
 export function HomePage() {
   const t = useTranslations();
@@ -24,15 +24,11 @@ export function HomePage() {
             <AnimatedText variant="fadeUp" className="mb-6">
               <Heading level={1} className="text-white">
                 {t('home.hero.title').split('human creativity')[0]}
-                <span className="gradient-text">
-                  {t('home.hero.title').split('meets ')[1]}
-                </span>
+                <span className="gradient-text">{t('home.hero.title').split('meets ')[1]}</span>
               </Heading>
             </AnimatedText>
             <AnimatedText variant="fadeUp" delay={0.2}>
-              <p className="text-xl text-white/90 mb-8 max-w-3xl">
-                {t('home.hero.subtitle')}
-              </p>
+              <p className="text-xl text-white/90 mb-8 max-w-3xl">{t('home.hero.subtitle')}</p>
             </AnimatedText>
             <div className="flex flex-wrap gap-4 animate-fade-up animation-delay-400">
               <Button variant="secondary" size="lg">
@@ -67,19 +63,25 @@ export function HomePage() {
                 <div className="text-4xl mb-4">⚡</div>
                 <h3 className="text-xl font-heading font-semibold mb-2">L1 - Essentials</h3>
                 <p className="text-obsidian/70 mb-4">Quick AI solutions for immediate impact</p>
-                <Button variant="outline" size="sm">Learn More</Button>
+                <Button variant="outline" size="sm">
+                  Learn More
+                </Button>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-sun/5 to-sun/10">
                 <div className="text-4xl mb-4">🚀</div>
                 <h3 className="text-xl font-heading font-semibold mb-2">L2 - Advanced</h3>
                 <p className="text-obsidian/70 mb-4">Comprehensive AI automation solutions</p>
-                <Button variant="outline" size="sm">Learn More</Button>
+                <Button variant="outline" size="sm">
+                  Learn More
+                </Button>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-lavender/5 to-lavender/10">
                 <div className="text-4xl mb-4">🎯</div>
                 <h3 className="text-xl font-heading font-semibold mb-2">L3 - Consulting</h3>
                 <p className="text-obsidian/70 mb-4">Strategic AI transformation guidance</p>
-                <Button variant="creative" size="sm">Learn More</Button>
+                <Button variant="creative" size="sm">
+                  Learn More
+                </Button>
               </div>
             </div>
             <div className="text-center mt-8">
@@ -107,17 +109,13 @@ export function HomePage() {
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="text-4xl mb-4">⚡</div>
                 <h3 className="text-2xl font-heading font-bold mb-4">SPARK</h3>
-                <p className="text-obsidian/70 mb-6">
-                  {t('home.products.spark.description')}
-                </p>
+                <p className="text-obsidian/70 mb-6">{t('home.products.spark.description')}</p>
                 <Button variant="primary">Learn More</Button>
               </div>
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="text-4xl mb-4">🤖</div>
                 <h3 className="text-2xl font-heading font-bold mb-4">PENNY</h3>
-                <p className="text-obsidian/70 mb-6">
-                  {t('home.products.penny.description')}
-                </p>
+                <p className="text-obsidian/70 mb-6">{t('home.products.penny.description')}</p>
                 <Button variant="primary">Learn More</Button>
               </div>
             </div>
@@ -132,14 +130,16 @@ export function HomePage() {
             <Heading level={2} className="text-white mb-4">
               {t('home.cta.title')}
             </Heading>
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              {t('home.cta.subtitle')}
-            </p>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">{t('home.cta.subtitle')}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg">
                 {t('home.cta.getStarted')}
               </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-obsidian">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-obsidian"
+              >
                 {t('home.cta.learnMore')}
               </Button>
             </div>

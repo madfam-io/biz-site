@@ -1,18 +1,19 @@
 'use client';
 
-import { signIn } from 'next-auth/react';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Button } from '@madfam/ui';
+import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-const createSignInSchema = (t: any) => z.object({
-  email: z.string().email(t('auth.signin.errors.invalidEmail')),
-  password: z.string().min(8, t('auth.signin.errors.passwordLength')),
-});
+const createSignInSchema = (t: any) =>
+  z.object({
+    email: z.string().email(t('auth.signin.errors.invalidEmail')),
+    password: z.string().min(8, t('auth.signin.errors.passwordLength')),
+  });
 
 type SignInFormData = z.infer<ReturnType<typeof createSignInSchema>>;
 
@@ -21,7 +22,7 @@ export function SignInForm() {
   const t = useTranslations();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const signInSchema = createSignInSchema(t);
 
   const {
@@ -50,7 +51,8 @@ export function SignInForm() {
 
       router.push('/dashboard');
       router.refresh();
-    } catch (error) {
+    } catch (submitError) {
+      console.error('Sign in error:', submitError);
       setError(t('auth.signin.errors.generic'));
     } finally {
       setIsLoading(false);
@@ -78,9 +80,7 @@ export function SignInForm() {
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder={t('auth.signin.email')}
               />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
             </div>
             <div>
               <label htmlFor="password" className="sr-only">

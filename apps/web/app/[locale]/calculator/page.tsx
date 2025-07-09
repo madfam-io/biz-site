@@ -1,12 +1,13 @@
-import { Metadata } from 'next';
-import { Container, Heading } from '@madfam/ui';
-import { ROICalculator } from '@/components/ROICalculator';
 import { ServiceTier } from '@madfam/core';
+import { Container, Heading } from '@madfam/ui';
+import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { ROICalculator } from '@/components/ROICalculator';
 
 export const metadata: Metadata = {
   title: 'Calculadora de ROI - MADFAM',
-  description: 'Descubre el retorno de inversión potencial de nuestros servicios de transformación digital y consultoría AI.',
+  description:
+    'Descubre el retorno de inversión potencial de nuestros servicios de transformación digital y consultoría AI.',
 };
 
 export default function CalculatorPage({ params: { locale } }: { params: { locale: string } }) {
@@ -26,21 +27,19 @@ export default function CalculatorPage({ params: { locale } }: { params: { local
 
           <div className="mb-8">
             <p className="text-center text-gray-600 dark:text-gray-400">
-              Selecciona un nivel de servicio para calcular el ROI específico, 
-              o usa los valores predeterminados para una estimación general.
+              Selecciona un nivel de servicio para calcular el ROI específico, o usa los valores
+              predeterminados para una estimación general.
             </p>
           </div>
 
           <div className="space-y-8">
             <ROICalculator serviceTier={ServiceTier.L3_CONSULTING} />
-            
+
             <div className="bg-gradient-to-r from-sun/10 to-leaf/10 rounded-2xl p-8 text-center">
-              <h3 className="font-heading text-xl mb-4">
-                ¿Listo para transformar tu negocio?
-              </h3>
+              <h3 className="font-heading text-xl mb-4">¿Listo para transformar tu negocio?</h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Nuestro equipo de expertos puede ayudarte a implementar soluciones 
-                que generen resultados reales y medibles.
+                Nuestro equipo de expertos puede ayudarte a implementar soluciones que generen
+                resultados reales y medibles.
               </p>
               <div className="flex gap-4 justify-center">
                 <a

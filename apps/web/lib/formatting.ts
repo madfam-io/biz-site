@@ -30,9 +30,9 @@ export function useCurrencyFormatter() {
 
   const formatCompactCurrency = (amount: number) => {
     if (amount >= 1000000) {
-      return formatCurrency(amount / 1000000) + 'M';
+      return `${formatCurrency(amount / 1000000)}M`;
     } else if (amount >= 1000) {
-      return formatCurrency(amount / 1000) + 'K';
+      return `${formatCurrency(amount / 1000)}K`;
     }
     return formatCurrency(amount);
   };
@@ -123,30 +123,34 @@ export function useDateFormatter() {
     const diffInSeconds = Math.floor((now.getTime() - dateObj.getTime()) / 1000);
 
     if (diffInSeconds < 60) {
-      return locale === 'en-US' ? 'just now' : 
-             locale === 'es-MX' ? 'ahora mismo' : 
-             'agora mesmo';
+      return locale === 'en-US' ? 'just now' : locale === 'es-MX' ? 'ahora mismo' : 'agora mesmo';
     }
 
     const diffInMinutes = Math.floor(diffInSeconds / 60);
     if (diffInMinutes < 60) {
-      return locale === 'en-US' ? `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago` :
-             locale === 'es-MX' ? `hace ${diffInMinutes} minuto${diffInMinutes > 1 ? 's' : ''}` :
-             `há ${diffInMinutes} minuto${diffInMinutes > 1 ? 's' : ''}`;
+      return locale === 'en-US'
+        ? `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`
+        : locale === 'es-MX'
+          ? `hace ${diffInMinutes} minuto${diffInMinutes > 1 ? 's' : ''}`
+          : `há ${diffInMinutes} minuto${diffInMinutes > 1 ? 's' : ''}`;
     }
 
     const diffInHours = Math.floor(diffInMinutes / 60);
     if (diffInHours < 24) {
-      return locale === 'en-US' ? `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago` :
-             locale === 'es-MX' ? `hace ${diffInHours} hora${diffInHours > 1 ? 's' : ''}` :
-             `há ${diffInHours} hora${diffInHours > 1 ? 's' : ''}`;
+      return locale === 'en-US'
+        ? `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`
+        : locale === 'es-MX'
+          ? `hace ${diffInHours} hora${diffInHours > 1 ? 's' : ''}`
+          : `há ${diffInHours} hora${diffInHours > 1 ? 's' : ''}`;
     }
 
     const diffInDays = Math.floor(diffInHours / 24);
     if (diffInDays < 30) {
-      return locale === 'en-US' ? `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago` :
-             locale === 'es-MX' ? `hace ${diffInDays} día${diffInDays > 1 ? 's' : ''}` :
-             `há ${diffInDays} dia${diffInDays > 1 ? 's' : ''}`;
+      return locale === 'en-US'
+        ? `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`
+        : locale === 'es-MX'
+          ? `hace ${diffInDays} día${diffInDays > 1 ? 's' : ''}`
+          : `há ${diffInDays} dia${diffInDays > 1 ? 's' : ''}`;
     }
 
     return formatDateShort(date);
@@ -178,9 +182,9 @@ export function getCurrencyFormatter(locale: string) {
 
   const formatCompactCurrency = (amount: number) => {
     if (amount >= 1000000) {
-      return formatCurrency(amount / 1000000) + 'M';
+      return `${formatCurrency(amount / 1000000)}M`;
     } else if (amount >= 1000) {
-      return formatCurrency(amount / 1000) + 'K';
+      return `${formatCurrency(amount / 1000)}K`;
     }
     return formatCurrency(amount);
   };

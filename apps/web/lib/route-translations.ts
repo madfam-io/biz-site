@@ -20,13 +20,13 @@ export function translateRoute(route: string, fromLocale: string, toLocale: stri
     // If no translation found, return the original route
     return route;
   }
-  
+
   // If translating from English to Spanish, use the direct mapping
   if (fromLocale === 'en-US' && toLocale === 'es-MX') {
     const spanishRoutes = i18nConfig.routes['es-MX'];
     return spanishRoutes[route as keyof typeof spanishRoutes] || route;
   }
-  
+
   // If same locale or no translation needed, return original route
   return route;
 }
@@ -39,23 +39,23 @@ export function translateRoute(route: string, fromLocale: string, toLocale: stri
  */
 export function translatePathname(pathname: string, toLocale: string): string {
   const segments = pathname.split('/').filter(Boolean);
-  
+
   if (segments.length === 0) {
     return `/${toLocale}`;
   }
-  
+
   // Extract current locale and route
-  const currentLocale = segments[0] && i18nConfig.locales.includes(segments[0] as any) 
-    ? segments[0] 
-    : i18nConfig.defaultLocale;
-    
-  const routeWithoutLocale = currentLocale === segments[0] 
-    ? '/' + segments.slice(1).join('/')
-    : '/' + segments.join('/');
-    
+  const currentLocale =
+    segments[0] && i18nConfig.locales.includes(segments[0] as any)
+      ? segments[0]
+      : i18nConfig.defaultLocale;
+
+  const routeWithoutLocale =
+    currentLocale === segments[0] ? `/${segments.slice(1).join('/')}` : `/${segments.join('/')}`;
+
   // Translate the route
   const translatedRoute = translateRoute(routeWithoutLocale, currentLocale, toLocale);
-  
+
   // Return the new pathname with target locale
   return `/${toLocale}${translatedRoute}`;
 }
@@ -68,11 +68,11 @@ export function translatePathname(pathname: string, toLocale: string): string {
 export function getLocaleFromPathname(pathname: string): string {
   const segments = pathname.split('/').filter(Boolean);
   const firstSegment = segments[0];
-  
+
   if (firstSegment && i18nConfig.locales.includes(firstSegment as any)) {
     return firstSegment;
   }
-  
+
   return i18nConfig.defaultLocale;
 }
 
@@ -83,16 +83,16 @@ export function getLocaleFromPathname(pathname: string): string {
  */
 export function removeLocaleFromPathname(pathname: string): string {
   const segments = pathname.split('/').filter(Boolean);
-  
+
   if (segments.length === 0) {
     return '/';
   }
-  
+
   const firstSegment = segments[0];
-  
+
   if (firstSegment && i18nConfig.locales.includes(firstSegment as any)) {
-    return '/' + segments.slice(1).join('/');
+    return `/${segments.slice(1).join('/')}`;
   }
-  
+
   return pathname;
 }

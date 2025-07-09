@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
-import { ServiceCardSkeleton } from './Skeleton';
-import { ServiceCard } from './ServiceCard';
 import { serviceTiers } from '@madfam/core';
+import { useState, useEffect } from 'react';
+import { ServiceCard } from './ServiceCard';
+import { ServiceCardSkeleton } from './Skeleton';
 
 // Example component showing how to use loading skeletons with data fetching
 export function LoadingExample() {
@@ -34,21 +34,16 @@ export function LoadingExample() {
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {services && Object.values(services).slice(0, 3).map((service) => (
-        <ServiceCard
-          key={service.id}
-          service={service}
-        />
-      ))}
+      {services &&
+        Object.values(services)
+          .slice(0, 3)
+          .map(service => <ServiceCard key={service.id} service={service} />)}
     </div>
   );
 }
 
 // Hook for using loading states
-export function useLoadingState<T>(
-  fetchFn: () => Promise<T>,
-  deps: React.DependencyList = []
-) {
+export function useLoadingState<T>(fetchFn: () => Promise<T>, deps: React.DependencyList = []) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -64,9 +59,9 @@ export function useLoadingState<T>(
         if (!cancelled) {
           setData(result);
         }
-      } catch (err) {
+      } catch (fetchError) {
         if (!cancelled) {
-          setError(err instanceof Error ? err : new Error('Unknown error'));
+          setError(fetchError instanceof Error ? fetchError : new Error('Unknown error'));
         }
       } finally {
         if (!cancelled) {

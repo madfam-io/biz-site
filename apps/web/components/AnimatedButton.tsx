@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
+import { cn } from '@madfam/ui';
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
-import { cn } from '@madfam/ui';
 
 interface AnimatedButtonProps {
   children: ReactNode;
@@ -30,7 +30,8 @@ export function AnimatedButton({
       // Variants
       'bg-obsidian text-white hover:bg-obsidian/90 focus:ring-obsidian': variant === 'primary',
       'bg-sun text-obsidian hover:bg-sun/90 focus:ring-sun': variant === 'secondary',
-      'bg-transparent text-obsidian dark:text-pearl hover:bg-obsidian/5 dark:hover:bg-pearl/5': variant === 'ghost',
+      'bg-transparent text-obsidian dark:text-pearl hover:bg-obsidian/5 dark:hover:bg-pearl/5':
+        variant === 'ghost',
       // Sizes
       'px-3 py-2 text-sm': size === 'sm',
       'px-6 py-3 text-base': size === 'md',
@@ -49,12 +50,7 @@ export function AnimatedButton({
       whileTap={{ scale: disabled ? 1 : 0.95 }}
       transition={{ type: 'spring', stiffness: 400, damping: 10 }}
     >
-      <Component
-        href={href}
-        onClick={onClick}
-        disabled={disabled}
-        className={baseClasses}
-      >
+      <Component href={href} onClick={onClick} disabled={disabled} className={baseClasses}>
         <motion.span
           className="relative z-10"
           initial={{ opacity: 0, y: 10 }}
@@ -63,7 +59,7 @@ export function AnimatedButton({
         >
           {children}
         </motion.span>
-        
+
         {/* Hover effect overlay */}
         <motion.div
           className="absolute inset-0 rounded-lg bg-white/10"
@@ -81,16 +77,13 @@ interface MagneticButtonProps extends AnimatedButtonProps {
   magnetStrength?: number;
 }
 
-export function MagneticButton({
-  magnetStrength = 0.3,
-  ...props
-}: MagneticButtonProps) {
+export function MagneticButton({ magnetStrength = 0.3, ...props }: MagneticButtonProps) {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    
+
     button.style.transform = `translate(${x * magnetStrength}px, ${y * magnetStrength}px)`;
   };
 
@@ -120,9 +113,9 @@ export function RippleButton(props: AnimatedButtonProps) {
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
 
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = x + 'px';
-    ripple.style.top = y + 'px';
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
     ripple.classList.add('ripple');
 
     button.appendChild(ripple);
@@ -139,7 +132,7 @@ export function RippleButton(props: AnimatedButtonProps) {
   return (
     <div className="relative overflow-hidden rounded-lg" onClick={handleClick}>
       <AnimatedButton {...props} />
-      <style jsx>{`
+      <style>{`
         :global(.ripple) {
           position: absolute;
           border-radius: 50%;

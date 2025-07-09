@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 interface ScrollAnimationOptions {
   threshold?: number;
@@ -40,12 +40,15 @@ export function useStaggeredReveal<T extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     if (isInView) {
       const timeouts: NodeJS.Timeout[] = [];
-      
+
       for (let i = 0; i < itemCount; i++) {
-        const timeout = setTimeout(() => {
-          setVisibleItems(prev => [...prev, i]);
-        }, i * staggerDelay * 1000);
-        
+        const timeout = setTimeout(
+          () => {
+            setVisibleItems(prev => [...prev, i]);
+          },
+          i * staggerDelay * 1000
+        );
+
         timeouts.push(timeout);
       }
 

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function DarkModeToggle() {
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
@@ -34,7 +34,7 @@ export function DarkModeToggle() {
   // Listen for system theme changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const handleChange = (e: MediaQueryListEvent) => {
       // Only update if user hasn't manually set a preference
       if (!localStorage.getItem('theme')) {

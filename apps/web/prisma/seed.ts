@@ -127,7 +127,7 @@ async function main() {
   });
 
   console.log('✅ Created admin user:', adminUser.email);
-  
+
   // Create a test editor user
   const editorPassword = await hashPassword('editor123!');
   const editorUser = await prisma.user.upsert({
@@ -148,8 +148,8 @@ async function main() {
 }
 
 main()
-  .catch((e) => {
-    console.error('Error seeding database:', e);
+  .catch(error => {
+    console.error('Error seeding database:', error);
     process.exit(1);
   })
   .finally(async () => {

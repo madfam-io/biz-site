@@ -1,11 +1,12 @@
-import { Metadata } from 'next';
 import { Container, Heading } from '@madfam/ui';
-import { ProjectEstimator } from '@/components/ProjectEstimator';
+import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { ProjectEstimator } from '@/components/ProjectEstimator';
 
 export const metadata: Metadata = {
   title: 'Estimador de Proyectos - MADFAM',
-  description: 'Obtén una estimación instantánea para tu proyecto de transformación digital. Precio, tiempo y equipo recomendado.',
+  description:
+    'Obtén una estimación instantánea para tu proyecto de transformación digital. Precio, tiempo y equipo recomendado.',
 };
 
 export default function EstimatorPage({ params: { locale } }: { params: { locale: string } }) {
@@ -53,8 +54,8 @@ export default function EstimatorPage({ params: { locale } }: { params: { locale
 
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Estas estimaciones son aproximadas y pueden variar según los requisitos específicos del proyecto.
-              Contáctanos para obtener una propuesta detallada y personalizada.
+              Estas estimaciones son aproximadas y pueden variar según los requisitos específicos
+              del proyecto. Contáctanos para obtener una propuesta detallada y personalizada.
             </p>
           </div>
         </div>

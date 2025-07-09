@@ -1,11 +1,11 @@
+import { FeatureFlagProvider } from '@madfam/core';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { FeatureFlagProvider } from '@madfam/core';
 
 // GET /api/feature-flags
 export async function GET(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams;
+    const { searchParams } = request.nextUrl;
     const flag = searchParams.get('flag');
     const environment = searchParams.get('env') || process.env.NEXT_PUBLIC_ENV || 'development';
 
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
         // Fallback to core provider if not in database
         const provider = new FeatureFlagProvider();
         const isEnabled = provider.isEnabled(flag);
-        
+
         return NextResponse.json({
           key: flag,
           enabled: isEnabled,
@@ -83,29 +83,29 @@ export async function GET(request: NextRequest) {
       const allFlags: Record<string, boolean> = {};
 
       // Add database flags
-      for (const flag of flags) {
+      for (const dbFlag of flags) {
         let isEnabled = false;
         switch (environment) {
           case 'development':
-            isEnabled = flag.enabledDev;
+            isEnabled = dbFlag.enabledDev;
             break;
           case 'staging':
-            isEnabled = flag.enabledStaging;
+            isEnabled = dbFlag.enabledStaging;
             break;
           case 'production':
-            isEnabled = flag.enabledProd;
+            isEnabled = dbFlag.enabledProd;
             break;
           default:
-            isEnabled = flag.enabled;
+            isEnabled = dbFlag.enabled;
         }
 
         // Check rollout percentage
-        if (isEnabled && environment === 'production' && flag.rolloutPercentage) {
+        if (isEnabled && environment === 'production' && dbFlag.rolloutPercentage) {
           const hash = Math.floor(Math.random() * 100);
-          isEnabled = hash < flag.rolloutPercentage;
+          isEnabled = hash < dbFlag.rolloutPercentage;
         }
 
-        allFlags[flag.key] = isEnabled;
+        allFlags[dbFlag.key] = isEnabled;
       }
 
       // Add provider flags not in database
@@ -123,10 +123,7 @@ export async function GET(request: NextRequest) {
     }
   } catch (error) {
     console.error('Error fetching feature flags:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch feature flags' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch feature flags' }, { status: 500 });
   }
 }
 
@@ -139,7 +136,16 @@ export async function POST(request: NextRequest) {
     // }
 
     const body = await request.json();
-    const { key, name, description, enabledDev, enabledStaging, enabledProd, rolloutPercentage, userGroups } = body;
+    const {
+      key,
+      name,
+      description,
+      enabledDev,
+      enabledStaging,
+      enabledProd,
+      rolloutPercentage,
+      userGroups,
+    } = body;
 
     const featureFlag = await prisma.featureFlag.upsert({
       where: { key },
@@ -172,10 +178,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error creating/updating feature flag:', error);
-    return NextResponse.json(
-      { error: 'Failed to create/update feature flag' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create/update feature flag' }, { status: 500 });
   }
 }
 
@@ -191,10 +194,7 @@ export async function PATCH(request: NextRequest) {
     });
 
     if (!featureFlag) {
-      return NextResponse.json(
-        { error: 'Feature flag not found' },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: 'Feature flag not found' }, { status: 404 });
     }
 
     // Update environment-specific setting
@@ -224,9 +224,6 @@ export async function PATCH(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error toggling feature flag:', error);
-    return NextResponse.json(
-      { error: 'Failed to toggle feature flag' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to toggle feature flag' }, { status: 500 });
   }
 }

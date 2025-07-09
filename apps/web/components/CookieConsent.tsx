@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
+import { Button } from '@madfam/ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, Settings, X } from 'lucide-react';
-import { Button } from '@madfam/ui';
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { useState, useEffect } from 'react';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -43,7 +43,7 @@ export function CookieConsent() {
       // Enable analytics (e.g., Plausible, Google Analytics)
       console.log('Analytics cookies enabled');
     }
-    
+
     if (prefs.marketing) {
       // Enable marketing cookies
       console.log('Marketing cookies enabled');
@@ -56,7 +56,7 @@ export function CookieConsent() {
       analytics: true,
       marketing: true,
     };
-    
+
     setPreferences(allAccepted);
     localStorage.setItem('cookie-consent', JSON.stringify(allAccepted));
     applyCookiePreferences(allAccepted);
@@ -69,7 +69,7 @@ export function CookieConsent() {
       analytics: false,
       marketing: false,
     };
-    
+
     setPreferences(necessaryOnly);
     localStorage.setItem('cookie-consent', JSON.stringify(necessaryOnly));
     applyCookiePreferences(necessaryOnly);
@@ -121,7 +121,7 @@ export function CookieConsent() {
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
                         {t('banner.description')}
                       </p>
-                      
+
                       <div className="flex flex-col sm:flex-row gap-3">
                         <Button
                           variant="primary"
@@ -161,9 +161,7 @@ export function CookieConsent() {
                 // Settings Panel
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-lg font-heading font-semibold">
-                      {t('settings.title')}
-                    </h3>
+                    <h3 className="text-lg font-heading font-semibold">{t('settings.title')}</h3>
                     <button
                       onClick={() => setShowSettings(false)}
                       className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -198,11 +196,16 @@ export function CookieConsent() {
                         type="checkbox"
                         id="analytics"
                         checked={preferences.analytics}
-                        onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
+                        onChange={e =>
+                          setPreferences({ ...preferences, analytics: e.target.checked })
+                        }
                         className="mt-1 h-4 w-4 rounded border-gray-300 text-sun focus:ring-sun"
                       />
                       <div className="flex-1">
-                        <label htmlFor="analytics" className="block font-medium mb-1 cursor-pointer">
+                        <label
+                          htmlFor="analytics"
+                          className="block font-medium mb-1 cursor-pointer"
+                        >
                           {t('settings.analytics.title')}
                         </label>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -217,11 +220,16 @@ export function CookieConsent() {
                         type="checkbox"
                         id="marketing"
                         checked={preferences.marketing}
-                        onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
+                        onChange={e =>
+                          setPreferences({ ...preferences, marketing: e.target.checked })
+                        }
                         className="mt-1 h-4 w-4 rounded border-gray-300 text-sun focus:ring-sun"
                       />
                       <div className="flex-1">
-                        <label htmlFor="marketing" className="block font-medium mb-1 cursor-pointer">
+                        <label
+                          htmlFor="marketing"
+                          className="block font-medium mb-1 cursor-pointer"
+                        >
                           {t('settings.marketing.title')}
                         </label>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -256,13 +264,19 @@ export function CookieConsent() {
               <div className="px-6 py-3 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-800">
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   {t.rich('footer.text', {
-                    privacy: (chunks) => (
-                      <Link href="/privacy" className="underline hover:text-gray-700 dark:hover:text-gray-300">
+                    privacy: chunks => (
+                      <Link
+                        href="/privacy"
+                        className="underline hover:text-gray-700 dark:hover:text-gray-300"
+                      >
                         {chunks}
                       </Link>
                     ),
-                    terms: (chunks) => (
-                      <Link href="/terms" className="underline hover:text-gray-700 dark:hover:text-gray-300">
+                    terms: chunks => (
+                      <Link
+                        href="/terms"
+                        className="underline hover:text-gray-700 dark:hover:text-gray-300"
+                      >
                         {chunks}
                       </Link>
                     ),

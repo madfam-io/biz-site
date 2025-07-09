@@ -1,7 +1,6 @@
-import { notFound } from 'next/navigation';
 import { getServiceLevelFromSlug, type Locale } from '@madfam/i18n';
+import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale } from 'next-intl/server';
-
 // Import service level components directly (they're now server components)
 import Level1Page from '../level-1-essentials/page';
 import Level2Page from '../level-2-advanced/page';
@@ -29,16 +28,16 @@ export default function ServicePage({ params }: ServicePageProps) {
   const { locale, slug } = params;
   const currentLocale = locale as Locale;
   unstable_setRequestLocale(locale);
-  
+
   // Get the English slug from the localized slug
   const englishSlug = getServiceLevelFromSlug(slug, currentLocale);
-  
+
   if (!englishSlug || !serviceComponents[englishSlug]) {
     notFound();
   }
-  
+
   const ServiceComponent = serviceComponents[englishSlug];
-  
+
   return <ServiceComponent params={{ locale }} />;
 }
 
@@ -46,18 +45,36 @@ export default function ServicePage({ params }: ServicePageProps) {
 export async function generateStaticParams() {
   const locales: Locale[] = ['en-US', 'es-MX', 'pt-BR'];
   const serviceSlugs = {
-    'en-US': ['level-1-essentials', 'level-2-advanced', 'level-3-consulting', 'level-4-platforms', 'level-5-strategic'],
-    'es-MX': ['nivel-1-esenciales', 'nivel-2-avanzado', 'nivel-3-consultoria', 'nivel-4-plataformas', 'nivel-5-estrategico'],
-    'pt-BR': ['nivel-1-essenciais', 'nivel-2-avancado', 'nivel-3-consultoria', 'nivel-4-plataformas', 'nivel-5-estrategico']
+    'en-US': [
+      'level-1-essentials',
+      'level-2-advanced',
+      'level-3-consulting',
+      'level-4-platforms',
+      'level-5-strategic',
+    ],
+    'es-MX': [
+      'nivel-1-esenciales',
+      'nivel-2-avanzado',
+      'nivel-3-consultoria',
+      'nivel-4-plataformas',
+      'nivel-5-estrategico',
+    ],
+    'pt-BR': [
+      'nivel-1-essenciais',
+      'nivel-2-avancado',
+      'nivel-3-consultoria',
+      'nivel-4-plataformas',
+      'nivel-5-estrategico',
+    ],
   };
-  
+
   const params = [];
-  
+
   for (const locale of locales) {
     for (const slug of serviceSlugs[locale]) {
       params.push({ locale, slug });
     }
   }
-  
+
   return params;
 }

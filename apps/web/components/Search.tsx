@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { serviceTiers } from '@madfam/core';
+import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import { serviceTiers } from '@madfam/core';
 import { useLocale, useTranslations } from 'next-intl';
-import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 
 interface SearchResult {
   id: string;
@@ -28,141 +28,156 @@ export function Search() {
   const t = useTranslations('search');
 
   // Mock search data - in production, this would come from an API
-  const searchableContent: SearchResult[] = useMemo(() => [
-    // Services
-    ...Object.values(serviceTiers).map(service => {
-      const localizedSlug = getLocalizedServiceSlug(service.id, locale);
-      const baseRoute = locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
-      
-      return {
-        id: service.id,
-        title: getLocalizedContent(service.name, locale),
-        description: getLocalizedContent(service.description, locale),
-        type: 'service' as const,
-        url: `/${locale}/${baseRoute}/${localizedSlug}`,
-      };
-    }),
-    // Products
-    {
-      id: 'spark',
-      title: 'SPARK',
-      description: locale === 'en-US' 
-        ? 'AI orchestration platform to automate workflows'
-        : locale === 'pt-BR' 
-        ? 'Plataforma de orquestração de IA para automatizar fluxos de trabalho'
-        : 'Plataforma de orquestación de IA para automatizar flujos de trabajo',
-      type: 'product' as const,
-      url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#spark`,
-    },
-    {
-      id: 'penny',
-      title: 'PENNY',
-      description: locale === 'en-US'
-        ? 'AI-powered process automation assistant'
-        : locale === 'pt-BR'
-        ? 'Assistente de automação de processos com IA'
-        : 'Asistente de automatización de procesos con IA',
-      type: 'product' as const,
-      url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#penny`,
-    },
-    // Pages
-    {
-      id: 'about',
-      title: locale === 'en-US' 
-        ? 'About MADFAM' 
-        : locale === 'pt-BR' 
-        ? 'Sobre MADFAM'
-        : 'Acerca de MADFAM',
-      description: locale === 'en-US'
-        ? 'Learn about our mission, vision and team'
-        : locale === 'pt-BR'
-        ? 'Conheça nossa missão, visão e equipe'
-        : 'Conoce nuestra misión, visión y equipo',
-      type: 'page' as const,
-      url: `/${locale}/${locale === 'es-MX' ? 'nosotros' : locale === 'pt-BR' ? 'sobre' : 'about'}`,
-    },
-    {
-      id: 'contact',
-      title: locale === 'en-US'
-        ? 'Contact'
-        : locale === 'pt-BR'
-        ? 'Contato'
-        : 'Contacto',
-      description: locale === 'en-US'
-        ? 'Get in touch with our team'
-        : locale === 'pt-BR'
-        ? 'Entre em contato com nossa equipe'
-        : 'Ponte en contacto con nuestro equipo',
-      type: 'page' as const,
-      url: `/${locale}/${locale === 'es-MX' ? 'contacto' : locale === 'pt-BR' ? 'contato' : 'contact'}`,
-    },
-    {
-      id: 'assessment',
-      title: locale === 'en-US'
-        ? 'AI Assessment'
-        : locale === 'pt-BR'
-        ? 'Avaliação de IA'
-        : 'Evaluación de IA',
-      description: locale === 'en-US'
-        ? 'Discover the AI potential for your business'
-        : locale === 'pt-BR'
-        ? 'Descubra o potencial de IA para seu negócio'
-        : 'Descubre el potencial de IA para tu negocio',
-      type: 'page' as const,
-      url: `/${locale}/${locale === 'es-MX' ? 'evaluacion' : locale === 'pt-BR' ? 'avaliacao' : 'assessment'}`,
-    },
-    {
-      id: 'calculator',
-      title: locale === 'en-US'
-        ? 'ROI Calculator'
-        : locale === 'pt-BR'
-        ? 'Calculadora de ROI'
-        : 'Calculadora de ROI',
-      description: locale === 'en-US'
-        ? 'Calculate the return on investment of our services'
-        : locale === 'pt-BR'
-        ? 'Calcule o retorno do investimento de nossos serviços'
-        : 'Calcula el retorno de inversión de nuestros servicios',
-      type: 'page' as const,
-      url: `/${locale}/${locale === 'es-MX' ? 'calculadora' : locale === 'pt-BR' ? 'calculadora' : 'calculator'}`,
-    },
-    {
-      id: 'estimator',
-      title: locale === 'en-US'
-        ? 'Project Estimator'
-        : locale === 'pt-BR'
-        ? 'Estimador de Projetos'
-        : 'Estimador de Proyectos',
-      description: locale === 'en-US'
-        ? 'Get an instant quote for your project'
-        : locale === 'pt-BR'
-        ? 'Obtenha uma cotação instantânea para seu projeto'
-        : 'Obtén una cotización instantánea para tu proyecto',
-      type: 'page' as const,
-      url: `/${locale}/${locale === 'es-MX' ? 'estimador' : locale === 'pt-BR' ? 'estimador' : 'estimator'}`,
-    },
-  ], [locale]);
+  const searchableContent: SearchResult[] = useMemo(
+    () => [
+      // Services
+      ...Object.values(serviceTiers).map(service => {
+        const localizedSlug = getLocalizedServiceSlug(service.id, locale);
+        const baseRoute =
+          locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
+
+        return {
+          id: service.id,
+          title: getLocalizedContent(service.name, locale),
+          description: getLocalizedContent(service.description, locale),
+          type: 'service' as const,
+          url: `/${locale}/${baseRoute}/${localizedSlug}`,
+        };
+      }),
+      // Products
+      {
+        id: 'spark',
+        title: 'SPARK',
+        description:
+          locale === 'en-US'
+            ? 'AI orchestration platform to automate workflows'
+            : locale === 'pt-BR'
+              ? 'Plataforma de orquestração de IA para automatizar fluxos de trabalho'
+              : 'Plataforma de orquestación de IA para automatizar flujos de trabajo',
+        type: 'product' as const,
+        url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#spark`,
+      },
+      {
+        id: 'penny',
+        title: 'PENNY',
+        description:
+          locale === 'en-US'
+            ? 'AI-powered process automation assistant'
+            : locale === 'pt-BR'
+              ? 'Assistente de automação de processos com IA'
+              : 'Asistente de automatización de procesos con IA',
+        type: 'product' as const,
+        url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#penny`,
+      },
+      // Pages
+      {
+        id: 'about',
+        title:
+          locale === 'en-US'
+            ? 'About MADFAM'
+            : locale === 'pt-BR'
+              ? 'Sobre MADFAM'
+              : 'Acerca de MADFAM',
+        description:
+          locale === 'en-US'
+            ? 'Learn about our mission, vision and team'
+            : locale === 'pt-BR'
+              ? 'Conheça nossa missão, visão e equipe'
+              : 'Conoce nuestra misión, visión y equipo',
+        type: 'page' as const,
+        url: `/${locale}/${locale === 'es-MX' ? 'nosotros' : locale === 'pt-BR' ? 'sobre' : 'about'}`,
+      },
+      {
+        id: 'contact',
+        title: locale === 'en-US' ? 'Contact' : locale === 'pt-BR' ? 'Contato' : 'Contacto',
+        description:
+          locale === 'en-US'
+            ? 'Get in touch with our team'
+            : locale === 'pt-BR'
+              ? 'Entre em contato com nossa equipe'
+              : 'Ponte en contacto con nuestro equipo',
+        type: 'page' as const,
+        url: `/${locale}/${locale === 'es-MX' ? 'contacto' : locale === 'pt-BR' ? 'contato' : 'contact'}`,
+      },
+      {
+        id: 'assessment',
+        title:
+          locale === 'en-US'
+            ? 'AI Assessment'
+            : locale === 'pt-BR'
+              ? 'Avaliação de IA'
+              : 'Evaluación de IA',
+        description:
+          locale === 'en-US'
+            ? 'Discover the AI potential for your business'
+            : locale === 'pt-BR'
+              ? 'Descubra o potencial de IA para seu negócio'
+              : 'Descubre el potencial de IA para tu negocio',
+        type: 'page' as const,
+        url: `/${locale}/${locale === 'es-MX' ? 'evaluacion' : locale === 'pt-BR' ? 'avaliacao' : 'assessment'}`,
+      },
+      {
+        id: 'calculator',
+        title:
+          locale === 'en-US'
+            ? 'ROI Calculator'
+            : locale === 'pt-BR'
+              ? 'Calculadora de ROI'
+              : 'Calculadora de ROI',
+        description:
+          locale === 'en-US'
+            ? 'Calculate the return on investment of our services'
+            : locale === 'pt-BR'
+              ? 'Calcule o retorno do investimento de nossos serviços'
+              : 'Calcula el retorno de inversión de nuestros servicios',
+        type: 'page' as const,
+        url: `/${locale}/${locale === 'es-MX' ? 'calculadora' : locale === 'pt-BR' ? 'calculadora' : 'calculator'}`,
+      },
+      {
+        id: 'estimator',
+        title:
+          locale === 'en-US'
+            ? 'Project Estimator'
+            : locale === 'pt-BR'
+              ? 'Estimador de Projetos'
+              : 'Estimador de Proyectos',
+        description:
+          locale === 'en-US'
+            ? 'Get an instant quote for your project'
+            : locale === 'pt-BR'
+              ? 'Obtenha uma cotação instantânea para seu projeto'
+              : 'Obtén una cotización instantánea para tu proyecto',
+        type: 'page' as const,
+        url: `/${locale}/${locale === 'es-MX' ? 'estimador' : locale === 'pt-BR' ? 'estimador' : 'estimator'}`,
+      },
+    ],
+    [locale]
+  );
 
   // Handle search
-  const performSearch = useCallback((searchQuery: string) => {
-    if (!searchQuery.trim()) {
-      setResults([]);
-      return;
-    }
+  const performSearch = useCallback(
+    (searchQuery: string) => {
+      if (!searchQuery.trim()) {
+        setResults([]);
+        return;
+      }
 
-    setLoading(true);
-    
-    // Simulate API delay
-    setTimeout(() => {
-      const filtered = searchableContent.filter(item => 
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      
-      setResults(filtered);
-      setLoading(false);
-    }, 300);
-  }, [searchableContent]);
+      setLoading(true);
+
+      // Simulate API delay
+      setTimeout(() => {
+        const filtered = searchableContent.filter(
+          item =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        setResults(filtered);
+        setLoading(false);
+      }, 300);
+    },
+    [searchableContent]
+  );
 
   // Debounced search
   useEffect(() => {
@@ -181,7 +196,7 @@ export function Search() {
         e.preventDefault();
         setIsOpen(true);
       }
-      
+
       // Escape to close
       if (e.key === 'Escape' && isOpen) {
         setIsOpen(false);
@@ -278,7 +293,7 @@ export function Search() {
                   ref={inputRef}
                   type="text"
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={e => setQuery(e.target.value)}
                   placeholder={t('placeholder')}
                   className="flex-1 bg-transparent outline-none text-lg placeholder:text-gray-400"
                 />
@@ -293,12 +308,10 @@ export function Search() {
               {/* Search Results */}
               <div className="max-h-[400px] overflow-y-auto">
                 {loading ? (
-                  <div className="p-8 text-center text-gray-500">
-                    {t('searching')}
-                  </div>
+                  <div className="p-8 text-center text-gray-500">{t('searching')}</div>
                 ) : results.length > 0 ? (
                   <div className="p-2">
-                    {results.map((result) => (
+                    {results.map(result => (
                       <button
                         key={result.id}
                         onClick={() => handleResultClick(result.url)}
@@ -307,7 +320,9 @@ export function Search() {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                              <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${getTypeColor(result.type)}`}>
+                              <span
+                                className={`px-2 py-0.5 text-xs font-medium rounded-full ${getTypeColor(result.type)}`}
+                              >
                                 {getTypeLabel(result.type)}
                               </span>
                               <h3 className="font-medium text-gray-900 dark:text-white">
@@ -337,15 +352,21 @@ export function Search() {
                     <p>{t('startTyping')}</p>
                     <div className="flex items-center justify-center gap-4 mt-4 text-sm">
                       <span className="flex items-center gap-1">
-                        <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">↑↓</kbd>
+                        <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">
+                          ↑↓
+                        </kbd>
                         {t('navigate')}
                       </span>
                       <span className="flex items-center gap-1">
-                        <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Enter</kbd>
+                        <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">
+                          Enter
+                        </kbd>
                         {t('select')}
                       </span>
                       <span className="flex items-center gap-1">
-                        <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">Esc</kbd>
+                        <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-xs">
+                          Esc
+                        </kbd>
                         {t('close')}
                       </span>
                     </div>

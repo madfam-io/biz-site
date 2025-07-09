@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import { useEffect } from 'react';
 
 export default function Error({
   error,
@@ -14,7 +14,7 @@ export default function Error({
 }) {
   const t = useTranslations('error');
   const locale = useLocale();
-  
+
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
@@ -42,17 +42,11 @@ export default function Error({
             <Heading level={1} className="mb-4">
               {t('heading')}
             </Heading>
-            
-            <p className="text-xl text-obsidian/70 mb-8">
-              {t('description')}
-            </p>
+
+            <p className="text-xl text-obsidian/70 mb-8">{t('description')}</p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-8">
-              <Button 
-                variant="primary" 
-                size="lg"
-                onClick={() => reset()}
-              >
+              <Button variant="primary" size="lg" onClick={() => reset()}>
                 {t('tryAgain')}
               </Button>
               <Link href={`/${locale}`}>
@@ -81,7 +75,10 @@ export default function Error({
               <p className="text-sm text-obsidian/60 mb-2">{t('needHelp')}</p>
               <p className="text-sm">
                 {t('contactSupport')}{' '}
-                <a href={`mailto:${t('supportEmail')}`} className="text-lavender hover:text-lavender/80">
+                <a
+                  href={`mailto:${t('supportEmail')}`}
+                  className="text-lavender hover:text-lavender/80"
+                >
                   {t('supportEmail')}
                 </a>
               </p>

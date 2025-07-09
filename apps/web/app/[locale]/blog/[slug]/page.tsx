@@ -1,10 +1,9 @@
 import { Container, Heading } from '@madfam/ui';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { cmsClient } from '@/lib/cms';
 import { environment } from '@/lib/environment';
-import Image from 'next/image';
 
 interface BlogPostPageProps {
   params: {
@@ -19,7 +18,8 @@ const getFallbackPost = (slug: string) => {
     'future-ai-business-transformation': {
       id: '1',
       title: 'The Future of AI in Business Transformation',
-      excerpt: 'Explore how artificial intelligence is reshaping the business landscape and creating new opportunities for growth and innovation.',
+      excerpt:
+        'Explore how artificial intelligence is reshaping the business landscape and creating new opportunities for growth and innovation.',
       publishedDate: '2024-03-15',
       author: { name: 'MADFAM Team', email: 'team@madfam.io' },
       slug: 'future-ai-business-transformation',
@@ -32,17 +32,18 @@ const getFallbackPost = (slug: string) => {
             content: [
               {
                 type: 'text',
-                text: 'Artificial Intelligence is no longer a futuristic concept—it\'s here, and it\'s transforming businesses across every industry. From automating routine tasks to providing deep insights through data analysis, AI is becoming an essential tool for companies looking to stay competitive in today\'s fast-paced market.'
-              }
-            ]
-          }
-        ]
-      }
+                text: "Artificial Intelligence is no longer a futuristic concept—it's here, and it's transforming businesses across every industry. From automating routine tasks to providing deep insights through data analysis, AI is becoming an essential tool for companies looking to stay competitive in today's fast-paced market.",
+              },
+            ],
+          },
+        ],
+      },
     },
     'building-scalable-digital-platforms': {
       id: '2',
       title: 'Building Scalable Digital Platforms: A Technical Guide',
-      excerpt: 'Learn the key architectural principles and best practices for building platforms that can grow with your business.',
+      excerpt:
+        'Learn the key architectural principles and best practices for building platforms that can grow with your business.',
       publishedDate: '2024-03-10',
       author: { name: 'MADFAM Engineering', email: 'engineering@madfam.io' },
       slug: 'building-scalable-digital-platforms',
@@ -55,17 +56,18 @@ const getFallbackPost = (slug: string) => {
             content: [
               {
                 type: 'text',
-                text: 'Building scalable digital platforms requires careful planning, robust architecture, and a deep understanding of both current needs and future growth. In this comprehensive guide, we\'ll explore the key principles and best practices that have helped us build platforms that serve millions of users.'
-              }
-            ]
-          }
-        ]
-      }
+                text: "Building scalable digital platforms requires careful planning, robust architecture, and a deep understanding of both current needs and future growth. In this comprehensive guide, we'll explore the key principles and best practices that have helped us build platforms that serve millions of users.",
+              },
+            ],
+          },
+        ],
+      },
     },
     'customer-success-automation': {
       id: '3',
       title: 'Customer Success Story: Transforming Operations with Automation',
-      excerpt: 'How we helped a leading manufacturer reduce operational costs by 40% through intelligent automation solutions.',
+      excerpt:
+        'How we helped a leading manufacturer reduce operational costs by 40% through intelligent automation solutions.',
       publishedDate: '2024-03-05',
       author: { name: 'MADFAM Team', email: 'team@madfam.io' },
       slug: 'customer-success-automation',
@@ -78,13 +80,13 @@ const getFallbackPost = (slug: string) => {
             content: [
               {
                 type: 'text',
-                text: 'When a leading manufacturing company approached us with challenges around operational efficiency and rising costs, we knew that intelligent automation could be the solution. Through a comprehensive 6-month transformation project, we helped them achieve remarkable results.'
-              }
-            ]
-          }
-        ]
-      }
-    }
+                text: 'When a leading manufacturing company approached us with challenges around operational efficiency and rising costs, we knew that intelligent automation could be the solution. Through a comprehensive 6-month transformation project, we helped them achieve remarkable results.',
+              },
+            ],
+          },
+        ],
+      },
+    },
   };
 
   return fallbackPosts[slug] || null;
@@ -93,13 +95,11 @@ const getFallbackPost = (slug: string) => {
 // Simple rich text renderer for the content
 function renderRichText(content: any): string {
   if (!content || !content.content) return '';
-  
+
   return content.content
     .map((block: any) => {
       if (block.type === 'paragraph' && block.content) {
-        return block.content
-          .map((item: any) => item.text || '')
-          .join('');
+        return block.content.map((item: any) => item.text || '').join('');
       }
       return '';
     })
@@ -116,10 +116,10 @@ function calculateReadTime(content: string): string {
 export default async function BlogPostPage({ params: { locale, slug } }: BlogPostPageProps) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations('blog');
-  
+
   // Fetch blog post from CMS or use fallback data
   let post = null;
-  
+
   if (environment.cms.enabled) {
     try {
       post = await cmsClient.getBlogPost(slug, locale);
@@ -127,22 +127,22 @@ export default async function BlogPostPage({ params: { locale, slug } }: BlogPos
       console.warn('Failed to fetch blog post from CMS, trying fallback:', error);
     }
   }
-  
+
   // If CMS fetch failed or CMS is disabled, try fallback
   if (!post) {
     post = getFallbackPost(slug);
   }
-  
+
   // If no post found at all, return 404
   if (!post) {
     notFound();
   }
-  
+
   const content = renderRichText(post.content);
   const readTime = calculateReadTime(content);
   const category = post.tags?.[0]?.tag || 'General';
   const authorName = typeof post.author === 'object' ? post.author.name : post.author;
-  
+
   return (
     <main className="min-h-screen py-20">
       <Container>
@@ -158,17 +158,17 @@ export default async function BlogPostPage({ params: { locale, slug } }: BlogPos
               </time>
               <span>{readTime}</span>
             </div>
-            
+
             <Heading level={1} className="mb-6">
               {post.title}
             </Heading>
-            
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-              {post.excerpt}
-            </p>
-            
+
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">{post.excerpt}</p>
+
             <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-500">
-              <span>{t('by')} {authorName}</span>
+              <span>
+                {t('by')} {authorName}
+              </span>
             </div>
           </header>
 
@@ -229,11 +229,11 @@ export default async function BlogPostPage({ params: { locale, slug } }: BlogPos
 export async function generateStaticParams() {
   const staticPosts = [
     'future-ai-business-transformation',
-    'building-scalable-digital-platforms', 
-    'customer-success-automation'
+    'building-scalable-digital-platforms',
+    'customer-success-automation',
   ];
-  
-  return staticPosts.map((slug) => ({
+
+  return staticPosts.map(slug => ({
     slug,
   }));
 }

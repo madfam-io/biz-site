@@ -1,8 +1,8 @@
+import { analytics } from '@madfam/analytics';
+import { ServiceTier as PrismaServiceTier, AssessmentStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
-import { ServiceTier as PrismaServiceTier, AssessmentStatus } from '@prisma/client';
-import { analytics } from '@madfam/analytics';
 
 // Assessment question types
 interface AssessmentQuestion {
@@ -28,7 +28,7 @@ const assessmentQuestions: AssessmentQuestion[] = [
   },
   {
     id: 'q3',
-    question: 'What is your team\'s technical expertise level?',
+    question: "What is your team's technical expertise level?",
     category: 'team',
     weight: 2,
   },
@@ -64,7 +64,7 @@ const assessmentQuestions: AssessmentQuestion[] = [
   },
   {
     id: 'q9',
-    question: 'What is your organization\'s change readiness?',
+    question: "What is your organization's change readiness?",
     category: 'team',
     weight: 2,
   },
@@ -97,13 +97,13 @@ function calculateAssessmentResults(answers: Record<string, number>) {
   };
 
   // Calculate scores
-  assessmentQuestions.forEach((question) => {
+  assessmentQuestions.forEach(question => {
     const answer = answers[question.id] || 0;
     const weightedScore = answer * question.weight;
-    
+
     totalScore += weightedScore;
     totalWeight += question.weight;
-    
+
     const categoryData = categoryScores[question.category];
     if (categoryData) {
       categoryData.score += weightedScore;
@@ -135,12 +135,12 @@ function calculateAssessmentResults(answers: Record<string, number>) {
 
   Object.entries(categoryScores).forEach(([category, data]) => {
     const categoryScore = (data.score / (data.weight * 5)) * 100;
-    
+
     if (categoryScore >= 70) {
       strengths.push(`Strong ${category} foundation`);
     } else if (categoryScore < 40) {
       weaknesses.push(`${category.charAt(0).toUpperCase() + category.slice(1)} needs improvement`);
-      
+
       // Add specific recommendations based on weaknesses
       switch (category) {
         case 'technology':
@@ -214,10 +214,7 @@ export async function GET(request: NextRequest) {
       });
 
       if (!assessment) {
-        return NextResponse.json(
-          { error: 'Assessment not found' },
-          { status: 404 }
-        );
+        return NextResponse.json({ error: 'Assessment not found' }, { status: 404 });
       }
 
       return NextResponse.json({
@@ -233,10 +230,7 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error fetching assessment:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch assessment' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch assessment' }, { status: 500 });
   }
 }
 
@@ -362,7 +356,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          errors: error.errors.map((e) => ({
+          errors: error.errors.map(e => ({
             field: e.path.join('.'),
             message: e.message,
           })),

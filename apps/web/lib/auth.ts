@@ -1,9 +1,9 @@
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { UserRole } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { PrismaAdapter } from '@auth/prisma-adapter';
-import bcrypt from 'bcryptjs';
 import { prisma } from './prisma';
-import { UserRole } from '@prisma/client';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as any,
@@ -37,10 +37,7 @@ export const authOptions: NextAuthOptions = {
           throw new Error('User not found');
         }
 
-        const isPasswordValid = await bcrypt.compare(
-          credentials.password,
-          user.passwordHash
-        );
+        const isPasswordValid = await bcrypt.compare(credentials.password, user.passwordHash);
 
         if (!isPasswordValid) {
           throw new Error('Invalid password');
@@ -79,7 +76,7 @@ declare module 'next-auth' {
   interface User {
     role: UserRole;
   }
-  
+
   interface Session {
     user: {
       id: string;

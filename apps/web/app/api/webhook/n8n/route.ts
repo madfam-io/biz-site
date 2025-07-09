@@ -1,6 +1,6 @@
+import { LeadStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { LeadStatus } from '@prisma/client';
 
 // Webhook event types
 interface WebhookEvent {
@@ -13,29 +13,29 @@ interface WebhookEvent {
 function validateWebhookAuth(request: NextRequest): boolean {
   const apiKey = request.headers.get('X-API-Key');
   const expectedKey = process.env.N8N_API_KEY;
-  
+
   if (!expectedKey) {
     console.warn('N8N_API_KEY not configured');
     return false;
   }
-  
+
   return apiKey === expectedKey;
 }
 
 // Handle lead status update
 async function handleLeadStatusUpdate(data: any) {
   const { leadId, status, note } = data;
-  
+
   if (!leadId || !status) {
     throw new Error('Missing required fields: leadId, status');
   }
-  
+
   // Update lead status
   await prisma.lead.update({
     where: { id: leadId },
     data: { status: status as LeadStatus },
   });
-  
+
   // Create activity record
   await prisma.leadActivity.create({
     data: {
@@ -45,7 +45,7 @@ async function handleLeadStatusUpdate(data: any) {
       metadata: { previousStatus: data.previousStatus, note },
     },
   });
-  
+
   // Add note if provided
   if (note) {
     await prisma.leadNote.create({
@@ -60,11 +60,11 @@ async function handleLeadStatusUpdate(data: any) {
 // Handle email event
 async function handleEmailEvent(data: any) {
   const { leadId, type, subject, status, error } = data;
-  
+
   if (!leadId || !type) {
     throw new Error('Missing required fields: leadId, type');
   }
-  
+
   // Create activity record
   await prisma.leadActivity.create({
     data: {
@@ -79,11 +79,11 @@ async function handleEmailEvent(data: any) {
 // Handle CRM sync event
 async function handleCRMSync(data: any) {
   const { leadId, crmId, action, syncData } = data;
-  
+
   if (!leadId || !crmId || !action) {
     throw new Error('Missing required fields: leadId, crmId, action');
   }
-  
+
   // Create activity record
   await prisma.leadActivity.create({
     data: {
@@ -98,11 +98,11 @@ async function handleCRMSync(data: any) {
 // Handle meeting scheduled event
 async function handleMeetingScheduled(data: any) {
   const { leadId, meetingId, scheduledAt, type, attendees } = data;
-  
+
   if (!leadId || !meetingId || !scheduledAt) {
     throw new Error('Missing required fields: leadId, meetingId, scheduledAt');
   }
-  
+
   // Create activity record
   await prisma.leadActivity.create({
     data: {
@@ -117,11 +117,11 @@ async function handleMeetingScheduled(data: any) {
 // Handle integration update
 async function handleIntegrationUpdate(data: any) {
   const { name, enabled, config, lastSync } = data;
-  
+
   if (!name) {
     throw new Error('Missing required field: name');
   }
-  
+
   // Update integration
   await prisma.integration.upsert({
     where: { name },
@@ -143,23 +143,20 @@ export async function POST(request: NextRequest) {
   try {
     // Validate authentication
     if (!validateWebhookAuth(request)) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    
+
     const body = await request.json();
     const event: WebhookEvent = body;
-    
+
     console.log('Received webhook event:', event.event);
-    
+
     // Route to appropriate handler
     switch (event.event) {
       case 'lead.status_updated':
         await handleLeadStatusUpdate(event.data);
         break;
-        
+
       case 'email.sent':
       case 'email.delivered':
       case 'email.opened':
@@ -167,38 +164,37 @@ export async function POST(request: NextRequest) {
       case 'email.bounced':
         await handleEmailEvent(event.data);
         break;
-        
+
       case 'crm.synced':
       case 'crm.updated':
         await handleCRMSync(event.data);
         break;
-        
+
       case 'meeting.scheduled':
         await handleMeetingScheduled(event.data);
         break;
-        
+
       case 'integration.updated':
         await handleIntegrationUpdate(event.data);
         break;
-        
+
       default:
         console.warn('Unknown webhook event:', event.event);
         // Still return success to avoid retries
-        return NextResponse.json({ 
+        return NextResponse.json({
           success: true,
           message: 'Event received but not handled',
         });
     }
-    
-    return NextResponse.json({ 
+
+    return NextResponse.json({
       success: true,
       message: 'Event processed successfully',
     });
-    
   } catch (error) {
     console.error('Webhook error:', error);
     return NextResponse.json(
-      { 
+      {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error',
       },
@@ -211,12 +207,9 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   // Simple health check
   if (!validateWebhookAuth(request)) {
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  
+
   return NextResponse.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),

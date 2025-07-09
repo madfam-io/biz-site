@@ -1,8 +1,8 @@
+import { getLocalizedContent, type Locale } from '@madfam/i18n';
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
-import { unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { getLocalizedContent, type Locale } from '@madfam/i18n';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 interface TeamMember {
   name: string;
@@ -61,9 +61,12 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         'pt-BR': 'CEO & Fundador',
       },
       bio: {
-        'es-MX': 'Visionario tecnológico con más de 15 años transformando empresas con IA y creatividad.',
-        'en-US': 'Technology visionary with over 15 years transforming companies with AI and creativity.',
-        'pt-BR': 'Visionário tecnológico com mais de 15 anos transformando empresas com IA e criatividade.',
+        'es-MX':
+          'Visionario tecnológico con más de 15 años transformando empresas con IA y creatividad.',
+        'en-US':
+          'Technology visionary with over 15 years transforming companies with AI and creativity.',
+        'pt-BR':
+          'Visionário tecnológico com mais de 15 anos transformando empresas com IA e criatividade.',
       },
       expertise: {
         'es-MX': ['Estrategia IA', 'Innovación', 'Liderazgo'],
@@ -80,9 +83,11 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         'pt-BR': 'Diretora Criativa',
       },
       bio: {
-        'es-MX': 'Experta en diseño 3D y experiencias digitales que conectan marcas con audiencias.',
+        'es-MX':
+          'Experta en diseño 3D y experiencias digitales que conectan marcas con audiencias.',
         'en-US': 'Expert in 3D design and digital experiences that connect brands with audiences.',
-        'pt-BR': 'Especialista em design 3D e experiências digitais que conectam marcas com audiências.',
+        'pt-BR':
+          'Especialista em design 3D e experiências digitais que conectam marcas com audiências.',
       },
       expertise: {
         'es-MX': ['Diseño 3D', 'UX/UI', 'Branding'],
@@ -99,7 +104,8 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         'pt-BR': 'CTO',
       },
       bio: {
-        'es-MX': 'Arquitecto de soluciones que lidera la implementación de plataformas empresariales.',
+        'es-MX':
+          'Arquitecto de soluciones que lidera la implementación de plataformas empresariales.',
         'en-US': 'Solutions architect leading enterprise platform implementations.',
         'pt-BR': 'Arquiteto de soluções que lidera a implementação de plataformas empresariais.',
       },
@@ -187,53 +193,53 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
   ];
 
   const milestones: Milestone[] = [
-    { 
-      year: '2019', 
+    {
+      year: '2019',
       event: {
         'es-MX': 'Fundación de MADFAM',
         'en-US': 'MADFAM Founded',
         'pt-BR': 'Fundação da MADFAM',
-      }
+      },
     },
-    { 
-      year: '2020', 
+    {
+      year: '2020',
       event: {
         'es-MX': 'Lanzamiento de SPARK beta',
         'en-US': 'SPARK beta launch',
         'pt-BR': 'Lançamento do SPARK beta',
-      }
+      },
     },
-    { 
-      year: '2021', 
+    {
+      year: '2021',
       event: {
         'es-MX': '100+ proyectos completados',
         'en-US': '100+ projects completed',
         'pt-BR': '100+ projetos concluídos',
-      }
+      },
     },
-    { 
-      year: '2022', 
+    {
+      year: '2022',
       event: {
         'es-MX': 'Expansión internacional',
         'en-US': 'International expansion',
         'pt-BR': 'Expansão internacional',
-      }
+      },
     },
-    { 
-      year: '2023', 
+    {
+      year: '2023',
       event: {
         'es-MX': 'Lanzamiento de PENNY',
         'en-US': 'PENNY launch',
         'pt-BR': 'Lançamento do PENNY',
-      }
+      },
     },
-    { 
-      year: '2024', 
+    {
+      year: '2024',
       event: {
         'es-MX': '50+ empresas transformadas',
         'en-US': '50+ companies transformed',
         'pt-BR': '50+ empresas transformadas',
-      }
+      },
     },
   ];
 
@@ -281,19 +287,19 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-lavender/10 mb-6">
                 <span className="text-3xl">🎯</span>
               </div>
-              <Heading level={3} className="mb-4">{t('mission.title')}</Heading>
-              <p className="text-lg text-obsidian/70">
-                {t('mission.description')}
-              </p>
+              <Heading level={3} className="mb-4">
+                {t('mission.title')}
+              </Heading>
+              <p className="text-lg text-obsidian/70">{t('mission.description')}</p>
             </div>
             <div className="text-center md:text-left">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sun/10 mb-6">
                 <span className="text-3xl">👁️</span>
               </div>
-              <Heading level={3} className="mb-4">{t('vision.title')}</Heading>
-              <p className="text-lg text-obsidian/70">
-                {t('vision.description')}
-              </p>
+              <Heading level={3} className="mb-4">
+                {t('vision.title')}
+              </Heading>
+              <p className="text-lg text-obsidian/70">{t('vision.description')}</p>
             </div>
           </div>
         </Container>
@@ -303,10 +309,10 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       <section className="section bg-pearl">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">{t('values.title')}</Heading>
-            <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {t('values.subtitle')}
-            </p>
+            <Heading level={2} className="mb-4">
+              {t('values.title')}
+            </Heading>
+            <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">{t('values.subtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -332,10 +338,10 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">{t('team.title')}</Heading>
-            <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {t('team.subtitle')}
-            </p>
+            <Heading level={2} className="mb-4">
+              {t('team.title')}
+            </Heading>
+            <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">{t('team.subtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -351,7 +357,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                       👤
                     </div>
                   </div>
-                  
+
                   <h3 className="font-heading text-xl font-semibold text-center mb-1">
                     {member.name}
                   </h3>
@@ -361,7 +367,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                   <p className="text-sm text-obsidian/70 text-center mb-4">
                     {getLocalizedContent(member.bio, currentLocale)}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 justify-center">
                     {getLocalizedContent(member.expertise, currentLocale).map((skill, idx) => (
                       <span
@@ -383,17 +389,17 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       <section className="section bg-gradient-to-br from-obsidian/5 to-lavender/5">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">{t('history.title')}</Heading>
-            <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {t('history.subtitle')}
-            </p>
+            <Heading level={2} className="mb-4">
+              {t('history.title')}
+            </Heading>
+            <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">{t('history.subtitle')}</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-lavender to-sun"></div>
-              
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-lavender to-sun" />
+
               {/* Timeline items */}
               {milestones.map((milestone, index) => (
                 <div
@@ -403,9 +409,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                   }`}
                 >
                   <div
-                    className={`w-5/12 ${
-                      index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'
-                    }`}
+                    className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}
                   >
                     <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-lavender to-sun text-white font-semibold mb-2">
                       {milestone.year}
@@ -414,9 +418,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                       {getLocalizedContent(milestone.event, currentLocale)}
                     </h3>
                   </div>
-                  
+
                   {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-lavender"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-lavender" />
                 </div>
               ))}
             </div>
@@ -431,9 +435,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
             <Heading level={2} className="text-white mb-4">
               {t('cta.title')}
             </Heading>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              {t('cta.subtitle')}
-            </p>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">{t('cta.subtitle')}</p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/contact">
                 <Button variant="secondary" size="lg">
