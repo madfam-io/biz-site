@@ -1,0 +1,5 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "pnpm build --filter=@madfam/web",
+  "outputDirectory": "apps/web/.next"
+}
