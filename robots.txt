@@ -1,0 +1,26 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+User-Agent: GPTBot
+Disallow: /
+
+User-Agent: ChatGPT-User
+Disallow: /
+
+User-Agent: GoogleBot
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+Host: https://madfam.io
+Sitemap: https://madfam.io/sitemap.xml
