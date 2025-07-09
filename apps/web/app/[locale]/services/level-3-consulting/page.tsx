@@ -1,92 +1,90 @@
+'use client';
+
 import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import { ROICalculator } from '@/components/ROICalculator';
 import { ServiceStructuredData } from '@/components/StructuredData';
-import { seoService } from '@/lib/seo';
-import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
-
-export async function generateMetadata(): Promise<Metadata> {
-  return seoService.generateServiceMetadata(
-    'Consultoría en Transformación Digital',
-    'Roadmap personalizado, capacitación de equipos y métricas de impacto para tu transformación digital',
-    'L3 - Consulting',
-    'es-MX'
-  );
-}
+import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
 
 export default function Level3ConsultingPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L3_CONSULTING];
+  const t = useTypedTranslations('services');
+  const currentLocale = locale as Locale;
+  
+  // Get localized content from service object
+  const serviceName = getLocalizedContent(service.name, currentLocale);
+  const serviceDescription = getLocalizedContent(service.description, currentLocale);
 
   const benefits = [
     {
       icon: '🎯',
-      title: 'Estrategia personalizada',
-      description: 'Roadmap de transformación digital adaptado a tu industria y objetivos específicos.',
+      title: t('level3.benefits.items.strategy.title'),
+      description: t('level3.benefits.items.strategy.description'),
     },
     {
       icon: '👥',
-      title: 'Capacitación integral',
-      description: 'Workshops prácticos para que tu equipo domine las herramientas de IA.',
+      title: t('level3.benefits.items.training.title'),
+      description: t('level3.benefits.items.training.description'),
     },
     {
       icon: '📊',
-      title: 'Métricas de impacto',
-      description: 'KPIs claros para medir el ROI de tu transformación digital.',
+      title: t('level3.benefits.items.metrics.title'),
+      description: t('level3.benefits.items.metrics.description'),
     },
     {
       icon: '🔄',
-      title: 'Mejora continua',
-      description: 'Sesiones de seguimiento mensuales para optimizar resultados.',
+      title: t('level3.benefits.items.continuous.title'),
+      description: t('level3.benefits.items.continuous.description'),
     },
   ];
 
   const process = [
     {
       step: 1,
-      title: 'Diagnóstico inicial',
-      description: 'Análisis profundo de tus procesos actuales y oportunidades de mejora.',
-      duration: '1 semana',
+      title: t('level3.process.steps.diagnosis.title'),
+      description: t('level3.process.steps.diagnosis.description'),
+      duration: '1 ' + (currentLocale === 'en-US' ? 'week' : currentLocale === 'pt-BR' ? 'semana' : 'semana'),
     },
     {
       step: 2,
-      title: 'Diseño de estrategia',
-      description: 'Creación de un plan de transformación con objetivos claros y alcanzables.',
-      duration: '2 semanas',
+      title: t('level3.process.steps.strategy.title'),
+      description: t('level3.process.steps.strategy.description'),
+      duration: '2 ' + (currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'),
     },
     {
       step: 3,
-      title: 'Implementación guiada',
-      description: 'Workshops y capacitación práctica para tu equipo.',
-      duration: '4-8 semanas',
+      title: t('level3.process.steps.implementation.title'),
+      description: t('level3.process.steps.implementation.description'),
+      duration: '4-8 ' + (currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'),
     },
     {
       step: 4,
-      title: 'Optimización continua',
-      description: 'Seguimiento mensual y ajustes basados en resultados.',
-      duration: 'Ongoing',
+      title: t('level3.process.steps.optimization.title'),
+      description: t('level3.process.steps.optimization.description'),
+      duration: currentLocale === 'en-US' ? 'Ongoing' : currentLocale === 'pt-BR' ? 'Contínuo' : 'Continuo',
     },
   ];
 
   const testimonials = [
     {
-      quote: 'MADFAM transformó completamente nuestra forma de trabajar. Los workshops fueron increíblemente prácticos.',
+      quote: currentLocale === 'en-US' ? 'MADFAM completely transformed the way we work. The workshops were incredibly practical.' : currentLocale === 'pt-BR' ? 'MADFAM transformou completamente nossa forma de trabalhar. Os workshops foram incrivelmente práticos.' : 'MADFAM transformó completamente nuestra forma de trabajar. Los workshops fueron increíblemente prácticos.',
       author: 'María González',
       role: 'CTO, TechCorp México',
     },
     {
-      quote: 'El ROI fue evidente desde el primer mes. Automatizamos procesos que tomaban días en minutos.',
+      quote: currentLocale === 'en-US' ? 'The ROI was evident from the first month. We automated processes that took days in minutes.' : currentLocale === 'pt-BR' ? 'O ROI foi evidente desde o primeiro mês. Automatizamos processos que levavam dias em minutos.' : 'El ROI fue evidente desde el primer mes. Automatizamos procesos que tomaban días en minutos.',
       author: 'Carlos Ramírez',
-      role: 'Director de Innovación, Grupo Industrial',
+      role: currentLocale === 'en-US' ? 'Innovation Director, Industrial Group' : currentLocale === 'pt-BR' ? 'Diretor de Inovação, Grupo Industrial' : 'Director de Innovación, Grupo Industrial',
     },
   ];
 
   return (
     <>
       <ServiceStructuredData
-        name="Consultoría en Transformación Digital"
-        description="Roadmap personalizado, capacitación de equipos y métricas de impacto para tu transformación digital"
+        name={serviceName}
+        description={serviceDescription}
         serviceType="Consulting"
       />
       <main className="min-h-screen">
@@ -97,30 +95,29 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
             <div>
               <div className="mb-6">
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-lavender/20 text-lavender">
-                  Nivel 3 - Consulting
+                  {t('level3.hero.badge')}
                 </span>
               </div>
               <Heading level={1} className="mb-6">
-                Transforma tu empresa con{' '}
-                <span className="gradient-text">consultoría experta en IA</span>
+                {t('level3.hero.title')}
               </Heading>
               <p className="text-xl text-obsidian/70 mb-8">
-                {service.description}
+                {serviceDescription}
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 <Button variant="creative" size="lg">
-                  Agendar consulta inicial
+                  {t('level3.hero.scheduleInitial')}
                 </Button>
                 <Button variant="outline" size="lg">
-                  Descargar caso de estudio
+                  {t('level3.hero.downloadCase')}
                 </Button>
               </div>
               <div className="flex items-center gap-6 text-sm text-obsidian/60">
                 <div>
-                  <span className="font-semibold text-obsidian">3-6 meses</span> duración típica
+                  <span className="font-semibold text-obsidian">3-6 {currentLocale === 'en-US' ? 'months' : currentLocale === 'pt-BR' ? 'meses' : 'meses'}</span> {t('level3.hero.typicalDuration')}
                 </div>
                 <div>
-                  <span className="font-semibold text-obsidian">87%</span> satisfacción cliente
+                  <span className="font-semibold text-obsidian">87%</span> {t('level3.hero.satisfaction')}
                 </div>
               </div>
             </div>
@@ -138,10 +135,10 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              ¿Qué obtienes con nuestro servicio de consultoría?
+              {t('level3.benefits.title')}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Más que asesoría: un socio estratégico para tu transformación digital
+              {t('level3.benefits.subtitle')}
             </p>
           </div>
 
@@ -168,10 +165,10 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              Nuestro proceso probado
+              {t('level3.process.title')}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Un enfoque estructurado para garantizar resultados medibles
+              {t('level3.process.subtitle')}
             </p>
           </div>
 
@@ -205,10 +202,10 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <Heading level={2} className="mb-6">
-                Todo lo que incluye tu consultoría
+                {t('level3.included.title')}
               </Heading>
               <ul className="space-y-4">
-                {service.features.map((feature, index) => (
+                {getLocalizedContent(service.features, currentLocale).map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <span className="text-2xl text-leaf">✓</span>
                     <span className="text-lg text-obsidian/80">{feature}</span>
@@ -217,21 +214,21 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
               </ul>
             </div>
             <div className="bg-gradient-to-br from-obsidian to-obsidian/90 text-white rounded-2xl p-8">
-              <h3 className="font-heading text-2xl mb-4">Inversión</h3>
+              <h3 className="font-heading text-2xl mb-4">{t('level3.included.investment')}</h3>
               <div className="mb-6">
-                <p className="text-sm opacity-80">Desde</p>
+                <p className="text-sm opacity-80">{t('level3.included.from')}</p>
                 <p className="text-4xl font-heading font-bold">
                   ${service.startingPrice.toLocaleString()} {service.currency}
                 </p>
-                <p className="text-sm opacity-80 mt-2">Proyecto de 3-6 meses</p>
+                <p className="text-sm opacity-80 mt-2">{t('level3.included.projectDuration')}</p>
               </div>
               <div className="space-y-2 mb-6">
-                <p className="text-sm opacity-80">✓ Plan de pagos disponible</p>
-                <p className="text-sm opacity-80">✓ ROI garantizado en 6 meses</p>
-                <p className="text-sm opacity-80">✓ Soporte post-implementación</p>
+                <p className="text-sm opacity-80">✓ {t('level3.included.paymentPlan')}</p>
+                <p className="text-sm opacity-80">✓ {t('level3.included.guaranteedROI')}</p>
+                <p className="text-sm opacity-80">✓ {t('level3.included.postSupport')}</p>
               </div>
               <Button variant="secondary" size="lg" className="w-full">
-                Solicitar propuesta
+                {t('level3.included.requestProposal')}
               </Button>
             </div>
           </div>
@@ -242,7 +239,7 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
       <section className="section bg-pearl">
         <Container>
           <Heading level={2} className="text-center mb-12">
-            Lo que dicen nuestros clientes
+            {t('level3.testimonials.title')}
           </Heading>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -273,11 +270,10 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
         <Container>
           <div className="max-w-5xl mx-auto">
             <Heading level={2} className="text-center mb-4">
-              Calcula tu retorno de inversión
+              {currentLocale === 'en-US' ? 'Calculate your return on investment' : currentLocale === 'pt-BR' ? 'Calcule seu retorno de investimento' : 'Calcula tu retorno de inversión'}
             </Heading>
             <p className="text-center text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
-              Usa nuestra calculadora interactiva para estimar el impacto que nuestros servicios de consultoría 
-              pueden tener en tu negocio.
+              {currentLocale === 'en-US' ? 'Use our interactive calculator to estimate the impact our consulting services can have on your business.' : currentLocale === 'pt-BR' ? 'Use nossa calculadora interativa para estimar o impacto que nossos serviços de consultoria podem ter em seu negócio.' : 'Usa nuestra calculadora interactiva para estimar el impacto que nuestros servicios de consultoría pueden tener en tu negocio.'}
             </p>
             <ROICalculator serviceTier={ServiceTier.L3_CONSULTING} />
           </div>
@@ -289,21 +285,21 @@ export default function Level3ConsultingPage({ params: { locale } }: { params: {
         <Container>
           <div className="bg-gradient-to-r from-lavender to-sun rounded-3xl p-12 text-center text-white">
             <Heading level={2} className="text-white mb-4">
-              ¿Listo para transformar tu empresa?
+              {t('level3.cta.title')}
             </Heading>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Agenda una consulta gratuita de 30 minutos para explorar cómo podemos ayudarte
+              {t('level3.cta.subtitle')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button variant="secondary" size="lg">
-                Agendar consulta ahora
+                {t('level3.cta.scheduleNow')}
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-lavender"
               >
-                Descargar brochure
+                {currentLocale === 'en-US' ? 'Download brochure' : currentLocale === 'pt-BR' ? 'Baixar brochura' : 'Descargar brochure'}
               </Button>
             </div>
           </div>

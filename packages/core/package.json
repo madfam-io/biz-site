@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "@madfam/i18n": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.0.1",

@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, 
 import { ServiceTierConfig } from '@madfam/core';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { i18nConfig } from '@madfam/i18n';
+import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
 
 interface ServiceCardProps {
   service: ServiceTierConfig;
@@ -13,7 +13,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service, featured = false }: ServiceCardProps) {
   const router = useRouter();
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
 
   const colorClasses = {
     leaf: 'bg-leaf/20 text-leaf',
@@ -22,6 +22,16 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
     obsidian: 'bg-obsidian/20 text-obsidian',
     creative: 'bg-gradient-to-br from-lavender/20 to-sun/20 text-lavender',
   };
+
+  const localizedName = getLocalizedContent(service.name, locale);
+  const localizedDescription = getLocalizedContent(service.description, locale);
+  const localizedFeatures = getLocalizedContent(service.features, locale);
+  const localizedCta = getLocalizedContent(service.cta.text, locale);
+  const localizedDuration = service.duration ? getLocalizedContent(service.duration, locale) : undefined;
+
+  const recommendedText = locale === 'en-US' ? 'RECOMMENDED' : locale === 'pt-BR' ? 'RECOMENDADO' : 'RECOMENDADO';
+  const includesText = locale === 'en-US' ? 'Includes:' : locale === 'pt-BR' ? 'Inclui:' : 'Incluye:';
+  const fromText = locale === 'en-US' ? 'From' : locale === 'pt-BR' ? 'A partir de' : 'Desde';
 
   return (
     <Card
@@ -39,7 +49,7 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
           </div>
           {featured && (
             <span className="text-xs font-mono text-lavender bg-lavender/10 px-2 py-1 rounded">
-              RECOMENDADO
+              {recommendedText}
             </span>
           )}
         </div>
@@ -47,17 +57,17 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
       <CardContent className="space-y-4">
         <div>
           <CardTitle className="mb-2">
-            L{service.level} - {service.name}
+            L{service.level} - {localizedName}
           </CardTitle>
           <CardDescription className="text-base">
-            {service.description}
+            {localizedDescription}
           </CardDescription>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-medium text-gray-700">Incluye:</p>
+          <p className="text-sm font-medium text-gray-700">{includesText}</p>
           <ul className="space-y-1">
-            {service.features.slice(0, 3).map((feature, index) => (
+            {localizedFeatures.slice(0, 3).map((feature, index) => (
               <li key={index} className="text-sm text-gray-600 flex items-start">
                 <span className="text-leaf mr-2">✓</span>
                 {feature}
@@ -67,12 +77,12 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
         </div>
 
         <div className="pt-2">
-          <p className="text-sm text-gray-500">Desde</p>
+          <p className="text-sm text-gray-500">{fromText}</p>
           <p className="text-2xl font-heading font-bold text-obsidian">
             ${service.startingPrice.toLocaleString()} {service.currency}
           </p>
-          {service.duration && (
-            <p className="text-sm text-gray-500">{service.duration}</p>
+          {localizedDuration && (
+            <p className="text-sm text-gray-500">{localizedDuration}</p>
           )}
         </div>
       </CardContent>
@@ -82,21 +92,12 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
           size="md"
           className="w-full"
           onClick={() => {
-            let route = `/services/${service.id}`;
-            
-            // Translate route if needed
-            if (locale === 'es-MX') {
-              const spanishRoutes = i18nConfig.routes['es-MX'];
-              const translatedRoute = spanishRoutes[route as keyof typeof spanishRoutes];
-              if (translatedRoute) {
-                route = translatedRoute;
-              }
-            }
-            
-            router.push(`/${locale}${route}`);
+            const localizedSlug = getLocalizedServiceSlug(service.id, locale);
+            const baseRoute = locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
+            router.push(`/${locale}/${baseRoute}/${localizedSlug}`);
           }}
         >
-          {service.cta.text}
+          {localizedCta}
         </Button>
       </CardFooter>
     </Card>

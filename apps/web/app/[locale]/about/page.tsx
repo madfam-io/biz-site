@@ -1,90 +1,240 @@
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
+import { getLocalizedContent, type Locale } from '@madfam/i18n';
+
+interface TeamMember {
+  name: string;
+  role: {
+    'es-MX': string;
+    'en-US': string;
+    'pt-BR': string;
+  };
+  bio: {
+    'es-MX': string;
+    'en-US': string;
+    'pt-BR': string;
+  };
+  expertise: {
+    'es-MX': string[];
+    'en-US': string[];
+    'pt-BR': string[];
+  };
+  image: string;
+}
+
+interface Value {
+  icon: string;
+  title: {
+    'es-MX': string;
+    'en-US': string;
+    'pt-BR': string;
+  };
+  description: {
+    'es-MX': string;
+    'en-US': string;
+    'pt-BR': string;
+  };
+}
+
+interface Milestone {
+  year: string;
+  event: {
+    'es-MX': string;
+    'en-US': string;
+    'pt-BR': string;
+  };
+}
 
 export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
-  const team = [
+  const t = useTranslations('about');
+  const currentLocale = locale as Locale;
+
+  const team: TeamMember[] = [
     {
       name: 'Aldo Ruiz Luna',
-      role: 'CEO & Fundador',
-      roleEn: 'CEO & Founder',
-      bio: 'Visionario tecnológico con más de 15 años transformando empresas con IA y creatividad.',
-      bioEn: 'Technology visionary with over 15 years transforming companies with AI and creativity.',
-      expertise: ['Estrategia IA', 'Innovación', 'Liderazgo'],
-      expertiseEn: ['AI Strategy', 'Innovation', 'Leadership'],
+      role: {
+        'es-MX': 'CEO & Fundador',
+        'en-US': 'CEO & Founder',
+        'pt-BR': 'CEO & Fundador',
+      },
+      bio: {
+        'es-MX': 'Visionario tecnológico con más de 15 años transformando empresas con IA y creatividad.',
+        'en-US': 'Technology visionary with over 15 years transforming companies with AI and creativity.',
+        'pt-BR': 'Visionário tecnológico com mais de 15 anos transformando empresas com IA e criatividade.',
+      },
+      expertise: {
+        'es-MX': ['Estrategia IA', 'Innovación', 'Liderazgo'],
+        'en-US': ['AI Strategy', 'Innovation', 'Leadership'],
+        'pt-BR': ['Estratégia IA', 'Inovação', 'Liderança'],
+      },
       image: '/team/aldo.jpg',
     },
     {
       name: 'Daniela Martínez',
-      role: 'Directora Creativa',
-      roleEn: 'Creative Director',
-      bio: 'Experta en diseño 3D y experiencias digitales que conectan marcas con audiencias.',
-      bioEn: 'Expert in 3D design and digital experiences that connect brands with audiences.',
-      expertise: ['Diseño 3D', 'UX/UI', 'Branding'],
-      expertiseEn: ['3D Design', 'UX/UI', 'Branding'],
+      role: {
+        'es-MX': 'Directora Creativa',
+        'en-US': 'Creative Director',
+        'pt-BR': 'Diretora Criativa',
+      },
+      bio: {
+        'es-MX': 'Experta en diseño 3D y experiencias digitales que conectan marcas con audiencias.',
+        'en-US': 'Expert in 3D design and digital experiences that connect brands with audiences.',
+        'pt-BR': 'Especialista em design 3D e experiências digitais que conectam marcas com audiências.',
+      },
+      expertise: {
+        'es-MX': ['Diseño 3D', 'UX/UI', 'Branding'],
+        'en-US': ['3D Design', 'UX/UI', 'Branding'],
+        'pt-BR': ['Design 3D', 'UX/UI', 'Branding'],
+      },
       image: '/team/daniela.jpg',
     },
     {
       name: 'Carlos Mendoza',
-      role: 'CTO',
-      roleEn: 'CTO',
-      bio: 'Arquitecto de soluciones que lidera la implementación de plataformas empresariales.',
-      bioEn: 'Solutions architect leading enterprise platform implementations.',
-      expertise: ['Arquitectura', 'DevOps', 'Cloud'],
-      expertiseEn: ['Architecture', 'DevOps', 'Cloud'],
+      role: {
+        'es-MX': 'CTO',
+        'en-US': 'CTO',
+        'pt-BR': 'CTO',
+      },
+      bio: {
+        'es-MX': 'Arquitecto de soluciones que lidera la implementación de plataformas empresariales.',
+        'en-US': 'Solutions architect leading enterprise platform implementations.',
+        'pt-BR': 'Arquiteto de soluções que lidera a implementação de plataformas empresariais.',
+      },
+      expertise: {
+        'es-MX': ['Arquitectura', 'DevOps', 'Cloud'],
+        'en-US': ['Architecture', 'DevOps', 'Cloud'],
+        'pt-BR': ['Arquitetura', 'DevOps', 'Cloud'],
+      },
       image: '/team/carlos.jpg',
     },
     {
       name: 'Ana López',
-      role: 'Directora de IA',
-      roleEn: 'AI Director',
-      bio: 'Pionera en automatización inteligente y machine learning aplicado a negocios.',
-      bioEn: 'Pioneer in intelligent automation and machine learning applied to business.',
-      expertise: ['Machine Learning', 'Automatización', 'Data Science'],
-      expertiseEn: ['Machine Learning', 'Automation', 'Data Science'],
+      role: {
+        'es-MX': 'Directora de IA',
+        'en-US': 'AI Director',
+        'pt-BR': 'Diretora de IA',
+      },
+      bio: {
+        'es-MX': 'Pionera en automatización inteligente y machine learning aplicado a negocios.',
+        'en-US': 'Pioneer in intelligent automation and machine learning applied to business.',
+        'pt-BR': 'Pioneira em automação inteligente e machine learning aplicado a negócios.',
+      },
+      expertise: {
+        'es-MX': ['Machine Learning', 'Automatización', 'Data Science'],
+        'en-US': ['Machine Learning', 'Automation', 'Data Science'],
+        'pt-BR': ['Machine Learning', 'Automação', 'Data Science'],
+      },
       image: '/team/ana.jpg',
     },
   ];
 
-  const values = [
+  const values: Value[] = [
     {
       icon: '🚀',
-      title: 'Innovación Constante',
-      titleEn: 'Constant Innovation',
-      description: 'Exploramos nuevas tecnologías para mantener a nuestros clientes a la vanguardia.',
-      descriptionEn: 'We explore new technologies to keep our clients at the forefront.',
+      title: {
+        'es-MX': 'Innovación Constante',
+        'en-US': 'Constant Innovation',
+        'pt-BR': 'Inovação Constante',
+      },
+      description: {
+        'es-MX': 'Exploramos nuevas tecnologías para mantener a nuestros clientes a la vanguardia.',
+        'en-US': 'We explore new technologies to keep our clients at the forefront.',
+        'pt-BR': 'Exploramos novas tecnologias para manter nossos clientes na vanguarda.',
+      },
     },
     {
       icon: '🤝',
-      title: 'Colaboración Genuina',
-      titleEn: 'Genuine Collaboration',
-      description: 'Trabajamos como extensión de tu equipo, no como proveedores externos.',
-      descriptionEn: 'We work as an extension of your team, not as external vendors.',
+      title: {
+        'es-MX': 'Colaboración Genuina',
+        'en-US': 'Genuine Collaboration',
+        'pt-BR': 'Colaboração Genuína',
+      },
+      description: {
+        'es-MX': 'Trabajamos como extensión de tu equipo, no como proveedores externos.',
+        'en-US': 'We work as an extension of your team, not as external vendors.',
+        'pt-BR': 'Trabalhamos como extensão da sua equipe, não como fornecedores externos.',
+      },
     },
     {
       icon: '✨',
-      title: 'Excelencia Creativa',
-      titleEn: 'Creative Excellence',
-      description: 'Combinamos arte y tecnología para crear soluciones únicas y memorables.',
-      descriptionEn: 'We combine art and technology to create unique and memorable solutions.',
+      title: {
+        'es-MX': 'Excelencia Creativa',
+        'en-US': 'Creative Excellence',
+        'pt-BR': 'Excelência Criativa',
+      },
+      description: {
+        'es-MX': 'Combinamos arte y tecnología para crear soluciones únicas y memorables.',
+        'en-US': 'We combine art and technology to create unique and memorable solutions.',
+        'pt-BR': 'Combinamos arte e tecnologia para criar soluções únicas e memoráveis.',
+      },
     },
     {
       icon: '📈',
-      title: 'Resultados Medibles',
-      titleEn: 'Measurable Results',
-      description: 'Cada proyecto se enfoca en generar impacto real y cuantificable.',
-      descriptionEn: 'Every project focuses on generating real and quantifiable impact.',
+      title: {
+        'es-MX': 'Resultados Medibles',
+        'en-US': 'Measurable Results',
+        'pt-BR': 'Resultados Mensuráveis',
+      },
+      description: {
+        'es-MX': 'Cada proyecto se enfoca en generar impacto real y cuantificable.',
+        'en-US': 'Every project focuses on generating real and quantifiable impact.',
+        'pt-BR': 'Cada projeto se concentra em gerar impacto real e quantificável.',
+      },
     },
   ];
 
-  const milestones = [
-    { year: '2019', event: 'Fundación de MADFAM', eventEn: 'MADFAM Founded' },
-    { year: '2020', event: 'Lanzamiento de SPARK beta', eventEn: 'SPARK beta launch' },
-    { year: '2021', event: '100+ proyectos completados', eventEn: '100+ projects completed' },
-    { year: '2022', event: 'Expansión internacional', eventEn: 'International expansion' },
-    { year: '2023', event: 'Lanzamiento de PENNY', eventEn: 'PENNY launch' },
-    { year: '2024', event: '50+ empresas transformadas', eventEn: '50+ companies transformed' },
+  const milestones: Milestone[] = [
+    { 
+      year: '2019', 
+      event: {
+        'es-MX': 'Fundación de MADFAM',
+        'en-US': 'MADFAM Founded',
+        'pt-BR': 'Fundação da MADFAM',
+      }
+    },
+    { 
+      year: '2020', 
+      event: {
+        'es-MX': 'Lanzamiento de SPARK beta',
+        'en-US': 'SPARK beta launch',
+        'pt-BR': 'Lançamento do SPARK beta',
+      }
+    },
+    { 
+      year: '2021', 
+      event: {
+        'es-MX': '100+ proyectos completados',
+        'en-US': '100+ projects completed',
+        'pt-BR': '100+ projetos concluídos',
+      }
+    },
+    { 
+      year: '2022', 
+      event: {
+        'es-MX': 'Expansión internacional',
+        'en-US': 'International expansion',
+        'pt-BR': 'Expansão internacional',
+      }
+    },
+    { 
+      year: '2023', 
+      event: {
+        'es-MX': 'Lanzamiento de PENNY',
+        'en-US': 'PENNY launch',
+        'pt-BR': 'Lançamento do PENNY',
+      }
+    },
+    { 
+      year: '2024', 
+      event: {
+        'es-MX': '50+ empresas transformadas',
+        'en-US': '50+ companies transformed',
+        'pt-BR': '50+ empresas transformadas',
+      }
+    },
   ];
 
   return (
@@ -100,22 +250,23 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Heading level={1} className="text-white mb-6 animate-fade-up">
-              Somos <span className="gradient-text">MADFAM</span>
+              {t('title').split('MADFAM')[0]}
+              <span className="gradient-text">MADFAM</span>
+              {t('title').split('MADFAM')[1]}
             </Heading>
             <p className="text-xl text-white/90 mb-8 animate-fade-up animation-delay-200">
-              Una familia de creativos y tecnólogos obsesionados con transformar el futuro de los negocios 
-              a través de la inteligencia artificial y el diseño innovador.
+              {t('subtitle')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center animate-fade-up animation-delay-400">
               <Button variant="secondary" size="lg">
-                Conoce nuestro trabajo
+                {t('cta.seeWork')}
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-obsidian"
               >
-                Únete al equipo
+                {t('cta.joinTeam')}
               </Button>
             </div>
           </div>
@@ -130,20 +281,18 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-lavender/10 mb-6">
                 <span className="text-3xl">🎯</span>
               </div>
-              <Heading level={3} className="mb-4">Nuestra Misión</Heading>
+              <Heading level={3} className="mb-4">{t('mission.title')}</Heading>
               <p className="text-lg text-obsidian/70">
-                Democratizar el acceso a tecnología de vanguardia, permitiendo que empresas de todos 
-                los tamaños compitan en la era digital con soluciones creativas y accesibles.
+                {t('mission.description')}
               </p>
             </div>
             <div className="text-center md:text-left">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sun/10 mb-6">
                 <span className="text-3xl">👁️</span>
               </div>
-              <Heading level={3} className="mb-4">Nuestra Visión</Heading>
+              <Heading level={3} className="mb-4">{t('vision.title')}</Heading>
               <p className="text-lg text-obsidian/70">
-                Ser el catalizador de la transformación digital en Latinoamérica, creando un futuro 
-                donde la IA y la creatividad humana trabajen en perfecta armonía.
+                {t('vision.description')}
               </p>
             </div>
           </div>
@@ -154,9 +303,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       <section className="section bg-pearl">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Nuestros Valores</Heading>
+            <Heading level={2} className="mb-4">{t('values.title')}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Los principios que guían cada decisión, proyecto y relación en MADFAM
+              {t('values.subtitle')}
             </p>
           </div>
 
@@ -167,8 +316,12 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                 className="text-center p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-shadow"
               >
                 <div className="text-5xl mb-4">{value.icon}</div>
-                <h3 className="font-heading text-lg font-semibold mb-3">{value.title}</h3>
-                <p className="text-obsidian/70">{value.description}</p>
+                <h3 className="font-heading text-lg font-semibold mb-3">
+                  {getLocalizedContent(value.title, currentLocale)}
+                </h3>
+                <p className="text-obsidian/70">
+                  {getLocalizedContent(value.description, currentLocale)}
+                </p>
               </div>
             ))}
           </div>
@@ -179,9 +332,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Conoce a la Familia</Heading>
+            <Heading level={2} className="mb-4">{t('team.title')}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Los mentes brillantes detrás de la magia de MADFAM
+              {t('team.subtitle')}
             </p>
           </div>
 
@@ -202,11 +355,15 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                   <h3 className="font-heading text-xl font-semibold text-center mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-lavender text-center mb-4">{member.role}</p>
-                  <p className="text-sm text-obsidian/70 text-center mb-4">{member.bio}</p>
+                  <p className="text-lavender text-center mb-4">
+                    {getLocalizedContent(member.role, currentLocale)}
+                  </p>
+                  <p className="text-sm text-obsidian/70 text-center mb-4">
+                    {getLocalizedContent(member.bio, currentLocale)}
+                  </p>
                   
                   <div className="flex flex-wrap gap-2 justify-center">
-                    {member.expertise.map((skill, idx) => (
+                    {getLocalizedContent(member.expertise, currentLocale).map((skill, idx) => (
                       <span
                         key={idx}
                         className="text-xs px-3 py-1 rounded-full bg-obsidian/5 text-obsidian/70"
@@ -226,9 +383,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       <section className="section bg-gradient-to-br from-obsidian/5 to-lavender/5">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Nuestra Historia</Heading>
+            <Heading level={2} className="mb-4">{t('history.title')}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Un viaje de innovación, crecimiento y transformación
+              {t('history.subtitle')}
             </p>
           </div>
 
@@ -253,7 +410,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                     <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-lavender to-sun text-white font-semibold mb-2">
                       {milestone.year}
                     </div>
-                    <h3 className="font-heading text-lg font-semibold">{milestone.event}</h3>
+                    <h3 className="font-heading text-lg font-semibold">
+                      {getLocalizedContent(milestone.event, currentLocale)}
+                    </h3>
                   </div>
                   
                   {/* Timeline dot */}
@@ -270,15 +429,15 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
         <Container>
           <div className="bg-gradient-to-br from-lavender to-sun rounded-3xl p-12 text-center text-white">
             <Heading level={2} className="text-white mb-4">
-              ¿Listo para ser parte de la familia?
+              {t('cta.title')}
             </Heading>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Únete a nosotros en la misión de transformar el futuro de los negocios
+              {t('cta.subtitle')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/contact">
                 <Button variant="secondary" size="lg">
-                  Trabajemos juntos
+                  {t('cta.scheduleCall')}
                 </Button>
               </Link>
               <Button
@@ -286,7 +445,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-lavender"
               >
-                Ver oportunidades
+                {t('cta.viewOpportunities')}
               </Button>
             </div>
           </div>

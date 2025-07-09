@@ -1,12 +1,21 @@
+'use client';
+
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import Link from 'next/link';
 import { ServiceCard } from '@/components/ServiceCard';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
 
 export default function Level2AdvancedPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L2_ADVANCED];
+  const t = useTypedTranslations('services');
+  const currentLocale = locale as Locale;
+  
+  // Get localized content from service object
+  const serviceName = getLocalizedContent(service.name, currentLocale);
+  const serviceDescription = getLocalizedContent(service.description, currentLocale);
   const otherServices = [
     serviceTiers[ServiceTier.L1_ESSENTIALS],
     serviceTiers[ServiceTier.L3_CONSULTING],
@@ -14,26 +23,26 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
 
   const technologies = [
     {
-      name: 'Diseño Paramétrico',
-      description: 'Creación de diseños adaptativos con Grasshopper y Dynamo',
+      name: t('level2.capabilities.items.parametric.title'),
+      description: t('level2.capabilities.items.parametric.description'),
       icon: '🔧',
       tools: ['Grasshopper', 'Dynamo', 'Houdini'],
     },
     {
-      name: 'Realidad Aumentada',
-      description: 'Experiencias AR para productos y espacios',
+      name: t('level2.capabilities.items.ar.title'),
+      description: t('level2.capabilities.items.ar.description'),
       icon: '📱',
       tools: ['ARKit', 'ARCore', 'Spark AR'],
     },
     {
-      name: 'Realidad Virtual',
-      description: 'Ambientes inmersivos para presentaciones y training',
+      name: t('level2.capabilities.items.vr.title'),
+      description: t('level2.capabilities.items.vr.description'),
       icon: '🥽',
       tools: ['Unity', 'Unreal', 'WebXR'],
     },
     {
-      name: 'Visualización de Datos',
-      description: 'Dashboards 3D interactivos y data art',
+      name: t('level2.capabilities.items.data.title'),
+      description: t('level2.capabilities.items.data.description'),
       icon: '📊',
       tools: ['Three.js', 'D3.js', 'Processing'],
     },
@@ -42,84 +51,92 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
   const caseStudies = [
     {
       client: 'TechCorp México',
-      project: 'Dashboard 3D Interactivo',
-      challenge: 'Visualizar datos complejos de IoT en tiempo real',
-      solution: 'Sistema paramétrico que adapta la visualización según el volumen de datos',
-      results: ['85% mejor comprensión de datos', '3x velocidad en toma de decisiones', 'ROI en 2 meses'],
+      project: currentLocale === 'en-US' ? 'Interactive 3D Dashboard' : currentLocale === 'pt-BR' ? 'Dashboard 3D Interativo' : 'Dashboard 3D Interactivo',
+      challenge: currentLocale === 'en-US' ? 'Visualize complex IoT data in real time' : currentLocale === 'pt-BR' ? 'Visualizar dados complexos de IoT em tempo real' : 'Visualizar datos complejos de IoT en tiempo real',
+      solution: currentLocale === 'en-US' ? 'Parametric system that adapts visualization based on data volume' : currentLocale === 'pt-BR' ? 'Sistema paramétrico que adapta a visualização conforme o volume de dados' : 'Sistema paramétrico que adapta la visualización según el volumen de datos',
+      results: [
+        currentLocale === 'en-US' ? '85% better data comprehension' : currentLocale === 'pt-BR' ? '85% melhor compreensão de dados' : '85% mejor comprensión de datos',
+        currentLocale === 'en-US' ? '3x faster decision making' : currentLocale === 'pt-BR' ? '3x velocidade na tomada de decisões' : '3x velocidad en toma de decisiones',
+        currentLocale === 'en-US' ? 'ROI in 2 months' : currentLocale === 'pt-BR' ? 'ROI em 2 meses' : 'ROI en 2 meses'
+      ],
       tech: ['Three.js', 'Node.js', 'WebGL'],
     },
     {
-      client: 'Museo de Arte Digital',
-      project: 'Experiencia AR para Exposición',
-      challenge: 'Crear una capa digital interactiva sobre obras físicas',
-      solution: 'App AR que revela historias y animaciones al apuntar a las obras',
-      results: ['50K+ descargas', '+120% tiempo en museo', 'Premio a innovación cultural'],
+      client: currentLocale === 'en-US' ? 'Digital Art Museum' : currentLocale === 'pt-BR' ? 'Museu de Arte Digital' : 'Museo de Arte Digital',
+      project: currentLocale === 'en-US' ? 'AR Experience for Exhibition' : currentLocale === 'pt-BR' ? 'Experiência AR para Exposição' : 'Experiencia AR para Exposición',
+      challenge: currentLocale === 'en-US' ? 'Create an interactive digital layer over physical works' : currentLocale === 'pt-BR' ? 'Criar uma camada digital interativa sobre obras físicas' : 'Crear una capa digital interactiva sobre obras físicas',
+      solution: currentLocale === 'en-US' ? 'AR app that reveals stories and animations when pointing at artworks' : currentLocale === 'pt-BR' ? 'App AR que revela histórias e animações ao apontar para as obras' : 'App AR que revela historias y animaciones al apuntar a las obras',
+      results: [
+        currentLocale === 'en-US' ? '50K+ downloads' : currentLocale === 'pt-BR' ? '50K+ downloads' : '50K+ descargas',
+        currentLocale === 'en-US' ? '+120% time in museum' : currentLocale === 'pt-BR' ? '+120% tempo no museu' : '+120% tiempo en museo',
+        currentLocale === 'en-US' ? 'Cultural innovation award' : currentLocale === 'pt-BR' ? 'Prêmio de inovação cultural' : 'Premio a innovación cultural'
+      ],
       tech: ['ARCore', 'Unity', 'Cloud Anchors'],
     },
   ];
 
   const process = [
     {
-      phase: 'Descubrimiento',
-      duration: '3-5 días',
+      phase: currentLocale === 'en-US' ? 'Discovery' : currentLocale === 'pt-BR' ? 'Descoberta' : 'Descubrimiento',
+      duration: '3-5 ' + (currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'),
       activities: [
-        'Workshop de ideación',
-        'Análisis técnico',
-        'Definición de alcance',
-        'Prototipo conceptual',
+        currentLocale === 'en-US' ? 'Ideation workshop' : currentLocale === 'pt-BR' ? 'Workshop de ideação' : 'Workshop de ideación',
+        currentLocale === 'en-US' ? 'Technical analysis' : currentLocale === 'pt-BR' ? 'Análise técnica' : 'Análisis técnico',
+        currentLocale === 'en-US' ? 'Scope definition' : currentLocale === 'pt-BR' ? 'Definição de escopo' : 'Definición de alcance',
+        currentLocale === 'en-US' ? 'Conceptual prototype' : currentLocale === 'pt-BR' ? 'Protótipo conceitual' : 'Prototipo conceptual',
       ],
     },
     {
-      phase: 'Diseño',
-      duration: '1-2 semanas',
+      phase: currentLocale === 'en-US' ? 'Design' : currentLocale === 'pt-BR' ? 'Design' : 'Diseño',
+      duration: '1-2 ' + (currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'),
       activities: [
-        'Arquitectura paramétrica',
-        'Diseño de interacciones',
-        'Pruebas de usuario',
-        'Iteraciones rápidas',
+        currentLocale === 'en-US' ? 'Parametric architecture' : currentLocale === 'pt-BR' ? 'Arquitetura paramétrica' : 'Arquitectura paramétrica',
+        currentLocale === 'en-US' ? 'Interaction design' : currentLocale === 'pt-BR' ? 'Design de interações' : 'Diseño de interacciones',
+        currentLocale === 'en-US' ? 'User testing' : currentLocale === 'pt-BR' ? 'Testes de usuário' : 'Pruebas de usuario',
+        currentLocale === 'en-US' ? 'Rapid iterations' : currentLocale === 'pt-BR' ? 'Iterações rápidas' : 'Iteraciones rápidas',
       ],
     },
     {
-      phase: 'Desarrollo',
-      duration: '2-3 semanas',
+      phase: currentLocale === 'en-US' ? 'Development' : currentLocale === 'pt-BR' ? 'Desenvolvimento' : 'Desarrollo',
+      duration: '2-3 ' + (currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'),
       activities: [
-        'Implementación técnica',
-        'Integración de sistemas',
-        'Optimización',
+        currentLocale === 'en-US' ? 'Technical implementation' : currentLocale === 'pt-BR' ? 'Implementação técnica' : 'Implementación técnica',
+        currentLocale === 'en-US' ? 'System integration' : currentLocale === 'pt-BR' ? 'Integração de sistemas' : 'Integración de sistemas',
+        currentLocale === 'en-US' ? 'Optimization' : currentLocale === 'pt-BR' ? 'Otimização' : 'Optimización',
         'Testing QA',
       ],
     },
     {
-      phase: 'Lanzamiento',
-      duration: '3-5 días',
+      phase: currentLocale === 'en-US' ? 'Launch' : currentLocale === 'pt-BR' ? 'Lançamento' : 'Lanzamiento',
+      duration: '3-5 ' + (currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'),
       activities: [
         'Deployment',
-        'Capacitación',
-        'Documentación',
-        'Soporte inicial',
+        currentLocale === 'en-US' ? 'Training' : currentLocale === 'pt-BR' ? 'Capacitação' : 'Capacitación',
+        currentLocale === 'en-US' ? 'Documentation' : currentLocale === 'pt-BR' ? 'Documentação' : 'Documentación',
+        currentLocale === 'en-US' ? 'Initial support' : currentLocale === 'pt-BR' ? 'Suporte inicial' : 'Soporte inicial',
       ],
     },
   ];
 
   const benefits = [
     {
-      title: 'Flexibilidad Total',
-      description: 'Diseños que se adaptan automáticamente a cambios en datos o requerimientos',
+      title: currentLocale === 'en-US' ? 'Total Flexibility' : currentLocale === 'pt-BR' ? 'Flexibilidade Total' : 'Flexibilidad Total',
+      description: currentLocale === 'en-US' ? 'Designs that automatically adapt to changes in data or requirements' : currentLocale === 'pt-BR' ? 'Designs que se adaptam automaticamente a mudanças em dados ou requisitos' : 'Diseños que se adaptan automáticamente a cambios en datos o requerimientos',
       icon: '🔄',
     },
     {
-      title: 'Experiencias Memorables',
-      description: 'Interacciones que tus usuarios nunca olvidarán',
+      title: currentLocale === 'en-US' ? 'Memorable Experiences' : currentLocale === 'pt-BR' ? 'Experiências Memoráveis' : 'Experiencias Memorables',
+      description: currentLocale === 'en-US' ? 'Interactions your users will never forget' : currentLocale === 'pt-BR' ? 'Interações que seus usuários nunca esquecerão' : 'Interacciones que tus usuarios nunca olvidarán',
       icon: '✨',
     },
     {
-      title: 'Ventaja Competitiva',
-      description: 'Tecnología que te posiciona años adelante de la competencia',
+      title: currentLocale === 'en-US' ? 'Competitive Advantage' : currentLocale === 'pt-BR' ? 'Vantagem Competitiva' : 'Ventaja Competitiva',
+      description: currentLocale === 'en-US' ? 'Technology that positions you years ahead of the competition' : currentLocale === 'pt-BR' ? 'Tecnologia que te posiciona anos à frente da concorrência' : 'Tecnología que te posiciona años adelante de la competencia',
       icon: '🚀',
     },
     {
-      title: 'Escalabilidad',
-      description: 'Soluciones que crecen con tu negocio sin rehacer todo',
+      title: currentLocale === 'en-US' ? 'Scalability' : currentLocale === 'pt-BR' ? 'Escalabilidade' : 'Escalabilidad',
+      description: currentLocale === 'en-US' ? 'Solutions that grow with your business without rebuilding everything' : currentLocale === 'pt-BR' ? 'Soluções que crescem com seu negócio sem refazer tudo' : 'Soluciones que crecen con tu negocio sin rehacer todo',
       icon: '📈',
     },
   ];
@@ -137,22 +154,21 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
           <div className="max-w-4xl">
             <div className="mb-6">
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-sun/20 text-sun">
-                Nivel 2 • Advanced
+                {t('level2.hero.badge')}
               </span>
             </div>
             <Heading level={1} className="mb-6">
-              Diseño paramétrico y experiencias <span className="text-sun">inmersivas</span>
+              {t('level2.hero.title')}
             </Heading>
             <p className="text-xl text-obsidian/70 mb-8 max-w-3xl">
-              {service.description}. Ideal para empresas que buscan diferenciarse con 
-              tecnología de vanguardia y experiencias únicas.
+              {serviceDescription}
             </p>
             <div className="flex flex-wrap gap-4 mb-12">
               <Button variant="primary" size="lg" className="bg-sun hover:bg-sun/90">
-                Agendar consulta técnica
+                {t('level2.hero.scheduleDemo')}
               </Button>
               <Button variant="outline" size="lg">
-                Ver demos interactivos
+                {currentLocale === 'en-US' ? 'View interactive demos' : currentLocale === 'pt-BR' ? 'Ver demos interativos' : 'Ver demos interactivos'}
               </Button>
             </div>
 
@@ -160,19 +176,19 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
                 <p className="text-3xl font-heading font-bold text-sun mb-1">2-4</p>
-                <p className="text-sm text-obsidian/60">Semanas promedio</p>
+                <p className="text-sm text-obsidian/60">{t('level2.hero.projectTime')}</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-sun mb-1">$25K</p>
-                <p className="text-sm text-obsidian/60">Desde MXN</p>
+                <p className="text-sm text-obsidian/60">{t('comparison.priceFrom')} MXN</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-sun mb-1">100+</p>
-                <p className="text-sm text-obsidian/60">Experiencias creadas</p>
+                <p className="text-sm text-obsidian/60">{currentLocale === 'en-US' ? 'Experiences created' : currentLocale === 'pt-BR' ? 'Experiências criadas' : 'Experiencias creadas'}</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-sun mb-1">15+</p>
-                <p className="text-sm text-obsidian/60">Premios ganados</p>
+                <p className="text-sm text-obsidian/60">{currentLocale === 'en-US' ? 'Awards won' : currentLocale === 'pt-BR' ? 'Prêmios ganhos' : 'Premios ganados'}</p>
               </div>
             </div>
           </div>
@@ -183,9 +199,9 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Tecnologías avanzadas a tu alcance</Heading>
+            <Heading level={2} className="mb-4">{t('level2.capabilities.title')}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Utilizamos las herramientas más poderosas para crear experiencias extraordinarias
+              {t('level2.capabilities.subtitle')}
             </p>
           </div>
 
@@ -214,9 +230,9 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
       <section className="section bg-pearl">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Casos de éxito</Heading>
+            <Heading level={2} className="mb-4">{currentLocale === 'en-US' ? 'Success Stories' : currentLocale === 'pt-BR' ? 'Casos de Sucesso' : 'Casos de éxito'}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Proyectos que transformaron la forma de hacer negocios
+              {currentLocale === 'en-US' ? 'Projects that transformed the way of doing business' : currentLocale === 'pt-BR' ? 'Projetos que transformaram a forma de fazer negócios' : 'Proyectos que transformaron la forma de hacer negocios'}
             </p>
           </div>
 
@@ -231,12 +247,12 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
                     </div>
                     
                     <div className="mb-6">
-                      <h4 className="font-semibold mb-2">Desafío</h4>
+                      <h4 className="font-semibold mb-2">{currentLocale === 'en-US' ? 'Challenge' : currentLocale === 'pt-BR' ? 'Desafio' : 'Desafío'}</h4>
                       <p className="text-obsidian/70">{study.challenge}</p>
                     </div>
                     
                     <div className="mb-6">
-                      <h4 className="font-semibold mb-2">Solución</h4>
+                      <h4 className="font-semibold mb-2">{currentLocale === 'en-US' ? 'Solution' : currentLocale === 'pt-BR' ? 'Solução' : 'Solución'}</h4>
                       <p className="text-obsidian/70">{study.solution}</p>
                     </div>
                     
@@ -253,7 +269,7 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
                     <div className="h-64 rounded-2xl bg-gradient-to-br from-sun/20 to-lavender/20 mb-6"></div>
                     
                     <div>
-                      <h4 className="font-semibold mb-3">Resultados</h4>
+                      <h4 className="font-semibold mb-3">{currentLocale === 'en-US' ? 'Results' : currentLocale === 'pt-BR' ? 'Resultados' : 'Resultados'}</h4>
                       <ul className="space-y-2">
                         {study.results.map((result, idx) => (
                           <li key={idx} className="flex items-start">
@@ -275,9 +291,9 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Proceso colaborativo y ágil</Heading>
+            <Heading level={2} className="mb-4">{currentLocale === 'en-US' ? 'Collaborative and agile process' : currentLocale === 'pt-BR' ? 'Processo colaborativo e ágil' : 'Proceso colaborativo y ágil'}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              De la idea a la implementación en 2-4 semanas
+              {currentLocale === 'en-US' ? 'From idea to implementation in 2-4 weeks' : currentLocale === 'pt-BR' ? 'Da ideia à implementação em 2-4 semanas' : 'De la idea a la implementación en 2-4 semanas'}
             </p>
           </div>
 
@@ -313,9 +329,9 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
       <section className="section bg-gradient-to-br from-sun/5 to-lavender/5">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Por qué elegir Advanced</Heading>
+            <Heading level={2} className="mb-4">{currentLocale === 'en-US' ? 'Why choose Advanced' : currentLocale === 'pt-BR' ? 'Por que escolher Advanced' : 'Por qué elegir Advanced'}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Ventajas que transforman tu inversión en resultados tangibles
+              {currentLocale === 'en-US' ? 'Advantages that transform your investment into tangible results' : currentLocale === 'pt-BR' ? 'Vantagens que transformam seu investimento em resultados tangíveis' : 'Ventajas que transforman tu inversión en resultados tangibles'}
             </p>
           </div>
 
@@ -335,9 +351,9 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Explora otros niveles</Heading>
+            <Heading level={2} className="mb-4">{currentLocale === 'en-US' ? 'Explore other levels' : currentLocale === 'pt-BR' ? 'Explore outros níveis' : 'Explora otros niveles'}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Encuentra el servicio perfecto para tu etapa actual
+              {currentLocale === 'en-US' ? 'Find the perfect service for your current stage' : currentLocale === 'pt-BR' ? 'Encontre o serviço perfeito para sua etapa atual' : 'Encuentra el servicio perfecto para tu etapa actual'}
             </p>
           </div>
 
@@ -354,14 +370,14 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <Heading level={2} className="text-white mb-6">
-              ¿Listo para crear algo extraordinario?
+              {currentLocale === 'en-US' ? 'Ready to create something extraordinary?' : currentLocale === 'pt-BR' ? 'Pronto para criar algo extraordinário?' : '¿Listo para crear algo extraordinario?'}
             </Heading>
             <p className="text-xl text-white/90 mb-8">
-              Agenda una consulta técnica y descubre cómo llevar tu proyecto al siguiente nivel
+              {currentLocale === 'en-US' ? 'Schedule a technical consultation and discover how to take your project to the next level' : currentLocale === 'pt-BR' ? 'Agende uma consulta técnica e descubra como levar seu projeto ao próximo nível' : 'Agenda una consulta técnica y descubre cómo llevar tu proyecto al siguiente nivel'}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button variant="secondary" size="lg">
-                Agendar consulta gratuita
+                {currentLocale === 'en-US' ? 'Schedule free consultation' : currentLocale === 'pt-BR' ? 'Agendar consulta gratuita' : 'Agendar consulta gratuita'}
               </Button>
               <Link href="/assessment">
                 <Button 
@@ -369,7 +385,7 @@ export default function Level2AdvancedPage({ params: { locale } }: { params: { l
                   size="lg" 
                   className="border-white text-white hover:bg-white hover:text-sun"
                 >
-                  Evaluación de proyecto
+                  {currentLocale === 'en-US' ? 'Project evaluation' : currentLocale === 'pt-BR' ? 'Avaliação de projeto' : 'Evaluación de proyecto'}
                 </Button>
               </Link>
             </div>

@@ -37,27 +37,41 @@ const nextConfig = {
       { source: '/es-MX/contacto', destination: '/es-MX/contact' },
     );
     
-    // Spanish rewrites - service subpages
+    // Spanish rewrites - service subpages (using dynamic [slug] route)
     rewrites.push(
-      { source: '/es-MX/servicios/nivel-1-essentials', destination: '/es-MX/services/level-1-essentials' },
-      { source: '/es-MX/servicios/nivel-2-avanzado', destination: '/es-MX/services/level-2-advanced' },
-      { source: '/es-MX/servicios/nivel-3-consultoria', destination: '/es-MX/services/level-3-consulting' },
-      { source: '/es-MX/servicios/nivel-4-plataformas', destination: '/es-MX/services/level-4-platforms' },
-      { source: '/es-MX/servicios/nivel-5-estrategico', destination: '/es-MX/services/level-5-strategic' },
+      { source: '/es-MX/servicios/nivel-1-esenciales', destination: '/es-MX/services/nivel-1-esenciales' },
+      { source: '/es-MX/servicios/nivel-2-avanzado', destination: '/es-MX/services/nivel-2-avanzado' },
+      { source: '/es-MX/servicios/nivel-3-consultoria', destination: '/es-MX/services/nivel-3-consultoria' },
+      { source: '/es-MX/servicios/nivel-4-plataformas', destination: '/es-MX/services/nivel-4-plataformas' },
+      { source: '/es-MX/servicios/nivel-5-estrategico', destination: '/es-MX/services/nivel-5-estrategico' },
     );
     
-    // TODO: Portuguese rewrites (when translations are complete)
-    // rewrites.push(
-    //   { source: '/pt-BR/servicos', destination: '/pt-BR/services' },
-    //   { source: '/pt-BR/produtos', destination: '/pt-BR/products' },
-    //   { source: '/pt-BR/sobre', destination: '/pt-BR/about' },
-    //   { source: '/pt-BR/contato', destination: '/pt-BR/contact' },
-    //   { source: '/pt-BR/servicos/nivel-1-essenciais', destination: '/pt-BR/services/level-1-essentials' },
-    //   { source: '/pt-BR/servicos/nivel-2-avancado', destination: '/pt-BR/services/level-2-advanced' },
-    //   { source: '/pt-BR/servicos/nivel-3-consultoria', destination: '/pt-BR/services/level-3-consulting' },
-    //   { source: '/pt-BR/servicos/nivel-4-plataformas', destination: '/pt-BR/services/level-4-platforms' },
-    //   { source: '/pt-BR/servicos/nivel-5-estrategico', destination: '/pt-BR/services/level-5-strategic' },
-    // );
+    // Portuguese rewrites - main pages
+    rewrites.push(
+      { source: '/pt-BR/servicos', destination: '/pt-BR/services' },
+      { source: '/pt-BR/produtos', destination: '/pt-BR/products' },
+      { source: '/pt-BR/sobre', destination: '/pt-BR/about' },
+      { source: '/pt-BR/contato', destination: '/pt-BR/contact' },
+      { source: '/pt-BR/carreiras', destination: '/pt-BR/careers' },
+      { source: '/pt-BR/casos-de-sucesso', destination: '/pt-BR/case-studies' },
+      { source: '/pt-BR/documentacao', destination: '/pt-BR/docs' },
+      { source: '/pt-BR/guias', destination: '/pt-BR/guides' },
+      { source: '/pt-BR/avaliacao', destination: '/pt-BR/assessment' },
+      { source: '/pt-BR/calculadora', destination: '/pt-BR/calculator' },
+      { source: '/pt-BR/estimador', destination: '/pt-BR/estimator' },
+      { source: '/pt-BR/privacidade', destination: '/pt-BR/privacy' },
+      { source: '/pt-BR/termos', destination: '/pt-BR/terms' },
+      { source: '/pt-BR/cookies', destination: '/pt-BR/cookies' },
+    );
+    
+    // Portuguese rewrites - service subpages (using dynamic [slug] route)
+    rewrites.push(
+      { source: '/pt-BR/servicos/nivel-1-essenciais', destination: '/pt-BR/services/nivel-1-essenciais' },
+      { source: '/pt-BR/servicos/nivel-2-avancado', destination: '/pt-BR/services/nivel-2-avancado' },
+      { source: '/pt-BR/servicos/nivel-3-consultoria', destination: '/pt-BR/services/nivel-3-consultoria' },
+      { source: '/pt-BR/servicos/nivel-4-plataformas', destination: '/pt-BR/services/nivel-4-plataformas' },
+      { source: '/pt-BR/servicos/nivel-5-estrategico', destination: '/pt-BR/services/nivel-5-estrategico' },
+    );
     
     return rewrites;
   },

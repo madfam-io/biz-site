@@ -1,12 +1,22 @@
+'use client';
+
 import { Container, Heading, Button } from '@madfam/ui';
 import { serviceTiers, ServiceTier } from '@madfam/core';
 import Link from 'next/link';
 import { ServiceCard } from '@/components/ServiceCard';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { getLocalizedContent, type Locale, useTypedTranslations } from '@madfam/i18n';
 
 export default function Level1EssentialsPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   const service = serviceTiers[ServiceTier.L1_ESSENTIALS];
+  const t = useTypedTranslations('services');
+  const currentLocale = locale as Locale;
+  
+  // Get localized content from service object
+  const serviceName = getLocalizedContent(service.name, currentLocale);
+  const serviceDescription = getLocalizedContent(service.description, currentLocale);
+  
   const otherServices = [
     serviceTiers[ServiceTier.L2_ADVANCED],
     serviceTiers[ServiceTier.L3_CONSULTING],
@@ -14,68 +24,68 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
 
   const projects = [
     {
-      title: 'Render de Producto',
-      description: 'Visualización 3D fotorrealista para e-commerce',
-      time: '48 horas',
-      result: '+45% conversión',
+      title: currentLocale === 'en-US' ? 'Product Render' : currentLocale === 'pt-BR' ? 'Render de Produto' : 'Render de Producto',
+      description: currentLocale === 'en-US' ? 'Photorealistic 3D visualization for e-commerce' : currentLocale === 'pt-BR' ? 'Visualização 3D fotorrealista para e-commerce' : 'Visualización 3D fotorrealista para e-commerce',
+      time: '48 ' + (currentLocale === 'en-US' ? 'hours' : currentLocale === 'pt-BR' ? 'horas' : 'horas'),
+      result: '+45% ' + (currentLocale === 'en-US' ? 'conversion' : currentLocale === 'pt-BR' ? 'conversão' : 'conversión'),
     },
     {
-      title: 'Animación de Logo',
-      description: 'Intro animada para videos corporativos',
-      time: '72 horas',
+      title: currentLocale === 'en-US' ? 'Logo Animation' : currentLocale === 'pt-BR' ? 'Animação de Logo' : 'Animación de Logo',
+      description: currentLocale === 'en-US' ? 'Animated intro for corporate videos' : currentLocale === 'pt-BR' ? 'Intro animada para vídeos corporativos' : 'Intro animada para videos corporativos',
+      time: '72 ' + (currentLocale === 'en-US' ? 'hours' : currentLocale === 'pt-BR' ? 'horas' : 'horas'),
       result: 'Brand awareness x3',
     },
     {
-      title: 'Diseño de Packaging',
-      description: 'Propuesta 3D para línea de productos',
-      time: '5 días',
-      result: '25% más ventas',
+      title: currentLocale === 'en-US' ? 'Packaging Design' : currentLocale === 'pt-BR' ? 'Design de Embalagem' : 'Diseño de Packaging',
+      description: currentLocale === 'en-US' ? '3D proposal for product line' : currentLocale === 'pt-BR' ? 'Proposta 3D para linha de produtos' : 'Propuesta 3D para línea de productos',
+      time: '5 ' + (currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'),
+      result: '25% ' + (currentLocale === 'en-US' ? 'more sales' : currentLocale === 'pt-BR' ? 'mais vendas' : 'más ventas'),
     },
   ];
 
   const process = [
     {
       step: 1,
-      title: 'Brief Express',
-      description: 'Completa nuestro formulario rápido en 5 minutos',
+      title: t('level1.process.steps.brief.title'),
+      description: t('level1.process.steps.brief.description'),
       time: '5 min',
     },
     {
       step: 2,
-      title: 'Propuesta Instantánea',
-      description: 'Recibe cotización y timeline en menos de 1 hora',
-      time: '< 1 hora',
+      title: currentLocale === 'en-US' ? 'Instant Proposal' : currentLocale === 'pt-BR' ? 'Proposta Instantânea' : 'Propuesta Instantánea',
+      description: currentLocale === 'en-US' ? 'Receive quote and timeline in less than 1 hour' : currentLocale === 'pt-BR' ? 'Receba orçamento e cronograma em menos de 1 hora' : 'Recibe cotización y timeline en menos de 1 hora',
+      time: '< 1 ' + (currentLocale === 'en-US' ? 'hour' : currentLocale === 'pt-BR' ? 'hora' : 'hora'),
     },
     {
       step: 3,
-      title: 'Producción Ágil',
-      description: 'Nuestro equipo trabaja en tu proyecto inmediatamente',
+      title: t('level1.process.steps.design.title'),
+      description: t('level1.process.steps.design.description'),
       time: '24-72 hrs',
     },
     {
       step: 4,
-      title: 'Entrega y Revisiones',
-      description: 'Recibe archivos finales con revisiones ilimitadas por 7 días',
-      time: '7 días',
+      title: t('level1.process.steps.delivery.title'),
+      description: currentLocale === 'en-US' ? 'Receive final files with unlimited revisions for 7 days' : currentLocale === 'pt-BR' ? 'Receba arquivos finais com revisões ilimitadas por 7 dias' : 'Recibe archivos finales con revisiones ilimitadas por 7 días',
+      time: '7 ' + (currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'),
     },
   ];
 
   const faqs = [
     {
-      question: '¿Qué incluye el servicio Essentials?',
-      answer: 'Incluye diseño 3D completo, renderizado profesional, diseño gráfico para digital/impreso, animaciones básicas y revisiones ilimitadas durante 7 días.',
+      question: currentLocale === 'en-US' ? 'What does the Essentials service include?' : currentLocale === 'pt-BR' ? 'O que inclui o serviço Essentials?' : '¿Qué incluye el servicio Essentials?',
+      answer: currentLocale === 'en-US' ? 'Includes complete 3D design, professional rendering, graphic design for digital/print, basic animations and unlimited revisions for 7 days.' : currentLocale === 'pt-BR' ? 'Inclui design 3D completo, renderização profissional, design gráfico para digital/impresso, animações básicas e revisões ilimitadas por 7 dias.' : 'Incluye diseño 3D completo, renderizado profesional, diseño gráfico para digital/impreso, animaciones básicas y revisiones ilimitadas durante 7 días.',
     },
     {
-      question: '¿Cuánto tiempo toma un proyecto típico?',
-      answer: 'La mayoría de proyectos se entregan en 48-72 horas. Proyectos más complejos pueden tomar hasta 5 días hábiles.',
+      question: currentLocale === 'en-US' ? 'How long does a typical project take?' : currentLocale === 'pt-BR' ? 'Quanto tempo leva um projeto típico?' : '¿Cuánto tiempo toma un proyecto típico?',
+      answer: currentLocale === 'en-US' ? 'Most projects are delivered in 48-72 hours. More complex projects may take up to 5 business days.' : currentLocale === 'pt-BR' ? 'A maioria dos projetos é entregue em 48-72 horas. Projetos mais complexos podem levar até 5 dias úteis.' : 'La mayoría de proyectos se entregan en 48-72 horas. Proyectos más complejos pueden tomar hasta 5 días hábiles.',
     },
     {
-      question: '¿En qué formatos entregan los archivos?',
-      answer: 'Entregamos en todos los formatos estándar: JPG, PNG, MP4, GIF para visuales, y archivos fuente en Blender, Cinema 4D o el software de tu preferencia.',
+      question: currentLocale === 'en-US' ? 'What file formats do you deliver?' : currentLocale === 'pt-BR' ? 'Em quais formatos vocês entregam os arquivos?' : '¿En qué formatos entregan los archivos?',
+      answer: currentLocale === 'en-US' ? 'We deliver in all standard formats: JPG, PNG, MP4, GIF for visuals, and source files in Blender, Cinema 4D or your preferred software.' : currentLocale === 'pt-BR' ? 'Entregamos em todos os formatos padrão: JPG, PNG, MP4, GIF para visuais, e arquivos fonte em Blender, Cinema 4D ou o software de sua preferência.' : 'Entregamos en todos los formatos estándar: JPG, PNG, MP4, GIF para visuales, y archivos fuente en Blender, Cinema 4D o el software de tu preferencia.',
     },
     {
-      question: '¿Puedo solicitar cambios después de la entrega?',
-      answer: 'Sí, incluimos revisiones ilimitadas durante 7 días después de la entrega inicial. Después de ese período, los cambios se cotizan por separado.',
+      question: currentLocale === 'en-US' ? 'Can I request changes after delivery?' : currentLocale === 'pt-BR' ? 'Posso solicitar mudanças após a entrega?' : '¿Puedo solicitar cambios después de la entrega?',
+      answer: currentLocale === 'en-US' ? 'Yes, we include unlimited revisions for 7 days after the initial delivery. After that period, changes are quoted separately.' : currentLocale === 'pt-BR' ? 'Sim, incluímos revisões ilimitadas por 7 dias após a entrega inicial. Após esse período, as alterações são cotadas separadamente.' : 'Sí, incluimos revisiones ilimitadas durante 7 días después de la entrega inicial. Después de ese período, los cambios se cotizan por separado.',
     },
   ];
 
@@ -92,22 +102,21 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
           <div className="max-w-4xl">
             <div className="mb-6">
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-leaf/20 text-leaf">
-                Nivel 1 • Essentials
+                {t('level1.hero.badge')}
               </span>
             </div>
             <Heading level={1} className="mb-6">
-              Diseño 3D y gráficos <span className="text-leaf">express</span>
+              {t('level1.hero.title')}
             </Heading>
             <p className="text-xl text-obsidian/70 mb-8 max-w-3xl">
-              {service.description}. Perfecto para startups y equipos que necesitan resultados 
-              profesionales sin la complejidad de una agencia tradicional.
+              {serviceDescription}
             </p>
             <div className="flex flex-wrap gap-4 mb-12">
               <Button variant="primary" size="lg" className="bg-leaf hover:bg-leaf/90">
-                Obtener cotización instantánea
+                {t('level1.hero.getQuote')}
               </Button>
               <Button variant="outline" size="lg">
-                Ver portafolio
+                {t('level1.hero.viewPortfolio')}
               </Button>
             </div>
 
@@ -115,19 +124,19 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
                 <p className="text-3xl font-heading font-bold text-leaf mb-1">48hrs</p>
-                <p className="text-sm text-obsidian/60">Entrega promedio</p>
+                <p className="text-sm text-obsidian/60">{t('level1.hero.turnaround')}</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-leaf mb-1">$5,000</p>
-                <p className="text-sm text-obsidian/60">Desde MXN</p>
+                <p className="text-sm text-obsidian/60">{t('comparison.priceFrom')} MXN</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-leaf mb-1">500+</p>
-                <p className="text-sm text-obsidian/60">Proyectos completados</p>
+                <p className="text-sm text-obsidian/60">{currentLocale === 'en-US' ? 'Projects completed' : currentLocale === 'pt-BR' ? 'Projetos concluídos' : 'Proyectos completados'}</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-leaf mb-1">4.9/5</p>
-                <p className="text-sm text-obsidian/60">Satisfacción</p>
+                <p className="text-sm text-obsidian/60">{t('level1.hero.satisfaction')}</p>
               </div>
             </div>
           </div>
@@ -138,42 +147,42 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">¿Qué puedes crear con Essentials?</Heading>
+            <Heading level={2} className="mb-4">{t('level1.services.title')}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Desde visualizaciones de producto hasta material de marketing, todo con la velocidad que tu negocio necesita
+              {t('level1.services.subtitle')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-leaf/10 hover:to-sun/10 transition-all">
               <div className="text-4xl mb-4">🎨</div>
-              <h3 className="font-heading text-xl font-semibold mb-3">Renderizado 3D</h3>
+              <h3 className="font-heading text-xl font-semibold mb-3">{t('level1.services.items.rendering.title')}</h3>
               <ul className="space-y-2 text-obsidian/70">
-                <li>• Productos fotorrealistas</li>
-                <li>• Ambientes y escenas</li>
-                <li>• Materiales y texturas</li>
-                <li>• Iluminación profesional</li>
+                <li>• {currentLocale === 'en-US' ? 'Photorealistic products' : currentLocale === 'pt-BR' ? 'Produtos fotorrealistas' : 'Productos fotorrealistas'}</li>
+                <li>• {currentLocale === 'en-US' ? 'Environments and scenes' : currentLocale === 'pt-BR' ? 'Ambientes e cenas' : 'Ambientes y escenas'}</li>
+                <li>• {currentLocale === 'en-US' ? 'Materials and textures' : currentLocale === 'pt-BR' ? 'Materiais e texturas' : 'Materiales y texturas'}</li>
+                <li>• {currentLocale === 'en-US' ? 'Professional lighting' : currentLocale === 'pt-BR' ? 'Iluminação profissional' : 'Iluminación profesional'}</li>
               </ul>
             </div>
 
             <div className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-leaf/10 hover:to-sun/10 transition-all">
               <div className="text-4xl mb-4">✏️</div>
-              <h3 className="font-heading text-xl font-semibold mb-3">Diseño Gráfico</h3>
+              <h3 className="font-heading text-xl font-semibold mb-3">{t('level1.services.items.graphic.title')}</h3>
               <ul className="space-y-2 text-obsidian/70">
-                <li>• Identidad visual</li>
-                <li>• Material promocional</li>
-                <li>• Presentaciones</li>
+                <li>• {currentLocale === 'en-US' ? 'Visual identity' : currentLocale === 'pt-BR' ? 'Identidade visual' : 'Identidad visual'}</li>
+                <li>• {currentLocale === 'en-US' ? 'Promotional material' : currentLocale === 'pt-BR' ? 'Material promocional' : 'Material promocional'}</li>
+                <li>• {currentLocale === 'en-US' ? 'Presentations' : currentLocale === 'pt-BR' ? 'Apresentações' : 'Presentaciones'}</li>
                 <li>• Social media kits</li>
               </ul>
             </div>
 
             <div className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-leaf/10 hover:to-sun/10 transition-all">
               <div className="text-4xl mb-4">🎬</div>
-              <h3 className="font-heading text-xl font-semibold mb-3">Animación Básica</h3>
+              <h3 className="font-heading text-xl font-semibold mb-3">{t('level1.services.items.animation.title')}</h3>
               <ul className="space-y-2 text-obsidian/70">
-                <li>• Intros de video</li>
-                <li>• GIFs animados</li>
-                <li>• Demos de producto</li>
+                <li>• {currentLocale === 'en-US' ? 'Video intros' : currentLocale === 'pt-BR' ? 'Intros de vídeo' : 'Intros de video'}</li>
+                <li>• {currentLocale === 'en-US' ? 'Animated GIFs' : currentLocale === 'pt-BR' ? 'GIFs animados' : 'GIFs animados'}</li>
+                <li>• {currentLocale === 'en-US' ? 'Product demos' : currentLocale === 'pt-BR' ? 'Demos de produto' : 'Demos de producto'}</li>
                 <li>• Motion graphics</li>
               </ul>
             </div>
@@ -185,9 +194,9 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
       <section className="section bg-pearl">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Proceso simple, resultados rápidos</Heading>
+            <Heading level={2} className="mb-4">{t('level1.process.title')}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              De la idea a la entrega en tiempo récord
+              {t('level1.process.subtitle')}
             </p>
           </div>
 
@@ -214,9 +223,9 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">Proyectos recientes</Heading>
+            <Heading level={2} className="mb-4">{currentLocale === 'en-US' ? 'Recent Projects' : currentLocale === 'pt-BR' ? 'Projetos Recentes' : 'Proyectos recientes'}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Resultados reales para clientes reales
+              {currentLocale === 'en-US' ? 'Real results for real clients' : currentLocale === 'pt-BR' ? 'Resultados reais para clientes reais' : 'Resultados reales para clientes reales'}
             </p>
           </div>
 
@@ -243,7 +252,7 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
       <section className="section bg-gradient-to-br from-obsidian/5 to-leaf/5">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <Heading level={2} className="text-center mb-12">Preguntas frecuentes</Heading>
+            <Heading level={2} className="text-center mb-12">{currentLocale === 'en-US' ? 'Frequently Asked Questions' : currentLocale === 'pt-BR' ? 'Perguntas Frequentes' : 'Preguntas frecuentes'}</Heading>
             
             <div className="space-y-6">
               {faqs.map((faq, index) => (
@@ -261,9 +270,9 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
       <section className="section">
         <Container>
           <div className="text-center mb-12">
-            <Heading level={2} className="mb-4">¿Necesitas algo más avanzado?</Heading>
+            <Heading level={2} className="mb-4">{currentLocale === 'en-US' ? 'Need something more advanced?' : currentLocale === 'pt-BR' ? 'Precisa de algo mais avançado?' : '¿Necesitas algo más avanzado?'}</Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              Explora nuestros otros niveles de servicio
+              {currentLocale === 'en-US' ? 'Explore our other service levels' : currentLocale === 'pt-BR' ? 'Explore nossos outros níveis de serviço' : 'Explora nuestros otros niveles de servicio'}
             </p>
           </div>
 
@@ -280,14 +289,14 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <Heading level={2} className="text-white mb-6">
-              ¿Listo para empezar tu proyecto?
+              {currentLocale === 'en-US' ? 'Ready to start your project?' : currentLocale === 'pt-BR' ? 'Pronto para começar seu projeto?' : '¿Listo para empezar tu proyecto?'}
             </Heading>
             <p className="text-xl text-white/90 mb-8">
-              Obtén tu cotización en menos de 1 hora y comienza a crear hoy mismo
+              {currentLocale === 'en-US' ? 'Get your quote in less than 1 hour and start creating today' : currentLocale === 'pt-BR' ? 'Receba seu orçamento em menos de 1 hora e comece a criar hoje' : 'Obtén tu cotización en menos de 1 hora y comienza a crear hoy mismo'}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button variant="secondary" size="lg">
-                Cotización instantánea
+                {currentLocale === 'en-US' ? 'Instant Quote' : currentLocale === 'pt-BR' ? 'Orçamento Instantâneo' : 'Cotización instantánea'}
               </Button>
               <Link href="/contact">
                 <Button 
@@ -295,7 +304,7 @@ export default function Level1EssentialsPage({ params: { locale } }: { params: {
                   size="lg" 
                   className="border-white text-white hover:bg-white hover:text-leaf"
                 >
-                  Hablar con un experto
+                  {currentLocale === 'en-US' ? 'Talk to an expert' : currentLocale === 'pt-BR' ? 'Falar com um especialista' : 'Hablar con un experto'}
                 </Button>
               </Link>
             </div>

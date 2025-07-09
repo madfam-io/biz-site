@@ -1,6 +1,6 @@
 export const i18nConfig = {
   defaultLocale: 'es-MX',
-  locales: ['es-MX', 'en-US'] as const,
+  locales: ['es-MX', 'en-US', 'pt-BR'] as const,
   
   localeDetection: true,
   
@@ -29,6 +29,18 @@ export const i18nConfig = {
       '/products': '/produtos',
       '/about': '/sobre',
       '/contact': '/contato',
+      '/blog': '/blog',
+      '/careers': '/carreiras',
+      '/case-studies': '/casos-de-sucesso',
+      '/docs': '/documentacao',
+      '/guides': '/guias',
+      '/api': '/api',
+      '/assessment': '/avaliacao',
+      '/calculator': '/calculadora',
+      '/estimator': '/estimador',
+      '/privacy': '/privacidade',
+      '/terms': '/termos',
+      '/cookies': '/cookies',
       '/services/level-1-essentials': '/servicos/nivel-1-essenciais',
       '/services/level-2-advanced': '/servicos/nivel-2-avancado',
       '/services/level-3-consulting': '/servicos/nivel-3-consultoria',

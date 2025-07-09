@@ -197,6 +197,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@madfam/i18n':
+        specifier: workspace:*
+        version: link:../i18n
       zod:
         specifier: ^3.22.4
         version: 3.22.4

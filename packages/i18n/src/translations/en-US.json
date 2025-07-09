@@ -27,7 +27,7 @@
   "footer": {
     "sections": {
       "services": "Services",
-      "products": "Products",
+      "products": "Products", 
       "company": "Company",
       "resources": "Resources"
     },
@@ -57,8 +57,8 @@
       "viewProducts": "View products"
     },
     "services": {
-      "title": "5-tier services",
-      "subtitle": "From quick solutions to strategic transformation, we have the perfect level for your needs.",
+      "title": "5-level services",
+      "subtitle": "From quick fixes to strategic transformation, we have the perfect level for your needs.",
       "viewAll": "View all services"
     },
     "products": {
@@ -75,15 +75,15 @@
       "title": "Ready to transform your business?",
       "subtitle": "Discover how MADFAM can take your company to the next level with AI and creativity.",
       "scheduleFree": "Schedule free consultation",
-      "getStarted": "Get started",
-      "learnMore": "Learn more"
+      "getStarted": "Get Started",
+      "learnMore": "Learn More"
     }
   },
   "services": {
     "hero": {
       "title": "Services designed for every stage of your growth",
       "titleHighlight": "every stage of your growth",
-      "subtitle": "From quick solutions to complete strategic transformation. Find the perfect level to boost your business with AI."
+      "subtitle": "From quick fixes to complete strategic transformation. Find the perfect level to boost your business with AI."
     },
     "comparison": {
       "title": "Compare our services",
@@ -98,10 +98,100 @@
       "cta": "Schedule free assessment",
       "getEstimate": "Get instant estimate"
     },
+    "level1": {
+      "hero": {
+        "badge": "Level 1 - Essentials",
+        "title": "Quick 3D design and AI solutions for immediate needs",
+        "getQuote": "Get instant quote",
+        "viewPortfolio": "View portfolio",
+        "turnaround": "turnaround in",
+        "satisfaction": "satisfaction guaranteed"
+      },
+      "services": {
+        "title": "What's included",
+        "subtitle": "Professional services delivered quickly",
+        "items": {
+          "modeling": {
+            "title": "3D Modeling",
+            "description": "Detailed models for products, architecture, or characters."
+          },
+          "rendering": {
+            "title": "Photorealistic Rendering",
+            "description": "High-quality images that impress."
+          },
+          "graphic": {
+            "title": "Graphic Design",
+            "description": "Complete visual identity for digital and print."
+          },
+          "animation": {
+            "title": "Basic Animations",
+            "description": "Motion that brings your projects to life."
+          }
+        }
+      },
+      "process": {
+        "title": "How it works",
+        "subtitle": "Simple, fast, and efficient",
+        "steps": {
+          "brief": {
+            "title": "Brief",
+            "description": "Share your vision and requirements."
+          },
+          "design": {
+            "title": "Design",
+            "description": "Our team creates your solution."
+          },
+          "review": {
+            "title": "Review",
+            "description": "Unlimited revisions for 7 days."
+          },
+          "delivery": {
+            "title": "Delivery",
+            "description": "Receive your final files."
+          }
+        }
+      }
+    },
+    "level2": {
+      "hero": {
+        "badge": "Level 2 - Advanced",
+        "title": "Parametric design and transformative interactive experiences",
+        "scheduleDemo": "Schedule demo",
+        "downloadCases": "Download use cases",
+        "projectTime": "average project time",
+        "technologies": "mastered technologies"
+      },
+      "capabilities": {
+        "title": "Advanced capabilities",
+        "subtitle": "Cutting-edge technology for extraordinary results",
+        "items": {
+          "parametric": {
+            "title": "Parametric Design",
+            "description": "Create infinite variations with node-based logic."
+          },
+          "ar": {
+            "title": "Augmented Reality",
+            "description": "AR experiences that connect digital and physical."
+          },
+          "vr": {
+            "title": "Virtual Reality",
+            "description": "Immersive environments for training and sales."
+          },
+          "data": {
+            "title": "3D Data Visualization",
+            "description": "Transform complex data into visual insights."
+          }
+        }
+      },
+      "applications": {
+        "title": "Applications",
+        "subtitle": "Versatile solutions for various industries"
+      }
+    },
     "level3": {
       "hero": {
         "badge": "Level 3 - Consulting",
-        "title": "Transform your company with expert AI consulting",
+        "title": "Transform your company with specialized AI consulting",
         "scheduleInitial": "Schedule initial consultation",
         "downloadCase": "Download case study",
         "typicalDuration": "typical duration",
@@ -109,22 +199,22 @@
       },
       "benefits": {
         "title": "What you get with our consulting service?",
-        "subtitle": "More than advice: a strategic partner for your digital transformation",
+        "subtitle": "More than consulting: a strategic partner for your digital transformation",
         "items": {
           "strategy": {
-            "title": "Personalized strategy",
-            "description": "Digital transformation roadmap adapted to your industry and specific objectives."
+            "title": "Personalized Strategy",
+            "description": "Digital transformation roadmap tailored to your industry and specific objectives."
           },
           "training": {
-            "title": "Comprehensive training",
-            "description": "Practical workshops for your team to master AI tools."
+            "title": "Comprehensive Training",
+            "description": "Hands-on workshops for your team to master AI tools."
           },
           "metrics": {
-            "title": "Impact metrics",
+            "title": "Impact Metrics",
             "description": "Clear KPIs to measure the ROI of your digital transformation."
           },
           "continuous": {
-            "title": "Continuous improvement",
+            "title": "Continuous Improvement",
             "description": "Monthly follow-up sessions to optimize results."
           }
         }
@@ -134,20 +224,20 @@
         "subtitle": "A structured approach to ensure measurable results",
         "steps": {
           "diagnosis": {
-            "title": "Initial diagnosis",
+            "title": "Initial Diagnosis",
             "description": "Deep analysis of your current processes and improvement opportunities."
           },
           "strategy": {
-            "title": "Strategy design",
+            "title": "Strategy Design",
             "description": "Creation of a transformation plan with clear and achievable objectives."
           },
           "implementation": {
-            "title": "Guided implementation",
-            "description": "Workshops and practical training for your team."
+            "title": "Guided Implementation",
+            "description": "Workshops and hands-on training for your team."
           },
           "optimization": {
-            "title": "Continuous optimization",
-            "description": "Monthly monitoring and adjustments based on results."
+            "title": "Continuous Optimization",
+            "description": "Monthly follow-up and adjustments based on results."
           }
         }
       },
@@ -169,73 +259,263 @@
         "subtitle": "Schedule a free 30-minute consultation to explore how we can help you",
         "scheduleNow": "Schedule consultation now"
       }
+    },
+    "level4": {
+      "hero": {
+        "badge": "Level 4 - Platforms",
+        "title": "Implement SPARK and PENNY for complete transformation",
+        "requestDemo": "Request demo",
+        "downloadSpecs": "Download specifications",
+        "implementation": "typical implementation",
+        "uptime": "guaranteed uptime"
+      },
+      "platforms": {
+        "title": "Our platforms",
+        "subtitle": "Choose the perfect solution for your needs",
+        "spark": {
+          "title": "SPARK - AI Orchestration",
+          "description": "Connect, automate, and optimize all business processes.",
+          "features": {
+            "0": "Integration with 100+ tools",
+            "1": "No-code automation",
+            "2": "Real-time analytics",
+            "3": "Enterprise scalability"
+          }
+        },
+        "penny": {
+          "title": "PENNY - Intelligent Assistant",
+          "description": "AI that learns and continuously improves your processes.",
+          "features": {
+            "0": "Continuous learning",
+            "1": "Natural language",
+            "2": "Proactive suggestions",
+            "3": "Top-tier security"
+          }
+        }
+      },
+      "implementation": {
+        "title": "Implementation process",
+        "subtitle": "Proven methodology for guaranteed success"
+      }
+    },
+    "level5": {
+      "hero": {
+        "badge": "Level 5 - Strategic",
+        "title": "vCTO partnership to lead your digital transformation",
+        "scheduleExecutive": "Schedule executive meeting",
+        "downloadFramework": "Download strategic framework",
+        "companies": "companies transformed",
+        "revenue": "average revenue increase"
+      },
+      "services": {
+        "title": "Strategic services",
+        "subtitle": "Complete technology leadership for your company",
+        "items": {
+          "strategy": {
+            "title": "Technology Strategy",
+            "description": "Complete roadmap aligned with business objectives."
+          },
+          "architecture": {
+            "title": "Enterprise Architecture",
+            "description": "Scalable and resilient system design."
+          },
+          "team": {
+            "title": "Team Management",
+            "description": "Leadership and technical talent development."
+          },
+          "innovation": {
+            "title": "Continuous Innovation",
+            "description": "Culture of experimentation and learning."
+          }
+        }
+      },
+      "impact": {
+        "title": "Measurable impact",
+        "subtitle": "Results that transform businesses"
+      }
+    }
+  },
+  "about": {
+    "title": "We are MADFAM",
+    "subtitle": "A family of creatives and technologists obsessed with transforming the future of business through artificial intelligence and innovative design.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize access to cutting-edge technology, enabling companies of all sizes to compete in the digital era with creative and accessible solutions."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the catalyst for digital transformation in Latin America, creating a future where AI and human creativity work in perfect harmony."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "The principles that guide every decision, project, and relationship at MADFAM",
+      "innovation": "Constant innovation",
+      "integrity": "Absolute integrity",
+      "collaboration": "Genuine collaboration",
+      "excellence": "Excellence in everything",
+      "impact": "Positive impact"
+    },
+    "team": {
+      "title": "Meet the Family",
+      "subtitle": "The brilliant minds behind MADFAM's magic"
+    },
+    "history": {
+      "title": "Our Story",
+      "subtitle": "A journey of innovation, growth, and transformation"
+    },
+    "cta": {
+      "title": "Ready to be part of the family?",
+      "subtitle": "Join us in our mission to transform the future of business",
+      "scheduleCall": "Work together",
+      "viewOpportunities": "View opportunities",
+      "seeWork": "See our work",
+      "joinTeam": "Join the team"
+    }
+  },
+  "products": {
+    "title": "Our Platforms",
+    "subtitle": "Technology solutions that transform the way you do business",
+    "spark": {
+      "title": "SPARK",
+      "tagline": "Intelligent AI Orchestration",
+      "description": "Complete platform that connects, automates, and optimizes all your business processes through advanced AI.",
+      "features": {
+        "title": "Key Features",
+        "integration": "Integration with 100+ tools",
+        "automation": "No-code automation",
+        "analytics": "Real-time analytics",
+        "scalability": "Infinite scalability"
+      },
+      "benefits": {
+        "title": "Benefits",
+        "efficiency": "70% increase in efficiency",
+        "cost": "50% reduction in operational costs",
+        "time": "80% less time on manual tasks",
+        "accuracy": "99.9% process accuracy"
+      }
+    },
+    "penny": {
+      "title": "PENNY",
+      "tagline": "Your Personal AI Assistant",
+      "description": "Intelligent automation that learns from your processes and continuously improves, making your team more productive.",
+      "features": {
+        "title": "Key Features",
+        "learning": "Continuous learning",
+        "natural": "Natural language processing",
+        "proactive": "Proactive suggestions",
+        "secure": "Enterprise security"
+      },
+      "benefits": {
+        "title": "Benefits",
+        "productivity": "3x productivity",
+        "satisfaction": "95% user satisfaction",
+        "onboarding": "24h implementation",
+        "roi": "ROI in 30 days"
+      }
+    },
+    "comparison": {
+      "title": "Compare our platforms",
+      "feature": "Feature",
+      "integration": "Integrations",
+      "users": "Users",
+      "support": "Support",
+      "price": "Price"
+    },
+    "cta": {
+      "demo": "Request demo",
+      "trial": "Free 14-day trial"
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Ready to transform your business? Let's talk about how we can help.",
+    "form": {
+      "name": "Full name",
+      "email": "Business email",
+      "company": "Company",
+      "phone": "Phone",
+      "service": "Service of interest",
+      "message": "How can we help?",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Please try again."
+    },
+    "info": {
+      "title": "Other ways to contact",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "hours": "Business hours",
+      "monday": "Monday to Friday",
+      "time": "9:00 AM - 6:00 PM CST"
     }
   },
   "careers": {
-    "title": "Join the MADFAM Team",
-    "subtitle": "We're building the future of business transformation. Join us in creating innovative solutions that help companies thrive in the digital age.",
+    "title": "Join the MADFAM team",
+    "subtitle": "We're building the future of business transformation. Join us to create innovative solutions that help companies thrive in the digital age.",
     "culture": {
-      "title": "Our Culture",
+      "title": "Our culture",
       "innovation": {
-        "title": "Innovation First",
+        "title": "Innovation first",
         "description": "We embrace new technologies and creative solutions to solve complex problems."
       },
       "collaboration": {
-        "title": "Collaborative Spirit",
+        "title": "Collaborative spirit",
         "description": "We believe in the power of teamwork and value diverse perspectives."
       },
       "growth": {
-        "title": "Growth Mindset",
+        "title": "Growth mindset",
         "description": "We're committed to continuous learning and personal development."
       }
     },
     "benefits": {
-      "title": "Benefits & Perks",
+      "title": "Benefits and perks",
       "list": {
         "health": "Comprehensive health insurance",
         "pto": "Flexible PTO policy",
         "remote": "Remote-first culture",
-        "learning": "Learning & development budget",
+        "learning": "Learning and development budget",
         "bonus": "Performance bonuses",
         "home": "Home office stipend"
       }
     },
     "positions": {
-      "title": "Open Positions",
+      "title": "Open positions",
       "department": "Department",
       "location": "Location",
       "type": "Type",
-      "applyNow": "Apply Now"
+      "applyNow": "Apply now"
     },
     "cta": {
       "title": "Don't see the right position?",
-      "subtitle": "We're always looking for talented individuals. Send us your resume and let's talk!",
-      "sendResume": "Send Your Resume"
+      "subtitle": "We're always looking for talented people. Send us your resume and let's talk!",
+      "sendResume": "Send your resume"
     }
   },
   "blog": {
     "title": "Blog & Insights",
-    "subtitle": "Thoughts, stories and ideas from the MADFAM team about technology, innovation, and business transformation.",
+    "subtitle": "Thoughts, stories, and ideas from the MADFAM team on technology, innovation, and business transformation.",
     "readMore": "Read more",
     "by": "By",
     "minRead": "min read"
   },
   "caseStudies": {
     "title": "Case Studies",
-    "subtitle": "Real-world success stories of how we've helped businesses transform and thrive in the digital age.",
+    "subtitle": "Real stories of how we've helped companies transform and thrive in the digital age.",
     "challenge": "Challenge",
     "solution": "Solution",
     "results": "Results",
-    "readFullCase": "Read full case study"
+    "readFullCase": "Read full case"
   },
   "docs": {
     "title": "Documentation",
-    "subtitle": "Everything you need to know about working with MADFAM's services and platforms.",
+    "subtitle": "Everything you need to know to work with MADFAM services and platforms.",
     "searchPlaceholder": "Search documentation...",
     "categories": {
       "gettingStarted": {
         "title": "Getting Started",
-        "description": "Quick start guides and overview of our services"
+        "description": "Quick start guides and service overview"
       },
       "api": {
         "title": "API Documentation",
@@ -250,11 +530,11 @@
         "description": "Additional resources and support materials"
       }
     },
-    "popularTopics": "Popular Topics",
+    "popularTopics": "Popular topics",
     "needHelp": {
-      "title": "Need Help?",
+      "title": "Need help?",
       "subtitle": "Can't find what you're looking for? Our support team is here to help.",
-      "contactSupport": "Contact Support",
+      "contactSupport": "Contact support",
       "viewFaq": "View FAQ"
     }
   },
@@ -266,12 +546,12 @@
     "assessment": "Assessment",
     "calculator": "Calculator",
     "leads": "Leads",
-    "codeExamples": "Code Examples",
-    "authExample": "Authentication Example",
-    "assessmentExample": "Assessment Submission",
+    "codeExamples": "Code examples",
+    "authExample": "Authentication example",
+    "assessmentExample": "Assessment submission",
     "rateLimiting": {
-      "title": "Rate Limiting",
-      "subtitle": "API requests are limited to ensure fair usage and system stability.",
+      "title": "Rate limiting",
+      "subtitle": "API requests are limited to ensure fair use and system stability.",
       "perMinute": "Requests per minute",
       "perHour": "Requests per hour",
       "perDay": "Requests per day"
@@ -279,12 +559,12 @@
   },
   "guides": {
     "title": "Guides & Tutorials",
-    "subtitle": "Step-by-step guides to help you make the most of MADFAM's services and build amazing solutions.",
+    "subtitle": "Step-by-step guides to help you make the most of MADFAM services and create amazing solutions.",
     "featured": {
-      "badge": "Featured Guide",
+      "badge": "Featured guide",
       "title": "Complete Integration Tutorial",
       "description": "Learn how to integrate MADFAM services from start to finish with our comprehensive tutorial.",
-      "startTutorial": "Start Tutorial"
+      "startTutorial": "Start tutorial"
     },
     "difficulty": {
       "beginner": "Beginner",
@@ -292,8 +572,8 @@
       "advanced": "Advanced"
     },
     "videoTutorials": {
-      "title": "Video Tutorials",
-      "description": "Prefer learning through video? Check out our YouTube channel for video tutorials and demos.",
+      "title": "Video tutorials",
+      "description": "Prefer to learn through videos? Visit our YouTube channel for video tutorials and demos.",
       "watchYoutube": "Watch on YouTube"
     }
   },
@@ -302,28 +582,162 @@
     "lastUpdated": "Last updated",
     "sections": {
       "whatAreCookies": {
-        "title": "What Are Cookies",
-        "description": "Cookies are small text files that are placed on your computer or mobile device when you visit our website. They are widely used to make websites work more efficiently and provide a better user experience."
+        "title": "What are cookies",
+        "description": "Cookies are small text files placed on your computer or mobile device when you visit our website. They are widely used to make websites work more efficiently and provide a better user experience."
       },
       "howWeUse": {
-        "title": "How We Use Cookies",
+        "title": "How we use cookies",
         "description": "We use cookies for the following purposes:",
-        "essential": "Essential Cookies",
-        "analytics": "Analytics Cookies",
-        "preference": "Preference Cookies",
-        "marketing": "Marketing Cookies"
+        "essential": "Essential cookies",
+        "analytics": "Analytics cookies",
+        "preference": "Preference cookies",
+        "marketing": "Marketing cookies"
       },
       "managing": {
-        "title": "Managing Cookies",
-        "description": "You can control and manage cookies through your browser settings. Please note that removing or blocking cookies may impact your user experience and some parts of our website may no longer be fully accessible."
+        "title": "Managing cookies",
+        "description": "You can control and manage cookies through your browser settings. Note that removing or blocking cookies may impact your user experience and some parts of our website may not be fully accessible."
       },
       "contact": {
-        "title": "Contact Us",
-        "description": "If you have questions about our use of cookies or this policy, please contact us at:",
+        "title": "Contact us",
+        "description": "If you have questions about our use of cookies or this policy, please contact us:",
         "email": "Email",
         "phone": "Phone",
         "address": "Address"
       }
     }
+  },
+  "assessment": {
+    "title": "AI Readiness Assessment",
+    "subtitle": "Discover your company's AI potential in just 5 minutes",
+    "intro": "Answer a few questions about your current processes and goals to receive a personalized report with specific recommendations for your business.",
+    "start": "Start assessment",
+    "questions": {
+      "current": "Current situation",
+      "goals": "Goals",
+      "challenges": "Challenges",
+      "timeline": "Timeline"
+    },
+    "results": {
+      "title": "Your AI readiness report",
+      "score": "Score",
+      "level": "Level",
+      "recommendations": "Recommendations",
+      "nextSteps": "Next steps",
+      "downloadReport": "Download full report",
+      "scheduleConsultation": "Schedule consultation"
+    }
+  },
+  "calculator": {
+    "title": "ROI Calculator",
+    "subtitle": "Calculate the return on investment in digital transformation",
+    "inputs": {
+      "employees": "Number of employees",
+      "revenue": "Annual revenue",
+      "industry": "Industry",
+      "currentCosts": "Current operational costs",
+      "automationGoals": "Automation goals"
+    },
+    "results": {
+      "title": "Your estimated ROI",
+      "savings": "Annual savings",
+      "efficiency": "Efficiency increase",
+      "payback": "Payback period",
+      "totalBenefit": "Total 3-year benefit"
+    },
+    "cta": {
+      "getDetailed": "Get detailed analysis",
+      "scheduleDemo": "Schedule demo"
+    }
+  },
+  "estimator": {
+    "title": "Project Estimator",
+    "subtitle": "Get an instant estimate for your digital transformation project",
+    "projectType": "Project type",
+    "scope": "Scope",
+    "timeline": "Desired timeline",
+    "budget": "Approximate budget",
+    "estimate": {
+      "title": "Your estimate",
+      "timeframe": "Estimated timeframe",
+      "investment": "Estimated investment",
+      "team": "Required team",
+      "deliverables": "Key deliverables"
+    },
+    "next": "Next",
+    "back": "Back",
+    "getQuote": "Get detailed quote"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "MADFAM is committed to protecting your privacy. This policy describes how we collect, use, and protect your information."
+      },
+      "dataCollection": {
+        "title": "Data we collect",
+        "content": "We collect information you provide directly, such as name, email, phone, and company information."
+      },
+      "dataUse": {
+        "title": "How we use your data",
+        "content": "We use your information to provide our services, improve our platform, and communicate relevant updates."
+      },
+      "dataProtection": {
+        "title": "How we protect your data",
+        "content": "We implement technical and organizational security measures to protect your information from unauthorized access."
+      },
+      "yourRights": {
+        "title": "Your rights",
+        "content": "You have the right to access, correct, or delete your personal information at any time."
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of terms",
+        "content": "By using our services, you agree to these terms of service."
+      },
+      "services": {
+        "title": "Our services",
+        "content": "MADFAM provides consulting, development, and implementation of AI solutions."
+      },
+      "obligations": {
+        "title": "Your obligations",
+        "content": "You agree to provide accurate information and use our services legally and ethically."
+      },
+      "intellectual": {
+        "title": "Intellectual property",
+        "content": "All content and technology remain property of MADFAM unless otherwise agreed."
+      },
+      "liability": {
+        "title": "Limitation of liability",
+        "content": "Our liability is limited to the amount paid for services in the last 12 months."
+      }
+    }
+  },
+  "auth": {
+    "signin": {
+      "title": "Sign In",
+      "subtitle": "Access your MADFAM account",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot your password?",
+      "signIn": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "projects": "Projects",
+    "analytics": "Analytics",
+    "settings": "Settings"
   }
 }
