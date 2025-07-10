@@ -1,5 +1,6 @@
 import { LeadStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 
 // Webhook event types
@@ -24,118 +25,143 @@ function validateWebhookAuth(request: NextRequest): boolean {
 
 // Handle lead status update
 async function handleLeadStatusUpdate(data: any) {
-  const { leadId, status, note } = data;
+  try {
+    const { leadId, status, note } = data;
 
-  if (!leadId || !status) {
-    throw new Error('Missing required fields: leadId, status');
-  }
+    if (!leadId || !status) {
+      throw new Error('Missing required fields: leadId, status');
+    }
 
-  // Update lead status
-  await prisma.lead.update({
-    where: { id: leadId },
-    data: { status: status as LeadStatus },
-  });
+    // Update lead status
+    await prisma.lead.update({
+      where: { id: leadId },
+      data: { status: status as LeadStatus },
+    });
 
-  // Create activity record
-  await prisma.leadActivity.create({
-    data: {
-      leadId,
-      type: 'status_changed',
-      description: `Status updated to ${status}`,
-      metadata: { previousStatus: data.previousStatus, note },
-    },
-  });
-
-  // Add note if provided
-  if (note) {
-    await prisma.leadNote.create({
+    // Create activity record
+    await prisma.leadActivity.create({
       data: {
         leadId,
-        content: note,
+        type: 'status_changed',
+        description: `Status updated to ${status}`,
+        metadata: { previousStatus: data.previousStatus, note },
       },
     });
+
+    // Add note if provided
+    if (note) {
+      await prisma.leadNote.create({
+        data: {
+          leadId,
+          content: note,
+        },
+      });
+    }
+  } catch (error) {
+    logger.error('Failed to handle lead status update', error as Error, 'webhook', { data });
+    throw error;
   }
 }
 
 // Handle email event
 async function handleEmailEvent(data: any) {
-  const { leadId, type, subject, status, error } = data;
+  try {
+    const { leadId, type, subject, status, error } = data;
 
-  if (!leadId || !type) {
-    throw new Error('Missing required fields: leadId, type');
+    if (!leadId || !type) {
+      throw new Error('Missing required fields: leadId, type');
+    }
+
+    // Create activity record
+    await prisma.leadActivity.create({
+      data: {
+        leadId,
+        type: `email_${type}`,
+        description: `Email ${type}: ${subject || 'No subject'}`,
+        metadata: { status, error },
+      },
+    });
+  } catch (error) {
+    logger.error('Failed to handle email event', error as Error, 'webhook', { data });
+    throw error;
   }
-
-  // Create activity record
-  await prisma.leadActivity.create({
-    data: {
-      leadId,
-      type: `email_${type}`,
-      description: `Email ${type}: ${subject || 'No subject'}`,
-      metadata: { status, error },
-    },
-  });
 }
 
 // Handle CRM sync event
 async function handleCRMSync(data: any) {
-  const { leadId, crmId, action, syncData } = data;
+  try {
+    const { leadId, crmId, action, syncData } = data;
 
-  if (!leadId || !crmId || !action) {
-    throw new Error('Missing required fields: leadId, crmId, action');
+    if (!leadId || !crmId || !action) {
+      throw new Error('Missing required fields: leadId, crmId, action');
+    }
+
+    // Create activity record
+    await prisma.leadActivity.create({
+      data: {
+        leadId,
+        type: 'crm_sync',
+        description: `CRM ${action}: ${crmId}`,
+        metadata: { crmId, action, syncData },
+      },
+    });
+  } catch (error) {
+    logger.error('Failed to handle CRM sync', error as Error, 'webhook', { data });
+    throw error;
   }
-
-  // Create activity record
-  await prisma.leadActivity.create({
-    data: {
-      leadId,
-      type: 'crm_sync',
-      description: `CRM ${action}: ${crmId}`,
-      metadata: { crmId, action, syncData },
-    },
-  });
 }
 
 // Handle meeting scheduled event
 async function handleMeetingScheduled(data: any) {
-  const { leadId, meetingId, scheduledAt, type, attendees } = data;
+  try {
+    const { leadId, meetingId, scheduledAt, type, attendees } = data;
 
-  if (!leadId || !meetingId || !scheduledAt) {
-    throw new Error('Missing required fields: leadId, meetingId, scheduledAt');
+    if (!leadId || !meetingId || !scheduledAt) {
+      throw new Error('Missing required fields: leadId, meetingId, scheduledAt');
+    }
+
+    // Create activity record
+    await prisma.leadActivity.create({
+      data: {
+        leadId,
+        type: 'meeting_scheduled',
+        description: `Meeting scheduled for ${scheduledAt}`,
+        metadata: { meetingId, type, attendees },
+      },
+    });
+  } catch (error) {
+    logger.error('Failed to handle meeting scheduled', error as Error, 'webhook', { data });
+    throw error;
   }
-
-  // Create activity record
-  await prisma.leadActivity.create({
-    data: {
-      leadId,
-      type: 'meeting_scheduled',
-      description: `Meeting scheduled for ${scheduledAt}`,
-      metadata: { meetingId, type, attendees },
-    },
-  });
 }
 
 // Handle integration update
 async function handleIntegrationUpdate(data: any) {
-  const { name, enabled, config, lastSync } = data;
+  try {
+    const { name, enabled, config, lastSync } = data;
 
-  if (!name) {
-    throw new Error('Missing required field: name');
+    if (!name) {
+      throw new Error('Missing required field: name');
+    }
+
+    // Update integration
+    await prisma.integration.upsert({
+      where: { name },
+      update: {
+        enabled: enabled ?? undefined,
+        config: config ?? undefined,
+        lastSync: lastSync ? new Date(lastSync) : undefined,
+      },
+      create: {
+        name,
+        enabled: enabled ?? true,
+        config: config ?? {},
+      },
+    });
+  } catch (error) {
+    logger.error('Failed to handle integration update', error as Error, 'webhook', { data });
+    throw error;
   }
-
-  // Update integration
-  await prisma.integration.upsert({
-    where: { name },
-    update: {
-      enabled: enabled ?? undefined,
-      config: config ?? undefined,
-      lastSync: lastSync ? new Date(lastSync) : undefined,
-    },
-    create: {
-      name,
-      enabled: enabled ?? true,
-      config: config ?? {},
-    },
-  });
 }
 
 // Main webhook handler

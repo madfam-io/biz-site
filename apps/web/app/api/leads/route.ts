@@ -4,6 +4,7 @@ import { LeadSource, LeadStatus, ServiceTier as PrismaServiceTier } from '@prism
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit';
 
 // Map between core ServiceTier and Prisma ServiceTier
 const serviceTierMap: Record<ServiceTier, PrismaServiceTier> = {
@@ -76,7 +77,7 @@ function calculateLeadScore(lead: LeadData): number {
   return Math.min(score, 100); // Cap at 100
 }
 
-export async function POST(request: NextRequest) {
+async function handlePOST(request: NextRequest) {
   try {
     const body = await request.json();
 
@@ -93,9 +94,9 @@ export async function POST(request: NextRequest) {
       request.headers.get('x-real-ip') ||
       undefined;
 
-    // Split name into firstName and lastName
-    const nameParts = validatedData.name.split(' ');
-    const firstName = nameParts[0];
+    // Split name into firstName and lastName with null safety
+    const nameParts = validatedData.name?.split(' ') || [];
+    const firstName = nameParts[0] || '';
     const lastName = nameParts.slice(1).join(' ') || undefined;
 
     // Create lead in database
@@ -218,7 +219,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Get leads (protected endpoint)
-export async function GET(request: NextRequest) {
+async function handleGET(request: NextRequest) {
   try {
     // Check authentication
     const authHeader = request.headers.get('authorization');
@@ -272,3 +273,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Failed to fetch leads' }, { status: 500 });
   }
 }
+
+// Apply rate limiting to exports
+export const POST = withRateLimit(handlePOST, { maxRequests: 10, windowMs: 60000 }); // 10 requests per minute
+export const GET = withRateLimit(handleGET, { maxRequests: 100, windowMs: 60000 }); // 100 requests per minute

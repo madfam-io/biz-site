@@ -118,6 +118,7 @@ model LeadActivity {
   @@index([leadId])
   @@index([type])
   @@index([createdAt])
+  @@index([userId])
 }
 
 model Assessment {
@@ -143,6 +144,7 @@ model Assessment {
   @@index([email])
   @@index([status])
   @@index([createdAt])
+  @@index([leadId])
 }
 
 model Calculation {
@@ -166,6 +168,7 @@ model Calculation {
   @@index([type])
   @@index([email])
   @@index([createdAt])
+  @@index([leadId])
 }
 
 model User {

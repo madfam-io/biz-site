@@ -3,6 +3,7 @@ import { ServiceTier as PrismaServiceTier, AssessmentStatus } from '@prisma/clie
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/rate-limit';
 
 // Assessment question types
 interface AssessmentQuestion {
@@ -235,7 +236,7 @@ export async function GET(request: NextRequest) {
 }
 
 // POST endpoint - Submit assessment
-export async function POST(request: NextRequest) {
+async function handlePOST(request: NextRequest) {
   try {
     const body = await request.json();
     const validatedData = assessmentSchema.parse(body);
@@ -375,3 +376,6 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+// Apply rate limiting
+export const POST = withRateLimit(handlePOST, { maxRequests: 5, windowMs: 60000 }); // 5 assessments per minute
