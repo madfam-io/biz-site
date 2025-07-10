@@ -1,8 +1,8 @@
 import { Container, Heading } from '@madfam/ui';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import type { Metadata } from 'next';
 import { cmsClient, getPublishedBlogPosts, type BlogPost } from '@/lib/cms';
 import { environment } from '@/lib/environment';
 import type { RichTextDocument, RichTextNode } from '@/types/content';

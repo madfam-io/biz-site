@@ -329,6 +329,8 @@ export default async function SparkProductPage({ params: { locale } }: SparkProd
                 : 'Reducción de trabajo manual',
         },
       ],
+      featured: true,
+      verified: true,
     },
     {
       id: 'innovate-group',
@@ -340,6 +342,7 @@ export default async function SparkProductPage({ params: { locale } }: SparkProd
             : 'Las capacidades de integración de SPARK son excepcionales. Conectamos toda nuestra stack tecnológica en semanas, no meses. La productividad del equipo aumentó 40%.',
       author: {
         name: 'Carlos Mendoza',
+        title: 'CTO',
         role: 'CTO',
         company: 'Innovate Group',
         image: '/testimonials/carlos-mendoza.jpg',

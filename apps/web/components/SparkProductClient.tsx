@@ -12,8 +12,27 @@ import {
   ROICalculator,
   TestimonialGrid,
   Newsletter,
+  type TestimonialData,
 } from '@madfam/ui';
 import { logServiceInquiry } from '@/lib/logger';
+import type { Testimonial } from '@/types/content';
+
+// Mapper function to convert Testimonial to TestimonialData
+function mapTestimonialToTestimonialData(testimonial: Testimonial): TestimonialData {
+  return {
+    id: testimonial.id,
+    content: testimonial.content,
+    author: {
+      name: testimonial.author.name,
+      role: testimonial.author.role || testimonial.author.title,
+      company: testimonial.author.company,
+      image: testimonial.author.image || testimonial.author.avatar,
+    },
+    rating: testimonial.rating,
+    service: testimonial.service,
+    results: testimonial.results,
+  };
+}
 
 interface SparkFeature {
   icon: string;
@@ -228,7 +247,10 @@ export function SparkProductClient({
             </p>
           </div>
 
-          <TestimonialGrid testimonials={testimonials} columns={2} />
+          <TestimonialGrid
+            testimonials={testimonials.map(mapTestimonialToTestimonialData)}
+            columns={2}
+          />
         </Container>
       </section>
 

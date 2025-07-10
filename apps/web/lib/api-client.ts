@@ -1,4 +1,3 @@
-import { environment } from './environment';
 import type {
   ApiResponse,
   LeadData,
@@ -10,6 +9,7 @@ import type {
   ProjectEstimateData,
   ProjectEstimateResponse,
 } from '@/types/api';
+import { environment } from './environment';
 
 // Mock data for staging
 const mockLeadResponse = {

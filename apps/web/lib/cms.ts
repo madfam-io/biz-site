@@ -163,7 +163,7 @@ class CMSClient {
 
     // Return cached data if valid
     if (cachedEntry && this.isValidCache(cachedEntry)) {
-      return cachedEntry.data;
+      return cachedEntry.data as T;
     }
 
     // Return stale data if available while fetching fresh data in background
