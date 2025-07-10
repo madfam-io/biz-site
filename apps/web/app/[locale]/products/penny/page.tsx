@@ -1,59 +1,104 @@
-'use client';
+import type { Metadata } from 'next';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { PennyProductClient } from '@/components/PennyProductClient';
 
-import { type Locale } from '@madfam/i18n';
-import {
-  Container,
-  Heading,
-  Button,
-  Card,
-  CardContent,
-  Hero,
-  LeadForm,
-  ROICalculator,
-  TestimonialGrid,
-  Newsletter,
-} from '@madfam/ui';
-// import { useTranslations } from 'next-intl'; // TODO: Use when replacing ternary operators
-import { logServiceInquiry } from '@/lib/logger';
+interface PennyProductPageProps {
+  params: {
+    locale: string;
+  };
+}
 
-export default function PennyProductPage({ params: { locale } }: { params: { locale: string } }) {
-  const currentLocale = locale as Locale;
-  // const t = useTranslations('products.penny'); // TODO: Replace ternary operators with translations
+export async function generateMetadata({
+  params: { locale },
+}: PennyProductPageProps): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'products.penny' });
 
+  return {
+    title: `PENNY - ${t('title')}`,
+    description: t('description'),
+  };
+}
+
+export default async function PennyProductPage({ params: { locale } }: PennyProductPageProps) {
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('products.penny');
+  const tCommon = await getTranslations('common');
+
+  const translations = {
+    heroTitle: 'PENNY',
+    heroSubtitle: t('tagline'),
+    heroDescription: t('description'),
+    requestDemo: t('cta.demo'),
+    viewDocumentation: tCommon('products.documentation'),
+    activeUsers: 'Active users',
+    tasksAutomated: 'Tasks automated',
+    accuracy: 'Accuracy',
+    featuresTitle: 'Intelligent features that evolve with your business',
+    featuresSubtitle:
+      'PENNY adapts to your unique processes, learning and improving with every interaction.',
+    useCasesTitle: 'Transform your operations',
+    useCasesSubtitle:
+      'See how PENNY revolutionizes different business processes with intelligent automation.',
+    testimonialsTitle: 'Success stories with PENNY',
+    testimonialsSubtitle:
+      'Learn how businesses have transformed their operations with our intelligent assistant.',
+    pricingTitle: 'Simple, transparent pricing',
+    pricingSubtitle: 'Choose the plan that fits your business needs and scale as you grow.',
+    roiTitle: 'Calculate your PENNY ROI',
+    roiSubtitle: 'Discover how much time and money PENNY can save your organization.',
+    roiCalculatorTitle: 'PENNY ROI Calculator',
+    demoTitle: 'Experience PENNY in action',
+    demoSubtitle:
+      'See how PENNY can transform your specific business processes with a personalized demonstration.',
+    demoFormTitle: 'Request PENNY demo',
+    demoFormDescription:
+      "Share your automation challenges and we'll show you exactly how PENNY can solve them.",
+    scheduleDemo: 'Schedule demo',
+    newsletterTitle: 'Stay updated with PENNY',
+    newsletterDescription:
+      'Get the latest updates on intelligent automation and process optimization.',
+    subscribe: 'Subscribe',
+    mostPopular: 'Most Popular',
+    reduction: 'Reduction',
+    toComplete: 'To complete',
+    accuracyLabel: 'Accuracy',
+  };
+
+  // Features data with translations
   const pennyFeatures = [
     {
       icon: '🧠',
       title:
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Continuous Learning'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Aprendizado Contínuo'
             : 'Aprendizaje Continuo',
       description:
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'PENNY learns from your processes and improves automation over time'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'PENNY aprende com seus processos e melhora a automação ao longo do tempo'
             : 'PENNY aprende de tus procesos y mejora la automatización con el tiempo',
       benefits: [
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Machine learning algorithms'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Algoritmos de aprendizado de máquina'
             : 'Algoritmos de aprendizaje automático',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Pattern recognition'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Reconhecimento de padrões'
             : 'Reconocimiento de patrones',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Process optimization'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Otimização de processos'
             : 'Optimización de procesos',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Predictive suggestions'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Sugestões preditivas'
             : 'Sugerencias predictivas',
       ],
@@ -61,36 +106,36 @@ export default function PennyProductPage({ params: { locale } }: { params: { loc
     {
       icon: '📄',
       title:
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Document Intelligence'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Inteligência de Documentos'
             : 'Inteligencia de Documentos',
       description:
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Extract, process, and organize information from any document type'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Extraia, processe e organize informações de qualquer tipo de documento'
             : 'Extrae, procesa y organiza información de cualquier tipo de documento',
       benefits: [
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'OCR and text extraction'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'OCR e extração de texto'
             : 'OCR y extracción de texto',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Data classification'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Classificação de dados'
             : 'Clasificación de datos',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Automated filing'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Arquivamento automatizado'
             : 'Archivado automatizado',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Content validation'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Validação de conteúdo'
             : 'Validación de contenido',
       ],
@@ -98,75 +143,75 @@ export default function PennyProductPage({ params: { locale } }: { params: { loc
     {
       icon: '💬',
       title:
-        currentLocale === 'en-US'
-          ? 'Natural Language Processing'
-          : currentLocale === 'pt-BR'
-            ? 'Processamento de Linguagem Natural'
-            : 'Procesamiento de Lenguaje Natural',
+        locale === 'en-US'
+          ? 'Natural Language Interface'
+          : locale === 'pt-BR'
+            ? 'Interface de Linguagem Natural'
+            : 'Interfaz de Lenguaje Natural',
       description:
-        currentLocale === 'en-US'
-          ? 'Communicate with PENNY using natural language for easier task management'
-          : currentLocale === 'pt-BR'
-            ? 'Comunique-se com PENNY usando linguagem natural para gerenciamento de tarefas mais fácil'
-            : 'Comunícate con PENNY usando lenguaje natural para una gestión de tareas más fácil',
+        locale === 'en-US'
+          ? 'Communicate with PENNY naturally, as you would with a human assistant'
+          : locale === 'pt-BR'
+            ? 'Comunique-se com PENNY naturalmente, como faria com um assistente humano'
+            : 'Comunícate con PENNY naturalmente, como lo harías con un asistente humano',
       benefits: [
-        currentLocale === 'en-US'
-          ? 'Conversational interface'
-          : currentLocale === 'pt-BR'
-            ? 'Interface conversacional'
-            : 'Interfaz conversacional',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Voice commands'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Comandos de voz'
             : 'Comandos de voz',
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Multi-language support'
-          : currentLocale === 'pt-BR'
-            ? 'Suporte a múltiplos idiomas'
+          : locale === 'pt-BR'
+            ? 'Suporte multi-idioma'
             : 'Soporte multiidioma',
-        currentLocale === 'en-US'
-          ? 'Intent recognition'
-          : currentLocale === 'pt-BR'
-            ? 'Reconhecimento de intenção'
-            : 'Reconocimiento de intención',
+        locale === 'en-US'
+          ? 'Context awareness'
+          : locale === 'pt-BR'
+            ? 'Consciência de contexto'
+            : 'Conciencia de contexto',
+        locale === 'en-US'
+          ? 'Smart responses'
+          : locale === 'pt-BR'
+            ? 'Respostas inteligentes'
+            : 'Respuestas inteligentes',
       ],
     },
     {
-      icon: '⚡',
+      icon: '🔐',
       title:
-        currentLocale === 'en-US'
-          ? 'Smart Task Management'
-          : currentLocale === 'pt-BR'
-            ? 'Gerenciamento Inteligente de Tarefas'
-            : 'Gestión Inteligente de Tareas',
+        locale === 'en-US'
+          ? 'Enterprise Security'
+          : locale === 'pt-BR'
+            ? 'Segurança Empresarial'
+            : 'Seguridad Empresarial',
       description:
-        currentLocale === 'en-US'
-          ? 'Automatically prioritize, schedule, and execute tasks based on business rules'
-          : currentLocale === 'pt-BR'
-            ? 'Priorize, programe e execute tarefas automaticamente com base em regras de negócio'
-            : 'Prioriza, programa y ejecuta tareas automáticamente basándose en reglas de negocio',
+        locale === 'en-US'
+          ? 'Bank-level security to protect your sensitive business data'
+          : locale === 'pt-BR'
+            ? 'Segurança de nível bancário para proteger seus dados empresariais sensíveis'
+            : 'Seguridad de nivel bancario para proteger tus datos empresariales sensibles',
       benefits: [
-        currentLocale === 'en-US'
-          ? 'Intelligent scheduling'
-          : currentLocale === 'pt-BR'
-            ? 'Agendamento inteligente'
-            : 'Programación inteligente',
-        currentLocale === 'en-US'
-          ? 'Priority management'
-          : currentLocale === 'pt-BR'
-            ? 'Gerenciamento de prioridade'
-            : 'Gestión de prioridades',
-        currentLocale === 'en-US'
-          ? 'Automated workflows'
-          : currentLocale === 'pt-BR'
-            ? 'Fluxos automatizados'
-            : 'Flujos automatizados',
-        currentLocale === 'en-US'
-          ? 'Progress tracking'
-          : currentLocale === 'pt-BR'
-            ? 'Rastreamento de progresso'
-            : 'Seguimiento de progreso',
+        locale === 'en-US'
+          ? 'End-to-end encryption'
+          : locale === 'pt-BR'
+            ? 'Criptografia de ponta a ponta'
+            : 'Cifrado de extremo a extremo',
+        locale === 'en-US'
+          ? 'GDPR compliant'
+          : locale === 'pt-BR'
+            ? 'Conformidade GDPR'
+            : 'Cumplimiento GDPR',
+        locale === 'en-US'
+          ? 'Role-based access'
+          : locale === 'pt-BR'
+            ? 'Acesso baseado em função'
+            : 'Acceso basado en roles',
+        locale === 'en-US'
+          ? 'Audit trails'
+          : locale === 'pt-BR'
+            ? 'Trilhas de auditoria'
+            : 'Rastros de auditoría',
       ],
     },
   ];
@@ -174,183 +219,165 @@ export default function PennyProductPage({ params: { locale } }: { params: { loc
   const useCases = [
     {
       title:
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Invoice Processing'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Processamento de Faturas'
             : 'Procesamiento de Facturas',
       description:
-        currentLocale === 'en-US'
-          ? 'Automate invoice extraction, validation, and approval workflows'
-          : currentLocale === 'pt-BR'
-            ? 'Automatize extração, validação e fluxos de aprovação de faturas'
-            : 'Automatiza extracción, validación y flujos de aprobación de facturas',
+        locale === 'en-US'
+          ? 'Automatically extract, validate, and process invoices from any format'
+          : locale === 'pt-BR'
+            ? 'Extraia, valide e processe faturas automaticamente de qualquer formato'
+            : 'Extrae, valida y procesa facturas automáticamente de cualquier formato',
       metrics: {
         reduction: '85%',
-        time:
-          currentLocale === 'en-US'
-            ? '5 minutes'
-            : currentLocale === 'pt-BR'
-              ? '5 minutos'
-              : '5 minutos',
-        satisfaction: '96%',
+        time: locale === 'en-US' ? '5 minutes' : locale === 'pt-BR' ? '5 minutos' : '5 minutos',
+        accuracy: '99.8%',
       },
       icon: '📋',
     },
     {
       title:
-        currentLocale === 'en-US'
+        locale === 'en-US'
           ? 'Customer Support'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Suporte ao Cliente'
             : 'Soporte al Cliente',
       description:
-        currentLocale === 'en-US'
-          ? 'Intelligent ticket routing, response suggestions, and case management'
-          : currentLocale === 'pt-BR'
-            ? 'Roteamento inteligente de tickets, sugestões de resposta e gerenciamento de casos'
-            : 'Enrutamiento inteligente de tickets, sugerencias de respuesta y gestión de casos',
+        locale === 'en-US'
+          ? 'Handle customer inquiries 24/7 with intelligent, context-aware responses'
+          : locale === 'pt-BR'
+            ? 'Atenda consultas de clientes 24/7 com respostas inteligentes e contextuais'
+            : 'Atiende consultas de clientes 24/7 con respuestas inteligentes y contextuales',
       metrics: {
         reduction: '70%',
-        time:
-          currentLocale === 'en-US' ? '2 hours' : currentLocale === 'pt-BR' ? '2 horas' : '2 horas',
-        satisfaction: '91%',
+        time: locale === 'en-US' ? 'Instant' : locale === 'pt-BR' ? 'Instantâneo' : 'Instantáneo',
+        accuracy: '95%',
       },
       icon: '🎧',
     },
     {
       title:
-        currentLocale === 'en-US'
-          ? 'Report Generation'
-          : currentLocale === 'pt-BR'
-            ? 'Geração de Relatórios'
-            : 'Generación de Reportes',
+        locale === 'en-US'
+          ? 'Data Entry'
+          : locale === 'pt-BR'
+            ? 'Entrada de Dados'
+            : 'Entrada de Datos',
       description:
-        currentLocale === 'en-US'
-          ? 'Automated data collection, analysis, and formatted report creation'
-          : currentLocale === 'pt-BR'
-            ? 'Coleta automatizada de dados, análise e criação de relatórios formatados'
-            : 'Recolección automatizada de datos, análisis y creación de reportes formateados',
+        locale === 'en-US'
+          ? 'Eliminate manual data entry with intelligent form filling and validation'
+          : locale === 'pt-BR'
+            ? 'Elimine entrada manual de dados com preenchimento e validação inteligente de formulários'
+            : 'Elimina la entrada manual de datos con llenado y validación inteligente de formularios',
       metrics: {
         reduction: '90%',
         time:
-          currentLocale === 'en-US'
-            ? '15 minutes'
-            : currentLocale === 'pt-BR'
-              ? '15 minutos'
-              : '15 minutos',
-        satisfaction: '88%',
+          locale === 'en-US' ? '10 seconds' : locale === 'pt-BR' ? '10 segundos' : '10 segundos',
+        accuracy: '99.5%',
       },
-      icon: '📊',
+      icon: '⌨️',
     },
   ];
 
   const testimonials = [
     {
-      id: 'sofia-martinez',
+      id: 'retail-plus',
       content:
-        currentLocale === 'en-US'
-          ? 'PENNY has been a game-changer for our small business. It handles all our routine tasks and has freed up our team to focus on growth. The learning capability is incredible.'
-          : currentLocale === 'pt-BR'
-            ? 'PENNY foi uma revolução para nossa pequena empresa. Ela cuida de todas as tarefas rotineiras e liberou nossa equipe para focar no crescimento. A capacidade de aprendizado é incrível.'
-            : 'PENNY ha sido revolucionario para nuestro pequeño negocio. Maneja todas nuestras tareas rutinarias y ha liberado a nuestro equipo para enfocarse en el crecimiento. La capacidad de aprendizaje es increíble.',
+        locale === 'en-US'
+          ? "PENNY transformed our customer service. Response times dropped from hours to seconds, and customer satisfaction increased by 40%. It's like having a team of experts available 24/7."
+          : locale === 'pt-BR'
+            ? 'PENNY transformou nosso atendimento ao cliente. Os tempos de resposta caíram de horas para segundos, e a satisfação do cliente aumentou 40%. É como ter uma equipe de especialistas disponível 24/7.'
+            : 'PENNY transformó nuestro servicio al cliente. Los tiempos de respuesta bajaron de horas a segundos, y la satisfacción del cliente aumentó 40%. Es como tener un equipo de expertos disponible 24/7.',
       author: {
-        name: 'Sofía Martínez',
+        name: 'Patricia González',
         role:
-          currentLocale === 'en-US'
-            ? 'Operations Manager'
-            : currentLocale === 'pt-BR'
-              ? 'Gerente de Operações'
-              : 'Gerente de Operaciones',
-        company: 'Verde Consulting',
-        image: '/testimonials/sofia-martinez.jpg',
+          locale === 'en-US'
+            ? 'Customer Service Director'
+            : locale === 'pt-BR'
+              ? 'Diretora de Atendimento ao Cliente'
+              : 'Directora de Servicio al Cliente',
+        company: 'RetailPlus',
+        image: '/testimonials/patricia-gonzalez.jpg',
       },
       rating: 5,
       service: 'PENNY',
       results: [
         {
           metric:
-            currentLocale === 'en-US'
-              ? 'Task automation'
-              : currentLocale === 'pt-BR'
-                ? 'Automação de tarefas'
-                : 'Automatización de tareas',
-          value: '25',
+            locale === 'en-US'
+              ? 'Response time'
+              : locale === 'pt-BR'
+                ? 'Tempo de resposta'
+                : 'Tiempo de respuesta',
+          value: '90%',
           description:
-            currentLocale === 'en-US'
-              ? 'Daily processes'
-              : currentLocale === 'pt-BR'
-                ? 'Processos diários'
-                : 'Procesos diarios',
+            locale === 'en-US'
+              ? 'Faster responses'
+              : locale === 'pt-BR'
+                ? 'Respostas mais rápidas'
+                : 'Respuestas más rápidas',
         },
         {
           metric:
-            currentLocale === 'en-US'
-              ? 'Cost savings'
-              : currentLocale === 'pt-BR'
-                ? 'Economia de custos'
-                : 'Ahorro de costos',
+            locale === 'en-US'
+              ? 'Customer satisfaction'
+              : locale === 'pt-BR'
+                ? 'Satisfação do cliente'
+                : 'Satisfacción del cliente',
           value: '40%',
           description:
-            currentLocale === 'en-US'
-              ? 'Operational expenses'
-              : currentLocale === 'pt-BR'
-                ? 'Despesas operacionais'
-                : 'Gastos operacionales',
+            locale === 'en-US' ? 'Improvement' : locale === 'pt-BR' ? 'Melhoria' : 'Mejora',
         },
       ],
     },
     {
-      id: 'ricardo-silva',
+      id: 'finance-corp',
       content:
-        currentLocale === 'en-US'
-          ? 'The document processing capabilities of PENNY are outstanding. We process hundreds of invoices daily with 99% accuracy. It has transformed our accounting department.'
-          : currentLocale === 'pt-BR'
-            ? 'As capacidades de processamento de documentos do PENNY são excepcionais. Processamos centenas de faturas diariamente com 99% de precisão. Transformou nosso departamento contábil.'
-            : 'Las capacidades de procesamiento de documentos de PENNY son excepcionales. Procesamos cientos de facturas diariamente con 99% de precisión. Ha transformado nuestro departamento contable.',
+        locale === 'en-US'
+          ? 'The document processing capabilities of PENNY are incredible. We process thousands of invoices monthly, and PENNY reduced our processing time by 85% with near-perfect accuracy.'
+          : locale === 'pt-BR'
+            ? 'As capacidades de processamento de documentos do PENNY são incríveis. Processamos milhares de faturas mensalmente, e PENNY reduziu nosso tempo de processamento em 85% com precisão quase perfeita.'
+            : 'Las capacidades de procesamiento de documentos de PENNY son increíbles. Procesamos miles de facturas mensualmente, y PENNY redujo nuestro tiempo de procesamiento en 85% con precisión casi perfecta.',
       author: {
-        name: 'Ricardo Silva',
+        name: 'Roberto Silva',
         role:
-          currentLocale === 'en-US'
-            ? 'Finance Director'
-            : currentLocale === 'pt-BR'
-              ? 'Diretor Financeiro'
-              : 'Director Financiero',
-        company: 'Constructora Lima',
-        image: '/testimonials/ricardo-silva.jpg',
+          locale === 'en-US'
+            ? 'Finance Manager'
+            : locale === 'pt-BR'
+              ? 'Gerente Financeiro'
+              : 'Gerente Financiero',
+        company: 'FinanceCorp',
+        image: '/testimonials/roberto-silva.jpg',
       },
       rating: 5,
       service: 'PENNY',
       results: [
         {
           metric:
-            currentLocale === 'en-US'
-              ? 'Processing accuracy'
-              : currentLocale === 'pt-BR'
-                ? 'Precisão de processamento'
-                : 'Precisión de procesamiento',
-          value: '99%',
+            locale === 'en-US'
+              ? 'Processing time'
+              : locale === 'pt-BR'
+                ? 'Tempo de processamento'
+                : 'Tiempo de procesamiento',
+          value: '85%',
           description:
-            currentLocale === 'en-US'
-              ? 'Document accuracy'
-              : currentLocale === 'pt-BR'
-                ? 'Precisão de documentos'
-                : 'Precisión de documentos',
+            locale === 'en-US' ? 'Reduction' : locale === 'pt-BR' ? 'Redução' : 'Reducción',
         },
         {
           metric:
-            currentLocale === 'en-US'
-              ? 'Processing speed'
-              : currentLocale === 'pt-BR'
-                ? 'Velocidade de processamento'
-                : 'Velocidad de procesamiento',
-          value: '10x',
+            locale === 'en-US'
+              ? 'Accuracy rate'
+              : locale === 'pt-BR'
+                ? 'Taxa de precisão'
+                : 'Tasa de precisión',
+          value: '99.8%',
           description:
-            currentLocale === 'en-US'
-              ? 'Faster than manual'
-              : currentLocale === 'pt-BR'
-                ? 'Mais rápido que manual'
-                : 'Más rápido que manual',
+            locale === 'en-US'
+              ? 'Document processing'
+              : locale === 'pt-BR'
+                ? 'Processamento de documentos'
+                : 'Procesamiento de documentos',
         },
       ],
     },
@@ -358,536 +385,112 @@ export default function PennyProductPage({ params: { locale } }: { params: { loc
 
   const pricingPlans = [
     {
-      name:
-        currentLocale === 'en-US' ? 'Starter' : currentLocale === 'pt-BR' ? 'Iniciante' : 'Inicial',
-      price: '15,000',
+      name: locale === 'en-US' ? 'Business' : locale === 'pt-BR' ? 'Negócios' : 'Negocios',
+      price: '30,000',
       currency: 'MXN',
-      period: currentLocale === 'en-US' ? 'month' : currentLocale === 'pt-BR' ? 'mês' : 'mes',
+      period: locale === 'en-US' ? 'month' : locale === 'pt-BR' ? 'mês' : 'mes',
       description:
-        currentLocale === 'en-US'
-          ? 'Perfect for small businesses'
-          : currentLocale === 'pt-BR'
-            ? 'Perfeito para pequenas empresas'
-            : 'Perfecto para pequeñas empresas',
+        locale === 'en-US'
+          ? 'Ideal for small to medium businesses'
+          : locale === 'pt-BR'
+            ? 'Ideal para pequenas e médias empresas'
+            : 'Ideal para pequeñas y medianas empresas',
       features: [
-        currentLocale === 'en-US'
-          ? 'Up to 100 tasks/month'
-          : currentLocale === 'pt-BR'
-            ? 'Até 100 tarefas/mês'
-            : 'Hasta 100 tareas/mes',
-        currentLocale === 'en-US'
+        locale === 'en-US'
+          ? 'Up to 10,000 tasks/month'
+          : locale === 'pt-BR'
+            ? 'Até 10.000 tarefas/mês'
+            : 'Hasta 10,000 tareas/mes',
+        locale === 'en-US'
           ? 'Document processing'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Processamento de documentos'
             : 'Procesamiento de documentos',
-        currentLocale === 'en-US'
+        locale === 'en-US'
+          ? 'Natural language interface'
+          : locale === 'pt-BR'
+            ? 'Interface de linguagem natural'
+            : 'Interfaz de lenguaje natural',
+        locale === 'en-US'
+          ? 'Email support'
+          : locale === 'pt-BR'
+            ? 'Suporte por email'
+            : 'Soporte por correo',
+        locale === 'en-US'
           ? 'Basic integrations'
-          : currentLocale === 'pt-BR'
+          : locale === 'pt-BR'
             ? 'Integrações básicas'
             : 'Integraciones básicas',
-        currentLocale === 'en-US'
-          ? 'Email support'
-          : currentLocale === 'pt-BR'
-            ? 'Suporte por email'
-            : 'Soporte por email',
-        currentLocale === 'en-US'
-          ? 'Learning algorithms'
-          : currentLocale === 'pt-BR'
-            ? 'Algoritmos de aprendizado'
-            : 'Algoritmos de aprendizaje',
       ],
       cta:
-        currentLocale === 'en-US'
-          ? 'Start with PENNY'
-          : currentLocale === 'pt-BR'
-            ? 'Começar com PENNY'
-            : 'Iniciar con PENNY',
+        locale === 'en-US'
+          ? 'Start Business'
+          : locale === 'pt-BR'
+            ? 'Começar Negócios'
+            : 'Iniciar Negocios',
       popular: true,
     },
     {
-      name:
-        currentLocale === 'en-US'
-          ? 'Professional'
-          : currentLocale === 'pt-BR'
-            ? 'Profissional'
-            : 'Profesional',
-      price: '35,000',
-      currency: 'MXN',
-      period: currentLocale === 'en-US' ? 'month' : currentLocale === 'pt-BR' ? 'mês' : 'mes',
+      name: locale === 'en-US' ? 'Enterprise' : locale === 'pt-BR' ? 'Empresarial' : 'Empresarial',
+      price: locale === 'en-US' ? 'Custom' : locale === 'pt-BR' ? 'Personalizado' : 'Personalizado',
+      currency: '',
+      period: '',
       description:
-        currentLocale === 'en-US'
-          ? 'For growing companies'
-          : currentLocale === 'pt-BR'
-            ? 'Para empresas em crescimento'
-            : 'Para empresas en crecimiento',
+        locale === 'en-US'
+          ? 'For large organizations with custom needs'
+          : locale === 'pt-BR'
+            ? 'Para grandes organizações com necessidades personalizadas'
+            : 'Para grandes organizaciones con necesidades personalizadas',
       features: [
-        currentLocale === 'en-US'
-          ? 'Up to 500 tasks/month'
-          : currentLocale === 'pt-BR'
-            ? 'Até 500 tarefas/mês'
-            : 'Hasta 500 tareas/mes',
-        currentLocale === 'en-US'
-          ? 'Advanced NLP features'
-          : currentLocale === 'pt-BR'
-            ? 'Recursos avançados de NLP'
-            : 'Características avanzadas de NLP',
-        currentLocale === 'en-US'
-          ? 'Custom workflows'
-          : currentLocale === 'pt-BR'
-            ? 'Fluxos personalizados'
-            : 'Flujos personalizados',
-        currentLocale === 'en-US'
-          ? 'Priority support'
-          : currentLocale === 'pt-BR'
-            ? 'Suporte prioritário'
-            : 'Soporte prioritario',
-        currentLocale === 'en-US'
-          ? 'API access'
-          : currentLocale === 'pt-BR'
-            ? 'Acesso à API'
-            : 'Acceso a API',
-        currentLocale === 'en-US'
-          ? 'Analytics dashboard'
-          : currentLocale === 'pt-BR'
-            ? 'Painel de análise'
-            : 'Panel de análisis',
+        locale === 'en-US'
+          ? 'Unlimited tasks'
+          : locale === 'pt-BR'
+            ? 'Tarefas ilimitadas'
+            : 'Tareas ilimitadas',
+        locale === 'en-US'
+          ? 'Advanced AI customization'
+          : locale === 'pt-BR'
+            ? 'Personalização avançada de IA'
+            : 'Personalización avanzada de IA',
+        locale === 'en-US'
+          ? 'Dedicated success team'
+          : locale === 'pt-BR'
+            ? 'Equipe de sucesso dedicada'
+            : 'Equipo de éxito dedicado',
+        locale === 'en-US'
+          ? '24/7 priority support'
+          : locale === 'pt-BR'
+            ? 'Suporte prioritário 24/7'
+            : 'Soporte prioritario 24/7',
+        locale === 'en-US'
+          ? 'Custom integrations'
+          : locale === 'pt-BR'
+            ? 'Integrações personalizadas'
+            : 'Integraciones personalizadas',
+        locale === 'en-US'
+          ? 'On-premise option'
+          : locale === 'pt-BR'
+            ? 'Opção on-premise'
+            : 'Opción on-premise',
       ],
       cta:
-        currentLocale === 'en-US'
-          ? 'Upgrade to Pro'
-          : currentLocale === 'pt-BR'
-            ? 'Atualizar para Pro'
-            : 'Actualizar a Pro',
+        locale === 'en-US'
+          ? 'Contact Sales'
+          : locale === 'pt-BR'
+            ? 'Contatar Vendas'
+            : 'Contactar Ventas',
       popular: false,
     },
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <Hero
-        variant="product"
-        title="PENNY"
-        subtitle={
-          currentLocale === 'en-US'
-            ? 'Intelligent Process Automation'
-            : currentLocale === 'pt-BR'
-              ? 'Automação Inteligente de Processos'
-              : 'Automatización Inteligente de Procesos'
-        }
-        description={
-          currentLocale === 'en-US'
-            ? 'Your AI assistant that learns, adapts, and continuously improves your workflows. Designed for businesses seeking efficiency without complexity.'
-            : currentLocale === 'pt-BR'
-              ? 'Seu assistente de IA que aprende, se adapta e melhora continuamente seus fluxos de trabalho. Projetado para empresas que buscam eficiência sem complexidade.'
-              : 'Tu asistente de IA que aprende, se adapta y mejora continuamente tus flujos de trabajo. Diseñado para empresas que buscan eficiencia sin complejidad.'
-        }
-        cta={{
-          primary: {
-            text:
-              currentLocale === 'en-US'
-                ? 'Start free trial'
-                : currentLocale === 'pt-BR'
-                  ? 'Iniciar teste gratuito'
-                  : 'Iniciar prueba gratuita',
-            href: '#trial',
-            variant: 'creative',
-          },
-          secondary: {
-            text:
-              currentLocale === 'en-US'
-                ? 'Watch demo'
-                : currentLocale === 'pt-BR'
-                  ? 'Assistir demo'
-                  : 'Ver demo',
-            href: '#demo',
-            variant: 'outline',
-          },
-        }}
-        background="gradient"
-        className="pt-20"
-      >
-        <div className="grid grid-cols-3 gap-8 text-center text-white/90">
-          <div>
-            <div className="text-2xl font-bold text-sun">100+</div>
-            <div className="text-sm">
-              {currentLocale === 'en-US'
-                ? 'Tools connected'
-                : currentLocale === 'pt-BR'
-                  ? 'Ferramentas conectadas'
-                  : 'Herramientas conectadas'}
-            </div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-sun">90%</div>
-            <div className="text-sm">
-              {currentLocale === 'en-US'
-                ? 'Task reduction'
-                : currentLocale === 'pt-BR'
-                  ? 'Redução de tarefas'
-                  : 'Reducción de tareas'}
-            </div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-sun">2 weeks</div>
-            <div className="text-sm">
-              {currentLocale === 'en-US'
-                ? 'Setup time'
-                : currentLocale === 'pt-BR'
-                  ? 'Tempo de configuração'
-                  : 'Tiempo de configuración'}
-            </div>
-          </div>
-        </div>
-      </Hero>
-
-      {/* Features Section */}
-      <section className="section">
-        <Container>
-          <div className="text-center mb-16">
-            <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
-                ? 'AI-powered features for every business'
-                : currentLocale === 'pt-BR'
-                  ? 'Recursos alimentados por IA para cada negócio'
-                  : 'Características impulsadas por IA para cada negocio'}
-            </Heading>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
-                ? 'PENNY combines advanced AI with intuitive design to deliver automation solutions that grow with your business.'
-                : currentLocale === 'pt-BR'
-                  ? 'PENNY combina IA avançada com design intuitivo para fornecer soluções de automação que crescem com seu negócio.'
-                  : 'PENNY combina IA avanzada con diseño intuitivo para ofrecer soluciones de automatización que crecen con tu negocio.'}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {pennyFeatures.map((feature, index) => (
-              <Card key={index} className="p-8">
-                <CardContent className="p-0">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="text-4xl">{feature.icon}</div>
-                    <div>
-                      <h3 className="font-heading text-xl mb-2">{feature.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    {feature.benefits.map((benefit, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <span className="text-leaf">✓</span>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Use Cases Section */}
-      <section className="section bg-pearl">
-        <Container>
-          <div className="text-center mb-16">
-            <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
-                ? 'Common use cases'
-                : currentLocale === 'pt-BR'
-                  ? 'Casos de uso comuns'
-                  : 'Casos de uso comunes'}
-            </Heading>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
-                ? 'See how businesses like yours are using PENNY to automate critical processes and achieve measurable results.'
-                : currentLocale === 'pt-BR'
-                  ? 'Veja como empresas como a sua estão usando PENNY para automatizar processos críticos e alcançar resultados mensuráveis.'
-                  : 'Mira cómo empresas como la tuya están usando PENNY para automatizar procesos críticos y lograr resultados medibles.'}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {useCases.map((useCase, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-8">
-                  <div className="text-5xl mb-4">{useCase.icon}</div>
-                  <h3 className="font-heading text-xl mb-4">{useCase.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6">{useCase.description}</p>
-                  <div className="grid grid-cols-3 gap-4 text-sm">
-                    <div>
-                      <div className="text-2xl font-bold text-leaf">
-                        {useCase.metrics.reduction}
-                      </div>
-                      <div className="text-gray-500">
-                        {currentLocale === 'en-US'
-                          ? 'Reduction'
-                          : currentLocale === 'pt-BR'
-                            ? 'Redução'
-                            : 'Reducción'}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-sun">{useCase.metrics.time}</div>
-                      <div className="text-gray-500">
-                        {currentLocale === 'en-US'
-                          ? 'To complete'
-                          : currentLocale === 'pt-BR'
-                            ? 'Para completar'
-                            : 'Para completar'}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-lavender">
-                        {useCase.metrics.satisfaction}
-                      </div>
-                      <div className="text-gray-500">
-                        {currentLocale === 'en-US'
-                          ? 'Satisfaction'
-                          : currentLocale === 'pt-BR'
-                            ? 'Satisfação'
-                            : 'Satisfacción'}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="section">
-        <Container>
-          <div className="text-center mb-16">
-            <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
-                ? 'What our customers say'
-                : currentLocale === 'pt-BR'
-                  ? 'O que nossos clientes dizem'
-                  : 'Lo que dicen nuestros clientes'}
-            </Heading>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
-                ? 'Join thousands of businesses that have transformed their operations with PENNY.'
-                : currentLocale === 'pt-BR'
-                  ? 'Junte-se a milhares de empresas que transformaram suas operações com PENNY.'
-                  : 'Únete a miles de empresas que han transformado sus operaciones con PENNY.'}
-            </p>
-          </div>
-
-          <TestimonialGrid testimonials={testimonials} columns={2} />
-        </Container>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="section bg-pearl">
-        <Container>
-          <div className="text-center mb-16">
-            <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
-                ? 'Simple, transparent pricing'
-                : currentLocale === 'pt-BR'
-                  ? 'Preços simples e transparentes'
-                  : 'Precios simples y transparentes'}
-            </Heading>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
-                ? 'Start with our Starter plan or scale up to Professional as your automation needs grow.'
-                : currentLocale === 'pt-BR'
-                  ? 'Comece com nosso plano Iniciante ou escale para Profissional conforme suas necessidades de automação crescem.'
-                  : 'Comienza con nuestro plan Inicial o escala a Profesional a medida que crecen tus necesidades de automatización.'}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {pricingPlans.map((plan, index) => (
-              <Card
-                key={index}
-                className={`relative ${plan.popular ? 'border-lavender ring-2 ring-lavender/20' : ''}`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-lavender text-white px-4 py-1 rounded-full text-sm font-medium">
-                      {currentLocale === 'en-US'
-                        ? 'Most Popular'
-                        : currentLocale === 'pt-BR'
-                          ? 'Mais Popular'
-                          : 'Más Popular'}
-                    </span>
-                  </div>
-                )}
-                <CardContent className="p-8">
-                  <h3 className="font-heading text-2xl mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                    <span className="text-lg text-gray-600 dark:text-gray-400 ml-1">
-                      {plan.currency}
-                    </span>
-                    <span className="text-gray-600 dark:text-gray-400">/{plan.period}</span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6">{plan.description}</p>
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="text-leaf">✓</span>
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    variant={plan.popular ? 'creative' : 'primary'}
-                    className="w-full"
-                    onClick={() =>
-                      logServiceInquiry('L4_PLATFORMS', 'penny-pricing', {
-                        plan: plan.name,
-                        locale: currentLocale,
-                      })
-                    }
-                  >
-                    {plan.cta}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ROI Calculator Section */}
-      <section className="section">
-        <Container>
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <Heading level={2} className="mb-4">
-                {currentLocale === 'en-US'
-                  ? 'Calculate your PENNY ROI'
-                  : currentLocale === 'pt-BR'
-                    ? 'Calcule seu ROI do PENNY'
-                    : 'Calcula tu ROI de PENNY'}
-              </Heading>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                {currentLocale === 'en-US'
-                  ? 'Discover how much time and money PENNY can save your business with our interactive calculator.'
-                  : currentLocale === 'pt-BR'
-                    ? 'Descubra quanto tempo e dinheiro PENNY pode economizar para seu negócio com nossa calculadora interativa.'
-                    : 'Descubre cuánto tiempo y dinero puede ahorrar PENNY a tu negocio con nuestra calculadora interactiva.'}
-              </p>
-            </div>
-
-            <ROICalculator
-              serviceTier="L4_PLATFORMS"
-              title={
-                currentLocale === 'en-US'
-                  ? 'PENNY ROI Calculator'
-                  : currentLocale === 'pt-BR'
-                    ? 'Calculadora ROI PENNY'
-                    : 'Calculadora ROI PENNY'
-              }
-              onCalculate={results => {
-                logServiceInquiry('L4_PLATFORMS', 'penny-roi-calculator', {
-                  results,
-                  locale: currentLocale,
-                });
-              }}
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* Trial Section */}
-      <section id="trial" className="section bg-pearl">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <Heading level={2} className="mb-4">
-                {currentLocale === 'en-US'
-                  ? 'Start your free trial'
-                  : currentLocale === 'pt-BR'
-                    ? 'Comece seu teste gratuito'
-                    : 'Comienza tu prueba gratuita'}
-              </Heading>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                {currentLocale === 'en-US'
-                  ? 'Experience PENNY risk-free for 30 days. No credit card required, full access to all features.'
-                  : currentLocale === 'pt-BR'
-                    ? 'Experimente PENNY sem risco por 30 dias. Não é necessário cartão de crédito, acesso completo a todos os recursos.'
-                    : 'Experimenta PENNY sin riesgo por 30 días. No se requiere tarjeta de crédito, acceso completo a todas las características.'}
-              </p>
-            </div>
-
-            <LeadForm
-              variant="progressive"
-              tier="L4_PLATFORMS"
-              source="penny-trial-request"
-              title={
-                currentLocale === 'en-US'
-                  ? 'Request free trial'
-                  : currentLocale === 'pt-BR'
-                    ? 'Solicitar teste gratuito'
-                    : 'Solicitar prueba gratuita'
-              }
-              description={
-                currentLocale === 'en-US'
-                  ? 'Get started with PENNY today and see the difference intelligent automation can make'
-                  : currentLocale === 'pt-BR'
-                    ? 'Comece com PENNY hoje e veja a diferença que a automação inteligente pode fazer'
-                    : 'Comienza con PENNY hoy y mira la diferencia que la automatización inteligente puede hacer'
-              }
-              submitText={
-                currentLocale === 'en-US'
-                  ? 'Start free trial'
-                  : currentLocale === 'pt-BR'
-                    ? 'Iniciar teste gratuito'
-                    : 'Iniciar prueba gratuita'
-              }
-              onSubmit={async data => {
-                logServiceInquiry('L4_PLATFORMS', 'penny-trial-form', {
-                  ...data,
-                  locale: currentLocale,
-                });
-                // TODO: Implement actual form submission
-              }}
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="section">
-        <Container>
-          <div className="max-w-2xl mx-auto">
-            <Newsletter
-              title={
-                currentLocale === 'en-US'
-                  ? 'Stay updated with PENNY'
-                  : currentLocale === 'pt-BR'
-                    ? 'Mantenha-se atualizado com PENNY'
-                    : 'Mantente actualizado con PENNY'
-              }
-              description={
-                currentLocale === 'en-US'
-                  ? 'Get automation tips, feature updates, and success stories from the PENNY community.'
-                  : currentLocale === 'pt-BR'
-                    ? 'Receba dicas de automação, atualizações de recursos e histórias de sucesso da comunidade PENNY.'
-                    : 'Recibe consejos de automatización, actualizaciones de características e historias de éxito de la comunidad PENNY.'
-              }
-              buttonText={
-                currentLocale === 'en-US'
-                  ? 'Subscribe'
-                  : currentLocale === 'pt-BR'
-                    ? 'Inscrever'
-                    : 'Suscribirse'
-              }
-              onSubscribe={async _email => {
-                // TODO: Implement newsletter subscription
-                // console.log('Newsletter subscription:', _email);
-              }}
-            />
-          </div>
-        </Container>
-      </section>
-    </main>
+    <PennyProductClient
+      locale={locale}
+      translations={translations}
+      features={pennyFeatures}
+      useCases={useCases}
+      testimonials={testimonials}
+      pricingPlans={pricingPlans}
+    />
   );
 }

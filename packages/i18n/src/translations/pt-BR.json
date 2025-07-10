@@ -25,6 +25,10 @@
       "rights": "Todos os direitos reservados",
       "privacy": "Privacidade",
       "terms": "Termos"
+    },
+    "metadata": {
+      "email": "E-mail",
+      "whatsapp": "WhatsApp"
     }
   },
   "footer": {
@@ -699,6 +703,22 @@
     "calculate": "Calcular ROI",
     "instructions": "Ajuste os valores e pressione \"Calcular ROI\" para ver seus resultados estimados",
     "disclaimer": "Cálculos baseados em médias da indústria e resultados de clientes atuais. Os resultados reais podem variar dependendo da implementação específica.",
+    "meta": {
+      "title": "Calculadora de ROI - MADFAM",
+      "description": "Descubra o retorno potencial do investimento em nossos serviços de transformação digital e consultoria em IA."
+    },
+    "hero": {
+      "subtitle": "Visualize o impacto que a MADFAM pode ter em seu negócio"
+    },
+    "selectionHint": "Selecione um nível de serviço para calcular o ROI específico, ou use os valores padrão para uma estimativa geral.",
+    "cta": {
+      "title": "Pronto para transformar seu negócio?",
+      "subtitle": "Nossa equipe de especialistas pode ajudá-lo a implementar soluções que geram resultados reais e mensuráveis.",
+      "requestConsultation": "Solicitar consulta",
+      "viewServices": "Ver serviços",
+      "getDetailed": "Obter análise detalhada",
+      "scheduleDemo": "Agendar demonstração"
+    },
     "inputs": {
       "employees": "Número de funcionários",
       "employeeHours": "Horas de funcionários por mês",
@@ -725,16 +745,49 @@
       "months": "meses",
       "employees": "funcionários",
       "projects": "projetos"
-    },
-    "cta": {
-      "getDetailed": "Obter análise detalhada",
-      "scheduleDemo": "Agendar demonstração"
     }
   },
   "estimator": {
     "title": "Estimador de Projetos",
-    "continue": "Continuar",
+    "subtitle": "Obtenha uma estimativa instantânea para seu projeto de transformação digital",
+    "meta": {
+      "title": "Estimador de Projetos - MADFAM",
+      "description": "Obtenha uma estimativa instantânea para seu projeto de transformação digital. Preço, tempo e equipe recomendada."
+    },
+    "hero": {
+      "subtitle": "Obtenha uma cotação instantânea para seu projeto"
+    },
+    "trust": {
+      "title": "Por que confiar em nossas estimativas?",
+      "experience": {
+        "title": "Experiência comprovada",
+        "description": "Mais de 100 projetos bem-sucedidos nos apoiam"
+      },
+      "transparency": {
+        "title": "Transparência total",
+        "description": "Sem custos ocultos ou surpresas pelo caminho"
+      },
+      "methodology": {
+        "title": "Metodologia ágil",
+        "description": "Entregas incrementais e ajustes durante o processo"
+      }
+    },
+    "disclaimer": "Estas estimativas são aproximadas e podem variar de acordo com os requisitos específicos do projeto. Entre em contato conosco para uma proposta detalhada e personalizada.",
+    "projectType": "Tipo de projeto",
+    "scope": "Escopo",
+    "timelineLabel": "Prazo desejado",
+    "budget": "Orçamento aproximado",
+    "estimate": {
+      "title": "Sua estimativa",
+      "timeframe": "Prazo estimado",
+      "investment": "Investimento estimado",
+      "team": "Equipe necessária",
+      "deliverables": "Entregas principais"
+    },
+    "next": "Próximo",
     "back": "Voltar",
+    "getQuote": "Obter cotação detalhada",
+    "continue": "Continuar",
     "progress": {
       "step": "Passo",
       "of": "de",
@@ -928,7 +981,13 @@
   "contact": {
     "title": "Entre em contato",
     "subtitle": "Pronto para transformar seu negócio? Vamos conversar sobre como podemos ajudar.",
+    "hero": {
+      "titlePrefix": "Vamos falar sobre seu",
+      "titleHighlight": "próximo projeto",
+      "subtitle": "Estamos prontos para ajudá-lo a transformar sua empresa com IA. Conte-nos suas necessidades e encontraremos a solução perfeita."
+    },
     "form": {
+      "title": "Solicitar informações",
       "name": "Nome completo",
       "email": "E-mail corporativo",
       "company": "Empresa",
@@ -948,6 +1007,23 @@
       "hours": "Horário de atendimento",
       "monday": "Segunda a sexta",
       "time": "9:00 - 18:00 CST"
+    },
+    "alternativeContact": {
+      "title": "Outras formas de nos contatar",
+      "location": "Localização",
+      "city": "Cidade do México, México",
+      "remoteService": "Atendimento remoto global",
+      "businessHours": "Horário de atendimento",
+      "weekdays": "Segunda - Sexta",
+      "saturday": "Sábado",
+      "sunday": "Domingo",
+      "closed": "Fechado",
+      "responseTime": "Respondemos em até 24 horas úteis"
+    },
+    "immediateHelp": {
+      "title": "Precisa de ajuda imediata?",
+      "subtitle": "Agende uma videochamada de 15 minutos para tirar suas dúvidas",
+      "scheduleCall": "Agendar chamada rápida →"
     }
   },
   "products": {
@@ -1074,5 +1150,40 @@
     "about": "Sobre nós",
     "contact": "Contato",
     "aiAssessment": "Avaliação IA"
+  },
+  "showcase": {
+    "title": "Vitrine de Componentes",
+    "toggleDarkMode": "Alternar Modo Escuro",
+    "sections": {
+      "buttons": "Variantes de Botões",
+      "services": "Cartões de Serviços",
+      "products": "Cartões de Produtos",
+      "features": "Recursos Principais",
+      "testimonials": "Depoimentos"
+    },
+    "buttons": {
+      "primary": "Primário",
+      "secondary": "Secundário",
+      "creative": "Criativo",
+      "outline": "Contorno",
+      "ghost": "Fantasma",
+      "danger": "Perigo",
+      "success": "Sucesso",
+      "loading": "Carregando",
+      "withIcon": "Com Ícone"
+    },
+    "badges": {
+      "recommended": "Recomendado",
+      "popular": "Popular"
+    },
+    "featureFlag": {
+      "comingSoon": "Calculadora Interativa em Breve!",
+      "active": "Calculadora de ROI Ativa!",
+      "activeDescription": "Esta seção é exibida porque o sinalizador de recurso INTERACTIVE_CALCULATOR está ativado."
+    },
+    "features": {
+      "subtitle": "CAPACIDADES",
+      "description": "Tudo o que você precisa para transformar seu negócio com IA"
+    }
   }
 }

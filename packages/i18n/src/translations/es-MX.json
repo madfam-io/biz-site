@@ -25,6 +25,10 @@
       "rights": "Todos los derechos reservados",
       "privacy": "Privacidad",
       "terms": "Términos"
+    },
+    "metadata": {
+      "email": "Email",
+      "whatsapp": "WhatsApp"
     }
   },
   "footer": {
@@ -483,7 +487,13 @@
   "contact": {
     "title": "Contáctanos",
     "subtitle": "¿Listo para transformar tu negocio? Hablemos sobre cómo podemos ayudarte.",
+    "hero": {
+      "titlePrefix": "Hablemos sobre tu",
+      "titleHighlight": "próximo proyecto",
+      "subtitle": "Estamos listos para ayudarte a transformar tu empresa con IA. Cuéntanos tus necesidades y encontraremos la solución perfecta."
+    },
     "form": {
+      "title": "Solicita información",
       "name": "Nombre completo",
       "email": "Email corporativo",
       "company": "Empresa",
@@ -503,6 +513,23 @@
       "hours": "Horario de atención",
       "monday": "Lunes a Viernes",
       "time": "9:00 - 18:00 CST"
+    },
+    "alternativeContact": {
+      "title": "Otras formas de contactarnos",
+      "location": "Ubicación",
+      "city": "Ciudad de México, México",
+      "remoteService": "Servicio remoto global",
+      "businessHours": "Horario de atención",
+      "weekdays": "Lunes - Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo",
+      "closed": "Cerrado",
+      "responseTime": "Respondemos en menos de 24 horas hábiles"
+    },
+    "immediateHelp": {
+      "title": "¿Necesitas ayuda inmediata?",
+      "subtitle": "Agenda una videollamada de 15 minutos para resolver tus dudas",
+      "scheduleCall": "Agendar llamada rápida →"
     }
   },
   "careers": {
@@ -778,6 +805,22 @@
     "calculate": "Calcular ROI",
     "instructions": "Ajusta los valores y presiona \"Calcular ROI\" para ver tus resultados estimados",
     "disclaimer": "Cálculos basados en promedios de la industria y resultados de clientes actuales. Los resultados reales pueden variar según la implementación específica.",
+    "meta": {
+      "title": "Calculadora ROI - MADFAM",
+      "description": "Descubre el retorno de inversión potencial de nuestros servicios de transformación digital y consultoría en IA."
+    },
+    "hero": {
+      "subtitle": "Visualiza el impacto que MADFAM puede tener en tu negocio"
+    },
+    "selectionHint": "Selecciona un nivel de servicio para calcular el ROI específico, o usa los valores predeterminados para una estimación general.",
+    "cta": {
+      "title": "¿Listo para transformar tu negocio?",
+      "subtitle": "Nuestro equipo de expertos puede ayudarte a implementar soluciones que generen resultados reales y medibles.",
+      "requestConsultation": "Solicitar consulta",
+      "viewServices": "Ver servicios",
+      "getDetailed": "Obtener análisis detallado",
+      "scheduleDemo": "Agendar demo"
+    },
     "inputs": {
       "employees": "Número de empleados",
       "employeeHours": "Horas de empleados por mes",
@@ -804,15 +847,34 @@
       "months": "meses",
       "employees": "empleados",
       "projects": "proyectos"
-    },
-    "cta": {
-      "getDetailed": "Obtener análisis detallado",
-      "scheduleDemo": "Agendar demo"
     }
   },
   "estimator": {
     "title": "Estimador de Proyecto",
     "subtitle": "Obtén una estimación instantánea para tu proyecto de transformación digital",
+    "meta": {
+      "title": "Estimador de Proyectos - MADFAM",
+      "description": "Obtén una estimación instantánea para tu proyecto de transformación digital. Precio, tiempo y equipo recomendado."
+    },
+    "hero": {
+      "subtitle": "Obtén una cotización instantánea para tu proyecto"
+    },
+    "trust": {
+      "title": "¿Por qué confiar en nuestras estimaciones?",
+      "experience": {
+        "title": "Experiencia comprobada",
+        "description": "Más de 100 proyectos exitosos nos respaldan"
+      },
+      "transparency": {
+        "title": "Transparencia total",
+        "description": "Sin costos ocultos ni sorpresas en el camino"
+      },
+      "methodology": {
+        "title": "Metodología ágil",
+        "description": "Entregas incrementales y ajustes sobre la marcha"
+      }
+    },
+    "disclaimer": "Estas estimaciones son aproximadas y pueden variar según los requisitos específicos del proyecto. Contáctanos para obtener una propuesta detallada y personalizada.",
     "projectType": "Tipo de proyecto",
     "scope": "Alcance",
     "timelineLabel": "Plazo deseado",
@@ -1088,5 +1150,40 @@
     "about": "Acerca de nosotros",
     "contact": "Contacto",
     "aiAssessment": "Evaluación IA"
+  },
+  "showcase": {
+    "title": "Vitrina de Componentes",
+    "toggleDarkMode": "Alternar Modo Oscuro",
+    "sections": {
+      "buttons": "Variantes de Botones",
+      "services": "Tarjetas de Servicios",
+      "products": "Tarjetas de Productos",
+      "features": "Características Clave",
+      "testimonials": "Testimonios"
+    },
+    "buttons": {
+      "primary": "Primario",
+      "secondary": "Secundario",
+      "creative": "Creativo",
+      "outline": "Contorno",
+      "ghost": "Fantasma",
+      "danger": "Peligro",
+      "success": "Éxito",
+      "loading": "Cargando",
+      "withIcon": "Con Ícono"
+    },
+    "badges": {
+      "recommended": "Recomendado",
+      "popular": "Popular"
+    },
+    "featureFlag": {
+      "comingSoon": "¡Calculadora Interactiva Próximamente!",
+      "active": "¡Calculadora ROI Activa!",
+      "activeDescription": "Esta sección se muestra porque la bandera de características INTERACTIVE_CALCULATOR está habilitada."
+    },
+    "features": {
+      "subtitle": "CAPACIDADES",
+      "description": "Todo lo que necesitas para transformar tu negocio con IA"
+    }
   }
 }
