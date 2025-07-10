@@ -552,7 +552,8 @@
     "subtitle": "Thoughts, stories, and ideas from the MADFAM team on technology, innovation, and business transformation.",
     "readMore": "Read more",
     "by": "By",
-    "minRead": "min read"
+    "minRead": "min read",
+    "backToBlog": "Back to Blog"
   },
   "caseStudies": {
     "title": "Case Studies",
@@ -764,7 +765,7 @@
     "subtitle": "Get an instant estimate for your digital transformation project",
     "projectType": "Project type",
     "scope": "Scope",
-    "timeline": "Desired timeline",
+    "timelineLabel": "Desired timeline",
     "budget": "Approximate budget",
     "estimate": {
       "title": "Your estimate",
@@ -775,7 +776,112 @@
     },
     "next": "Next",
     "back": "Back",
-    "getQuote": "Get detailed quote"
+    "getQuote": "Get detailed quote",
+    "continue": "Continue",
+    "progress": {
+      "step": "Step",
+      "of": "of",
+      "completed": "completed"
+    },
+    "steps": {
+      "projectType": {
+        "title": "What type of project are you planning?"
+      },
+      "complexity": {
+        "title": "What is the complexity level?"
+      },
+      "features": {
+        "title": "Select the features you need"
+      },
+      "timeline": {
+        "title": "What's your timeline?"
+      },
+      "industry": {
+        "title": "What industry are you in?"
+      }
+    },
+    "projectTypes": {
+      "webApp": "Web Application",
+      "mobileApp": "Mobile App",
+      "ecommerce": "E-commerce",
+      "automation": "Automation",
+      "consulting": "Consulting",
+      "custom": "Custom Project"
+    },
+    "complexity": {
+      "simple": {
+        "label": "Simple",
+        "description": "Basic functionality, standard design"
+      },
+      "medium": {
+        "label": "Medium",
+        "description": "Custom features, moderate integration"
+      },
+      "complex": {
+        "label": "Complex",
+        "description": "Advanced architecture, multiple integrations"
+      }
+    },
+    "features": {
+      "aiIntegration": "AI Integration",
+      "realTime": "Real-time Features",
+      "payment": "Payment Processing",
+      "analytics": "Advanced Analytics",
+      "multiLanguage": "Multi-language",
+      "offline": "Offline Functionality",
+      "notifications": "Push Notifications",
+      "socialLogin": "Social Login",
+      "api": "REST/GraphQL API",
+      "adminPanel": "Admin Dashboard"
+    },
+    "timeline": {
+      "urgent": {
+        "label": "Urgent",
+        "description": "Need to start immediately"
+      },
+      "normal": {
+        "label": "Normal",
+        "description": "1-2 months to start"
+      },
+      "flexible": {
+        "label": "Flexible",
+        "description": "No specific rush"
+      }
+    },
+    "industries": {
+      "retail": "Retail",
+      "fintech": "Fintech",
+      "health": "Healthcare",
+      "education": "Education",
+      "manufacturing": "Manufacturing",
+      "services": "Services",
+      "government": "Government",
+      "ngo": "NGO",
+      "other": "Other"
+    },
+    "results": {
+      "title": "Your personalized estimate",
+      "investment": "Estimated investment",
+      "duration": "Estimated duration",
+      "months": "months",
+      "recommendedTeam": "Recommended team",
+      "alsoConsider": "You might also consider:",
+      "requestProposal": "Request detailed proposal",
+      "anotherEstimate": "Get another estimate"
+    },
+    "team": {
+      "iosDeveloper": "iOS/Android Developer",
+      "uiDesigner": "UI/UX Designer",
+      "aiEngineer": "AI/ML Engineer",
+      "softwareArchitect": "Software Architect",
+      "projectManager": "Project Manager",
+      "fullStackDeveloper": "Full Stack Developer",
+      "qaEngineer": "QA Engineer"
+    },
+    "suggestions": {
+      "analyticsDashboard": "Analytics Dashboard",
+      "futureApi": "API for Future Integrations"
+    }
   },
   "privacy": {
     "title": "Privacy Policy",

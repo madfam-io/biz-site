@@ -552,7 +552,8 @@
     "subtitle": "Pensamientos, historias e ideas del equipo MADFAM sobre tecnología, innovación y transformación empresarial.",
     "readMore": "Leer más",
     "by": "Por",
-    "minRead": "min de lectura"
+    "minRead": "min de lectura",
+    "backToBlog": "Volver al Blog"
   },
   "caseStudies": {
     "title": "Casos de Éxito",
@@ -814,7 +815,7 @@
     "subtitle": "Obtén una estimación instantánea para tu proyecto de transformación digital",
     "projectType": "Tipo de proyecto",
     "scope": "Alcance",
-    "timeline": "Plazo deseado",
+    "timelineLabel": "Plazo deseado",
     "budget": "Presupuesto aproximado",
     "estimate": {
       "title": "Tu estimación",
@@ -825,7 +826,112 @@
     },
     "next": "Siguiente",
     "back": "Atrás",
-    "getQuote": "Obtener cotización detallada"
+    "getQuote": "Obtener cotización detallada",
+    "continue": "Continuar",
+    "progress": {
+      "step": "Paso",
+      "of": "de",
+      "completed": "completado"
+    },
+    "steps": {
+      "projectType": {
+        "title": "¿Qué tipo de proyecto estás planeando?"
+      },
+      "complexity": {
+        "title": "¿Cuál es el nivel de complejidad?"
+      },
+      "features": {
+        "title": "Selecciona las características que necesitas"
+      },
+      "timeline": {
+        "title": "¿Cuál es tu plazo?"
+      },
+      "industry": {
+        "title": "¿En qué industria operas?"
+      }
+    },
+    "projectTypes": {
+      "webApp": "Aplicación Web",
+      "mobileApp": "App Móvil",
+      "ecommerce": "E-commerce",
+      "automation": "Automatización",
+      "consulting": "Consultoría",
+      "custom": "Proyecto Personalizado"
+    },
+    "complexity": {
+      "simple": {
+        "label": "Simple",
+        "description": "Funcionalidad básica, diseño estándar"
+      },
+      "medium": {
+        "label": "Medio",
+        "description": "Funciones personalizadas, integración moderada"
+      },
+      "complex": {
+        "label": "Complejo",
+        "description": "Arquitectura avanzada, múltiples integraciones"
+      }
+    },
+    "features": {
+      "aiIntegration": "Integración de IA",
+      "realTime": "Tiempo Real",
+      "payment": "Procesamiento de Pagos",
+      "analytics": "Analytics Avanzado",
+      "multiLanguage": "Multi-idioma",
+      "offline": "Funcionalidad Offline",
+      "notifications": "Notificaciones Push",
+      "socialLogin": "Login Social",
+      "api": "API REST/GraphQL",
+      "adminPanel": "Panel Administrativo"
+    },
+    "timeline": {
+      "urgent": {
+        "label": "Urgente",
+        "description": "Necesito comenzar de inmediato"
+      },
+      "normal": {
+        "label": "Normal",
+        "description": "1-2 meses para comenzar"
+      },
+      "flexible": {
+        "label": "Flexible",
+        "description": "Sin prisa específica"
+      }
+    },
+    "industries": {
+      "retail": "Retail",
+      "fintech": "Fintech",
+      "health": "Salud",
+      "education": "Educación",
+      "manufacturing": "Manufactura",
+      "services": "Servicios",
+      "government": "Gobierno",
+      "ngo": "ONG",
+      "other": "Otro"
+    },
+    "results": {
+      "title": "Tu estimación personalizada",
+      "investment": "Inversión estimada",
+      "duration": "Duración estimada",
+      "months": "meses",
+      "recommendedTeam": "Equipo recomendado",
+      "alsoConsider": "También podrías considerar:",
+      "requestProposal": "Solicitar propuesta detallada",
+      "anotherEstimate": "Hacer otra estimación"
+    },
+    "team": {
+      "iosDeveloper": "Desarrollador iOS/Android",
+      "uiDesigner": "Diseñador UI/UX",
+      "aiEngineer": "Ingeniero de IA/ML",
+      "softwareArchitect": "Arquitecto de Software",
+      "projectManager": "Gerente de Proyecto",
+      "fullStackDeveloper": "Desarrollador Full Stack",
+      "qaEngineer": "Ingeniero de QA"
+    },
+    "suggestions": {
+      "analyticsDashboard": "Dashboard de Analytics",
+      "futureApi": "API para Integraciones Futuras"
+    }
   },
   "privacy": {
     "title": "Política de Privacidad",
