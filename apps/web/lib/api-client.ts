@@ -1,4 +1,15 @@
 import { environment } from './environment';
+import type {
+  ApiResponse,
+  LeadData,
+  LeadResponse,
+  AssessmentData,
+  AssessmentResponse,
+  ROIData,
+  ROIResponse,
+  ProjectEstimateData,
+  ProjectEstimateResponse,
+} from '@/types/api';
 
 // Mock data for staging
 const mockLeadResponse = {
@@ -64,7 +75,7 @@ export class ApiClient {
     this.isMock = environment.isStaticExport;
   }
 
-  async submitLead(data: any) {
+  async submitLead(data: LeadData): Promise<ApiResponse<LeadResponse>> {
     if (this.isMock) {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -86,7 +97,7 @@ export class ApiClient {
     return response.json();
   }
 
-  async submitAssessment(data: any) {
+  async submitAssessment(data: AssessmentData): Promise<ApiResponse<AssessmentResponse>> {
     if (this.isMock) {
       await new Promise(resolve => setTimeout(resolve, 1500));
       return mockAssessmentResponse;
@@ -126,7 +137,7 @@ export class ApiClient {
           },
           {
             id: 'q3',
-            question: 'What is your team\'s technical expertise level?',
+            question: "What is your team's technical expertise level?",
             category: 'team',
             weight: 2,
           },
@@ -155,7 +166,7 @@ export class ApiClient {
     return response.json();
   }
 
-  async calculateROI(data: any) {
+  async calculateROI(data: ROIData): Promise<ApiResponse<ROIResponse>> {
     if (this.isMock) {
       await new Promise(resolve => setTimeout(resolve, 1200));
       return mockCalculatorResponse;
@@ -176,34 +187,66 @@ export class ApiClient {
     return response.json();
   }
 
-  async calculateProjectEstimate(data: any) {
+  async calculateProjectEstimate(
+    data: ProjectEstimateData
+  ): Promise<ApiResponse<ProjectEstimateResponse>> {
     if (this.isMock) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       return {
         success: true,
-        calculationId: 'mock-estimate-123',
-        results: {
-          pricing: {
-            baseCost: 150000,
-            featureCost: 30000,
-            deliverableCost: 20000,
-            subtotal: 200000,
-            tax: 32000,
-            total: 232000,
-            currency: 'MXN',
-          },
-          timeline: {
-            minWeeks: 4,
-            maxWeeks: 8,
-            urgency: 'standard',
+        data: {
+          estimateId: 'mock-estimate-123',
+          summary: {
+            totalHours: 800,
+            totalCost: 232000,
+            duration: 8,
+            confidence: 85,
           },
           breakdown: {
-            projectType: 'consulting',
-            complexity: 'moderate',
-            deliverables: ['Strategy document', 'Implementation plan'],
-            features: ['Workshop sessions', 'Team training'],
-            teamSize: 'medium',
+            development: 120000,
+            design: 40000,
+            testing: 32000,
+            deployment: 16000,
+            projectManagement: 16000,
+            contingency: 8000,
           },
+          timeline: {
+            phases: [
+              {
+                name: 'Discovery & Planning',
+                duration: 2,
+                deliverables: ['Requirements document', 'Project plan'],
+              },
+              {
+                name: 'Implementation',
+                duration: 4,
+                deliverables: ['Core functionality', 'Testing'],
+              },
+              {
+                name: 'Deployment & Launch',
+                duration: 2,
+                deliverables: ['Production deployment', 'Training'],
+              },
+            ],
+            milestones: [
+              {
+                name: 'Project kickoff',
+                date: '2024-04-01',
+                dependencies: [],
+              },
+              {
+                name: 'MVP completion',
+                date: '2024-05-15',
+                dependencies: ['Discovery phase'],
+              },
+            ],
+          },
+          recommendations: {
+            alternativeApproaches: ['Phased approach', 'MVP first'],
+            costOptimizations: ['Use existing templates', 'Reduce complexity'],
+            riskMitigations: ['Regular checkpoints', 'Prototype validation'],
+          },
+          nextSteps: ['Schedule kickoff meeting', 'Sign contract', 'Begin discovery phase'],
         },
       };
     }

@@ -81,7 +81,7 @@ interface SparkProductClientProps {
   };
   features: SparkFeature[];
   useCases: UseCase[];
-  testimonials: any[];
+  testimonials: import('@/types/content').Testimonial[];
   pricingPlans: PricingPlan[];
 }
 

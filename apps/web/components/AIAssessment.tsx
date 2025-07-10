@@ -15,7 +15,11 @@ interface Question {
   }[];
 }
 
-const getAssessmentQuestions = (t: any): Question[] => [
+interface TranslationFunction {
+  (key: string, values?: Record<string, string | number>): string;
+}
+
+const getAssessmentQuestions = (t: TranslationFunction): Question[] => [
   {
     id: 'current_tech',
     question: t('questions.currentTech.question'),

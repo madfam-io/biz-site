@@ -5,6 +5,7 @@ import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { cmsClient, getPublishedBlogPosts, type BlogPost } from '@/lib/cms';
 import { environment } from '@/lib/environment';
+import type { RichTextDocument, RichTextNode } from '@/types/content';
 
 // Enable ISR with 1 hour revalidation
 export const revalidate = 3600; // 1 hour
@@ -246,13 +247,13 @@ export async function generateMetadata({
 }
 
 // Simple rich text renderer for the content
-function renderRichText(content: any): string {
+function renderRichText(content: RichTextDocument | undefined): string {
   if (!content || !content.content) return '';
 
   return content.content
-    .map((block: any) => {
+    .map((block: RichTextNode) => {
       if (block.type === 'paragraph' && block.content) {
-        return block.content.map((item: any) => item.text || '').join('');
+        return block.content.map((item: RichTextNode) => item.text || '').join('');
       }
       return '';
     })

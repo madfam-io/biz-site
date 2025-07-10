@@ -3,6 +3,7 @@
 import { useConversionTracking, useEngagementTracking } from '@madfam/analytics';
 import { ServiceTier } from '@madfam/core';
 import { useEffect } from 'react';
+import { throttle } from '@/types/utilities';
 
 interface ServicePageAnalyticsProps {
   serviceTier: ServiceTier;
@@ -70,7 +71,17 @@ export function ServicePageAnalytics({
 
   // Make tracking functions available globally for the page
   useEffect(() => {
-    (window as any).trackServicePageEvent = {
+    interface WindowWithTracking extends Window {
+      trackServicePageEvent?: {
+        trackPricingView: () => void;
+        trackCTAClick: (ctaType: 'quote' | 'contact' | 'demo') => void;
+        trackInterest: () => void;
+        trackContact: () => void;
+      };
+    }
+
+    const windowWithTracking = window as WindowWithTracking;
+    windowWithTracking.trackServicePageEvent = {
       trackPricingView,
       trackCTAClick,
       trackInterest: () => trackServiceFunnelStep('interest', serviceTier, { source: 'manual' }),
@@ -78,21 +89,9 @@ export function ServicePageAnalytics({
     };
 
     return () => {
-      delete (window as any).trackServicePageEvent;
+      delete windowWithTracking.trackServicePageEvent;
     };
   }, [serviceTier, trackServiceFunnelStep, trackPurchaseIntent, trackPricingView, trackCTAClick]);
 
   return null; // This component doesn't render anything
-}
-
-// Utility function to throttle scroll events
-function throttle(func: (...args: any[]) => void, limit: number) {
-  let inThrottle: boolean;
-  return function (this: any, ...args: any[]) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
 }

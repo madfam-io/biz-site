@@ -280,6 +280,12 @@ export default async function SparkProductPage({ params: { locale } }: SparkProd
             : 'SPARK transformó toda nuestra operación. Automatizamos 15 procesos críticos y redujimos el trabajo manual en 70%. El ROI fue inmediato y sustancial.',
       author: {
         name: 'Ana María Santos',
+        title:
+          locale === 'en-US'
+            ? 'Operations Director'
+            : locale === 'pt-BR'
+              ? 'Diretora de Operações'
+              : 'Directora de Operaciones',
         role:
           locale === 'en-US'
             ? 'Operations Director'
@@ -372,6 +378,8 @@ export default async function SparkProductPage({ params: { locale } }: SparkProd
                 : 'Eficiencia del equipo',
         },
       ],
+      featured: true,
+      verified: true,
     },
   ];
 

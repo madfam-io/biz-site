@@ -2,13 +2,14 @@ import { LeadStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
-
-// Webhook event types
-interface WebhookEvent {
-  event: string;
-  data: any;
-  timestamp?: string;
-}
+import type {
+  WebhookEvent,
+  LeadStatusUpdateData,
+  EmailEventData,
+  CRMSyncData,
+  MeetingScheduledData,
+  IntegrationUpdateData,
+} from '@/types/webhooks';
 
 // Validate webhook authentication
 function validateWebhookAuth(request: NextRequest): boolean {
@@ -24,9 +25,10 @@ function validateWebhookAuth(request: NextRequest): boolean {
 }
 
 // Handle lead status update
-async function handleLeadStatusUpdate(data: any) {
+async function handleLeadStatusUpdate(data: LeadStatusUpdateData) {
   try {
-    const { leadId, status, note } = data;
+    const { leadId, newStatus: status, metadata } = data;
+    const note = metadata?.notes;
 
     if (!leadId || !status) {
       throw new Error('Missing required fields: leadId, status');
@@ -44,7 +46,7 @@ async function handleLeadStatusUpdate(data: any) {
         leadId,
         type: 'status_changed',
         description: `Status updated to ${status}`,
-        metadata: { previousStatus: data.previousStatus, note },
+        metadata: { previousStatus: data.oldStatus, note },
       },
     });
 
@@ -64,9 +66,11 @@ async function handleLeadStatusUpdate(data: any) {
 }
 
 // Handle email event
-async function handleEmailEvent(data: any) {
+async function handleEmailEvent(data: EmailEventData) {
   try {
-    const { leadId, type, subject, status, error } = data;
+    const { recipient, event: type, subject, metadata } = data;
+    // Extract leadId from metadata or map from recipient
+    const leadId = metadata?.campaignId; // Assuming leadId is stored in campaignId
 
     if (!leadId || !type) {
       throw new Error('Missing required fields: leadId, type');
@@ -78,7 +82,12 @@ async function handleEmailEvent(data: any) {
         leadId,
         type: `email_${type}`,
         description: `Email ${type}: ${subject || 'No subject'}`,
-        metadata: { status, error },
+        metadata: {
+          status: data.event,
+          recipient,
+          messageId: data.messageId,
+          clickedUrl: metadata?.clickedUrl,
+        },
       },
     });
   } catch (error) {
@@ -88,9 +97,10 @@ async function handleEmailEvent(data: any) {
 }
 
 // Handle CRM sync event
-async function handleCRMSync(data: any) {
+async function handleCRMSync(data: CRMSyncData) {
   try {
-    const { leadId, crmId, action, syncData } = data;
+    const { entityId: leadId, operation: action, changes, metadata } = data;
+    const crmId = metadata?.crmId || leadId;
 
     if (!leadId || !crmId || !action) {
       throw new Error('Missing required fields: leadId, crmId, action');
@@ -102,7 +112,12 @@ async function handleCRMSync(data: any) {
         leadId,
         type: 'crm_sync',
         description: `CRM ${action}: ${crmId}`,
-        metadata: { crmId, action, syncData },
+        metadata: {
+          crmId,
+          action,
+          changes: JSON.stringify(changes),
+          syncedAt: data.syncedAt,
+        },
       },
     });
   } catch (error) {
@@ -112,9 +127,11 @@ async function handleCRMSync(data: any) {
 }
 
 // Handle meeting scheduled event
-async function handleMeetingScheduled(data: any) {
+async function handleMeetingScheduled(data: MeetingScheduledData) {
   try {
-    const { leadId, meetingId, scheduledAt, type, attendees } = data;
+    const { meetingId, schedule, details, metadata } = data;
+    const leadId = metadata?.leadId;
+    const scheduledAt = schedule.startTime;
 
     if (!leadId || !meetingId || !scheduledAt) {
       throw new Error('Missing required fields: leadId, meetingId, scheduledAt');
@@ -126,7 +143,13 @@ async function handleMeetingScheduled(data: any) {
         leadId,
         type: 'meeting_scheduled',
         description: `Meeting scheduled for ${scheduledAt}`,
-        metadata: { meetingId, type, attendees },
+        metadata: {
+          meetingId,
+          duration: schedule.duration,
+          attendees: data.attendees,
+          location: details.location,
+          meetingUrl: details.meetingUrl,
+        },
       },
     });
   } catch (error) {
@@ -136,9 +159,11 @@ async function handleMeetingScheduled(data: any) {
 }
 
 // Handle integration update
-async function handleIntegrationUpdate(data: any) {
+async function handleIntegrationUpdate(data: IntegrationUpdateData) {
   try {
-    const { name, enabled, config, lastSync } = data;
+    const { integrationId: name, status, lastSync, metadata } = data;
+    const enabled = status === 'connected';
+    const config = metadata?.settings;
 
     if (!name) {
       throw new Error('Missing required field: name');
@@ -149,13 +174,13 @@ async function handleIntegrationUpdate(data: any) {
       where: { name },
       update: {
         enabled: enabled ?? undefined,
-        config: config ?? undefined,
+        config: config ? JSON.stringify(config) : undefined,
         lastSync: lastSync ? new Date(lastSync) : undefined,
       },
       create: {
         name,
         enabled: enabled ?? true,
-        config: config ?? {},
+        config: config ? JSON.stringify(config) : JSON.stringify({}),
       },
     });
   } catch (error) {
@@ -180,7 +205,7 @@ export async function POST(request: NextRequest) {
     // Route to appropriate handler
     switch (event.event) {
       case 'lead.status_updated':
-        await handleLeadStatusUpdate(event.data);
+        await handleLeadStatusUpdate(event.data as LeadStatusUpdateData);
         break;
 
       case 'email.sent':
@@ -188,20 +213,20 @@ export async function POST(request: NextRequest) {
       case 'email.opened':
       case 'email.clicked':
       case 'email.bounced':
-        await handleEmailEvent(event.data);
+        await handleEmailEvent(event.data as EmailEventData);
         break;
 
       case 'crm.synced':
       case 'crm.updated':
-        await handleCRMSync(event.data);
+        await handleCRMSync(event.data as CRMSyncData);
         break;
 
       case 'meeting.scheduled':
-        await handleMeetingScheduled(event.data);
+        await handleMeetingScheduled(event.data as MeetingScheduledData);
         break;
 
       case 'integration.updated':
-        await handleIntegrationUpdate(event.data);
+        await handleIntegrationUpdate(event.data as IntegrationUpdateData);
         break;
 
       default:

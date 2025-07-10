@@ -25,7 +25,7 @@ const DEFAULT_CACHE_CONFIG: CacheConfig = {
 };
 
 // In-memory cache for development/small deployments
-const cache = new Map<string, { data: any; timestamp: number; ttl: number }>();
+const cache = new Map<string, { data: unknown; timestamp: number; ttl: number }>();
 
 // Retry configuration
 interface RetryConfig {
@@ -57,7 +57,7 @@ export interface BlogPost {
   status: 'draft' | 'published';
   publishedDate: string;
   excerpt: string;
-  content?: any; // Rich text content
+  content?: import('@/types/content').RichTextDocument; // Rich text content
   featuredImage?: {
     id: string;
     url: string;
@@ -80,7 +80,7 @@ export interface CaseStudy {
   client: string;
   industry: string;
   challenge: string;
-  solution: any; // Rich text content or string
+  solution: import('@/types/content').RichTextDocument | string; // Rich text content or string
   results:
     | Array<{
         metric: string;
@@ -188,7 +188,7 @@ class CMSClient {
           console.warn('Background refresh failed:', error);
         });
 
-      return staleData;
+      return staleData as T;
     }
 
     // Fetch fresh data
@@ -203,7 +203,7 @@ class CMSClient {
       });
     }
 
-    return data;
+    return data as T;
   }
 
   private async fetchWithRetry<T>(endpoint: string, options?: RequestInit): Promise<T> {
