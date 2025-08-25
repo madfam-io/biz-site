@@ -1,3 +1,5 @@
+'use client';
+
 // Legacy export - use the new modular version from './lead-form/index'
 // This file is kept for backward compatibility
 export { LeadForm } from './lead-form';
