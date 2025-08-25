@@ -447,6 +447,7 @@
     "spark": {
       "title": "SPARK",
       "tagline": "Orquestación Inteligente de IA",
+      "shortDescription": "Plataforma que conecta, automatiza y optimiza procesos empresariales con IA.",
       "description": "Plataforma completa que conecta, automatiza y optimiza todos tus procesos empresariales a través de IA avanzada.",
       "features": {
         "title": "Características principales",
@@ -466,6 +467,7 @@
     "penny": {
       "title": "PENNY",
       "tagline": "Tu Asistente Personal de IA",
+      "shortDescription": "Automatización inteligente que aprende y mejora continuamente tus procesos.",
       "description": "Automatización inteligente que aprende de tus procesos y mejora continuamente, haciendo a tu equipo más productivo.",
       "features": {
         "title": "Características principales",

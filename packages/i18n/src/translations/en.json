@@ -447,6 +447,7 @@
     "spark": {
       "title": "SPARK",
       "tagline": "Intelligent AI Orchestration",
+      "shortDescription": "Platform that connects, automates, and optimizes business processes with AI.",
       "description": "Complete platform that connects, automates, and optimizes all your business processes through advanced AI.",
       "features": {
         "title": "Key Features",
@@ -466,6 +467,7 @@
     "penny": {
       "title": "PENNY",
       "tagline": "Your Personal AI Assistant",
+      "shortDescription": "Intelligent automation that learns and continuously improves your processes.",
       "description": "Intelligent automation that learns from your processes and continuously improves, making your team more productive.",
       "features": {
         "title": "Key Features",
