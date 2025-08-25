@@ -8,6 +8,8 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useCurrencyFormatter } from '@/lib/formatting';
 
+type TranslationFunction = (key: string) => string;
+
 interface ProjectRequirements {
   projectType: string;
   complexity: 'simple' | 'medium' | 'complex';
@@ -25,7 +27,7 @@ interface ProjectEstimate {
   suggestedFeatures: string[];
 }
 
-const getProjectTypes = (t: any) => [
+const getProjectTypes = (t: TranslationFunction) => [
   { id: 'web-app', name: t('projectTypes.webApp'), icon: '🌐' },
   { id: 'mobile-app', name: t('projectTypes.mobileApp'), icon: '📱' },
   { id: 'ecommerce', name: t('projectTypes.ecommerce'), icon: '🛒' },
@@ -34,7 +36,7 @@ const getProjectTypes = (t: any) => [
   { id: 'custom', name: t('projectTypes.custom'), icon: '🎯' },
 ];
 
-const getFeatures = (t: any) => [
+const getFeatures = (t: TranslationFunction) => [
   { id: 'ai-integration', name: t('features.aiIntegration'), category: 'tech' },
   { id: 'real-time', name: t('features.realTime'), category: 'tech' },
   { id: 'payment', name: t('features.payment'), category: 'business' },
@@ -47,7 +49,7 @@ const getFeatures = (t: any) => [
   { id: 'admin-panel', name: t('features.adminPanel'), category: 'management' },
 ];
 
-const getIndustries = (t: any) => [
+const getIndustries = (t: TranslationFunction) => [
   t('industries.retail'),
   t('industries.fintech'),
   t('industries.health'),
@@ -243,7 +245,10 @@ export function ProjectEstimator() {
                 <button
                   key={option.value}
                   onClick={() => {
-                    setRequirements({ ...requirements, complexity: option.value as any });
+                    setRequirements({
+                      ...requirements,
+                      complexity: option.value as 'simple' | 'medium' | 'complex',
+                    });
                     setStep(3);
                   }}
                   className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
@@ -329,7 +334,10 @@ export function ProjectEstimator() {
                 <button
                   key={option.value}
                   onClick={() => {
-                    setRequirements({ ...requirements, timeline: option.value as any });
+                    setRequirements({
+                      ...requirements,
+                      timeline: option.value as 'urgent' | 'normal' | 'flexible',
+                    });
                     setStep(5);
                   }}
                   className={`w-full p-4 rounded-xl border-2 text-left transition-all ${

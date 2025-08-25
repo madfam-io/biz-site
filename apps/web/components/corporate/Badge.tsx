@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
 interface BadgeProps {
@@ -14,13 +15,14 @@ const badgeVariants = {
   program: 'bg-blue-50 text-blue-700 border border-blue-200',
 };
 
-const badgeText = {
-  'by-madfam': 'por MADFAM',
-  'aureo-product': 'un producto de Aureo Labs',
-  program: '',
-};
-
 export function Badge({ variant, children, className }: BadgeProps) {
+  const t = useTranslations();
+
+  const badgeText = {
+    'by-madfam': t('corporate.badges.byMadfam'),
+    'aureo-product': t('corporate.badges.aureoProduct'),
+    program: '',
+  };
   const variantClasses =
     badgeVariants[variant as keyof typeof badgeVariants] || badgeVariants['by-madfam'];
   const text = children || badgeText[variant as keyof typeof badgeText] || variant;

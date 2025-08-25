@@ -1,6 +1,6 @@
 'use client';
 
-import { i18nConfig } from '@madfam/i18n';
+import { i18nConfig, type Locale } from '@madfam/i18n';
 import { ChevronDown } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
@@ -15,7 +15,7 @@ export function LanguageSwitcher() {
   // Detect locale from pathname
   const pathSegments = pathname.split('/').filter(Boolean);
   const locale =
-    pathSegments[0] && i18nConfig.locales.includes(pathSegments[0] as any)
+    pathSegments[0] && i18nConfig.locales.includes(pathSegments[0] as Locale)
       ? pathSegments[0]
       : i18nConfig.defaultLocale;
 

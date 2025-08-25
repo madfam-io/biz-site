@@ -2,6 +2,7 @@
 
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Badge } from './Badge';
 
 interface ProductCardProps {
@@ -24,6 +25,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const t = useTranslations();
   return (
     <div className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-neutral-300 transition-colors">
       {/* Header */}
@@ -39,14 +41,17 @@ export function ProductCard({ product }: ProductCardProps) {
 
         <div className="bg-neutral-50 rounded-lg p-3">
           <p className="text-neutral-700 text-sm">
-            <span className="font-medium">Ideal para:</span> {product.audience}
+            <span className="font-medium">{t('corporate.products.idealFor')}</span>{' '}
+            {product.audience}
           </p>
         </div>
       </div>
 
       {/* Features */}
       <div className="mb-6">
-        <h4 className="font-semibold text-neutral-900 text-sm mb-3">Características principales</h4>
+        <h4 className="font-semibold text-neutral-900 text-sm mb-3">
+          {t('corporate.products.mainFeatures')}
+        </h4>
         <ul className="space-y-2">
           {product.features.map((feature, index) => (
             <li key={index} className="text-neutral-600 text-sm flex items-start gap-2">

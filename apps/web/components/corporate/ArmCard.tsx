@@ -2,6 +2,7 @@
 
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { Badge } from './Badge';
 
@@ -52,6 +53,7 @@ const accentColors = {
 };
 
 export function ArmCard({ arm }: ArmCardProps) {
+  const t = useTranslations();
   const colors = accentColors[arm.accent];
   const href = `/arms/${arm.id}`;
 
@@ -68,7 +70,7 @@ export function ArmCard({ arm }: ArmCardProps) {
       {arm.comingSoon && (
         <div className="absolute top-4 right-4">
           <span className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
-            Próximamente
+            {t('common.comingSoon')}
           </span>
         </div>
       )}
@@ -89,7 +91,9 @@ export function ArmCard({ arm }: ArmCardProps) {
 
       {/* Capabilities */}
       <div className="mb-6">
-        <h4 className="font-semibold text-neutral-900 text-sm mb-3">Capacidades principales</h4>
+        <h4 className="font-semibold text-neutral-900 text-sm mb-3">
+          {t('corporate.arms.mainCapabilities')}
+        </h4>
         <div className="grid grid-cols-2 gap-2">
           {arm.capabilities.slice(0, 4).map((capability, index) => (
             <div key={index} className="text-xs text-neutral-600 flex items-center gap-1">
@@ -102,7 +106,9 @@ export function ArmCard({ arm }: ArmCardProps) {
 
       {/* Products */}
       <div className="mb-6">
-        <h4 className="font-semibold text-neutral-900 text-sm mb-3">Productos principales</h4>
+        <h4 className="font-semibold text-neutral-900 text-sm mb-3">
+          {t('corporate.arms.mainProducts')}
+        </h4>
         <div className="flex flex-wrap gap-2">
           {arm.products.slice(0, 3).map((product, index) => (
             <span
@@ -115,7 +121,7 @@ export function ArmCard({ arm }: ArmCardProps) {
               )}
             >
               {product.name}
-              {product.comingSoon && ' (próximamente)'}
+              {product.comingSoon && ` ${t('common.comingSoonBrackets')}`}
             </span>
           ))}
         </div>
@@ -131,7 +137,7 @@ export function ArmCard({ arm }: ArmCardProps) {
               colors.button
             )}
           >
-            Ver detalles
+            {t('common.viewDetails')}
           </Link>
         )}
 
@@ -148,7 +154,7 @@ export function ArmCard({ arm }: ArmCardProps) {
 
         {arm.comingSoon && (
           <div className="flex-1 px-4 py-2 bg-neutral-100 text-neutral-500 rounded-lg text-center text-sm font-medium cursor-not-allowed">
-            Próximamente
+            {t('common.comingSoon')}
           </div>
         )}
       </div>

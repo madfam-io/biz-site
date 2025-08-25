@@ -198,7 +198,12 @@ export async function PATCH(request: NextRequest) {
     }
 
     // Update environment-specific setting
-    const updateData: any = {};
+    const updateData: {
+      enabled?: boolean;
+      enabledDev?: boolean;
+      enabledStaging?: boolean;
+      enabledProd?: boolean;
+    } = {};
     switch (environment || 'development') {
       case 'development':
         updateData.enabledDev = enabled;

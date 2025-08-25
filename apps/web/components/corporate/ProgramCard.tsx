@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { Badge } from './Badge';
 
@@ -50,6 +51,7 @@ const colorClasses = {
 };
 
 export function ProgramCard({ program }: ProgramCardProps) {
+  const t = useTranslations();
   const colors = colorClasses[program.color];
   const IconComponent = program.icon;
 
@@ -76,7 +78,7 @@ export function ProgramCard({ program }: ProgramCardProps) {
         {/* Migration info */}
         <div className="bg-white/60 rounded-lg p-3 mb-4">
           <div className="flex items-center gap-2 text-xs text-neutral-600">
-            <span>Antes:</span>
+            <span>{t('corporate.programs.before')}</span>
             <div className="flex gap-1">
               {program.originalTiers.map(tier => (
                 <span key={tier} className={cn('px-2 py-0.5 rounded', colors.badge)}>
@@ -91,22 +93,29 @@ export function ProgramCard({ program }: ProgramCardProps) {
       {/* Details Grid */}
       <div className="grid grid-cols-1 gap-4 mb-6">
         <div>
-          <h4 className="font-semibold text-neutral-900 text-sm mb-2">Cronograma y mercado</h4>
+          <h4 className="font-semibold text-neutral-900 text-sm mb-2">
+            {t('corporate.programs.scheduleMarket')}
+          </h4>
           <div className="space-y-1 text-sm text-neutral-600">
             <p>
-              <span className="font-medium">Duración:</span> {program.timeline}
+              <span className="font-medium">{t('corporate.programs.duration')}</span>{' '}
+              {program.timeline}
             </p>
             <p>
-              <span className="font-medium">Ideal para:</span> {program.targetMarket}
+              <span className="font-medium">{t('corporate.programs.idealFor')}</span>{' '}
+              {program.targetMarket}
             </p>
             <p>
-              <span className="font-medium">Inversión:</span> {program.investment}
+              <span className="font-medium">{t('corporate.programs.investment')}</span>{' '}
+              {program.investment}
             </p>
           </div>
         </div>
 
         <div>
-          <h4 className="font-semibold text-neutral-900 text-sm mb-2">Entregables principales</h4>
+          <h4 className="font-semibold text-neutral-900 text-sm mb-2">
+            {t('corporate.programs.mainDeliverables')}
+          </h4>
           <ul className="space-y-1">
             {program.deliverables.slice(0, 3).map((deliverable, index) => (
               <li key={index} className="text-neutral-600 text-sm flex items-start gap-2">
@@ -121,7 +130,7 @@ export function ProgramCard({ program }: ProgramCardProps) {
             ))}
             {program.deliverables.length > 3 && (
               <li className="text-neutral-500 text-sm italic">
-                +{program.deliverables.length - 3} más...
+                {t('corporate.programs.moreDeliverables', { n: program.deliverables.length - 3 })}
               </li>
             )}
           </ul>
@@ -131,7 +140,9 @@ export function ProgramCard({ program }: ProgramCardProps) {
       {/* Platforms (for Platform Pilots) */}
       {program.platforms && (
         <div className="mb-6">
-          <h4 className="font-semibold text-neutral-900 text-sm mb-2">Plataformas incluidas</h4>
+          <h4 className="font-semibold text-neutral-900 text-sm mb-2">
+            {t('corporate.programs.includedPlatforms')}
+          </h4>
           <div className="flex gap-2">
             {program.platforms.map(platform => (
               <span key={platform} className={cn('px-2 py-1 rounded text-xs', colors.badge)}>
@@ -145,7 +156,7 @@ export function ProgramCard({ program }: ProgramCardProps) {
       {/* Provider */}
       <div className="mb-6">
         <div className="flex items-center gap-2 text-sm text-neutral-600">
-          <span>Entregado por:</span>
+          <span>{t('corporate.programs.deliveredBy')}</span>
           <span className="font-medium text-neutral-900">{program.provider}</span>
         </div>
       </div>
@@ -156,13 +167,13 @@ export function ProgramCard({ program }: ProgramCardProps) {
           href="/contact"
           className="flex-1 px-4 py-2 bg-neutral-900 text-white rounded-lg text-center text-sm font-medium hover:bg-neutral-800 transition-colors"
         >
-          Solicitar información
+          {t('corporate.programs.requestInfo')}
         </Link>
         <Link
           href="/assessment"
           className="px-4 py-2 border border-neutral-300 text-neutral-700 rounded-lg text-sm font-medium hover:bg-neutral-50 transition-colors"
         >
-          Evaluar
+          {t('corporate.programs.evaluate')}
         </Link>
       </div>
     </div>

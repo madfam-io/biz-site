@@ -1,6 +1,6 @@
 'use client';
 
-import { getLocalizedUrl } from '@madfam/i18n';
+import { getLocalizedUrl, type Locale } from '@madfam/i18n';
 import { Container, Button } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
@@ -13,7 +13,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = useTranslations('common.nav');
   const tCommon = useTranslations('common');
-  const locale = useLocale() as any;
+  const locale = useLocale() as Locale;
 
   const navigation = [
     { name: t('home'), href: `/${locale}` },

@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-const createSignInSchema = (t: any) =>
+const createSignInSchema = (t: (key: string) => string) =>
   z.object({
     email: z.string().email(t('auth.signin.errors.invalidEmail')),
     password: z.string().min(8, t('auth.signin.errors.passwordLength')),

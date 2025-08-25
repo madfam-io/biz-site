@@ -6,7 +6,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as any,
+  adapter: PrismaAdapter(prisma),
   session: {
     strategy: 'jwt',
   },
@@ -57,7 +57,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = (user as any).role;
+        token.role = (user as { role?: UserRole }).role;
       }
       return token;
     },

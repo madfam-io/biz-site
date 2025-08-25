@@ -69,10 +69,10 @@ export function ShowcaseContent() {
           <Container>
             <div className="flex justify-between items-center">
               <h1 className="text-2xl font-bold text-obsidian dark:text-pearl">
-                Component Showcase
+                {t('showcase.title')}
               </h1>
               <Button variant="ghost" onClick={() => setDarkMode(!darkMode)}>
-                {darkMode ? '☀️' : '🌙'} Toggle Dark Mode
+                {darkMode ? '☀️' : '🌙'} {t('showcase.toggleDarkMode')}
               </Button>
             </div>
           </Container>
@@ -102,21 +102,21 @@ export function ShowcaseContent() {
         <section className="py-16">
           <Container>
             <Heading level={2} className="mb-8 text-center">
-              Button Variants
+              {t('showcase.sections.buttons')}
             </Heading>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button variant="primary">Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="creative">Creative</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="danger">Danger</Button>
-              <Button variant="success">Success</Button>
+              <Button variant="primary">{t('showcase.buttons.primary')}</Button>
+              <Button variant="secondary">{t('showcase.buttons.secondary')}</Button>
+              <Button variant="creative">{t('showcase.buttons.creative')}</Button>
+              <Button variant="outline">{t('showcase.buttons.outline')}</Button>
+              <Button variant="ghost">{t('showcase.buttons.ghost')}</Button>
+              <Button variant="danger">{t('showcase.buttons.danger')}</Button>
+              <Button variant="success">{t('showcase.buttons.success')}</Button>
               <Button variant="primary" loading>
-                Loading
+                {t('showcase.buttons.loading')}
               </Button>
               <Button variant="primary" icon={<SparkIcon />}>
-                With Icon
+                {t('showcase.buttons.withIcon')}
               </Button>
             </div>
           </Container>
@@ -126,7 +126,7 @@ export function ShowcaseContent() {
         <section className="py-16 bg-gray-50 dark:bg-obsidian/5">
           <Container>
             <Heading level={2} className="mb-8 text-center">
-              Service Cards
+              {t('showcase.sections.services')}
             </Heading>
             <div className="grid md:grid-cols-3 gap-6">
               <ServiceCard
@@ -152,7 +152,7 @@ export function ShowcaseContent() {
                   t('services.tier3.features.2'),
                 ]}
                 cta={{ text: t('services.tier3.cta'), href: '#', variant: 'creative' }}
-                badge="Recommended"
+                badge={t('showcase.badges.recommended')}
                 icon={<SparkIcon />}
               />
               <ServiceCard
@@ -175,7 +175,7 @@ export function ShowcaseContent() {
               <Container>
                 <div className="text-center p-8 bg-gray-100 dark:bg-obsidian/10 rounded-lg">
                   <p className="text-gray-600 dark:text-gray-400">
-                    Interactive Calculator Coming Soon!
+                    {t('showcase.featureFlag.comingSoon')}
                   </p>
                 </div>
               </Container>
@@ -185,10 +185,8 @@ export function ShowcaseContent() {
           <section className="py-16">
             <Container>
               <div className="text-center p-8 bg-gradient-to-r from-lavender to-sun text-white rounded-lg">
-                <h3 className="text-2xl font-bold mb-4">ROI Calculator Active!</h3>
-                <p>
-                  This section is shown because the INTERACTIVE_CALCULATOR feature flag is enabled.
-                </p>
+                <h3 className="text-2xl font-bold mb-4">{t('showcase.featureFlag.active')}</h3>
+                <p>{t('showcase.featureFlag.activeDescription')}</p>
               </div>
             </Container>
           </section>
@@ -198,7 +196,7 @@ export function ShowcaseContent() {
         <section className="py-16 bg-gray-50 dark:bg-obsidian/5">
           <Container>
             <Heading level={2} className="mb-8 text-center">
-              Product Cards
+              {t('showcase.sections.products')}
             </Heading>
             <div className="grid md:grid-cols-2 gap-6">
               <ProductCard
@@ -239,9 +237,9 @@ export function ShowcaseContent() {
         {/* Features Section */}
         <Features
           variant="grid"
-          title="Key Features"
-          subtitle="CAPABILITIES"
-          description="Everything you need to transform your business with AI"
+          title={t('showcase.sections.features')}
+          subtitle={t('showcase.features.subtitle')}
+          description={t('showcase.features.description')}
           features={features}
           columns={3}
           centered
@@ -252,7 +250,7 @@ export function ShowcaseContent() {
         <section className="py-16 bg-gray-50 dark:bg-obsidian/5">
           <Container>
             <Heading level={2} className="mb-8 text-center">
-              Testimonials
+              {t('showcase.sections.testimonials')}
             </Heading>
             <div className="grid md:grid-cols-3 gap-6">
               <TestimonialCard

@@ -114,7 +114,7 @@ export class EmailQueueProcessor {
     }
   }
 
-  async queueEmail(to: string[], template: string, data: any): Promise<string> {
+  async queueEmail(to: string[], template: string, data: Record<string, unknown>): Promise<string> {
     const email = await prisma.emailQueue.create({
       data: {
         to,

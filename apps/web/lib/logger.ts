@@ -6,7 +6,8 @@ export const appLogger = createLogger({
   enableConsole: true,
   enableRemote: process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_ENV === 'staging',
   remoteEndpoint: '/api/logs',
-  environment: (process.env.NEXT_PUBLIC_ENV as any) || 'development',
+  environment:
+    (process.env.NEXT_PUBLIC_ENV as 'development' | 'staging' | 'production') || 'development',
   serviceName: 'madfam-web',
   version: process.env.NEXT_PUBLIC_VERSION || '0.1.0',
   bufferSize: process.env.NODE_ENV === 'development' ? 10 : 100,
@@ -27,39 +28,39 @@ export function logPageView(path: string, userId?: string) {
   logger.userAction('Page viewed', { path, timestamp: Date.now() });
 }
 
-export function logUserAction(action: string, metadata?: Record<string, any>, userId?: string) {
+export function logUserAction(action: string, metadata?: Record<string, unknown>, userId?: string) {
   const logger = userId ? appLogger.withUserId(userId) : appLogger;
   logger.userAction(action, metadata);
 }
 
-export function logBusinessEvent(event: string, metadata?: Record<string, any>) {
+export function logBusinessEvent(event: string, metadata?: Record<string, unknown>) {
   appLogger.businessEvent(event, metadata);
 }
 
 export function logAPICall(
-  method: string, 
-  endpoint: string, 
-  duration: number, 
-  status: number, 
-  metadata?: Record<string, any>
+  method: string,
+  endpoint: string,
+  duration: number,
+  status: number,
+  metadata?: Record<string, unknown>
 ) {
   appLogger.apiCall(endpoint, method, duration, status, metadata);
 }
 
 export function logPerformanceMetric(
-  metric: string, 
-  value: number, 
-  unit: string = 'ms', 
-  metadata?: Record<string, any>
+  metric: string,
+  value: number,
+  unit: string = 'ms',
+  metadata?: Record<string, unknown>
 ) {
   appLogger.performanceMetric(metric, value, unit, metadata);
 }
 
 // Error logging with automatic error boundary integration
 export function logError(
-  error: Error, 
-  context: string, 
-  metadata?: Record<string, any>, 
+  error: Error,
+  context: string,
+  metadata?: Record<string, unknown>,
   userId?: string
 ) {
   const logger = userId ? appLogger.withUserId(userId) : appLogger;
@@ -72,13 +73,13 @@ export function logError(
 
 // Form-specific logging
 export function logFormSubmission(
-  formName: string, 
-  success: boolean, 
-  metadata?: Record<string, any>, 
+  formName: string,
+  success: boolean,
+  metadata?: Record<string, unknown>,
   userId?: string
 ) {
   const logger = userId ? appLogger.withUserId(userId) : appLogger;
-  
+
   if (success) {
     logger.userAction(`Form submitted: ${formName}`, metadata);
   } else {
@@ -87,10 +88,10 @@ export function logFormSubmission(
 }
 
 export function logFormValidationError(
-  formName: string, 
-  field: string, 
-  error: string, 
-  metadata?: Record<string, any>
+  formName: string,
+  field: string,
+  error: string,
+  metadata?: Record<string, unknown>
 ) {
   appLogger.debug(`Form validation error: ${formName}.${field}`, 'FORM', {
     ...metadata,
@@ -101,9 +102,9 @@ export function logFormValidationError(
 
 // Service tier specific logging
 export function logServiceInquiry(
-  tier: string, 
-  source: string, 
-  metadata?: Record<string, any>, 
+  tier: string,
+  source: string,
+  metadata?: Record<string, unknown>,
   userId?: string
 ) {
   logBusinessEvent('Service inquiry', {
@@ -115,9 +116,9 @@ export function logServiceInquiry(
 }
 
 export function logROICalculation(
-  tier: string, 
-  results: any, 
-  metadata?: Record<string, any>, 
+  tier: string,
+  results: unknown,
+  metadata?: Record<string, unknown>,
   userId?: string
 ) {
   logBusinessEvent('ROI calculation', {
@@ -129,10 +130,10 @@ export function logROICalculation(
 }
 
 export function logAssessmentCompleted(
-  score: number, 
-  level: string, 
-  recommendedTier: string, 
-  metadata?: Record<string, any>, 
+  score: number,
+  level: string,
+  recommendedTier: string,
+  metadata?: Record<string, unknown>,
   userId?: string
 ) {
   logBusinessEvent('Assessment completed', {
@@ -146,8 +147,8 @@ export function logAssessmentCompleted(
 
 // Analytics integration logging
 export function logAnalyticsEvent(
-  event: string, 
-  properties?: Record<string, any>, 
+  event: string,
+  properties?: Record<string, unknown>,
   userId?: string
 ) {
   const logger = userId ? appLogger.withUserId(userId) : appLogger;
@@ -161,7 +162,7 @@ export function logAnalyticsEvent(
 // Performance monitoring helpers
 export function startPerformanceTimer(label: string): () => void {
   const start = performance.now();
-  
+
   return () => {
     const duration = performance.now() - start;
     logPerformanceMetric(label, duration, 'ms');
@@ -173,31 +174,31 @@ export function initializePerformanceMonitoring() {
   // Core Web Vitals
   if (typeof window !== 'undefined') {
     // LCP (Largest Contentful Paint)
-    new PerformanceObserver((list) => {
+    new PerformanceObserver(list => {
       for (const entry of list.getEntries()) {
         logPerformanceMetric('LCP', entry.startTime, 'ms', {
-          element: (entry as any).element?.tagName,
-          id: (entry as any).element?.id,
+          element: (entry as unknown).element?.tagName,
+          id: (entry as unknown).element?.id,
           url: window.location.href,
         });
       }
     }).observe({ entryTypes: ['largest-contentful-paint'] });
 
     // FID (First Input Delay)
-    new PerformanceObserver((list) => {
+    new PerformanceObserver(list => {
       for (const entry of list.getEntries()) {
-        logPerformanceMetric('FID', (entry as any).processingStart - entry.startTime, 'ms', {
-          eventType: (entry as any).name,
+        logPerformanceMetric('FID', (entry as unknown).processingStart - entry.startTime, 'ms', {
+          eventType: (entry as unknown).name,
           url: window.location.href,
         });
       }
     }).observe({ entryTypes: ['first-input'] });
 
     // CLS (Cumulative Layout Shift)
-    new PerformanceObserver((list) => {
+    new PerformanceObserver(list => {
       for (const entry of list.getEntries()) {
-        if (!(entry as any).hadRecentInput) {
-          logPerformanceMetric('CLS', (entry as any).value, 'score', {
+        if (!(entry as unknown).hadRecentInput) {
+          logPerformanceMetric('CLS', (entry as unknown).value, 'score', {
             url: window.location.href,
           });
         }

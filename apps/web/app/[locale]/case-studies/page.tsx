@@ -12,7 +12,7 @@ type CommonCaseStudy = {
   client: string;
   industry: string;
   challenge: string;
-  solution: string | any;
+  solution: string | Record<string, unknown>;
   results: Array<{ metric: string; value: string; description: string }> | string[];
   slug: string;
   status?: string;

@@ -16,7 +16,7 @@ type CommonBlogPost = {
   status?: string;
   createdAt?: string;
   updatedAt?: string;
-  content?: any;
+  content?: string | Record<string, unknown>;
 };
 
 // Fallback blog data for static exports or when CMS is unavailable

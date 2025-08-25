@@ -26,13 +26,13 @@ export function CorporateHomePage() {
       name: 'Aureo Labs',
       tagline: t('corporate.arms.aureoLabs.tagline'),
       description: t('corporate.arms.aureoLabs.description'),
-      badge: 'por MADFAM',
+      badge: t('corporate.badges.byMadfam'),
       accent: 'copper' as const,
       capabilities: [
-        'Automatización inteligente',
-        'Plataformas web',
-        'Integraciones API',
-        'SRE y seguridad',
+        t('corporate.arms.aureoLabs.capabilities.0'),
+        t('corporate.arms.aureoLabs.capabilities.1'),
+        t('corporate.arms.aureoLabs.capabilities.2'),
+        t('corporate.arms.aureoLabs.capabilities.3'),
       ],
       products: [
         { name: 'Aureo Studio', url: 'https://aureo.studio' },
@@ -46,9 +46,14 @@ export function CorporateHomePage() {
       name: 'Primavera3D',
       tagline: t('corporate.arms.primavera3d.tagline'),
       description: t('corporate.arms.primavera3d.description'),
-      badge: 'por MADFAM',
+      badge: t('corporate.badges.byMadfam'),
       accent: 'green' as const,
-      capabilities: ['Modelado 3D', 'Diseño paramétrico', 'Visualización', 'Fabricación digital'],
+      capabilities: [
+        t('corporate.arms.primavera3d.capabilities.0'),
+        t('corporate.arms.primavera3d.capabilities.1'),
+        t('corporate.arms.primavera3d.capabilities.2'),
+        t('corporate.arms.primavera3d.capabilities.3'),
+      ],
       products: [
         { name: 'Diseño 3D', url: '/programs#design-fabrication' },
         { name: 'Modelado Paramétrico', url: '/programs#design-fabrication' },
@@ -60,40 +65,42 @@ export function CorporateHomePage() {
   const featuredProducts = [
     {
       name: 'Aureo Studio',
-      description:
-        'Plataforma de orquestación de IA que gobierna y automatiza procesos empresariales complejos.',
-      audience: 'Empresas medianas a grandes',
-      badge: 'un producto de Aureo Labs',
+      description: t('corporate.products.aureoStudio.description'),
+      audience: t('corporate.products.aureoStudio.audience'),
+      badge: t('corporate.badges.aureoProduct'),
       primaryCta: {
-        label: 'Visitar Aureo Studio',
+        label: t('corporate.products.aureoStudio.cta'),
         url: 'https://aureo.studio',
         external: true,
       },
       secondaryCta: {
-        label: 'Contactar',
+        label: t('common.cta.contact'),
         url: '/contact',
       },
       features: [
-        'Control de flujos inteligente',
-        'Integraciones empresariales',
-        'Monitoreo en tiempo real',
+        t('corporate.products.aureoStudio.features.0'),
+        t('corporate.products.aureoStudio.features.1'),
+        t('corporate.products.aureoStudio.features.2'),
       ],
     },
     {
       name: 'PENNY',
-      description:
-        'Interfaz de workspace que facilita la automatización y mejora la experiencia del usuario.',
-      audience: 'Equipos y organizaciones',
+      description: t('corporate.products.penny.description'),
+      audience: t('corporate.products.penny.audience'),
       badge: 'un producto de Aureo Labs',
       primaryCta: {
-        label: 'Ver PENNY',
+        label: t('corporate.products.penny.cta'),
         url: '/products/penny',
       },
       secondaryCta: {
-        label: 'Contactar',
+        label: t('common.cta.contact'),
         url: '/contact',
       },
-      features: ['Interfaz intuitiva', 'Colaboración en equipo', 'Automatización visual'],
+      features: [
+        t('corporate.products.penny.features.0'),
+        t('corporate.products.penny.features.1'),
+        t('corporate.products.penny.features.2'),
+      ],
     },
   ];
 
@@ -102,19 +109,19 @@ export function CorporateHomePage() {
     {
       name: t('corporate.programs.strategyEnablement.name'),
       icon: CogIcon,
-      description: 'Talleres y capacitación estratégica',
+      description: t('corporate.programs.strategyEnablement.description'),
       color: 'amber',
     },
     {
       name: t('corporate.programs.platformPilots.name'),
       icon: RocketLaunchIcon,
-      description: 'Implementación de Aureo Studio + PENNY',
+      description: t('corporate.programs.platformPilots.description'),
       color: 'blue',
     },
     {
       name: t('corporate.programs.strategicPartnerships.name'),
       icon: BuildingOffice2Icon,
-      description: 'Asociaciones vCTO y transformación',
+      description: t('corporate.programs.strategicPartnerships.description'),
       color: 'purple',
     },
   ];
@@ -136,7 +143,7 @@ export function CorporateHomePage() {
             <AnimatedText variant="fadeUp" className="mb-8">
               <div className="mb-4">
                 <Badge variant="by-madfam" className="text-white bg-white/10 border-white/20">
-                  Casa matriz
+                  {t('corporate.hero.badge')}
                 </Badge>
               </div>
               <Heading level={1} className="text-white mb-6">
@@ -154,7 +161,7 @@ export function CorporateHomePage() {
                   size="lg"
                   className="bg-white text-neutral-900 hover:bg-neutral-100"
                 >
-                  Ver unidades
+                  {t('corporate.hero.viewArms')}
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -164,7 +171,7 @@ export function CorporateHomePage() {
                   size="lg"
                   className="border-white text-white hover:bg-white/10"
                 >
-                  Ver productos
+                  {t('corporate.hero.viewProducts')}
                 </Button>
               </Link>
             </div>
@@ -174,9 +181,9 @@ export function CorporateHomePage() {
               <div className="flex items-center justify-center gap-8 text-white/80">
                 <span className="text-lg font-semibold text-white">MADFAM</span>
                 <ArrowRightIcon className="w-5 h-5" />
-                <span>Unidades especializadas</span>
+                <span>{t('corporate.hero.specializedUnits')}</span>
                 <ArrowRightIcon className="w-5 h-5" />
-                <span>Productos premium</span>
+                <span>{t('corporate.hero.premiumProducts')}</span>
               </div>
             </div>
           </div>
@@ -188,13 +195,13 @@ export function CorporateHomePage() {
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
-              Nuestras unidades operativas
+              {t('corporate.arms.title')}
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              Equipos especializados que entregan excelencia en software, manufactura y más.
+              {t('corporate.arms.subtitle')}
             </p>
             <Badge variant="by-madfam" className="mt-4">
-              Todas las unidades por MADFAM
+              {t('corporate.arms.allByMadfam')}
             </Badge>
           </div>
 
@@ -207,7 +214,7 @@ export function CorporateHomePage() {
           <div className="text-center">
             <Link href={`/${locale}/arms`}>
               <Button variant="outline" size="lg">
-                Ver todas las unidades
+                {t('corporate.arms.viewAll')}
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -220,10 +227,10 @@ export function CorporateHomePage() {
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
-              Productos destacados
+              {t('corporate.products.featuredTitle')}
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              Plataformas y herramientas desarrolladas por nuestras unidades especializadas.
+              {t('corporate.products.featuredSubtitle')}
             </p>
           </div>
 
@@ -236,7 +243,7 @@ export function CorporateHomePage() {
           <div className="text-center">
             <Link href={`/${locale}/products`}>
               <Button variant="outline" size="lg">
-                Ver todos los productos
+                {t('corporate.products.viewAll')}
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -249,17 +256,17 @@ export function CorporateHomePage() {
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
-              Programas de transformación
+              {t('corporate.programs.title')}
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto mb-8">
-              Proceso estratégico en 3 fases: Estrategia → Piloto → Escala
+              {t('corporate.programs.processDescription')}
             </p>
 
             {/* Migration Notice */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 max-w-2xl mx-auto">
               <p className="text-blue-800 text-sm">
-                <strong>Actualización:</strong> Nuestros servicios L1-L5 ahora son Programas
-                especializados por unidad.
+                <strong>{t('corporate.programs.updateLabel')}</strong>{' '}
+                {t('corporate.programs.migrationNotice')}
               </p>
             </div>
           </div>
@@ -302,7 +309,7 @@ export function CorporateHomePage() {
           <div className="text-center">
             <Link href={`/${locale}/programs`}>
               <Button size="lg">
-                Ver todos los programas
+                {t('corporate.programs.viewAll')}
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -315,7 +322,7 @@ export function CorporateHomePage() {
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-8">
-              ¿Por qué MADFAM?
+              {t('corporate.whyMadfam.title')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -323,9 +330,11 @@ export function CorporateHomePage() {
                 <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
                   <span className="font-bold text-sm">LATAM</span>
                 </div>
-                <h3 className="font-semibold text-neutral-900 mb-2">LATAM-first</h3>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  {t('corporate.whyMadfam.latamFirst.title')}
+                </h3>
                 <p className="text-neutral-600 text-sm">
-                  Construido desde y para América Latina, con alcance global.
+                  {t('corporate.whyMadfam.latamFirst.description')}
                 </p>
               </div>
 
@@ -333,9 +342,11 @@ export function CorporateHomePage() {
                 <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
                   <span className="font-bold text-sm">🔒</span>
                 </div>
-                <h3 className="font-semibold text-neutral-900 mb-2">Privacy-first</h3>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  {t('corporate.whyMadfam.privacyFirst.title')}
+                </h3>
                 <p className="text-neutral-600 text-sm">
-                  Seguridad y privacidad de datos como principio fundamental.
+                  {t('corporate.whyMadfam.privacyFirst.description')}
                 </p>
               </div>
 
@@ -343,9 +354,11 @@ export function CorporateHomePage() {
                 <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl mx-auto mb-4 flex items-center justify-center">
                   <span className="font-bold text-sm">✨</span>
                 </div>
-                <h3 className="font-semibold text-neutral-900 mb-2">Excelencia en diseño</h3>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  {t('corporate.whyMadfam.designExcellence.title')}
+                </h3>
                 <p className="text-neutral-600 text-sm">
-                  Donde la IA encuentra la creatividad humana.
+                  {t('corporate.whyMadfam.designExcellence.description')}
                 </p>
               </div>
             </div>
@@ -358,16 +371,14 @@ export function CorporateHomePage() {
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-              ¿Listo para transformar tu organización?
+              {t('corporate.cta.title')}
             </h2>
-            <p className="text-xl text-white/80 mb-12">
-              Descubre qué unidad y programa son perfectos para tu proyecto.
-            </p>
+            <p className="text-xl text-white/80 mb-12">{t('corporate.cta.subtitle')}</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={`/${locale}/assessment`}>
                 <Button size="lg" variant="secondary">
-                  Tomar evaluación IA
+                  {t('corporate.cta.takeAssessment')}
                 </Button>
               </Link>
               <Link href={`/${locale}/contact`}>
@@ -376,7 +387,7 @@ export function CorporateHomePage() {
                   variant="outline"
                   className="border-white text-white hover:bg-white/10"
                 >
-                  Contactar ahora
+                  {t('corporate.cta.contactNow')}
                 </Button>
               </Link>
             </div>

@@ -16,7 +16,7 @@ interface ServicePageProps {
 }
 
 // Map English slugs to components
-const serviceComponents: Record<string, any> = {
+const serviceComponents: Record<string, React.ComponentType<ServicePageProps>> = {
   'level-1-essentials': Level1Page,
   'level-2-advanced': Level2Page,
   'level-3-consulting': Level3Page,

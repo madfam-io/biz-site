@@ -7,7 +7,7 @@ import { GlobalAnalytics } from '@/components/GlobalAnalytics';
 import { LoggerProvider } from '@/components/LoggerProvider';
 import { Navbar } from '@/components/Navbar';
 import { OrganizationStructuredData } from '@/components/StructuredData';
-import { locales, getMessages } from '@/i18n.config';
+import { locales, getMessages, type Locale } from '@/i18n.config';
 
 export function generateStaticParams() {
   return locales.map(locale => ({ locale }));
@@ -21,7 +21,7 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   // Ensure valid locale
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(locale as Locale)) {
     notFound();
   }
 
@@ -31,7 +31,7 @@ export default async function LocaleLayout({
   return (
     <LoggerProvider>
       <AuthProvider>
-        <NextIntlClientProvider messages={messages as any}>
+        <NextIntlClientProvider messages={messages}>
           <OrganizationStructuredData />
           <GlobalAnalytics />
           <Navbar />

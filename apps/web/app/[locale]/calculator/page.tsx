@@ -1,34 +1,45 @@
 import { ServiceTier } from '@madfam/core';
 import { Container, Heading } from '@madfam/ui';
 import { Metadata } from 'next';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import { ROICalculator } from '@/components/ROICalculator';
 
-export const metadata: Metadata = {
-  title: 'Calculadora de ROI - MADFAM',
-  description:
-    'Descubre el retorno de inversión potencial de nuestros servicios de transformación digital y consultoría AI.',
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale });
 
-export default function CalculatorPage({ params: { locale } }: { params: { locale: string } }) {
+  return {
+    title: t('calculator.meta.title'),
+    description: t('calculator.meta.description'),
+  };
+}
+
+export default async function CalculatorPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   unstable_setRequestLocale(locale);
+  const t = await getTranslations();
   return (
     <main className="py-section">
       <Container>
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <Heading level={1} gradient>
-              Calculadora de ROI
+              {t('calculator.title')}
             </Heading>
             <p className="text-lg mt-4 text-gray-600 dark:text-gray-400">
-              Visualiza el impacto que MADFAM puede tener en tu negocio
+              {t('calculator.hero.subtitle')}
             </p>
           </div>
 
           <div className="mb-8">
             <p className="text-center text-gray-600 dark:text-gray-400">
-              Selecciona un nivel de servicio para calcular el ROI específico, o usa los valores
-              predeterminados para una estimación general.
+              {t('calculator.selectionHint')}
             </p>
           </div>
 
@@ -36,23 +47,22 @@ export default function CalculatorPage({ params: { locale } }: { params: { local
             <ROICalculator serviceTier={ServiceTier.L3_CONSULTING} />
 
             <div className="bg-gradient-to-r from-sun/10 to-leaf/10 rounded-2xl p-8 text-center">
-              <h3 className="font-heading text-xl mb-4">¿Listo para transformar tu negocio?</h3>
+              <h3 className="font-heading text-xl mb-4">{t('calculator.cta.title')}</h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Nuestro equipo de expertos puede ayudarte a implementar soluciones que generen
-                resultados reales y medibles.
+                {t('calculator.cta.subtitle')}
               </p>
               <div className="flex gap-4 justify-center">
                 <a
                   href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-obsidian hover:bg-obsidian/90 transition-colors"
                 >
-                  Solicitar consulta
+                  {t('calculator.cta.requestConsultation')}
                 </a>
                 <a
                   href="/services"
                   className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-700 text-base font-medium rounded-lg text-obsidian dark:text-pearl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
-                  Ver servicios
+                  {t('calculator.cta.viewServices')}
                 </a>
               </div>
             </div>
