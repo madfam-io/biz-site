@@ -7,7 +7,7 @@ export interface SEOConfig {
   image?: string;
   url?: string;
   type?: 'website' | 'article' | 'product' | 'service';
-  locale?: 'es-MX' | 'en-US' | 'pt-BR';
+  locale?: 'es' | 'en' | 'pt-br';
   alternateLocales?: string[];
   publishedTime?: string;
   modifiedTime?: string;
@@ -28,7 +28,7 @@ export class SEOService {
   constructor() {
     this.baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://madfam.io';
     this.defaultImage = `${this.baseUrl}/images/og-default.jpg`;
-    this.defaultLocale = 'es-MX';
+    this.defaultLocale = 'es';
     this.siteName = 'MADFAM';
     this.twitterHandle = '@madfam_io';
   }
@@ -110,10 +110,10 @@ export class SEOService {
     serviceName: string,
     serviceDescription: string,
     serviceTier: string,
-    locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'
+    locale: 'es' | 'en' | 'pt-br' = 'es'
   ): Metadata {
     const content = {
-      'es-MX': {
+      es: {
         title: `${serviceName} | Servicios ${serviceTier} | MADFAM`,
         description: serviceDescription,
         keywords: [
@@ -126,7 +126,7 @@ export class SEOService {
           'LATAM',
         ],
       },
-      'en-US': {
+      en: {
         title: `${serviceName} | ${serviceTier} Services | MADFAM`,
         description: serviceDescription,
         keywords: [
@@ -139,7 +139,7 @@ export class SEOService {
           'LATAM',
         ],
       },
-      'pt-BR': {
+      'pt-br': {
         title: `${serviceName} | Serviços ${serviceTier} | MADFAM`,
         description: serviceDescription,
         keywords: [
@@ -170,10 +170,10 @@ export class SEOService {
   generateProductMetadata(
     productName: string,
     productDescription: string,
-    locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'
+    locale: 'es' | 'en' | 'pt-br' = 'es'
   ): Metadata {
     const content = {
-      'es-MX': {
+      es: {
         title: `${productName} | Productos MADFAM`,
         description: productDescription,
         keywords: [
@@ -186,7 +186,7 @@ export class SEOService {
           'PENNY',
         ],
       },
-      'en-US': {
+      en: {
         title: `${productName} | MADFAM Products`,
         description: productDescription,
         keywords: [
@@ -199,7 +199,7 @@ export class SEOService {
           'PENNY',
         ],
       },
-      'pt-BR': {
+      'pt-br': {
         title: `${productName} | Produtos MADFAM`,
         description: productDescription,
         keywords: [
@@ -232,7 +232,7 @@ export class SEOService {
     author: string,
     publishedTime: string,
     tags: string[],
-    locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'
+    locale: 'es' | 'en' | 'pt-br' = 'es'
   ): Metadata {
     return this.generateMetadata({
       title,
@@ -249,9 +249,10 @@ export class SEOService {
 
   generateHomeMetadata(locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'): Metadata {
     const content = {
-      'es-MX': {
+      es: {
         title: 'MADFAM | Transformación Digital e Inteligencia Artificial en México',
-        description: 'Especialistas en transformación digital, automatización inteligente y desarrollo de software empresarial. Desde diseño 3D hasta vCTO estratégico. Servicios L1-L5 en México y LATAM.',
+        description:
+          'Especialistas en transformación digital, automatización inteligente y desarrollo de software empresarial. Desde diseño 3D hasta vCTO estratégico. Servicios L1-L5 en México y LATAM.',
         keywords: [
           'transformación digital México',
           'inteligencia artificial LATAM',
@@ -265,9 +266,10 @@ export class SEOService {
           'consultoría estratégica',
         ],
       },
-      'en-US': {
+      en: {
         title: 'MADFAM | Digital Transformation & AI Solutions in Mexico',
-        description: 'Specialists in digital transformation, intelligent automation, and enterprise software development. From 3D design to strategic vCTO services. L1-L5 services in Mexico and LATAM.',
+        description:
+          'Specialists in digital transformation, intelligent automation, and enterprise software development. From 3D design to strategic vCTO services. L1-L5 services in Mexico and LATAM.',
         keywords: [
           'digital transformation Mexico',
           'artificial intelligence LATAM',
@@ -281,9 +283,10 @@ export class SEOService {
           'strategic consulting',
         ],
       },
-      'pt-BR': {
+      'pt-br': {
         title: 'MADFAM | Transformação Digital e Soluções de IA no México',
-        description: 'Especialistas em transformação digital, automação inteligente e desenvolvimento de software empresarial. Do design 3D aos serviços estratégicos de vCTO. Serviços L1-L5 no México e LATAM.',
+        description:
+          'Especialistas em transformação digital, automação inteligente e desenvolvimento de software empresarial. Do design 3D aos serviços estratégicos de vCTO. Serviços L1-L5 no México e LATAM.',
         keywords: [
           'transformação digital México',
           'inteligência artificial LATAM',
@@ -311,9 +314,12 @@ export class SEOService {
     });
   }
 
-  private generateLanguageAlternates(url: string, alternateLocales: string[]): Record<string, string> {
+  private generateLanguageAlternates(
+    url: string,
+    alternateLocales: string[]
+  ): Record<string, string> {
     const alternates: Record<string, string> = {};
-    
+
     alternateLocales.forEach(locale => {
       alternates[locale] = `${this.baseUrl}/${locale}${url}`;
     });
@@ -421,7 +427,7 @@ export class SEOService {
     priority: number;
   }> {
     const now = new Date();
-    
+
     return [
       {
         url: '/',

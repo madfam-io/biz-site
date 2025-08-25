@@ -7,7 +7,11 @@
       "about": "Nosotros",
       "contact": "Contacto",
       "allServices": "Todos los servicios",
-      "freeConsultation": "Consulta gratuita"
+      "freeConsultation": "Consulta gratuita",
+      "arms": "Unidades",
+      "programs": "Programas",
+      "work": "Casos",
+      "security": "Seguridad"
     },
     "learnMore": "Conocer más",
     "aiAssessment": "Evaluación IA",
@@ -1184,6 +1188,178 @@
     "features": {
       "subtitle": "CAPACIDADES",
       "description": "Todo lo que necesitas para transformar tu negocio con IA"
+    }
+  },
+  "corporate": {
+    "structure": {
+      "title": "Estructura Corporativa",
+      "subtitle": "Unidades expertas para problemas reales",
+      "parentCompany": {
+        "name": "MADFAM",
+        "tagline": "Manufactura avanzada e innovación digital",
+        "description": "Empresa matriz que coordina y dirige todas las unidades de negocio especializadas"
+      },
+      "arms": {
+        "title": "Nuestras Unidades",
+        "subtitle": "Cada unidad especializada en resolver problemas específicos",
+        "aureoLabs": {
+          "name": "Aureo Labs",
+          "tagline": "Laboratorio de Innovación Digital",
+          "description": "Centro de desarrollo de productos de software y soluciones digitales avanzadas",
+          "badge": "por MADFAM",
+          "focus": "Desarrollo de productos, investigación tecnológica, laboratorio de innovación"
+        },
+        "primavera3d": {
+          "name": "Primavera3D",
+          "tagline": "Estudio de Diseño Digital",
+          "description": "Especialista en modelado 3D, renderizado, animación y experiencias visuales",
+          "badge": "por MADFAM",
+          "focus": "Diseño 3D, visualización arquitectónica, animación, realidad virtual/aumentada"
+        },
+        "health": {
+          "name": "MADFAM Health",
+          "tagline": "Tecnología Médica Avanzada",
+          "description": "Soluciones tecnológicas especializadas para el sector salud y bienestar",
+          "badge": "por MADFAM",
+          "focus": "HealthTech, telemedicina, análisis médico con IA, dispositivos conectados"
+        },
+        "aero": {
+          "name": "MADFAM Aero",
+          "tagline": "Ingeniería Aeroespacial Digital",
+          "description": "Tecnología avanzada para la industria aeroespacial y de drones",
+          "badge": "por MADFAM",
+          "focus": "Drones autónomos, simulación de vuelo, sistemas aeroespaciales, IoT industrial"
+        }
+      },
+      "products": {
+        "title": "Productos Principales",
+        "subtitle": "Soluciones desarrolladas por nuestras unidades especializadas",
+        "spark": {
+          "name": "SPARK",
+          "tagline": "Orquestación Inteligente de IA",
+          "description": "Plataforma completa que conecta, automatiza y optimiza todos tus procesos empresariales a través de IA avanzada",
+          "badge": "un producto de Aureo Labs",
+          "developer": "Aureo Labs"
+        },
+        "penny": {
+          "name": "PENNY",
+          "tagline": "Tu Asistente Personal de IA",
+          "description": "Automatización inteligente que aprende de tus procesos y mejora continuamente",
+          "badge": "un producto de Aureo Labs",
+          "developer": "Aureo Labs"
+        },
+        "medSync": {
+          "name": "MedSync",
+          "tagline": "Plataforma Médica Integrada",
+          "description": "Solución completa para gestión hospitalaria y atención médica digital",
+          "badge": "por MADFAM",
+          "developer": "MADFAM Health"
+        },
+        "aeroControl": {
+          "name": "AeroControl",
+          "tagline": "Sistema de Gestión de Drones",
+          "description": "Plataforma para operación y monitoreo de flotas de drones autónomos",
+          "badge": "por MADFAM",
+          "developer": "MADFAM Aero"
+        }
+      },
+      "programs": {
+        "title": "Programas de Transformación",
+        "subtitle": "Servicios estructurados para llevar tu empresa al siguiente nivel",
+        "essentials": {
+          "name": "Essentials",
+          "code": "P1",
+          "oldCode": "L1",
+          "title": "Programa Essentials",
+          "description": "Soluciones rápidas de diseño 3D e IA para necesidades inmediatas",
+          "provider": "Primavera3D",
+          "badge": "por MADFAM",
+          "duration": "1-2 semanas",
+          "deliverables": [
+            "Modelado 3D",
+            "Renderizado fotorrealista",
+            "Diseño gráfico",
+            "Animaciones básicas"
+          ]
+        },
+        "advanced": {
+          "name": "Advanced",
+          "code": "P2",
+          "oldCode": "L2",
+          "title": "Programa Advanced",
+          "description": "Diseño paramétrico y experiencias interactivas que transforman",
+          "provider": "Primavera3D",
+          "badge": "por MADFAM",
+          "duration": "3-6 semanas",
+          "deliverables": [
+            "Diseño paramétrico",
+            "Realidad aumentada/virtual",
+            "Visualización de datos 3D",
+            "Experiencias interactivas"
+          ]
+        },
+        "consulting": {
+          "name": "Consulting",
+          "code": "P3",
+          "oldCode": "L3",
+          "title": "Programa Consulting",
+          "description": "Transforma tu empresa con consultoría especializada en IA",
+          "provider": "Aureo Labs",
+          "badge": "por MADFAM",
+          "duration": "3-6 meses",
+          "deliverables": [
+            "Estrategia personalizada",
+            "Capacitación integral",
+            "Métricas de impacto",
+            "Mejora continua"
+          ]
+        },
+        "platforms": {
+          "name": "Platforms",
+          "code": "P4",
+          "oldCode": "L4",
+          "title": "Programa Platforms",
+          "description": "Implementa SPARK y PENNY para transformación completa",
+          "provider": "Aureo Labs",
+          "badge": "por MADFAM",
+          "duration": "3-12 meses",
+          "deliverables": [
+            "Implementación SPARK/PENNY",
+            "Integración con sistemas",
+            "Capacitación de equipo",
+            "Soporte continuo"
+          ]
+        },
+        "strategic": {
+          "name": "Strategic",
+          "code": "P5",
+          "oldCode": "L5",
+          "title": "Programa Strategic",
+          "description": "Asociación vCTO para liderar tu transformación digital",
+          "provider": "MADFAM",
+          "badge": "por MADFAM",
+          "duration": "12+ meses",
+          "deliverables": [
+            "Liderazgo tecnológico",
+            "Arquitectura empresarial",
+            "Gestión de equipos",
+            "Innovación continua"
+          ]
+        }
+      },
+      "badges": {
+        "byMADFAM": "por MADFAM",
+        "aureoLabsProduct": "un producto de Aureo Labs",
+        "poweredBy": "Powered by",
+        "developedBy": "Desarrollado por",
+        "inPartnershipWith": "en asociación con"
+      },
+      "messaging": {
+        "tagline": "Unidades expertas para problemas reales",
+        "corporateVision": "Manufactura avanzada e innovación digital",
+        "missionStatement": "Transformamos empresas a través de unidades especializadas que combinan experiencia técnica profunda con innovación digital avanzada",
+        "valueProposition": "Cada unidad de MADFAM está diseñada para resolver problemas específicos de la industria con la máxima especialización y eficiencia"
+      }
     }
   }
 }

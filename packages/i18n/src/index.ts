@@ -9,12 +9,12 @@ export * from './utils/routes';
 export * from './hooks/useTypedTranslations';
 
 // Translation imports
-import esMessages from './translations/es-MX.json';
-import enMessages from './translations/en-US.json';
-import ptMessages from './translations/pt-BR.json';
+import esMessages from './translations/es.json';
+import enMessages from './translations/en.json';
+import ptMessages from './translations/pt-br.json';
 
 export const messages = {
-  'es-MX': esMessages,
-  'en-US': enMessages,
-  'pt-BR': ptMessages,
+  es: esMessages,
+  en: enMessages,
+  'pt-br': ptMessages,
 } as const;

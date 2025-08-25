@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import { HomePage } from '@/components/HomePage';
+import { CorporateHomePage } from '@/components/CorporateHomePage';
 import { seoService } from '@/lib/seo';
 
 export async function generateMetadata({
@@ -8,10 +8,11 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  return seoService.generateHomeMetadata(locale as 'es-MX' | 'en-US' | 'pt-BR');
+  // Use normalized locales directly
+  return seoService.generateHomeMetadata(locale as 'es' | 'en' | 'pt-br');
 }
 
 export default function Page({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
-  return <HomePage />;
+  return <CorporateHomePage />;
 }

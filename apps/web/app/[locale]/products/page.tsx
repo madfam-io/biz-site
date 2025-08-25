@@ -1,273 +1,411 @@
-import { Container, Heading, Button, Card, CardContent } from '@madfam/ui';
+import { Metadata } from 'next';
+import { Container } from '@madfam/ui';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
+import Link from 'next/link';
+import { ProductCard } from '@/components/corporate/ProductCard';
+import { Badge } from '@/components/corporate/Badge';
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 
-interface Product {
-  id: string;
-  name: string;
-  tagline: string;
-  description: string;
-  features: string[];
-  benefits: { icon: string; title: string; description: string }[];
-  gradient: string;
-  icon: string;
+type Props = {
+  params: { locale: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.products' });
+
+  return {
+    title: t('meta.title') || 'Productos | MADFAM',
+    description:
+      t('meta.description') ||
+      'Plataformas y herramientas desarrolladas por nuestras unidades especializadas.',
+    openGraph: {
+      title: t('meta.title') || 'Productos | MADFAM',
+      description:
+        t('meta.description') ||
+        'Plataformas y herramientas desarrolladas por nuestras unidades especializadas.',
+      type: 'website',
+    },
+  };
 }
 
-const products: Product[] = [
-  {
-    id: 'spark',
-    name: 'SPARK',
-    tagline: 'Plataforma de Orquestación de IA',
-    description:
-      'SPARK conecta, automatiza y optimiza todos tus procesos empresariales con inteligencia artificial. Una plataforma unificada que transforma la forma en que trabajas.',
-    features: [
-      'Integración con más de 1000 herramientas',
-      'Workflows visuales sin código',
-      'IA conversacional integrada',
-      'Analytics en tiempo real',
-      'API robusta y webhooks',
-      'Seguridad empresarial',
-    ],
-    benefits: [
-      {
-        icon: '⚡',
-        title: 'Automatización instantánea',
-        description: 'Reduce tareas manuales en un 80% desde el día uno.',
-      },
-      {
-        icon: '🔗',
-        title: 'Conectividad total',
-        description: 'Integra todas tus herramientas en un solo lugar.',
-      },
-      {
-        icon: '📊',
-        title: 'Insights accionables',
-        description: 'Toma decisiones basadas en datos en tiempo real.',
-      },
-    ],
-    gradient: 'from-lavender to-sun',
-    icon: '⚡',
-  },
-  {
-    id: 'penny',
-    name: 'PENNY',
-    tagline: 'Automatización Inteligente de Procesos',
-    description:
-      'PENNY es tu asistente de IA que aprende, adapta y mejora continuamente tus flujos de trabajo. Diseñado para empresas que buscan eficiencia sin complejidad.',
-    features: [
-      'Aprendizaje automático continuo',
-      'Automatización de documentos',
-      'Procesamiento de lenguaje natural',
-      'Gestión inteligente de tareas',
-      'Reportes automáticos',
-      'Interfaz conversacional',
-    ],
-    benefits: [
-      {
-        icon: '🤖',
-        title: 'IA que aprende',
-        description: 'Se adapta a tus procesos y mejora con el tiempo.',
-      },
-      {
-        icon: '⏱️',
-        title: 'Ahorro de tiempo',
-        description: 'Automatiza tareas repetitivas en segundos.',
-      },
-      {
-        icon: '💡',
-        title: 'Sugerencias inteligentes',
-        description: 'Identifica oportunidades de optimización.',
-      },
-    ],
-    gradient: 'from-leaf to-sun',
-    icon: '🤖',
-  },
-];
+export default async function ProductsPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
+  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.products' });
+  const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
 
-export default function ProductsPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
+  // All products with ownership badges
+  const products = [
+    // Aureo Labs Products
+    {
+      name: 'Aureo Studio',
+      description:
+        'Plataforma de orquestación de IA que gobierna y automatiza procesos empresariales complejos con control total.',
+      audience: 'Empresas medianas a grandes',
+      badge: 'un producto de Aureo Labs',
+      primaryCta: {
+        label: 'Visitar Aureo Studio',
+        url: 'https://aureo.studio',
+        external: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: [
+        'Control de flujos inteligente',
+        'Integraciones empresariales',
+        'Monitoreo en tiempo real',
+      ],
+      category: 'Platform',
+      arm: 'aureo-labs',
+    },
+    {
+      name: 'PENNY',
+      description:
+        'Interfaz de workspace que facilita la automatización y mejora la experiencia del usuario final.',
+      audience: 'Equipos y organizaciones',
+      badge: 'un producto de Aureo Labs',
+      primaryCta: {
+        label: 'Ver PENNY',
+        url: '/products/penny',
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: ['Interfaz intuitiva', 'Colaboración en equipo', 'Automatización visual'],
+      category: 'Workspace',
+      arm: 'aureo-labs',
+    },
+    {
+      name: 'Cotiza Studio',
+      description:
+        'Workspace especializado para generación de cotizaciones y presupuestos inteligentes.',
+      audience: 'Empresas de servicios y consultorías',
+      badge: 'un producto de Aureo Labs',
+      primaryCta: {
+        label: 'Visitar Cotiza Studio',
+        url: 'https://cotiza.studio',
+        external: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: [
+        'Cotizaciones inteligentes',
+        'Plantillas personalizables',
+        'Seguimiento de propuestas',
+      ],
+      category: 'Workspace',
+      arm: 'aureo-labs',
+    },
+    {
+      name: 'Forge Sight',
+      description:
+        'Plataforma de análisis y visualización de datos para toma de decisiones estratégicas.',
+      audience: 'Analistas y tomadores de decisión',
+      badge: 'plataforma de Aureo Labs',
+      primaryCta: {
+        label: 'Visitar Forge Sight',
+        url: 'https://forgesight.quest',
+        external: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: ['Análisis predictivo', 'Dashboards interactivos', 'Alertas inteligentes'],
+      category: 'Platform',
+      arm: 'aureo-labs',
+    },
+    {
+      name: 'AVALA',
+      description:
+        'Plataforma de validación y cumplimiento normativo automatizado para empresas reguladas.',
+      audience: 'Empresas con altos requerimientos de cumplimiento',
+      badge: 'plataforma de Aureo Labs',
+      primaryCta: {
+        label: 'Próximamente',
+        url: '#',
+        comingSoon: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: ['Cumplimiento automatizado', 'Auditorías inteligentes', 'Reportes regulatorios'],
+      category: 'Platform',
+      arm: 'aureo-labs',
+      comingSoon: true,
+    },
+    // MADFAM Direct Products
+    {
+      name: 'Dhanam',
+      description:
+        'Plataforma integral de gestión financiera y contable con IA para empresas latinoamericanas.',
+      audience: 'PyMEs y empresas medianas',
+      badge: 'por MADFAM',
+      primaryCta: {
+        label: 'Próximamente',
+        url: '#',
+        comingSoon: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: [
+        'Contabilidad automatizada',
+        'Cumplimiento fiscal LATAM',
+        'Reportes financieros IA',
+      ],
+      category: 'Platform',
+      arm: 'madfam',
+      comingSoon: true,
+    },
+    // Open Data
+    {
+      name: 'RENEC Harvester',
+      description:
+        'Herramienta open source para recolección y procesamiento de datos públicos y gubernamentales.',
+      audience: 'Investigadores, periodistas, ONGs',
+      badge: 'datos abiertos',
+      primaryCta: {
+        label: 'Próximamente',
+        url: '#',
+        comingSoon: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: ['Extracción automatizada', 'Datos estructurados', 'API pública gratuita'],
+      category: 'Data',
+      arm: 'open-data',
+      comingSoon: true,
+    },
+    // TBD
+    {
+      name: 'Mundii',
+      description: 'Plataforma de colaboración global para equipos distribuidos con IA contextual.',
+      audience: 'Equipos remotos y empresas globales',
+      badge: 'por determinar',
+      primaryCta: {
+        label: 'En definición',
+        url: '#',
+        comingSoon: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: ['Colaboración inteligente', 'Contexto cultural IA', 'Sincronización global'],
+      category: 'TBD',
+      arm: 'tbd',
+      comingSoon: true,
+    },
+  ];
+
+  // Featured products (ready for production)
+  const featuredProducts = products.filter(p => !p.comingSoon);
+  const upcomingProducts = products.filter(p => p.comingSoon);
+
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
       {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-obsidian/5 to-lavender/10">
+      <section className="py-16 lg:py-24">
         <Container>
-          <div className="max-w-4xl mx-auto text-center">
-            <Heading level={1} className="mb-6">
-              Productos que{' '}
-              <span className="gradient-text">revolucionan tu negocio</span>
-            </Heading>
-            <p className="text-xl text-obsidian/70">
-              Plataformas de IA diseñadas para transformar la forma en que trabajas.
-              Potentes, intuitivas y listas para escalar contigo.
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl lg:text-6xl font-bold text-neutral-900 mb-6">
+              Nuestros productos
+            </h1>
+            <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+              Plataformas y herramientas desarrolladas por nuestras unidades especializadas para
+              resolver problemas reales.
             </p>
+
+            {/* Product Categories */}
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              <Badge variant="program">Plataformas</Badge>
+              <Badge variant="program">Workspaces</Badge>
+              <Badge variant="program">Datos abiertos</Badge>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
+              <p className="text-blue-800 text-sm">
+                <strong>Nota:</strong> SPARK se ha integrado en Aureo Studio como "Aureo Flows" para
+                mejor gobernanza y control.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Products Section */}
-      <section className="section">
+      {/* Featured Products */}
+      <section className="py-16">
         <Container>
-          {products.map((product, index) => (
-            <div
-              key={product.id}
-              className={`mb-24 ${index === products.length - 1 ? 'mb-0' : ''}`}
-            >
-              {/* Product Hero */}
-              <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                  <div className="mb-6">
-                    <span
-                      className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r ${product.gradient} text-white`}
-                    >
-                      {product.tagline}
-                    </span>
-                  </div>
-                  <Heading level={2} className="mb-6 text-5xl">
-                    {product.name}
-                  </Heading>
-                  <p className="text-xl text-obsidian/70 mb-8">{product.description}</p>
-                  <div className="flex flex-wrap gap-4">
-                    <Button variant="creative" size="lg">
-                      Solicitar demo
-                    </Button>
-                    <Button variant="outline" size="lg">
-                      Ver documentación
-                    </Button>
-                  </div>
-                </div>
-                <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <div
-                    className={`aspect-square rounded-3xl bg-gradient-to-br ${product.gradient} p-1`}
-                  >
-                    <div className="w-full h-full bg-white rounded-[22px] flex items-center justify-center">
-                      <span className="text-[180px] opacity-20">{product.icon}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4 text-center">
+              Productos disponibles
+            </h2>
+            <p className="text-xl text-neutral-600 text-center max-w-3xl mx-auto">
+              Plataformas y herramientas listas para implementar en tu organización.
+            </p>
+          </div>
 
-              {/* Features & Benefits */}
-              <div className="grid lg:grid-cols-2 gap-12">
-                {/* Features List */}
-                <div>
-                  <h3 className="font-heading text-2xl mb-6">Características principales</h3>
-                  <ul className="space-y-4">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <span className="text-2xl text-leaf mt-1">✓</span>
-                        <span className="text-lg text-obsidian/80">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Benefits Cards */}
-                <div className="space-y-4">
-                  <h3 className="font-heading text-2xl mb-6">Beneficios clave</h3>
-                  {product.benefits.map((benefit, idx) => (
-                    <Card key={idx} variant="default">
-                      <CardContent className="p-6">
-                        <div className="flex items-start gap-4">
-                          <span className="text-3xl">{benefit.icon}</span>
-                          <div>
-                            <h4 className="font-heading text-lg mb-1">{benefit.title}</h4>
-                            <p className="text-obsidian/70">{benefit.description}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {featuredProducts.map(product => (
+              <ProductCard key={product.name} product={product} />
+            ))}
+          </div>
         </Container>
       </section>
 
-      {/* Comparison Section */}
-      <section className="section bg-pearl">
-        <Container>
-          <div className="max-w-5xl mx-auto">
-            <Heading level={2} className="text-center mb-12">
-              ¿Cuál es mejor para ti?
-            </Heading>
-
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-4 px-4">Característica</th>
-                    <th className="text-center py-4 px-4">
-                      <div className="font-heading text-xl">SPARK</div>
-                    </th>
-                    <th className="text-center py-4 px-4">
-                      <div className="font-heading text-xl">PENNY</div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 px-4 font-medium">Ideal para</td>
-                    <td className="text-center py-4 px-4">Empresas medianas/grandes</td>
-                    <td className="text-center py-4 px-4">PyMEs y startups</td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 px-4 font-medium">Enfoque principal</td>
-                    <td className="text-center py-4 px-4">Orquestación completa</td>
-                    <td className="text-center py-4 px-4">Automatización simple</td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 px-4 font-medium">Tiempo de implementación</td>
-                    <td className="text-center py-4 px-4">4-8 semanas</td>
-                    <td className="text-center py-4 px-4">1-2 semanas</td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 px-4 font-medium">Integraciones</td>
-                    <td className="text-center py-4 px-4">1000+ herramientas</td>
-                    <td className="text-center py-4 px-4">100+ herramientas</td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 px-4 font-medium">Precio desde</td>
-                    <td className="text-center py-4 px-4">$50,000 MXN/mes</td>
-                    <td className="text-center py-4 px-4">$15,000 MXN/mes</td>
-                  </tr>
-                </tbody>
-              </table>
+      {/* Upcoming Products */}
+      {upcomingProducts.length > 0 && (
+        <section className="py-16 bg-neutral-50">
+          <Container>
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-4 text-center">Próximamente</h2>
+              <p className="text-xl text-neutral-600 text-center max-w-3xl mx-auto">
+                Productos y plataformas en desarrollo por nuestras unidades.
+              </p>
             </div>
 
-            <div className="mt-8 text-center">
-              <p className="text-obsidian/70 mb-4">
-                ¿No estás seguro? Nuestro equipo te ayudará a elegir
-              </p>
-              <Button variant="creative" size="lg">
-                Hablar con un experto
-              </Button>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {upcomingProducts.map(product => (
+                <div key={product.name} className="relative">
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className="px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full">
+                      Próximamente
+                    </span>
+                  </div>
+                  <div className="opacity-75">
+                    <ProductCard product={product} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* Ownership Categories */}
+      <section className="py-16">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-12 text-center">
+              Estructura de productos
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Aureo Labs Products */}
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center font-bold">
+                    AL
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-amber-900">Aureo Labs</h3>
+                    <Badge
+                      variant="by-madfam"
+                      className="bg-amber-100 text-amber-700 border-amber-200"
+                    >
+                      por MADFAM
+                    </Badge>
+                  </div>
+                </div>
+                <p className="text-amber-800 text-sm mb-4">
+                  Laboratorio de innovación digital que desarrolla plataformas y workspaces
+                  inteligentes.
+                </p>
+                <div className="space-y-2">
+                  {['Aureo Studio', 'PENNY', 'Cotiza Studio', 'Forge Sight', 'AVALA'].map(
+                    product => (
+                      <div key={product} className="text-amber-700 text-sm flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-amber-400 rounded-full"></span>
+                        {product}
+                        {['AVALA'].includes(product) && (
+                          <span className="text-xs text-amber-600 opacity-75">(próximamente)</span>
+                        )}
+                      </div>
+                    )
+                  )}
+                </div>
+                <div className="mt-4">
+                  <Link
+                    href="/arms/aureo-labs"
+                    className="inline-flex items-center text-amber-700 hover:text-amber-800 text-sm font-medium"
+                  >
+                    Ver Aureo Labs
+                    <ArrowUpRightIcon className="w-4 h-4 ml-1" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* MADFAM Direct Products */}
+              <div className="bg-gradient-to-br from-neutral-50 to-gray-50 border border-neutral-200 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-neutral-100 text-neutral-600 rounded-xl flex items-center justify-center font-bold">
+                    MF
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-neutral-900">MADFAM Direct</h3>
+                    <Badge variant="by-madfam">por MADFAM</Badge>
+                  </div>
+                </div>
+                <p className="text-neutral-600 text-sm mb-4">
+                  Productos desarrollados directamente por la casa matriz para soluciones
+                  específicas.
+                </p>
+                <div className="space-y-2">
+                  {['Dhanam', 'RENEC Harvester', 'Mundii'].map(product => (
+                    <div key={product} className="text-neutral-600 text-sm flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full"></span>
+                      {product}
+                      <span className="text-xs text-neutral-500 opacity-75">(próximamente)</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4">
+                  <Link
+                    href="/arms"
+                    className="inline-flex items-center text-neutral-600 hover:text-neutral-800 text-sm font-medium"
+                  >
+                    Ver todas las unidades
+                    <ArrowUpRightIcon className="w-4 h-4 ml-1" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </Container>
       </section>
 
       {/* CTA Section */}
-      <section className="section">
+      <section className="py-20 bg-neutral-900">
         <Container>
-          <div className="bg-gradient-to-br from-obsidian to-obsidian/90 rounded-3xl p-12 text-center text-white">
-            <Heading level={2} className="text-white mb-4">
-              Experimenta el poder de la IA
-            </Heading>
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Solicita una demostración personalizada y descubre cómo SPARK o PENNY pueden
-              transformar tu empresa
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+              ¿Interesado en nuestros productos?
+            </h2>
+            <p className="text-xl text-white/80 mb-12">
+              Contacta con la unidad responsable o agenda una demostración personalizada.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button variant="secondary" size="lg">
-                Demo de SPARK
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-obsidian"
-              >
-                Demo de PENNY
-              </Button>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <button className="px-8 py-3 bg-white text-neutral-900 rounded-lg hover:bg-neutral-100 transition-colors font-medium">
+                  Contactar ahora
+                </button>
+              </Link>
+              <Link href="/arms">
+                <button className="px-8 py-3 border border-white text-white rounded-lg hover:bg-white/10 transition-colors font-medium">
+                  Ver unidades
+                </button>
+              </Link>
             </div>
           </div>
         </Container>

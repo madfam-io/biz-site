@@ -54,7 +54,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                   <div className={index % 2 === 1 ? 'md:order-2' : ''}>
                     <div className="mb-6">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-obsidian/5 text-obsidian">
-                        {locale === 'en-US' ? 'Level' : 'Nivel'} {service.level}
+                        {locale === 'en' ? 'Level' : 'Nivel'} {service.level}
                       </span>
                     </div>
                     <Heading level={2} className="mb-4">
@@ -64,7 +64,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
 
                     <div className="space-y-4 mb-8">
                       <h3 className="font-heading text-lg font-semibold">
-                        {locale === 'en-US' ? 'Includes:' : 'Incluye:'}
+                        {locale === 'en' ? 'Includes:' : 'Incluye:'}
                       </h3>
                       <ul className="space-y-2">
                         {localizedData.features.map((feature: string, idx: number) => (
@@ -79,7 +79,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                     <div className="flex items-baseline gap-4 mb-8">
                       <div>
                         <p className="text-sm text-obsidian/60">
-                          {locale === 'en-US' ? 'From' : 'Desde'}
+                          {locale === 'en' ? 'From' : 'Desde'}
                         </p>
                         <p className="text-3xl font-heading font-bold text-obsidian">
                           ${service.startingPrice.toLocaleString()} {service.currency}
@@ -133,7 +133,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                         <th key={service.id} className="text-center py-4 px-4">
                           <div className="font-heading font-semibold">{localizedData.name}</div>
                           <div className="text-sm text-gray-500 font-normal">
-                            {locale === 'en-US' ? 'Level' : 'Nivel'} {service.level}
+                            {locale === 'en' ? 'Level' : 'Nivel'} {service.level}
                           </div>
                         </th>
                       );
@@ -155,7 +155,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                       const localizedData = getLocalizedServiceData(service);
                       return (
                         <td key={service.id} className="text-center py-4 px-4">
-                          {localizedData.duration || (locale === 'en-US' ? 'Variable' : 'Variable')}
+                          {localizedData.duration || (locale === 'en' ? 'Variable' : 'Variable')}
                         </td>
                       );
                     })}

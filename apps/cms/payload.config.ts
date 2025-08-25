@@ -40,7 +40,8 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString:
+        process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/payload_cms',
     },
   }),
   cors: ['http://localhost:3000', 'https://madfam.io', 'https://staging.madfam.io'],

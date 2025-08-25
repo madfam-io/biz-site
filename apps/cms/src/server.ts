@@ -1,7 +1,14 @@
 import express from 'express';
 import payload from 'payload';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+// Load environment variables
+dotenv.config();
+
+// Debug environment loading
+console.log('Environment loaded:');
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
+console.log('PAYLOAD_PUBLIC_SERVER_URL:', process.env.PAYLOAD_PUBLIC_SERVER_URL);
 
 const app = express();
 

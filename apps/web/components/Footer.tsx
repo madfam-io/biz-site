@@ -9,22 +9,30 @@ export function Footer() {
 
   const navigation = {
     servicios: [
-      { name: t('footer.services.l1'), href: getLocalizedUrl('services.level1', locale) },
-      { name: t('footer.services.l2'), href: getLocalizedUrl('services.level2', locale) },
-      { name: t('footer.services.l3'), href: getLocalizedUrl('services.level3', locale) },
-      { name: t('footer.services.l4'), href: getLocalizedUrl('services.level4', locale) },
-      { name: t('footer.services.l5'), href: getLocalizedUrl('services.level5', locale) },
+      {
+        name: 'Design & Fabrication',
+        href: getLocalizedUrl('programs', locale) + '#design-fabrication',
+      },
+      {
+        name: 'Strategy & Enablement',
+        href: getLocalizedUrl('programs', locale) + '#strategy-enablement',
+      },
+      { name: 'Platform Pilots', href: getLocalizedUrl('programs', locale) + '#platform-pilots' },
+      {
+        name: 'Strategic Partnerships',
+        href: getLocalizedUrl('programs', locale) + '#strategic-partnerships',
+      },
     ],
     productos: [
-      { name: 'SPARK', href: `${getLocalizedUrl('products', locale)}#spark` },
+      { name: 'Aureo Studio', href: 'https://aureo.studio' },
       { name: 'PENNY', href: `${getLocalizedUrl('products', locale)}#penny` },
-      { name: t('footer.products.documentation'), href: `/${locale}/docs` },
-      { name: 'API', href: `/${locale}/api` },
+      { name: 'Cotiza Studio', href: 'https://cotiza.studio' },
+      { name: 'Forge Sight', href: 'https://forgesight.quest' },
     ],
     empresa: [
       { name: t('footer.company.about'), href: getLocalizedUrl('about', locale) },
-      { name: t('footer.company.blog'), href: `/${locale}/blog` },
-      { name: t('footer.company.caseStudies'), href: `/${locale}/case-studies` },
+      { name: 'Unidades', href: getLocalizedUrl('arms', locale) },
+      { name: 'Casos de éxito', href: getLocalizedUrl('work', locale) },
       { name: t('footer.company.careers'), href: `/${locale}/careers` },
     ],
     recursos: [
@@ -47,7 +55,7 @@ export function Footer() {
         <div className="py-12 lg:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-heading text-lg mb-4">{t('footer.sections.services')}</h3>
+              <h3 className="font-heading text-lg mb-4">Programas</h3>
               <ul className="space-y-3">
                 {navigation.servicios.map(item => (
                   <li key={item.name}>

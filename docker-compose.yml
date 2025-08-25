@@ -36,6 +36,24 @@ services:
       - madfam-network
     restart: unless-stopped
 
+  # PostgreSQL database for CMS
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=payload_cms
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - madfam-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
 networks:
   madfam-network:
     driver: bridge
