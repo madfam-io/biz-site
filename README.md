@@ -16,7 +16,7 @@
 - 📊 Privacy-first analytics with enterprise-grade security
 - 🎨 Modern design system with dark/light mode support
 
-**📅 Last Updated:** July 2025
+**📅 Last Updated:** August 2025
 
 ## 🚀 Quick Start
 
@@ -34,7 +34,9 @@ pnpm build
 pnpm test
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see the site.
+Visit [http://localhost:3002/es-MX](http://localhost:3002/es-MX) to see the site (auto-redirects to Spanish locale).
+
+> **Note**: Server may start on port 3001 or 3002 if 3000 is in use.
 
 ## 📁 Project Structure
 
@@ -42,13 +44,13 @@ Visit [http://localhost:3000](http://localhost:3000) to see the site.
 madfam-corporate/
 ├── apps/
 │   ├── web/              # Next.js 14 corporate website
-│   └── cms/              # Payload CMS (future)
+│   └── cms/              # Payload CMS (implemented)
 ├── packages/
 │   ├── ui/               # Shared UI components
 │   ├── core/             # Business logic & types
 │   ├── analytics/        # Analytics integration
 │   ├── i18n/             # Internationalization
-│   └── email/            # Email templates (future)
+│   └── email/            # Email templates (implemented)
 ├── docs/                 # Documentation
 ├── scripts/              # Build & deployment scripts
 └── infrastructure/       # IaC configurations (future)

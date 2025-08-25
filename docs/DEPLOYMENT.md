@@ -2,11 +2,11 @@
 
 ## Overview
 
-The MADFAM website uses a multi-environment deployment strategy:
+The MADFAM website uses a comprehensive multi-environment deployment strategy optimized for AI consultancy business operations:
 
-- **Development**: Local development
-- **Staging**: GitHub Pages (static export)
-- **Production**: Vercel (full Next.js features)
+- **Development**: Local development with SQLite and hot reload
+- **Staging**: GitHub Pages (static export for design/content review)
+- **Production**: Vercel (full Next.js features with PostgreSQL)
 
 ## Prerequisites
 
@@ -27,7 +27,8 @@ NEXT_PUBLIC_ENV=development
 NEXT_PUBLIC_PLAUSIBLE_DOMAIN=localhost
 
 # API
-NEXT_PUBLIC_API_URL=http://localhost:3000/api
+NEXT_PUBLIC_API_URL=http://localhost:3002/api
+DATABASE_URL=file:./dev.db
 
 # Feature Flags
 NEXT_PUBLIC_FEATURE_FLAGS=all
@@ -94,6 +95,7 @@ git push origin staging
 #### Build Process
 
 The GitHub Action will:
+
 1. Install dependencies
 2. Run tests
 3. Build static export with staging config
@@ -101,8 +103,15 @@ The GitHub Action will:
 
 #### Access Staging
 
-- URL: `https://[username].github.io/biz-site`
+- URL: `https://madfam-io.github.io/biz-site`
 - Or with custom domain: `https://staging.madfam.io`
+
+**Important Limitations:**
+
+- No API functionality (forms don't save data)
+- No authentication (login disabled)
+- No database operations
+- Static content only
 
 ### 2. Production Deployment (Vercel)
 
@@ -149,14 +158,18 @@ Vercel automatically creates preview deployments for pull requests.
 #### Main Workflow (.github/workflows/main.yml)
 
 Runs on every push:
-- Linting
-- Type checking
-- Unit tests
-- Build verification
+
+- Dependency installation with pnpm
+- TypeScript compilation and linting
+- Unit tests with Vitest
+- E2E tests with Playwright
+- Build verification for all packages
+- Security dependency scanning
 
 #### Staging Deployment (.github/workflows/deploy-staging.yml)
 
 Triggers on push to `staging`:
+
 - Builds static export
 - Deploys to GitHub Pages
 - Posts deployment URL
@@ -164,6 +177,7 @@ Triggers on push to `staging`:
 #### Production Deployment
 
 Triggers on release creation:
+
 - Builds optimized production build
 - Deploys to Vercel
 - Runs smoke tests
@@ -241,16 +255,19 @@ git push --force-with-lease origin staging
 ### Production Rollback (Vercel)
 
 Option 1: Via Vercel Dashboard
+
 1. Go to Vercel dashboard
 2. Click "Instant Rollback"
 3. Select previous deployment
 
 Option 2: Via CLI
+
 ```bash
 vercel rollback
 ```
 
 Option 3: Git Revert
+
 ```bash
 git revert HEAD
 git push origin main
@@ -267,11 +284,13 @@ git push origin main
 ### Monitoring Services
 
 1. **Vercel Analytics** (Production)
+
    - Real User Metrics
    - Web Vitals
    - Error tracking
 
 2. **Plausible Analytics**
+
    - Page views
    - User journeys
    - Conversion tracking
@@ -349,6 +368,7 @@ Before deploying to production:
 Configure notifications in GitHub/Vercel:
 
 1. **Slack Integration**
+
    - GitHub Actions: Add Slack webhook
    - Vercel: Connect Slack in settings
 

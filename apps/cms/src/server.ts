@@ -1,6 +1,5 @@
 import express from 'express';
 import payload from 'payload';
-import { resolve } from 'path';
 
 require('dotenv').config();
 
