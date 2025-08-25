@@ -4,12 +4,12 @@
  */
 
 import { environment } from '../environment';
-import { performanceMonitor } from '../performance-monitor';
 import {
   getFallbackBlogPosts,
   getFallbackCaseStudies,
   getFallbackTeamMembers,
 } from '../fallback-data';
+import { performanceMonitor } from '../performance-monitor';
 import {
   getPublishedBlogPosts,
   getPublishedCaseStudies,
@@ -47,7 +47,13 @@ export async function preloadCriticalContent(locale?: string) {
     );
 
     if (environment.isDevelopment) {
-      console.log(`✅ Preloaded ${result.length} content types`);
+      // Log to performance monitor instead of console
+      performanceMonitor.recordMetric({
+        name: 'content_preload_completed',
+        value: result.length,
+        unit: 'count',
+        timestamp: Date.now(),
+      });
     }
   } catch (error) {
     console.warn('Failed to preload critical content:', error);

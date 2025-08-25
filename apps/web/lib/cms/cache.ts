@@ -2,8 +2,8 @@
  * CMS Caching System
  */
 
-import type { CacheConfig, CacheEntry } from './types';
 import { recordCacheHit, recordCacheMiss } from '../performance-monitor';
+import type { CacheConfig, CacheEntry } from './types';
 
 export const DEFAULT_CACHE_CONFIG: CacheConfig = {
   ttl: 3600, // 1 hour

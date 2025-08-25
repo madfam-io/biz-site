@@ -4,12 +4,12 @@
  */
 
 import { environment } from '../environment';
-import { performanceMonitor } from '../performance-monitor';
 import {
   getFallbackBlogPosts,
   getFallbackCaseStudies,
   getFallbackTeamMembers,
 } from '../fallback-data';
+import { performanceMonitor } from '../performance-monitor';
 import { CMSClient } from './client';
 import type { BlogPost, CaseStudy, TeamMember } from './types';
 
