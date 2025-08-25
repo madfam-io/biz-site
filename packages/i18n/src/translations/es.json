@@ -16,6 +16,7 @@
     "learnMore": "Conocer más",
     "aiAssessment": "Evaluación IA",
     "freeConsultation": "Consulta gratuita",
+    "tryFree": "Probar gratis",
     "cta": {
       "learnMore": "Conocer más",
       "getQuote": "Obtener cotización",
@@ -104,7 +105,8 @@
       "subtitle": "Descubre cómo MADFAM puede llevar tu empresa al siguiente nivel con IA y creatividad.",
       "scheduleFree": "Agendar consulta gratuita",
       "getStarted": "Comenzar",
-      "learnMore": "Saber más"
+      "learnMore": "Saber más",
+      "button": "Comenzar"
     }
   },
   "services": {

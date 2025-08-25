@@ -16,6 +16,7 @@
     "learnMore": "Learn more",
     "aiAssessment": "AI Assessment",
     "freeConsultation": "Free consultation",
+    "tryFree": "Try free",
     "cta": {
       "learnMore": "Learn more",
       "getQuote": "Get quote",
@@ -104,7 +105,8 @@
       "subtitle": "Discover how MADFAM can take your company to the next level with AI and creativity.",
       "scheduleFree": "Schedule free consultation",
       "getStarted": "Get Started",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+      "button": "Get Started"
     }
   },
   "services": {
