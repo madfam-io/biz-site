@@ -7,7 +7,11 @@
       "about": "About",
       "contact": "Contact",
       "allServices": "All services",
-      "freeConsultation": "Free consultation"
+      "freeConsultation": "Free consultation",
+      "arms": "Business Units",
+      "programs": "Programs",
+      "work": "Work",
+      "security": "Security"
     },
     "learnMore": "Learn more",
     "aiAssessment": "AI Assessment",
@@ -734,35 +738,94 @@
     }
   },
   "assessment": {
-    "title": "AI Readiness Assessment",
-    "subtitle": "Discover your company's AI potential in just 5 minutes",
-    "intro": "Answer a few questions about your current processes and goals to receive a personalized report with specific recommendations for your business.",
-    "start": "Start assessment",
-    "questions": {
-      "current": "Current situation",
-      "goals": "Goals",
-      "challenges": "Challenges",
-      "timeline": "Timeline"
+    "progress": {
+      "question": "Question",
+      "of": "of",
+      "completed": "completed"
     },
     "results": {
-      "title": "Your AI readiness report",
-      "score": "Score",
-      "level": "Level",
-      "recommendations": "Recommendations",
-      "nextSteps": "Next steps",
-      "downloadReport": "Download full report",
-      "scheduleConsultation": "Schedule consultation"
+      "title": "Your assessment results",
+      "learnMore": "Learn more about",
+      "retake": "Retake assessment"
+    },
+    "questions": {
+      "currentTech": {
+        "question": "What is your company's current technology level?",
+        "basic": "Basic - Mainly manual tools",
+        "intermediate": "Intermediate - Some digital tools",
+        "advanced": "Advanced - Multiple integrated systems",
+        "cuttingEdge": "Cutting-edge - Existing AI and automation"
+      },
+      "teamSize": {
+        "question": "What is the size of your technical team?",
+        "small": "Small (1-5 people)",
+        "medium": "Medium (6-20 people)",
+        "large": "Large (21-50 people)",
+        "enterprise": "Enterprise (50+ people)"
+      },
+      "aiInterest": {
+        "question": "What areas of AI interest you most?",
+        "automation": "Process automation",
+        "analytics": "Data analytics and predictions",
+        "customer": "Customer service and support",
+        "operations": "Operations optimization"
+      },
+      "timeline": {
+        "question": "What is your implementation timeline?",
+        "immediate": "Immediate (within 1 month)",
+        "short": "Short term (1-3 months)",
+        "medium": "Medium term (3-6 months)",
+        "long": "Long term (6+ months)"
+      },
+      "budget": {
+        "question": "What is your approximate budget range?",
+        "low": "Basic ($5K - $15K USD)",
+        "medium": "Standard ($15K - $50K USD)",
+        "high": "Premium ($50K - $150K USD)",
+        "enterprise": "Enterprise ($150K+ USD)"
+      }
+    },
+    "recommendations": {
+      "l1": {
+        "title": "Level 1: Essentials",
+        "description": "3D design and graphics foundational services"
+      },
+      "l2": {
+        "title": "Level 2: Advanced",
+        "description": "Parametric design and technical automation"
+      },
+      "l3": {
+        "title": "Level 3: Consulting",
+        "description": "AI consulting and strategic workshops"
+      },
+      "l4": {
+        "title": "Level 4: Platforms",
+        "description": "SPARK and PENNY platform implementation"
+      },
+      "l5": {
+        "title": "Level 5: Strategic",
+        "description": "vCTO partnerships and complete transformation"
+      }
     }
   },
   "calculator": {
-    "title": "ROI Calculator",
-    "subtitle": "Calculate the return on investment in digital transformation",
-    "calculate": "Calculate ROI",
-    "instructions": "Adjust the values and press \"Calculate ROI\" to see your estimated results",
-    "disclaimer": "Calculations based on industry averages and current client results. Actual results may vary depending on specific implementation.",
     "meta": {
       "title": "ROI Calculator - MADFAM",
       "description": "Discover the potential return on investment of our digital transformation and AI consulting services."
+    },
+    "title": "ROI Calculator",
+    "subtitle": "Calculate the return on investment in digital transformation",
+    "hero": {
+      "subtitle": "Visualize the impact MADFAM can have on your business"
+    },
+    "instructions": "Select a service level to calculate specific ROI, or use default values for a general estimate.",
+    "calculate": "Calculate ROI",
+    "disclaimer": "Calculations based on industry averages and current client results. Actual results may vary depending on specific implementation.",
+    "cta": {
+      "title": "Ready to transform your business?",
+      "subtitle": "Our team of experts can help you implement solutions that generate real, measurable results.",
+      "requestConsultation": "Request consultation",
+      "viewServices": "View services"
     },
     "hero": {
       "subtitle": "Visualize the impact MADFAM can have on your business"
@@ -1142,152 +1205,346 @@
     }
   },
   "corporate": {
+    "structure": {
+      "title": "Corporate Structure",
+      "subtitle": "Expert units for real problems",
+      "parentCompany": {
+        "name": "MADFAM",
+        "tagline": "Advanced manufacturing and digital innovation",
+        "description": "Parent company that coordinates and directs all specialized business units"
+      },
+      "arms": {
+        "title": "Our Business Units",
+        "subtitle": "Each unit specialized in solving specific problems",
+        "aureoLabs": {
+          "name": "Aureo Labs",
+          "tagline": "Digital Innovation Laboratory",
+          "description": "Development center for software products and advanced digital solutions",
+          "badge": "by MADFAM",
+          "focus": "Product development, technology research, innovation lab"
+        },
+        "primavera3d": {
+          "name": "Primavera3D",
+          "tagline": "Digital Design Studio",
+          "description": "Specialist in 3D modeling, rendering, animation and visual experiences",
+          "badge": "by MADFAM",
+          "focus": "3D design, architectural visualization, animation, virtual/augmented reality"
+        },
+        "health": {
+          "name": "MADFAM Health",
+          "tagline": "Advanced Medical Technology",
+          "description": "Specialized technology solutions for the health and wellness sector",
+          "badge": "by MADFAM",
+          "focus": "HealthTech, telemedicine, AI medical analysis, connected devices"
+        },
+        "aero": {
+          "name": "MADFAM Aero",
+          "tagline": "Digital Aerospace Engineering",
+          "description": "Advanced technology for the aerospace and drone industry",
+          "badge": "by MADFAM",
+          "focus": "Autonomous drones, flight simulation, aerospace systems, industrial IoT"
+        }
+      },
+      "products": {
+        "title": "Main Products",
+        "subtitle": "Solutions developed by our specialized units",
+        "spark": {
+          "name": "SPARK",
+          "tagline": "Intelligent AI Orchestration",
+          "description": "Complete platform that connects, automates and optimizes all your business processes through advanced AI",
+          "badge": "an Aureo Labs product",
+          "developer": "Aureo Labs"
+        },
+        "penny": {
+          "name": "PENNY",
+          "tagline": "Intelligent Process Automation",
+          "description": "AI assistant that learns, adapts and continuously improves your workflow processes",
+          "badge": "an Aureo Labs product",
+          "developer": "Aureo Labs"
+        },
+        "medSync": {
+          "name": "MedSync",
+          "tagline": "Healthcare Data Integration",
+          "description": "Comprehensive platform for healthcare data management and patient communication",
+          "badge": "a MADFAM Health product",
+          "developer": "MADFAM Health"
+        },
+        "aeroControl": {
+          "name": "AeroControl",
+          "tagline": "Autonomous Flight Management",
+          "description": "Advanced control system for autonomous drones and aerial vehicle fleets",
+          "badge": "a MADFAM Aero product",
+          "developer": "MADFAM Aero"
+        }
+      },
+      "programs": {
+        "title": "Strategic Programs",
+        "subtitle": "Comprehensive solutions that combine multiple units",
+        "designFabrication": {
+          "name": "Design & Fabrication",
+          "description": "End-to-end design and digital fabrication services",
+          "units": ["Primavera3D", "Aureo Labs"],
+          "focus": "3D design, parametric modeling, digital fabrication"
+        },
+        "strategyEnablement": {
+          "name": "Strategy & Enablement",
+          "description": "Strategic workshops and organizational transformation",
+          "units": ["Aureo Labs"],
+          "focus": "AI strategy, change management, capability building"
+        },
+        "platformPilots": {
+          "name": "Platform Pilots",
+          "description": "Implementation of SPARK and PENNY platforms",
+          "units": ["Aureo Labs"],
+          "focus": "Platform deployment, integration, user training"
+        },
+        "strategicPartnerships": {
+          "name": "Strategic Partnerships",
+          "description": "Long-term vCTO partnerships and complete transformation",
+          "units": ["All Units"],
+          "focus": "Strategic leadership, complete digital transformation"
+        },
+        "essentials": {
+          "name": "Essentials",
+          "code": "P1",
+          "oldCode": "L1",
+          "title": "Programa Essentials",
+          "description": "Soluciones rápidas de diseño 3D e IA para necesidades inmediatas",
+          "provider": "Primavera3D",
+          "badge": "by MADFAM",
+          "duration": "1-2 semanas",
+          "deliverables": [
+            "Modelado 3D",
+            "Renderizado fotorrealista",
+            "Diseño gráfico",
+            "Animaciones básicas"
+          ]
+        },
+        "advanced": {
+          "name": "Advanced",
+          "code": "P2",
+          "oldCode": "L2",
+          "title": "Programa Advanced",
+          "description": "Diseño paramétrico y experiencias interactivas que transforman",
+          "provider": "Primavera3D",
+          "badge": "by MADFAM",
+          "duration": "3-6 semanas",
+          "deliverables": [
+            "Diseño paramétrico",
+            "Realidad aumentada/virtual",
+            "Visualización de datos 3D",
+            "Experiencias interactivas"
+          ]
+        },
+        "consulting": {
+          "name": "Consulting",
+          "code": "P3",
+          "oldCode": "L3",
+          "title": "Programa Consulting",
+          "description": "Transforma tu empresa con consultoría especializada en IA",
+          "provider": "Aureo Labs",
+          "badge": "by MADFAM",
+          "duration": "3-6 meses",
+          "deliverables": [
+            "Estrategia personalizada",
+            "Capacitación integral",
+            "Métricas de impacto",
+            "Mejora continua"
+          ]
+        },
+        "platforms": {
+          "name": "Platforms",
+          "code": "P4",
+          "oldCode": "L4",
+          "title": "Programa Platforms",
+          "description": "Implementa SPARK y PENNY para transformación completa",
+          "provider": "Aureo Labs",
+          "badge": "by MADFAM",
+          "duration": "3-12 meses",
+          "deliverables": [
+            "Implementación SPARK/PENNY",
+            "Integración con sistemas",
+            "Capacitación de equipo",
+            "Soporte continuo"
+          ]
+        },
+        "strategic": {
+          "name": "Strategic",
+          "code": "P5",
+          "oldCode": "L5",
+          "title": "Programa Strategic",
+          "description": "Asociación vCTO para liderar tu transformación digital",
+          "provider": "MADFAM",
+          "badge": "by MADFAM",
+          "duration": "12+ meses",
+          "deliverables": [
+            "Liderazgo tecnológico",
+            "Arquitectura empresarial",
+            "Gestión de equipos",
+            "Innovación continua"
+          ]
+        }
+      },
+      "badges": {
+        "byMADFAM": "by MADFAM",
+        "aureoLabsProduct": "an Aureo Labs product",
+        "poweredBy": "Powered by",
+        "developedBy": "Developed by",
+        "inPartnershipWith": "en asociación con"
+      },
+      "messaging": {
+        "tagline": "Unidades expertas para problemas reales",
+        "corporateVision": "Manufactura avanzada e innovación digital",
+        "missionStatement": "Transformamos empresas a través de unidades especializadas que combinan experiencia técnica profunda con innovación digital avanzada",
+        "valueProposition": "Cada unidad de MADFAM está diseñada para resolver problemas específicos de la industria con la máxima especialización y eficiencia"
+      }
+    },
     "hero": {
-      "badge": "Parent Company",
-      "viewArms": "View units",
+      "badge": "Casa matriz",
+      "viewArms": "View business units",
       "viewProducts": "View products",
       "specializedUnits": "Specialized units",
       "premiumProducts": "Premium products"
     },
     "arms": {
-      "title": "Our operational units",
-      "subtitle": "Specialized teams delivering excellence in software, manufacturing, and more.",
-      "allByMadfam": "All units by MADFAM",
-      "viewAll": "View all units",
-      "mainCapabilities": "Main capabilities",
+      "title": "Nuestras unidades operativas",
+      "subtitle": "Equipos especializados que entregan excelencia en software, manufactura y más.",
+      "allByMadfam": "Todas las unidades by MADFAM",
+      "viewAll": "Ver todas las unidades",
+      "mainCapabilities": "Capacidades principales",
       "mainProducts": "Main products",
       "aureoLabs": {
-        "tagline": "Digital innovation lab",
-        "description": "We develop intelligent automation platforms and productivity tools that transform the way work gets done.",
+        "tagline": "Laboratorio de innovación digital",
+        "description": "Desarrollamos plataformas de automatización inteligente y herramientas de productividad que transforman la forma de trabajar.",
         "capabilities": {
-          "0": "Intelligent automation",
-          "1": "Web platforms",
-          "2": "API integrations",
-          "3": "SRE & security"
+          "0": "Automatización inteligente",
+          "1": "Platforms web",
+          "2": "Integraciones API",
+          "3": "SRE y seguridad"
         }
       },
       "primavera3d": {
-        "tagline": "Digital manufacturing studio",
-        "description": "We create extraordinary visual experiences and parametric design solutions for advanced manufacturing.",
+        "tagline": "Estudio de manufactura digital",
+        "description": "Creamos experiencias visuales extraordinarias y soluciones de diseño paramétrico para manufactura avanzada.",
         "capabilities": {
           "0": "3D modeling",
-          "1": "Parametric design",
-          "2": "Visualization",
-          "3": "Digital fabrication"
+          "1": "Diseño paramétrico",
+          "2": "Visualización",
+          "3": "Fabricación digital"
         }
       }
     },
     "products": {
-      "title": "Our products",
-      "featuredTitle": "Featured products",
-      "featuredSubtitle": "Platforms and tools developed by our specialized units.",
-      "viewAll": "View all products",
+      "title": "Nuestros productos",
+      "featuredTitle": "Productos destacados",
+      "featuredSubtitle": "Platforms y herramientas desarrolladas por nuestras unidades especializadas.",
+      "viewAll": "View all los productos",
       "idealFor": "Ideal for:",
       "mainFeatures": "Main features",
       "meta": {
-        "title": "Our Products | MADFAM",
-        "description": "Platforms and tools developed by our specialized units to solve real problems."
+        "title": "Nuestros productos | MADFAM",
+        "description": "Platforms y herramientas desarrolladas por nuestras unidades especializadas para resolver problemas reales."
       },
       "hero": {
-        "subtitle": "Platforms and tools developed by our specialized units to solve real problems."
+        "subtitle": "Platforms y herramientas desarrolladas por nuestras unidades especializadas para resolver problemas reales."
       },
       "categories": {
         "platforms": "Platforms",
         "workspaces": "Workspaces",
-        "openData": "Open data"
+        "openData": "Datos abiertos"
       },
-      "sparkIntegrationNote": "SPARK has been integrated into Aureo Studio as \"Aureo Flows\" for better governance and control.",
+      "sparkIntegrationNote": "SPARK se ha integrado en Aureo Studio como \"Aureo Flows\" para mejor gobernanza y control.",
       "availableProducts": "Available products",
-      "availableProductsSubtitle": "Platforms and tools ready to implement in your organization.",
-      "upcomingSubtitle": "Products and platforms in development by our units.",
+      "availableProductsSubtitle": "Platforms y herramientas listas para implementar en tu organización.",
+      "upcomingSubtitle": "Productos y plataformas en desarrollo por nuestras unidades.",
       "structure": {
         "title": "Product structure",
         "aureoLabs": {
-          "description": "Digital innovation lab that develops intelligent platforms and workspaces."
+          "description": "Laboratorio de innovación digital que desarrolla plataformas y workspaces inteligentes."
         },
         "madfamDirect": {
-          "description": "Products developed directly by the parent company for specific solutions."
+          "description": "Productos desarrollados directamente por la casa matriz para soluciones específicas."
         },
-        "viewAureoLabs": "View Aureo Labs",
-        "viewAllUnits": "View all units"
+        "viewAureoLabs": "Ver Aureo Labs",
+        "viewAllUnits": "Ver todas las unidades"
       },
       "cta": {
-        "title": "Interested in our products?",
-        "subtitle": "Contact the responsible unit or schedule a personalized demo.",
-        "contactNow": "Contact now",
-        "viewUnits": "View units"
+        "title": "¿Interesado en nuestros productos?",
+        "subtitle": "Contacta con la unidad responsable o agenda una demostración personalizada.",
+        "contactNow": "Contactar ahora",
+        "viewUnits": "View business units"
       },
       "aureoStudio": {
-        "description": "AI orchestration platform that governs and automates complex business processes.",
-        "audience": "Medium to large enterprises",
-        "cta": "Visit Aureo Studio",
+        "description": "Platform for orquestación de IA que gobierna y automatiza procesos empresariales complejos.",
+        "audience": "Empresas medianas a grandes",
+        "cta": "Visitar Aureo Studio",
         "features": {
-          "0": "Intelligent flow control",
-          "1": "Enterprise integrations",
-          "2": "Real-time monitoring"
+          "0": "Control de flujos inteligente",
+          "1": "Integraciones empresariales",
+          "2": "Monitoreo en tiempo real"
         }
       },
       "penny": {
-        "description": "Workspace interface that facilitates automation and improves user experience.",
-        "audience": "Teams and organizations",
-        "cta": "View PENNY",
+        "description": "Interfaz de workspace que facilita la automatización y mejora la experiencia del usuario.",
+        "audience": "Equipos y organizaciones",
+        "cta": "Ver PENNY",
         "features": {
-          "0": "Intuitive interface",
-          "1": "Team collaboration",
-          "2": "Visual automation"
+          "0": "Interfaz intuitiva",
+          "1": "Colaboración en equipo",
+          "2": "Automatización visual"
         }
       }
     },
     "programs": {
-      "title": "Transformation programs",
-      "processDescription": "Strategic 3-phase process: Strategy → Pilot → Scale",
-      "updateLabel": "Update:",
-      "migrationNotice": "Our L1-L5 services are now specialized Programs by unit.",
-      "viewAll": "View all programs",
+      "title": "Programas de transformación",
+      "processDescription": "Proceso estratégico en 3 fases: Estrategia → Piloto → Escala",
+      "updateLabel": "Actualización:",
+      "migrationNotice": "Nuestros servicios L1-L5 ahora son Programas especializados por unidad.",
+      "viewAll": "View all los programas",
       "before": "Before:",
-      "scheduleMarket": "Schedule & market",
+      "scheduleMarket": "Cronograma y mercado",
       "duration": "Duration:",
       "idealFor": "Ideal for:",
       "investment": "Investment:",
       "mainDeliverables": "Main deliverables",
-      "moreDeliverables": "+{n} more...",
+      "moreDeliverables": "+{n} más...",
       "includedPlatforms": "Included platforms",
       "deliveredBy": "Delivered by:",
       "requestInfo": "Request information",
       "evaluate": "Evaluate",
       "strategyEnablement": {
-        "name": "Strategy Enablement",
-        "description": "Strategic workshops and training"
+        "name": "Habilitación Estratégica",
+        "description": "Talleres y capacitación estratégica"
       },
       "platformPilots": {
-        "name": "Platform Pilots",
-        "description": "Aureo Studio + PENNY implementation"
+        "name": "Pilotos de Plataforma",
+        "description": "Implementación de Aureo Studio + PENNY"
       },
       "strategicPartnerships": {
-        "name": "Strategic Partnerships",
-        "description": "vCTO partnerships and transformation"
+        "name": "Asociaciones Estratégicas",
+        "description": "Asociaciones vCTO y transformación"
       }
     },
     "whyMadfam": {
-      "title": "Why MADFAM?",
+      "title": "¿Por qué MADFAM?",
       "latamFirst": {
         "title": "LATAM-first",
-        "description": "Built from and for Latin America, with global reach."
+        "description": "Construido desde y para América Latina, con alcance global."
       },
       "privacyFirst": {
         "title": "Privacy-first",
-        "description": "Data security and privacy as a fundamental principle."
+        "description": "Seguridad y privacidad de datos como principio fundamental."
       },
       "designExcellence": {
-        "title": "Design excellence",
+        "title": "Excelencia en diseño",
         "description": "Where AI meets human creativity."
       }
     },
     "cta": {
-      "title": "Ready to transform your organization?",
-      "subtitle": "Discover which unit and program are perfect for your project.",
-      "takeAssessment": "Take AI assessment",
-      "contactNow": "Contact now"
+      "title": "¿Listo para transformar tu organización?",
+      "subtitle": "Descubre qué unidad y programa son perfectos para tu proyecto.",
+      "takeAssessment": "Tomar evaluación IA",
+      "contactNow": "Contactar ahora"
     },
     "badges": {
       "byMadfam": "by MADFAM",
