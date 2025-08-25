@@ -1,5 +1,6 @@
 {
   "common": {
+    "getStarted": "Começar",
     "nav": {
       "home": "Início",
       "services": "Serviços",
@@ -1063,7 +1064,10 @@
         "integration": "Integração com +100 ferramentas",
         "automation": "Automação sem código",
         "analytics": "Analytics em tempo real",
-        "scalability": "Escalabilidade infinita"
+        "scalability": "Escalabilidade infinita",
+        "0": "Integração com +100 ferramentas",
+        "1": "Automação sem código",
+        "2": "Analytics em tempo real"
       },
       "benefits": {
         "title": "Benefícios",
@@ -1083,7 +1087,11 @@
         "learning": "Aprendizado contínuo",
         "natural": "Processamento de linguagem natural",
         "proactive": "Sugestões proativas",
-        "secure": "Segurança enterprise"
+        "secure": "Segurança enterprise",
+        "0": "Aprendizado contínuo",
+        "1": "Processamento de linguagem natural",
+        "2": "Sugestões proativas",
+        "3": "Segurança enterprise"
       },
       "benefits": {
         "title": "Benefícios",
@@ -1091,6 +1099,39 @@
         "satisfaction": "95% satisfação dos usuários",
         "onboarding": "Implementação em 24h",
         "roi": "ROI em 30 dias"
+      }
+    },
+    "aureoStudio": {
+      "title": "Aureo Studio",
+      "tagline": "Orquestração de IA empresarial",
+      "shortDescription": "Plataforma para orquestração de IA que governa e automatiza processos empresariais complexos.",
+      "description": "Plataforma completa para orquestração de IA que governa e automatiza processos empresariais complexos.",
+      "features": {
+        "0": "Controle de fluxos inteligente",
+        "1": "Integrações empresariais",
+        "2": "Monitoramento em tempo real"
+      }
+    },
+    "cotizaStudio": {
+      "title": "Cotiza Studio",
+      "tagline": "Cotações instantâneas com IA",
+      "shortDescription": "Gerador de cotações e propostas alimentado por IA para fechar negócios mais rápido.",
+      "description": "Sistema inteligente de geração de cotações e propostas que usa IA para criar documentos personalizados.",
+      "features": {
+        "0": "Geração instantânea",
+        "1": "Personalização com IA",
+        "2": "Integração com CRM"
+      }
+    },
+    "forgeSight": {
+      "title": "Forge Sight",
+      "tagline": "Previsão e análise preditiva",
+      "shortDescription": "Análise preditiva avançada para tomada de decisões baseada em dados.",
+      "description": "Plataforma de análise preditiva que usa IA para prever tendências e otimizar decisões empresariais.",
+      "features": {
+        "0": "Análise preditiva avançada",
+        "1": "Visualização de dados em tempo real",
+        "2": "Modelos de IA personalizados"
       }
     },
     "comparison": {
@@ -1463,33 +1504,33 @@
       },
       "sparkIntegrationNote": "SPARK se ha integrado en Aureo Studio como \"Aureo Flows\" para mejor gobernanza y control.",
       "availableProducts": "Produtos disponíveis",
-      "availableProductsSubtitle": "Plataformas y herramientas listas para implementar en tu organización.",
+      "availableProductsSubtitle": "Plataformas e ferramentas prontas para implementar em sua organização.",
       "upcomingSubtitle": "Productos y plataformas en desarrollo por nuestras unidades.",
       "structure": {
         "title": "Estrutura de produtos",
         "aureoLabs": {
-          "description": "Laboratorio de innovación digital que desarrolla plataformas y workspaces inteligentes."
+          "description": "Laboratório de inovação digital que desenvolve plataformas e workspaces inteligentes."
         },
         "madfamDirect": {
-          "description": "Productos desarrollados directamente por la casa matriz para soluciones específicas."
+          "description": "Produtos desenvolvidos diretamente pela matriz para soluções específicas."
         },
         "viewAureoLabs": "Ver Aureo Labs",
-        "viewAllUnits": "Ver todas las unidades"
+        "viewAllUnits": "Ver todas as unidades"
       },
       "cta": {
-        "title": "¿Interesado en nuestros productos?",
-        "subtitle": "Contacta con la unidad responsable o agenda una demostración personalizada.",
-        "contactNow": "Contactar ahora",
+        "title": "Interessado em nossos produtos?",
+        "subtitle": "Entre em contato com a unidade responsável ou agende uma demonstração personalizada.",
+        "contactNow": "Entrar em contato",
         "viewUnits": "Ver unidades"
       },
       "aureoStudio": {
-        "description": "Plataforma para orquestación de IA que gobierna y automatiza procesos empresariales complejos.",
+        "description": "Plataforma para orquestração de IA que governa e automatiza processos empresariais complexos.",
         "audience": "Empresas medianas a grandes",
         "cta": "Visitar Aureo Studio",
         "features": {
-          "0": "Control de flujos inteligente",
-          "1": "Integraciones empresariales",
-          "2": "Monitoreo en tiempo real"
+          "0": "Controle de fluxos inteligente",
+          "1": "Integrações empresariais",
+          "2": "Monitoramento em tempo real"
         }
       },
       "penny": {
