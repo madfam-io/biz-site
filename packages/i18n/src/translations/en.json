@@ -31,6 +31,11 @@
     "comingSoonBrackets": "(coming soon)",
     "viewDetails": "View details",
     "note": "Note:",
+    "darkMode": {
+      "toggle": "Toggle dark mode",
+      "switchToLight": "Switch to light mode",
+      "switchToDark": "Switch to dark mode"
+    },
     "footer": {
       "rights": "All rights reserved",
       "privacy": "Privacy",
@@ -46,7 +51,8 @@
       "services": "Services",
       "products": "Products",
       "company": "Company",
-      "resources": "Resources"
+      "resources": "Resources",
+      "programs": "Programs"
     },
     "services": {
       "l1": "3D Design & Graphics",
@@ -67,7 +73,14 @@
       "about": "About",
       "blog": "Blog",
       "caseStudies": "Case Studies",
-      "careers": "Careers"
+      "careers": "Careers",
+      "units": "Units"
+    },
+    "programs": {
+      "designFabrication": "Design & Fabrication",
+      "strategyEnablement": "Strategy & Enablement",
+      "platformPilots": "Platform Pilots",
+      "strategicPartnerships": "Strategic Partnerships"
     },
     "resources": {
       "assessment": "AI Assessment",

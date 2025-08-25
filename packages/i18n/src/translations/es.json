@@ -31,6 +31,11 @@
     "comingSoonBrackets": "(próximamente)",
     "viewDetails": "Ver detalles",
     "note": "Nota:",
+    "darkMode": {
+      "toggle": "Alternar modo oscuro",
+      "switchToLight": "Cambiar a modo claro",
+      "switchToDark": "Cambiar a modo oscuro"
+    },
     "footer": {
       "rights": "Todos los derechos reservados",
       "privacy": "Privacidad",
@@ -46,7 +51,8 @@
       "services": "Servicios",
       "products": "Productos",
       "company": "Empresa",
-      "resources": "Recursos"
+      "resources": "Recursos",
+      "programs": "Programas"
     },
     "services": {
       "l1": "Diseño 3D y Gráfico",
@@ -67,7 +73,14 @@
       "about": "Nosotros",
       "blog": "Blog",
       "caseStudies": "Casos de éxito",
-      "careers": "Carreras"
+      "careers": "Carreras",
+      "units": "Unidades"
+    },
+    "programs": {
+      "designFabrication": "Diseño y Fabricación",
+      "strategyEnablement": "Estrategia y Habilitación",
+      "platformPilots": "Pilotos de Plataforma",
+      "strategicPartnerships": "Asociaciones Estratégicas"
     },
     "resources": {
       "assessment": "Evaluación IA",
@@ -1354,6 +1367,30 @@
             "Gestión de equipos",
             "Innovación continua"
           ]
+        },
+        "designFabrication": {
+          "name": "Diseño y Fabricación",
+          "description": "Servicios integrales de diseño y fabricación digital",
+          "units": ["Primavera3D", "Aureo Labs"],
+          "focus": "Diseño 3D, modelado paramétrico, fabricación digital"
+        },
+        "strategyEnablement": {
+          "name": "Estrategia y Habilitación",
+          "description": "Talleres estratégicos y transformación organizacional",
+          "units": ["Aureo Labs"],
+          "focus": "Estrategia IA, gestión del cambio, desarrollo de capacidades"
+        },
+        "platformPilots": {
+          "name": "Pilotos de Plataforma",
+          "description": "Implementación de plataformas SPARK y PENNY",
+          "units": ["Aureo Labs"],
+          "focus": "Despliegue de plataforma, integración, capacitación de usuarios"
+        },
+        "strategicPartnerships": {
+          "name": "Asociaciones Estratégicas",
+          "description": "Asociaciones vCTO a largo plazo y transformación completa",
+          "units": ["Todas las Unidades"],
+          "focus": "Liderazgo estratégico, transformación digital completa"
         }
       },
       "badges": {

@@ -26,7 +26,10 @@
     "docker:dev": "docker-compose up web-dev",
     "docker:prod": "docker-compose up web",
     "docker:build": "docker-compose build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "validate:translations": "node scripts/validate-translations.js",
+    "find:missing-translations": "node scripts/find-missing-translations.js",
+    "check:translations": "npm run validate:translations && npm run find:missing-translations"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",

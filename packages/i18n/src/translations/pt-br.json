@@ -31,6 +31,11 @@
     "comingSoonBrackets": "(em breve)",
     "viewDetails": "Ver detalhes",
     "note": "Nota:",
+    "darkMode": {
+      "toggle": "Alternar modo escuro",
+      "switchToLight": "Mudar para modo claro",
+      "switchToDark": "Mudar para modo escuro"
+    },
     "footer": {
       "rights": "Todos os direitos reservados",
       "privacy": "Privacidade",
@@ -46,7 +51,8 @@
       "services": "Serviços",
       "products": "Produtos",
       "company": "Empresa",
-      "resources": "Recursos"
+      "resources": "Recursos",
+      "programs": "Programas"
     },
     "services": {
       "l1": "Design 3D e Gráfico",
@@ -67,7 +73,14 @@
       "about": "Sobre",
       "blog": "Blog",
       "caseStudies": "Casos de sucesso",
-      "careers": "Carreiras"
+      "careers": "Carreiras",
+      "units": "Unidades"
+    },
+    "programs": {
+      "designFabrication": "Design e Fabricação",
+      "strategyEnablement": "Estratégia e Capacitação",
+      "platformPilots": "Pilotos de Plataforma",
+      "strategicPartnerships": "Parcerias Estratégicas"
     },
     "resources": {
       "assessment": "Avaliação IA",
