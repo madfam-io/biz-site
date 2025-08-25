@@ -1,10 +1,12 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Sun, Moon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export function DarkModeToggle() {
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
+  const t = useTranslations('common.darkMode');
 
   useEffect(() => {
     // Check for saved preference or system preference
@@ -55,7 +57,7 @@ export function DarkModeToggle() {
     return (
       <button
         className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 w-10 h-10"
-        aria-label="Toggle dark mode"
+        aria-label={t('toggle')}
         disabled
       >
         <div className="w-6 h-6" />
@@ -67,8 +69,8 @@ export function DarkModeToggle() {
     <button
       onClick={toggleDarkMode}
       className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-      aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={darkMode ? t('switchToLight') : t('switchToDark')}
+      title={darkMode ? t('switchToLight') : t('switchToDark')}
     >
       {darkMode ? (
         <Sun className="w-5 h-5 text-yellow-500" />

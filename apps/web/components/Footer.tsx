@@ -10,16 +10,19 @@ export function Footer() {
   const navigation = {
     servicios: [
       {
-        name: 'Design & Fabrication',
+        name: t('footer.programs.designFabrication'),
         href: `${getLocalizedUrl('programs', locale)}#design-fabrication`,
       },
       {
-        name: 'Strategy & Enablement',
+        name: t('footer.programs.strategyEnablement'),
         href: `${getLocalizedUrl('programs', locale)}#strategy-enablement`,
       },
-      { name: 'Platform Pilots', href: `${getLocalizedUrl('programs', locale)}#platform-pilots` },
       {
-        name: 'Strategic Partnerships',
+        name: t('footer.programs.platformPilots'),
+        href: `${getLocalizedUrl('programs', locale)}#platform-pilots`,
+      },
+      {
+        name: t('footer.programs.strategicPartnerships'),
         href: `${getLocalizedUrl('programs', locale)}#strategic-partnerships`,
       },
     ],
@@ -31,8 +34,8 @@ export function Footer() {
     ],
     empresa: [
       { name: t('footer.company.about'), href: getLocalizedUrl('about', locale) },
-      { name: 'Unidades', href: getLocalizedUrl('arms', locale) },
-      { name: 'Casos de éxito', href: getLocalizedUrl('work', locale) },
+      { name: t('footer.company.units'), href: getLocalizedUrl('arms', locale) },
+      { name: t('footer.company.caseStudies'), href: getLocalizedUrl('work', locale) },
       { name: t('footer.company.careers'), href: `/${locale}/careers` },
     ],
     recursos: [
@@ -55,7 +58,7 @@ export function Footer() {
         <div className="py-12 lg:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-heading text-lg mb-4">Programas</h3>
+              <h3 className="font-heading text-lg mb-4">{t('footer.sections.programs')}</h3>
               <ul className="space-y-3">
                 {navigation.servicios.map(item => (
                   <li key={item.name}>
