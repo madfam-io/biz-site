@@ -1,10 +1,9 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { ArrowUpRightIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ProductCard } from '@/components/corporate/ProductCard';
+import { getTranslations } from 'next-intl/server';
 import { Badge } from '@/components/corporate/Badge';
-import { ArrowUpRightIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+import { ProductCard } from '@/components/corporate/ProductCard';
 
 type Props = {
   params: { locale: string };
@@ -257,7 +256,7 @@ export default async function AureoLabsPage({ params }: Props) {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <blockquote className="text-2xl font-medium text-neutral-900 mb-8">
-              "{t('philosophy.quote')}"
+              &ldquo;{t('philosophy.quote')}&rdquo;
             </blockquote>
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8">
               <h3 className="text-xl font-semibold text-amber-900 mb-4">

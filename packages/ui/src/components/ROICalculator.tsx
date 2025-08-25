@@ -7,7 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle } from './Card';
 import { Button } from './Button';
 
 // Service tier type - import from @madfam/core when available
-type ServiceTier = 'L1_ESSENTIALS' | 'L2_ADVANCED' | 'L3_CONSULTING' | 'L4_PLATFORMS' | 'L5_STRATEGIC';
+type ServiceTier =
+  | 'L1_ESSENTIALS'
+  | 'L2_ADVANCED'
+  | 'L3_CONSULTING'
+  | 'L4_PLATFORMS'
+  | 'L5_STRATEGIC';
 
 export interface ROICalculatorProps {
   serviceTier?: ServiceTier;
@@ -53,7 +58,17 @@ const tierMultipliers: Record<ServiceTier, { efficiency: number; costReduction: 
 };
 
 export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps>(
-  ({ serviceTier = 'L3_CONSULTING', title = 'ROI Calculator', currency = 'MXN', variant = 'full', className, onCalculate }, ref) => {
+  (
+    {
+      serviceTier = 'L3_CONSULTING',
+      title = 'ROI Calculator',
+      currency = 'MXN',
+      variant = 'full',
+      className,
+      onCalculate,
+    },
+    ref
+  ) => {
     const [formData, setFormData] = useState<FormData>({
       currentCosts: 50000,
       employeeHours: 160,
@@ -64,7 +79,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
     const [results, setResults] = useState<ROIResults | null>(null);
 
     const formatCurrency = (value: number) => {
-      return new Intl.NumberFormat('es-MX', {
+      return new Intl.NumberFormat('es', {
         style: 'currency',
         currency: currency,
         maximumFractionDigits: 0,
@@ -72,17 +87,17 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
     };
 
     const formatNumber = (value: number) => {
-      return new Intl.NumberFormat('es-MX').format(value);
+      return new Intl.NumberFormat('es').format(value);
     };
 
     const calculateROI = () => {
       const { currentCosts, employeeHours, projectsPerMonth, averageProjectValue } = formData;
       const multipliers = tierMultipliers[serviceTier];
-      
+
       const monthlySavings = currentCosts * multipliers.costReduction;
       const timeSaved = employeeHours * multipliers.efficiency;
-      const additionalRevenue = (projectsPerMonth * multipliers.efficiency) * averageProjectValue;
-      const totalBenefit = monthlySavings + (additionalRevenue / 12);
+      const additionalRevenue = projectsPerMonth * multipliers.efficiency * averageProjectValue;
+      const totalBenefit = monthlySavings + additionalRevenue / 12;
       const investment = servicePricing[serviceTier];
       const roiPercentage = ((totalBenefit * 12 - investment) / investment) * 100;
       const paybackPeriod = investment / totalBenefit;
@@ -100,15 +115,15 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
       onCalculate?.(calculatedResults);
     };
 
-    const InputSlider = ({ 
-      label, 
-      value, 
-      onChange, 
-      min, 
-      max, 
-      step = 1, 
+    const InputSlider = ({
+      label,
+      value,
+      onChange,
+      min,
+      max,
+      step = 1,
       format = 'number',
-      unit = '' 
+      unit = '',
     }: {
       label: string;
       value: number;
@@ -129,7 +144,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
           max={max}
           step={step}
           value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
+          onChange={e => onChange(Number(e.target.value))}
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider"
         />
         <div className="text-right text-sm font-mono text-lavender">
@@ -138,12 +153,12 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
       </div>
     );
 
-    const ResultCard = ({ 
-      icon, 
-      title, 
-      value, 
-      subtitle, 
-      color = 'sun' 
+    const ResultCard = ({
+      icon,
+      title,
+      value,
+      subtitle,
+      color = 'sun',
     }: {
       icon: React.ReactNode;
       title: string;
@@ -151,34 +166,38 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
       subtitle?: string;
       color?: 'sun' | 'lavender' | 'leaf';
     }) => (
-      <div className={cn(
-        'rounded-xl p-6 bg-gradient-to-r',
-        color === 'sun' && 'from-sun/10 to-leaf/10',
-        color === 'lavender' && 'from-lavender/10 to-sun/10',
-        color === 'leaf' && 'from-leaf/10 to-lavender/10'
-      )}>
+      <div
+        className={cn(
+          'rounded-xl p-6 bg-gradient-to-r',
+          color === 'sun' && 'from-sun/10 to-leaf/10',
+          color === 'lavender' && 'from-lavender/10 to-sun/10',
+          color === 'leaf' && 'from-leaf/10 to-lavender/10'
+        )}
+      >
         <div className="flex items-center gap-3 mb-2">
-          <div className={cn(
-            'w-6 h-6',
-            color === 'sun' && 'text-sun',
-            color === 'lavender' && 'text-lavender',
-            color === 'leaf' && 'text-leaf'
-          )}>
+          <div
+            className={cn(
+              'w-6 h-6',
+              color === 'sun' && 'text-sun',
+              color === 'lavender' && 'text-lavender',
+              color === 'leaf' && 'text-leaf'
+            )}
+          >
             {icon}
           </div>
           <h4 className="font-semibold text-gray-800 dark:text-gray-200">{title}</h4>
         </div>
-        <p className={cn(
-          'text-3xl font-heading font-bold',
-          color === 'sun' && 'text-sun',
-          color === 'lavender' && 'text-lavender',
-          color === 'leaf' && 'text-leaf'
-        )}>
+        <p
+          className={cn(
+            'text-3xl font-heading font-bold',
+            color === 'sun' && 'text-sun',
+            color === 'lavender' && 'text-lavender',
+            color === 'leaf' && 'text-leaf'
+          )}
+        >
           {value}
         </p>
-        {subtitle && (
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{subtitle}</p>
-        )}
+        {subtitle && <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{subtitle}</p>}
       </div>
     );
 
@@ -198,7 +217,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               <InputSlider
                 label="Costos mensuales actuales"
                 value={formData.currentCosts}
-                onChange={(value) => setFormData({ ...formData, currentCosts: value })}
+                onChange={value => setFormData({ ...formData, currentCosts: value })}
                 min={10000}
                 max={500000}
                 step={5000}
@@ -207,7 +226,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               <InputSlider
                 label="Horas de empleados por mes"
                 value={formData.employeeHours}
-                onChange={(value) => setFormData({ ...formData, employeeHours: value })}
+                onChange={value => setFormData({ ...formData, employeeHours: value })}
                 min={40}
                 max={500}
                 step={10}
@@ -252,7 +271,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               <InputSlider
                 label="Costos operativos mensuales actuales"
                 value={formData.currentCosts}
-                onChange={(value) => setFormData({ ...formData, currentCosts: value })}
+                onChange={value => setFormData({ ...formData, currentCosts: value })}
                 min={10000}
                 max={500000}
                 step={5000}
@@ -261,7 +280,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               <InputSlider
                 label="Horas de empleados por mes"
                 value={formData.employeeHours}
-                onChange={(value) => setFormData({ ...formData, employeeHours: value })}
+                onChange={value => setFormData({ ...formData, employeeHours: value })}
                 min={40}
                 max={500}
                 step={10}
@@ -270,7 +289,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               <InputSlider
                 label="Proyectos por mes"
                 value={formData.projectsPerMonth}
-                onChange={(value) => setFormData({ ...formData, projectsPerMonth: value })}
+                onChange={value => setFormData({ ...formData, projectsPerMonth: value })}
                 min={1}
                 max={20}
                 unit="proyectos"
@@ -278,7 +297,7 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               <InputSlider
                 label="Valor promedio por proyecto"
                 value={formData.averageProjectValue}
-                onChange={(value) => setFormData({ ...formData, averageProjectValue: value })}
+                onChange={value => setFormData({ ...formData, averageProjectValue: value })}
                 min={5000}
                 max={200000}
                 step={5000}
@@ -294,20 +313,45 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               {results ? (
                 <div className="space-y-4 animate-fade-in">
                   <ResultCard
-                    icon={<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" /><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" /></svg>}
+                    icon={
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    }
                     title="Ahorro Mensual"
                     value={formatCurrency(results.monthlySavings)}
                     color="sun"
                   />
                   <ResultCard
-                    icon={<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.415L11 9.586V6z" clipRule="evenodd" /></svg>}
+                    icon={
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.415L11 9.586V6z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    }
                     title="Tiempo Recuperado"
                     value={`${formatNumber(results.timeSaved)} hrs`}
                     subtitle="Por mes"
                     color="lavender"
                   />
                   <ResultCard
-                    icon={<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" /></svg>}
+                    icon={
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fillRule="evenodd"
+                          d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    }
                     title="ROI Anual"
                     value={`${results.roiPercentage}%`}
                     subtitle={`Retorno en ${formatNumber(results.paybackPeriod)} meses`}
@@ -315,15 +359,20 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
                   />
                   <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      * Estimaciones basadas en datos promedio de la industria y casos de éxito previos. 
-                      Los resultados pueden variar según el contexto específico de cada empresa.
+                      * Estimaciones basadas en datos promedio de la industria y casos de éxito
+                      previos. Los resultados pueden variar según el contexto específico de cada
+                      empresa.
                     </p>
                   </div>
                 </div>
               ) : (
                 <div className="flex items-center justify-center h-64">
                   <div className="text-center">
-                    <svg className="w-16 h-16 text-gray-300 dark:text-gray-700 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                    <svg
+                      className="w-16 h-16 text-gray-300 dark:text-gray-700 mx-auto mb-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <p className="text-gray-500 dark:text-gray-400">

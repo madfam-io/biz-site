@@ -113,17 +113,17 @@ export default async function Level3ConsultingPage({
     {
       id: 'manufacture-leader',
       content:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? "MADFAM's AI consulting transformed our manufacturing process. We reduced waste by 30% and increased efficiency by 50%. The ROI was evident within the first quarter."
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'A consultoria de IA da MADFAM transformou nosso processo de fabricação. Reduzimos o desperdício em 30% e aumentamos a eficiência em 50%. O ROI foi evidente no primeiro trimestre.'
             : 'La consultoría de IA de MADFAM transformó nuestro proceso de manufactura. Redujimos el desperdicio en 30% y aumentamos la eficiencia en 50%. El ROI fue evidente en el primer trimestre.',
       author: {
         name: 'María Fernanda López',
         role:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Operations Director'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Diretora de Operações'
               : 'Directora de Operaciones',
         company: 'ManufactureLeader',
@@ -134,31 +134,31 @@ export default async function Level3ConsultingPage({
       results: [
         {
           metric:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'Waste reduction'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'Redução de desperdício'
                 : 'Reducción de desperdicio',
           value: '30%',
           description:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'In manufacturing process'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'No processo de fabricação'
                 : 'En proceso de manufactura',
         },
         {
           metric:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'Efficiency gain'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'Ganho de eficiência'
                 : 'Ganancia de eficiencia',
           value: '50%',
           description:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'Overall operations'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'Operações gerais'
                 : 'Operaciones generales',
         },
@@ -167,14 +167,14 @@ export default async function Level3ConsultingPage({
     {
       id: 'retail-chain',
       content:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'The AI strategy workshops were eye-opening. Our team now understands how to leverage AI for customer insights and inventory optimization. Sales increased by 25%.'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Os workshops de estratégia de IA foram reveladores. Nossa equipe agora entende como aproveitar a IA para insights de clientes e otimização de estoque. As vendas aumentaram 25%.'
             : 'Los talleres de estrategia de IA fueron reveladores. Nuestro equipo ahora entiende cómo aprovechar la IA para insights de clientes y optimización de inventario. Las ventas aumentaron 25%.',
       author: {
         name: 'Diego Rodríguez',
-        role: currentLocale === 'en-US' ? 'CEO' : currentLocale === 'pt-BR' ? 'CEO' : 'CEO',
+        role: currentLocale === 'en' ? 'CEO' : currentLocale === 'pt-br' ? 'CEO' : 'CEO',
         company: 'RetailChain',
         image: '/testimonials/diego-rodriguez.jpg',
       },
@@ -183,31 +183,31 @@ export default async function Level3ConsultingPage({
       results: [
         {
           metric:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'Sales increase'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'Aumento de vendas'
                 : 'Aumento de ventas',
           value: '25%',
           description:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'After AI implementation'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'Após implementação de IA'
                 : 'Después de implementación de IA',
         },
         {
           metric:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'Team capability'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'Capacidade da equipe'
                 : 'Capacidad del equipo',
           value: '100%',
           description:
-            currentLocale === 'en-US'
+            currentLocale === 'en'
               ? 'AI-ready workforce'
-              : currentLocale === 'pt-BR'
+              : currentLocale === 'pt-br'
                 ? 'Força de trabalho pronta para IA'
                 : 'Fuerza laboral lista para IA',
         },

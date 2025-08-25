@@ -40,10 +40,9 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
     : undefined;
 
   const recommendedText =
-    locale === 'en-US' ? 'RECOMMENDED' : locale === 'pt-BR' ? 'RECOMENDADO' : 'RECOMENDADO';
-  const includesText =
-    locale === 'en-US' ? 'Includes:' : locale === 'pt-BR' ? 'Inclui:' : 'Incluye:';
-  const fromText = locale === 'en-US' ? 'From' : locale === 'pt-BR' ? 'A partir de' : 'Desde';
+    locale === 'en' ? 'RECOMMENDED' : locale === 'pt-br' ? 'RECOMENDADO' : 'RECOMENDADO';
+  const includesText = locale === 'en' ? 'Includes:' : locale === 'pt-br' ? 'Inclui:' : 'Incluye:';
+  const fromText = locale === 'en' ? 'From' : locale === 'pt-br' ? 'A partir de' : 'Desde';
 
   return (
     <Card
@@ -102,7 +101,7 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
           onClick={() => {
             const localizedSlug = getLocalizedServiceSlug(service.id, locale);
             const baseRoute =
-              locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
+              locale === 'es' ? 'servicios' : locale === 'pt-br' ? 'servicos' : 'services';
             router.push(`/${locale}/${baseRoute}/${localizedSlug}`);
           }}
         >

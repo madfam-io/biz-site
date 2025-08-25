@@ -11,16 +11,16 @@ export function Footer() {
     servicios: [
       {
         name: 'Design & Fabrication',
-        href: getLocalizedUrl('programs', locale) + '#design-fabrication',
+        href: `${getLocalizedUrl('programs', locale)}#design-fabrication`,
       },
       {
         name: 'Strategy & Enablement',
-        href: getLocalizedUrl('programs', locale) + '#strategy-enablement',
+        href: `${getLocalizedUrl('programs', locale)}#strategy-enablement`,
       },
-      { name: 'Platform Pilots', href: getLocalizedUrl('programs', locale) + '#platform-pilots' },
+      { name: 'Platform Pilots', href: `${getLocalizedUrl('programs', locale)}#platform-pilots` },
       {
         name: 'Strategic Partnerships',
-        href: getLocalizedUrl('programs', locale) + '#strategic-partnerships',
+        href: `${getLocalizedUrl('programs', locale)}#strategic-partnerships`,
       },
     ],
     productos: [

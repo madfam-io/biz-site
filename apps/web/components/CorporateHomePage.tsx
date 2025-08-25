@@ -1,20 +1,19 @@
 'use client';
 
-import { Button, Container, Heading } from '@madfam/ui';
-import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
-import { AnimatedText } from '@/components/AnimatedText';
-import { ScrollProgress } from '@/components/ScrollProgress';
-import { ArmCard } from '@/components/corporate/ArmCard';
-import { ProductCard } from '@/components/corporate/ProductCard';
-import { Badge } from '@/components/corporate/Badge';
 import {
   ArrowRightIcon,
-  CubeIcon,
   CogIcon,
   RocketLaunchIcon,
   BuildingOffice2Icon,
 } from '@heroicons/react/24/outline';
+import { Button, Container, Heading } from '@madfam/ui';
+import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { AnimatedText } from '@/components/AnimatedText';
+import { ArmCard } from '@/components/corporate/ArmCard';
+import { Badge } from '@/components/corporate/Badge';
+import { ProductCard } from '@/components/corporate/ProductCard';
+import { ScrollProgress } from '@/components/ScrollProgress';
 
 export function CorporateHomePage() {
   const t = useTranslations();

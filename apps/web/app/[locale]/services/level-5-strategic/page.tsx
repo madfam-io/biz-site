@@ -23,135 +23,135 @@ export default function Level5StrategicPage({
   const vCTOServices = [
     {
       area:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Technology Strategy'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Estratégia Tecnológica'
             : 'Estrategia Tecnológica',
       icon: '🎯',
       responsibilities: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '3-5 year technology roadmap'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Roadmap tecnológico de 3-5 anos'
             : 'Roadmap tecnológico a 3-5 años',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Technology evaluation and selection'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Avaliação e seleção de tecnologias'
             : 'Evaluación y selección de tecnologías',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Enterprise architecture'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Arquitetura empresarial'
             : 'Arquitectura empresarial',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Innovation and digital transformation'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Inovação e transformação digital'
             : 'Innovación y transformación digital',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'IT governance and policies'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Governança de TI e políticas'
             : 'Gobierno de TI y políticas',
       ],
     },
     {
       area:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Team Leadership'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Liderança de Equipes'
             : 'Liderazgo de Equipos',
       icon: '👥',
       responsibilities: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Tech talent recruitment'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Recrutamento de talentos tech'
             : 'Reclutamiento de talento tech',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Team development and mentoring'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Desenvolvimento e mentoria de equipes'
             : 'Desarrollo y mentoría de equipos',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Innovation culture'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Cultura de inovação'
             : 'Cultura de innovación',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Agile methodologies'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Metodologias ágeis'
             : 'Metodologías ágiles',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Vendor management'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Gestão de fornecedores'
             : 'Gestión de proveedores',
       ],
     },
     {
       area:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Operations & Delivery'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Operações & Entrega'
             : 'Operaciones & Delivery',
       icon: '⚡',
       responsibilities: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Strategic project management'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Gestão de projetos estratégicos'
             : 'Gestión de proyectos estratégicos',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Process optimization'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Otimização de processos'
             : 'Optimización de procesos',
-        `DevOps ${currentLocale === 'en-US' ? 'and' : currentLocale === 'pt-BR' ? 'e' : 'y'} CI/CD`,
-        currentLocale === 'en-US'
+        `DevOps ${currentLocale === 'en' ? 'and' : currentLocale === 'pt-br' ? 'e' : 'y'} CI/CD`,
+        currentLocale === 'en'
           ? 'Security and compliance'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Segurança e conformidade'
             : 'Seguridad y compliance',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Business continuity'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Continuidade de negócios'
             : 'Continuidad del negocio',
       ],
     },
     {
       area:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Innovation & Growth'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Inovação & Crescimento'
             : 'Innovación & Growth',
       icon: '🚀',
       responsibilities: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'New business models'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Novos modelos de negócio'
             : 'Nuevos modelos de negocio',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Digital products'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Produtos digitais'
             : 'Productos digitales',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Technology partnerships'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Parcerias tecnológicas'
             : 'Partnerships tecnológicos',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Innovation ecosystems'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Ecossistemas de inovação'
             : 'Ecosistemas de innovación',
         'Venture building',
@@ -163,37 +163,37 @@ export default function Level5StrategicPage({
     models: [
       {
         type:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Dedicated vCTO'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'vCTO Dedicado'
               : 'vCTO Dedicado',
         commitment: 'Full-time',
         ideal:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Complete transformation'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Transformação completa'
               : 'Transformación completa',
         includes: [
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Exclusive virtual CTO'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'CTO virtual exclusivo'
               : 'CTO virtual exclusivo',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Executive presence'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Presença executiva'
               : 'Presencia ejecutiva',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'MADFAM support team'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Equipe de suporte MADFAM'
               : 'Equipo de soporte MADFAM',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Full resource access'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Acesso total a recursos'
               : 'Acceso total a recursos',
         ],
@@ -202,62 +202,62 @@ export default function Level5StrategicPage({
         type: 'vCTO Fractional',
         commitment: 'Part-time (50-80%)',
         ideal:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Growing scale-ups'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Scale-ups em crescimento'
               : 'Scale-ups en crecimiento',
         includes: [
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Shared CTO'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'CTO compartilhado'
               : 'CTO compartido',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Weekly executive meetings'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Reuniões executivas semanais'
               : 'Reuniones ejecutivas semanales',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Specialist support'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Suporte de especialistas'
               : 'Soporte de especialistas',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'On-demand resources'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Recursos sob demanda'
               : 'Recursos on-demand',
         ],
       },
       {
         type: 'vCTO Advisory',
-        commitment: `20-40 hrs/${currentLocale === 'en-US' ? 'month' : currentLocale === 'pt-BR' ? 'mês' : 'mes'}`,
+        commitment: `20-40 hrs/${currentLocale === 'en' ? 'month' : currentLocale === 'pt-br' ? 'mês' : 'mes'}`,
         ideal:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Strategic consulting'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Consultoria estratégica'
               : 'Consultoría estratégica',
         includes: [
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Monthly advisory'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Assessoria mensal'
               : 'Asesoría mensual',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Quarterly reviews'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Revisões trimestrais'
               : 'Revisiones trimestrales',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Expert network access'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Acesso à rede de especialistas'
               : 'Acceso a red de expertos',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Executive workshops'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Workshops executivos'
               : 'Workshops ejecutivos',
         ],
@@ -266,66 +266,66 @@ export default function Level5StrategicPage({
     timeline: [
       {
         phase:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Diagnosis'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Diagnóstico'
               : 'Diagnóstico',
-        duration: `2-4 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+        duration: `2-4 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
         focus:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? '360° evaluation of current capabilities'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Avaliação 360° das capacidades atuais'
               : 'Evaluación 360° de capacidades actuales',
       },
       {
         phase:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Strategy'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Estratégia'
               : 'Estrategia',
-        duration: `4-6 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+        duration: `4-6 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
         focus:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Vision and roadmap definition'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Definição de visão e roadmap'
               : 'Definición de visión y roadmap',
       },
       {
         phase:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Execution'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Execução'
               : 'Ejecución',
-        duration: `6-12 ${currentLocale === 'en-US' ? 'months' : currentLocale === 'pt-BR' ? 'meses' : 'meses'}`,
+        duration: `6-12 ${currentLocale === 'en' ? 'months' : currentLocale === 'pt-br' ? 'meses' : 'meses'}`,
         focus:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Key initiative implementation'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Implementação de iniciativas-chave'
               : 'Implementación de iniciativas clave',
       },
       {
         phase:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Evolution'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Evolução'
               : 'Evolución',
         duration:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Continuous'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Contínuo'
               : 'Continuo',
         focus:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Optimization and new opportunities'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Otimização e novas oportunidades'
               : 'Optimización y nuevas oportunidades',
       },
@@ -336,9 +336,9 @@ export default function Level5StrategicPage({
     metrics: [
       {
         label:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Innovation speed'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Velocidade de inovação'
               : 'Velocidad de innovación',
         improvement: '5x',
@@ -347,9 +347,9 @@ export default function Level5StrategicPage({
       { label: 'Time-to-market', improvement: '-60%', icon: '⏱️' },
       {
         label:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Operational efficiency'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Eficiência operacional'
               : 'Eficiencia operativa',
         improvement: '+80%',
@@ -357,9 +357,9 @@ export default function Level5StrategicPage({
       },
       {
         label:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Talent retention'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Retenção de talentos'
               : 'Retención de talento',
         improvement: '+90%',
@@ -368,40 +368,40 @@ export default function Level5StrategicPage({
     ],
     caseStudy: {
       company:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'LATAM FinTech Unicorn'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Unicórnio FinTech LATAM'
             : 'FinTech Unicornio LATAM',
       challenge:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Scale from 50 to 500 employees while maintaining agility'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Escalar de 50 para 500 funcionários mantendo agilidade'
             : 'Escalar de 50 a 500 empleados manteniendo agilidad',
       solution:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'vCTO implemented microservices architecture, DevOps culture and centers of excellence'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'vCTO implementou arquitetura de microsserviços, cultura DevOps e centros de excelência'
             : 'vCTO implementó arquitectura de microservicios, cultura DevOps y centros de excelencia',
       results: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Successful IPO in 18 months'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'IPO bem-sucedido em 18 meses'
             : 'IPO exitoso en 18 meses',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Expansion to 8 countries'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Expansão para 8 países'
             : 'Expansión a 8 países',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '10x user growth'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '10x crescimento de usuários'
             : '10x crecimiento en usuarios',
-        `NPS ${currentLocale === 'en-US' ? 'of' : currentLocale === 'pt-BR' ? 'de' : 'de'} 85+`,
+        `NPS ${currentLocale === 'en' ? 'of' : currentLocale === 'pt-br' ? 'de' : 'de'} 85+`,
       ],
     },
   };
@@ -409,60 +409,60 @@ export default function Level5StrategicPage({
   const differentiators = [
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Global Expert Network'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Rede Global de Especialistas'
             : 'Red Global de Expertos',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Access to 200+ specialists in emerging technologies'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Acesso a +200 especialistas em tecnologias emergentes'
             : 'Acceso a +200 especialistas en tecnologías emergentes',
       icon: '🌐',
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Proven Methodology'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Metodologia Comprovada'
             : 'Metodología Probada',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'MADFAM digital transformation framework'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Framework MADFAM de transformação digital'
             : 'Framework MADFAM de transformación digital',
       icon: '📊',
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Innovation Ecosystem'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Ecossistema de Inovação'
             : 'Ecosistema de Innovación',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Connection with startups, VCs and R&D centers'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Conexão com startups, VCs e centros de P&D'
             : 'Conexión con startups, VCs y centros de I+D',
       icon: '🔗',
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Guaranteed Results'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Resultados Garantidos'
             : 'Resultados Garantizados',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Clear KPIs and performance-based compensation'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'KPIs claros e compensação baseada em performance'
             : 'KPIs claros y compensación basada en performance',
       icon: '🎯',
@@ -482,19 +482,19 @@ export default function Level5StrategicPage({
           <div className="max-w-4xl">
             <div className="mb-6">
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/10 backdrop-blur text-white">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Level 5 • Strategic'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Nível 5 • Estratégico'
                     : 'Nivel 5 • Strategic'}
               </span>
             </div>
             <Heading level={1} className="text-white mb-6">
-              {currentLocale === 'en-US' ? (
+              {currentLocale === 'en' ? (
                 <>
                   Your virtual CTO for the <span className="gradient-text">digital era</span>
                 </>
-              ) : currentLocale === 'pt-BR' ? (
+              ) : currentLocale === 'pt-br' ? (
                 <>
                   Seu CTO virtual para a <span className="gradient-text">era digital</span>
                 </>
@@ -507,9 +507,9 @@ export default function Level5StrategicPage({
             <p className="text-xl text-white/90 mb-8 max-w-3xl">{serviceDescription}</p>
             <div className="flex flex-wrap gap-4 mb-12">
               <Button variant="secondary" size="lg">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Schedule executive meeting'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Agendar reunião executiva'
                     : 'Agendar reunión ejecutiva'}
               </Button>
@@ -518,9 +518,9 @@ export default function Level5StrategicPage({
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-obsidian"
               >
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Download case study'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Baixar estudo de caso'
                     : 'Descargar caso de estudio'}
               </Button>
@@ -531,9 +531,9 @@ export default function Level5StrategicPage({
               <div className="text-center">
                 <p className="text-3xl font-heading font-bold text-white mb-1">50+</p>
                 <p className="text-sm text-white/70">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'CTOs in network'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'CTOs na rede'
                       : 'CTOs en red'}
                 </p>
@@ -541,9 +541,9 @@ export default function Level5StrategicPage({
               <div className="text-center">
                 <p className="text-3xl font-heading font-bold text-white mb-1">$2B+</p>
                 <p className="text-sm text-white/70">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Valuation managed'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Avaliação gerenciada'
                       : 'Valuación gestionada'}
                 </p>
@@ -551,9 +551,9 @@ export default function Level5StrategicPage({
               <div className="text-center">
                 <p className="text-3xl font-heading font-bold text-white mb-1">15+</p>
                 <p className="text-sm text-white/70">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Years experience'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Anos de experiência'
                       : 'Años experiencia'}
                 </p>
@@ -561,9 +561,9 @@ export default function Level5StrategicPage({
               <div className="text-center">
                 <p className="text-3xl font-heading font-bold text-white mb-1">8/10</p>
                 <p className="text-sm text-white/70">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'LATAM Unicorns'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Unicórnios LATAM'
                       : 'Unicornios LATAM'}
                 </p>
@@ -578,16 +578,16 @@ export default function Level5StrategicPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Comprehensive technology leadership'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Liderança tecnológica integral'
                   : 'Liderazgo integral en tecnología'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'A virtual CTO covering all critical areas of your organization'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Um CTO virtual que cobre todas as áreas críticas da sua organização'
                   : 'Un CTO virtual que cubre todas las áreas críticas de tu organización'}
             </p>
@@ -620,16 +620,16 @@ export default function Level5StrategicPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Flexible collaboration models'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Modelos de colaboração flexíveis'
                   : 'Modelos de colaboración flexibles'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'We adapt our service to your needs and growth stage'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Adaptamos nosso serviço às suas necessidades e estágio de crescimento'
                   : 'Adaptamos nuestro servicio a tus necesidades y etapa de crecimiento'}
             </p>
@@ -648,9 +648,9 @@ export default function Level5StrategicPage({
 
                 <div className="mb-6 pb-6 border-b border-gray-200">
                   <p className="text-sm text-center text-obsidian/70">
-                    {currentLocale === 'en-US'
+                    {currentLocale === 'en'
                       ? 'Ideal for:'
-                      : currentLocale === 'pt-BR'
+                      : currentLocale === 'pt-br'
                         ? 'Ideal para:'
                         : 'Ideal para:'}{' '}
                     <span className="font-semibold">{model.ideal}</span>
@@ -668,9 +668,9 @@ export default function Level5StrategicPage({
 
                 <div className="mt-8">
                   <Button variant="outline" className="w-full">
-                    {currentLocale === 'en-US'
+                    {currentLocale === 'en'
                       ? 'More information'
-                      : currentLocale === 'pt-BR'
+                      : currentLocale === 'pt-br'
                         ? 'Mais informações'
                         : 'Más información'}
                   </Button>
@@ -682,9 +682,9 @@ export default function Level5StrategicPage({
           {/* Timeline */}
           <div className="mt-16 max-w-4xl mx-auto">
             <h3 className="font-heading text-xl font-semibold text-center mb-8">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Transformation journey'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Jornada de transformação'
                   : 'Journey de transformación'}
             </h3>
@@ -712,16 +712,16 @@ export default function Level5StrategicPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Proven transformative impact'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Impacto transformador comprovado'
                   : 'Impacto transformador comprobado'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Results that speak louder than words'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Resultados que falam mais que palavras'
                   : 'Resultados que hablan más que las palabras'}
             </p>
@@ -731,9 +731,9 @@ export default function Level5StrategicPage({
             {/* Metrics */}
             <div>
               <h3 className="font-heading text-xl font-semibold mb-6">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Average improvements'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Melhorias médias'
                     : 'Mejoras promedio'}
               </h3>
@@ -756,9 +756,9 @@ export default function Level5StrategicPage({
             {/* Case Study */}
             <div className="bg-gradient-to-br from-obsidian to-obsidian/90 rounded-2xl p-8 text-white">
               <h3 className="font-heading text-xl font-semibold mb-4">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Success story'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Caso de sucesso'
                     : 'Caso de éxito'}
               </h3>
@@ -766,9 +766,9 @@ export default function Level5StrategicPage({
 
               <div className="mb-4">
                 <p className="text-sm text-white/70 mb-1">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Challenge:'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Desafio:'
                       : 'Desafío:'}
                 </p>
@@ -777,9 +777,9 @@ export default function Level5StrategicPage({
 
               <div className="mb-4">
                 <p className="text-sm text-white/70 mb-1">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Solution:'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Solução:'
                       : 'Solución:'}
                 </p>
@@ -788,9 +788,9 @@ export default function Level5StrategicPage({
 
               <div>
                 <p className="text-sm text-white/70 mb-2">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Results:'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Resultados:'
                       : 'Resultados:'}
                 </p>
@@ -813,16 +813,16 @@ export default function Level5StrategicPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'The MADFAM difference'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'A diferença MADFAM'
                   : 'La diferencia MADFAM'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Why the most visionary leaders choose us'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Por que os líderes mais visionários nos escolhem'
                   : 'Por qué los líderes más visionarios nos eligen'}
             </p>
@@ -847,16 +847,16 @@ export default function Level5StrategicPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Complementary services'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Serviços complementares'
                   : 'Servicios complementarios'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Boost your transformation with additional services'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Potencialize sua transformação com serviços adicionais'
                   : 'Potencia tu transformación con servicios adicionales'}
             </p>
@@ -877,16 +877,16 @@ export default function Level5StrategicPage({
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <Heading level={2} className="text-white mb-6">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Ready to lead the future?'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Pronto para liderar o futuro?'
                       : '¿Listo para liderar el futuro?'}
                 </Heading>
                 <p className="text-xl text-white/90 mb-8">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Schedule an executive conversation with our leadership team and discover how a vCTO can transform your organization.'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Agende uma conversa executiva com nossa equipe de liderança e descubra como um vCTO pode transformar sua organização.'
                       : 'Agenda una conversación ejecutiva con nuestro equipo de liderazgo y descubre cómo un vCTO puede transformar tu organización.'}
                 </p>
@@ -894,9 +894,9 @@ export default function Level5StrategicPage({
                   <li className="flex items-start">
                     <span className="text-sun mr-3">✓</span>
                     <span className="text-white/80">
-                      {currentLocale === 'en-US'
+                      {currentLocale === 'en'
                         ? 'Free executive evaluation'
-                        : currentLocale === 'pt-BR'
+                        : currentLocale === 'pt-br'
                           ? 'Avaliação executiva gratuita'
                           : 'Evaluación ejecutiva gratuita'}
                     </span>
@@ -904,9 +904,9 @@ export default function Level5StrategicPage({
                   <li className="flex items-start">
                     <span className="text-sun mr-3">✓</span>
                     <span className="text-white/80">
-                      {currentLocale === 'en-US'
+                      {currentLocale === 'en'
                         ? 'Personalized proposal in 48 hrs'
-                        : currentLocale === 'pt-BR'
+                        : currentLocale === 'pt-br'
                           ? 'Proposta personalizada em 48 hrs'
                           : 'Propuesta personalizada en 48 hrs'}
                     </span>
@@ -914,9 +914,9 @@ export default function Level5StrategicPage({
                   <li className="flex items-start">
                     <span className="text-sun mr-3">✓</span>
                     <span className="text-white/80">
-                      {currentLocale === 'en-US'
+                      {currentLocale === 'en'
                         ? 'Immediate start available'
-                        : currentLocale === 'pt-BR'
+                        : currentLocale === 'pt-br'
                           ? 'Início imediato disponível'
                           : 'Inicio inmediato disponible'}
                     </span>
@@ -924,9 +924,9 @@ export default function Level5StrategicPage({
                 </ul>
                 <div className="flex flex-wrap gap-4">
                   <Button variant="secondary" size="lg">
-                    {currentLocale === 'en-US'
+                    {currentLocale === 'en'
                       ? 'Schedule meeting'
-                      : currentLocale === 'pt-BR'
+                      : currentLocale === 'pt-br'
                         ? 'Agendar reunião'
                         : 'Agendar reunión'}
                   </Button>
@@ -935,9 +935,9 @@ export default function Level5StrategicPage({
                     size="lg"
                     className="border-white text-white hover:bg-white hover:text-obsidian"
                   >
-                    {currentLocale === 'en-US'
+                    {currentLocale === 'en'
                       ? 'Download brochure'
-                      : currentLocale === 'pt-BR'
+                      : currentLocale === 'pt-br'
                         ? 'Baixar brochura'
                         : 'Descargar brochure'}
                   </Button>
@@ -947,18 +947,18 @@ export default function Level5StrategicPage({
               <div className="relative">
                 <div className="bg-white/10 backdrop-blur rounded-2xl p-8">
                   <h3 className="font-heading text-xl font-semibold mb-4">
-                    {currentLocale === 'en-US'
+                    {currentLocale === 'en'
                       ? 'Direct contact'
-                      : currentLocale === 'pt-BR'
+                      : currentLocale === 'pt-br'
                         ? 'Contato direto'
                         : 'Contacto directo'}
                   </h3>
                   <div className="space-y-4">
                     <div>
                       <p className="text-white/60 text-sm mb-1">
-                        {currentLocale === 'en-US'
+                        {currentLocale === 'en'
                           ? 'Executive email'
-                          : currentLocale === 'pt-BR'
+                          : currentLocale === 'pt-br'
                             ? 'Email executivo'
                             : 'Email ejecutivo'}
                       </p>
@@ -970,9 +970,9 @@ export default function Level5StrategicPage({
                     </div>
                     <div>
                       <p className="text-white/60 text-sm mb-1">
-                        {currentLocale === 'en-US'
+                        {currentLocale === 'en'
                           ? 'Calendar'
-                          : currentLocale === 'pt-BR'
+                          : currentLocale === 'pt-br'
                             ? 'Calendário'
                             : 'Calendario'}
                       </p>

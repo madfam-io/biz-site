@@ -122,7 +122,7 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
     // Always include fallback posts
     const fallbackPosts = getFallbackPosts();
     const fallbackSlugs = fallbackPosts.map(post => ({
-      locale: 'en-US' as const,
+      locale: 'en' as const,
       slug: post.slug,
     }));
 
@@ -132,24 +132,24 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
         ...fallbackSlugs,
         // Generate for all locales
         ...fallbackPosts.flatMap(post => [
-          { locale: 'es-MX', slug: post.slug },
-          { locale: 'pt-BR', slug: post.slug },
+          { locale: 'es', slug: post.slug },
+          { locale: 'pt-br', slug: post.slug },
         ]),
       ];
     }
 
     // In CMS-enabled environments, fetch all published posts
     const cmsResults = await Promise.allSettled([
-      getPublishedBlogPosts('en-US', 100, fallbackPosts),
-      getPublishedBlogPosts('es-MX', 100, fallbackPosts),
-      getPublishedBlogPosts('pt-BR', 100, fallbackPosts),
+      getPublishedBlogPosts('en', 100, fallbackPosts),
+      getPublishedBlogPosts('es', 100, fallbackPosts),
+      getPublishedBlogPosts('pt-br', 100, fallbackPosts),
     ]);
 
     const allParams = new Set<string>();
 
     // Add fallback posts first
     fallbackPosts.forEach(post => {
-      ['en-US', 'es-MX', 'pt-BR'].forEach(locale => {
+      ['en', 'es', 'pt-br'].forEach(locale => {
         allParams.add(`${locale}:${post.slug}`);
       });
     });
@@ -157,7 +157,7 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
     // Add CMS posts
     cmsResults.forEach((result, index) => {
       if (result.status === 'fulfilled' && result.value.source === 'cms') {
-        const locale = ['en-US', 'es-MX', 'pt-BR'][index];
+        const locale = ['en', 'es', 'pt-br'][index];
         result.value.docs.forEach(post => {
           allParams.add(`${locale}:${post.slug}`);
         });
@@ -167,17 +167,17 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
     // Convert back to array format
     return Array.from(allParams).map(param => {
       const [locale, slug] = param.split(':');
-      return { locale: locale ?? 'en-US', slug: slug ?? '' };
+      return { locale: locale ?? 'en', slug: slug ?? '' };
     });
   } catch (error) {
     console.error('Error generating static params for blog posts:', error);
     // Fallback to static posts only
     const fallbackPosts = getFallbackPosts();
     return [
-      ...fallbackPosts.map(post => ({ locale: 'en-US' as const, slug: post.slug })),
+      ...fallbackPosts.map(post => ({ locale: 'en' as const, slug: post.slug })),
       ...fallbackPosts.flatMap(post => [
-        { locale: 'es-MX', slug: post.slug },
-        { locale: 'pt-BR', slug: post.slug },
+        { locale: 'es', slug: post.slug },
+        { locale: 'pt-br', slug: post.slug },
       ]),
     ];
   }

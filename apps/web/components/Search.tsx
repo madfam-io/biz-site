@@ -34,7 +34,7 @@ export function Search() {
       ...Object.values(serviceTiers).map(service => {
         const localizedSlug = getLocalizedServiceSlug(service.id, locale);
         const baseRoute =
-          locale === 'es-MX' ? 'servicios' : locale === 'pt-BR' ? 'servicos' : 'services';
+          locale === 'es' ? 'servicios' : locale === 'pt-br' ? 'servicos' : 'services';
 
         return {
           id: service.id,
@@ -49,106 +49,106 @@ export function Search() {
         id: 'spark',
         title: 'SPARK',
         description:
-          locale === 'en-US'
+          locale === 'en'
             ? 'AI orchestration platform to automate workflows'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Plataforma de orquestração de IA para automatizar fluxos de trabalho'
               : 'Plataforma de orquestación de IA para automatizar flujos de trabajo',
         type: 'product' as const,
-        url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#spark`,
+        url: `/${locale}/${locale === 'es' ? 'productos' : locale === 'pt-br' ? 'produtos' : 'products'}#spark`,
       },
       {
         id: 'penny',
         title: 'PENNY',
         description:
-          locale === 'en-US'
+          locale === 'en'
             ? 'AI-powered process automation assistant'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Assistente de automação de processos com IA'
               : 'Asistente de automatización de procesos con IA',
         type: 'product' as const,
-        url: `/${locale}/${locale === 'es-MX' ? 'productos' : locale === 'pt-BR' ? 'produtos' : 'products'}#penny`,
+        url: `/${locale}/${locale === 'es' ? 'productos' : locale === 'pt-br' ? 'produtos' : 'products'}#penny`,
       },
       // Pages
       {
         id: 'about',
         title:
-          locale === 'en-US'
+          locale === 'en'
             ? 'About MADFAM'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Sobre MADFAM'
               : 'Acerca de MADFAM',
         description:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Learn about our mission, vision and team'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Conheça nossa missão, visão e equipe'
               : 'Conoce nuestra misión, visión y equipo',
         type: 'page' as const,
-        url: `/${locale}/${locale === 'es-MX' ? 'nosotros' : locale === 'pt-BR' ? 'sobre' : 'about'}`,
+        url: `/${locale}/${locale === 'es' ? 'nosotros' : locale === 'pt-br' ? 'sobre' : 'about'}`,
       },
       {
         id: 'contact',
-        title: locale === 'en-US' ? 'Contact' : locale === 'pt-BR' ? 'Contato' : 'Contacto',
+        title: locale === 'en' ? 'Contact' : locale === 'pt-br' ? 'Contato' : 'Contacto',
         description:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Get in touch with our team'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Entre em contato com nossa equipe'
               : 'Ponte en contacto con nuestro equipo',
         type: 'page' as const,
-        url: `/${locale}/${locale === 'es-MX' ? 'contacto' : locale === 'pt-BR' ? 'contato' : 'contact'}`,
+        url: `/${locale}/${locale === 'es' ? 'contacto' : locale === 'pt-br' ? 'contato' : 'contact'}`,
       },
       {
         id: 'assessment',
         title:
-          locale === 'en-US'
+          locale === 'en'
             ? 'AI Assessment'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Avaliação de IA'
               : 'Evaluación de IA',
         description:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Discover the AI potential for your business'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Descubra o potencial de IA para seu negócio'
               : 'Descubre el potencial de IA para tu negocio',
         type: 'page' as const,
-        url: `/${locale}/${locale === 'es-MX' ? 'evaluacion' : locale === 'pt-BR' ? 'avaliacao' : 'assessment'}`,
+        url: `/${locale}/${locale === 'es' ? 'evaluacion' : locale === 'pt-br' ? 'avaliacao' : 'assessment'}`,
       },
       {
         id: 'calculator',
         title:
-          locale === 'en-US'
+          locale === 'en'
             ? 'ROI Calculator'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Calculadora de ROI'
               : 'Calculadora de ROI',
         description:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Calculate the return on investment of our services'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Calcule o retorno do investimento de nossos serviços'
               : 'Calcula el retorno de inversión de nuestros servicios',
         type: 'page' as const,
-        url: `/${locale}/${locale === 'es-MX' ? 'calculadora' : locale === 'pt-BR' ? 'calculadora' : 'calculator'}`,
+        url: `/${locale}/${locale === 'es' ? 'calculadora' : locale === 'pt-br' ? 'calculadora' : 'calculator'}`,
       },
       {
         id: 'estimator',
         title:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Project Estimator'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Estimador de Projetos'
               : 'Estimador de Proyectos',
         description:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Get an instant quote for your project'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Obtenha uma cotação instantânea para seu projeto'
               : 'Obtén una cotización instantánea para tu proyecto',
         type: 'page' as const,
-        url: `/${locale}/${locale === 'es-MX' ? 'estimador' : locale === 'pt-BR' ? 'estimador' : 'estimator'}`,
+        url: `/${locale}/${locale === 'es' ? 'estimador' : locale === 'pt-br' ? 'estimador' : 'estimator'}`,
       },
     ],
     [locale]
@@ -237,10 +237,10 @@ export function Search() {
 
   const getTypeLabel = (type: SearchResult['type']) => {
     const labels = {
-      service: locale === 'en-US' ? 'Service' : locale === 'pt-BR' ? 'Serviço' : 'Servicio',
-      product: locale === 'en-US' ? 'Product' : locale === 'pt-BR' ? 'Produto' : 'Producto',
-      page: locale === 'en-US' ? 'Page' : locale === 'pt-BR' ? 'Página' : 'Página',
-      article: locale === 'en-US' ? 'Article' : locale === 'pt-BR' ? 'Artigo' : 'Artículo',
+      service: locale === 'en' ? 'Service' : locale === 'pt-br' ? 'Serviço' : 'Servicio',
+      product: locale === 'en' ? 'Product' : locale === 'pt-br' ? 'Produto' : 'Producto',
+      page: locale === 'en' ? 'Page' : locale === 'pt-br' ? 'Página' : 'Página',
+      article: locale === 'en' ? 'Article' : locale === 'pt-br' ? 'Artigo' : 'Artículo',
     };
     return labels[type];
   };

@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Badge } from './Badge';
 import { cn } from '@/lib/utils';
+import { Badge } from './Badge';
 
 interface ProgramCardProps {
   program: {
@@ -78,7 +78,7 @@ export function ProgramCard({ program }: ProgramCardProps) {
           <div className="flex items-center gap-2 text-xs text-neutral-600">
             <span>Antes:</span>
             <div className="flex gap-1">
-              {program.originalTiers.map((tier, index) => (
+              {program.originalTiers.map(tier => (
                 <span key={tier} className={cn('px-2 py-0.5 rounded', colors.badge)}>
                   {tier}
                 </span>
@@ -115,7 +115,7 @@ export function ProgramCard({ program }: ProgramCardProps) {
                     'w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0',
                     `bg-${program.color}-400`
                   )}
-                ></span>
+                />
                 {deliverable}
               </li>
             ))}

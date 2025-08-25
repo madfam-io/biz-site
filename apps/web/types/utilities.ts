@@ -311,7 +311,7 @@ export function classNames(...classes: ClassValue[]): string {
 }
 
 // Format utilities
-export function formatCurrency(amount: number, currency = 'USD', locale = 'en-US'): string {
+export function formatCurrency(amount: number, currency = 'USD', locale = 'en'): string {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency,
@@ -320,7 +320,7 @@ export function formatCurrency(amount: number, currency = 'USD', locale = 'en-US
 
 export function formatNumber(
   num: number,
-  locale = 'en-US',
+  locale = 'en',
   options?: Intl.NumberFormatOptions
 ): string {
   return new Intl.NumberFormat(locale, options).format(num);
@@ -328,7 +328,7 @@ export function formatNumber(
 
 export function formatDate(
   date: Date | string | number,
-  locale = 'en-US',
+  locale = 'en',
   options?: Intl.DateTimeFormatOptions
 ): string {
   return new Intl.DateTimeFormat(locale, options).format(new Date(date));

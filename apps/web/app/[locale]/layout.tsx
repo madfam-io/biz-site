@@ -31,7 +31,7 @@ export default async function LocaleLayout({
   return (
     <LoggerProvider>
       <AuthProvider>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages as any}>
           <OrganizationStructuredData />
           <GlobalAnalytics />
           <Navbar />

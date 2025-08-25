@@ -1,8 +1,8 @@
 'use client';
 
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Badge } from './Badge';
-import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 
 interface ProductCardProps {
   product: {
@@ -50,7 +50,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <ul className="space-y-2">
           {product.features.map((feature, index) => (
             <li key={index} className="text-neutral-600 text-sm flex items-start gap-2">
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
               {feature}
             </li>
           ))}

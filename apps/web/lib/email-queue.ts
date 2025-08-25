@@ -45,7 +45,17 @@ export class EmailQueueProcessor {
       // console.log(`Processing ${pendingEmails.length} pending emails`);
 
       for (const email of pendingEmails) {
-        await this.processEmail(email);
+        // Convert the email to the correct type
+        const emailItem: EmailQueueItem = {
+          id: email.id,
+          to: Array.isArray(email.to) ? (email.to as string[]) : [],
+          template: email.template,
+          data: email.data,
+          status: email.status,
+          attempts: email.attempts,
+          error: email.error,
+        };
+        await this.processEmail(emailItem);
       }
     } catch (error) {
       console.error('Email queue processing error:', error);

@@ -143,7 +143,7 @@ export function AssessmentClient({ translations, assessmentQuestions }: Assessme
             title={translations.assessmentTitle}
             description={translations.assessmentDescription}
             questions={assessmentQuestions}
-            locale={currentLocale as 'es-MX' | 'en-US' | 'pt-BR'}
+            locale={currentLocale as 'es' | 'en' | 'pt-br'}
             onComplete={handleAssessmentComplete}
           />
         </Container>

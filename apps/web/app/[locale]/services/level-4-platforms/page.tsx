@@ -32,26 +32,26 @@ export default async function Level4PlatformsPage({
         t('level4.platforms.spark.features.1'),
         t('level4.platforms.spark.features.2'),
         t('level4.platforms.spark.features.3'),
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Open API and webhooks'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'API aberta e webhooks'
             : 'API abierta y webhooks',
       ],
       benefits: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '70% reduction in process time'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '70% redução no tempo de processos'
             : '70% reducción en tiempo de procesos',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'ROI in less than 6 months'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'ROI em menos de 6 meses'
             : 'ROI en menos de 6 meses',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Infinite scalability'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Escalabilidade infinita'
             : 'Escalabilidad infinita',
       ],
@@ -70,19 +70,19 @@ export default async function Level4PlatformsPage({
         'Self-healing workflows',
       ],
       benefits: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '85% fewer human errors'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '85% menos erros humanos'
             : '85% menos errores humanos',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '24/7 continuous operation'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '24/7 operação contínua'
             : '24/7 operación continua',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '3x team productivity'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '3x produtividade da equipe'
             : '3x productividad del equipo',
       ],
@@ -95,104 +95,104 @@ export default async function Level4PlatformsPage({
     phases: [
       {
         name: 'Discovery & Planning',
-        duration: `2-3 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+        duration: `2-3 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
         deliverables: [
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Current process audit'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Auditoria de processos atuais'
               : 'Auditoría de procesos actuales',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Automation opportunities map'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Mapa de oportunidades de automação'
               : 'Mapa de oportunidades de automatización',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Solution architecture'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Arquitetura de solução'
               : 'Arquitectura de solución',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Implementation roadmap'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Roadmap de implementação'
               : 'Roadmap de implementación',
         ],
       },
       {
         name: 'Setup & Configuration',
-        duration: `4-6 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+        duration: `4-6 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
         deliverables: [
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Installation and configuration'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Instalação e configuração'
               : 'Instalación y configuración',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Core integrations'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Integrações principais'
               : 'Integraciones core',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Main workflows'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Workflows principais'
               : 'Workflows principales',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Test environment'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Ambiente de testes'
               : 'Ambiente de pruebas',
         ],
       },
       {
         name: 'Pilot & Testing',
-        duration: `2-4 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+        duration: `2-4 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
         deliverables: [
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Pilot with selected team'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Piloto com equipe selecionada'
               : 'Piloto con equipo selecto',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Adjustments and optimization'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Ajustes e otimização'
               : 'Ajustes y optimización',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Process documentation'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Documentação de processos'
               : 'Documentación de procesos',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Performance metrics'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Métricas de performance'
               : 'Métricas de performance',
         ],
       },
       {
         name: 'Rollout & Training',
-        duration: `2-3 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+        duration: `2-3 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
         deliverables: [
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Full deployment'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Implantação completa'
               : 'Despliegue completo',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'User training'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Capacitação de usuários'
               : 'Capacitación de usuarios',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Operational playbooks'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Playbooks operacionais'
               : 'Playbooks operativos',
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Center of excellence'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Centro de excelência'
               : 'Centro de excelencia',
         ],
@@ -200,35 +200,35 @@ export default async function Level4PlatformsPage({
     ],
     support: {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Continuous Support'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Suporte Contínuo'
             : 'Soporte Continuo',
       features: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '99.9% guaranteed SLA'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'SLA garantido 99.9%'
             : 'SLA garantizado 99.9%',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '24/7 support'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Suporte 24/7'
             : 'Soporte 24/7',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Monthly updates'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Atualizações mensais'
             : 'Actualizaciones mensuales',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Continuous optimization'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Otimização contínua'
             : 'Optimización continua',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Access to new features'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Acesso a novas funcionalidades'
             : 'Acceso a nuevas features',
       ],
@@ -239,54 +239,54 @@ export default async function Level4PlatformsPage({
     metrics: [
       {
         label:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Operational cost reduction'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Redução de custos operacionais'
               : 'Reducción de costos operativos',
         value: '45-60%',
       },
       {
         label:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Productivity increase'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Aumento de produtividade'
               : 'Incremento en productividad',
         value: '3-5x',
       },
       {
         label:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'Error reduction'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Redução de erros'
               : 'Reducción de errores',
         value: '85-95%',
       },
       {
         label:
-          currentLocale === 'en-US'
+          currentLocale === 'en'
             ? 'ROI time'
-            : currentLocale === 'pt-BR'
+            : currentLocale === 'pt-br'
               ? 'Tempo de ROI'
               : 'Tiempo de ROI',
-        value: `4-8 ${currentLocale === 'en-US' ? 'months' : currentLocale === 'pt-BR' ? 'meses' : 'meses'}`,
+        value: `4-8 ${currentLocale === 'en' ? 'months' : currentLocale === 'pt-br' ? 'meses' : 'meses'}`,
       },
     ],
     testimonial: {
       quote:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'SPARK completely transformed our operation. What used to take days, now takes hours.'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'SPARK transformou completamente nossa operação. O que antes levava dias, agora é feito em horas.'
             : 'SPARK transformó completamente nuestra operación. Lo que antes tomaba días, ahora se hace en horas.',
       author: 'María González',
       role: 'COO, TechCorp México',
       metric:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '70% reduction in cycle time'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '70% redução no tempo de ciclo'
             : '70% reducción en tiempo de ciclo',
     },
@@ -299,27 +299,27 @@ export default async function Level4PlatformsPage({
     {
       name: 'Slack',
       category:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Communication'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Comunicação'
             : 'Comunicación',
     },
     {
       name: 'Google Workspace',
       category:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Productivity'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Produtividade'
             : 'Productividad',
     },
     {
       name: 'Microsoft 365',
       category:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Productivity'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Produtividade'
             : 'Productividad',
     },
@@ -327,7 +327,7 @@ export default async function Level4PlatformsPage({
     {
       name: 'Stripe',
       category:
-        currentLocale === 'en-US' ? 'Payments' : currentLocale === 'pt-BR' ? 'Pagamentos' : 'Pagos',
+        currentLocale === 'en' ? 'Payments' : currentLocale === 'pt-br' ? 'Pagamentos' : 'Pagos',
     },
   ];
 
@@ -356,9 +356,9 @@ export default async function Level4PlatformsPage({
                 {t('level4.hero.requestDemo')}
               </Button>
               <Button variant="outline" size="lg">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Calculate ROI'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Calcular ROI'
                     : 'Calcular ROI'}
               </Button>
@@ -412,9 +412,9 @@ export default async function Level4PlatformsPage({
 
                       <div className="mb-8">
                         <h4 className="font-semibold mb-3">
-                          {currentLocale === 'en-US'
+                          {currentLocale === 'en'
                             ? 'Main features:'
-                            : currentLocale === 'pt-BR'
+                            : currentLocale === 'pt-br'
                               ? 'Características principais:'
                               : 'Características principales:'}
                         </h4>
@@ -429,9 +429,9 @@ export default async function Level4PlatformsPage({
                       </div>
 
                       <Button variant="primary" className={`bg-gradient-to-r ${platform.color}`}>
-                        {currentLocale === 'en-US'
+                        {currentLocale === 'en'
                           ? 'Explore'
-                          : currentLocale === 'pt-BR'
+                          : currentLocale === 'pt-br'
                             ? 'Explorar'
                             : 'Explorar'}{' '}
                         {platform.name}
@@ -444,9 +444,9 @@ export default async function Level4PlatformsPage({
                       >
                         <div className="bg-white/90 backdrop-blur rounded-xl p-6 shadow-xl">
                           <h4 className="font-semibold mb-4">
-                            {currentLocale === 'en-US'
+                            {currentLocale === 'en'
                               ? 'Key benefits:'
-                              : currentLocale === 'pt-BR'
+                              : currentLocale === 'pt-br'
                                 ? 'Benefícios chave:'
                                 : 'Beneficios clave:'}
                           </h4>
@@ -523,16 +523,16 @@ export default async function Level4PlatformsPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Guaranteed ROI'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'ROI garantido'
                   : 'ROI garantizado'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Numbers that speak for themselves'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Números que falam por si mesmos'
                   : 'Números que hablan por sí solos'}
             </p>
@@ -573,16 +573,16 @@ export default async function Level4PlatformsPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Connect your entire ecosystem'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Conecte todo o seu ecossistema'
                   : 'Conecta todo tu ecosistema'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Over 100 ready-to-use integrations'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Mais de 100 integrações prontas para usar'
                   : 'Más de 100 integraciones listas para usar'}
             </p>
@@ -598,9 +598,9 @@ export default async function Level4PlatformsPage({
             <div className="px-6 py-3 rounded-full bg-gradient-to-r from-lavender to-leaf text-white">
               <span className="font-medium">
                 +90{' '}
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'more...'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'mais...'
                     : 'más...'}
               </span>
@@ -614,16 +614,16 @@ export default async function Level4PlatformsPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Complementary services'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Serviços complementares'
                   : 'Servicios complementarios'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Maximize your investment value with additional services'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Maximize o valor do seu investimento com serviços adicionais'
                   : 'Maximiza el valor de tu inversión con servicios adicionales'}
             </p>
@@ -642,24 +642,24 @@ export default async function Level4PlatformsPage({
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <Heading level={2} className="text-white mb-6">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Transform your business with SPARK and PENNY'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Transforme sua empresa com SPARK e PENNY'
                   : 'Transforma tu empresa con SPARK y PENNY'}
             </Heading>
             <p className="text-xl text-white/90 mb-8">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Schedule a personalized demo and discover how to automate your entire operation'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Agende uma demonstração personalizada e descubra como automatizar toda a sua operação'
                   : 'Agenda una demo personalizada y descubre cómo automatizar tu operación completa'}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button variant="secondary" size="lg">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Schedule executive demo'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Agendar demo executiva'
                     : 'Agendar demo ejecutivo'}
               </Button>
@@ -669,9 +669,9 @@ export default async function Level4PlatformsPage({
                   size="lg"
                   className="border-white text-white hover:bg-white hover:text-lavender"
                 >
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Calculate potential savings'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Calcular economia potencial'
                       : 'Calcular ahorro potencial'}
                 </Button>

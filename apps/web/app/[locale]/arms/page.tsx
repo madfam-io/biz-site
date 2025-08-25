@@ -1,6 +1,5 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { ArmCard } from '@/components/corporate/ArmCard';
 
 type Props = {
@@ -31,7 +30,7 @@ export default async function ArmsPage({ params }: Props) {
       tagline: t('aureoLabs.tagline'),
       description: t('aureoLabs.description'),
       badge: 'por MADFAM',
-      accent: 'copper',
+      accent: 'copper' as const,
       capabilities: [
         t('aureoLabs.capabilities.0'),
         t('aureoLabs.capabilities.1'),
@@ -52,7 +51,7 @@ export default async function ArmsPage({ params }: Props) {
       tagline: t('primavera3d.tagline'),
       description: t('primavera3d.description'),
       badge: 'por MADFAM',
-      accent: 'green',
+      accent: 'green' as const,
       capabilities: [
         t('primavera3d.capabilities.0'),
         t('primavera3d.capabilities.1'),
@@ -71,7 +70,7 @@ export default async function ArmsPage({ params }: Props) {
       tagline: t('health.tagline'),
       description: t('health.description'),
       badge: 'por MADFAM',
-      accent: 'teal',
+      accent: 'teal' as const,
       capabilities: [
         t('health.capabilities.0'),
         t('health.capabilities.1'),
@@ -90,7 +89,7 @@ export default async function ArmsPage({ params }: Props) {
       tagline: t('aero.tagline'),
       description: t('aero.description'),
       badge: 'por MADFAM',
-      accent: 'blue',
+      accent: 'blue' as const,
       capabilities: [
         t('aero.capabilities.0'),
         t('aero.capabilities.1'),
@@ -116,7 +115,7 @@ export default async function ArmsPage({ params }: Props) {
             </h1>
             <p className="text-xl text-neutral-600 mb-8 leading-relaxed">{t('hero.subtitle')}</p>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 rounded-full text-sm text-neutral-600">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               {t('hero.badge')}
             </div>
           </div>

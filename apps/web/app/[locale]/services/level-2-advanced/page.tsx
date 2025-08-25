@@ -53,37 +53,37 @@ export default async function Level2AdvancedPage({
     {
       client: 'TechCorp México',
       project:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Interactive 3D Dashboard'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Dashboard 3D Interativo'
             : 'Dashboard 3D Interactivo',
       challenge:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Visualize complex IoT data in real time'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Visualizar dados complexos de IoT em tempo real'
             : 'Visualizar datos complejos de IoT en tiempo real',
       solution:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Parametric system that adapts visualization based on data volume'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Sistema paramétrico que adapta a visualização conforme o volume de dados'
             : 'Sistema paramétrico que adapta la visualización según el volumen de datos',
       results: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '85% better data comprehension'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '85% melhor compreensão de dados'
             : '85% mejor comprensión de datos',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '3x faster decision making'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '3x velocidade na tomada de decisões'
             : '3x velocidad en toma de decisiones',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'ROI in 2 months'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'ROI em 2 meses'
             : 'ROI en 2 meses',
       ],
@@ -91,43 +91,43 @@ export default async function Level2AdvancedPage({
     },
     {
       client:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Digital Art Museum'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Museu de Arte Digital'
             : 'Museo de Arte Digital',
       project:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'AR Experience for Exhibition'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Experiência AR para Exposição'
             : 'Experiencia AR para Exposición',
       challenge:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Create an interactive digital layer over physical works'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Criar uma camada digital interativa sobre obras físicas'
             : 'Crear una capa digital interactiva sobre obras físicas',
       solution:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'AR app that reveals stories and animations when pointing at artworks'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'App AR que revela histórias e animações ao apontar para as obras'
             : 'App AR que revela historias y animaciones al apuntar a las obras',
       results: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '50K+ downloads'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '50K+ downloads'
             : '50K+ descargas',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '+120% time in museum'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? '+120% tempo no museu'
             : '+120% tiempo en museo',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Cultural innovation award'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Prêmio de inovação cultural'
             : 'Premio a innovación cultural',
       ],
@@ -138,83 +138,83 @@ export default async function Level2AdvancedPage({
   const process = [
     {
       phase:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Discovery'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Descoberta'
             : 'Descubrimiento',
-      duration: `3-5 ${currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'}`,
+      duration: `3-5 ${currentLocale === 'en' ? 'days' : currentLocale === 'pt-br' ? 'dias' : 'días'}`,
       activities: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Ideation workshop'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Workshop de ideação'
             : 'Workshop de ideación',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Technical analysis'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Análise técnica'
             : 'Análisis técnico',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Scope definition'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Definição de escopo'
             : 'Definición de alcance',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Conceptual prototype'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Protótipo conceitual'
             : 'Prototipo conceptual',
       ],
     },
     {
-      phase: currentLocale === 'en-US' ? 'Design' : currentLocale === 'pt-BR' ? 'Design' : 'Diseño',
-      duration: `1-2 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+      phase: currentLocale === 'en' ? 'Design' : currentLocale === 'pt-br' ? 'Design' : 'Diseño',
+      duration: `1-2 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
       activities: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Parametric architecture'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Arquitetura paramétrica'
             : 'Arquitectura paramétrica',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Interaction design'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Design de interações'
             : 'Diseño de interacciones',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'User testing'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Testes de usuário'
             : 'Pruebas de usuario',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Rapid iterations'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Iterações rápidas'
             : 'Iteraciones rápidas',
       ],
     },
     {
       phase:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Development'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Desenvolvimento'
             : 'Desarrollo',
-      duration: `2-3 ${currentLocale === 'en-US' ? 'weeks' : currentLocale === 'pt-BR' ? 'semanas' : 'semanas'}`,
+      duration: `2-3 ${currentLocale === 'en' ? 'weeks' : currentLocale === 'pt-br' ? 'semanas' : 'semanas'}`,
       activities: [
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Technical implementation'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Implementação técnica'
             : 'Implementación técnica',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'System integration'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Integração de sistemas'
             : 'Integración de sistemas',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Optimization'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Otimização'
             : 'Optimización',
         'Testing QA',
@@ -222,27 +222,27 @@ export default async function Level2AdvancedPage({
     },
     {
       phase:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Launch'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Lançamento'
             : 'Lanzamiento',
-      duration: `3-5 ${currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'}`,
+      duration: `3-5 ${currentLocale === 'en' ? 'days' : currentLocale === 'pt-br' ? 'dias' : 'días'}`,
       activities: [
         'Deployment',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Training'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Capacitação'
             : 'Capacitación',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Documentation'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Documentação'
             : 'Documentación',
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Initial support'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Suporte inicial'
             : 'Soporte inicial',
       ],
@@ -252,60 +252,60 @@ export default async function Level2AdvancedPage({
   const benefits = [
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Total Flexibility'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Flexibilidade Total'
             : 'Flexibilidad Total',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Designs that automatically adapt to changes in data or requirements'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Designs que se adaptam automaticamente a mudanças em dados ou requisitos'
             : 'Diseños que se adaptan automáticamente a cambios en datos o requerimientos',
       icon: '🔄',
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Memorable Experiences'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Experiências Memoráveis'
             : 'Experiencias Memorables',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Interactions your users will never forget'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Interações que seus usuários nunca esquecerão'
             : 'Interacciones que tus usuarios nunca olvidarán',
       icon: '✨',
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Competitive Advantage'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Vantagem Competitiva'
             : 'Ventaja Competitiva',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Technology that positions you years ahead of the competition'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Tecnologia que te posiciona anos à frente da concorrência'
             : 'Tecnología que te posiciona años adelante de la competencia',
       icon: '🚀',
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Scalability'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Escalabilidade'
             : 'Escalabilidad',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Solutions that grow with your business without rebuilding everything'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Soluções que crescem com seu negócio sem refazer tudo'
             : 'Soluciones que crecen con tu negocio sin rehacer todo',
       icon: '📈',
@@ -337,9 +337,9 @@ export default async function Level2AdvancedPage({
                 {t('level2.hero.scheduleDemo')}
               </Button>
               <Button variant="outline" size="lg">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'View interactive demos'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Ver demos interativos'
                     : 'Ver demos interactivos'}
               </Button>
@@ -358,9 +358,9 @@ export default async function Level2AdvancedPage({
               <div>
                 <p className="text-3xl font-heading font-bold text-sun mb-1">100+</p>
                 <p className="text-sm text-obsidian/60">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Experiences created'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Experiências criadas'
                       : 'Experiencias creadas'}
                 </p>
@@ -368,9 +368,9 @@ export default async function Level2AdvancedPage({
               <div>
                 <p className="text-3xl font-heading font-bold text-sun mb-1">15+</p>
                 <p className="text-sm text-obsidian/60">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Awards won'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Prêmios ganhos'
                       : 'Premios ganados'}
                 </p>
@@ -418,16 +418,16 @@ export default async function Level2AdvancedPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Success Stories'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Casos de Sucesso'
                   : 'Casos de éxito'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Projects that transformed the way of doing business'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Projetos que transformaram a forma de fazer negócios'
                   : 'Proyectos que transformaron la forma de hacer negocios'}
             </p>
@@ -445,9 +445,9 @@ export default async function Level2AdvancedPage({
 
                     <div className="mb-6">
                       <h4 className="font-semibold mb-2">
-                        {currentLocale === 'en-US'
+                        {currentLocale === 'en'
                           ? 'Challenge'
-                          : currentLocale === 'pt-BR'
+                          : currentLocale === 'pt-br'
                             ? 'Desafio'
                             : 'Desafío'}
                       </h4>
@@ -456,9 +456,9 @@ export default async function Level2AdvancedPage({
 
                     <div className="mb-6">
                       <h4 className="font-semibold mb-2">
-                        {currentLocale === 'en-US'
+                        {currentLocale === 'en'
                           ? 'Solution'
-                          : currentLocale === 'pt-BR'
+                          : currentLocale === 'pt-br'
                             ? 'Solução'
                             : 'Solución'}
                       </h4>
@@ -479,9 +479,9 @@ export default async function Level2AdvancedPage({
 
                     <div>
                       <h4 className="font-semibold mb-3">
-                        {currentLocale === 'en-US'
+                        {currentLocale === 'en'
                           ? 'Results'
-                          : currentLocale === 'pt-BR'
+                          : currentLocale === 'pt-br'
                             ? 'Resultados'
                             : 'Resultados'}
                       </h4>
@@ -507,16 +507,16 @@ export default async function Level2AdvancedPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Collaborative and agile process'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Processo colaborativo e ágil'
                   : 'Proceso colaborativo y ágil'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'From idea to implementation in 2-4 weeks'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Da ideia à implementação em 2-4 semanas'
                   : 'De la idea a la implementación en 2-4 semanas'}
             </p>
@@ -555,16 +555,16 @@ export default async function Level2AdvancedPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Why choose Advanced'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Por que escolher Advanced'
                   : 'Por qué elegir Advanced'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Advantages that transform your investment into tangible results'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Vantagens que transformam seu investimento em resultados tangíveis'
                   : 'Ventajas que transforman tu inversión en resultados tangibles'}
             </p>
@@ -587,16 +587,16 @@ export default async function Level2AdvancedPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Explore other levels'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Explore outros níveis'
                   : 'Explora otros niveles'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Find the perfect service for your current stage'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Encontre o serviço perfeito para sua etapa atual'
                   : 'Encuentra el servicio perfecto para tu etapa actual'}
             </p>
@@ -615,24 +615,24 @@ export default async function Level2AdvancedPage({
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <Heading level={2} className="text-white mb-6">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Ready to create something extraordinary?'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Pronto para criar algo extraordinário?'
                   : '¿Listo para crear algo extraordinario?'}
             </Heading>
             <p className="text-xl text-white/90 mb-8">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Schedule a technical consultation and discover how to take your project to the next level'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Agende uma consulta técnica e descubra como levar seu projeto ao próximo nível'
                   : 'Agenda una consulta técnica y descubre cómo llevar tu proyecto al siguiente nivel'}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button variant="secondary" size="lg">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Schedule free consultation'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Agendar consulta gratuita'
                     : 'Agendar consulta gratuita'}
               </Button>
@@ -642,9 +642,9 @@ export default async function Level2AdvancedPage({
                   size="lg"
                   className="border-white text-white hover:bg-white hover:text-sun"
                 >
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Project evaluation'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Avaliação de projeto'
                       : 'Evaluación de proyecto'}
                 </Button>

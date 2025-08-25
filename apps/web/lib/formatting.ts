@@ -6,12 +6,12 @@ interface CurrencyConfig {
   symbol?: string;
 }
 
-const DEFAULT_CURRENCY_CONFIG: CurrencyConfig = { locale: 'en-US', currency: 'USD', symbol: '$' };
+const DEFAULT_CURRENCY_CONFIG: CurrencyConfig = { locale: 'en', currency: 'USD', symbol: '$' };
 
 const CURRENCY_BY_LOCALE: Record<string, CurrencyConfig> = {
-  'en-US': DEFAULT_CURRENCY_CONFIG,
-  'es-MX': { locale: 'es-MX', currency: 'MXN', symbol: '$' },
-  'pt-BR': { locale: 'pt-BR', currency: 'BRL', symbol: 'R$' },
+  en: DEFAULT_CURRENCY_CONFIG,
+  es: { locale: 'es', currency: 'MXN', symbol: '$' },
+  'pt-br': { locale: 'pt-br', currency: 'BRL', symbol: 'R$' },
 };
 
 export function useCurrencyFormatter() {
@@ -123,32 +123,32 @@ export function useDateFormatter() {
     const diffInSeconds = Math.floor((now.getTime() - dateObj.getTime()) / 1000);
 
     if (diffInSeconds < 60) {
-      return locale === 'en-US' ? 'just now' : locale === 'es-MX' ? 'ahora mismo' : 'agora mesmo';
+      return locale === 'en' ? 'just now' : locale === 'es' ? 'ahora mismo' : 'agora mesmo';
     }
 
     const diffInMinutes = Math.floor(diffInSeconds / 60);
     if (diffInMinutes < 60) {
-      return locale === 'en-US'
+      return locale === 'en'
         ? `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`
-        : locale === 'es-MX'
+        : locale === 'es'
           ? `hace ${diffInMinutes} minuto${diffInMinutes > 1 ? 's' : ''}`
           : `há ${diffInMinutes} minuto${diffInMinutes > 1 ? 's' : ''}`;
     }
 
     const diffInHours = Math.floor(diffInMinutes / 60);
     if (diffInHours < 24) {
-      return locale === 'en-US'
+      return locale === 'en'
         ? `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`
-        : locale === 'es-MX'
+        : locale === 'es'
           ? `hace ${diffInHours} hora${diffInHours > 1 ? 's' : ''}`
           : `há ${diffInHours} hora${diffInHours > 1 ? 's' : ''}`;
     }
 
     const diffInDays = Math.floor(diffInHours / 24);
     if (diffInDays < 30) {
-      return locale === 'en-US'
+      return locale === 'en'
         ? `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`
-        : locale === 'es-MX'
+        : locale === 'es'
           ? `hace ${diffInDays} día${diffInDays > 1 ? 's' : ''}`
           : `há ${diffInDays} dia${diffInDays > 1 ? 's' : ''}`;
     }

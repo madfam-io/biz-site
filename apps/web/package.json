@@ -38,7 +38,7 @@
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.525.0",
-    "next": "14.2.8",
+    "next": "14.2.30",
     "next-auth": "^4.24.11",
     "next-intl": "^3.4.0",
     "react": "^18.3.1",

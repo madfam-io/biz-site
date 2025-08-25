@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import { Badge } from './Badge';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { Badge } from './Badge';
 
 interface ArmCardProps {
   arm: {
@@ -93,7 +93,7 @@ export function ArmCard({ arm }: ArmCardProps) {
         <div className="grid grid-cols-2 gap-2">
           {arm.capabilities.slice(0, 4).map((capability, index) => (
             <div key={index} className="text-xs text-neutral-600 flex items-center gap-1">
-              <span className={cn('w-1.5 h-1.5 rounded-full', `bg-${arm.accent}-400`)}></span>
+              <span className={cn('w-1.5 h-1.5 rounded-full', `bg-${arm.accent}-400`)} />
               {capability}
             </div>
           ))}

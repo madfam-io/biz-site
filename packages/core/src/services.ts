@@ -31,33 +31,33 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
     id: ServiceTier.L1_ESSENTIALS,
     level: 1,
     name: {
-      'es-MX': 'Essentials',
-      'en-US': 'Essentials',
-      'pt-BR': 'Essenciais',
+      es: 'Essentials',
+      en: 'Essentials',
+      'pt-br': 'Essenciais',
     },
     description: {
-      'es-MX': 'Diseño 3D y servicios gráficos para necesidades inmediatas',
-      'en-US': '3D design and graphic services for immediate needs',
-      'pt-BR': 'Design 3D e serviços gráficos para necessidades imediatas',
+      es: 'Diseño 3D y servicios gráficos para necesidades inmediatas',
+      en: '3D design and graphic services for immediate needs',
+      'pt-br': 'Design 3D e serviços gráficos para necessidades imediatas',
     },
     startingPrice: 5000,
     currency: 'MXN',
     features: {
-      'es-MX': [
+      es: [
         'Modelado y renderizado 3D',
         'Diseño gráfico para digital/impreso',
         'Animaciones básicas',
         'Entrega en 48 horas',
         'Revisiones ilimitadas por 7 días',
       ],
-      'en-US': [
+      en: [
         '3D modeling and rendering',
         'Graphic design for digital/print',
         'Basic animations',
         '48-hour turnaround',
         'Unlimited revisions for 7 days',
       ],
-      'pt-BR': [
+      'pt-br': [
         'Modelagem e renderização 3D',
         'Design gráfico para digital/impresso',
         'Animações básicas',
@@ -66,57 +66,57 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
       ],
     },
     idealFor: {
-      'es-MX': ['Startups', 'Proyectos pequeños', 'Equipos de marketing'],
-      'en-US': ['Startups', 'Small projects', 'Marketing teams'],
-      'pt-BR': ['Startups', 'Projetos pequenos', 'Equipes de marketing'],
+      es: ['Startups', 'Proyectos pequeños', 'Equipos de marketing'],
+      en: ['Startups', 'Small projects', 'Marketing teams'],
+      'pt-br': ['Startups', 'Projetos pequenos', 'Equipes de marketing'],
     },
     cta: {
       text: {
-        'es-MX': 'Obtener cotización instantánea',
-        'en-US': 'Get instant quote',
-        'pt-BR': 'Obter cotação instantânea',
+        es: 'Obtener cotización instantánea',
+        en: 'Get instant quote',
+        'pt-br': 'Obter cotação instantânea',
       },
       action: 'quote',
     },
     color: 'leaf',
     icon: '🎨',
     duration: {
-      'es-MX': 'Por proyecto',
-      'en-US': 'Per project',
-      'pt-BR': 'Por projeto',
+      es: 'Por proyecto',
+      en: 'Per project',
+      'pt-br': 'Por projeto',
     },
   },
   [ServiceTier.L2_ADVANCED]: {
     id: ServiceTier.L2_ADVANCED,
     level: 2,
     name: {
-      'es-MX': 'Advanced',
-      'en-US': 'Advanced',
-      'pt-BR': 'Avançado',
+      es: 'Advanced',
+      en: 'Advanced',
+      'pt-br': 'Avançado',
     },
     description: {
-      'es-MX': 'Diseño paramétrico y experiencias interactivas avanzadas',
-      'en-US': 'Parametric design and advanced interactive experiences',
-      'pt-BR': 'Design paramétrico e experiências interativas avançadas',
+      es: 'Diseño paramétrico y experiencias interactivas avanzadas',
+      en: 'Parametric design and advanced interactive experiences',
+      'pt-br': 'Design paramétrico e experiências interativas avançadas',
     },
     startingPrice: 25000,
     currency: 'MXN',
     features: {
-      'es-MX': [
+      es: [
         'Diseño paramétrico con nodos',
         'Experiencias AR/VR básicas',
         'Visualización de datos 3D',
         'Integración con herramientas existentes',
         'Soporte prioritario',
       ],
-      'en-US': [
+      en: [
         'Node-based parametric design',
         'Basic AR/VR experiences',
         '3D data visualization',
         'Integration with existing tools',
         'Priority support',
       ],
-      'pt-BR': [
+      'pt-br': [
         'Design paramétrico baseado em nós',
         'Experiências AR/VR básicas',
         'Visualização de dados 3D',
@@ -125,43 +125,43 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
       ],
     },
     idealFor: {
-      'es-MX': ['Agencias creativas', 'Proyectos de innovación', 'Presentaciones ejecutivas'],
-      'en-US': ['Creative agencies', 'Innovation projects', 'Executive presentations'],
-      'pt-BR': ['Agências criativas', 'Projetos de inovação', 'Apresentações executivas'],
+      es: ['Agencias creativas', 'Proyectos de innovación', 'Presentaciones ejecutivas'],
+      en: ['Creative agencies', 'Innovation projects', 'Executive presentations'],
+      'pt-br': ['Agências criativas', 'Projetos de inovação', 'Apresentações executivas'],
     },
     cta: {
       text: {
-        'es-MX': 'Agendar consulta',
-        'en-US': 'Schedule consultation',
-        'pt-BR': 'Agendar consulta',
+        es: 'Agendar consulta',
+        en: 'Schedule consultation',
+        'pt-br': 'Agendar consulta',
       },
       action: 'book',
     },
     color: 'sun',
     icon: '🚀',
     duration: {
-      'es-MX': '2-4 semanas',
-      'en-US': '2-4 weeks',
-      'pt-BR': '2-4 semanas',
+      es: '2-4 semanas',
+      en: '2-4 weeks',
+      'pt-br': '2-4 semanas',
     },
   },
   [ServiceTier.L3_CONSULTING]: {
     id: ServiceTier.L3_CONSULTING,
     level: 3,
     name: {
-      'es-MX': 'Consulting',
-      'en-US': 'Consulting',
-      'pt-BR': 'Consultoria',
+      es: 'Consulting',
+      en: 'Consulting',
+      'pt-br': 'Consultoria',
     },
     description: {
-      'es-MX': 'Workshops, capacitación y consultoría para transformación digital',
-      'en-US': 'Workshops, training, and consulting for digital transformation',
-      'pt-BR': 'Workshops, treinamento e consultoria para transformação digital',
+      es: 'Workshops, capacitación y consultoría para transformación digital',
+      en: 'Workshops, training, and consulting for digital transformation',
+      'pt-br': 'Workshops, treinamento e consultoria para transformação digital',
     },
     startingPrice: 75000,
     currency: 'MXN',
     features: {
-      'es-MX': [
+      es: [
         'Workshops personalizados de IA',
         'Capacitación de equipos técnicos',
         'Auditoría de procesos digitales',
@@ -169,7 +169,7 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
         'Implementación de mejores prácticas',
         'Sesiones de seguimiento mensuales',
       ],
-      'en-US': [
+      en: [
         'Custom AI workshops',
         'Technical team training',
         'Digital process audit',
@@ -177,7 +177,7 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
         'Best practices implementation',
         'Monthly follow-up sessions',
       ],
-      'pt-BR': [
+      'pt-br': [
         'Workshops personalizados de IA',
         'Treinamento de equipes técnicas',
         'Auditoria de processos digitais',
@@ -187,43 +187,43 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
       ],
     },
     idealFor: {
-      'es-MX': ['Empresas en crecimiento', 'Equipos de innovación', 'Transformación digital'],
-      'en-US': ['Growing companies', 'Innovation teams', 'Digital transformation'],
-      'pt-BR': ['Empresas em crescimento', 'Equipes de inovação', 'Transformação digital'],
+      es: ['Empresas en crecimiento', 'Equipos de innovación', 'Transformación digital'],
+      en: ['Growing companies', 'Innovation teams', 'Digital transformation'],
+      'pt-br': ['Empresas em crescimento', 'Equipes de inovação', 'Transformação digital'],
     },
     cta: {
       text: {
-        'es-MX': 'Solicitar propuesta',
-        'en-US': 'Request proposal',
-        'pt-BR': 'Solicitar proposta',
+        es: 'Solicitar propuesta',
+        en: 'Request proposal',
+        'pt-br': 'Solicitar proposta',
       },
       action: 'contact',
     },
     color: 'lavender',
     icon: '💡',
     duration: {
-      'es-MX': '3-6 meses',
-      'en-US': '3-6 months',
-      'pt-BR': '3-6 meses',
+      es: '3-6 meses',
+      en: '3-6 months',
+      'pt-br': '3-6 meses',
     },
   },
   [ServiceTier.L4_PLATFORMS]: {
     id: ServiceTier.L4_PLATFORMS,
     level: 4,
     name: {
-      'es-MX': 'Platforms',
-      'en-US': 'Platforms',
-      'pt-BR': 'Plataformas',
+      es: 'Platforms',
+      en: 'Platforms',
+      'pt-br': 'Plataformas',
     },
     description: {
-      'es-MX': 'Implementación de SPARK, PENNY y soluciones empresariales',
-      'en-US': 'Implementation of SPARK, PENNY, and enterprise solutions',
-      'pt-BR': 'Implementação de SPARK, PENNY e soluções empresariais',
+      es: 'Implementación de SPARK, PENNY y soluciones empresariales',
+      en: 'Implementation of SPARK, PENNY, and enterprise solutions',
+      'pt-br': 'Implementação de SPARK, PENNY e soluções empresariais',
     },
     startingPrice: 250000,
     currency: 'MXN',
     features: {
-      'es-MX': [
+      es: [
         'Implementación completa de SPARK',
         'Automatización con PENNY',
         'Integraciones empresariales',
@@ -232,7 +232,7 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
         'Soporte 24/7',
         'SLA garantizado',
       ],
-      'en-US': [
+      en: [
         'Complete SPARK implementation',
         'PENNY automation setup',
         'Enterprise integrations',
@@ -241,7 +241,7 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
         '24/7 support',
         'Guaranteed SLA',
       ],
-      'pt-BR': [
+      'pt-br': [
         'Implementação completa do SPARK',
         'Configuração de automação PENNY',
         'Integrações empresariais',
@@ -252,43 +252,43 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
       ],
     },
     idealFor: {
-      'es-MX': ['Medianas empresas', 'Operaciones complejas', 'Escalamiento rápido'],
-      'en-US': ['Medium enterprises', 'Complex operations', 'Rapid scaling'],
-      'pt-BR': ['Médias empresas', 'Operações complexas', 'Escalonamento rápido'],
+      es: ['Medianas empresas', 'Operaciones complejas', 'Escalamiento rápido'],
+      en: ['Medium enterprises', 'Complex operations', 'Rapid scaling'],
+      'pt-br': ['Médias empresas', 'Operações complexas', 'Escalonamento rápido'],
     },
     cta: {
       text: {
-        'es-MX': 'Ver demo',
-        'en-US': 'View demo',
-        'pt-BR': 'Ver demonstração',
+        es: 'Ver demo',
+        en: 'View demo',
+        'pt-br': 'Ver demonstração',
       },
       action: 'demo',
     },
     color: 'creative',
     icon: '⚡',
     duration: {
-      'es-MX': '6-12 meses',
-      'en-US': '6-12 months',
-      'pt-BR': '6-12 meses',
+      es: '6-12 meses',
+      en: '6-12 months',
+      'pt-br': '6-12 meses',
     },
   },
   [ServiceTier.L5_STRATEGIC]: {
     id: ServiceTier.L5_STRATEGIC,
     level: 5,
     name: {
-      'es-MX': 'Strategic',
-      'en-US': 'Strategic',
-      'pt-BR': 'Estratégico',
+      es: 'Strategic',
+      en: 'Strategic',
+      'pt-br': 'Estratégico',
     },
     description: {
-      'es-MX': 'Asociación vCTO para transformación integral del negocio',
-      'en-US': 'vCTO partnership for comprehensive business transformation',
-      'pt-BR': 'Parceria vCTO para transformação integral do negócio',
+      es: 'Asociación vCTO para transformación integral del negocio',
+      en: 'vCTO partnership for comprehensive business transformation',
+      'pt-br': 'Parceria vCTO para transformação integral do negócio',
     },
     startingPrice: 500000,
     currency: 'MXN',
     features: {
-      'es-MX': [
+      es: [
         'CTO virtual dedicado',
         'Estrategia tecnológica completa',
         'Gestión de equipos técnicos',
@@ -298,7 +298,7 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
         'KPIs y métricas avanzadas',
         'Transformación cultural',
       ],
-      'en-US': [
+      en: [
         'Dedicated virtual CTO',
         'Complete technology strategy',
         'Technical team management',
@@ -308,7 +308,7 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
         'Advanced KPIs and metrics',
         'Cultural transformation',
       ],
-      'pt-BR': [
+      'pt-br': [
         'CTO virtual dedicado',
         'Estratégia tecnológica completa',
         'Gestão de equipes técnicas',
@@ -320,24 +320,24 @@ export const serviceTiers: Record<ServiceTier, ServiceTierConfig> = {
       ],
     },
     idealFor: {
-      'es-MX': ['Grandes empresas', 'Transformación total', 'Innovación disruptiva'],
-      'en-US': ['Large enterprises', 'Total transformation', 'Disruptive innovation'],
-      'pt-BR': ['Grandes empresas', 'Transformação total', 'Inovação disruptiva'],
+      es: ['Grandes empresas', 'Transformación total', 'Innovación disruptiva'],
+      en: ['Large enterprises', 'Total transformation', 'Disruptive innovation'],
+      'pt-br': ['Grandes empresas', 'Transformação total', 'Inovação disruptiva'],
     },
     cta: {
       text: {
-        'es-MX': 'Agendar reunión ejecutiva',
-        'en-US': 'Schedule executive meeting',
-        'pt-BR': 'Agendar reunião executiva',
+        es: 'Agendar reunión ejecutiva',
+        en: 'Schedule executive meeting',
+        'pt-br': 'Agendar reunião executiva',
       },
       action: 'contact',
     },
     color: 'obsidian',
     icon: '👁️',
     duration: {
-      'es-MX': '12+ meses',
-      'en-US': '12+ months',
-      'pt-BR': '12+ meses',
+      es: '12+ meses',
+      en: '12+ months',
+      'pt-br': '12+ meses',
     },
   },
 };

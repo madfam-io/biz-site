@@ -1,15 +1,14 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ProgramCard } from '@/components/corporate/ProgramCard';
-import { Badge } from '@/components/corporate/Badge';
 import {
   CubeIcon,
   CogIcon,
   RocketLaunchIcon,
   BuildingOffice2Icon,
 } from '@heroicons/react/24/outline';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { Badge } from '@/components/corporate/Badge';
+import { ProgramCard } from '@/components/corporate/ProgramCard';
 
 type Props = {
   params: { locale: string };
@@ -52,7 +51,7 @@ export default async function ProgramsPage({ params }: Props) {
       ],
       originalTiers: ['L1', 'L2'],
       investment: t('designFabrication.investment'),
-      color: 'green',
+      color: 'green' as const,
     },
     {
       id: 'strategy-enablement',
@@ -71,7 +70,7 @@ export default async function ProgramsPage({ params }: Props) {
       ],
       originalTiers: ['L3'],
       investment: t('strategyEnablement.investment'),
-      color: 'amber',
+      color: 'amber' as const,
     },
     {
       id: 'platform-pilots',
@@ -90,7 +89,7 @@ export default async function ProgramsPage({ params }: Props) {
       ],
       originalTiers: ['L4'],
       investment: t('platformPilots.investment'),
-      color: 'blue',
+      color: 'blue' as const,
       platforms: ['Aureo Studio', 'PENNY'],
     },
     {
@@ -110,7 +109,7 @@ export default async function ProgramsPage({ params }: Props) {
       ],
       originalTiers: ['L5'],
       investment: t('strategicPartnerships.investment'),
-      color: 'purple',
+      color: 'purple' as const,
     },
   ];
 
@@ -177,7 +176,7 @@ export default async function ProgramsPage({ params }: Props) {
 
             <div className="relative">
               {/* Progress Line */}
-              <div className="absolute left-8 top-8 bottom-8 w-px bg-gradient-to-b from-green-400 via-amber-400 via-blue-400 to-purple-400"></div>
+              <div className="absolute left-8 top-8 bottom-8 w-px bg-gradient-to-b from-green-400 via-amber-400 via-blue-400 to-purple-400" />
 
               <div className="space-y-12">
                 {/* Strategy Phase */}

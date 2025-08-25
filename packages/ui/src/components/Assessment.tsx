@@ -30,7 +30,12 @@ export interface AssessmentResult {
     processes: number;
   };
   recommendations: string[];
-  recommendedTier: 'L1_ESSENTIALS' | 'L2_ADVANCED' | 'L3_CONSULTING' | 'L4_PLATFORMS' | 'L5_STRATEGIC';
+  recommendedTier:
+    | 'L1_ESSENTIALS'
+    | 'L2_ADVANCED'
+    | 'L3_CONSULTING'
+    | 'L4_PLATFORMS'
+    | 'L5_STRATEGIC';
 }
 
 export interface AssessmentProps {
@@ -39,7 +44,7 @@ export interface AssessmentProps {
   questions: AssessmentQuestion[];
   onComplete?: (result: AssessmentResult) => void;
   className?: string;
-  locale?: 'es-MX' | 'en-US' | 'pt-BR';
+  locale?: 'es' | 'en' | 'pt-br';
   translations?: {
     resultTitle: string;
     levelLabel: string;
@@ -180,49 +185,88 @@ const defaultQuestions: AssessmentQuestion[] = [
   },
 ];
 
-const getDefaultTranslations = (locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX') => ({
-  resultTitle: locale === 'en-US' ? 'Assessment Results' : locale === 'pt-BR' ? 'Resultados da Avaliação' : 'Resultado de tu Evaluación',
-  levelLabel: locale === 'en-US' ? 'Level' : locale === 'pt-BR' ? 'Nível' : 'Nivel',
-  recommendationsTitle: locale === 'en-US' ? 'Recommendations for your company' : locale === 'pt-BR' ? 'Recomendações para sua empresa' : 'Recomendaciones para tu empresa',
-  recommendedServiceTitle: locale === 'en-US' ? 'Recommended Service' : locale === 'pt-BR' ? 'Serviço Recomendado' : 'Servicio Recomendado',
-  recommendedServiceDescription: locale === 'en-US' ? 'Based on your maturity level, this service best fits your current needs' : locale === 'pt-BR' ? 'Baseado no seu nível de maturidade, este serviço se adapta melhor às suas necessidades atuais' : 'Basado en tu nivel de madurez, este servicio se adapta mejor a tus necesidades actuales',
-  restartButton: locale === 'en-US' ? 'Retake assessment' : locale === 'pt-BR' ? 'Refazer avaliação' : 'Volver a evaluar',
-  requestConsultationButton: locale === 'en-US' ? 'Request consultation' : locale === 'pt-BR' ? 'Solicitar consulta' : 'Solicitar consulta',
-  previousButton: locale === 'en-US' ? 'Previous' : locale === 'pt-BR' ? 'Anterior' : 'Anterior',
-  nextButton: locale === 'en-US' ? 'Next' : locale === 'pt-BR' ? 'Próximo' : 'Siguiente',
-  finishButton: locale === 'en-US' ? 'Finish' : locale === 'pt-BR' ? 'Finalizar' : 'Finalizar',
+const getDefaultTranslations = (locale: 'es' | 'en' | 'pt-br' = 'es') => ({
+  resultTitle:
+    locale === 'en'
+      ? 'Assessment Results'
+      : locale === 'pt-br'
+        ? 'Resultados da Avaliação'
+        : 'Resultado de tu Evaluación',
+  levelLabel: locale === 'en' ? 'Level' : locale === 'pt-br' ? 'Nível' : 'Nivel',
+  recommendationsTitle:
+    locale === 'en'
+      ? 'Recommendations for your company'
+      : locale === 'pt-br'
+        ? 'Recomendações para sua empresa'
+        : 'Recomendaciones para tu empresa',
+  recommendedServiceTitle:
+    locale === 'en'
+      ? 'Recommended Service'
+      : locale === 'pt-br'
+        ? 'Serviço Recomendado'
+        : 'Servicio Recomendado',
+  recommendedServiceDescription:
+    locale === 'en'
+      ? 'Based on your maturity level, this service best fits your current needs'
+      : locale === 'pt-br'
+        ? 'Baseado no seu nível de maturidade, este serviço se adapta melhor às suas necessidades atuais'
+        : 'Basado en tu nivel de madurez, este servicio se adapta mejor a tus necesidades actuales',
+  restartButton:
+    locale === 'en'
+      ? 'Retake assessment'
+      : locale === 'pt-br'
+        ? 'Refazer avaliação'
+        : 'Volver a evaluar',
+  requestConsultationButton:
+    locale === 'en'
+      ? 'Request consultation'
+      : locale === 'pt-br'
+        ? 'Solicitar consulta'
+        : 'Solicitar consulta',
+  previousButton: locale === 'en' ? 'Previous' : locale === 'pt-br' ? 'Anterior' : 'Anterior',
+  nextButton: locale === 'en' ? 'Next' : locale === 'pt-br' ? 'Próximo' : 'Siguiente',
+  finishButton: locale === 'en' ? 'Finish' : locale === 'pt-br' ? 'Finalizar' : 'Finalizar',
   categoryLabels: {
-    strategy: locale === 'en-US' ? 'Strategy' : locale === 'pt-BR' ? 'Estratégia' : 'Estrategia',
-    technology: locale === 'en-US' ? 'Technology' : locale === 'pt-BR' ? 'Tecnologia' : 'Tecnología',
-    data: locale === 'en-US' ? 'Data' : locale === 'pt-BR' ? 'Dados' : 'Datos',
-    culture: locale === 'en-US' ? 'Culture' : locale === 'pt-BR' ? 'Cultura' : 'Cultura',
-    processes: locale === 'en-US' ? 'Processes' : locale === 'pt-BR' ? 'Processos' : 'Procesos',
+    strategy: locale === 'en' ? 'Strategy' : locale === 'pt-br' ? 'Estratégia' : 'Estrategia',
+    technology: locale === 'en' ? 'Technology' : locale === 'pt-br' ? 'Tecnologia' : 'Tecnología',
+    data: locale === 'en' ? 'Data' : locale === 'pt-br' ? 'Dados' : 'Datos',
+    culture: locale === 'en' ? 'Culture' : locale === 'pt-br' ? 'Cultura' : 'Cultura',
+    processes: locale === 'en' ? 'Processes' : locale === 'pt-br' ? 'Processos' : 'Procesos',
   },
   levelDescriptions: {
-    beginner: locale === 'en-US' ? 'beginner' : locale === 'pt-BR' ? 'iniciante' : 'principiante',
-    intermediate: locale === 'en-US' ? 'intermediate' : locale === 'pt-BR' ? 'intermediário' : 'intermedio',
-    advanced: locale === 'en-US' ? 'advanced' : locale === 'pt-BR' ? 'avançado' : 'avanzado',
-    expert: locale === 'en-US' ? 'expert' : locale === 'pt-BR' ? 'especialista' : 'experto',
+    beginner: locale === 'en' ? 'beginner' : locale === 'pt-br' ? 'iniciante' : 'principiante',
+    intermediate:
+      locale === 'en' ? 'intermediate' : locale === 'pt-br' ? 'intermediário' : 'intermedio',
+    advanced: locale === 'en' ? 'advanced' : locale === 'pt-br' ? 'avançado' : 'avanzado',
+    expert: locale === 'en' ? 'expert' : locale === 'pt-br' ? 'especialista' : 'experto',
   },
 });
 
 export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
-  ({ 
-    title, 
-    description, 
-    questions = defaultQuestions, 
-    onComplete, 
-    className,
-    locale = 'es-MX',
-    translations 
-  }, ref) => {
+  (
+    {
+      title,
+      description,
+      questions = defaultQuestions,
+      onComplete,
+      className,
+      locale = 'es',
+      translations,
+    },
+    ref
+  ) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState<Record<string, string>>({});
     const [result, setResult] = useState<AssessmentResult | null>(null);
     const [showResult, setShowResult] = useState(false);
-    
+
     const t = translations || getDefaultTranslations(locale);
-    const defaultTitle = locale === 'en-US' ? 'AI Readiness Assessment' : locale === 'pt-BR' ? 'Avaliação de Maturidade em IA' : 'Evaluación de Madurez en IA';
+    const defaultTitle =
+      locale === 'en'
+        ? 'AI Readiness Assessment'
+        : locale === 'pt-br'
+          ? 'Avaliação de Maturidade em IA'
+          : 'Evaluación de Madurez en IA';
 
     const handleAnswer = (questionId: string, value: string) => {
       setAnswers(prev => ({ ...prev, [questionId]: value }));
@@ -262,15 +306,15 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
       Object.keys(categoryScores).forEach(category => {
         const key = category as keyof typeof categoryScores;
         if (categoryCounts[key] > 0) {
-          categoryScores[key] = (categoryScores[key] / categoryCounts[key]) * 100 / 3;
+          categoryScores[key] = ((categoryScores[key] / categoryCounts[key]) * 100) / 3;
         }
       });
 
       const percentage = (totalScore / maxScore) * 100;
-      
+
       let level: AssessmentResult['level'] = 'beginner';
       let recommendedTier: AssessmentResult['recommendedTier'] = 'L1_ESSENTIALS';
-      
+
       if (percentage >= 80) {
         level = 'expert';
         recommendedTier = 'L5_STRATEGIC';
@@ -298,9 +342,12 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
       };
     };
 
-    const generateRecommendations = (level: AssessmentResult['level'], categoryScores: AssessmentResult['categoryScores']): string[] => {
+    const generateRecommendations = (
+      level: AssessmentResult['level'],
+      categoryScores: AssessmentResult['categoryScores']
+    ): string[] => {
       const recommendations = [];
-      
+
       if (level === 'beginner') {
         recommendations.push('Comienza con procesos básicos de digitalización');
         recommendations.push('Establece una estrategia clara de transformación digital');
@@ -378,7 +425,17 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                   {t.levelLabel}: {result.level.charAt(0).toUpperCase() + result.level.slice(1)}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  {locale === 'en-US' ? 'Your company is at a' : locale === 'pt-BR' ? 'Sua empresa está em um nível' : 'Tu empresa está en un nivel'} {t.levelDescriptions[result.level]} {locale === 'en-US' ? 'level of AI maturity' : locale === 'pt-BR' ? 'de maturidade em IA' : 'de madurez en IA'}
+                  {locale === 'en'
+                    ? 'Your company is at a'
+                    : locale === 'pt-br'
+                      ? 'Sua empresa está em um nível'
+                      : 'Tu empresa está en un nivel'}{' '}
+                  {t.levelDescriptions[result.level]}{' '}
+                  {locale === 'en'
+                    ? 'level of AI maturity'
+                    : locale === 'pt-br'
+                      ? 'de maturidade em IA'
+                      : 'de madurez en IA'}
                 </p>
               </div>
 
@@ -393,7 +450,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                       <span className="text-sm font-bold">{Math.round(score)}%</span>
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div 
+                      <div
                         className="bg-gradient-to-r from-lavender to-sun h-2 rounded-full transition-all duration-500"
                         style={{ width: `${score}%` }}
                       />
@@ -408,8 +465,16 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                 <ul className="space-y-2">
                   {result.recommendations.map((rec, index) => (
                     <li key={index} className="flex items-start">
-                      <svg className="w-5 h-5 text-leaf mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      <svg
+                        className="w-5 h-5 text-leaf mr-2 mt-0.5 flex-shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                       <span className="text-sm">{rec}</span>
                     </li>
@@ -421,20 +486,25 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
               <div className="bg-gradient-to-r from-obsidian to-lavender rounded-lg p-6 text-white text-center">
                 <h4 className="text-lg font-heading font-bold mb-2">{t.recommendedServiceTitle}</h4>
                 <p className="text-2xl font-bold mb-2">
-                  {result.recommendedTier === 'L5_STRATEGIC' ? 'L5 - Strategic' :
-                   result.recommendedTier === 'L4_PLATFORMS' ? 'L4 - Platforms' :
-                   result.recommendedTier === 'L3_CONSULTING' ? 'L3 - Consulting' :
-                   result.recommendedTier === 'L2_ADVANCED' ? 'L2 - Advanced' :
-                   'L1 - Essentials'}
+                  {result.recommendedTier === 'L5_STRATEGIC'
+                    ? 'L5 - Strategic'
+                    : result.recommendedTier === 'L4_PLATFORMS'
+                      ? 'L4 - Platforms'
+                      : result.recommendedTier === 'L3_CONSULTING'
+                        ? 'L3 - Consulting'
+                        : result.recommendedTier === 'L2_ADVANCED'
+                          ? 'L2 - Advanced'
+                          : 'L1 - Essentials'}
                 </p>
-                <p className="text-sm opacity-90 mb-4">
-                  {t.recommendedServiceDescription}
-                </p>
+                <p className="text-sm opacity-90 mb-4">{t.recommendedServiceDescription}</p>
                 <div className="flex gap-4 justify-center">
                   <Button variant="secondary" onClick={handleRestart}>
                     {t.restartButton}
                   </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-obsidian">
+                  <Button
+                    variant="outline"
+                    className="border-white text-white hover:bg-white hover:text-obsidian"
+                  >
                     {t.requestConsultationButton}
                   </Button>
                 </div>
@@ -447,7 +517,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
 
     const question = questions[currentQuestion];
     if (!question) return null;
-    
+
     const currentAnswer = answers[question.id];
 
     return (
@@ -456,16 +526,15 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
           <div className="flex items-center justify-between mb-4">
             <CardTitle>{title || defaultTitle}</CardTitle>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {currentQuestion + 1} {locale === 'en-US' ? 'of' : locale === 'pt-BR' ? 'de' : 'de'} {questions.length}
+              {currentQuestion + 1} {locale === 'en' ? 'of' : locale === 'pt-br' ? 'de' : 'de'}{' '}
+              {questions.length}
             </span>
           </div>
-          {description && (
-            <p className="text-gray-600 dark:text-gray-400">{description}</p>
-          )}
-          
+          {description && <p className="text-gray-600 dark:text-gray-400">{description}</p>}
+
           {/* Progress bar */}
           <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-4">
-            <div 
+            <div
               className="bg-gradient-to-r from-lavender to-sun h-2 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
@@ -476,7 +545,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
             <div>
               <h3 className="text-lg font-medium mb-4">{question.question}</h3>
               <div className="space-y-3">
-                {question.options.map((option) => (
+                {question.options.map(option => (
                   <label
                     key={option.value}
                     className={cn(
@@ -491,7 +560,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                       name={question.id}
                       value={option.value}
                       checked={currentAnswer === option.value}
-                      onChange={(e) => handleAnswer(question.id, e.target.value)}
+                      onChange={e => handleAnswer(question.id, e.target.value)}
                       className="text-lavender focus:ring-lavender"
                     />
                     <span className="text-sm">{option.text}</span>
@@ -501,17 +570,10 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
             </div>
 
             <div className="flex justify-between">
-              <Button
-                variant="ghost"
-                onClick={handlePrevious}
-                disabled={currentQuestion === 0}
-              >
+              <Button variant="ghost" onClick={handlePrevious} disabled={currentQuestion === 0}>
                 {t.previousButton}
               </Button>
-              <Button
-                onClick={handleNext}
-                disabled={!currentAnswer}
-              >
+              <Button onClick={handleNext} disabled={!currentAnswer}>
                 {currentQuestion === questions.length - 1 ? t.finishButton : t.nextButton}
               </Button>
             </div>

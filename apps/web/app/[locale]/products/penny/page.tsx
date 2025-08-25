@@ -69,36 +69,36 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
     {
       icon: '🧠',
       title:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Continuous Learning'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Aprendizado Contínuo'
             : 'Aprendizaje Continuo',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'PENNY learns from your processes and improves automation over time'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'PENNY aprende com seus processos e melhora a automação ao longo do tempo'
             : 'PENNY aprende de tus procesos y mejora la automatización con el tiempo',
       benefits: [
-        locale === 'en-US'
+        locale === 'en'
           ? 'Machine learning algorithms'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Algoritmos de aprendizado de máquina'
             : 'Algoritmos de aprendizaje automático',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Pattern recognition'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Reconhecimento de padrões'
             : 'Reconocimiento de patrones',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Process optimization'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Otimização de processos'
             : 'Optimización de procesos',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Predictive suggestions'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Sugestões preditivas'
             : 'Sugerencias predictivas',
       ],
@@ -106,36 +106,36 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
     {
       icon: '📄',
       title:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Document Intelligence'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Inteligência de Documentos'
             : 'Inteligencia de Documentos',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Extract, process, and organize information from any document type'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Extraia, processe e organize informações de qualquer tipo de documento'
             : 'Extrae, procesa y organiza información de cualquier tipo de documento',
       benefits: [
-        locale === 'en-US'
+        locale === 'en'
           ? 'OCR and text extraction'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'OCR e extração de texto'
             : 'OCR y extracción de texto',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Data classification'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Classificação de dados'
             : 'Clasificación de datos',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Automated filing'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Arquivamento automatizado'
             : 'Archivado automatizado',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Content validation'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Validação de conteúdo'
             : 'Validación de contenido',
       ],
@@ -143,36 +143,36 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
     {
       icon: '💬',
       title:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Natural Language Interface'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Interface de Linguagem Natural'
             : 'Interfaz de Lenguaje Natural',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Communicate with PENNY naturally, as you would with a human assistant'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Comunique-se com PENNY naturalmente, como faria com um assistente humano'
             : 'Comunícate con PENNY naturalmente, como lo harías con un asistente humano',
       benefits: [
-        locale === 'en-US'
+        locale === 'en'
           ? 'Voice commands'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Comandos de voz'
             : 'Comandos de voz',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Multi-language support'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Suporte multi-idioma'
             : 'Soporte multiidioma',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Context awareness'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Consciência de contexto'
             : 'Conciencia de contexto',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Smart responses'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Respostas inteligentes'
             : 'Respuestas inteligentes',
       ],
@@ -180,36 +180,36 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
     {
       icon: '🔐',
       title:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Enterprise Security'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Segurança Empresarial'
             : 'Seguridad Empresarial',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Bank-level security to protect your sensitive business data'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Segurança de nível bancário para proteger seus dados empresariais sensíveis'
             : 'Seguridad de nivel bancario para proteger tus datos empresariales sensibles',
       benefits: [
-        locale === 'en-US'
+        locale === 'en'
           ? 'End-to-end encryption'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Criptografia de ponta a ponta'
             : 'Cifrado de extremo a extremo',
-        locale === 'en-US'
+        locale === 'en'
           ? 'GDPR compliant'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Conformidade GDPR'
             : 'Cumplimiento GDPR',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Role-based access'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Acesso baseado em função'
             : 'Acceso basado en roles',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Audit trails'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Trilhas de auditoria'
             : 'Rastros de auditoría',
       ],
@@ -219,61 +219,60 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
   const useCases = [
     {
       title:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Invoice Processing'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Processamento de Faturas'
             : 'Procesamiento de Facturas',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Automatically extract, validate, and process invoices from any format'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Extraia, valide e processe faturas automaticamente de qualquer formato'
             : 'Extrae, valida y procesa facturas automáticamente de cualquier formato',
       metrics: {
         reduction: '85%',
-        time: locale === 'en-US' ? '5 minutes' : locale === 'pt-BR' ? '5 minutos' : '5 minutos',
+        time: locale === 'en' ? '5 minutes' : locale === 'pt-br' ? '5 minutos' : '5 minutos',
         accuracy: '99.8%',
       },
       icon: '📋',
     },
     {
       title:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Customer Support'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Suporte ao Cliente'
             : 'Soporte al Cliente',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Handle customer inquiries 24/7 with intelligent, context-aware responses'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Atenda consultas de clientes 24/7 com respostas inteligentes e contextuais'
             : 'Atiende consultas de clientes 24/7 con respuestas inteligentes y contextuales',
       metrics: {
         reduction: '70%',
-        time: locale === 'en-US' ? 'Instant' : locale === 'pt-BR' ? 'Instantâneo' : 'Instantáneo',
+        time: locale === 'en' ? 'Instant' : locale === 'pt-br' ? 'Instantâneo' : 'Instantáneo',
         accuracy: '95%',
       },
       icon: '🎧',
     },
     {
       title:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Data Entry'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Entrada de Dados'
             : 'Entrada de Datos',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Eliminate manual data entry with intelligent form filling and validation'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Elimine entrada manual de dados com preenchimento e validação inteligente de formulários'
             : 'Elimina la entrada manual de datos con llenado y validación inteligente de formularios',
       metrics: {
         reduction: '90%',
-        time:
-          locale === 'en-US' ? '10 seconds' : locale === 'pt-BR' ? '10 segundos' : '10 segundos',
+        time: locale === 'en' ? '10 seconds' : locale === 'pt-br' ? '10 segundos' : '10 segundos',
         accuracy: '99.5%',
       },
       icon: '⌨️',
@@ -284,17 +283,17 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
     {
       id: 'retail-plus',
       content:
-        locale === 'en-US'
+        locale === 'en'
           ? "PENNY transformed our customer service. Response times dropped from hours to seconds, and customer satisfaction increased by 40%. It's like having a team of experts available 24/7."
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'PENNY transformou nosso atendimento ao cliente. Os tempos de resposta caíram de horas para segundos, e a satisfação do cliente aumentou 40%. É como ter uma equipe de especialistas disponível 24/7.'
             : 'PENNY transformó nuestro servicio al cliente. Los tiempos de respuesta bajaron de horas a segundos, y la satisfacción del cliente aumentó 40%. Es como tener un equipo de expertos disponible 24/7.',
       author: {
         name: 'Patricia González',
         role:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Customer Service Director'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Diretora de Atendimento ao Cliente'
               : 'Directora de Servicio al Cliente',
         company: 'RetailPlus',
@@ -305,46 +304,45 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
       results: [
         {
           metric:
-            locale === 'en-US'
+            locale === 'en'
               ? 'Response time'
-              : locale === 'pt-BR'
+              : locale === 'pt-br'
                 ? 'Tempo de resposta'
                 : 'Tiempo de respuesta',
           value: '90%',
           description:
-            locale === 'en-US'
+            locale === 'en'
               ? 'Faster responses'
-              : locale === 'pt-BR'
+              : locale === 'pt-br'
                 ? 'Respostas mais rápidas'
                 : 'Respuestas más rápidas',
         },
         {
           metric:
-            locale === 'en-US'
+            locale === 'en'
               ? 'Customer satisfaction'
-              : locale === 'pt-BR'
+              : locale === 'pt-br'
                 ? 'Satisfação do cliente'
                 : 'Satisfacción del cliente',
           value: '40%',
-          description:
-            locale === 'en-US' ? 'Improvement' : locale === 'pt-BR' ? 'Melhoria' : 'Mejora',
+          description: locale === 'en' ? 'Improvement' : locale === 'pt-br' ? 'Melhoria' : 'Mejora',
         },
       ],
     },
     {
       id: 'finance-corp',
       content:
-        locale === 'en-US'
+        locale === 'en'
           ? 'The document processing capabilities of PENNY are incredible. We process thousands of invoices monthly, and PENNY reduced our processing time by 85% with near-perfect accuracy.'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'As capacidades de processamento de documentos do PENNY são incríveis. Processamos milhares de faturas mensalmente, e PENNY reduziu nosso tempo de processamento em 85% com precisão quase perfeita.'
             : 'Las capacidades de procesamiento de documentos de PENNY son increíbles. Procesamos miles de facturas mensualmente, y PENNY redujo nuestro tiempo de procesamiento en 85% con precisión casi perfecta.',
       author: {
         name: 'Roberto Silva',
         role:
-          locale === 'en-US'
+          locale === 'en'
             ? 'Finance Manager'
-            : locale === 'pt-BR'
+            : locale === 'pt-br'
               ? 'Gerente Financeiro'
               : 'Gerente Financiero',
         company: 'FinanceCorp',
@@ -355,27 +353,26 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
       results: [
         {
           metric:
-            locale === 'en-US'
+            locale === 'en'
               ? 'Processing time'
-              : locale === 'pt-BR'
+              : locale === 'pt-br'
                 ? 'Tempo de processamento'
                 : 'Tiempo de procesamiento',
           value: '85%',
-          description:
-            locale === 'en-US' ? 'Reduction' : locale === 'pt-BR' ? 'Redução' : 'Reducción',
+          description: locale === 'en' ? 'Reduction' : locale === 'pt-br' ? 'Redução' : 'Reducción',
         },
         {
           metric:
-            locale === 'en-US'
+            locale === 'en'
               ? 'Accuracy rate'
-              : locale === 'pt-BR'
+              : locale === 'pt-br'
                 ? 'Taxa de precisão'
                 : 'Tasa de precisión',
           value: '99.8%',
           description:
-            locale === 'en-US'
+            locale === 'en'
               ? 'Document processing'
-              : locale === 'pt-BR'
+              : locale === 'pt-br'
                 ? 'Processamento de documentos'
                 : 'Procesamiento de documentos',
         },
@@ -385,98 +382,98 @@ export default async function PennyProductPage({ params: { locale } }: PennyProd
 
   const pricingPlans = [
     {
-      name: locale === 'en-US' ? 'Business' : locale === 'pt-BR' ? 'Negócios' : 'Negocios',
+      name: locale === 'en' ? 'Business' : locale === 'pt-br' ? 'Negócios' : 'Negocios',
       price: '30,000',
       currency: 'MXN',
-      period: locale === 'en-US' ? 'month' : locale === 'pt-BR' ? 'mês' : 'mes',
+      period: locale === 'en' ? 'month' : locale === 'pt-br' ? 'mês' : 'mes',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Ideal for small to medium businesses'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Ideal para pequenas e médias empresas'
             : 'Ideal para pequeñas y medianas empresas',
       features: [
-        locale === 'en-US'
+        locale === 'en'
           ? 'Up to 10,000 tasks/month'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Até 10.000 tarefas/mês'
             : 'Hasta 10,000 tareas/mes',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Document processing'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Processamento de documentos'
             : 'Procesamiento de documentos',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Natural language interface'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Interface de linguagem natural'
             : 'Interfaz de lenguaje natural',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Email support'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Suporte por email'
             : 'Soporte por correo',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Basic integrations'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Integrações básicas'
             : 'Integraciones básicas',
       ],
       cta:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Start Business'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Começar Negócios'
             : 'Iniciar Negocios',
       popular: true,
     },
     {
-      name: locale === 'en-US' ? 'Enterprise' : locale === 'pt-BR' ? 'Empresarial' : 'Empresarial',
-      price: locale === 'en-US' ? 'Custom' : locale === 'pt-BR' ? 'Personalizado' : 'Personalizado',
+      name: locale === 'en' ? 'Enterprise' : locale === 'pt-br' ? 'Empresarial' : 'Empresarial',
+      price: locale === 'en' ? 'Custom' : locale === 'pt-br' ? 'Personalizado' : 'Personalizado',
       currency: '',
       period: '',
       description:
-        locale === 'en-US'
+        locale === 'en'
           ? 'For large organizations with custom needs'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Para grandes organizações com necessidades personalizadas'
             : 'Para grandes organizaciones con necesidades personalizadas',
       features: [
-        locale === 'en-US'
+        locale === 'en'
           ? 'Unlimited tasks'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Tarefas ilimitadas'
             : 'Tareas ilimitadas',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Advanced AI customization'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Personalização avançada de IA'
             : 'Personalización avanzada de IA',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Dedicated success team'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Equipe de sucesso dedicada'
             : 'Equipo de éxito dedicado',
-        locale === 'en-US'
+        locale === 'en'
           ? '24/7 priority support'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Suporte prioritário 24/7'
             : 'Soporte prioritario 24/7',
-        locale === 'en-US'
+        locale === 'en'
           ? 'Custom integrations'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Integrações personalizadas'
             : 'Integraciones personalizadas',
-        locale === 'en-US'
+        locale === 'en'
           ? 'On-premise option'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Opção on-premise'
             : 'Opción on-premise',
       ],
       cta:
-        locale === 'en-US'
+        locale === 'en'
           ? 'Contact Sales'
-          : locale === 'pt-BR'
+          : locale === 'pt-br'
             ? 'Contatar Vendas'
             : 'Contactar Ventas',
       popular: false,

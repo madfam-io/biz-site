@@ -43,23 +43,23 @@ export default function ServicePage({ params }: ServicePageProps) {
 
 // Generate static params for all service pages in all locales
 export async function generateStaticParams() {
-  const locales: Locale[] = ['en-US', 'es-MX', 'pt-BR'];
+  const locales: Locale[] = ['en', 'es', 'pt-br'];
   const serviceSlugs = {
-    'en-US': [
+    en: [
       'level-1-essentials',
       'level-2-advanced',
       'level-3-consulting',
       'level-4-platforms',
       'level-5-strategic',
     ],
-    'es-MX': [
+    es: [
       'nivel-1-esenciales',
       'nivel-2-avanzado',
       'nivel-3-consultoria',
       'nivel-4-plataformas',
       'nivel-5-estrategico',
     ],
-    'pt-BR': [
+    'pt-br': [
       'nivel-1-essenciais',
       'nivel-2-avancado',
       'nivel-3-consultoria',

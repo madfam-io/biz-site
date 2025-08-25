@@ -7,19 +7,19 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 interface TeamMember {
   name: string;
   role: {
-    'es-MX': string;
-    'en-US': string;
-    'pt-BR': string;
+    es: string;
+    en: string;
+    'pt-br': string;
   };
   bio: {
-    'es-MX': string;
-    'en-US': string;
-    'pt-BR': string;
+    es: string;
+    en: string;
+    'pt-br': string;
   };
   expertise: {
-    'es-MX': string[];
-    'en-US': string[];
-    'pt-BR': string[];
+    es: string[];
+    en: string[];
+    'pt-br': string[];
   };
   image: string;
 }
@@ -27,23 +27,23 @@ interface TeamMember {
 interface Value {
   icon: string;
   title: {
-    'es-MX': string;
-    'en-US': string;
-    'pt-BR': string;
+    es: string;
+    en: string;
+    'pt-br': string;
   };
   description: {
-    'es-MX': string;
-    'en-US': string;
-    'pt-BR': string;
+    es: string;
+    en: string;
+    'pt-br': string;
   };
 }
 
 interface Milestone {
   year: string;
   event: {
-    'es-MX': string;
-    'en-US': string;
-    'pt-BR': string;
+    es: string;
+    en: string;
+    'pt-br': string;
   };
 }
 
@@ -56,82 +56,78 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
     {
       name: 'Aldo Ruiz Luna',
       role: {
-        'es-MX': 'CEO & Fundador',
-        'en-US': 'CEO & Founder',
-        'pt-BR': 'CEO & Fundador',
+        es: 'CEO & Fundador',
+        en: 'CEO & Founder',
+        'pt-br': 'CEO & Fundador',
       },
       bio: {
-        'es-MX':
-          'Visionario tecnológico con más de 15 años transformando empresas con IA y creatividad.',
-        'en-US':
-          'Technology visionary with over 15 years transforming companies with AI and creativity.',
-        'pt-BR':
+        es: 'Visionario tecnológico con más de 15 años transformando empresas con IA y creatividad.',
+        en: 'Technology visionary with over 15 years transforming companies with AI and creativity.',
+        'pt-br':
           'Visionário tecnológico com mais de 15 anos transformando empresas com IA e criatividade.',
       },
       expertise: {
-        'es-MX': ['Estrategia IA', 'Innovación', 'Liderazgo'],
-        'en-US': ['AI Strategy', 'Innovation', 'Leadership'],
-        'pt-BR': ['Estratégia IA', 'Inovação', 'Liderança'],
+        es: ['Estrategia IA', 'Innovación', 'Liderazgo'],
+        en: ['AI Strategy', 'Innovation', 'Leadership'],
+        'pt-br': ['Estratégia IA', 'Inovação', 'Liderança'],
       },
       image: '/team/aldo.jpg',
     },
     {
       name: 'Daniela Martínez',
       role: {
-        'es-MX': 'Directora Creativa',
-        'en-US': 'Creative Director',
-        'pt-BR': 'Diretora Criativa',
+        es: 'Directora Creativa',
+        en: 'Creative Director',
+        'pt-br': 'Diretora Criativa',
       },
       bio: {
-        'es-MX':
-          'Experta en diseño 3D y experiencias digitales que conectan marcas con audiencias.',
-        'en-US': 'Expert in 3D design and digital experiences that connect brands with audiences.',
-        'pt-BR':
+        es: 'Experta en diseño 3D y experiencias digitales que conectan marcas con audiencias.',
+        en: 'Expert in 3D design and digital experiences that connect brands with audiences.',
+        'pt-br':
           'Especialista em design 3D e experiências digitais que conectam marcas com audiências.',
       },
       expertise: {
-        'es-MX': ['Diseño 3D', 'UX/UI', 'Branding'],
-        'en-US': ['3D Design', 'UX/UI', 'Branding'],
-        'pt-BR': ['Design 3D', 'UX/UI', 'Branding'],
+        es: ['Diseño 3D', 'UX/UI', 'Branding'],
+        en: ['3D Design', 'UX/UI', 'Branding'],
+        'pt-br': ['Design 3D', 'UX/UI', 'Branding'],
       },
       image: '/team/daniela.jpg',
     },
     {
       name: 'Carlos Mendoza',
       role: {
-        'es-MX': 'CTO',
-        'en-US': 'CTO',
-        'pt-BR': 'CTO',
+        es: 'CTO',
+        en: 'CTO',
+        'pt-br': 'CTO',
       },
       bio: {
-        'es-MX':
-          'Arquitecto de soluciones que lidera la implementación de plataformas empresariales.',
-        'en-US': 'Solutions architect leading enterprise platform implementations.',
-        'pt-BR': 'Arquiteto de soluções que lidera a implementação de plataformas empresariais.',
+        es: 'Arquitecto de soluciones que lidera la implementación de plataformas empresariales.',
+        en: 'Solutions architect leading enterprise platform implementations.',
+        'pt-br': 'Arquiteto de soluções que lidera a implementação de plataformas empresariais.',
       },
       expertise: {
-        'es-MX': ['Arquitectura', 'DevOps', 'Cloud'],
-        'en-US': ['Architecture', 'DevOps', 'Cloud'],
-        'pt-BR': ['Arquitetura', 'DevOps', 'Cloud'],
+        es: ['Arquitectura', 'DevOps', 'Cloud'],
+        en: ['Architecture', 'DevOps', 'Cloud'],
+        'pt-br': ['Arquitetura', 'DevOps', 'Cloud'],
       },
       image: '/team/carlos.jpg',
     },
     {
       name: 'Ana López',
       role: {
-        'es-MX': 'Directora de IA',
-        'en-US': 'AI Director',
-        'pt-BR': 'Diretora de IA',
+        es: 'Directora de IA',
+        en: 'AI Director',
+        'pt-br': 'Diretora de IA',
       },
       bio: {
-        'es-MX': 'Pionera en automatización inteligente y machine learning aplicado a negocios.',
-        'en-US': 'Pioneer in intelligent automation and machine learning applied to business.',
-        'pt-BR': 'Pioneira em automação inteligente e machine learning aplicado a negócios.',
+        es: 'Pionera en automatización inteligente y machine learning aplicado a negocios.',
+        en: 'Pioneer in intelligent automation and machine learning applied to business.',
+        'pt-br': 'Pioneira em automação inteligente e machine learning aplicado a negócios.',
       },
       expertise: {
-        'es-MX': ['Machine Learning', 'Automatización', 'Data Science'],
-        'en-US': ['Machine Learning', 'Automation', 'Data Science'],
-        'pt-BR': ['Machine Learning', 'Automação', 'Data Science'],
+        es: ['Machine Learning', 'Automatización', 'Data Science'],
+        en: ['Machine Learning', 'Automation', 'Data Science'],
+        'pt-br': ['Machine Learning', 'Automação', 'Data Science'],
       },
       image: '/team/ana.jpg',
     },
@@ -141,53 +137,53 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
     {
       icon: '🚀',
       title: {
-        'es-MX': 'Innovación Constante',
-        'en-US': 'Constant Innovation',
-        'pt-BR': 'Inovação Constante',
+        es: 'Innovación Constante',
+        en: 'Constant Innovation',
+        'pt-br': 'Inovação Constante',
       },
       description: {
-        'es-MX': 'Exploramos nuevas tecnologías para mantener a nuestros clientes a la vanguardia.',
-        'en-US': 'We explore new technologies to keep our clients at the forefront.',
-        'pt-BR': 'Exploramos novas tecnologias para manter nossos clientes na vanguarda.',
+        es: 'Exploramos nuevas tecnologías para mantener a nuestros clientes a la vanguardia.',
+        en: 'We explore new technologies to keep our clients at the forefront.',
+        'pt-br': 'Exploramos novas tecnologias para manter nossos clientes na vanguarda.',
       },
     },
     {
       icon: '🤝',
       title: {
-        'es-MX': 'Colaboración Genuina',
-        'en-US': 'Genuine Collaboration',
-        'pt-BR': 'Colaboração Genuína',
+        es: 'Colaboración Genuina',
+        en: 'Genuine Collaboration',
+        'pt-br': 'Colaboração Genuína',
       },
       description: {
-        'es-MX': 'Trabajamos como extensión de tu equipo, no como proveedores externos.',
-        'en-US': 'We work as an extension of your team, not as external vendors.',
-        'pt-BR': 'Trabalhamos como extensão da sua equipe, não como fornecedores externos.',
+        es: 'Trabajamos como extensión de tu equipo, no como proveedores externos.',
+        en: 'We work as an extension of your team, not as external vendors.',
+        'pt-br': 'Trabalhamos como extensão da sua equipe, não como fornecedores externos.',
       },
     },
     {
       icon: '✨',
       title: {
-        'es-MX': 'Excelencia Creativa',
-        'en-US': 'Creative Excellence',
-        'pt-BR': 'Excelência Criativa',
+        es: 'Excelencia Creativa',
+        en: 'Creative Excellence',
+        'pt-br': 'Excelência Criativa',
       },
       description: {
-        'es-MX': 'Combinamos arte y tecnología para crear soluciones únicas y memorables.',
-        'en-US': 'We combine art and technology to create unique and memorable solutions.',
-        'pt-BR': 'Combinamos arte e tecnologia para criar soluções únicas e memoráveis.',
+        es: 'Combinamos arte y tecnología para crear soluciones únicas y memorables.',
+        en: 'We combine art and technology to create unique and memorable solutions.',
+        'pt-br': 'Combinamos arte e tecnologia para criar soluções únicas e memoráveis.',
       },
     },
     {
       icon: '📈',
       title: {
-        'es-MX': 'Resultados Medibles',
-        'en-US': 'Measurable Results',
-        'pt-BR': 'Resultados Mensuráveis',
+        es: 'Resultados Medibles',
+        en: 'Measurable Results',
+        'pt-br': 'Resultados Mensuráveis',
       },
       description: {
-        'es-MX': 'Cada proyecto se enfoca en generar impacto real y cuantificable.',
-        'en-US': 'Every project focuses on generating real and quantifiable impact.',
-        'pt-BR': 'Cada projeto se concentra em gerar impacto real e quantificável.',
+        es: 'Cada proyecto se enfoca en generar impacto real y cuantificable.',
+        en: 'Every project focuses on generating real and quantifiable impact.',
+        'pt-br': 'Cada projeto se concentra em gerar impacto real e quantificável.',
       },
     },
   ];
@@ -196,49 +192,49 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
     {
       year: '2019',
       event: {
-        'es-MX': 'Fundación de MADFAM',
-        'en-US': 'MADFAM Founded',
-        'pt-BR': 'Fundação da MADFAM',
+        es: 'Fundación de MADFAM',
+        en: 'MADFAM Founded',
+        'pt-br': 'Fundação da MADFAM',
       },
     },
     {
       year: '2020',
       event: {
-        'es-MX': 'Lanzamiento de SPARK beta',
-        'en-US': 'SPARK beta launch',
-        'pt-BR': 'Lançamento do SPARK beta',
+        es: 'Lanzamiento de SPARK beta',
+        en: 'SPARK beta launch',
+        'pt-br': 'Lançamento do SPARK beta',
       },
     },
     {
       year: '2021',
       event: {
-        'es-MX': '100+ proyectos completados',
-        'en-US': '100+ projects completed',
-        'pt-BR': '100+ projetos concluídos',
+        es: '100+ proyectos completados',
+        en: '100+ projects completed',
+        'pt-br': '100+ projetos concluídos',
       },
     },
     {
       year: '2022',
       event: {
-        'es-MX': 'Expansión internacional',
-        'en-US': 'International expansion',
-        'pt-BR': 'Expansão internacional',
+        es: 'Expansión internacional',
+        en: 'International expansion',
+        'pt-br': 'Expansão internacional',
       },
     },
     {
       year: '2023',
       event: {
-        'es-MX': 'Lanzamiento de PENNY',
-        'en-US': 'PENNY launch',
-        'pt-BR': 'Lançamento do PENNY',
+        es: 'Lanzamiento de PENNY',
+        en: 'PENNY launch',
+        'pt-br': 'Lançamento do PENNY',
       },
     },
     {
       year: '2024',
       event: {
-        'es-MX': '50+ empresas transformadas',
-        'en-US': '50+ companies transformed',
-        'pt-BR': '50+ empresas transformadas',
+        es: '50+ empresas transformadas',
+        en: '50+ companies transformed',
+        'pt-br': '50+ empresas transformadas',
       },
     },
   ];

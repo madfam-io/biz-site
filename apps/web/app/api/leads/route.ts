@@ -24,7 +24,7 @@ const leadSchema = z.object({
   tier: z.nativeEnum(ServiceTier).optional(),
   message: z.string().optional(),
   source: z.string().default('website'),
-  preferredLanguage: z.enum(['es-MX', 'en-US']).default('es-MX'),
+  preferredLanguage: z.enum(['es', 'en']).default('es'),
   metadata: z.record(z.unknown()).optional(),
 });
 
@@ -151,7 +151,7 @@ async function handlePOST(request: NextRequest) {
       data: {
         to: [lead.email],
         subject:
-          validatedData.preferredLanguage === 'es-MX' ? 'Bienvenido a MADFAM' : 'Welcome to MADFAM',
+          validatedData.preferredLanguage === 'es' ? 'Bienvenido a MADFAM' : 'Welcome to MADFAM',
         template: 'welcome',
         data: {
           name: validatedData.name,
@@ -189,7 +189,7 @@ async function handlePOST(request: NextRequest) {
       leadId: lead.id,
       score: lead.score,
       message:
-        validatedData.preferredLanguage === 'es-MX'
+        validatedData.preferredLanguage === 'es'
           ? 'Gracias por tu interés. Nos pondremos en contacto pronto.'
           : 'Thank you for your interest. We will contact you soon.',
     });

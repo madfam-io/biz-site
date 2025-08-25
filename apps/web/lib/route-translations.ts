@@ -9,8 +9,8 @@ import { i18nConfig } from '@madfam/i18n';
  */
 export function translateRoute(route: string, fromLocale: string, toLocale: string): string {
   // If translating from Spanish to English, find the original English route
-  if (fromLocale === 'es-MX' && toLocale === 'en-US') {
-    const spanishRoutes = i18nConfig.routes['es-MX'];
+  if (fromLocale === 'es' && toLocale === 'en') {
+    const spanishRoutes = i18nConfig.routes['es'];
     // Find the English route that maps to this Spanish route
     for (const [englishRoute, spanishRoute] of Object.entries(spanishRoutes)) {
       if (spanishRoute === route) {
@@ -22,8 +22,8 @@ export function translateRoute(route: string, fromLocale: string, toLocale: stri
   }
 
   // If translating from English to Spanish, use the direct mapping
-  if (fromLocale === 'en-US' && toLocale === 'es-MX') {
-    const spanishRoutes = i18nConfig.routes['es-MX'];
+  if (fromLocale === 'en' && toLocale === 'es') {
+    const spanishRoutes = i18nConfig.routes['es'];
     return spanishRoutes[route as keyof typeof spanishRoutes] || route;
   }
 

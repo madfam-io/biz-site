@@ -27,51 +27,51 @@ export default function Level1EssentialsPage({
   const projects = [
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Product Render'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Render de Produto'
             : 'Render de Producto',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Photorealistic 3D visualization for e-commerce'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Visualização 3D fotorrealista para e-commerce'
             : 'Visualización 3D fotorrealista para e-commerce',
-      time: `48 ${currentLocale === 'en-US' ? 'hours' : currentLocale === 'pt-BR' ? 'horas' : 'horas'}`,
-      result: `+45% ${currentLocale === 'en-US' ? 'conversion' : currentLocale === 'pt-BR' ? 'conversão' : 'conversión'}`,
+      time: `48 ${currentLocale === 'en' ? 'hours' : currentLocale === 'pt-br' ? 'horas' : 'horas'}`,
+      result: `+45% ${currentLocale === 'en' ? 'conversion' : currentLocale === 'pt-br' ? 'conversão' : 'conversión'}`,
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Logo Animation'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Animação de Logo'
             : 'Animación de Logo',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Animated intro for corporate videos'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Intro animada para vídeos corporativos'
             : 'Intro animada para videos corporativos',
-      time: `72 ${currentLocale === 'en-US' ? 'hours' : currentLocale === 'pt-BR' ? 'horas' : 'horas'}`,
+      time: `72 ${currentLocale === 'en' ? 'hours' : currentLocale === 'pt-br' ? 'horas' : 'horas'}`,
       result: 'Brand awareness x3',
     },
     {
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Packaging Design'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Design de Embalagem'
             : 'Diseño de Packaging',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? '3D proposal for product line'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Proposta 3D para linha de produtos'
             : 'Propuesta 3D para línea de productos',
-      time: `5 ${currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'}`,
-      result: `25% ${currentLocale === 'en-US' ? 'more sales' : currentLocale === 'pt-BR' ? 'mais vendas' : 'más ventas'}`,
+      time: `5 ${currentLocale === 'en' ? 'days' : currentLocale === 'pt-br' ? 'dias' : 'días'}`,
+      result: `25% ${currentLocale === 'en' ? 'more sales' : currentLocale === 'pt-br' ? 'mais vendas' : 'más ventas'}`,
     },
   ];
 
@@ -85,18 +85,18 @@ export default function Level1EssentialsPage({
     {
       step: 2,
       title:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Instant Proposal'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Proposta Instantânea'
             : 'Propuesta Instantánea',
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Receive quote and timeline in less than 1 hour'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Receba orçamento e cronograma em menos de 1 hora'
             : 'Recibe cotización y timeline en menos de 1 hora',
-      time: `< 1 ${currentLocale === 'en-US' ? 'hour' : currentLocale === 'pt-BR' ? 'hora' : 'hora'}`,
+      time: `< 1 ${currentLocale === 'en' ? 'hour' : currentLocale === 'pt-br' ? 'hora' : 'hora'}`,
     },
     {
       step: 3,
@@ -108,69 +108,69 @@ export default function Level1EssentialsPage({
       step: 4,
       title: t('level1.process.steps.delivery.title'),
       description:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Receive final files with unlimited revisions for 7 days'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Receba arquivos finais com revisões ilimitadas por 7 dias'
             : 'Recibe archivos finales con revisiones ilimitadas por 7 días',
-      time: `7 ${currentLocale === 'en-US' ? 'days' : currentLocale === 'pt-BR' ? 'dias' : 'días'}`,
+      time: `7 ${currentLocale === 'en' ? 'days' : currentLocale === 'pt-br' ? 'dias' : 'días'}`,
     },
   ];
 
   const faqs = [
     {
       question:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'What does the Essentials service include?'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'O que inclui o serviço Essentials?'
             : '¿Qué incluye el servicio Essentials?',
       answer:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Includes complete 3D design, professional rendering, graphic design for digital/print, basic animations and unlimited revisions for 7 days.'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Inclui design 3D completo, renderização profissional, design gráfico para digital/impresso, animações básicas e revisões ilimitadas por 7 dias.'
             : 'Incluye diseño 3D completo, renderizado profesional, diseño gráfico para digital/impreso, animaciones básicas y revisiones ilimitadas durante 7 días.',
     },
     {
       question:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'How long does a typical project take?'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Quanto tempo leva um projeto típico?'
             : '¿Cuánto tiempo toma un proyecto típico?',
       answer:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Most projects are delivered in 48-72 hours. More complex projects may take up to 5 business days.'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'A maioria dos projetos é entregue em 48-72 horas. Projetos mais complexos podem levar até 5 dias úteis.'
             : 'La mayoría de proyectos se entregan en 48-72 horas. Proyectos más complejos pueden tomar hasta 5 días hábiles.',
     },
     {
       question:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'What file formats do you deliver?'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Em quais formatos vocês entregam os arquivos?'
             : '¿En qué formatos entregan los archivos?',
       answer:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'We deliver in all standard formats: JPG, PNG, MP4, GIF for visuals, and source files in Blender, Cinema 4D or your preferred software.'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Entregamos em todos os formatos padrão: JPG, PNG, MP4, GIF para visuais, e arquivos fonte em Blender, Cinema 4D ou o software de sua preferência.'
             : 'Entregamos en todos los formatos estándar: JPG, PNG, MP4, GIF para visuales, y archivos fuente en Blender, Cinema 4D o el software de tu preferencia.',
     },
     {
       question:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Can I request changes after delivery?'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Posso solicitar mudanças após a entrega?'
             : '¿Puedo solicitar cambios después de la entrega?',
       answer:
-        currentLocale === 'en-US'
+        currentLocale === 'en'
           ? 'Yes, we include unlimited revisions for 7 days after the initial delivery. After that period, changes are quoted separately.'
-          : currentLocale === 'pt-BR'
+          : currentLocale === 'pt-br'
             ? 'Sim, incluímos revisões ilimitadas por 7 dias após a entrega inicial. Após esse período, as alterações são cotadas separadamente.'
             : 'Sí, incluimos revisiones ilimitadas durante 7 días después de la entrega inicial. Después de ese período, los cambios se cotizan por separado.',
     },
@@ -218,9 +218,9 @@ export default function Level1EssentialsPage({
               <div>
                 <p className="text-3xl font-heading font-bold text-leaf mb-1">500+</p>
                 <p className="text-sm text-obsidian/60">
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Projects completed'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Projetos concluídos'
                       : 'Proyectos completados'}
                 </p>
@@ -255,33 +255,33 @@ export default function Level1EssentialsPage({
               <ul className="space-y-2 text-obsidian/70">
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Photorealistic products'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Produtos fotorrealistas'
                       : 'Productos fotorrealistas'}
                 </li>
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Environments and scenes'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Ambientes e cenas'
                       : 'Ambientes y escenas'}
                 </li>
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Materials and textures'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Materiais e texturas'
                       : 'Materiales y texturas'}
                 </li>
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Professional lighting'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Iluminação profissional'
                       : 'Iluminación profesional'}
                 </li>
@@ -296,25 +296,25 @@ export default function Level1EssentialsPage({
               <ul className="space-y-2 text-obsidian/70">
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Visual identity'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Identidade visual'
                       : 'Identidad visual'}
                 </li>
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Promotional material'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Material promocional'
                       : 'Material promocional'}
                 </li>
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Presentations'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Apresentações'
                       : 'Presentaciones'}
                 </li>
@@ -330,25 +330,25 @@ export default function Level1EssentialsPage({
               <ul className="space-y-2 text-obsidian/70">
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Video intros'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Intros de vídeo'
                       : 'Intros de video'}
                 </li>
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Animated GIFs'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'GIFs animados'
                       : 'GIFs animados'}
                 </li>
                 <li>
                   •{' '}
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Product demos'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Demos de produto'
                       : 'Demos de producto'}
                 </li>
@@ -395,16 +395,16 @@ export default function Level1EssentialsPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Recent Projects'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Projetos Recentes'
                   : 'Proyectos recientes'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Real results for real clients'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Resultados reais para clientes reais'
                   : 'Resultados reales para clientes reales'}
             </p>
@@ -437,9 +437,9 @@ export default function Level1EssentialsPage({
         <Container>
           <div className="max-w-3xl mx-auto">
             <Heading level={2} className="text-center mb-12">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Frequently Asked Questions'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Perguntas Frequentes'
                   : 'Preguntas frecuentes'}
             </Heading>
@@ -461,16 +461,16 @@ export default function Level1EssentialsPage({
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} className="mb-4">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Need something more advanced?'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Precisa de algo mais avançado?'
                   : '¿Necesitas algo más avanzado?'}
             </Heading>
             <p className="text-lg text-obsidian/70 max-w-3xl mx-auto">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Explore our other service levels'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Explore nossos outros níveis de serviço'
                   : 'Explora nuestros otros niveles de servicio'}
             </p>
@@ -489,24 +489,24 @@ export default function Level1EssentialsPage({
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <Heading level={2} className="text-white mb-6">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Ready to start your project?'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Pronto para começar seu projeto?'
                   : '¿Listo para empezar tu proyecto?'}
             </Heading>
             <p className="text-xl text-white/90 mb-8">
-              {currentLocale === 'en-US'
+              {currentLocale === 'en'
                 ? 'Get your quote in less than 1 hour and start creating today'
-                : currentLocale === 'pt-BR'
+                : currentLocale === 'pt-br'
                   ? 'Receba seu orçamento em menos de 1 hora e comece a criar hoje'
                   : 'Obtén tu cotización en menos de 1 hora y comienza a crear hoy mismo'}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button variant="secondary" size="lg">
-                {currentLocale === 'en-US'
+                {currentLocale === 'en'
                   ? 'Instant Quote'
-                  : currentLocale === 'pt-BR'
+                  : currentLocale === 'pt-br'
                     ? 'Orçamento Instantâneo'
                     : 'Cotización instantánea'}
               </Button>
@@ -516,9 +516,9 @@ export default function Level1EssentialsPage({
                   size="lg"
                   className="border-white text-white hover:bg-white hover:text-leaf"
                 >
-                  {currentLocale === 'en-US'
+                  {currentLocale === 'en'
                     ? 'Talk to an expert'
-                    : currentLocale === 'pt-BR'
+                    : currentLocale === 'pt-br'
                       ? 'Falar com um especialista'
                       : 'Hablar con un experto'}
                 </Button>

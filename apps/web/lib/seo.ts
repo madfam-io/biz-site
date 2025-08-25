@@ -247,7 +247,7 @@ export class SEOService {
     });
   }
 
-  generateHomeMetadata(locale: 'es-MX' | 'en-US' | 'pt-BR' = 'es-MX'): Metadata {
+  generateHomeMetadata(locale: 'es' | 'en' | 'pt-br' = 'es'): Metadata {
     const content = {
       es: {
         title: 'MADFAM | Transformación Digital e Inteligencia Artificial en México',

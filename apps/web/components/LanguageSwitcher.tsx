@@ -51,7 +51,7 @@ export function LanguageSwitcher() {
         aria-haspopup="true"
       >
         <span className="text-lg" role="img" aria-label={currentLocaleName}>
-          {locale === 'es-MX' ? '🇲🇽' : locale === 'pt-BR' ? '🇧🇷' : '🇺🇸'}
+          {locale === 'es' ? '🇲🇽' : locale === 'pt-br' ? '🇧🇷' : '🇺🇸'}
         </span>
         <span className="hidden sm:inline">{currentLocaleName}</span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -81,7 +81,7 @@ export function LanguageSwitcher() {
                   lang={loc}
                 >
                   <span className="text-lg" role="img" aria-label={localeName}>
-                    {loc === 'es-MX' ? '🇲🇽' : loc === 'pt-BR' ? '🇧🇷' : '🇺🇸'}
+                    {loc === 'es' ? '🇲🇽' : loc === 'pt-br' ? '🇧🇷' : '🇺🇸'}
                   </span>
                   <span>{localeName}</span>
                   {isActive && <span className="ml-auto text-sun">✓</span>}

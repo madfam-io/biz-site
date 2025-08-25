@@ -1,11 +1,10 @@
-import { Metadata } from 'next';
-import { Container } from '@madfam/ui';
-import { unstable_setRequestLocale } from 'next-intl/server';
-import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
-import { ProductCard } from '@/components/corporate/ProductCard';
-import { Badge } from '@/components/corporate/Badge';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
+import { Container } from '@madfam/ui';
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { Badge } from '@/components/corporate/Badge';
+import { ProductCard } from '@/components/corporate/ProductCard';
 
 type Props = {
   params: { locale: string };
@@ -31,7 +30,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductsPage({ params }: Props) {
   unstable_setRequestLocale(params.locale);
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.products' });
   const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
 
   // All products with ownership badges
@@ -235,8 +233,8 @@ export default async function ProductsPage({ params }: Props) {
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
               <p className="text-blue-800 text-sm">
-                <strong>Nota:</strong> SPARK se ha integrado en Aureo Studio como "Aureo Flows" para
-                mejor gobernanza y control.
+                <strong>Nota:</strong> SPARK se ha integrado en Aureo Studio como &ldquo;Aureo
+                Flows&rdquo; para mejor gobernanza y control.
               </p>
             </div>
           </div>
@@ -325,7 +323,7 @@ export default async function ProductsPage({ params }: Props) {
                   {['Aureo Studio', 'PENNY', 'Cotiza Studio', 'Forge Sight', 'AVALA'].map(
                     product => (
                       <div key={product} className="text-amber-700 text-sm flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-amber-400 rounded-full"></span>
+                        <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
                         {product}
                         {['AVALA'].includes(product) && (
                           <span className="text-xs text-amber-600 opacity-75">(próximamente)</span>
@@ -363,7 +361,7 @@ export default async function ProductsPage({ params }: Props) {
                 <div className="space-y-2">
                   {['Dhanam', 'RENEC Harvester', 'Mundii'].map(product => (
                     <div key={product} className="text-neutral-600 text-sm flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full"></span>
+                      <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full" />
                       {product}
                       <span className="text-xs text-neutral-500 opacity-75">(próximamente)</span>
                     </div>
