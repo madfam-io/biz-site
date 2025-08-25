@@ -7,7 +7,11 @@
       "about": "Sobre",
       "contact": "Contato",
       "allServices": "Todos os serviços",
-      "freeConsultation": "Consulta gratuita"
+      "freeConsultation": "Consulta gratuita",
+      "arms": "Unidades",
+      "programs": "Programas",
+      "work": "Casos",
+      "security": "Segurança"
     },
     "learnMore": "Saiba mais",
     "aiAssessment": "Avaliação IA",
@@ -19,8 +23,13 @@
       "requestProposal": "Solicitar proposta",
       "viewDemo": "Ver demonstração",
       "downloadPortfolio": "Baixar portfólio",
-      "downloadBrochure": "Baixar brochura"
+      "downloadBrochure": "Baixar brochura",
+      "contact": "Contatar"
     },
+    "comingSoon": "Em breve",
+    "comingSoonBrackets": "(em breve)",
+    "viewDetails": "Ver detalhes",
+    "note": "Nota:",
     "footer": {
       "rights": "Todos os direitos reservados",
       "privacy": "Privacidade",
@@ -1184,6 +1193,159 @@
     "features": {
       "subtitle": "CAPACIDADES",
       "description": "Tudo o que você precisa para transformar seu negócio com IA"
+    }
+  },
+  "corporate": {
+    "hero": {
+      "badge": "Empresa matriz",
+      "viewArms": "Ver unidades",
+      "viewProducts": "Ver produtos",
+      "specializedUnits": "Unidades especializadas",
+      "premiumProducts": "Produtos premium"
+    },
+    "arms": {
+      "title": "Nossas unidades operacionais",
+      "subtitle": "Equipes especializadas entregando excelência em software, manufatura e mais.",
+      "allByMadfam": "Todas as unidades por MADFAM",
+      "viewAll": "Ver todas as unidades",
+      "mainCapabilities": "Capacidades principais",
+      "mainProducts": "Produtos principais",
+      "aureoLabs": {
+        "tagline": "Laboratório de inovação digital",
+        "description": "Desenvolvemos plataformas de automação inteligente e ferramentas de produtividade que transformam a forma de trabalhar.",
+        "capabilities": {
+          "0": "Automação inteligente",
+          "1": "Plataformas web",
+          "2": "Integrações API",
+          "3": "SRE e segurança"
+        }
+      },
+      "primavera3d": {
+        "tagline": "Estúdio de manufatura digital",
+        "description": "Criamos experiências visuais extraordinárias e soluções de design paramétrico para manufatura avançada.",
+        "capabilities": {
+          "0": "Modelagem 3D",
+          "1": "Design paramétrico",
+          "2": "Visualização",
+          "3": "Fabricação digital"
+        }
+      }
+    },
+    "products": {
+      "title": "Nossos produtos",
+      "featuredTitle": "Produtos em destaque",
+      "featuredSubtitle": "Plataformas e ferramentas desenvolvidas por nossas unidades especializadas.",
+      "viewAll": "Ver todos os produtos",
+      "idealFor": "Ideal para:",
+      "mainFeatures": "Características principais",
+      "meta": {
+        "title": "Nossos Produtos | MADFAM",
+        "description": "Plataformas e ferramentas desenvolvidas por nossas unidades especializadas para resolver problemas reais."
+      },
+      "hero": {
+        "subtitle": "Plataformas e ferramentas desenvolvidas por nossas unidades especializadas para resolver problemas reais."
+      },
+      "categories": {
+        "platforms": "Plataformas",
+        "workspaces": "Workspaces",
+        "openData": "Dados abertos"
+      },
+      "sparkIntegrationNote": "SPARK foi integrado ao Aureo Studio como \"Aureo Flows\" para melhor governança e controle.",
+      "availableProducts": "Produtos disponíveis",
+      "availableProductsSubtitle": "Plataformas e ferramentas prontas para implementar em sua organização.",
+      "upcomingSubtitle": "Produtos e plataformas em desenvolvimento por nossas unidades.",
+      "structure": {
+        "title": "Estrutura de produtos",
+        "aureoLabs": {
+          "description": "Laboratório de inovação digital que desenvolve plataformas e workspaces inteligentes."
+        },
+        "madfamDirect": {
+          "description": "Produtos desenvolvidos diretamente pela matriz para soluções específicas."
+        },
+        "viewAureoLabs": "Ver Aureo Labs",
+        "viewAllUnits": "Ver todas as unidades"
+      },
+      "cta": {
+        "title": "Interessado em nossos produtos?",
+        "subtitle": "Entre em contato com a unidade responsável ou agende uma demonstração personalizada.",
+        "contactNow": "Contatar agora",
+        "viewUnits": "Ver unidades"
+      },
+      "aureoStudio": {
+        "description": "Plataforma de orquestração de IA que governa e automatiza processos empresariais complexos.",
+        "audience": "Empresas médias a grandes",
+        "cta": "Visitar Aureo Studio",
+        "features": {
+          "0": "Controle de fluxos inteligente",
+          "1": "Integrações empresariais",
+          "2": "Monitoramento em tempo real"
+        }
+      },
+      "penny": {
+        "description": "Interface de workspace que facilita a automação e melhora a experiência do usuário.",
+        "audience": "Equipes e organizações",
+        "cta": "Ver PENNY",
+        "features": {
+          "0": "Interface intuitiva",
+          "1": "Colaboração em equipe",
+          "2": "Automação visual"
+        }
+      }
+    },
+    "programs": {
+      "title": "Programas de transformação",
+      "processDescription": "Processo estratégico em 3 fases: Estratégia → Piloto → Escala",
+      "updateLabel": "Atualização:",
+      "migrationNotice": "Nossos serviços L1-L5 agora são Programas especializados por unidade.",
+      "viewAll": "Ver todos os programas",
+      "before": "Antes:",
+      "scheduleMarket": "Cronograma e mercado",
+      "duration": "Duração:",
+      "idealFor": "Ideal para:",
+      "investment": "Investimento:",
+      "mainDeliverables": "Entregáveis principais",
+      "moreDeliverables": "+{n} mais...",
+      "includedPlatforms": "Plataformas incluídas",
+      "deliveredBy": "Entregue por:",
+      "requestInfo": "Solicitar informações",
+      "evaluate": "Avaliar",
+      "strategyEnablement": {
+        "name": "Habilitação Estratégica",
+        "description": "Workshops e treinamento estratégico"
+      },
+      "platformPilots": {
+        "name": "Pilotos de Plataforma",
+        "description": "Implementação de Aureo Studio + PENNY"
+      },
+      "strategicPartnerships": {
+        "name": "Parcerias Estratégicas",
+        "description": "Parcerias vCTO e transformação"
+      }
+    },
+    "whyMadfam": {
+      "title": "Por que MADFAM?",
+      "latamFirst": {
+        "title": "LATAM-first",
+        "description": "Construído desde e para a América Latina, com alcance global."
+      },
+      "privacyFirst": {
+        "title": "Privacy-first",
+        "description": "Segurança e privacidade de dados como princípio fundamental."
+      },
+      "designExcellence": {
+        "title": "Excelência em design",
+        "description": "Onde a IA encontra a criatividade humana."
+      }
+    },
+    "cta": {
+      "title": "Pronto para transformar sua organização?",
+      "subtitle": "Descubra qual unidade e programa são perfeitos para seu projeto.",
+      "takeAssessment": "Fazer avaliação IA",
+      "contactNow": "Contatar agora"
+    },
+    "badges": {
+      "byMadfam": "por MADFAM",
+      "aureoProduct": "um produto Aureo Labs"
     }
   }
 }

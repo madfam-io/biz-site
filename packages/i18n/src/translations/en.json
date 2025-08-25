@@ -19,8 +19,13 @@
       "requestProposal": "Request proposal",
       "viewDemo": "View demo",
       "downloadPortfolio": "Download portfolio",
-      "downloadBrochure": "Download brochure"
+      "downloadBrochure": "Download brochure",
+      "contact": "Contact"
     },
+    "comingSoon": "Coming soon",
+    "comingSoonBrackets": "(coming soon)",
+    "viewDetails": "View details",
+    "note": "Note:",
     "footer": {
       "rights": "All rights reserved",
       "privacy": "Privacy",
@@ -1134,6 +1139,159 @@
     "features": {
       "subtitle": "CAPABILITIES",
       "description": "Everything you need to transform your business with AI"
+    }
+  },
+  "corporate": {
+    "hero": {
+      "badge": "Parent Company",
+      "viewArms": "View units",
+      "viewProducts": "View products",
+      "specializedUnits": "Specialized units",
+      "premiumProducts": "Premium products"
+    },
+    "arms": {
+      "title": "Our operational units",
+      "subtitle": "Specialized teams delivering excellence in software, manufacturing, and more.",
+      "allByMadfam": "All units by MADFAM",
+      "viewAll": "View all units",
+      "mainCapabilities": "Main capabilities",
+      "mainProducts": "Main products",
+      "aureoLabs": {
+        "tagline": "Digital innovation lab",
+        "description": "We develop intelligent automation platforms and productivity tools that transform the way work gets done.",
+        "capabilities": {
+          "0": "Intelligent automation",
+          "1": "Web platforms",
+          "2": "API integrations",
+          "3": "SRE & security"
+        }
+      },
+      "primavera3d": {
+        "tagline": "Digital manufacturing studio",
+        "description": "We create extraordinary visual experiences and parametric design solutions for advanced manufacturing.",
+        "capabilities": {
+          "0": "3D modeling",
+          "1": "Parametric design",
+          "2": "Visualization",
+          "3": "Digital fabrication"
+        }
+      }
+    },
+    "products": {
+      "title": "Our products",
+      "featuredTitle": "Featured products",
+      "featuredSubtitle": "Platforms and tools developed by our specialized units.",
+      "viewAll": "View all products",
+      "idealFor": "Ideal for:",
+      "mainFeatures": "Main features",
+      "meta": {
+        "title": "Our Products | MADFAM",
+        "description": "Platforms and tools developed by our specialized units to solve real problems."
+      },
+      "hero": {
+        "subtitle": "Platforms and tools developed by our specialized units to solve real problems."
+      },
+      "categories": {
+        "platforms": "Platforms",
+        "workspaces": "Workspaces",
+        "openData": "Open data"
+      },
+      "sparkIntegrationNote": "SPARK has been integrated into Aureo Studio as \"Aureo Flows\" for better governance and control.",
+      "availableProducts": "Available products",
+      "availableProductsSubtitle": "Platforms and tools ready to implement in your organization.",
+      "upcomingSubtitle": "Products and platforms in development by our units.",
+      "structure": {
+        "title": "Product structure",
+        "aureoLabs": {
+          "description": "Digital innovation lab that develops intelligent platforms and workspaces."
+        },
+        "madfamDirect": {
+          "description": "Products developed directly by the parent company for specific solutions."
+        },
+        "viewAureoLabs": "View Aureo Labs",
+        "viewAllUnits": "View all units"
+      },
+      "cta": {
+        "title": "Interested in our products?",
+        "subtitle": "Contact the responsible unit or schedule a personalized demo.",
+        "contactNow": "Contact now",
+        "viewUnits": "View units"
+      },
+      "aureoStudio": {
+        "description": "AI orchestration platform that governs and automates complex business processes.",
+        "audience": "Medium to large enterprises",
+        "cta": "Visit Aureo Studio",
+        "features": {
+          "0": "Intelligent flow control",
+          "1": "Enterprise integrations",
+          "2": "Real-time monitoring"
+        }
+      },
+      "penny": {
+        "description": "Workspace interface that facilitates automation and improves user experience.",
+        "audience": "Teams and organizations",
+        "cta": "View PENNY",
+        "features": {
+          "0": "Intuitive interface",
+          "1": "Team collaboration",
+          "2": "Visual automation"
+        }
+      }
+    },
+    "programs": {
+      "title": "Transformation programs",
+      "processDescription": "Strategic 3-phase process: Strategy → Pilot → Scale",
+      "updateLabel": "Update:",
+      "migrationNotice": "Our L1-L5 services are now specialized Programs by unit.",
+      "viewAll": "View all programs",
+      "before": "Before:",
+      "scheduleMarket": "Schedule & market",
+      "duration": "Duration:",
+      "idealFor": "Ideal for:",
+      "investment": "Investment:",
+      "mainDeliverables": "Main deliverables",
+      "moreDeliverables": "+{n} more...",
+      "includedPlatforms": "Included platforms",
+      "deliveredBy": "Delivered by:",
+      "requestInfo": "Request information",
+      "evaluate": "Evaluate",
+      "strategyEnablement": {
+        "name": "Strategy Enablement",
+        "description": "Strategic workshops and training"
+      },
+      "platformPilots": {
+        "name": "Platform Pilots",
+        "description": "Aureo Studio + PENNY implementation"
+      },
+      "strategicPartnerships": {
+        "name": "Strategic Partnerships",
+        "description": "vCTO partnerships and transformation"
+      }
+    },
+    "whyMadfam": {
+      "title": "Why MADFAM?",
+      "latamFirst": {
+        "title": "LATAM-first",
+        "description": "Built from and for Latin America, with global reach."
+      },
+      "privacyFirst": {
+        "title": "Privacy-first",
+        "description": "Data security and privacy as a fundamental principle."
+      },
+      "designExcellence": {
+        "title": "Design excellence",
+        "description": "Where AI meets human creativity."
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your organization?",
+      "subtitle": "Discover which unit and program are perfect for your project.",
+      "takeAssessment": "Take AI assessment",
+      "contactNow": "Contact now"
+    },
+    "badges": {
+      "byMadfam": "by MADFAM",
+      "aureoProduct": "an Aureo Labs product"
     }
   }
 }
