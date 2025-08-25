@@ -437,24 +437,7 @@ export default function Level5StrategicPage({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {otherServices.map(otherService => (
-              <ServiceCard
-                key={otherService.tier}
-                tier={otherService.tier}
-                title={getLocalizedContent(otherService.name, currentLocale)}
-                description={getLocalizedContent(otherService.description, currentLocale)}
-                features={getLocalizedContent(otherService.keyFeatures, currentLocale)}
-                cta={{
-                  text: getLocalizedText(
-                    {
-                      en: 'Learn More',
-                      es: 'Conocer Más',
-                      'pt-br': 'Saiba Mais',
-                    },
-                    locale
-                  ),
-                  href: `/services/${otherService.slug}`,
-                }}
-              />
+              <ServiceCard key={otherService.id} service={otherService} />
             ))}
           </div>
         </Container>

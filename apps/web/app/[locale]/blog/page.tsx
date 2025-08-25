@@ -16,7 +16,7 @@ type CommonBlogPost = {
   status?: string;
   createdAt?: string;
   updatedAt?: string;
-  content?: string | Record<string, unknown>;
+  content?: string | Record<string, unknown> | import('@/types/content').RichTextDocument;
 };
 
 // Fallback blog data for static exports or when CMS is unavailable

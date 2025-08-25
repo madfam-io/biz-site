@@ -38,7 +38,11 @@ export default function ServicePage({ params }: ServicePageProps) {
 
   const ServiceComponent = serviceComponents[englishSlug];
 
-  return <ServiceComponent params={{ locale }} />;
+  if (!ServiceComponent) {
+    notFound();
+  }
+
+  return <ServiceComponent params={{ locale, slug }} />;
 }
 
 // Generate static params for all service pages in all locales

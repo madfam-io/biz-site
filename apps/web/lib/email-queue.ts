@@ -120,7 +120,7 @@ export class EmailQueueProcessor {
         to,
         subject: `Template: ${template}`, // Will be replaced by actual subject
         template,
-        data,
+        data: data as any,
         status: 'pending',
         attempts: 0,
       },

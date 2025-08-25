@@ -177,8 +177,8 @@ export function initializePerformanceMonitoring() {
     new PerformanceObserver(list => {
       for (const entry of list.getEntries()) {
         logPerformanceMetric('LCP', entry.startTime, 'ms', {
-          element: (entry as unknown).element?.tagName,
-          id: (entry as unknown).element?.id,
+          element: (entry as any).element?.tagName,
+          id: (entry as any).element?.id,
           url: window.location.href,
         });
       }
@@ -187,8 +187,8 @@ export function initializePerformanceMonitoring() {
     // FID (First Input Delay)
     new PerformanceObserver(list => {
       for (const entry of list.getEntries()) {
-        logPerformanceMetric('FID', (entry as unknown).processingStart - entry.startTime, 'ms', {
-          eventType: (entry as unknown).name,
+        logPerformanceMetric('FID', (entry as any).processingStart - entry.startTime, 'ms', {
+          eventType: (entry as any).name,
           url: window.location.href,
         });
       }
@@ -197,8 +197,8 @@ export function initializePerformanceMonitoring() {
     // CLS (Cumulative Layout Shift)
     new PerformanceObserver(list => {
       for (const entry of list.getEntries()) {
-        if (!(entry as unknown).hadRecentInput) {
-          logPerformanceMetric('CLS', (entry as unknown).value, 'score', {
+        if (!(entry as any).hadRecentInput) {
+          logPerformanceMetric('CLS', (entry as any).value, 'score', {
             url: window.location.href,
           });
         }

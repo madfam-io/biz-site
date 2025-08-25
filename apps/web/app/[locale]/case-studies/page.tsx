@@ -12,7 +12,7 @@ type CommonCaseStudy = {
   client: string;
   industry: string;
   challenge: string;
-  solution: string | Record<string, unknown>;
+  solution: string | Record<string, unknown> | import('@/types/content').RichTextDocument;
   results: Array<{ metric: string; value: string; description: string }> | string[];
   slug: string;
   status?: string;
