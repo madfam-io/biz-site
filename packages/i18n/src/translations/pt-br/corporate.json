@@ -416,6 +416,8 @@
     "requestInfo": "Solicitar informações",
     "evaluate": "Avaliar",
     "strategyEnablement": {
+      "name": "Estratégia e Habilitação",
+      "description": "Consultoria estratégica e programas de habilitação para guiar sua transformação digital",
       "timeline": "3-6 meses",
       "targetMarket": "Empresas em crescimento",
       "investment": "A partir de $200,000 MXN",
@@ -427,6 +429,8 @@
       }
     },
     "platformPilots": {
+      "name": "Pilotos de Plataforma",
+      "description": "Lance e valide plataformas alimentadas por IA com ROI comprovado antes da implantação completa",
       "timeline": "3-12 meses",
       "targetMarket": "Empresas médias a grandes",
       "investment": "A partir de $500,000 MXN",
@@ -438,6 +442,8 @@
       }
     },
     "strategicPartnerships": {
+      "name": "Parcerias Estratégicas",
+      "description": "Parcerias tecnológicas de longo prazo com liderança vCTO integrada e inovação contínua",
       "timeline": "12+ meses",
       "targetMarket": "Corporações e grandes empresas",
       "investment": "Personalizado",
@@ -463,6 +469,42 @@
         "1": "Design paramétrico",
         "2": "Renderização fotorrealista",
         "3": "Fabricação digital"
+      }
+    },
+    "hero": {
+      "title": "Programas de Transformação",
+      "subtitle": "Da consultoria inicial à transformação digital completa",
+      "assessmentCta": "Fazer Avaliação de IA"
+    },
+    "migration": {
+      "title": "Atualização de Migração de Serviços",
+      "description": "Nossos serviços L1-L5 evoluíram para programas especializados adaptados às suas necessidades de negócio."
+    },
+    "journey": {
+      "title": "Sua Jornada de Transformação",
+      "strategy": {
+        "title": "Estratégia",
+        "description": "Desenhamos o roteiro para sua transformação"
+      },
+      "pilot": {
+        "title": "Piloto",
+        "description": "Implementamos e validamos soluções"
+      },
+      "scale": {
+        "title": "Escala",
+        "description": "Expandimos implementações bem-sucedidas"
+      }
+    },
+    "tools": {
+      "title": "Ferramentas e Recursos",
+      "description": "Use nossas ferramentas gratuitas para avaliar suas necessidades e calcular seu potencial de transformação",
+      "assessment": {
+        "title": "Avaliação de IA",
+        "description": "Descubra seu programa de transformação ideal"
+      },
+      "calculator": {
+        "title": "Calculadora de ROI",
+        "description": "Calcule o retorno do seu investimento"
       }
     }
   },

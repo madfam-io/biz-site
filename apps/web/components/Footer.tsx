@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 export function Footer() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
+  const currentYear = new Date().getFullYear();
 
   const navigation = {
     servicios: [
@@ -162,7 +163,9 @@ export function Footer() {
 
             <div className="mt-8 pt-8 border-t border-white/10">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-                <p>© 2024 MADFAM. {t('common.footer.rights')}</p>
+                <p>
+                  © {currentYear} MADFAM. {t('common.footer.rights')}
+                </p>
                 <div className="flex gap-6">
                   <Link
                     href={`/${locale}/privacy`}

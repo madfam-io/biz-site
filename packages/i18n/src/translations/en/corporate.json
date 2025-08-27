@@ -424,6 +424,8 @@
     "requestInfo": "Request information",
     "evaluate": "Evaluate",
     "strategyEnablement": {
+      "name": "Strategy & Enablement",
+      "description": "Strategic consulting and enablement programs to guide your digital transformation journey",
       "timeline": "3-6 months",
       "targetMarket": "Growing companies",
       "investment": "From $200,000 MXN",
@@ -435,6 +437,8 @@
       }
     },
     "platformPilots": {
+      "name": "Platform Pilots",
+      "description": "Launch and validate AI-powered platforms with proven ROI before full-scale deployment",
       "timeline": "3-12 months",
       "targetMarket": "Medium to large companies",
       "investment": "From $500,000 MXN",
@@ -446,6 +450,8 @@
       }
     },
     "strategicPartnerships": {
+      "name": "Strategic Partnerships",
+      "description": "Long-term technology partnerships with embedded vCTO leadership and continuous innovation",
       "timeline": "12+ months",
       "targetMarket": "Corporates and large enterprises",
       "investment": "Custom",
@@ -499,6 +505,7 @@
     },
     "tools": {
       "title": "Tools & Resources",
+      "description": "Use our free tools to evaluate your needs and calculate your transformation potential",
       "assessment": {
         "title": "AI Assessment",
         "description": "Discover your ideal transformation program"

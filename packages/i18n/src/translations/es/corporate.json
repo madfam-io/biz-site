@@ -424,6 +424,8 @@
     "requestInfo": "Solicitar información",
     "evaluate": "Evaluar",
     "strategyEnablement": {
+      "name": "Estrategia y Habilitación",
+      "description": "Consultoría estratégica y programas de habilitación para guiar tu transformación digital",
       "timeline": "3-6 meses",
       "targetMarket": "Empresas en crecimiento",
       "investment": "Desde $200,000 MXN",
@@ -435,6 +437,8 @@
       }
     },
     "platformPilots": {
+      "name": "Pilotos de Plataforma",
+      "description": "Lanza y valida plataformas potenciadas por IA con ROI comprobado antes del despliegue completo",
       "timeline": "3-12 meses",
       "targetMarket": "Empresas medianas a grandes",
       "investment": "Desde $500,000 MXN",
@@ -446,6 +450,8 @@
       }
     },
     "strategicPartnerships": {
+      "name": "Alianzas Estratégicas",
+      "description": "Alianzas tecnológicas a largo plazo con liderazgo vCTO integrado e innovación continua",
       "timeline": "12+ meses",
       "targetMarket": "Corporativos y grandes empresas",
       "investment": "Personalizado",
@@ -499,6 +505,7 @@
     },
     "tools": {
       "title": "Herramientas y Recursos",
+      "description": "Usa nuestras herramientas gratuitas para evaluar tus necesidades y calcular tu potencial de transformación",
       "assessment": {
         "title": "Evaluación de IA",
         "description": "Descubre tu programa de transformación ideal"
