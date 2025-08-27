@@ -8,10 +8,10 @@ export * from './utils/routes';
 // Hooks
 export * from './hooks/useTypedTranslations';
 
-// Translation imports
-import esMessages from './translations/es.json';
-import enMessages from './translations/en.json';
-import ptMessages from './translations/pt-br.json';
+// Translation imports - Now using modular structure
+import esMessages from './translations/es';
+import enMessages from './translations/en';
+import ptMessages from './translations/pt-br';
 
 export const messages = {
   es: esMessages,

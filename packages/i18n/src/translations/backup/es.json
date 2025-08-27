@@ -44,6 +44,10 @@
     "metadata": {
       "email": "Email",
       "whatsapp": "WhatsApp"
+    },
+    "getStarted": "Comenzar",
+    "products": {
+      "documentation": "Documentación"
     }
   },
   "footer": {
@@ -467,7 +471,10 @@
         "integration": "Integración con +100 herramientas",
         "automation": "Automatización sin código",
         "analytics": "Analytics en tiempo real",
-        "scalability": "Escalabilidad infinita"
+        "scalability": "Escalabilidad infinita",
+        "0": "Integración con +100 herramientas",
+        "1": "Automatización sin código",
+        "2": "Analytics en tiempo real"
       },
       "benefits": {
         "title": "Beneficios",
@@ -487,7 +494,11 @@
         "learning": "Aprendizaje continuo",
         "natural": "Procesamiento de lenguaje natural",
         "proactive": "Sugerencias proactivas",
-        "secure": "Seguridad empresarial"
+        "secure": "Seguridad empresarial",
+        "0": "Aprendizaje continuo",
+        "1": "Procesamiento de lenguaje natural",
+        "2": "Sugerencias proactivas",
+        "3": "Seguridad empresarial"
       },
       "benefits": {
         "title": "Beneficios",
@@ -508,6 +519,27 @@
     "cta": {
       "demo": "Solicitar demo",
       "trial": "Prueba gratis por 14 días"
+    },
+    "aureoStudio": {
+      "features": {
+        "0": "Control de flujos inteligente",
+        "1": "Integraciones empresariales",
+        "2": "Monitoreo en tiempo real"
+      }
+    },
+    "cotizaStudio": {
+      "features": {
+        "0": "Generación instantánea",
+        "1": "Personalización con IA",
+        "2": "Integración con CRM"
+      }
+    },
+    "forgeSight": {
+      "features": {
+        "0": "Análisis predictivo avanzado",
+        "1": "Visualización de datos en tiempo real",
+        "2": "Modelos de IA personalizados"
+      }
     }
   },
   "contact": {
@@ -823,7 +855,11 @@
         "title": "Transformación estratégica completa",
         "description": "Tu empresa está lista para una asociación vCTO y transformación integral."
       }
-    }
+    },
+    "title": "Evaluación de IA",
+    "subtitle": "Descubre cómo la IA puede transformar tu negocio",
+    "intro": "Responde algunas preguntas rápidas para obtener recomendaciones de IA personalizadas para tu empresa",
+    "start": "Iniciar Evaluación"
   },
   "calculator": {
     "title": "Calculadora de ROI",
@@ -1412,7 +1448,9 @@
       "viewArms": "Ver unidades",
       "viewProducts": "Ver productos",
       "specializedUnits": "Unidades especializadas",
-      "premiumProducts": "Productos premium"
+      "premiumProducts": "Productos premium",
+      "title": "Manufactura Avanzada e Innovación Digital",
+      "subtitle": "Transformamos tu negocio con soluciones inteligentes de manufactura y estrategias digitales de vanguardia"
     },
     "arms": {
       "title": "Nuestras unidades operativas",
@@ -1425,6 +1463,10 @@
         "tagline": "Laboratorio de innovación digital",
         "description": "Desarrollamos plataformas de automatización inteligente y herramientas de productividad que transforman la forma de trabajar.",
         "capabilities": {
+          "0": "Sistemas de IA Agéntica",
+          "1": "Desarrollo de Plataformas Web",
+          "2": "Integraciones API y Middleware",
+          "3": "Operaciones SRE y Seguridad",
           "title": "Capacidades Core",
           "agentic": {
             "title": "Sistemas Agénticos",
@@ -1518,6 +1560,39 @@
           "2": "Visualización",
           "3": "Fabricación digital"
         }
+      },
+      "health": {
+        "tagline": "División de Innovación en Salud",
+        "description": "Tecnología médica avanzada y soluciones de salud",
+        "capabilities": {
+          "0": "Desarrollo de Software Médico",
+          "1": "Analítica de Datos de Salud",
+          "2": "Soluciones de Telemedicina",
+          "3": "Integración de Dispositivos Médicos"
+        }
+      },
+      "aero": {
+        "tagline": "División de Innovación Aeroespacial",
+        "description": "Tecnología aeroespacial de vanguardia y soluciones",
+        "capabilities": {
+          "0": "Sistemas de Software Aeroespacial",
+          "1": "Sistemas de Control de Vuelo",
+          "2": "Navegación y Guía",
+          "3": "Analítica de Datos Aeroespaciales"
+        }
+      },
+      "hero": {
+        "title": "Nuestras Unidades de Negocio",
+        "subtitle": "Equipos especializados entregando excelencia en todas las industrias",
+        "badge": "Unidades de Negocio"
+      },
+      "meta": {
+        "title": "Unidades de Negocio - MADFAM",
+        "description": "Conozca nuestras unidades especializadas de negocio que entregan soluciones en manufactura avanzada, tecnología y más."
+      },
+      "structure": {
+        "title": "Estructura Corporativa",
+        "description": "MADFAM coordina y dirige múltiples unidades especializadas, cada una enfocada en resolver problemas específicos de la industria."
       }
     },
     "products": {
@@ -1646,6 +1721,41 @@
           "1": "Diseño paramétrico",
           "2": "Renderizado fotorrealista",
           "3": "Fabricación digital"
+        }
+      },
+      "hero": {
+        "title": "Programas de Transformación",
+        "subtitle": "Desde consultoría inicial hasta transformación digital completa",
+        "assessmentCta": "Tomar Evaluación IA"
+      },
+      "migration": {
+        "title": "Actualización de Migración de Servicios",
+        "description": "Nuestros servicios L1-L5 han evolucionado en programas especializados adaptados a las necesidades de tu negocio."
+      },
+      "journey": {
+        "title": "Tu Jornada de Transformación",
+        "strategy": {
+          "title": "Estrategia",
+          "description": "Diseñamos la hoja de ruta para tu transformación"
+        },
+        "pilot": {
+          "title": "Piloto",
+          "description": "Implementamos y validamos soluciones"
+        },
+        "scale": {
+          "title": "Escala",
+          "description": "Expandimos implementaciones exitosas"
+        }
+      },
+      "tools": {
+        "title": "Herramientas y Recursos",
+        "assessment": {
+          "title": "Evaluación de IA",
+          "description": "Descubre tu programa de transformación ideal"
+        },
+        "calculator": {
+          "title": "Calculadora ROI",
+          "description": "Calcula el retorno de tu inversión"
         }
       }
     },

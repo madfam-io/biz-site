@@ -1,0 +1,382 @@
+{
+  "home": {
+    "hero": {
+      "title": "Where AI meets human creativity",
+      "subtitle": "MADFAM transforms businesses with AI-powered solutions. From 3D design to strategic vCTO partnerships, we deliver innovation at every level.",
+      "exploreServices": "Explore services",
+      "viewProducts": "View products"
+    },
+    "services": {
+      "title": "5-level services",
+      "subtitle": "From quick fixes to strategic transformation, we have the perfect level for your needs.",
+      "viewAll": "View all services"
+    },
+    "products": {
+      "title": "Our products",
+      "subtitle": "Revolutionary platforms that automate and optimize your business",
+      "spark": {
+        "description": "AI orchestration platform that connects, automates, and optimizes all your business processes in one place."
+      },
+      "penny": {
+        "description": "Intelligent process automation that learns, adapts, and continuously improves your workflow."
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your business?",
+      "subtitle": "Discover how MADFAM can take your company to the next level with AI and creativity.",
+      "scheduleFree": "Schedule free consultation",
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "button": "Get Started"
+    }
+  },
+  "about": {
+    "title": "We are MADFAM",
+    "subtitle": "A family of creatives and technologists obsessed with transforming the future of business through artificial intelligence and innovative design.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize access to cutting-edge technology, enabling companies of all sizes to compete in the digital era with creative and accessible solutions."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the catalyst for digital transformation in Latin America, creating a future where AI and human creativity work in perfect harmony."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "The principles that guide every decision, project, and relationship at MADFAM",
+      "innovation": "Constant innovation",
+      "integrity": "Absolute integrity",
+      "collaboration": "Genuine collaboration",
+      "excellence": "Excellence in everything",
+      "impact": "Positive impact"
+    },
+    "team": {
+      "title": "Meet the Family",
+      "subtitle": "The brilliant minds behind MADFAM's magic"
+    },
+    "history": {
+      "title": "Our Story",
+      "subtitle": "A journey of innovation, growth, and transformation"
+    },
+    "cta": {
+      "title": "Ready to be part of the family?",
+      "subtitle": "Join us in our mission to transform the future of business",
+      "scheduleCall": "Work together",
+      "viewOpportunities": "View opportunities",
+      "seeWork": "See our work",
+      "joinTeam": "Join the team"
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Ready to transform your business? Let's talk about how we can help.",
+    "hero": {
+      "titlePrefix": "Let's talk about your",
+      "titleHighlight": "next project",
+      "subtitle": "We're ready to help you transform your company with AI. Tell us your needs and we'll find the perfect solution."
+    },
+    "form": {
+      "title": "Request information",
+      "name": "Full name",
+      "email": "Business email",
+      "company": "Company",
+      "phone": "Phone",
+      "service": "Service of interest",
+      "message": "How can we help?",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Please try again."
+    },
+    "info": {
+      "title": "Other ways to contact",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "hours": "Business hours",
+      "monday": "Monday to Friday",
+      "time": "9:00 AM - 6:00 PM CST"
+    },
+    "alternativeContact": {
+      "title": "Other ways to contact us",
+      "location": "Location",
+      "city": "Mexico City, Mexico",
+      "remoteService": "Global remote service",
+      "businessHours": "Business hours",
+      "weekdays": "Monday - Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "closed": "Closed",
+      "responseTime": "We respond within 24 business hours"
+    },
+    "immediateHelp": {
+      "title": "Need immediate help?",
+      "subtitle": "Schedule a 15-minute video call to resolve your questions",
+      "scheduleCall": "Schedule quick call →"
+    }
+  },
+  "careers": {
+    "title": "Join the MADFAM team",
+    "subtitle": "We're building the future of business transformation. Join us to create innovative solutions that help companies thrive in the digital age.",
+    "culture": {
+      "title": "Our culture",
+      "innovation": {
+        "title": "Innovation first",
+        "description": "We embrace new technologies and creative solutions to solve complex problems."
+      },
+      "collaboration": {
+        "title": "Collaborative spirit",
+        "description": "We believe in the power of teamwork and value diverse perspectives."
+      },
+      "growth": {
+        "title": "Growth mindset",
+        "description": "We're committed to continuous learning and personal development."
+      }
+    },
+    "benefits": {
+      "title": "Benefits and perks",
+      "list": {
+        "health": "Comprehensive health insurance",
+        "pto": "Flexible PTO policy",
+        "remote": "Remote-first culture",
+        "learning": "Learning and development budget",
+        "bonus": "Performance bonuses",
+        "home": "Home office stipend"
+      }
+    },
+    "positions": {
+      "title": "Open positions",
+      "department": "Department",
+      "location": "Location",
+      "type": "Type",
+      "applyNow": "Apply now"
+    },
+    "cta": {
+      "title": "Don't see the right position?",
+      "subtitle": "We're always looking for talented people. Send us your resume and let's talk!",
+      "sendResume": "Send your resume"
+    }
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "subtitle": "Real stories of how we've helped companies transform and thrive in the digital age.",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "results": "Results",
+    "readFullCase": "Read full case"
+  },
+  "showcase": {
+    "title": "Component Showcase",
+    "toggleDarkMode": "Toggle Dark Mode",
+    "sections": {
+      "buttons": "Button Variants",
+      "services": "Service Cards",
+      "products": "Product Cards",
+      "features": "Key Features",
+      "testimonials": "Testimonials"
+    },
+    "buttons": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "creative": "Creative",
+      "outline": "Outline",
+      "ghost": "Ghost",
+      "danger": "Danger",
+      "success": "Success",
+      "loading": "Loading",
+      "withIcon": "With Icon"
+    },
+    "badges": {
+      "recommended": "Recommended",
+      "popular": "Popular"
+    },
+    "featureFlag": {
+      "comingSoon": "Interactive Calculator Coming Soon!",
+      "active": "ROI Calculator Active!",
+      "activeDescription": "This section is shown because the INTERACTIVE_CALCULATOR feature flag is enabled."
+    },
+    "features": {
+      "subtitle": "CAPABILITIES",
+      "description": "Everything you need to transform your business with AI"
+    }
+  },
+  "blog": {
+    "title": "Blog & Insights",
+    "subtitle": "Thoughts, stories, and ideas from the MADFAM team on technology, innovation, and business transformation.",
+    "readMore": "Read more",
+    "by": "By",
+    "minRead": "min read",
+    "backToBlog": "Back to Blog"
+  },
+  "guides": {
+    "title": "Guides & Tutorials",
+    "subtitle": "Step-by-step guides to help you make the most of MADFAM services and create amazing solutions.",
+    "featured": {
+      "badge": "Featured guide",
+      "title": "Complete Integration Tutorial",
+      "description": "Learn how to integrate MADFAM services from start to finish with our comprehensive tutorial.",
+      "startTutorial": "Start tutorial"
+    },
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "videoTutorials": {
+      "title": "Video tutorials",
+      "description": "Prefer to learn through videos? Visit our YouTube channel for video tutorials and demos.",
+      "watchYoutube": "Watch on YouTube"
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "subtitle": "Everything you need to know to work with MADFAM services and platforms.",
+    "searchPlaceholder": "Search documentation...",
+    "categories": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "description": "Quick start guides and service overview"
+      },
+      "api": {
+        "title": "API Documentation",
+        "description": "Technical documentation for our APIs and integrations"
+      },
+      "guides": {
+        "title": "Guides & Tutorials",
+        "description": "Step-by-step guides for common use cases"
+      },
+      "resources": {
+        "title": "Resources",
+        "description": "Additional resources and support materials"
+      }
+    },
+    "popularTopics": "Popular topics",
+    "needHelp": {
+      "title": "Need help?",
+      "subtitle": "Can't find what you're looking for? Our support team is here to help.",
+      "contactSupport": "Contact support",
+      "viewFaq": "View FAQ"
+    }
+  },
+  "search": {
+    "button": "Search",
+    "placeholder": "Search services, products, pages...",
+    "searching": "Searching...",
+    "noResults": "No results found. Try a different search term.",
+    "noResultsFor": "No results found for \"{query}\"",
+    "tryDifferentTerms": "Try different search terms",
+    "startTyping": "Start typing to search",
+    "navigate": "Navigate",
+    "select": "Select",
+    "close": "Close"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "MADFAM is committed to protecting your privacy. This policy describes how we collect, use, and protect your information."
+      },
+      "dataCollection": {
+        "title": "Data we collect",
+        "content": "We collect information you provide directly, such as name, email, phone, and company information."
+      },
+      "dataUse": {
+        "title": "How we use your data",
+        "content": "We use your information to provide our services, improve our platform, and communicate relevant updates."
+      },
+      "dataProtection": {
+        "title": "How we protect your data",
+        "content": "We implement technical and organizational security measures to protect your information from unauthorized access."
+      },
+      "yourRights": {
+        "title": "Your rights",
+        "content": "You have the right to access, correct, or delete your personal information at any time."
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of terms",
+        "content": "By using our services, you agree to these terms of service."
+      },
+      "services": {
+        "title": "Our services",
+        "content": "MADFAM provides consulting, development, and implementation of AI solutions."
+      },
+      "obligations": {
+        "title": "Your obligations",
+        "content": "You agree to provide accurate information and use our services legally and ethically."
+      },
+      "intellectual": {
+        "title": "Intellectual property",
+        "content": "All content and technology remain property of MADFAM unless otherwise agreed."
+      },
+      "liability": {
+        "title": "Limitation of liability",
+        "content": "Our liability is limited to the amount paid for services in the last 12 months."
+      }
+    }
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "lastUpdated": "Last updated",
+    "banner": {
+      "title": "We use cookies",
+      "description": "We use cookies to improve your experience, analyze site traffic, and personalize content. You can accept all cookies or customize your preferences.",
+      "acceptAll": "Accept all",
+      "necessaryOnly": "Necessary only",
+      "customize": "Customize",
+      "closeAriaLabel": "Close cookie banner"
+    },
+    "settings": {
+      "title": "Cookie preferences",
+      "save": "Save preferences",
+      "cancel": "Cancel",
+      "necessary": {
+        "title": "Necessary cookies",
+        "description": "These cookies are essential for the website to function and cannot be disabled."
+      },
+      "analytics": {
+        "title": "Analytics cookies",
+        "description": "Help us understand how visitors interact with the website by collecting information anonymously."
+      },
+      "marketing": {
+        "title": "Marketing cookies",
+        "description": "Used to track visitors across websites and display relevant advertisements."
+      }
+    },
+    "footer": {
+      "text": "For more information, see our <privacy>Privacy Policy</privacy> and <terms>Terms and Conditions</terms>."
+    },
+    "sections": {
+      "whatAreCookies": {
+        "title": "What are cookies",
+        "description": "Cookies are small text files placed on your computer or mobile device when you visit our website. They are widely used to make websites work more efficiently and provide a better user experience."
+      },
+      "howWeUse": {
+        "title": "How we use cookies",
+        "description": "We use cookies for the following purposes:",
+        "essential": "Essential cookies",
+        "analytics": "Analytics cookies",
+        "preference": "Preference cookies",
+        "marketing": "Marketing cookies"
+      },
+      "managing": {
+        "title": "Managing cookies",
+        "description": "You can control and manage cookies through your browser settings. Note that removing or blocking cookies may impact your user experience and some parts of our website may not be fully accessible."
+      },
+      "contact": {
+        "title": "Contact us",
+        "description": "If you have questions about our use of cookies or this policy, please contact us:",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address"
+      }
+    }
+  }
+}

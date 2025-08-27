@@ -1,0 +1,56 @@
+{
+  "leadForm": {
+    "fields": {
+      "name": "Full name",
+      "email": "Corporate email",
+      "company": "Company",
+      "phone": "Phone",
+      "tier": "Service of interest",
+      "message": "How can we help you?"
+    },
+    "placeholders": {
+      "name": "John Doe",
+      "email": "john@company.com",
+      "company": "Your company name",
+      "phone": "+1 555 123 4567",
+      "message": "Tell us about your project or needs..."
+    },
+    "tiers": {
+      "select": "Select a service",
+      "l1": "L1 - Essentials (3D Design)",
+      "l2": "L2 - Advanced (Parametric Design)",
+      "l3": "L3 - Consulting (Workshops)",
+      "l4": "L4 - Platforms (SPARK/PENNY)",
+      "l5": "L5 - Strategic (vCTO)"
+    },
+    "errors": {
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Invalid email"
+    },
+    "messages": {
+      "success": "Thank you for your interest! We'll contact you soon.",
+      "error": "There was an error submitting the form. Please try again."
+    },
+    "requiredFields": "Required fields",
+    "submit": "Send request"
+  },
+  "auth": {
+    "signin": {
+      "title": "Sign in to MADFAM Admin",
+      "subtitle": "Access your MADFAM account",
+      "email": "Email address",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot your password?",
+      "signIn": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "errors": {
+        "invalidEmail": "Invalid email address",
+        "passwordLength": "Password must be at least 8 characters",
+        "invalidCredentials": "Invalid email or password",
+        "generic": "An error occurred. Please try again."
+      }
+    }
+  }
+}

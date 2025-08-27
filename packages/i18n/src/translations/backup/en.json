@@ -44,6 +44,10 @@
     "metadata": {
       "email": "Email",
       "whatsapp": "WhatsApp"
+    },
+    "getStarted": "Get Started",
+    "products": {
+      "documentation": "Documentation"
     }
   },
   "footer": {
@@ -467,7 +471,10 @@
         "integration": "Integration with 100+ tools",
         "automation": "No-code automation",
         "analytics": "Real-time analytics",
-        "scalability": "Infinite scalability"
+        "scalability": "Infinite scalability",
+        "0": "Integration with 100+ tools",
+        "1": "No-code automation",
+        "2": "Real-time analytics"
       },
       "benefits": {
         "title": "Benefits",
@@ -487,7 +494,11 @@
         "learning": "Continuous learning",
         "natural": "Natural language processing",
         "proactive": "Proactive suggestions",
-        "secure": "Enterprise security"
+        "secure": "Enterprise security",
+        "0": "Continuous learning",
+        "1": "Natural language processing",
+        "2": "Proactive suggestions",
+        "3": "Enterprise security"
       },
       "benefits": {
         "title": "Benefits",
@@ -508,6 +519,27 @@
     "cta": {
       "demo": "Request demo",
       "trial": "Free 14-day trial"
+    },
+    "aureoStudio": {
+      "features": {
+        "0": "Intelligent flow control",
+        "1": "Enterprise integrations",
+        "2": "Real-time monitoring"
+      }
+    },
+    "cotizaStudio": {
+      "features": {
+        "0": "Instant generation",
+        "1": "AI customization",
+        "2": "CRM integration"
+      }
+    },
+    "forgeSight": {
+      "features": {
+        "0": "Advanced predictive analytics",
+        "1": "Real-time data visualization",
+        "2": "Custom AI models"
+      }
     }
   },
   "contact": {
@@ -823,7 +855,11 @@
         "title": "Level 5: Strategic",
         "description": "vCTO partnerships and complete transformation"
       }
-    }
+    },
+    "title": "AI Assessment",
+    "subtitle": "Discover how AI can transform your business",
+    "intro": "Answer a few quick questions to get personalized AI recommendations for your company",
+    "start": "Start Assessment"
   },
   "calculator": {
     "meta": {
@@ -1412,7 +1448,9 @@
       "viewArms": "View business units",
       "viewProducts": "View products",
       "specializedUnits": "Specialized units",
-      "premiumProducts": "Premium products"
+      "premiumProducts": "Premium products",
+      "title": "Advanced Manufacturing & Digital Innovation",
+      "subtitle": "We transform your business with intelligent manufacturing solutions and cutting-edge digital strategies"
     },
     "arms": {
       "title": "Nuestras unidades operativas",
@@ -1425,6 +1463,10 @@
         "tagline": "Digital innovation laboratory",
         "description": "Desarrollamos plataformas de automatización inteligente y herramientas de productividad que transforman la forma de trabajar.",
         "capabilities": {
+          "0": "Agentic AI Systems",
+          "1": "Web Platform Development",
+          "2": "API Integrations & Middleware",
+          "3": "SRE & Security Operations",
           "title": "Core Capabilities",
           "agentic": {
             "title": "Agentic Systems",
@@ -1518,6 +1560,39 @@
           "2": "Visualización",
           "3": "Fabricación digital"
         }
+      },
+      "health": {
+        "tagline": "Healthcare Innovation Division",
+        "description": "Advanced medical technology and healthcare solutions",
+        "capabilities": {
+          "0": "Medical Software Development",
+          "1": "Healthcare Data Analytics",
+          "2": "Telemedicine Solutions",
+          "3": "Medical Device Integration"
+        }
+      },
+      "aero": {
+        "tagline": "Aerospace Innovation Division",
+        "description": "Cutting-edge aerospace technology and solutions",
+        "capabilities": {
+          "0": "Aerospace Software Systems",
+          "1": "Flight Control Systems",
+          "2": "Navigation & Guidance",
+          "3": "Aerospace Data Analytics"
+        }
+      },
+      "hero": {
+        "title": "Our Business Units",
+        "subtitle": "Specialized teams delivering excellence across industries",
+        "badge": "Business Units"
+      },
+      "meta": {
+        "title": "Business Units - MADFAM",
+        "description": "Learn about our specialized business units delivering solutions in advanced manufacturing, technology and more."
+      },
+      "structure": {
+        "title": "Corporate Structure",
+        "description": "MADFAM coordinates and directs multiple specialized units, each focused on solving specific industry problems."
       }
     },
     "products": {
@@ -1646,6 +1721,41 @@
           "1": "Parametric design",
           "2": "Photorealistic rendering",
           "3": "Digital fabrication"
+        }
+      },
+      "hero": {
+        "title": "Transformation Programs",
+        "subtitle": "From initial consultancy to complete digital transformation",
+        "assessmentCta": "Take AI Assessment"
+      },
+      "migration": {
+        "title": "Service Migration Update",
+        "description": "Our L1-L5 services have evolved into specialized programs tailored to your business needs."
+      },
+      "journey": {
+        "title": "Your Transformation Journey",
+        "strategy": {
+          "title": "Strategy",
+          "description": "We design the roadmap for your transformation"
+        },
+        "pilot": {
+          "title": "Pilot",
+          "description": "We implement and validate solutions"
+        },
+        "scale": {
+          "title": "Scale",
+          "description": "We expand successful implementations"
+        }
+      },
+      "tools": {
+        "title": "Tools & Resources",
+        "assessment": {
+          "title": "AI Assessment",
+          "description": "Discover your ideal transformation program"
+        },
+        "calculator": {
+          "title": "ROI Calculator",
+          "description": "Calculate the return on your investment"
         }
       }
     },

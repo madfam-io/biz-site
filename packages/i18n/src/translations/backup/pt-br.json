@@ -45,6 +45,9 @@
     "metadata": {
       "email": "E-mail",
       "whatsapp": "WhatsApp"
+    },
+    "products": {
+      "documentation": "Documentação"
     }
   },
   "footer": {
@@ -720,7 +723,11 @@
         "title": "Transformação estratégica completa",
         "description": "Sua empresa está pronta para uma parceria vCTO e transformação abrangente."
       }
-    }
+    },
+    "title": "Avaliação de IA",
+    "subtitle": "Descubra como a IA pode transformar seu negócio",
+    "intro": "Responda algumas perguntas rápidas para obter recomendações personalizadas de IA para sua empresa",
+    "start": "Iniciar Avaliação"
   },
   "calculator": {
     "title": "Calculadora de ROI",
@@ -1453,7 +1460,9 @@
       "viewArms": "Ver unidades",
       "viewProducts": "Ver produtos",
       "specializedUnits": "Unidades especializadas",
-      "premiumProducts": "Produtos premium"
+      "premiumProducts": "Produtos premium",
+      "title": "Manufatura Avançada e Inovação Digital",
+      "subtitle": "Transformamos seu negócio com soluções inteligentes de manufatura e estratégias digitais de ponta"
     },
     "arms": {
       "title": "Nuestras unidades operativas",
@@ -1482,7 +1491,11 @@
           "sre": {
             "title": "SRE & Segurança",
             "description": "Garantimos disponibilidade 24/7 com monitoramento proativo e práticas de segurança avançadas."
-          }
+          },
+          "0": "Sistemas de IA Agêntica",
+          "1": "Desenvolvimento de Plataformas Web",
+          "2": "Integrações API e Middleware",
+          "3": "Operações SRE e Segurança"
         },
         "meta": {
           "title": "Aureo Labs - Laboratório de Inovação Digital | MADFAM",
@@ -1559,6 +1572,31 @@
           "2": "Visualización",
           "3": "Fabricación digital"
         }
+      },
+      "health": {
+        "tagline": "Divisão de Inovação em Saúde",
+        "description": "Tecnologia médica avançada e soluções de saúde",
+        "capabilities": {
+          "0": "Desenvolvimento de Software Médico",
+          "1": "Análise de Dados de Saúde",
+          "2": "Soluções de Telemedicina",
+          "3": "Integração de Dispositivos Médicos"
+        }
+      },
+      "aero": {
+        "tagline": "Divisão de Inovação Aeroespacial",
+        "description": "Tecnologia aeroespacial de ponta e soluções",
+        "capabilities": {
+          "0": "Sistemas de Software Aeroespacial",
+          "1": "Sistemas de Controle de Voo",
+          "2": "Navegação e Orientação",
+          "3": "Análise de Dados Aeroespaciais"
+        }
+      },
+      "hero": {
+        "title": "Nossas Unidades de Negócio",
+        "subtitle": "Equipes especializadas entregando excelência em todas as indústrias",
+        "badge": "Unidades de Negócio"
       }
     },
     "products": {

@@ -1,0 +1,56 @@
+{
+  "leadForm": {
+    "fields": {
+      "name": "Nombre completo",
+      "email": "Email corporativo",
+      "company": "Empresa",
+      "phone": "Teléfono",
+      "tier": "Servicio de interés",
+      "message": "¿Cómo podemos ayudarte?"
+    },
+    "placeholders": {
+      "name": "Juan Pérez",
+      "email": "juan@empresa.com",
+      "company": "Nombre de tu empresa",
+      "phone": "+52 55 1234 5678",
+      "message": "Cuéntanos sobre tu proyecto o necesidades..."
+    },
+    "tiers": {
+      "select": "Selecciona un servicio",
+      "l1": "L1 - Essentials (Diseño 3D)",
+      "l2": "L2 - Advanced (Diseño paramétrico)",
+      "l3": "L3 - Consulting (Workshops)",
+      "l4": "L4 - Platforms (SPARK/PENNY)",
+      "l5": "L5 - Strategic (vCTO)"
+    },
+    "errors": {
+      "nameMin": "Nombre debe tener al menos 2 caracteres",
+      "emailInvalid": "Email inválido"
+    },
+    "messages": {
+      "success": "¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.",
+      "error": "Hubo un error al enviar el formulario. Por favor intenta de nuevo."
+    },
+    "requiredFields": "Campos requeridos",
+    "submit": "Enviar solicitud"
+  },
+  "auth": {
+    "signin": {
+      "title": "Iniciar sesión en MADFAM Admin",
+      "subtitle": "Accede a tu cuenta MADFAM",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "rememberMe": "Recordarme",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "signIn": "Iniciar sesión",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUp": "Regístrate",
+      "errors": {
+        "invalidEmail": "Dirección de correo inválida",
+        "passwordLength": "La contraseña debe tener al menos 8 caracteres",
+        "invalidCredentials": "Correo o contraseña inválidos",
+        "generic": "Ocurrió un error. Por favor intenta de nuevo."
+      }
+    }
+  }
+}

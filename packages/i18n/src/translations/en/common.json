@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "products": "Products",
+    "about": "About",
+    "contact": "Contact",
+    "allServices": "All services",
+    "freeConsultation": "Free consultation",
+    "arms": "Business Units",
+    "programs": "Programs",
+    "work": "Work",
+    "security": "Security"
+  },
+  "cta": {
+    "learnMore": "Learn more",
+    "getQuote": "Get quote",
+    "scheduleConsultation": "Schedule consultation",
+    "requestProposal": "Request proposal",
+    "viewDemo": "View demo",
+    "downloadPortfolio": "Download portfolio",
+    "downloadBrochure": "Download brochure",
+    "contact": "Contact"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "darkMode": {
+    "toggle": "Toggle dark mode",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "metadata": {
+    "email": "Email",
+    "whatsapp": "WhatsApp"
+  },
+  "learnMore": "Learn more",
+  "aiAssessment": "AI Assessment",
+  "freeConsultation": "Free consultation",
+  "tryFree": "Try free",
+  "comingSoon": "Coming soon",
+  "comingSoonBrackets": "(coming soon)",
+  "viewDetails": "View details",
+  "note": "Note:",
+  "getStarted": "Get Started",
+  "products": {
+    "documentation": "Documentation"
+  }
+}
