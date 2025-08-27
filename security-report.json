@@ -1,0 +1,50 @@
+{
+  "timestamp": "2025-08-27T23:04:12.395Z",
+  "summary": {
+    "critical": 0,
+    "moderate": 0,
+    "low": 0,
+    "totalIssues": 4
+  },
+  "issues": [
+    {
+      "level": "critical",
+      "message": "Security Headers: Missing security headers: X-Frame-Options, X-Content-Type-Options, Referrer-Policy",
+      "details": {
+        "file": "apps/web/middleware.ts",
+        "missingHeaders": ["X-Frame-Options", "X-Content-Type-Options", "Referrer-Policy"]
+      }
+    },
+    {
+      "level": "critical",
+      "message": "Input Validation: Only 57% of API routes have input validation",
+      "details": {
+        "totalFiles": 7,
+        "validatedFiles": 4,
+        "validationRate": 57
+      }
+    },
+    {
+      "level": "critical",
+      "message": "Environment Variables: Environment security issues found",
+      "details": {
+        "issues": [
+          "Potential hardcoded secret in apps/web/.env.example",
+          "Potential hardcoded secret in apps/web/.env.example",
+          "Potential hardcoded secret in apps/web/.env.example"
+        ]
+      }
+    },
+    {
+      "level": "critical",
+      "message": "API Security: API security issues found",
+      "details": {
+        "issues": [
+          "apps/web/app/api/auth/[...nextauth]/route.ts: POST endpoint without header validation",
+          "apps/web/app/api/feature-flags/route.ts: POST endpoint without header validation"
+        ]
+      }
+    }
+  ],
+  "status": "PASS"
+}

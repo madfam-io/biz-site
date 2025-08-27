@@ -1,0 +1,82 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly security audit on Mondays at 9 AM UTC
+    - cron: '0 9 * * 1'
+
+jobs:
+  security-audit:
+    name: Security Vulnerability Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run security audit (Critical only)
+        run: |
+          echo "🔒 Checking for CRITICAL vulnerabilities..."
+          if pnpm audit --audit-level critical --json > audit-critical.json 2>&1; then
+            echo "✅ No critical vulnerabilities found"
+          else
+            echo "❌ CRITICAL vulnerabilities detected!"
+            cat audit-critical.json
+            exit 1
+          fi
+          
+      - name: Run security audit (All levels)
+        run: |
+          echo "🔍 Full security audit report..."
+          pnpm audit --audit-level low || true
+          
+      - name: Check for security best practices
+        run: |
+          echo "🛡️ Checking security configuration..."
+          
+          # Check for security headers in middleware
+          if grep -r "X-Frame-Options\|X-Content-Type-Options\|Referrer-Policy" apps/web/middleware.ts > /dev/null; then
+            echo "✅ Security headers configured"
+          else
+            echo "⚠️ Security headers might be missing"
+          fi
+          
+          # Check for input validation
+          if grep -r "zod\|z\." apps/web/app/api/ > /dev/null; then
+            echo "✅ Input validation found in API routes"
+          else
+            echo "⚠️ Input validation might be missing in API routes"
+          fi
+          
+          # Check for rate limiting
+          if grep -r "rate-limit\|rateLimit" apps/web/ > /dev/null; then
+            echo "✅ Rate limiting implementation found"
+          else
+            echo "⚠️ Rate limiting might be missing"
+          fi
+          
+      - name: Upload audit results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-results
+          path: audit-*.json
+          retention-days: 30
