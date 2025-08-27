@@ -1,12 +1,6 @@
-import {
-  CubeIcon,
-  CogIcon,
-  RocketLaunchIcon,
-  BuildingOffice2Icon,
-} from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { Badge } from '@/components/corporate/Badge';
 import { ProgramCard } from '@/components/corporate/ProgramCard';
 
@@ -29,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProgramsPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const t = await getTranslations({ locale: params.locale, namespace: 'corporate.programs' });
   const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
 
@@ -40,7 +35,7 @@ export default async function ProgramsPage({ params }: Props) {
       description: t('designFabrication.description'),
       provider: 'Primavera3D',
       badge: 'por MADFAM',
-      icon: CubeIcon,
+      icon: 'cube',
       timeline: t('designFabrication.timeline'),
       targetMarket: t('designFabrication.targetMarket'),
       deliverables: [
@@ -59,7 +54,7 @@ export default async function ProgramsPage({ params }: Props) {
       description: t('strategyEnablement.description'),
       provider: 'MADFAM/Aureo',
       badge: 'por MADFAM',
-      icon: CogIcon,
+      icon: 'cog',
       timeline: t('strategyEnablement.timeline'),
       targetMarket: t('strategyEnablement.targetMarket'),
       deliverables: [
@@ -78,7 +73,7 @@ export default async function ProgramsPage({ params }: Props) {
       description: t('platformPilots.description'),
       provider: 'Aureo Labs',
       badge: 'un producto de Aureo Labs',
-      icon: RocketLaunchIcon,
+      icon: 'rocket',
       timeline: t('platformPilots.timeline'),
       targetMarket: t('platformPilots.targetMarket'),
       deliverables: [
@@ -98,7 +93,7 @@ export default async function ProgramsPage({ params }: Props) {
       description: t('strategicPartnerships.description'),
       provider: 'MADFAM',
       badge: 'por MADFAM',
-      icon: BuildingOffice2Icon,
+      icon: 'building',
       timeline: t('strategicPartnerships.timeline'),
       targetMarket: t('strategicPartnerships.targetMarket'),
       deliverables: [

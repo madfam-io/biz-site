@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { ArmCard } from '@/components/corporate/ArmCard';
 
 type Props = {
@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ArmsPage({ params }: Props) {
+  unstable_setRequestLocale(params.locale);
   const t = await getTranslations({ locale: params.locale, namespace: 'corporate.arms' });
 
   const arms = [

@@ -1425,10 +1425,88 @@
         "tagline": "Laboratorio de innovación digital",
         "description": "Desarrollamos plataformas de automatización inteligente y herramientas de productividad que transforman la forma de trabajar.",
         "capabilities": {
-          "0": "Automatización inteligente",
-          "1": "Plataformas web",
-          "2": "Integraciones API",
-          "3": "SRE y seguridad"
+          "title": "Capacidades Core",
+          "agentic": {
+            "title": "Sistemas Agénticos",
+            "description": "Desarrollamos agentes de IA autónomos que ejecutan tareas complejas sin intervención humana."
+          },
+          "platforms": {
+            "title": "Plataformas Web",
+            "description": "Creamos plataformas escalables y seguras con arquitecturas modernas y experiencias excepcionales."
+          },
+          "integrations": {
+            "title": "Integraciones API",
+            "description": "Conectamos sistemas empresariales con integraciones robustas y documentación completa."
+          },
+          "sre": {
+            "title": "SRE & Seguridad",
+            "description": "Garantizamos disponibilidad 24/7 con monitoreo proactivo y prácticas de seguridad avanzadas."
+          }
+        },
+        "meta": {
+          "title": "Aureo Labs - Laboratorio de Innovación Digital | MADFAM",
+          "description": "Desarrollamos plataformas de automatización inteligente y herramientas de productividad que transforman la forma de trabajar."
+        },
+        "pitch": {
+          "title": "Construimos el futuro del trabajo",
+          "description": "En Aureo Labs desarrollamos herramientas que potencian la productividad y automatizan procesos complejos. Nuestras plataformas integran IA, automatización y experiencia de usuario excepcional para crear soluciones que realmente importan."
+        },
+        "links": {
+          "website": "Sitio web oficial",
+          "studio": "Aureo Studio",
+          "security": "Centro de Seguridad"
+        },
+        "products": {
+          "title": "Nuestros Productos",
+          "aureoStudio": {
+            "description": "Plataforma de IA generativa para crear, editar y gestionar contenido visual y multimedia con herramientas profesionales.",
+            "audience": "Diseñadores, creativos y equipos de marketing",
+            "cta": "Visitar Aureo Studio",
+            "features": {
+              "0": "Generación de imágenes con IA",
+              "1": "Edición profesional en la nube",
+              "2": "Colaboración en tiempo real"
+            }
+          },
+          "penny": {
+            "description": "Automatización inteligente de procesos empresariales con IA que aprende y mejora continuamente.",
+            "audience": "Empresas medianas y grandes",
+            "cta": "Descubrir PENNY",
+            "features": {
+              "0": "Automatización sin código",
+              "1": "Integraciones empresariales",
+              "2": "Análisis predictivo"
+            }
+          },
+          "cotizaStudio": {
+            "description": "Sistema inteligente de cotizaciones y presupuestos con automatización completa del proceso de ventas.",
+            "audience": "Equipos de ventas y servicios",
+            "cta": "Probar Cotiza Studio",
+            "features": {
+              "0": "Cotizaciones instantáneas",
+              "1": "Seguimiento automatizado",
+              "2": "Análisis de conversión"
+            }
+          },
+          "forgeSight": {
+            "description": "Plataforma de inteligencia de negocios y visualización de datos con IA para decisiones estratégicas.",
+            "audience": "Líderes y analistas de datos",
+            "cta": "Explorar Forge Sight",
+            "features": {
+              "0": "Dashboards interactivos",
+              "1": "Predicciones con IA",
+              "2": "Alertas inteligentes"
+            }
+          }
+        },
+        "philosophy": {
+          "quote": "La innovación no es solo tecnología, es resolver problemas reales de formas inesperadas",
+          "principles": {
+            "title": "Principios de Desarrollo",
+            "approve": "Aprobar rápido",
+            "observe": "Observar métricas",
+            "undo": "Revertir sin miedo"
+          }
         }
       },
       "primavera3d": {
@@ -1521,16 +1599,54 @@
       "requestInfo": "Solicitar información",
       "evaluate": "Evaluar",
       "strategyEnablement": {
-        "name": "Habilitación Estratégica",
-        "description": "Talleres y capacitación estratégica"
+        "timeline": "3-6 meses",
+        "targetMarket": "Empresas en crecimiento",
+        "investment": "Desde $200,000 MXN",
+        "deliverables": {
+          "0": "Roadmap de transformación",
+          "1": "Workshops estratégicos",
+          "2": "Capacitación de equipo",
+          "3": "Métricas de impacto"
+        }
       },
       "platformPilots": {
-        "name": "Pilotos de Plataforma",
-        "description": "Implementación de Aureo Studio + PENNY"
+        "timeline": "3-12 meses",
+        "targetMarket": "Empresas medianas a grandes",
+        "investment": "Desde $500,000 MXN",
+        "deliverables": {
+          "0": "Implementación de plataforma",
+          "1": "Integraciones empresariales",
+          "2": "Migración de datos",
+          "3": "Soporte continuo"
+        }
       },
       "strategicPartnerships": {
-        "name": "Asociaciones Estratégicas",
-        "description": "Asociaciones vCTO y transformación"
+        "timeline": "12+ meses",
+        "targetMarket": "Corporativos y grandes empresas",
+        "investment": "Personalizado",
+        "deliverables": {
+          "0": "Liderazgo tecnológico vCTO",
+          "1": "Arquitectura empresarial",
+          "2": "Gestión de equipos",
+          "3": "Innovación continua"
+        }
+      },
+      "meta": {
+        "title": "Programas de Transformación - MADFAM",
+        "description": "Programas estructurados que combinan nuestras unidades especializadas para llevar tu empresa al siguiente nivel."
+      },
+      "designFabrication": {
+        "name": "Diseño y Fabricación",
+        "description": "Servicios integrales de diseño y fabricación digital",
+        "timeline": "2-8 semanas",
+        "targetMarket": "Startups y medianas empresas",
+        "investment": "Desde $50,000 MXN",
+        "deliverables": {
+          "0": "Modelado 3D profesional",
+          "1": "Diseño paramétrico",
+          "2": "Renderizado fotorrealista",
+          "3": "Fabricación digital"
+        }
       }
     },
     "whyMadfam": {

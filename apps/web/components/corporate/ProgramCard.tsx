@@ -1,5 +1,11 @@
 'use client';
 
+import {
+  CubeIcon,
+  CogIcon,
+  RocketLaunchIcon,
+  BuildingOffice2Icon,
+} from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
@@ -12,7 +18,7 @@ interface ProgramCardProps {
     description: string;
     provider: string;
     badge: string;
-    icon: React.ElementType;
+    icon: string;
     timeline: string;
     targetMarket: string;
     deliverables: string[];
@@ -50,10 +56,17 @@ const colorClasses = {
   },
 };
 
+const iconMap = {
+  cube: CubeIcon,
+  cog: CogIcon,
+  rocket: RocketLaunchIcon,
+  building: BuildingOffice2Icon,
+};
+
 export function ProgramCard({ program }: ProgramCardProps) {
   const t = useTranslations();
   const colors = colorClasses[program.color];
-  const IconComponent = program.icon;
+  const IconComponent = iconMap[program.icon as keyof typeof iconMap] || CubeIcon;
 
   return (
     <div

@@ -842,20 +842,11 @@
       "title": "Ready to transform your business?",
       "subtitle": "Our team of experts can help you implement solutions that generate real, measurable results.",
       "requestConsultation": "Request consultation",
-      "viewServices": "View services"
-    },
-    "hero": {
-      "subtitle": "Visualize the impact MADFAM can have on your business"
-    },
-    "selectionHint": "Select a service level to calculate specific ROI, or use default values for a general estimate.",
-    "cta": {
-      "title": "Ready to transform your business?",
-      "subtitle": "Our team of experts can help you implement solutions that generate real, measurable results.",
-      "requestConsultation": "Request consultation",
       "viewServices": "View services",
       "getDetailed": "Get detailed analysis",
       "scheduleDemo": "Schedule demo"
     },
+    "selectionHint": "Select a service level to calculate specific ROI, or use default values for a general estimate.",
     "inputs": {
       "employees": "Number of employees",
       "employeeHours": "Employee hours per month",
@@ -1431,13 +1422,91 @@
       "mainCapabilities": "Capacidades principales",
       "mainProducts": "Main products",
       "aureoLabs": {
-        "tagline": "Laboratorio de innovación digital",
+        "tagline": "Digital innovation laboratory",
         "description": "Desarrollamos plataformas de automatización inteligente y herramientas de productividad que transforman la forma de trabajar.",
         "capabilities": {
-          "0": "Automatización inteligente",
-          "1": "Platforms web",
-          "2": "Integraciones API",
-          "3": "SRE y seguridad"
+          "title": "Core Capabilities",
+          "agentic": {
+            "title": "Agentic Systems",
+            "description": "We develop autonomous AI agents that execute complex tasks without human intervention."
+          },
+          "platforms": {
+            "title": "Web Platforms",
+            "description": "We create scalable and secure platforms with modern architectures and exceptional experiences."
+          },
+          "integrations": {
+            "title": "API Integrations",
+            "description": "We connect enterprise systems with robust integrations and complete documentation."
+          },
+          "sre": {
+            "title": "SRE & Security",
+            "description": "We ensure 24/7 availability with proactive monitoring and advanced security practices."
+          }
+        },
+        "meta": {
+          "title": "Aureo Labs - Digital Innovation Laboratory | MADFAM",
+          "description": "We develop intelligent automation platforms and productivity tools that transform the way people work."
+        },
+        "pitch": {
+          "title": "Building the future of work",
+          "description": "At Aureo Labs we develop tools that enhance productivity and automate complex processes. Our platforms integrate AI, automation and exceptional user experience to create solutions that truly matter."
+        },
+        "links": {
+          "website": "Official website",
+          "studio": "Aureo Studio",
+          "security": "Security Center"
+        },
+        "products": {
+          "title": "Our Products",
+          "aureoStudio": {
+            "description": "Generative AI platform for creating, editing and managing visual and multimedia content with professional tools.",
+            "audience": "Designers, creatives and marketing teams",
+            "cta": "Visit Aureo Studio",
+            "features": {
+              "0": "AI image generation",
+              "1": "Professional cloud editing",
+              "2": "Real-time collaboration"
+            }
+          },
+          "penny": {
+            "description": "Intelligent business process automation with AI that learns and continuously improves.",
+            "audience": "Medium and large enterprises",
+            "cta": "Discover PENNY",
+            "features": {
+              "0": "No-code automation",
+              "1": "Enterprise integrations",
+              "2": "Predictive analytics"
+            }
+          },
+          "cotizaStudio": {
+            "description": "Intelligent quotation and budgeting system with complete sales process automation.",
+            "audience": "Sales and service teams",
+            "cta": "Try Cotiza Studio",
+            "features": {
+              "0": "Instant quotes",
+              "1": "Automated follow-up",
+              "2": "Conversion analytics"
+            }
+          },
+          "forgeSight": {
+            "description": "Business intelligence and data visualization platform with AI for strategic decisions.",
+            "audience": "Leaders and data analysts",
+            "cta": "Explore Forge Sight",
+            "features": {
+              "0": "Interactive dashboards",
+              "1": "AI predictions",
+              "2": "Smart alerts"
+            }
+          }
+        },
+        "philosophy": {
+          "quote": "Innovation is not just technology, it's solving real problems in unexpected ways",
+          "principles": {
+            "title": "Development Principles",
+            "approve": "Approve fast",
+            "observe": "Observe metrics",
+            "undo": "Revert fearlessly"
+          }
         }
       },
       "primavera3d": {
@@ -1530,16 +1599,54 @@
       "requestInfo": "Request information",
       "evaluate": "Evaluate",
       "strategyEnablement": {
-        "name": "Habilitación Estratégica",
-        "description": "Talleres y capacitación estratégica"
+        "timeline": "3-6 months",
+        "targetMarket": "Growing companies",
+        "investment": "From $200,000 MXN",
+        "deliverables": {
+          "0": "Transformation roadmap",
+          "1": "Strategic workshops",
+          "2": "Team training",
+          "3": "Impact metrics"
+        }
       },
       "platformPilots": {
-        "name": "Pilotos de Plataforma",
-        "description": "Implementación de Aureo Studio + PENNY"
+        "timeline": "3-12 months",
+        "targetMarket": "Medium to large companies",
+        "investment": "From $500,000 MXN",
+        "deliverables": {
+          "0": "Platform implementation",
+          "1": "Enterprise integrations",
+          "2": "Data migration",
+          "3": "Ongoing support"
+        }
       },
       "strategicPartnerships": {
-        "name": "Asociaciones Estratégicas",
-        "description": "Asociaciones vCTO y transformación"
+        "timeline": "12+ months",
+        "targetMarket": "Corporates and large enterprises",
+        "investment": "Custom",
+        "deliverables": {
+          "0": "vCTO technology leadership",
+          "1": "Enterprise architecture",
+          "2": "Team management",
+          "3": "Continuous innovation"
+        }
+      },
+      "meta": {
+        "title": "Transformation Programs - MADFAM",
+        "description": "Structured programs that combine our specialized units to take your business to the next level."
+      },
+      "designFabrication": {
+        "name": "Design & Fabrication",
+        "description": "End-to-end design and digital fabrication services",
+        "timeline": "2-8 weeks",
+        "targetMarket": "Startups and mid-sized companies",
+        "investment": "From $50,000 MXN",
+        "deliverables": {
+          "0": "Professional 3D modeling",
+          "1": "Parametric design",
+          "2": "Photorealistic rendering",
+          "3": "Digital fabrication"
+        }
       }
     },
     "whyMadfam": {

@@ -126,7 +126,7 @@ function createEnvironmentConfig(): EnvironmentConfig {
       webhooks: !isStaticExport,
       analytics: true, // Always enabled
       featureFlags: process.env.NEXT_PUBLIC_FEATURE_FLAGS_ENABLED === 'true',
-      cms: !isStaticExport,
+      cms: !isStaticExport && !!process.env.NEXT_PUBLIC_CMS_URL,
       errorReporting: isProd || process.env.SENTRY_DSN !== undefined,
       performanceMonitoring: isProd,
     },
@@ -144,7 +144,7 @@ function createEnvironmentConfig(): EnvironmentConfig {
       url:
         process.env.NEXT_PUBLIC_CMS_URL ||
         (isStaticExport ? 'https://cms.madfam.io' : 'http://localhost:3001'),
-      enabled: !isStaticExport,
+      enabled: !isStaticExport && !!process.env.NEXT_PUBLIC_CMS_URL, // Only enable CMS if URL is explicitly provided
       timeout: 30000,
       cacheEnabled: true,
       cacheTtl: isDev ? 300 : 3600, // 5 min dev, 1 hour prod
