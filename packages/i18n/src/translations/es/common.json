@@ -25,7 +25,38 @@
   "footer": {
     "rights": "Todos los derechos reservados",
     "privacy": "Privacidad",
-    "terms": "Términos"
+    "terms": "Términos",
+    "tagline": "Donde la IA se encuentra con la creatividad humana",
+    "cookies": "Cookies",
+    "sections": {
+      "programs": "Programas",
+      "products": "Productos",
+      "company": "Empresa",
+      "resources": "Recursos"
+    },
+    "programs": {
+      "designFabrication": "Diseño y Fabricación",
+      "strategyEnablement": "Estrategia y Habilitación",
+      "platformPilots": "Pilotos de Plataforma",
+      "strategicPartnerships": "Alianzas Estratégicas"
+    },
+    "company": {
+      "about": "Acerca de Nosotros",
+      "units": "Unidades de Negocio",
+      "caseStudies": "Casos de Estudio",
+      "careers": "Carreras"
+    },
+    "resources": {
+      "assessment": "Evaluación de IA",
+      "calculator": "Calculadora de ROI",
+      "guides": "Guías",
+      "contact": "Contacto"
+    },
+    "social": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub"
+    }
   },
   "darkMode": {
     "toggle": "Alternar modo oscuro",

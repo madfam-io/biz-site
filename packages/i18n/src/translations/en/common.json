@@ -25,7 +25,38 @@
   "footer": {
     "rights": "All rights reserved",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "tagline": "Where AI meets human creativity",
+    "cookies": "Cookies",
+    "sections": {
+      "programs": "Programs",
+      "products": "Products",
+      "company": "Company",
+      "resources": "Resources"
+    },
+    "programs": {
+      "designFabrication": "Design & Fabrication",
+      "strategyEnablement": "Strategy & Enablement",
+      "platformPilots": "Platform Pilots",
+      "strategicPartnerships": "Strategic Partnerships"
+    },
+    "company": {
+      "about": "About Us",
+      "units": "Business Units",
+      "caseStudies": "Case Studies",
+      "careers": "Careers"
+    },
+    "resources": {
+      "assessment": "AI Assessment",
+      "calculator": "ROI Calculator",
+      "guides": "Guides",
+      "contact": "Contact"
+    },
+    "social": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub"
+    }
   },
   "darkMode": {
     "toggle": "Toggle dark mode",
