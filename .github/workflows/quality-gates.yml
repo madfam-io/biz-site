@@ -1,0 +1,123 @@
+name: Quality Gates
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        run: npm install -g pnpm
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      # Security Checks
+      - name: Security Audit
+        run: |
+          pnpm audit --audit-level moderate
+          npx audit-ci --moderate
+      
+      # Type Checking
+      - name: Type Check
+        run: pnpm run typecheck
+      
+      # Linting
+      - name: ESLint
+        run: |
+          pnpm run lint
+          # Fail on errors, warn on warnings
+          pnpm run lint -- --max-warnings 0
+      
+      # Testing
+      - name: Run Tests
+        run: |
+          pnpm run test
+          pnpm run test:coverage
+      
+      # Coverage Check
+      - name: Coverage Gate
+        run: |
+          npx nyc check-coverage --lines 60 --functions 60 --branches 60 --statements 60
+      
+      # Build Check
+      - name: Build Check
+        run: pnpm run build
+        env:
+          SKIP_ENV_VALIDATION: true
+      
+      # Bundle Size Check
+      - name: Bundle Size Analysis
+        run: |
+          ANALYZE=true pnpm run build
+          npx bundlewatch
+      
+      # Lighthouse CI (for main branch only)
+      - name: Lighthouse CI
+        if: github.ref == 'refs/heads/main'
+        run: |
+          npm install -g @lhci/cli@0.12.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Accessibility Tests
+      - name: Accessibility Tests
+        run: |
+          pnpm run test:a11y
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  performance-budget:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build and analyze
+        run: |
+          ANALYZE=true pnpm run build
+      
+      - name: Check bundle size
+        run: |
+          # Fail if main bundle > 250KB
+          npx bundlewatch --config .bundlewatch.config.js
