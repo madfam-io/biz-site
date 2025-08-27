@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { Footer } from '../Footer';
 import { NextIntlClientProvider } from 'next-intl';
+import { Footer } from '../Footer';
 
 // Mock the translations
 const messages = {
