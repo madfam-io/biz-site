@@ -17,6 +17,7 @@ import {
 } from '@madfam/ui';
 import { ServiceStructuredData } from '@/components/StructuredData';
 import { logServiceInquiry } from '@/lib/logger';
+import { mapServiceTierToUI } from '@/utils/service-tier-mapping';
 
 interface Benefit {
   icon: string;
@@ -225,7 +226,7 @@ export function Level3ConsultingClient({
         <Container>
           <div className="max-w-5xl mx-auto">
             <ROICalculator
-              serviceTier={service.id}
+              serviceTier={mapServiceTierToUI(service.id)}
               title={serviceName}
               onCalculate={(results: ROIResults) => {
                 logServiceInquiry(service.id, 'roi-calculator', {
@@ -279,7 +280,7 @@ export function Level3ConsultingClient({
         <Container>
           <div className="max-w-2xl mx-auto">
             <LeadForm
-              tier={service.id}
+              tier={mapServiceTierToUI(service.id)}
               source="level-3-consulting-page"
               title={translations.leadFormTitle}
               description={translations.leadFormDescription}

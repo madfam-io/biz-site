@@ -1,11 +1,18 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { UserRole } from '@prisma/client';
 import bcrypt from 'bcryptjs';
-import { NextAuthOptions, type Adapter } from 'next-auth';
+import type { NextAuthOptions } from 'next-auth';
+import type { Adapter } from 'next-auth/adapters';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 
+/**
+ * NextAuth configuration
+ * Using PrismaAdapter for database persistence with proper typing
+ */
 export const authOptions: NextAuthOptions = {
+  // PrismaAdapter returns a compatible adapter, but TypeScript needs help understanding this
+  // The adapter conforms to the NextAuth Adapter interface
   adapter: PrismaAdapter(prisma) as Adapter,
   session: {
     strategy: 'jwt',

@@ -87,7 +87,7 @@ export function AssessmentClient({ translations, assessmentQuestions }: Assessme
                 submitText={translations.scheduleSession}
                 onSubmit={async (data: LeadFormData) => {
                   logServiceInquiry(
-                    assessmentResult?.recommendedTier,
+                    assessmentResult?.recommendedTier || 'unknown',
                     'assessment-strategy-request',
                     {
                       ...data,

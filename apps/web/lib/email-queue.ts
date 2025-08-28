@@ -1,12 +1,16 @@
+import { Prisma } from '@prisma/client';
 import { prisma } from './prisma';
 // TODO: Implement email sender
 // import { emailSender } from '@madfam/email/src/sender';
 
+/**
+ * Type-safe email queue item interface
+ */
 export interface EmailQueueItem {
   id: string;
   to: string[];
   template: string;
-  data: Record<string, unknown>;
+  data: Prisma.JsonObject;
   status: string;
   attempts: number;
   error?: string | null;
@@ -50,7 +54,7 @@ export class EmailQueueProcessor {
           id: email.id,
           to: Array.isArray(email.to) ? (email.to as string[]) : [],
           template: email.template,
-          data: email.data as Record<string, unknown>,
+          data: email.data as Prisma.JsonObject,
           status: email.status,
           attempts: email.attempts,
           error: email.error,
@@ -115,12 +119,15 @@ export class EmailQueueProcessor {
   }
 
   async queueEmail(to: string[], template: string, data: Record<string, unknown>): Promise<string> {
+    // Ensure data is properly formatted as a Prisma JSON object
+    const jsonData: Prisma.JsonObject = data as Prisma.JsonObject;
+
     const email = await prisma.emailQueue.create({
       data: {
         to,
         subject: `Template: ${template}`, // Will be replaced by actual subject
         template,
-        data: data as Record<string, unknown>,
+        data: jsonData,
         status: 'pending',
         attempts: 0,
       },
