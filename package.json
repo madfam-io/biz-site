@@ -15,7 +15,6 @@
     "dev:web": "pnpm --filter @madfam/web dev",
     "build": "turbo build",
     "build:web": "pnpm --filter @madfam/web build",
-    "build:staging": "NEXT_PUBLIC_ENV=staging turbo build",
     "build:production": "turbo build --env-mode=production",
     "start:web": "pnpm --filter @madfam/web start",
     "test": "turbo test",

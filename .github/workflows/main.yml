@@ -43,9 +43,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Deploy to GitHub Pages
+      - name: Deploy to staging
         run: |
-          echo "Deployment handled by deploy-staging.yml workflow"
+          echo "Staging deployment now handled by Vercel"
 
   deploy-production:
     needs: test
