@@ -6,6 +6,9 @@ import { cn } from '../lib/utils';
 import { Button } from './Button';
 import { Card, CardContent } from './Card';
 
+// Translation function type
+type TranslationFunction = (key: string) => string;
+
 export interface NewsletterProps {
   title?: string;
   description?: string;
@@ -15,23 +18,37 @@ export interface NewsletterProps {
   size?: 'sm' | 'md' | 'lg';
   onSubscribe?: (email: string) => Promise<void>;
   className?: string;
+  // Translation function - should be provided by parent component
+  t?: TranslationFunction;
 }
 
 export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
-  ({ 
-    title = 'Mantente al día con MADFAM', 
-    description = 'Recibe insights sobre IA, automatización y transformación digital',
-    placeholder = 'tu@email.com',
-    buttonText = 'Suscribirse',
-    variant = 'card',
-    size = 'md',
-    onSubscribe,
-    className 
-  }, ref) => {
+  (
+    {
+      title,
+      description,
+      placeholder,
+      buttonText,
+      variant = 'card',
+      size = 'md',
+      onSubscribe,
+      className,
+      t,
+    },
+    ref
+  ) => {
     const [email, setEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
+
+    // Get translated text or fallback to defaults
+    const getText = (key: string, fallback: string) => t?.(key) || fallback;
+    const finalTitle = title || getText('newsletter.title', 'Stay up to date');
+    const finalDescription =
+      description || getText('newsletter.description', 'Get the latest updates');
+    const finalPlaceholder = placeholder || getText('newsletter.placeholder', 'your@email.com');
+    const finalButtonText = buttonText || getText('newsletter.buttonText', 'Subscribe');
 
     const validateEmail = (email: string) => {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -39,10 +56,12 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
-      
+
       if (!validateEmail(email)) {
         setStatus('error');
-        setErrorMessage('Por favor ingresa un email válido');
+        setErrorMessage(
+          getText('newsletter.validation.invalidEmail', 'Please enter a valid email')
+        );
         return;
       }
 
@@ -55,13 +74,18 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
         if (process.env.NODE_ENV === 'development') {
           await new Promise(resolve => setTimeout(resolve, 1000));
         }
-        
+
         await onSubscribe?.(email);
         setStatus('success');
         setEmail('');
       } catch (error) {
         setStatus('error');
-        setErrorMessage('Error al suscribirse. Por favor intenta de nuevo.');
+        setErrorMessage(
+          getText(
+            'newsletter.validation.subscriptionError',
+            'Subscription error. Please try again.'
+          )
+        );
       } finally {
         setIsSubmitting(false);
       }
@@ -93,8 +117,8 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={placeholder}
+                onChange={e => setEmail(e.target.value)}
+                placeholder={finalPlaceholder}
                 disabled={isSubmitting}
                 className={cn(
                   'flex-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent transition-colors',
@@ -109,21 +133,17 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
                 loading={isSubmitting}
                 disabled={isSubmitting || !email}
               >
-                {buttonText}
+                {finalButtonText}
               </Button>
             </div>
-            
+
             {status === 'success' && (
               <p className="text-sm text-leaf font-medium">
-                ¡Gracias por suscribirte!
+                {getText('newsletter.messages.success', 'Thank you for subscribing!')}
               </p>
             )}
-            
-            {status === 'error' && (
-              <p className="text-sm text-red-600">
-                {errorMessage}
-              </p>
-            )}
+
+            {status === 'error' && <p className="text-sm text-red-600">{errorMessage}</p>}
           </form>
         </div>
       );
@@ -133,21 +153,19 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
       return (
         <div ref={ref} className={cn('w-full', className)}>
           <div className="mb-4">
-            <h3 className={cn('font-heading font-bold mb-2', sizeClasses[size])}>
-              {title}
-            </h3>
+            <h3 className={cn('font-heading font-bold mb-2', sizeClasses[size])}>{finalTitle}</h3>
             <p className={cn('text-gray-300 mb-4', size === 'sm' ? 'text-sm' : 'text-base')}>
-              {description}
+              {finalDescription}
             </p>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-3">
             <div className="flex gap-2">
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={placeholder}
+                onChange={e => setEmail(e.target.value)}
+                placeholder={finalPlaceholder}
                 disabled={isSubmitting}
                 className={cn(
                   'flex-1 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 focus:ring-2 focus:ring-sun focus:border-transparent transition-colors',
@@ -162,21 +180,17 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
                 loading={isSubmitting}
                 disabled={isSubmitting || !email}
               >
-                {buttonText}
+                {finalButtonText}
               </Button>
             </div>
-            
+
             {status === 'success' && (
               <p className="text-sm text-sun font-medium">
-                ¡Gracias por suscribirte!
+                {getText('newsletter.messages.success', 'Thank you for subscribing!')}
               </p>
             )}
-            
-            {status === 'error' && (
-              <p className="text-sm text-red-400">
-                {errorMessage}
-              </p>
-            )}
+
+            {status === 'error' && <p className="text-sm text-red-400">{errorMessage}</p>}
           </form>
         </div>
       );
@@ -193,21 +207,24 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
             </div>
-            <h3 className={cn('font-heading font-bold mb-2', sizeClasses[size])}>
-              {title}
-            </h3>
-            <p className={cn('text-gray-600 dark:text-gray-400', size === 'sm' ? 'text-sm' : 'text-base')}>
-              {description}
+            <h3 className={cn('font-heading font-bold mb-2', sizeClasses[size])}>{finalTitle}</h3>
+            <p
+              className={cn(
+                'text-gray-600 dark:text-gray-400',
+                size === 'sm' ? 'text-sm' : 'text-base'
+              )}
+            >
+              {finalDescription}
             </p>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={placeholder}
+                onChange={e => setEmail(e.target.value)}
+                placeholder={finalPlaceholder}
                 disabled={isSubmitting}
                 className={cn(
                   'w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent transition-colors',
@@ -216,7 +233,7 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
                 )}
               />
             </div>
-            
+
             <Button
               type="submit"
               variant="creative"
@@ -227,27 +244,28 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
             >
               {buttonText}
             </Button>
-            
+
             {status === 'success' && (
               <div className="text-center">
                 <p className="text-sm text-leaf font-medium">
-                  ¡Gracias por suscribirte!
+                  {getText('newsletter.messages.success', 'Thank you for subscribing!')}
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
-                  Te mantendremos informado sobre nuestras últimas novedades.
+                  {getText(
+                    'newsletter.messages.successDetails',
+                    "We'll keep you informed about our latest news."
+                  )}
                 </p>
               </div>
             )}
-            
+
             {status === 'error' && (
-              <p className="text-sm text-red-600 text-center">
-                {errorMessage}
-              </p>
+              <p className="text-sm text-red-600 text-center">{errorMessage}</p>
             )}
           </form>
-          
+
           <p className="text-xs text-gray-500 text-center mt-4">
-            No spam. Puedes desuscribirte en cualquier momento.
+            {getText('newsletter.messages.noSpam', 'No spam. You can unsubscribe at any time.')}
           </p>
         </CardContent>
       </Card>

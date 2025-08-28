@@ -5,6 +5,7 @@ Thank you for your interest in contributing to the MADFAM corporate website! Thi
 ## Code of Conduct
 
 By participating in this project, you agree to:
+
 - Be respectful and inclusive
 - Welcome newcomers and help them get started
 - Focus on what is best for the community
@@ -22,23 +23,27 @@ By participating in this project, you agree to:
 ### Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/madfam-io/biz-site.git
    cd biz-site
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp apps/web/.env.example apps/web/.env.local
    # Edit .env.local with your values
    ```
 
 4. **Start development server**
+
    ```bash
    pnpm dev
    ```
@@ -62,22 +67,26 @@ We use Git Flow:
 ### Creating a Feature
 
 1. **Create a branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 2. **Make changes**
+
    - Write code
    - Add tests
    - Update documentation
 
 3. **Commit changes**
+
    ```bash
    git add .
    git commit -m "feat: add new feature"
    ```
 
 4. **Push branch**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -100,6 +109,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 - `chore:` Maintenance tasks
 
 Examples:
+
 ```bash
 git commit -m "feat: add ROI calculator component"
 git commit -m "fix: correct lead form validation"
@@ -205,7 +215,7 @@ describe('Button', () => {
   it('handles click events', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick}>Click me</Button>);
-    
+
     screen.getByText('Click me').click();
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
@@ -215,6 +225,7 @@ describe('Button', () => {
 ### Test Coverage
 
 Aim for:
+
 - 90% coverage for utilities
 - 80% coverage for components
 - 100% coverage for business logic
@@ -255,7 +266,7 @@ function calculateLeadScore(lead: LeadData): number {
   if (isBusinessEmail(lead.email)) {
     score += 20;
   }
-  
+
   // ... rest of logic
 }
 ```
@@ -263,6 +274,7 @@ function calculateLeadScore(lead: LeadData): number {
 ### README Updates
 
 Update relevant README files when:
+
 - Adding new features
 - Changing configuration
 - Adding dependencies
@@ -360,6 +372,7 @@ pnpm audit fix
 ### VS Code Configuration
 
 `.vscode/launch.json`:
+
 ```json
 {
   "version": "0.2.0",
@@ -380,11 +393,13 @@ pnpm audit fix
 ### Common Issues
 
 1. **Module not found**
+
    - Check import paths
    - Verify package is installed
    - Restart dev server
 
 2. **Type errors**
+
    - Run `pnpm typecheck`
    - Check for missing types
    - Update TypeScript

@@ -30,6 +30,7 @@ This tells Vercel to treat `apps/web` as the root of your Next.js application, a
 ## Deployment Steps
 
 1. **For new Vercel projects:**
+
    - Import your Git repository
    - When prompted, set Root Directory to `apps/web`
    - Vercel will auto-detect Next.js framework
@@ -62,6 +63,7 @@ biz-site/
 ## Environment Variables
 
 Ensure all required environment variables are set in Vercel:
+
 - `NEXT_PUBLIC_ENV`
 - `NEXT_PUBLIC_API_URL`
 - `DATABASE_URL`
@@ -72,24 +74,29 @@ Ensure all required environment variables are set in Vercel:
 If deployment still fails:
 
 1. **Verify Next.js is listed in dependencies:**
+
    ```bash
    cat apps/web/package.json | grep next
    ```
 
 2. **Check Framework Preset in Vercel:**
+
    - Go to Settings → General → Build & Development Settings
    - Ensure Framework Preset is set to "Next.js" not "Other"
    - If it shows "Other", manually select "Next.js"
 
 3. **Clear Vercel cache:**
+
    - In Vercel Dashboard → Settings → Advanced → Delete Build Cache
    - This forces a fresh build
 
 4. **Verify Root Directory:**
+
    - Ensure Root Directory is exactly `apps/web` (no leading or trailing slashes)
    - The directory path is case-sensitive
 
 5. **Check pnpm version:**
+
    - Root `package.json` specifies `"packageManager": "pnpm@8.14.1"`
    - Vercel should use this version automatically
 

@@ -9,15 +9,19 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Site Shows 404 Error
 
 **Symptoms:**
+
 - GitHub Pages deployment succeeds but site shows 404
 - URL shows repository name in path when it shouldn't
 
 **Solutions:**
+
 1. **Check basePath Configuration**
+
    - If using custom domain (e.g., staging.madfam.io), ensure `basePath: ''` in next.config.js
    - If using GitHub Pages default URL (username.github.io/repo-name), ensure `basePath: '/repo-name'`
 
 2. **Verify Static Export**
+
    ```bash
    cd apps/web
    DEPLOY_TARGET=github-pages pnpm build:staging
@@ -34,11 +38,14 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Build Fails During Static Export
 
 **Symptoms:**
+
 - Error: "Cannot export a server-side rendered page"
 - Build fails with dynamic route errors
 
 **Solutions:**
+
 1. **Check for Server-Side Features**
+
    - Remove or conditionally disable `getServerSideProps`
    - Replace with `getStaticProps` for static data
    - For dynamic routes, implement `getStaticPaths`
@@ -50,12 +57,15 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Assets Not Loading
 
 **Symptoms:**
+
 - CSS/JS files return 404
 - Images don't load
 - Console shows path errors
 
 **Solutions:**
+
 1. **Check Asset Paths**
+
    - Ensure no hardcoded absolute paths
    - Use Next.js `Image` component for images
    - Check `assetPrefix` in next.config.js matches `basePath`
@@ -71,11 +81,14 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: "No Next.js version detected"
 
 **Symptoms:**
+
 - Vercel can't find Next.js in dependencies
 - Build fails immediately
 
 **Solutions:**
+
 1. **Set Root Directory in Vercel Dashboard**
+
    - Go to Project Settings → General
    - Set Root Directory to `apps/web`
    - Clear build cache and redeploy
@@ -87,17 +100,21 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Build Command Fails
 
 **Symptoms:**
+
 - "Command not found" errors
 - Package manager issues
 - Monorepo packages not found
 
 **Solutions:**
+
 1. **Check Build Settings**
+
    - Framework Preset: Next.js (should auto-detect)
    - Build Command: (leave empty for auto-detection)
    - Output Directory: (leave empty for auto-detection)
 
 2. **Verify Package Manager**
+
    ```json
    // In root package.json
    "packageManager": "pnpm@8.14.1"
@@ -116,12 +133,15 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Environment Variables Not Working
 
 **Symptoms:**
+
 - Features missing in production
 - API calls failing
 - Undefined environment variables
 
 **Solutions:**
+
 1. **Check Variable Names**
+
    - Client-side variables must start with `NEXT_PUBLIC_`
    - Server-side variables don't need prefix
 
@@ -135,11 +155,14 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Dependencies Not Found
 
 **Symptoms:**
+
 - "Module not found" errors
 - Package resolution failures
 
 **Solutions:**
+
 1. **Check Workspace Configuration**
+
    ```yaml
    # pnpm-workspace.yaml
    packages:
@@ -148,6 +171,7 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
    ```
 
 2. **Verify Package Names**
+
    ```json
    // In apps/web/package.json
    "dependencies": {
@@ -165,11 +189,14 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Type Errors During Build
 
 **Symptoms:**
+
 - TypeScript compilation errors
 - Type definition conflicts
 
 **Solutions:**
+
 1. **Run Type Check Locally**
+
    ```bash
    pnpm typecheck
    ```
@@ -181,11 +208,14 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
 ### Issue: Test Failures Blocking Deployment
 
 **Symptoms:**
+
 - CI pipeline fails at test stage
 - Deployment never triggered
 
 **Solutions:**
+
 1. **Run Tests Locally**
+
    ```bash
    pnpm test
    ```
@@ -255,10 +285,12 @@ git push --force origin gh-pages
 ## Getting Help
 
 1. **Check Logs**
+
    - GitHub Actions: Actions tab → workflow run → job logs
    - Vercel: Dashboard → Functions tab → Logs
 
 2. **Enable Debug Mode**
+
    ```bash
    # For Next.js debugging
    DEBUG=* pnpm build

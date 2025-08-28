@@ -5,6 +5,7 @@ This document explains the staging deployment setup for GitHub Pages.
 ## Overview
 
 The staging environment is deployed to GitHub Pages as a static site with limited functionality. This is useful for:
+
 - Preview of UI/UX changes
 - Content review
 - Design validation
@@ -33,16 +34,19 @@ The staging build process:
 ## Staging-Specific Behaviors
 
 ### Lead Forms
+
 - Forms appear to work but don't submit data
 - Success messages are shown for demo purposes
 - Console logs the form data for debugging
 
 ### Authentication
+
 - Login page shows but doesn't authenticate
 - Dashboard displays demo data
 - Protected routes are accessible without login
 
 ### API Calls
+
 - All API calls are intercepted and mocked
 - Static demo data is shown
 
@@ -56,6 +60,7 @@ pnpm build:staging
 ```
 
 This script:
+
 1. Backs up original files
 2. Removes `/api` directory
 3. Uses `next.config.staging.js`
@@ -65,11 +70,13 @@ This script:
 ## Deployment
 
 Staging deployment is triggered by:
+
 - Push to `main` branch (temporary)
 - Push to `staging` branch
 - Pull requests to `main`
 
 The GitHub Action:
+
 1. Runs the staging build
 2. Deploys to GitHub Pages
 3. Available at: https://madfam-io.github.io/biz-site/
@@ -108,15 +115,18 @@ Then visit: http://localhost:3001/biz-site
 ## Troubleshooting
 
 ### Build Fails
+
 - Check if new API routes were added
 - Ensure no dynamic imports of API code
 - Verify no server-side only dependencies
 
 ### 404 Errors
+
 - Check basePath configuration (/biz-site)
 - Ensure trailing slashes are consistent
 - Verify GitHub Pages is enabled
 
 ### Missing Features
+
 - This is expected - staging has limited functionality
 - Use Vercel preview deployments for full features

@@ -68,12 +68,14 @@ DATABASE_URL=
 ## Docker Configuration
 
 ### Development Container
+
 - Hot reload enabled
 - Source code mounted as volumes
 - Runs on port 3001
 - Node modules are preserved in containers
 
 ### Production Container
+
 - Optimized multi-stage build
 - Standalone Next.js output
 - Runs on port 3000
@@ -82,6 +84,7 @@ DATABASE_URL=
 ## Troubleshooting
 
 ### Port Already in Use
+
 ```bash
 # Find process using port 3000
 lsof -i :3000
@@ -91,6 +94,7 @@ kill -9 <PID>
 ```
 
 ### Docker Build Issues
+
 ```bash
 # Clean everything and rebuild
 make clean
@@ -98,6 +102,7 @@ make docker-build
 ```
 
 ### Module Resolution Issues
+
 ```bash
 # Clear turbo cache
 rm -rf .turbo
@@ -109,16 +114,19 @@ pnpm install --force
 ## Testing Different Environments
 
 ### Local Development
+
 ```bash
 NEXT_PUBLIC_ENV=development pnpm dev
 ```
 
 ### Local Staging
+
 ```bash
 NEXT_PUBLIC_ENV=staging pnpm build && pnpm start
 ```
 
 ### Local Production
+
 ```bash
 NEXT_PUBLIC_ENV=production pnpm build && pnpm start
 ```
