@@ -12,6 +12,9 @@ import {
   ROICalculator,
   TestimonialGrid,
   Newsletter,
+  type TestimonialData,
+  type ROIResults,
+  type LeadFormData,
 } from '@madfam/ui';
 import { logServiceInquiry } from '@/lib/logger';
 
@@ -81,7 +84,7 @@ interface PennyProductClientProps {
   };
   features: PennyFeature[];
   useCases: UseCase[];
-  testimonials: any[];
+  testimonials: TestimonialData[];
   pricingPlans: PricingPlan[];
 }
 
@@ -314,7 +317,7 @@ export function PennyProductClient({
             <ROICalculator
               serviceTier="L4_PLATFORMS"
               title={translations.roiCalculatorTitle}
-              onCalculate={results => {
+              onCalculate={(results: ROIResults) => {
                 logServiceInquiry('L4_PLATFORMS', 'penny-roi-calculator', {
                   results,
                   locale: currentLocale,
@@ -345,7 +348,7 @@ export function PennyProductClient({
               title={translations.demoFormTitle}
               description={translations.demoFormDescription}
               submitText={translations.scheduleDemo}
-              onSubmit={async data => {
+              onSubmit={async (data: LeadFormData) => {
                 logServiceInquiry('L4_PLATFORMS', 'penny-demo-form', {
                   ...data,
                   locale: currentLocale,

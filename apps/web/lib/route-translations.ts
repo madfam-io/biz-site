@@ -1,4 +1,4 @@
-import { i18nConfig } from '@madfam/i18n';
+import { i18nConfig, type Locale } from '@madfam/i18n';
 
 /**
  * Translates a route from one locale to another
@@ -46,7 +46,7 @@ export function translatePathname(pathname: string, toLocale: string): string {
 
   // Extract current locale and route
   const currentLocale =
-    segments[0] && i18nConfig.locales.includes(segments[0] as any)
+    segments[0] && i18nConfig.locales.includes(segments[0] as Locale)
       ? segments[0]
       : i18nConfig.defaultLocale;
 
@@ -69,7 +69,7 @@ export function getLocaleFromPathname(pathname: string): string {
   const segments = pathname.split('/').filter(Boolean);
   const firstSegment = segments[0];
 
-  if (firstSegment && i18nConfig.locales.includes(firstSegment as any)) {
+  if (firstSegment && i18nConfig.locales.includes(firstSegment as Locale)) {
     return firstSegment;
   }
 
@@ -90,7 +90,7 @@ export function removeLocaleFromPathname(pathname: string): string {
 
   const firstSegment = segments[0];
 
-  if (firstSegment && i18nConfig.locales.includes(firstSegment as any)) {
+  if (firstSegment && i18nConfig.locales.includes(firstSegment as Locale)) {
     return `/${segments.slice(1).join('/')}`;
   }
 

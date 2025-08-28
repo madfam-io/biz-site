@@ -1,8 +1,17 @@
 import { ServiceTier } from '@madfam/core';
 import { describe, it, expect } from 'vitest';
 
+interface LeadData {
+  email?: string;
+  name?: string;
+  company?: string;
+  phone?: string;
+  tier?: ServiceTier;
+  message?: string;
+}
+
 // Mock lead scoring function (copied from API route)
-function calculateLeadScore(lead: any): number {
+function calculateLeadScore(lead: LeadData): number {
   let score = 0;
 
   // Email domain scoring

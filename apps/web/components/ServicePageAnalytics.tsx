@@ -2,7 +2,7 @@
 
 import { useConversionTracking, useEngagementTracking } from '@madfam/analytics';
 import { ServiceTier } from '@madfam/core';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { throttle } from '@/types/utilities';
 
 interface ServicePageAnalyticsProps {
@@ -49,25 +49,28 @@ export function ServicePageAnalytics({
   }, [serviceTier, source, trackServiceFunnelStep, trackEngagement]);
 
   // Track pricing section view
-  const trackPricingView = () => {
+  const trackPricingView = useCallback(() => {
     trackServiceFunnelStep('interest', serviceTier, {
       source: 'pricing-section',
       interaction: 'view',
     });
-  };
+  }, [trackServiceFunnelStep, serviceTier]);
 
   // Track CTA interactions
-  const trackCTAClick = (ctaType: 'quote' | 'contact' | 'demo') => {
-    trackServiceFunnelStep('interest', serviceTier, {
-      source: 'cta-click',
-      cta_type: ctaType,
-    });
+  const trackCTAClick = useCallback(
+    (ctaType: 'quote' | 'contact' | 'demo') => {
+      trackServiceFunnelStep('interest', serviceTier, {
+        source: 'cta-click',
+        cta_type: ctaType,
+      });
 
-    // Track purchase intent for high-value CTAs
-    if (ctaType === 'quote' || ctaType === 'contact') {
-      trackPurchaseIntent(serviceTier);
-    }
-  };
+      // Track purchase intent for high-value CTAs
+      if (ctaType === 'quote' || ctaType === 'contact') {
+        trackPurchaseIntent(serviceTier);
+      }
+    },
+    [trackServiceFunnelStep, trackPurchaseIntent, serviceTier]
+  );
 
   // Make tracking functions available globally for the page
   useEffect(() => {

@@ -9,7 +9,7 @@ import {
   getFallbackCaseStudies,
   getFallbackTeamMembers,
 } from '../fallback-data';
-import { performanceMonitor } from '../performance-monitor';
+import { performanceMonitor, type CMSMetrics } from '../performance-monitor';
 import { CMSClient } from './client';
 import type { BlogPost, CaseStudy, TeamMember } from './types';
 
@@ -32,7 +32,7 @@ interface ApiResponse<T> {
   totalDocs: number;
   totalPages: number;
   source: 'cms' | 'fallback';
-  metrics?: any;
+  metrics?: CMSMetrics;
 }
 
 export async function getPublishedBlogPosts(

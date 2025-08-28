@@ -1,7 +1,18 @@
 'use client';
 
 import { type Locale } from '@madfam/i18n';
-import { Container, Heading, Assessment, LeadForm, Button, Card, CardContent } from '@madfam/ui';
+import {
+  Container,
+  Heading,
+  Assessment,
+  LeadForm,
+  Button,
+  Card,
+  CardContent,
+  type AssessmentQuestion,
+  type AssessmentResult,
+  type LeadFormData,
+} from '@madfam/ui';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import { logServiceInquiry } from '@/lib/logger';
@@ -33,7 +44,7 @@ interface AssessmentClientProps {
     startAssessment: string;
     scheduleConsultation: string;
   };
-  assessmentQuestions: any[];
+  assessmentQuestions: AssessmentQuestion[];
 }
 
 export function AssessmentClient({ translations, assessmentQuestions }: AssessmentClientProps) {
@@ -41,9 +52,9 @@ export function AssessmentClient({ translations, assessmentQuestions }: Assessme
   const locale = params?.locale as string;
   const currentLocale = locale as Locale;
   const [showLeadForm, setShowLeadForm] = useState(false);
-  const [assessmentResult, setAssessmentResult] = useState<any>(null);
+  const [assessmentResult, setAssessmentResult] = useState<AssessmentResult | null>(null);
 
-  const handleAssessmentComplete = (result: any) => {
+  const handleAssessmentComplete = (result: AssessmentResult) => {
     setAssessmentResult(result);
     setShowLeadForm(true);
     logServiceInquiry(result.recommendedTier, 'ai-readiness-assessment', {
@@ -74,7 +85,7 @@ export function AssessmentClient({ translations, assessmentQuestions }: Assessme
                 title={translations.requestSession}
                 description={translations.sessionDescription}
                 submitText={translations.scheduleSession}
-                onSubmit={async data => {
+                onSubmit={async (data: LeadFormData) => {
                   logServiceInquiry(
                     assessmentResult?.recommendedTier,
                     'assessment-strategy-request',

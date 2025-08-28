@@ -1,8 +1,8 @@
 import { analytics } from '@madfam/analytics';
-import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, type MockedFunction } from 'vitest';
 import { apiClient } from '@/lib/api-client';
+import { render, screen, waitFor } from '@/test-utils/providers';
 import { LeadForm } from '../LeadForm';
 
 // Mock the API client
@@ -71,7 +71,9 @@ describe('LeadForm Component', () => {
       message: 'Gracias por tu interés. Nos pondremos en contacto pronto.',
     };
 
-    (apiClient.submitLead as any).mockResolvedValueOnce(mockResponse);
+    (apiClient.submitLead as MockedFunction<typeof apiClient.submitLead>).mockResolvedValueOnce(
+      mockResponse
+    );
 
     render(<LeadForm />);
 
@@ -107,7 +109,7 @@ describe('LeadForm Component', () => {
 
   it('should show loading state while submitting', async () => {
     // Make the API call take some time
-    (apiClient.submitLead as any).mockImplementation(
+    (apiClient.submitLead as MockedFunction<typeof apiClient.submitLead>).mockImplementation(
       () => new Promise(resolve => setTimeout(() => resolve({ success: true }), 100))
     );
 
@@ -127,7 +129,9 @@ describe('LeadForm Component', () => {
 
   it('should handle API errors gracefully', async () => {
     const errorMessage = 'Error al procesar la solicitud';
-    (apiClient.submitLead as any).mockRejectedValueOnce(new Error(errorMessage));
+    (apiClient.submitLead as MockedFunction<typeof apiClient.submitLead>).mockRejectedValueOnce(
+      new Error(errorMessage)
+    );
 
     render(<LeadForm />);
 
@@ -144,7 +148,7 @@ describe('LeadForm Component', () => {
   });
 
   it('should reset form after successful submission', async () => {
-    (apiClient.submitLead as any).mockResolvedValueOnce({
+    (apiClient.submitLead as MockedFunction<typeof apiClient.submitLead>).mockResolvedValueOnce({
       success: true,
       leadId: 'test-123',
     });

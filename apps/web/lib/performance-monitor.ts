@@ -11,7 +11,7 @@ export interface PerformanceMetric {
   value: number;
   unit: 'ms' | 'bytes' | 'count' | 'percentage';
   timestamp: number;
-  context?: Record<string, any>;
+  context?: Record<string, unknown>;
 }
 
 // CMS performance metrics
@@ -72,9 +72,10 @@ export class PerformanceMonitor {
       // Web Vitals monitoring
       const observer = new PerformanceObserver(list => {
         for (const entry of list.getEntries()) {
+          const entryWithValue = entry as PerformanceEntry & { value?: number };
           this.recordMetric({
             name: `web_vitals_${entry.name}`,
-            value: (entry as any).value || entry.duration,
+            value: entryWithValue.value ?? entry.duration,
             unit: 'ms',
             timestamp: Date.now(),
             context: {
@@ -109,17 +110,26 @@ export class PerformanceMonitor {
     if (typeof window !== 'undefined' && 'performance' in window) {
       // Memory usage
       if ('memory' in performance) {
-        const { memory } = performance as any;
-        this.recordMetric({
-          name: 'memory_usage',
-          value: memory.usedJSHeapSize,
-          unit: 'bytes',
-          timestamp: Date.now(),
-          context: {
-            total: memory.totalJSHeapSize,
-            limit: memory.jsHeapSizeLimit,
-          },
-        });
+        const performanceWithMemory = performance as Performance & {
+          memory?: {
+            usedJSHeapSize: number;
+            totalJSHeapSize: number;
+            jsHeapSizeLimit: number;
+          };
+        };
+        const { memory } = performanceWithMemory;
+        if (memory) {
+          this.recordMetric({
+            name: 'memory_usage',
+            value: memory.usedJSHeapSize,
+            unit: 'bytes',
+            timestamp: Date.now(),
+            context: {
+              total: memory.totalJSHeapSize,
+              limit: memory.jsHeapSizeLimit,
+            },
+          });
+        }
       }
 
       // Navigation timing

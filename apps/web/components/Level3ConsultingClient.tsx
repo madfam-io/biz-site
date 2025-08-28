@@ -1,5 +1,6 @@
 'use client';
 
+import { type ServiceTierConfig } from '@madfam/core';
 import {
   Container,
   Heading,
@@ -10,6 +11,9 @@ import {
   LeadForm,
   TestimonialGrid,
   Hero,
+  type TestimonialData,
+  type ROIResults,
+  type LeadFormData,
 } from '@madfam/ui';
 import { ServiceStructuredData } from '@/components/StructuredData';
 import { logServiceInquiry } from '@/lib/logger';
@@ -28,7 +32,7 @@ interface ProcessStep {
 
 interface Level3ConsultingClientProps {
   locale: string;
-  service: any;
+  service: ServiceTierConfig;
   serviceName: string;
   serviceDescription: string;
   translations: {
@@ -59,7 +63,7 @@ interface Level3ConsultingClientProps {
   };
   benefits: Benefit[];
   processSteps: ProcessStep[];
-  testimonials: any[];
+  testimonials: TestimonialData[];
 }
 
 export function Level3ConsultingClient({
@@ -205,7 +209,7 @@ export function Level3ConsultingClient({
                 size="lg"
                 className="w-full"
                 onClick={() => {
-                  logServiceInquiry(service.tier, 'consulting-request-proposal', { locale });
+                  logServiceInquiry(service.id, 'consulting-request-proposal', { locale });
                   window.location.href = '#contact';
                 }}
               >
@@ -221,10 +225,10 @@ export function Level3ConsultingClient({
         <Container>
           <div className="max-w-5xl mx-auto">
             <ROICalculator
-              serviceTier={service.tier}
+              serviceTier={service.id}
               title={serviceName}
-              onCalculate={results => {
-                logServiceInquiry(service.tier, 'roi-calculator', {
+              onCalculate={(results: ROIResults) => {
+                logServiceInquiry(service.id, 'roi-calculator', {
                   ...results,
                   locale,
                 });
@@ -260,7 +264,7 @@ export function Level3ConsultingClient({
               variant="secondary"
               size="lg"
               onClick={() => {
-                logServiceInquiry(service.tier, 'cta-schedule-consultation', { locale });
+                logServiceInquiry(service.id, 'cta-schedule-consultation', { locale });
                 window.location.href = '#contact';
               }}
             >
@@ -275,13 +279,13 @@ export function Level3ConsultingClient({
         <Container>
           <div className="max-w-2xl mx-auto">
             <LeadForm
-              tier={service.tier}
+              tier={service.id}
               source="level-3-consulting-page"
               title={translations.leadFormTitle}
               description={translations.leadFormDescription}
               submitText={translations.submitText}
-              onSubmit={async data => {
-                logServiceInquiry(service.tier, 'lead-form-submission', {
+              onSubmit={async (data: LeadFormData) => {
+                logServiceInquiry(service.id, 'lead-form-submission', {
                   ...data,
                   locale,
                 });

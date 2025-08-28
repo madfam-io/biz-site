@@ -1,20 +1,12 @@
 {
-  "timestamp": "2025-08-27T23:04:12.395Z",
+  "timestamp": "2025-08-28T00:18:41.862Z",
   "summary": {
     "critical": 0,
     "moderate": 0,
     "low": 0,
-    "totalIssues": 4
+    "totalIssues": 3
   },
   "issues": [
-    {
-      "level": "critical",
-      "message": "Security Headers: Missing security headers: X-Frame-Options, X-Content-Type-Options, Referrer-Policy",
-      "details": {
-        "file": "apps/web/middleware.ts",
-        "missingHeaders": ["X-Frame-Options", "X-Content-Type-Options", "Referrer-Policy"]
-      }
-    },
     {
       "level": "critical",
       "message": "Input Validation: Only 57% of API routes have input validation",

@@ -74,7 +74,7 @@ export class SEOService {
         languages: this.generateLanguageAlternates(url, alternateLocales),
       },
       openGraph: {
-        type: type as any,
+        type: type as 'website' | 'article',
         title: fullTitle,
         description,
         url: fullUrl,
@@ -327,7 +327,7 @@ export class SEOService {
     return alternates;
   }
 
-  generateStructuredData(type: string, data: any): object {
+  generateStructuredData(type: string, data: Record<string, unknown>): object {
     const baseData = {
       '@context': 'https://schema.org',
       '@type': type,

@@ -6,7 +6,7 @@ export interface EmailQueueItem {
   id: string;
   to: string[];
   template: string;
-  data: any;
+  data: Record<string, unknown>;
   status: string;
   attempts: number;
   error?: string | null;
@@ -50,7 +50,7 @@ export class EmailQueueProcessor {
           id: email.id,
           to: Array.isArray(email.to) ? (email.to as string[]) : [],
           template: email.template,
-          data: email.data,
+          data: email.data as Record<string, unknown>,
           status: email.status,
           attempts: email.attempts,
           error: email.error,
@@ -120,7 +120,7 @@ export class EmailQueueProcessor {
         to,
         subject: `Template: ${template}`, // Will be replaced by actual subject
         template,
-        data: data as any,
+        data: data as Record<string, unknown>,
         status: 'pending',
         attempts: 0,
       },

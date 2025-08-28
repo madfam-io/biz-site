@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, type AbstractIntlMessages } from 'next-intl';
 import { AuthProvider } from '@/components/AuthProvider';
 import { CookieConsent } from '@/components/CookieConsent';
 import { Footer } from '@/components/Footer';
@@ -31,7 +31,7 @@ export default async function LocaleLayout({
   return (
     <LoggerProvider>
       <AuthProvider>
-        <NextIntlClientProvider messages={messages as any}>
+        <NextIntlClientProvider messages={messages as AbstractIntlMessages}>
           <OrganizationStructuredData />
           <GlobalAnalytics />
           <Navbar />
