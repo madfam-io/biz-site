@@ -349,6 +349,14 @@
       "title": "Nossas Unidades de Negócio",
       "subtitle": "Equipes especializadas entregando excelência em todas as indústrias",
       "badge": "Unidades de Negócio"
+    },
+    "meta": {
+      "title": "Unidades de Negócio - MADFAM",
+      "description": "Conheça nossas unidades de negócio especializadas que entregam soluções em manufatura avançada, tecnologia e mais."
+    },
+    "structure": {
+      "title": "Estrutura Corporativa",
+      "description": "A MADFAM coordena e dirige múltiplas unidades especializadas, cada uma focada em resolver problemas específicos da indústria."
     }
   },
   "products": {
@@ -544,6 +552,7 @@
   },
   "badges": {
     "byMadfam": "por MADFAM",
-    "aureoProduct": "um produto Aureo Labs"
+    "aureoProduct": "um produto Aureo Labs",
+    "aureoLabsProduct": "por Aureo Labs, uma Empresa MADFAM"
   }
 }

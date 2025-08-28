@@ -1,0 +1,33 @@
+{
+  "home": {
+    "hero": {
+      "title": "Donde la IA encuentra la creatividad humana",
+      "subtitle": "MADFAM transforma empresas con soluciones impulsadas por IA. Desde diseño 3D hasta asociaciones estratégicas vCTO, entregamos innovación en cada nivel.",
+      "exploreServices": "Explorar servicios",
+      "viewProducts": "Ver productos"
+    },
+    "services": {
+      "title": "Servicios de 5 niveles",
+      "subtitle": "Desde soluciones rápidas hasta transformación estratégica, tenemos el nivel perfecto para tus necesidades.",
+      "viewAll": "Ver todos los servicios"
+    },
+    "products": {
+      "title": "Nuestros productos",
+      "subtitle": "Plataformas revolucionarias que automatizan y optimizan tu negocio",
+      "spark": {
+        "description": "Plataforma de orquestación de IA que conecta, automatiza y optimiza todos tus procesos empresariales en un solo lugar."
+      },
+      "penny": {
+        "description": "Automatización inteligente de procesos que aprende, adapta y mejora continuamente tu flujo de trabajo."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para transformar tu negocio?",
+      "subtitle": "Descubre cómo MADFAM puede llevar tu empresa al siguiente nivel con IA y creatividad.",
+      "scheduleFree": "Agendar consulta gratuita",
+      "getStarted": "Comenzar",
+      "learnMore": "Saber más",
+      "button": "Comenzar"
+    }
+  }
+}

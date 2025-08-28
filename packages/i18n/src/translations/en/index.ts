@@ -6,6 +6,7 @@ import estimator from './estimator.json';
 import products from './products.json';
 import services from './services.json';
 import corporate from './corporate.json';
+import legal from './legal.json';
 import pages from './pages.json';
 import forms from './forms.json';
 import system from './system.json';
@@ -19,6 +20,7 @@ export default {
   products,
   services,
   corporate,
+  legal,
   ...pages,
   ...forms,
   ...system,

@@ -1,0 +1,12 @@
+# Archive Information
+
+**Original Path**: `packages/i18n/src/translations/backup/pt-br.json`
+**Archived Date**: 2025-08-28T22:36:43.231Z
+**Original Size**: 1758 lines
+**Reason**: Split into modular files in `packages/i18n/src/translations/backup/split/pt-br/`
+
+## Replacement
+
+Split into modular files in `packages/i18n/src/translations/backup/split/pt-br/`
+
+This file was archived as part of the file size optimization project to ensure no files exceed 800 lines.

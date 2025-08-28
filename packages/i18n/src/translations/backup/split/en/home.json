@@ -1,0 +1,33 @@
+{
+  "home": {
+    "hero": {
+      "title": "Where AI meets human creativity",
+      "subtitle": "MADFAM transforms businesses with AI-powered solutions. From 3D design to strategic vCTO partnerships, we deliver innovation at every level.",
+      "exploreServices": "Explore services",
+      "viewProducts": "View products"
+    },
+    "services": {
+      "title": "5-level services",
+      "subtitle": "From quick fixes to strategic transformation, we have the perfect level for your needs.",
+      "viewAll": "View all services"
+    },
+    "products": {
+      "title": "Our products",
+      "subtitle": "Revolutionary platforms that automate and optimize your business",
+      "spark": {
+        "description": "AI orchestration platform that connects, automates, and optimizes all your business processes in one place."
+      },
+      "penny": {
+        "description": "Intelligent process automation that learns, adapts, and continuously improves your workflow."
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your business?",
+      "subtitle": "Discover how MADFAM can take your company to the next level with AI and creativity.",
+      "scheduleFree": "Schedule free consultation",
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "button": "Get Started"
+    }
+  }
+}

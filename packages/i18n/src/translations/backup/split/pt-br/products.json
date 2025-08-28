@@ -1,0 +1,98 @@
+{
+  "products": {
+    "title": "Nossas plataformas",
+    "subtitle": "Soluções tecnológicas que transformam a forma como você faz negócios",
+    "spark": {
+      "title": "SPARK",
+      "tagline": "Orquestração inteligente de IA",
+      "shortDescription": "Plataforma que conecta, automatiza e otimiza processos empresariais com IA.",
+      "description": "Plataforma completa que conecta, automatiza e otimiza todos os seus processos empresariais através de IA avançada.",
+      "features": {
+        "0": "Integração com +100 ferramentas",
+        "1": "Automação sem código",
+        "2": "Analytics em tempo real",
+        "title": "Características principais",
+        "integration": "Integração com +100 ferramentas",
+        "automation": "Automação sem código",
+        "analytics": "Analytics em tempo real",
+        "scalability": "Escalabilidade infinita"
+      },
+      "benefits": {
+        "title": "Benefícios",
+        "efficiency": "Aumento de 70% em eficiência",
+        "cost": "Redução de 50% em custos operacionais",
+        "time": "80% menos tempo em tarefas manuais",
+        "accuracy": "99.9% de precisão em processos"
+      }
+    },
+    "penny": {
+      "title": "PENNY",
+      "tagline": "Seu assistente de IA pessoal",
+      "shortDescription": "Automação inteligente que aprende e melhora continuamente seus processos.",
+      "description": "Automação inteligente que aprende com seus processos e melhora continuamente, tornando sua equipe mais produtiva.",
+      "features": {
+        "0": "Aprendizado contínuo",
+        "1": "Processamento de linguagem natural",
+        "2": "Sugestões proativas",
+        "3": "Segurança enterprise",
+        "title": "Características principais",
+        "learning": "Aprendizado contínuo",
+        "natural": "Processamento de linguagem natural",
+        "proactive": "Sugestões proativas",
+        "secure": "Segurança enterprise"
+      },
+      "benefits": {
+        "title": "Benefícios",
+        "productivity": "3x mais produtividade",
+        "satisfaction": "95% satisfação dos usuários",
+        "onboarding": "Implementação em 24h",
+        "roi": "ROI em 30 dias"
+      }
+    },
+    "aureoStudio": {
+      "title": "Aureo Studio",
+      "tagline": "Orquestração de IA empresarial",
+      "shortDescription": "Plataforma para orquestração de IA que governa e automatiza processos empresariais complexos.",
+      "description": "Plataforma completa para orquestração de IA que governa e automatiza processos empresariais complexos.",
+      "features": {
+        "0": "Controle de fluxos inteligente",
+        "1": "Integrações empresariais",
+        "2": "Monitoramento em tempo real"
+      }
+    },
+    "cotizaStudio": {
+      "title": "Cotiza Studio",
+      "tagline": "Cotações instantâneas com IA",
+      "shortDescription": "Gerador de cotações e propostas alimentado por IA para fechar negócios mais rápido.",
+      "description": "Sistema inteligente de geração de cotações e propostas que usa IA para criar documentos personalizados.",
+      "features": {
+        "0": "Geração instantânea",
+        "1": "Personalização com IA",
+        "2": "Integração com CRM"
+      }
+    },
+    "forgeSight": {
+      "title": "Forge Sight",
+      "tagline": "Previsão e análise preditiva",
+      "shortDescription": "Análise preditiva avançada para tomada de decisões baseada em dados.",
+      "description": "Plataforma de análise preditiva que usa IA para prever tendências e otimizar decisões empresariais.",
+      "features": {
+        "0": "Análise preditiva avançada",
+        "1": "Visualização de dados em tempo real",
+        "2": "Modelos de IA personalizados"
+      }
+    },
+    "comparison": {
+      "title": "Compare nossas plataformas",
+      "feature": "Característica",
+      "integration": "Integrações",
+      "users": "Usuários",
+      "support": "Suporte",
+      "price": "Preço"
+    },
+    "cta": {
+      "demo": "Solicitar demonstração",
+      "trial": "Teste grátis por 14 dias"
+    }
+  }
+}

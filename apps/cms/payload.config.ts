@@ -18,7 +18,31 @@ export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3001',
   admin: {
     user: 'users',
-    bundler: webpackBundler(),
+    bundler: webpackBundler({
+      webpack: config => {
+        // Import optimized configuration
+        const optimizedConfig = require('./webpack.config.js');
+
+        // Merge optimization settings
+        if (!config.optimization) {
+          config.optimization = {};
+        }
+
+        config.optimization = {
+          ...config.optimization,
+          ...optimizedConfig.optimization,
+        };
+
+        // Add plugins
+        if (!config.plugins) {
+          config.plugins = [];
+        }
+
+        config.plugins.push(...(optimizedConfig.plugins || []));
+
+        return config;
+      },
+    }),
   },
   editor: slateEditor({}),
   collections: [

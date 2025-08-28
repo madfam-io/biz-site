@@ -31,8 +31,8 @@ export function translateRoute(route: string, fromLocale: string, toLocale: stri
   // If translating from English to any other locale, use the direct mapping
   if (fromLocale === 'en') {
     const targetRoutes = i18nConfig.routes[toLocale as keyof typeof i18nConfig.routes];
-    if (targetRoutes) {
-      return (targetRoutes as any)[route] || route;
+    if (targetRoutes && typeof targetRoutes === 'object') {
+      return (targetRoutes as Record<string, string>)[route] || route;
     }
     return route;
   }

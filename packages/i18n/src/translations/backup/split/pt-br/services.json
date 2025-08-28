@@ -1,0 +1,297 @@
+{
+  "services": {
+    "hero": {
+      "title": "Serviços projetados para cada estágio do seu crescimento",
+      "titleHighlight": "cada estágio do seu crescimento",
+      "subtitle": "De soluções rápidas à transformação estratégica completa. Encontre o nível perfeito para impulsionar seu negócio com IA."
+    },
+    "comparison": {
+      "title": "Compare nossos serviços",
+      "features": "Características",
+      "priceFrom": "Preço a partir de",
+      "duration": "Duração",
+      "idealFor": "Ideal para"
+    },
+    "notSure": {
+      "title": "Não tem certeza de qual nível precisa?",
+      "subtitle": "Nossa equipe ajudará você a identificar a solução perfeita para sua empresa",
+      "cta": "Agendar avaliação gratuita",
+      "getEstimate": "Obter estimativa instantânea"
+    },
+    "level1": {
+      "hero": {
+        "badge": "Nível 1 - Essenciais",
+        "title": "Soluções rápidas de design 3D e IA para necessidades imediatas",
+        "getQuote": "Obter cotação instantânea",
+        "viewPortfolio": "Ver portfólio",
+        "turnaround": "entrega em",
+        "satisfaction": "satisfação garantida"
+      },
+      "services": {
+        "title": "O que está incluído",
+        "subtitle": "Serviços profissionais entregues rapidamente",
+        "items": {
+          "modeling": {
+            "title": "Modelagem 3D",
+            "description": "Modelos detalhados para produtos, arquitetura ou personagens."
+          },
+          "rendering": {
+            "title": "Renderização fotorrealista",
+            "description": "Imagens de alta qualidade que impressionam."
+          },
+          "graphic": {
+            "title": "Design gráfico",
+            "description": "Identidade visual completa para digital e impresso."
+          },
+          "animation": {
+            "title": "Animações básicas",
+            "description": "Movimento que dá vida aos seus projetos."
+          }
+        }
+      },
+      "process": {
+        "title": "Como funciona",
+        "subtitle": "Simples, rápido e eficiente",
+        "steps": {
+          "brief": {
+            "title": "Briefing",
+            "description": "Compartilhe sua visão e requisitos."
+          },
+          "design": {
+            "title": "Design",
+            "description": "Nossa equipe cria sua solução."
+          },
+          "review": {
+            "title": "Revisão",
+            "description": "Ajustes ilimitados por 7 dias."
+          },
+          "delivery": {
+            "title": "Entrega",
+            "description": "Receba seus arquivos finais."
+          }
+        }
+      }
+    },
+    "level2": {
+      "hero": {
+        "badge": "Nível 2 - Avançado",
+        "title": "Design paramétrico e experiências interativas que transformam",
+        "scheduleDemo": "Agendar demonstração",
+        "downloadCases": "Baixar casos de uso",
+        "projectTime": "tempo médio de projeto",
+        "technologies": "tecnologias dominadas"
+      },
+      "capabilities": {
+        "title": "Capacidades avançadas",
+        "subtitle": "Tecnologia de ponta para resultados extraordinários",
+        "items": {
+          "parametric": {
+            "title": "Design paramétrico",
+            "description": "Crie variações infinitas com lógica baseada em nós."
+          },
+          "ar": {
+            "title": "Realidade aumentada",
+            "description": "Experiências AR que conectam digital e físico."
+          },
+          "vr": {
+            "title": "Realidade virtual",
+            "description": "Ambientes imersivos para treinamento e vendas."
+          },
+          "data": {
+            "title": "Visualização de dados 3D",
+            "description": "Transforme dados complexos em insights visuais."
+          }
+        }
+      },
+      "applications": {
+        "title": "Aplicações",
+        "subtitle": "Soluções versáteis para diversos setores"
+      }
+    },
+    "level4": {
+      "hero": {
+        "badge": "Nível 4 - Plataformas",
+        "title": "Implemente SPARK e PENNY para transformação completa",
+        "requestDemo": "Solicitar demonstração",
+        "downloadSpecs": "Baixar especificações",
+        "implementation": "implementação típica",
+        "uptime": "uptime garantido"
+      },
+      "platforms": {
+        "title": "Nossas plataformas",
+        "subtitle": "Escolha a solução perfeita para suas necessidades",
+        "spark": {
+          "title": "SPARK - Orquestração de IA",
+          "description": "Conecte, automatize e otimize todos os processos empresariais.",
+          "features": {
+            "0": "Integração com +100 ferramentas",
+            "1": "Automação sem código",
+            "2": "Analytics em tempo real",
+            "3": "Escalabilidade enterprise"
+          }
+        },
+        "penny": {
+          "title": "PENNY - Assistente inteligente",
+          "description": "IA que aprende e melhora continuamente seus processos.",
+          "features": {
+            "0": "Aprendizado contínuo",
+            "1": "Linguagem natural",
+            "2": "Sugestões proativas",
+            "3": "Segurança de ponta"
+          }
+        }
+      },
+      "implementation": {
+        "title": "Processo de implementação",
+        "subtitle": "Metodologia comprovada para sucesso garantido"
+      }
+    },
+    "level5": {
+      "hero": {
+        "badge": "Nível 5 - Estratégico",
+        "title": "Parceria vCTO para liderar sua transformação digital",
+        "scheduleExecutive": "Agendar reunião executiva",
+        "downloadFramework": "Baixar framework estratégico",
+        "companies": "empresas transformadas",
+        "revenue": "aumento médio de receita"
+      },
+      "services": {
+        "title": "Serviços estratégicos",
+        "subtitle": "Liderança tecnológica completa para sua empresa",
+        "items": {
+          "strategy": {
+            "title": "Estratégia tecnológica",
+            "description": "Roadmap completo alinhado aos objetivos de negócio."
+          },
+          "architecture": {
+            "title": "Arquitetura empresarial",
+            "description": "Design de sistemas escaláveis e resilientes."
+          },
+          "team": {
+            "title": "Gestão de equipes",
+            "description": "Liderança e desenvolvimento de talentos técnicos."
+          },
+          "innovation": {
+            "title": "Inovação contínua",
+            "description": "Cultura de experimentação e aprendizado."
+          }
+        }
+      },
+      "impact": {
+        "title": "Impacto mensurável",
+        "subtitle": "Resultados que transformam negócios"
+      }
+    },
+    "level3": {
+      "hero": {
+        "badge": "Nível 3 - Consultoria",
+        "title": "Transforme sua empresa com consultoria especializada em IA",
+        "scheduleInitial": "Agendar consulta inicial",
+        "downloadCase": "Baixar caso de estudo",
+        "typicalDuration": "duração típica",
+        "satisfaction": "satisfação do cliente"
+      },
+      "benefits": {
+        "title": "O que você obtém com nosso serviço de consultoria?",
+        "subtitle": "Mais que consultoria: um parceiro estratégico para sua transformação digital",
+        "items": {
+          "strategy": {
+            "title": "Estratégia personalizada",
+            "description": "Roadmap de transformação digital adaptado ao seu setor e objetivos específicos."
+          },
+          "training": {
+            "title": "Treinamento abrangente",
+            "description": "Workshops práticos para sua equipe dominar as ferramentas de IA."
+          },
+          "metrics": {
+            "title": "Métricas de impacto",
+            "description": "KPIs claros para medir o ROI da sua transformação digital."
+          },
+          "continuous": {
+            "title": "Melhoria contínua",
+            "description": "Sessões de acompanhamento mensais para otimizar resultados."
+          }
+        }
+      },
+      "process": {
+        "title": "Nosso processo comprovado",
+        "subtitle": "Uma abordagem estruturada para garantir resultados mensuráveis",
+        "steps": {
+          "diagnosis": {
+            "title": "Diagnóstico inicial",
+            "description": "Análise profunda dos seus processos atuais e oportunidades de melhoria."
+          },
+          "strategy": {
+            "title": "Design da estratégia",
+            "description": "Criação de um plano de transformação com objetivos claros e alcançáveis."
+          },
+          "implementation": {
+            "title": "Implementação guiada",
+            "description": "Workshops e treinamento prático para sua equipe."
+          },
+          "optimization": {
+            "title": "Otimização contínua",
+            "description": "Acompanhamento mensal e ajustes baseados em resultados."
+          }
+        }
+      },
+      "included": {
+        "title": "Tudo incluído na sua consultoria",
+        "investment": "Investimento",
+        "from": "A partir de",
+        "projectDuration": "Projeto de 3-6 meses",
+        "paymentPlan": "Plano de pagamento disponível",
+        "guaranteedROI": "ROI garantido em 6 meses",
+        "postSupport": "Suporte pós-implementação",
+        "requestProposal": "Solicitar proposta"
+      },
+      "testimonials": {
+        "title": "O que nossos clientes dizem"
+      },
+      "cta": {
+        "title": "Pronto para transformar sua empresa?",
+        "subtitle": "Agende uma consulta gratuita de 30 minutos para explorar como podemos ajudá-lo",
+        "scheduleNow": "Agendar consulta agora"
+      }
+    },
+    "tier1": {
+      "title": "L1 - Essenciais",
+      "description": "Design 3D e soluções IA rápidas para necessidades imediatas",
+      "features": {
+        "0": "Modelagem 3D e Renderização",
+        "1": "Design Gráfico",
+        "2": "Animações Básicas"
+      },
+      "cta": "Obter Orçamento"
+    },
+    "tier2": {
+      "title": "L2 - Avançado",
+      "description": "Design paramétrico e experiências interativas transformadoras",
+      "features": {
+        "0": "Design Paramétrico",
+        "1": "Experiências AR/VR",
+        "2": "Visualização de Dados 3D"
+      },
+      "cta": "Agendar Demo"
+    },
+    "tier3": {
+      "title": "L3 - Consultoria",
+      "description": "Transforme sua empresa com consultoria especializada em IA",
+      "features": {
+        "0": "Estratégia Personalizada",
+        "1": "Treinamento Abrangente",
+        "2": "Métricas de Impacto"
+      },
+      "cta": "Agendar Consulta"
+    },
+    "tier5": {
+      "title": "L5 - Estratégico",
+      "description": "Parceria vCTO para liderar sua transformação digital",
+      "features": {
+        "0": "Estratégia Tecnológica",
+        "1": "Arquitetura Empresarial"
+      },
+      "cta": "Agendar Reunião Executiva"
+    }
+  }
+}

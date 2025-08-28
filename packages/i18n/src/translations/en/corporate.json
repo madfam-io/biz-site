@@ -552,6 +552,7 @@
   },
   "badges": {
     "byMadfam": "by MADFAM",
-    "aureoProduct": "an Aureo Labs product"
+    "aureoProduct": "an Aureo Labs product",
+    "aureoLabsProduct": "by Aureo Labs, a MADFAM Company"
   }
 }
