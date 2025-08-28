@@ -27,67 +27,16 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // SPARK brand migration to Aureo Studio (permanent)
-      {
-        source: '/spark',
-        destination: '/products#aureo-studio',
-        permanent: true,
-      },
-      {
-        source: '/products/spark',
-        destination: '/products#aureo-studio',
-        permanent: true,
-      },
-      {
-        source: '/:locale/products/spark',
-        destination: '/:locale/products#aureo-studio',
-        permanent: true,
-      },
-
-      // L1-L5 Services to Programs mapping (temporary during transition)
+      // Services to Programs mapping (permanent)
       {
         source: '/services',
         destination: '/programs',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/:locale/services',
         destination: '/:locale/programs',
-        permanent: false,
-      },
-
-      // Specific service tiers to programs
-      {
-        source: '/services/level-1-essentials',
-        destination: '/programs#design-fabrication',
-        permanent: false,
-      },
-      {
-        source: '/services/level-2-advanced',
-        destination: '/programs#design-fabrication',
-        permanent: false,
-      },
-      {
-        source: '/services/level-3-consulting',
-        destination: '/programs#strategy-enablement',
-        permanent: false,
-      },
-      {
-        source: '/services/level-4-platforms',
-        destination: '/programs#platform-pilots',
-        permanent: false,
-      },
-      {
-        source: '/services/level-5-strategic',
-        destination: '/programs#strategic-partnerships',
-        permanent: false,
-      },
-
-      // Localized service redirects
-      {
-        source: '/:locale/services/level-:tier(1|2|3|4|5)-:name',
-        destination: '/:locale/programs',
-        permanent: false,
+        permanent: true,
       },
 
       // Legacy locale redirects (es-MX → es, en-US → en, pt-BR → pt-br)

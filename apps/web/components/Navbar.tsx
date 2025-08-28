@@ -17,8 +17,7 @@ export function Navbar() {
   const locale = useLocale() as Locale;
 
   const navigation = [
-    { name: t('home'), href: `/${locale}` },
-    // NEW: Corporate structure navigation
+    // Corporate structure navigation - Home removed as logo serves this purpose
     { name: t('arms') || 'Unidades', href: getLocalizedUrl('arms', locale) },
     { name: t('products'), href: getLocalizedUrl('products', locale) },
     { name: t('programs') || 'Programas', href: getLocalizedUrl('programs', locale) },
@@ -26,8 +25,6 @@ export function Navbar() {
     { name: t('security') || 'Seguridad', href: getLocalizedUrl('security', locale) },
     { name: t('about'), href: getLocalizedUrl('about', locale) },
     { name: t('contact'), href: getLocalizedUrl('contact', locale) },
-    // LEGACY: Keep services for backward compatibility during transition
-    // { name: t('services'), href: getLocalizedUrl('services', locale) },
   ];
 
   return (

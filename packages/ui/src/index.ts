@@ -16,6 +16,10 @@ export * from './components/Assessment';
 export * from './components/Newsletter';
 export * from './components/Testimonial';
 
+// Mobile Components
+export * from './components/MobileButton';
+export * from './components/MobileInput';
+
 // Brand Components
 export * from './components/brand/LogoSystem';
 export * from './components/brand/BrandParticles';

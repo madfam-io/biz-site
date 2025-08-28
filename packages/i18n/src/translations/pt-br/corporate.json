@@ -14,28 +14,28 @@
         "name": "Aureo Labs",
         "tagline": "Laboratório de Inovação Digital",
         "description": "Centro de desenvolvimento de produtos de software e soluções digitais avançadas",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "focus": "Desenvolvimento de produtos, pesquisa tecnológica, laboratório de inovação"
       },
       "primavera3d": {
         "name": "Primavera3D",
         "tagline": "Estúdio de Design Digital",
         "description": "Especialista em modelagem 3D, renderização, animação e experiências visuais",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "focus": "Design 3D, visualização arquitetônica, animação, realidade virtual/aumentada"
       },
       "health": {
         "name": "MADFAM Health",
         "tagline": "Tecnologia Médica Avançada",
         "description": "Soluções tecnológicas especializadas para o setor de saúde e bem-estar",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "focus": "HealthTech, telemedicina, análise médica com IA, dispositivos conectados"
       },
       "aero": {
         "name": "MADFAM Aero",
         "tagline": "Engenharia Aeroespacial Digital",
         "description": "Tecnologia avançada para a indústria aeroespacial e de drones",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "focus": "Drones autônomos, simulação de voo, sistemas aeroespaciais, IoT industrial"
       }
     },
@@ -46,28 +46,28 @@
         "name": "SPARK",
         "tagline": "Orquestração Inteligente de IA",
         "description": "Plataforma completa que conecta, automatiza e otimiza todos os seus processos empresariais através de IA avançada",
-        "badge": "um produto Aureo Labs",
+        "badge": "por Aureo Labs, uma Empresa MADFAM",
         "developer": "Aureo Labs"
       },
       "penny": {
         "name": "PENNY",
         "tagline": "Automação Inteligente de Processos",
         "description": "Assistente IA que aprende, adapta e melhora continuamente seus processos de fluxo de trabalho",
-        "badge": "um produto Aureo Labs",
+        "badge": "por Aureo Labs, uma Empresa MADFAM",
         "developer": "Aureo Labs"
       },
       "medSync": {
         "name": "MedSync",
         "tagline": "Integração de Dados de Saúde",
         "description": "Plataforma abrangente para gerenciamento de dados de saúde e comunicação com pacientes",
-        "badge": "um produto MADFAM Health",
+        "badge": "por MADFAM Health, uma Empresa MADFAM",
         "developer": "MADFAM Health"
       },
       "aeroControl": {
         "name": "AeroControl",
         "tagline": "Gestão de Voo Autônomo",
         "description": "Sistema de controle avançado para drones autônomos e frotas de veículos aéreos",
-        "badge": "um produto MADFAM Aero",
+        "badge": "por MADFAM Aero, uma Empresa MADFAM",
         "developer": "MADFAM Aero"
       }
     },
@@ -105,7 +105,7 @@
         "title": "Programa Essentials",
         "description": "Soluciones rápidas de diseño 3D e IA para necesidades inmediatas",
         "provider": "Primavera3D",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "duration": "1-2 semanas",
         "deliverables": [
           "Modelado 3D",
@@ -121,7 +121,7 @@
         "title": "Programa Advanced",
         "description": "Diseño paramétrico y experiencias interactivas que transforman",
         "provider": "Primavera3D",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "duration": "3-6 semanas",
         "deliverables": [
           "Diseño paramétrico",
@@ -137,7 +137,7 @@
         "title": "Programa Consulting",
         "description": "Transforma tu empresa con consultoría especializada en IA",
         "provider": "Aureo Labs",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "duration": "3-6 meses",
         "deliverables": [
           "Estrategia personalizada",
@@ -153,7 +153,7 @@
         "title": "Programa Platforms",
         "description": "Implementa SPARK y PENNY para transformación completa",
         "provider": "Aureo Labs",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "duration": "3-12 meses",
         "deliverables": [
           "Implementación SPARK/PENNY",
@@ -169,7 +169,7 @@
         "title": "Programa Strategic",
         "description": "Asociación vCTO para liderar tu transformación digital",
         "provider": "MADFAM",
-        "badge": "por MADFAM",
+        "badge": "uma Empresa MADFAM",
         "duration": "12+ meses",
         "deliverables": [
           "Liderazgo tecnológico",
@@ -180,8 +180,12 @@
       }
     },
     "badges": {
-      "byMADFAM": "por MADFAM",
-      "aureoLabsProduct": "um produto Aureo Labs",
+      "byMADFAM": "uma Empresa MADFAM",
+      "aureoLabsProduct": "por Aureo Labs, uma Empresa MADFAM",
+      "pennyProduct": "por Aureo Labs, uma Empresa MADFAM",
+      "cotizaProduct": "por Aureo Labs, uma Empresa MADFAM",
+      "forgeSightProduct": "por Aureo Labs, uma Empresa MADFAM",
+      "dhanamProduct": "por Aureo Labs, uma Empresa MADFAM",
       "poweredBy": "Powered by",
       "developedBy": "Desenvolvido por",
       "inPartnershipWith": "en asociación con"
@@ -205,7 +209,7 @@
   "arms": {
     "title": "Nuestras unidades operativas",
     "subtitle": "Equipos especializados que entregan excelencia en software, manufactura y más.",
-    "allByMadfam": "Todas las unidades por MADFAM",
+    "allByMadfam": "Todas as unidades - Empresas MADFAM",
     "viewAll": "Ver todas las unidades",
     "mainCapabilities": "Capacidades principales",
     "mainProducts": "Produtos principais",
@@ -251,23 +255,23 @@
       "products": {
         "title": "Nossos Produtos",
         "aureoStudio": {
-          "description": "Plataforma de IA generativa para criar, editar e gerenciar conteúdo visual e multimídia com ferramentas profissionais.",
-          "audience": "Designers, criativos e equipes de marketing",
+          "description": "Em Breve: Plataforma empresarial de governança e orquestração de IA para automação completa de negócios.",
+          "audience": "Grandes empresas e organizações",
           "cta": "Visitar Aureo Studio",
           "features": {
-            "0": "Geração de imagens com IA",
-            "1": "Edição profissional na nuvem",
-            "2": "Colaboração em tempo real"
+            "0": "Governança e conformidade de IA",
+            "1": "Orquestração de processos",
+            "2": "Automação empresarial"
           }
         },
         "penny": {
-          "description": "Automação inteligente de processos empresariais com IA que aprende e melhora continuamente.",
-          "audience": "Empresas médias e grandes",
+          "description": "Plataforma de chat e workbench de IA fácil de usar para consumidores e empresas. Seu assistente inteligente para tarefas diárias e automação empresarial.",
+          "audience": "Consumidores e empresas de todos os tamanhos",
           "cta": "Descobrir PENNY",
           "features": {
-            "0": "Automação sem código",
-            "1": "Integrações empresariais",
-            "2": "Análise preditiva"
+            "0": "Interface de chat inteligente",
+            "1": "Automação pessoal e empresarial",
+            "2": "Workbench para todos os usuários"
           }
         },
         "cotizaStudio": {
@@ -288,6 +292,16 @@
             "0": "Dashboards interativos",
             "1": "Previsões com IA",
             "2": "Alertas inteligentes"
+          }
+        },
+        "dhanam": {
+          "description": "Plataforma de bem-estar financeiro e gestão patrimonial com insights alimentados por IA.",
+          "audience": "Indivíduos e consultores financeiros",
+          "cta": "Visitar Dhanam",
+          "features": {
+            "0": "Insights financeiros com IA",
+            "1": "Estratégias de riqueza personalizadas",
+            "2": "Acompanhamento de portfólio em tempo real"
           }
         }
       },
@@ -356,7 +370,6 @@
       "workspaces": "Workspaces",
       "openData": "Datos abiertos"
     },
-    "sparkIntegrationNote": "SPARK se ha integrado en Aureo Studio como \"Aureo Flows\" para mejor gobernanza y control.",
     "availableProducts": "Produtos disponíveis",
     "availableProductsSubtitle": "Plataformas e ferramentas prontas para implementar em sua organização.",
     "upcomingSubtitle": "Productos y plataformas en desarrollo por nuestras unidades.",
@@ -378,9 +391,9 @@
       "viewUnits": "Ver unidades"
     },
     "aureoStudio": {
-      "description": "Plataforma para orquestração de IA que governa e automatiza processos empresariais complexos.",
-      "audience": "Empresas medianas a grandes",
-      "cta": "Visitar Aureo Studio",
+      "description": "Em Breve: Plataforma empresarial de governança e orquestração de IA para automação completa de negócios.",
+      "audience": "Grandes empresas e organizações",
+      "cta": "Em Breve",
       "features": {
         "0": "Controle de fluxos inteligente",
         "1": "Integrações empresariais",
@@ -388,8 +401,8 @@
       }
     },
     "penny": {
-      "description": "Interface de workspace que facilita a automação e melhora a experiência do usuário.",
-      "audience": "Equipes e organizações",
+      "description": "Plataforma de chat e workbench de IA fácil de usar para consumidores e empresas.",
+      "audience": "Consumidores e empresas",
       "cta": "Ver PENNY",
       "features": {
         "0": "Interface intuitiva",

@@ -38,11 +38,11 @@ export default async function ProductsPage({ params }: Props) {
     {
       name: 'Aureo Studio',
       description:
-        'Plataforma de orquestación de IA que gobierna y automatiza procesos empresariales complejos con control total.',
-      audience: 'Empresas medianas a grandes',
-      badge: 'un producto de Aureo Labs',
+        'Coming Soon: Enterprise AI governance and orchestration platform for complete business automation.',
+      audience: 'Large enterprises and organizations',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: 'Visitar Aureo Studio',
+        label: 'Coming Soon',
         url: 'https://aureo.studio',
         external: true,
       },
@@ -61,9 +61,9 @@ export default async function ProductsPage({ params }: Props) {
     {
       name: 'PENNY',
       description:
-        'Interfaz de workspace que facilita la automatización y mejora la experiencia del usuario final.',
-      audience: 'Equipos y organizaciones',
-      badge: 'un producto de Aureo Labs',
+        'User-friendly AI chat and workbench platform for consumers and enterprises. Your intelligent assistant for everyday tasks and business automation.',
+      audience: 'Consumers and businesses of all sizes',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: 'Ver PENNY',
         url: '/products/penny',
@@ -81,7 +81,7 @@ export default async function ProductsPage({ params }: Props) {
       description:
         'Workspace especializado para generación de cotizaciones y presupuestos inteligentes.',
       audience: 'Empresas de servicios y consultorías',
-      badge: 'un producto de Aureo Labs',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: 'Visitar Cotiza Studio',
         url: 'https://cotiza.studio',
@@ -104,7 +104,7 @@ export default async function ProductsPage({ params }: Props) {
       description:
         'Plataforma de análisis y visualización de datos para toma de decisiones estratégicas.',
       audience: 'Analistas y tomadores de decisión',
-      badge: 'plataforma de Aureo Labs',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: 'Visitar Forge Sight',
         url: 'https://forgesight.quest',
@@ -119,11 +119,33 @@ export default async function ProductsPage({ params }: Props) {
       arm: 'aureo-labs',
     },
     {
+      name: 'Dhanam',
+      description: 'Financial wellness and wealth management platform with AI-powered insights.',
+      audience: 'Individuals and financial advisors',
+      badge: 'by Aureo Labs, a MADFAM Company',
+      primaryCta: {
+        label: 'Visit Dhanam',
+        url: 'https://www.dhan.am',
+        external: true,
+      },
+      secondaryCta: {
+        label: commonT('nav.contact'),
+        url: '/contact',
+      },
+      features: [
+        'AI-powered financial insights',
+        'Personalized wealth strategies',
+        'Real-time portfolio tracking',
+      ],
+      category: 'Platform',
+      arm: 'aureo-labs',
+    },
+    {
       name: 'AVALA',
       description:
         'Plataforma de validación y cumplimiento normativo automatizado para empresas reguladas.',
       audience: 'Empresas con altos requerimientos de cumplimiento',
-      badge: 'plataforma de Aureo Labs',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: 'Próximamente',
         url: '#',

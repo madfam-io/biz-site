@@ -38,6 +38,7 @@ export function CorporateHomePage() {
         { name: 'Aureo Studio', url: 'https://aureo.studio' },
         { name: 'PENNY', url: '/products/penny' },
         { name: 'Cotiza Studio', url: 'https://cotiza.studio' },
+        { name: 'Dhanam', url: 'https://www.dhan.am' },
       ],
       externalUrl: 'https://aureolabs.dev',
     },
@@ -67,7 +68,7 @@ export function CorporateHomePage() {
       name: 'Aureo Studio',
       description: t('corporate.products.aureoStudio.description'),
       audience: t('corporate.products.aureoStudio.audience'),
-      badge: t('corporate.badges.aureoProduct'),
+      badge: t('corporate.badges.aureoLabsProduct'),
       primaryCta: {
         label: t('corporate.products.aureoStudio.cta'),
         url: 'https://aureo.studio',
@@ -87,7 +88,7 @@ export function CorporateHomePage() {
       name: 'PENNY',
       description: t('corporate.products.penny.description'),
       audience: t('corporate.products.penny.audience'),
-      badge: 'un producto de Aureo Labs',
+      badge: t('corporate.badges.aureoLabsProduct'),
       primaryCta: {
         label: t('corporate.products.penny.cta'),
         url: '/products/penny',

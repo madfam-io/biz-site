@@ -33,7 +33,7 @@ export default async function AureoLabsPage({ params }: Props) {
       name: 'Aureo Studio',
       description: t('products.aureoStudio.description'),
       audience: t('products.aureoStudio.audience'),
-      badge: 'un producto de Aureo Labs',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: t('products.aureoStudio.cta'),
         url: 'https://aureo.studio',
@@ -53,7 +53,7 @@ export default async function AureoLabsPage({ params }: Props) {
       name: 'PENNY',
       description: t('products.penny.description'),
       audience: t('products.penny.audience'),
-      badge: 'un producto de Aureo Labs',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: t('products.penny.cta'),
         url: '/products/penny',
@@ -72,7 +72,7 @@ export default async function AureoLabsPage({ params }: Props) {
       name: 'Cotiza Studio',
       description: t('products.cotizaStudio.description'),
       audience: t('products.cotizaStudio.audience'),
-      badge: 'un producto de Aureo Labs',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: t('products.cotizaStudio.cta'),
         url: 'https://cotiza.studio',
@@ -92,7 +92,7 @@ export default async function AureoLabsPage({ params }: Props) {
       name: 'Forge Sight',
       description: t('products.forgeSight.description'),
       audience: t('products.forgeSight.audience'),
-      badge: 'plataforma de Aureo Labs',
+      badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: t('products.forgeSight.cta'),
         url: 'https://forgesight.quest',
@@ -106,6 +106,26 @@ export default async function AureoLabsPage({ params }: Props) {
         t('products.forgeSight.features.0'),
         t('products.forgeSight.features.1'),
         t('products.forgeSight.features.2'),
+      ],
+    },
+    {
+      name: 'Dhanam',
+      description: t('products.dhanam.description'),
+      audience: t('products.dhanam.audience'),
+      badge: 'by Aureo Labs, a MADFAM Company',
+      primaryCta: {
+        label: t('products.dhanam.cta'),
+        url: 'https://www.dhan.am',
+        external: true,
+      },
+      secondaryCta: {
+        label: commonT('cta.contact'),
+        url: '/contact',
+      },
+      features: [
+        t('products.dhanam.features.0'),
+        t('products.dhanam.features.1'),
+        t('products.dhanam.features.2'),
       ],
     },
   ];
