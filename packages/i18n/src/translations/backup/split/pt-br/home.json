@@ -1,11 +1,5 @@
 {
   "home": {
-    "hero": {
-      "title": "Onde a IA encontra a criatividade humana",
-      "subtitle": "MADFAM transforma negócios com soluções alimentadas por IA. Do design 3D às parcerias estratégicas vCTO, oferecemos inovação em todos os níveis.",
-      "exploreServices": "Explorar serviços",
-      "viewProducts": "Ver produtos"
-    },
     "services": {
       "title": "Serviços de 5 níveis",
       "subtitle": "De soluções rápidas à transformação estratégica, temos o nível perfeito para suas necessidades.",
@@ -28,6 +22,13 @@
       "getStarted": "Começar",
       "learnMore": "Saiba mais",
       "button": "Começar"
+    },
+    "hero": {
+      "title": "Onde a IA encontra a criatividade humana",
+      "subtitle": "MADFAM transforma negócios com soluções alimentadas por IA. Do design 3D às parcerias estratégicas vCTO, oferecemos inovação em todos os níveis.",
+      "cta": "Começar",
+      "exploreServices": "Explorar serviços",
+      "viewProducts": "Ver produtos"
     }
   }
 }
