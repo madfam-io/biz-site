@@ -1,6 +1,5 @@
-'use client';
-
 import { BrandThemeProvider } from '@madfam/ui';
+import { Metadata } from 'next';
 import { Inter, Poppins, Space_Mono } from 'next/font/google';
 import { DarkModeScript } from './dark-mode-script';
 import './globals.css';
@@ -24,6 +23,14 @@ const spaceMono = Space_Mono({
   variable: '--font-space-mono',
   display: 'swap',
 });
+
+export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+};
 
 export const viewport = {
   themeColor: [

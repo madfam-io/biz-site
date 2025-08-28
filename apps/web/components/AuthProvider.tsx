@@ -1,6 +1,5 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
 import { ReactNode } from 'react';
 
 interface AuthProviderProps {
@@ -8,10 +7,7 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  // In staging environment, don't use SessionProvider
-  if (process.env.NEXT_PUBLIC_ENV === 'staging') {
-    return <>{children}</>;
-  }
-  
-  return <SessionProvider>{children}</SessionProvider>;
+  // NextAuth is disabled for the public corporate site
+  // Authentication will be added when needed for specific features
+  return <>{children}</>;
 }
