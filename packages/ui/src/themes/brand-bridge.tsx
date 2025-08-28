@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { brandColors, generateCSSVariables } from './brand-colors';
+import { generateCSSVariables } from './brand-colors';
 
 export type BrandMode = 'solarpunk-legacy' | 'corporate-evolution' | 'hybrid-harmony';
 export type ColorMode = 'light' | 'dark';
@@ -141,7 +141,7 @@ export const BrandThemeProvider: React.FC<BrandThemeProviderProps> = ({
     const modes: BrandMode[] = ['solarpunk-legacy', 'hybrid-harmony', 'corporate-evolution'];
     const currentIndex = modes.indexOf(brandMode);
     const nextIndex = (currentIndex + 1) % modes.length;
-    setBrandModeState(modes[nextIndex]);
+    setBrandModeState(modes[nextIndex] as BrandMode);
   };
 
   return (

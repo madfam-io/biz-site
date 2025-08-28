@@ -1,14 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { cn, LogoSystem, AnimatedLogo, ThemeModeSelector } from '@madfam/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { cn } from '@madfam/ui/lib/utils';
-import { LogoSystem, AnimatedLogo } from '@madfam/ui/components/brand/LogoSystem';
-import { ThemeModeSelector } from '@madfam/ui/themes/brand-bridge';
-import { LanguageSwitcher } from './LanguageSwitcher';
+import React, { useState, useEffect } from 'react';
 import { DarkModeToggle } from './DarkModeToggle';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface NavItem {
   href: string;
@@ -36,7 +34,7 @@ export const BrandNavbar: React.FC = () => {
   // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
+      const { scrollY } = window;
       setIsScrolled(scrollY > 20);
 
       // Dynamic logo sizing based on scroll
@@ -105,7 +103,7 @@ export const BrandNavbar: React.FC = () => {
               {/* Brand tagline (hidden on mobile) */}
               {!isScrolled && (
                 <span className="hidden lg:block text-sm font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {t('tagline', 'Where AI meets human creativity')}
+                  {t('tagline')}
                 </span>
               )}
             </Link>

@@ -16,5 +16,13 @@ export * from './components/Assessment';
 export * from './components/Newsletter';
 export * from './components/Testimonial';
 
+// Brand Components
+export * from './components/brand/LogoSystem';
+export * from './components/brand/BrandParticles';
+
+// Theme & Styling
+export * from './themes/brand-colors';
+export * from './themes/brand-bridge';
+
 // Utilities
 export * from './lib/utils';

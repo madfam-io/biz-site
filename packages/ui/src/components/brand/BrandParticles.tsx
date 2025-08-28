@@ -127,7 +127,7 @@ export const BrandParticles: React.FC<BrandParticlesProps> = ({
         vx: (Math.random() - 0.5) * speed,
         vy: (Math.random() - 0.5) * speed,
         radius: Math.random() * 3 + 1,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        color: colors[Math.floor(Math.random() * colors.length)] || '#2c8136',
         opacity: isSubtle ? 0.3 : 0.6,
         pulse: Math.random() * Math.PI * 2,
       });

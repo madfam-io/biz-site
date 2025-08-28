@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import { cn } from '../../lib/utils';
 import Image from 'next/image';
 
@@ -15,7 +15,6 @@ export interface LogoSystemProps {
   onClick?: () => void;
   'aria-label'?: string;
   role?: string;
-  focusable?: boolean;
   tabIndex?: number;
 }
 
@@ -44,7 +43,6 @@ export const LogoSystem: React.FC<LogoSystemProps> = ({
   onClick,
   'aria-label': ariaLabel = 'MADFAM - Where AI meets human creativity',
   role = 'img',
-  focusable = false,
   tabIndex,
 }) => {
   const dimensions = sizeMap[size];
