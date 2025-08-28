@@ -2,6 +2,7 @@
 
 import { getLocalizedUrl, type Locale } from '@madfam/i18n';
 import { Container, Button } from '@madfam/ui';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
@@ -35,11 +36,20 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link
-              href={`/${locale}`}
-              className="font-heading text-xl font-bold text-obsidian dark:text-pearl"
-            >
-              MADFAM
+            <Link href={`/${locale}`} className="flex items-center gap-3 group">
+              <div className="relative w-10 h-10 transition-transform group-hover:scale-105">
+                <Image
+                  src="/assets/brand/madfam-logo.svg"
+                  alt="MADFAM"
+                  width={40}
+                  height={40}
+                  priority
+                  className="w-full h-full"
+                />
+              </div>
+              <span className="font-heading text-xl font-bold text-obsidian dark:text-pearl">
+                MADFAM
+              </span>
             </Link>
           </div>
 
@@ -49,7 +59,7 @@ export function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-obsidian/70 dark:text-pearl/70 hover:text-obsidian dark:hover:text-pearl transition-colors"
+                className="text-sm font-medium text-obsidian/70 dark:text-pearl/70 hover-logo-green relative solarpunk-accent transition-colors"
               >
                 {item.name}
               </Link>

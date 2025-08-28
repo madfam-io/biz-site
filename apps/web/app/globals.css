@@ -4,13 +4,15 @@
 
 @layer base {
   :root {
-    /* MADFAM Brand Colors - Solarpunk Theme */
-    --brand-green: 44, 129, 54; /* #2c8136 */
-    --brand-green-dark: 35, 103, 43;
-    --brand-purple: 88, 50, 111; /* #58326f */
-    --brand-purple-dark: 70, 40, 89;
-    --brand-yellow: 255, 204, 0; /* #ffcc00 */
-    --brand-yellow-dark: 204, 163, 0;
+    /* MADFAM Logo Colors - 8 Official Brand Colors */
+    --logo-white: #fdfdfd;
+    --logo-black: #030303;
+    --logo-green: #2c8136;  /* Forest green - primary accent */
+    --logo-purple: #58326f; /* Deep purple - secondary accent */
+    --logo-yellow: #eebc15; /* Golden yellow - tertiary accent */
+    --logo-gray-light: #d2d3cc;
+    --logo-gray-medium: #a1a49c;
+    --logo-gray-dark: #5d5e5a;
     
     /* Legacy Creative Colors */
     --color-sun: #FFD93D;
@@ -19,12 +21,14 @@
     --color-obsidian: #0A0E27;
     --color-pearl: #FAFAFA;
 
-    /* Semantic Colors */
-    --color-primary: rgb(var(--brand-green));
-    --color-secondary: rgb(var(--brand-purple));
+    /* Semantic Colors - Elegant Brand Integration */
+    --color-primary: var(--logo-green);
+    --color-secondary: var(--logo-purple);
+    --color-accent: var(--logo-yellow);
     --color-success: var(--color-leaf);
-    --color-creative: rgb(var(--brand-yellow));
+    --color-creative: var(--color-lavender);
     --color-surface: var(--color-pearl);
+    --color-muted: var(--logo-gray-medium);
 
     /* Typography */
     --font-poppins: 'Poppins';
@@ -69,49 +73,57 @@
     @apply bg-gradient-to-r from-lavender to-sun bg-clip-text text-transparent;
   }
   
-  /* Brand gradient text */
-  .text-brand-gradient {
-    background: linear-gradient(to right, rgb(44, 129, 54), rgb(88, 50, 111), rgb(255, 204, 0));
+  /* Logo-based gradient text - subtle elegance */
+  .text-logo-gradient {
+    background: linear-gradient(135deg, var(--logo-green), var(--logo-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
-  /* Brand color utilities */
-  .text-brand-green {
-    color: rgb(var(--brand-green));
+  /* Solarpunk accent gradient - use sparingly */
+  .text-solarpunk-gradient {
+    background: linear-gradient(90deg, var(--logo-green), var(--logo-yellow), var(--logo-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  .text-brand-purple {
-    color: rgb(var(--brand-purple));
+  /* Logo color utilities */
+  .text-logo-green {
+    color: var(--logo-green);
   }
   
-  .text-brand-yellow {
-    color: rgb(var(--brand-yellow));
+  .text-logo-purple {
+    color: var(--logo-purple);
   }
   
-  .bg-brand-green {
-    background-color: rgb(var(--brand-green));
+  .text-logo-yellow {
+    color: var(--logo-yellow);
   }
   
-  .bg-brand-purple {
-    background-color: rgb(var(--brand-purple));
+  /* Subtle accent borders */
+  .border-logo-accent {
+    border-color: var(--logo-gray-light);
   }
   
-  .bg-brand-yellow {
-    background-color: rgb(var(--brand-yellow));
+  .border-logo-green {
+    border-color: var(--logo-green);
   }
   
-  .border-brand-green {
-    border-color: rgb(var(--brand-green));
+  .border-logo-purple {
+    border-color: var(--logo-purple);
   }
   
-  .border-brand-purple {
-    border-color: rgb(var(--brand-purple));
+  /* Hover states with logo colors */
+  .hover-logo-green:hover {
+    color: var(--logo-green);
+    transition: color 0.2s ease;
   }
   
-  .border-brand-yellow {
-    border-color: rgb(var(--brand-yellow));
+  .hover-logo-purple:hover {
+    color: var(--logo-purple);
+    transition: color 0.2s ease;
   }
 
   /* Glass morphism */
@@ -177,22 +189,41 @@
     animation: gradient-shift 5s ease infinite;
   }
   
-  /* Solarpunk glow effects */
-  .glow-green {
-    box-shadow: 0 0 20px rgba(44, 129, 54, 0.5);
+  /* Subtle logo-based shadows */
+  .shadow-logo-soft {
+    box-shadow: 0 2px 8px rgba(93, 94, 90, 0.1);
   }
   
-  .glow-purple {
-    box-shadow: 0 0 20px rgba(88, 50, 111, 0.5);
+  .shadow-logo-medium {
+    box-shadow: 0 4px 16px rgba(93, 94, 90, 0.15);
   }
   
-  .glow-yellow {
-    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+  .shadow-logo-accent {
+    box-shadow: 0 1px 3px rgba(44, 129, 54, 0.1),
+                0 1px 2px rgba(88, 50, 111, 0.06);
   }
   
-  /* Brand-specific utilities */
-  .brand-shadow {
-    box-shadow: 0 10px 40px -10px rgba(44, 129, 54, 0.3),
-                0 10px 40px -10px rgba(88, 50, 111, 0.3);
+  /* Elegant hover elevations */
+  .hover-elevate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 129, 54, 0.15);
+    transition: all 0.3s ease;
+  }
+  
+  /* Subtle solarpunk accents */
+  .solarpunk-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--logo-green) 0%, var(--logo-purple) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .solarpunk-accent:hover::after {
+    opacity: 1;
   }
 }

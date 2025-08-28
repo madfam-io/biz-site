@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { AuthProvider } from '@/components/AuthProvider';
-import { BrandNavbar } from '@/components/BrandNavbar';
 import { CookieConsent } from '@/components/CookieConsent';
 import { Footer } from '@/components/Footer';
 import { GlobalAnalytics } from '@/components/GlobalAnalytics';
 import { LoggerProvider } from '@/components/LoggerProvider';
+import { Navbar } from '@/components/Navbar';
 import { OrganizationStructuredData } from '@/components/StructuredData';
 import { locales, getMessages, type Locale } from '@/i18n.config';
 
@@ -34,7 +34,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages} locale={locale}>
           <OrganizationStructuredData />
           <GlobalAnalytics />
-          <BrandNavbar />
+          <Navbar />
           <div className="pt-16">
             {children}
             <Footer />
