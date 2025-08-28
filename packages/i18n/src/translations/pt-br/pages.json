@@ -271,109 +271,29 @@
     "select": "Selecionar",
     "close": "Fechar"
   },
-  "privacy": {
-    "title": "Política de Privacidade",
-    "lastUpdated": "Última atualização",
-    "sections": {
-      "introduction": {
-        "title": "Introdução",
-        "content": "A MADFAM está comprometida em proteger sua privacidade. Esta política descreve como coletamos, usamos e protegemos suas informações."
-      },
-      "dataCollection": {
-        "title": "Dados que coletamos",
-        "content": "Coletamos informações que você nos fornece diretamente, como nome, e-mail, telefone e informações da empresa."
-      },
-      "dataUse": {
-        "title": "Como usamos seus dados",
-        "content": "Usamos suas informações para fornecer nossos serviços, melhorar nossa plataforma e comunicar atualizações relevantes."
-      },
-      "dataProtection": {
-        "title": "Como protegemos seus dados",
-        "content": "Implementamos medidas de segurança técnicas e organizacionais para proteger suas informações contra acesso não autorizado."
-      },
-      "yourRights": {
-        "title": "Seus direitos",
-        "content": "Você tem direito de acessar, corrigir ou excluir suas informações pessoais a qualquer momento."
-      }
-    }
-  },
-  "terms": {
-    "title": "Termos de Serviço",
-    "lastUpdated": "Última atualização",
-    "sections": {
-      "acceptance": {
-        "title": "Aceitação dos termos",
-        "content": "Ao usar nossos serviços, você concorda com estes termos de serviço."
-      },
-      "services": {
-        "title": "Nossos serviços",
-        "content": "A MADFAM fornece serviços de consultoria, desenvolvimento e implementação de soluções de IA."
-      },
-      "obligations": {
-        "title": "Suas obrigações",
-        "content": "Você concorda em fornecer informações precisas e usar nossos serviços de forma legal e ética."
-      },
-      "intellectual": {
-        "title": "Propriedade intelectual",
-        "content": "Todo conteúdo e tecnologia permanecem propriedade da MADFAM, exceto quando acordado diferentemente."
-      },
-      "liability": {
-        "title": "Limitação de responsabilidade",
-        "content": "Nossa responsabilidade é limitada ao valor pago pelos serviços nos últimos 12 meses."
-      }
-    }
-  },
   "cookies": {
-    "title": "Política de cookies",
+    "title": "Política de Cookies",
     "lastUpdated": "Última atualização",
-    "banner": {
-      "title": "Usamos cookies",
-      "description": "Usamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar o conteúdo. Você pode aceitar todos os cookies ou personalizar suas preferências.",
-      "acceptAll": "Aceitar todos",
-      "necessaryOnly": "Apenas necessários",
-      "customize": "Personalizar",
-      "closeAriaLabel": "Fechar banner de cookies"
-    },
-    "settings": {
-      "title": "Preferências de cookies",
-      "save": "Salvar preferências",
-      "cancel": "Cancelar",
-      "necessary": {
-        "title": "Cookies necessários",
-        "description": "Esses cookies são essenciais para o funcionamento do site e não podem ser desativados."
-      },
-      "analytics": {
-        "title": "Cookies analíticos",
-        "description": "Nos ajudam a entender como os visitantes interagem com o site, coletando informações anonimamente."
-      },
-      "marketing": {
-        "title": "Cookies de marketing",
-        "description": "Usados para rastrear visitantes em diferentes sites e exibir anúncios relevantes."
-      }
-    },
-    "footer": {
-      "text": "Para mais informações, consulte nossa <privacy>Política de Privacidade</privacy> e <terms>Termos e Condições</terms>."
-    },
     "sections": {
       "whatAreCookies": {
-        "title": "O que são cookies",
-        "description": "Cookies são pequenos arquivos de texto colocados em seu computador ou dispositivo móvel quando você visita nosso site. Eles são amplamente usados para fazer sites funcionarem de forma mais eficiente e fornecer uma melhor experiência ao usuário."
+        "title": "O que são cookies?",
+        "description": "Cookies são pequenos arquivos de texto que são armazenados em seu computador ou dispositivo móvel quando você visita um site. Eles permitem que os sites reconheçam seu dispositivo e armazenem algumas informações sobre suas preferências ou ações."
       },
       "howWeUse": {
         "title": "Como usamos cookies",
-        "description": "Usamos cookies para os seguintes propósitos:",
+        "description": "Utilizamos diferentes tipos de cookies para vários propósitos:",
         "essential": "Cookies essenciais",
-        "analytics": "Cookies analíticos",
-        "preference": "Cookies de preferência",
+        "analytics": "Cookies de análise",
+        "preference": "Cookies de preferências",
         "marketing": "Cookies de marketing"
       },
       "managing": {
-        "title": "Gerenciando cookies",
-        "description": "Você pode controlar e gerenciar cookies através das configurações do seu navegador. Observe que remover ou bloquear cookies pode impactar sua experiência de usuário e algumas partes do nosso site podem não ser totalmente acessíveis."
+        "title": "Gerenciando seus cookies",
+        "description": "Você pode controlar e gerenciar cookies de várias maneiras. Observe que remover ou bloquear cookies pode afetar sua experiência de usuário."
       },
       "contact": {
         "title": "Entre em contato",
-        "description": "Se você tem perguntas sobre nosso uso de cookies ou esta política, entre em contato conosco:",
+        "description": "Se você tiver alguma dúvida sobre nosso uso de cookies, entre em contato conosco:",
         "email": "E-mail",
         "phone": "Telefone",
         "address": "Endereço"

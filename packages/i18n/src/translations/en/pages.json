@@ -271,109 +271,29 @@
     "select": "Select",
     "close": "Close"
   },
-  "privacy": {
-    "title": "Privacy Policy",
-    "lastUpdated": "Last updated",
-    "sections": {
-      "introduction": {
-        "title": "Introduction",
-        "content": "MADFAM is committed to protecting your privacy. This policy describes how we collect, use, and protect your information."
-      },
-      "dataCollection": {
-        "title": "Data we collect",
-        "content": "We collect information you provide directly, such as name, email, phone, and company information."
-      },
-      "dataUse": {
-        "title": "How we use your data",
-        "content": "We use your information to provide our services, improve our platform, and communicate relevant updates."
-      },
-      "dataProtection": {
-        "title": "How we protect your data",
-        "content": "We implement technical and organizational security measures to protect your information from unauthorized access."
-      },
-      "yourRights": {
-        "title": "Your rights",
-        "content": "You have the right to access, correct, or delete your personal information at any time."
-      }
-    }
-  },
-  "terms": {
-    "title": "Terms of Service",
-    "lastUpdated": "Last updated",
-    "sections": {
-      "acceptance": {
-        "title": "Acceptance of terms",
-        "content": "By using our services, you agree to these terms of service."
-      },
-      "services": {
-        "title": "Our services",
-        "content": "MADFAM provides consulting, development, and implementation of AI solutions."
-      },
-      "obligations": {
-        "title": "Your obligations",
-        "content": "You agree to provide accurate information and use our services legally and ethically."
-      },
-      "intellectual": {
-        "title": "Intellectual property",
-        "content": "All content and technology remain property of MADFAM unless otherwise agreed."
-      },
-      "liability": {
-        "title": "Limitation of liability",
-        "content": "Our liability is limited to the amount paid for services in the last 12 months."
-      }
-    }
-  },
   "cookies": {
-    "title": "Cookie Policy",
+    "title": "Cookies Policy",
     "lastUpdated": "Last updated",
-    "banner": {
-      "title": "We use cookies",
-      "description": "We use cookies to improve your experience, analyze site traffic, and personalize content. You can accept all cookies or customize your preferences.",
-      "acceptAll": "Accept all",
-      "necessaryOnly": "Necessary only",
-      "customize": "Customize",
-      "closeAriaLabel": "Close cookie banner"
-    },
-    "settings": {
-      "title": "Cookie preferences",
-      "save": "Save preferences",
-      "cancel": "Cancel",
-      "necessary": {
-        "title": "Necessary cookies",
-        "description": "These cookies are essential for the website to function and cannot be disabled."
-      },
-      "analytics": {
-        "title": "Analytics cookies",
-        "description": "Help us understand how visitors interact with the website by collecting information anonymously."
-      },
-      "marketing": {
-        "title": "Marketing cookies",
-        "description": "Used to track visitors across websites and display relevant advertisements."
-      }
-    },
-    "footer": {
-      "text": "For more information, see our <privacy>Privacy Policy</privacy> and <terms>Terms and Conditions</terms>."
-    },
     "sections": {
       "whatAreCookies": {
-        "title": "What are cookies",
-        "description": "Cookies are small text files placed on your computer or mobile device when you visit our website. They are widely used to make websites work more efficiently and provide a better user experience."
+        "title": "What are cookies?",
+        "description": "Cookies are small text files that are placed on your computer or mobile device when you visit a website. They allow websites to recognize your device and store some information about your preferences or actions."
       },
       "howWeUse": {
         "title": "How we use cookies",
-        "description": "We use cookies for the following purposes:",
+        "description": "We use different types of cookies for various purposes:",
         "essential": "Essential cookies",
         "analytics": "Analytics cookies",
         "preference": "Preference cookies",
         "marketing": "Marketing cookies"
       },
       "managing": {
-        "title": "Managing cookies",
-        "description": "You can control and manage cookies through your browser settings. Note that removing or blocking cookies may impact your user experience and some parts of our website may not be fully accessible."
+        "title": "Managing your cookies",
+        "description": "You can control and manage cookies in various ways. Please note that removing or blocking cookies can impact your user experience."
       },
       "contact": {
         "title": "Contact us",
-        "description": "If you have questions about our use of cookies or this policy, please contact us:",
+        "description": "If you have any questions about our use of cookies, please contact us:",
         "email": "Email",
         "phone": "Phone",
         "address": "Address"

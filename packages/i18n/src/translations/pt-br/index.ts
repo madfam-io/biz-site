@@ -20,8 +20,8 @@ export default {
   products,
   services,
   corporate,
-  legal,
   ...pages,
   ...forms,
   ...system,
+  legal, // Legal namespace must come AFTER pages to prevent overwrite
 };
