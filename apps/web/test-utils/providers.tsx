@@ -1,6 +1,6 @@
 import React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
-import { render as rtlRender } from '@testing-library/react';
+import { render as rtlRender, type RenderResult } from '@testing-library/react';
 
 const messages = {
   common: {
@@ -136,7 +136,7 @@ export function renderWithProviders(
     locale = 'es',
     ...renderOptions
   }: { locale?: 'en' | 'es' | 'pt-br' } & Parameters<typeof rtlRender>[1] = {}
-) {
+): RenderResult {
   return rtlRender(ui, {
     wrapper: ({ children }) => <AllTheProviders locale={locale}>{children}</AllTheProviders>,
     ...renderOptions,
