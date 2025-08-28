@@ -1,3 +1,6 @@
+'use client';
+
+import { BrandThemeProvider } from '@madfam/ui';
 import { Inter, Poppins, Space_Mono } from 'next/font/google';
 import { DarkModeScript } from './dark-mode-script';
 import './globals.css';
@@ -37,12 +40,17 @@ export default function RootLayout({
   params: { locale: string };
 }) {
   return (
-    <html lang={params.locale} className={`${inter.variable} ${poppins.variable} ${spaceMono.variable}`}>
+    <html
+      lang={params.locale}
+      className={`${inter.variable} ${poppins.variable} ${spaceMono.variable}`}
+    >
       <head>
         <DarkModeScript />
       </head>
       <body className="font-body antialiased bg-white dark:bg-obsidian text-obsidian dark:text-pearl transition-colors">
-        {children}
+        <BrandThemeProvider defaultBrandMode="solarpunk-legacy" defaultColorMode="light">
+          {children}
+        </BrandThemeProvider>
       </body>
     </html>
   );

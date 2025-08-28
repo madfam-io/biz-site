@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import { CorporateHomePage } from '@/components/CorporateHomePage';
+import { BrandedHomePage } from '@/components/BrandedHomePage';
 import { seoService } from '@/lib/seo';
 
 export async function generateMetadata({
@@ -14,5 +14,5 @@ export async function generateMetadata({
 
 export default function Page({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
-  return <CorporateHomePage />;
+  return <BrandedHomePage />;
 }

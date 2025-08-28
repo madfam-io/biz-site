@@ -4,7 +4,15 @@
 
 @layer base {
   :root {
-    /* Brand Colors */
+    /* MADFAM Brand Colors - Solarpunk Theme */
+    --brand-green: 44, 129, 54; /* #2c8136 */
+    --brand-green-dark: 35, 103, 43;
+    --brand-purple: 88, 50, 111; /* #58326f */
+    --brand-purple-dark: 70, 40, 89;
+    --brand-yellow: 255, 204, 0; /* #ffcc00 */
+    --brand-yellow-dark: 204, 163, 0;
+    
+    /* Legacy Creative Colors */
     --color-sun: #FFD93D;
     --color-leaf: #6BCB77;
     --color-lavender: #9B59B6;
@@ -12,10 +20,10 @@
     --color-pearl: #FAFAFA;
 
     /* Semantic Colors */
-    --color-primary: var(--color-obsidian);
-    --color-secondary: var(--color-sun);
+    --color-primary: rgb(var(--brand-green));
+    --color-secondary: rgb(var(--brand-purple));
     --color-success: var(--color-leaf);
-    --color-creative: var(--color-lavender);
+    --color-creative: rgb(var(--brand-yellow));
     --color-surface: var(--color-pearl);
 
     /* Typography */
@@ -59,6 +67,51 @@
   /* Gradient text */
   .gradient-text {
     @apply bg-gradient-to-r from-lavender to-sun bg-clip-text text-transparent;
+  }
+  
+  /* Brand gradient text */
+  .text-brand-gradient {
+    background: linear-gradient(to right, rgb(44, 129, 54), rgb(88, 50, 111), rgb(255, 204, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Brand color utilities */
+  .text-brand-green {
+    color: rgb(var(--brand-green));
+  }
+  
+  .text-brand-purple {
+    color: rgb(var(--brand-purple));
+  }
+  
+  .text-brand-yellow {
+    color: rgb(var(--brand-yellow));
+  }
+  
+  .bg-brand-green {
+    background-color: rgb(var(--brand-green));
+  }
+  
+  .bg-brand-purple {
+    background-color: rgb(var(--brand-purple));
+  }
+  
+  .bg-brand-yellow {
+    background-color: rgb(var(--brand-yellow));
+  }
+  
+  .border-brand-green {
+    border-color: rgb(var(--brand-green));
+  }
+  
+  .border-brand-purple {
+    border-color: rgb(var(--brand-purple));
+  }
+  
+  .border-brand-yellow {
+    border-color: rgb(var(--brand-yellow));
   }
 
   /* Glass morphism */
@@ -107,5 +160,39 @@
   /* Text balance */
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Animated gradient background */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+  }
+  
+  /* Solarpunk glow effects */
+  .glow-green {
+    box-shadow: 0 0 20px rgba(44, 129, 54, 0.5);
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(88, 50, 111, 0.5);
+  }
+  
+  .glow-yellow {
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+  }
+  
+  /* Brand-specific utilities */
+  .brand-shadow {
+    box-shadow: 0 10px 40px -10px rgba(44, 129, 54, 0.3),
+                0 10px 40px -10px rgba(88, 50, 111, 0.3);
   }
 }
