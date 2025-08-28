@@ -8,26 +8,44 @@ import { i18nConfig, type Locale } from '@madfam/i18n';
  * @returns The translated route
  */
 export function translateRoute(route: string, fromLocale: string, toLocale: string): string {
-  // If translating from Spanish to English, find the original English route
-  if (fromLocale === 'es' && toLocale === 'en') {
-    const spanishRoutes = i18nConfig.routes['es'];
-    // Find the English route that maps to this Spanish route
-    for (const [englishRoute, spanishRoute] of Object.entries(spanishRoutes)) {
-      if (spanishRoute === route) {
-        return englishRoute;
+  // If same locale, return original route
+  if (fromLocale === toLocale) {
+    return route;
+  }
+
+  // If translating to English, find the original English route by reverse mapping
+  if (toLocale === 'en') {
+    const sourceRoutes = i18nConfig.routes[fromLocale as keyof typeof i18nConfig.routes];
+    if (sourceRoutes) {
+      // Find the English route that maps to this localized route
+      for (const [englishRoute, localizedRoute] of Object.entries(sourceRoutes)) {
+        if (localizedRoute === route) {
+          return englishRoute;
+        }
       }
     }
     // If no translation found, return the original route
     return route;
   }
 
-  // If translating from English to Spanish, use the direct mapping
-  if (fromLocale === 'en' && toLocale === 'es') {
-    const spanishRoutes = i18nConfig.routes['es'];
-    return spanishRoutes[route as keyof typeof spanishRoutes] || route;
+  // If translating from English to any other locale, use the direct mapping
+  if (fromLocale === 'en') {
+    const targetRoutes = i18nConfig.routes[toLocale as keyof typeof i18nConfig.routes];
+    if (targetRoutes) {
+      return (targetRoutes as any)[route] || route;
+    }
+    return route;
   }
 
-  // If same locale or no translation needed, return original route
+  // If translating between two non-English locales, go through English as intermediary
+  if (fromLocale !== 'en' && toLocale !== 'en') {
+    // First translate to English
+    const englishRoute = translateRoute(route, fromLocale, 'en');
+    // Then translate from English to target locale
+    return translateRoute(englishRoute, 'en', toLocale);
+  }
+
+  // Fallback: return original route
   return route;
 }
 

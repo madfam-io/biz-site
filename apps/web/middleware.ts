@@ -1,15 +1,57 @@
 import { i18nConfig } from '@madfam/i18n';
 import createIntlMiddleware from 'next-intl/middleware';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const intlMiddleware = createIntlMiddleware({
   locales: i18nConfig.locales,
   defaultLocale: i18nConfig.defaultLocale,
   localePrefix: 'always',
+  localeDetection: true,
 });
 
 export default function middleware(request: NextRequest) {
-  // Run the intl middleware first
+  const pathname = request.nextUrl.pathname;
+
+  // Special handling for pt-br to prevent redirect loops
+  if (pathname === '/pt-br' || pathname.startsWith('/pt-br/')) {
+    console.log('Middleware: Special pt-br handling for:', pathname);
+
+    // Check if this is a valid pt-br page request
+    if (pathname === '/pt-br' || pathname === '/pt-br/') {
+      // Rewrite to the pt-br locale page instead of redirecting
+      const url = request.nextUrl.clone();
+      url.pathname = '/pt-br';
+
+      const response = NextResponse.rewrite(url);
+
+      // Add the same security headers
+      response.headers.set('X-Frame-Options', 'DENY');
+      response.headers.set('X-Content-Type-Options', 'nosniff');
+      response.headers.set('X-XSS-Protection', '1; mode=block');
+      response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+      response.headers.set(
+        'Permissions-Policy',
+        'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+      );
+      response.headers.set(
+        'Content-Security-Policy',
+        `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;`
+          .replace(/\s{2,}/g, ' ')
+          .trim()
+      );
+
+      if (process.env.NODE_ENV === 'production') {
+        response.headers.set(
+          'Strict-Transport-Security',
+          'max-age=31536000; includeSubDomains; preload'
+        );
+      }
+
+      return response;
+    }
+  }
+
+  // Run the intl middleware for other requests
   const response = intlMiddleware(request);
 
   // Add security headers
@@ -56,7 +98,12 @@ export default function middleware(request: NextRequest) {
 export const config = {
   // Match all pathnames except for
   // - API routes
-  // - Static files
-  // - Internal Next.js routes
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+  // - Static files (_next)
+  // - Internal Next.js/Vercel routes (_vercel)
+  // - Files with extensions (e.g. favicon.ico)
+  matcher: [
+    // Enhanced matcher for hyphenated locales like pt-br
+    // Excludes /api, /_next, /_vercel, and files with extensions
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+  ],
 };
