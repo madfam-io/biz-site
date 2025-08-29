@@ -1,0 +1,30 @@
+{
+  "banner": {
+    "title": "Usamos cookies",
+    "description": "Utilizamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar conteúdo. Você pode personalizar suas preferências ou aceitar todos os cookies.",
+    "acceptAll": "Aceitar Todos",
+    "necessaryOnly": "Apenas Necessários",
+    "customize": "Personalizar",
+    "closeAriaLabel": "Fechar banner de cookies"
+  },
+  "settings": {
+    "title": "Preferências de Cookies",
+    "save": "Salvar Preferências",
+    "cancel": "Cancelar",
+    "necessary": {
+      "title": "Cookies Necessários",
+      "description": "Estes cookies são essenciais para o funcionamento adequado do site. Não podem ser desabilitados."
+    },
+    "analytics": {
+      "title": "Cookies Analíticos",
+      "description": "Nos ajudam a entender como os visitantes interagem com nosso site coletando informações de forma anônima."
+    },
+    "marketing": {
+      "title": "Cookies de Marketing",
+      "description": "Usados para rastrear visitantes em sites para permitir que editores exibam anúncios relevantes e interessantes."
+    }
+  },
+  "footer": {
+    "text": "Ao continuar usando nosso site, você consente nosso uso de cookies conforme descrito em nossa <privacy>Política de Privacidade</privacy> e <terms>Termos de Serviço</terms>."
+  }
+}
