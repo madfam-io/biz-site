@@ -23,8 +23,8 @@ export function HomePage() {
           <div className="max-w-4xl">
             <AnimatedText variant="fadeUp" className="mb-6">
               <Heading level={1} className="text-white">
-                {t('home.hero.title').split('human creativity')[0]}
-                <span className="gradient-text">{t('home.hero.title').split('meets ')[1]}</span>
+                {t('home.hero.titlePart1')}
+                <span className="gradient-text">{t('home.hero.titlePart2')}</span>
               </Heading>
             </AnimatedText>
             <AnimatedText variant="fadeUp" delay={0.2}>
@@ -61,26 +61,32 @@ export function HomePage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-leaf/5 to-leaf/10">
                 <div className="text-4xl mb-4">⚡</div>
-                <h3 className="text-xl font-heading font-semibold mb-2">L1 - Essentials</h3>
-                <p className="text-obsidian/70 mb-4">Quick AI solutions for immediate impact</p>
+                <h3 className="text-xl font-heading font-semibold mb-2">
+                  {t('services.level1.title')}
+                </h3>
+                <p className="text-obsidian/70 mb-4">{t('services.level1.quickDescription')}</p>
                 <Button variant="outline" size="sm">
-                  Learn More
+                  {t('common.cta.learnMore')}
                 </Button>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-sun/5 to-sun/10">
                 <div className="text-4xl mb-4">🚀</div>
-                <h3 className="text-xl font-heading font-semibold mb-2">L2 - Advanced</h3>
-                <p className="text-obsidian/70 mb-4">Comprehensive AI automation solutions</p>
+                <h3 className="text-xl font-heading font-semibold mb-2">
+                  {t('services.level2.title')}
+                </h3>
+                <p className="text-obsidian/70 mb-4">{t('services.level2.quickDescription')}</p>
                 <Button variant="outline" size="sm">
-                  Learn More
+                  {t('common.cta.learnMore')}
                 </Button>
               </div>
               <div className="text-center p-6 rounded-xl bg-gradient-to-br from-lavender/5 to-lavender/10">
                 <div className="text-4xl mb-4">🎯</div>
-                <h3 className="text-xl font-heading font-semibold mb-2">L3 - Consulting</h3>
-                <p className="text-obsidian/70 mb-4">Strategic AI transformation guidance</p>
+                <h3 className="text-xl font-heading font-semibold mb-2">
+                  {t('services.level3.title')}
+                </h3>
+                <p className="text-obsidian/70 mb-4">{t('services.level3.quickDescription')}</p>
                 <Button variant="creative" size="sm">
-                  Learn More
+                  {t('common.cta.learnMore')}
                 </Button>
               </div>
             </div>
@@ -108,15 +114,15 @@ export function HomePage() {
             <div className="grid gap-8 md:grid-cols-2">
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="text-4xl mb-4">⚡</div>
-                <h3 className="text-2xl font-heading font-bold mb-4">SPARK</h3>
+                <h3 className="text-2xl font-heading font-bold mb-4">{t('products.spark.name')}</h3>
                 <p className="text-obsidian/70 mb-6">{t('home.products.spark.description')}</p>
-                <Button variant="primary">Learn More</Button>
+                <Button variant="primary">{t('common.cta.learnMore')}</Button>
               </div>
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="text-4xl mb-4">🤖</div>
-                <h3 className="text-2xl font-heading font-bold mb-4">PENNY</h3>
+                <h3 className="text-2xl font-heading font-bold mb-4">{t('products.penny.name')}</h3>
                 <p className="text-obsidian/70 mb-6">{t('home.products.penny.description')}</p>
-                <Button variant="primary">Learn More</Button>
+                <Button variant="primary">{t('common.cta.learnMore')}</Button>
               </div>
             </div>
           </div>

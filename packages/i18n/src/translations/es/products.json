@@ -2,6 +2,7 @@
   "title": "Nuestras Plataformas",
   "subtitle": "Soluciones tecnológicas que transforman la forma en que haces negocios",
   "spark": {
+    "name": "SPARK",
     "title": "SPARK",
     "tagline": "Orquestación Inteligente de IA",
     "shortDescription": "Plataforma que conecta, automatiza y optimiza procesos empresariales con IA.",
@@ -25,6 +26,7 @@
     }
   },
   "penny": {
+    "name": "PENNY",
     "title": "PENNY",
     "tagline": "Tu Asistente Personal de IA",
     "shortDescription": "Automatización inteligente que aprende y mejora continuamente tus procesos.",

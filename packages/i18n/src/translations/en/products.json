@@ -2,6 +2,7 @@
   "title": "Our Platforms",
   "subtitle": "Technology solutions that transform the way you do business",
   "spark": {
+    "name": "SPARK",
     "title": "SPARK",
     "tagline": "Intelligent AI Orchestration",
     "shortDescription": "Platform that connects, automates, and optimizes business processes with AI.",
@@ -25,6 +26,7 @@
     }
   },
   "penny": {
+    "name": "PENNY",
     "title": "PENNY",
     "tagline": "Your Personal AI Assistant",
     "shortDescription": "Intelligent automation that learns and continuously improves your processes.",

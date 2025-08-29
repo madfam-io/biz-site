@@ -2,6 +2,8 @@
   "home": {
     "hero": {
       "title": "Donde la IA encuentra la creatividad humana",
+      "titlePart1": "Donde la IA encuentra la ",
+      "titlePart2": "creatividad humana",
       "subtitle": "MADFAM transforma empresas con soluciones impulsadas por IA. Desde diseño 3D hasta asociaciones estratégicas vCTO, entregamos innovación en cada nivel.",
       "cta": "Comenzar",
       "exploreServices": "Explorar servicios",
