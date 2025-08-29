@@ -5,7 +5,7 @@ export type TranslationValue = string | string[] | Record<string, any>;
 export interface LocaleContent<T = string> {
   es: T;
   en: T;
-  'pt-br': T;
+  pt: T;
 }
 
 /**
@@ -30,7 +30,7 @@ export function createLocalizedObject<T>(
   return {
     es: defaultContent,
     en: enContent,
-    'pt-br': ptContent,
+    pt: ptContent,
   };
 }
 
@@ -38,14 +38,14 @@ export function createLocalizedObject<T>(
  * Check if all locales have content
  */
 export function hasAllLocales<T>(content: Partial<LocaleContent<T>>): content is LocaleContent<T> {
-  return Boolean(content['es'] && content['en'] && content['pt-br']);
+  return Boolean(content['es'] && content['en'] && content['pt']);
 }
 
 /**
  * Get missing locales from a content object
  */
 export function getMissingLocales<T>(content: Partial<LocaleContent<T>>): Locale[] {
-  const locales: Locale[] = ['es', 'en', 'pt-br'];
+  const locales: Locale[] = ['es', 'en', 'pt'];
   return locales.filter(locale => !content[locale]);
 }
 

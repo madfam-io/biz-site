@@ -26,88 +26,88 @@ const routes: Record<RouteKey, Record<Locale, string>> = {
   home: {
     en: '/',
     es: '/',
-    'pt-br': '/',
+    pt: '/',
   },
   // NEW: Corporate structure routes
   arms: {
     en: '/arms',
     es: '/unidades',
-    'pt-br': '/unidades',
+    pt: '/unidades',
   },
   'arms.aureo-labs': {
     en: '/arms/aureo-labs',
     es: '/unidades/aureo-labs',
-    'pt-br': '/unidades/aureo-labs',
+    pt: '/unidades/aureo-labs',
   },
   'arms.primavera3d': {
     en: '/arms/primavera3d',
     es: '/unidades/primavera3d',
-    'pt-br': '/unidades/primavera3d',
+    pt: '/unidades/primavera3d',
   },
   'arms.health': {
     en: '/arms/health',
     es: '/unidades/salud',
-    'pt-br': '/unidades/saude',
+    pt: '/unidades/saude',
   },
   'arms.aero': {
     en: '/arms/aero',
     es: '/unidades/aero',
-    'pt-br': '/unidades/aero',
+    pt: '/unidades/aero',
   },
   programs: {
     en: '/programs',
     es: '/programas',
-    'pt-br': '/programas',
+    pt: '/programas',
   },
   work: {
     en: '/work',
     es: '/casos',
-    'pt-br': '/casos',
+    pt: '/casos',
   },
   security: {
     en: '/security',
     es: '/seguridad',
-    'pt-br': '/seguranca',
+    pt: '/seguranca',
   },
   products: {
     en: '/products',
     es: '/productos',
-    'pt-br': '/produtos',
+    pt: '/produtos',
   },
   about: {
     en: '/about',
     es: '/nosotros',
-    'pt-br': '/sobre',
+    pt: '/sobre',
   },
   contact: {
     en: '/contact',
     es: '/contacto',
-    'pt-br': '/contato',
+    pt: '/contato',
   },
   blog: {
     en: '/blog',
     es: '/blog',
-    'pt-br': '/blog',
+    pt: '/blog',
   },
   careers: {
     en: '/careers',
     es: '/carreras',
-    'pt-br': '/carreiras',
+    pt: '/carreiras',
   },
   privacy: {
     en: '/privacy',
     es: '/privacidad',
-    'pt-br': '/privacidade',
+    pt: '/privacidade',
   },
   terms: {
     en: '/terms',
     es: '/terminos',
-    'pt-br': '/termos',
+    pt: '/termos',
   },
   cookies: {
     en: '/cookies',
     es: '/cookies',
-    'pt-br': '/cookies',
+    pt: '/cookies',
   },
 };
 
