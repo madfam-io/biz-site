@@ -6,7 +6,9 @@ The MADFAM website uses a comprehensive multi-environment deployment strategy op
 
 - **Development**: Local development with SQLite and hot reload
 - **Staging**: GitHub Pages (static export for design/content review)
-- **Production**: Vercel (full Next.js features with PostgreSQL)
+- **Production**: Vercel + Railway (hybrid infrastructure for full functionality)
+
+> **Important**: Vercel alone is NOT sufficient for 100% functionality. See [Infrastructure Requirements](../infrastructure/INFRASTRUCTURE_REQUIREMENTS.md) for details.
 
 ## Prerequisites
 
@@ -65,12 +67,19 @@ NEXT_PUBLIC_API_URL=https://madfam.io/api
 # Database (Vercel)
 DATABASE_URL=postgresql://...
 
+# CMS Integration (Railway)
+NEXT_PUBLIC_CMS_URL=https://cms.madfam.railway.app
+CMS_API_KEY=...
+
 # Feature Flags
 NEXT_PUBLIC_FEATURE_FLAGS=stable
 
 # Secrets
 API_SECRET=your-api-secret
 N8N_WEBHOOK_URL=https://n8n.madfam.io/webhook/xxx
+
+# Email Service
+RESEND_API_KEY=re_...
 ```
 
 ## Deployment Workflows
