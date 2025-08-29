@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormTracking, useConversionTracking, useErrorTracking } from '@madfam/analytics';
-import { ServiceTier, logger } from '@madfam/core';
+import { logger } from '@madfam/core';
 import { Button } from '@madfam/ui';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
@@ -15,19 +15,17 @@ const createLeadFormSchema = (t: (key: string) => string) =>
     email: z.string().email(t('errors.emailInvalid')),
     company: z.string().optional(),
     phone: z.string().optional(),
-    tier: z.nativeEnum(ServiceTier).optional(),
     message: z.string().optional(),
   });
 
 type LeadFormData = z.infer<ReturnType<typeof createLeadFormSchema>>;
 
 interface LeadFormProps {
-  tier?: ServiceTier;
   source?: string;
   onSuccess?: () => void;
 }
 
-export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps) {
+export function LeadForm({ source = 'website', onSuccess }: LeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const t = useTranslations('leadForm');
@@ -35,7 +33,7 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
 
   // Analytics hooks
   const { trackContactStarted, trackContactCompleted, trackLeadCaptured } = useFormTracking();
-  const { trackServiceFunnelStep, trackPurchaseIntent } = useConversionTracking();
+  const { trackServiceFunnelStep } = useConversionTracking();
   const { trackError } = useErrorTracking();
 
   const leadFormSchema = createLeadFormSchema(t);
@@ -47,9 +45,7 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
     reset,
   } = useForm<LeadFormData>({
     resolver: zodResolver(leadFormSchema),
-    defaultValues: {
-      tier,
-    },
+    defaultValues: {},
   });
 
   const onSubmit = async (data: LeadFormData) => {
@@ -57,22 +53,14 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
     setSubmitStatus('idle');
 
     // Track form submission start
-    trackContactStarted('lead-form', data.tier);
+    trackContactStarted('lead-form');
 
-    // Track funnel step - user is showing interest
-    if (data.tier) {
-      trackServiceFunnelStep('contact', data.tier, { source });
-    }
-
-    // Track purchase intent if tier is provided
-    if (data.tier) {
-      trackPurchaseIntent(data.tier);
-    }
+    // Track engagement - user is showing interest
+    trackServiceFunnelStep('contact', 'general_inquiry', { source });
 
     // In staging environment, simulate submission without API call
     if (process.env.NEXT_PUBLIC_ENV === 'staging') {
       logger.info('Staging environment - Lead form submission', 'LEAD_FORM', {
-        tier: data.tier,
         source,
         hasCompany: !!data.company,
         hasPhone: !!data.phone,
@@ -83,22 +71,19 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Track successful form completion (staging)
-      trackContactCompleted('lead-form', data.tier, 85); // Mock lead score
+      trackContactCompleted('lead-form'); // Mock lead score
 
       // Track lead captured
       trackLeadCaptured({
-        tier: data.tier,
         source,
         form: 'lead-form',
       });
 
       // Track funnel conversion step
-      if (data.tier) {
-        trackServiceFunnelStep('conversion', data.tier, {
-          source,
-          environment: 'staging',
-        });
-      }
+      trackServiceFunnelStep('conversion', 'general_inquiry', {
+        source,
+        environment: 'staging',
+      });
 
       setSubmitStatus('success');
       reset();
@@ -122,29 +107,25 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
 
       if (result.success) {
         logger.userAction('Lead form submitted successfully', {
-          tier: data.tier,
           source,
           leadId: result.leadId,
           locale,
         });
 
         // Track successful form completion
-        trackContactCompleted('lead-form', data.tier, result.leadScore);
+        trackContactCompleted('lead-form');
 
         // Track lead captured
         trackLeadCaptured({
-          tier: data.tier,
           source,
           form: 'lead-form',
         });
 
         // Track funnel conversion step
-        if (data.tier) {
-          trackServiceFunnelStep('conversion', data.tier, {
-            source,
-            leadId: result.leadId,
-          });
-        }
+        trackServiceFunnelStep('conversion', 'general_inquiry', {
+          source,
+          leadId: result.leadId,
+        });
 
         setSubmitStatus('success');
         reset();
@@ -154,7 +135,6 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
         trackError('Lead form submission failed', 'form-submission', 'medium');
 
         logger.warn('Lead form submission failed', 'LEAD_FORM', {
-          tier: data.tier,
           source,
           error: result.error,
           locale,
@@ -166,7 +146,6 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
       trackError('Lead form submission error', 'form-submission', 'high');
 
       logger.error('Lead form submission error', error as Error, 'LEAD_FORM', {
-        tier: data.tier,
         source,
         locale,
       });
@@ -235,26 +214,6 @@ export function LeadForm({ tier, source = 'website', onSuccess }: LeadFormProps)
           />
         </div>
       </div>
-
-      {!tier && (
-        <div>
-          <label htmlFor="tier" className="block text-sm font-medium text-gray-700 mb-2">
-            {t('fields.tier')}
-          </label>
-          <select
-            {...register('tier')}
-            id="tier"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-          >
-            <option value="">{t('tiers.select')}</option>
-            <option value={ServiceTier.L1_ESSENTIALS}>{t('tiers.l1')}</option>
-            <option value={ServiceTier.L2_ADVANCED}>{t('tiers.l2')}</option>
-            <option value={ServiceTier.L3_CONSULTING}>{t('tiers.l3')}</option>
-            <option value={ServiceTier.L4_PLATFORMS}>{t('tiers.l4')}</option>
-            <option value={ServiceTier.L5_STRATEGIC}>{t('tiers.l5')}</option>
-          </select>
-        </div>
-      )}
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">

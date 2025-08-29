@@ -5,14 +5,13 @@ import type { LeadFormData, LeadFormProps, SubmitStatus } from '../types/leadFor
 import { useFormValidation } from './useFormValidation';
 
 export function useLeadForm(props: LeadFormProps) {
-  const { tier, source = 'website', onSubmit, onSuccess } = props;
+  const { source = 'website', onSubmit, onSuccess } = props;
 
   const [formData, setFormData] = useState<LeadFormData>({
     name: '',
     email: '',
     company: '',
     phone: '',
-    tier,
     industry: '',
     companySize: '',
     budget: '',
@@ -82,7 +81,6 @@ export function useLeadForm(props: LeadFormProps) {
           email: '',
           company: '',
           phone: '',
-          tier,
           industry: '',
           companySize: '',
           budget: '',
@@ -100,7 +98,7 @@ export function useLeadForm(props: LeadFormProps) {
         setIsSubmitting(false);
       }
     },
-    [formData, validateForm, onSubmit, onSuccess, tier, source]
+    [formData, validateForm, onSubmit, onSuccess, source]
   );
 
   return {

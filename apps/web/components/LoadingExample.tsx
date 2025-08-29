@@ -1,32 +1,27 @@
 'use client';
 
-import { serviceTiers } from '@madfam/core';
 import { useState, useEffect } from 'react';
-import { ServiceCard } from './ServiceCard';
-import { ServiceCardSkeleton } from './Skeleton';
 
 // Example component showing how to use loading skeletons with data fetching
 export function LoadingExample() {
   const [loading, setLoading] = useState(true);
-  const [services, setServices] = useState<typeof serviceTiers | null>(null);
 
   useEffect(() => {
     // Simulate API call
-    const fetchServices = async () => {
+    const fetchData = async () => {
       setLoading(true);
       await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate network delay
-      setServices(serviceTiers);
       setLoading(false);
     };
 
-    fetchServices();
+    fetchData();
   }, []);
 
   if (loading) {
     return (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[...Array(3)].map((_, i) => (
-          <ServiceCardSkeleton key={i} />
+          <div key={i} className="animate-pulse bg-gray-200 rounded-lg h-32" />
         ))}
       </div>
     );
@@ -34,10 +29,7 @@ export function LoadingExample() {
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {services &&
-        Object.values(services)
-          .slice(0, 3)
-          .map(service => <ServiceCard key={service.id} service={service} />)}
+      <div className="p-6 bg-white rounded-lg shadow">Example Content Loaded</div>
     </div>
   );
 }

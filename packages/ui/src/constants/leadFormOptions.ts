@@ -1,22 +1,7 @@
-export type ServiceTier =
-  | 'L1_ESSENTIALS'
-  | 'L2_ADVANCED'
-  | 'L3_CONSULTING'
-  | 'L4_PLATFORMS'
-  | 'L5_STRATEGIC';
-
 export interface SelectOption {
   value: string;
   label: string;
 }
-
-export const serviceOptions: SelectOption[] = [
-  { value: 'L1_ESSENTIALS', label: 'L1 - Essentials (Diseño 3D y Gráficos)' },
-  { value: 'L2_ADVANCED', label: 'L2 - Advanced (Diseño Paramétrico)' },
-  { value: 'L3_CONSULTING', label: 'L3 - Consulting (Talleres y Consultoría)' },
-  { value: 'L4_PLATFORMS', label: 'L4 - Platforms (SPARK y PENNY)' },
-  { value: 'L5_STRATEGIC', label: 'L5 - Strategic (vCTO y Estrategia)' },
-];
 
 export const industryOptions: string[] = [
   'Tecnología',

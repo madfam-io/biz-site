@@ -1,5 +1,5 @@
 import { analytics } from '@madfam/analytics';
-import { ServiceTier as PrismaServiceTier, AssessmentStatus } from '@prisma/client';
+import { AssessmentStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
@@ -115,20 +115,6 @@ function calculateAssessmentResults(answers: Record<string, number>) {
   // Normalize score to 0-100
   const normalizedScore = Math.round((totalScore / (totalWeight * 5)) * 100);
 
-  // Determine recommended tier based on score
-  let recommendedTier: PrismaServiceTier;
-  if (normalizedScore < 20) {
-    recommendedTier = PrismaServiceTier.L1_ESSENTIALS;
-  } else if (normalizedScore < 40) {
-    recommendedTier = PrismaServiceTier.L2_ADVANCED;
-  } else if (normalizedScore < 60) {
-    recommendedTier = PrismaServiceTier.L3_CONSULTING;
-  } else if (normalizedScore < 80) {
-    recommendedTier = PrismaServiceTier.L4_PLATFORMS;
-  } else {
-    recommendedTier = PrismaServiceTier.L5_STRATEGIC;
-  }
-
   // Identify strengths and weaknesses
   const strengths: string[] = [];
   const weaknesses: string[] = [];
@@ -164,28 +150,17 @@ function calculateAssessmentResults(answers: Record<string, number>) {
     }
   });
 
-  // Add tier-specific recommendations
-  switch (recommendedTier) {
-    case PrismaServiceTier.L1_ESSENTIALS:
-      recommendations.push('Start with basic automation and design services');
-      break;
-    case PrismaServiceTier.L2_ADVANCED:
-      recommendations.push('Explore parametric design and advanced visualization');
-      break;
-    case PrismaServiceTier.L3_CONSULTING:
-      recommendations.push('Engage in strategic consulting for transformation');
-      break;
-    case PrismaServiceTier.L4_PLATFORMS:
-      recommendations.push('Consider implementing SPARK or PENNY platforms');
-      break;
-    case PrismaServiceTier.L5_STRATEGIC:
-      recommendations.push('Explore vCTO partnership for comprehensive transformation');
-      break;
+  // Add general recommendations based on score
+  if (normalizedScore < 30) {
+    recommendations.push('Consider starting with basic digital transformation initiatives');
+  } else if (normalizedScore < 60) {
+    recommendations.push('Focus on improving existing processes with automation');
+  } else {
+    recommendations.push('Explore strategic partnerships for advanced transformation');
   }
 
   return {
     score: normalizedScore,
-    tier: recommendedTier,
     strengths: strengths.slice(0, 3), // Top 3 strengths
     weaknesses: weaknesses.slice(0, 3), // Top 3 weaknesses
     recommendations: recommendations.slice(0, 5), // Top 5 recommendations
@@ -252,7 +227,6 @@ async function handlePOST(request: NextRequest) {
         status: AssessmentStatus.COMPLETED,
         answers: validatedData.answers,
         score: results.score,
-        tier: results.tier,
         strengths: results.strengths,
         weaknesses: results.weaknesses,
         recommendations: results.recommendations,
@@ -263,7 +237,6 @@ async function handlePOST(request: NextRequest) {
     // Track analytics
     analytics.trackAssessmentComplete({
       score: results.score,
-      recommendation: results.tier,
     });
 
     // Track in database analytics
@@ -273,7 +246,6 @@ async function handlePOST(request: NextRequest) {
         properties: {
           assessmentId: assessment.id,
           score: results.score,
-          tier: results.tier,
         },
         url: request.headers.get('referer') || undefined,
         userAgent: request.headers.get('user-agent') || undefined,
@@ -289,7 +261,6 @@ async function handlePOST(request: NextRequest) {
         data: {
           assessmentId: assessment.id,
           score: results.score,
-          tier: results.tier,
           strengths: results.strengths,
           recommendations: results.recommendations,
         },
@@ -301,7 +272,6 @@ async function handlePOST(request: NextRequest) {
       await prisma.lead.update({
         where: { id: validatedData.leadId },
         data: {
-          tier: results.tier,
           score: Math.max(results.score, 50), // Minimum score of 50 for completing assessment
         },
       });
@@ -315,7 +285,6 @@ async function handlePOST(request: NextRequest) {
           metadata: {
             assessmentId: assessment.id,
             score: results.score,
-            tier: results.tier,
           },
         },
       });
@@ -335,7 +304,6 @@ async function handlePOST(request: NextRequest) {
             assessmentId: assessment.id,
             email: validatedData.email,
             score: results.score,
-            tier: results.tier,
           },
         }),
       }).catch(console.error);
@@ -346,7 +314,6 @@ async function handlePOST(request: NextRequest) {
       assessmentId: assessment.id,
       results: {
         score: results.score,
-        tier: results.tier,
         strengths: results.strengths,
         weaknesses: results.weaknesses,
         recommendations: results.recommendations,

@@ -4,4 +4,4 @@
 // This file is kept for backward compatibility
 export { LeadForm } from './lead-form';
 export type { LeadFormData, LeadFormProps, FormErrors, SubmitStatus } from './lead-form';
-export type { ServiceTier, SelectOption } from '../constants/leadFormOptions';
+export type { SelectOption } from '../constants/leadFormOptions';

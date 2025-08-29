@@ -125,21 +125,7 @@ export interface Testimonial {
   };
 }
 
-// Service and product types
-export interface ServiceTier {
-  id: string;
-  name: string;
-  description: string;
-  features: string[];
-  pricing: {
-    type: 'fixed' | 'hourly' | 'custom';
-    amount?: number;
-    currency: string;
-    period?: 'hour' | 'day' | 'week' | 'month' | 'year' | 'project';
-  };
-  popular?: boolean;
-  available: boolean;
-}
+// Product types
 
 export interface Product {
   id: string;
@@ -149,7 +135,20 @@ export interface Product {
   features: string[];
   benefits: string[];
   pricing: {
-    plans: ServiceTier[];
+    plans: Array<{
+      id: string;
+      name: string;
+      description: string;
+      features: string[];
+      pricing: {
+        type: 'fixed' | 'hourly' | 'custom';
+        amount?: number;
+        currency: string;
+        period?: 'hour' | 'day' | 'week' | 'month' | 'year' | 'project';
+      };
+      popular?: boolean;
+      available: boolean;
+    }>;
     freeTrialDays?: number;
     moneyBackGuarantee?: number;
   };

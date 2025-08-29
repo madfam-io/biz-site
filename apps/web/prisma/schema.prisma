@@ -11,13 +11,6 @@ datasource db {
 }
 
 // Enums
-enum ServiceTier {
-  L1_ESSENTIALS
-  L2_ADVANCED
-  L3_CONSULTING
-  L4_PLATFORMS
-  L5_STRATEGIC
-}
 
 enum LeadStatus {
   NEW
@@ -58,7 +51,6 @@ model Lead {
   lastName    String?
   company     String?
   phone       String?
-  tier        ServiceTier
   message     String?
   source      LeadSource  @default(WEBSITE)
   score       Int         @default(0)
@@ -88,7 +80,6 @@ model Lead {
   
   @@index([email])
   @@index([status])
-  @@index([tier])
   @@index([createdAt])
 }
 
@@ -131,7 +122,6 @@ model Assessment {
   // Assessment data
   answers    Json             // Store as JSON for flexibility
   score      Int?
-  tier       ServiceTier?     // Recommended tier
   
   // Results
   strengths  Json?

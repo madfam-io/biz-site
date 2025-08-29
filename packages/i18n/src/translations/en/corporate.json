@@ -174,7 +174,7 @@
         "deliverables": [
           "Liderazgo tecnológico",
           "Arquitectura empresarial",
-          "Gestión de equipos",
+          "Team management",
           "Innovación continua"
         ]
       }
@@ -192,8 +192,8 @@
     },
     "messaging": {
       "tagline": "Unidades expertas para problemas reales",
-      "corporateVision": "Manufactura avanzada e innovación digital",
-      "missionStatement": "Transformamos empresas a través de unidades especializadas que combinan experiencia técnica profunda con innovación digital avanzada",
+      "corporateVision": "Advanced manufacturing and digital innovation",
+      "missionStatement": "We transform companies through specialized units that combine deep technical expertise with advanced digital innovation",
       "valueProposition": "Cada unidad de MADFAM está diseñada para resolver problemas específicos de la industria con la máxima especialización y eficiencia"
     }
   },
@@ -207,15 +207,15 @@
     "subtitle": "We transform your business with intelligent manufacturing solutions and cutting-edge digital strategies"
   },
   "arms": {
-    "title": "Nuestras unidades operativas",
+    "title": "Our operational units",
     "subtitle": "Equipos especializados que entregan excelencia en software, manufactura y más.",
     "allByMadfam": "All units - MADFAM Companies",
-    "viewAll": "Ver todas las unidades",
+    "viewAll": "View all units",
     "mainCapabilities": "Capacidades principales",
     "mainProducts": "Main products",
     "aureoLabs": {
       "tagline": "Digital innovation laboratory",
-      "description": "Desarrollamos plataformas de automatización inteligente y herramientas de productividad que transforman la forma de trabajar.",
+      "description": "We develop intelligent automation platforms and productivity tools that transform the way people work.",
       "capabilities": {
         "0": "Agentic AI Systems",
         "1": "Web Platform Development",
@@ -317,7 +317,7 @@
     },
     "primavera3d": {
       "tagline": "Estudio de manufactura digital",
-      "description": "Creamos experiencias visuales extraordinarias y soluciones de diseño paramétrico para manufactura avanzada.",
+      "description": "We create extraordinary visual experiences and parametric design solutions for advanced manufacturing.",
       "capabilities": {
         "0": "3D modeling",
         "1": "Diseño paramétrico",
@@ -360,15 +360,15 @@
     }
   },
   "products": {
-    "title": "Nuestros productos",
+    "title": "Our products",
     "featuredTitle": "Productos destacados",
-    "featuredSubtitle": "Platforms y herramientas desarrolladas por nuestras unidades especializadas.",
-    "viewAll": "View all los productos",
+    "featuredSubtitle": "Platforms and tools developed by our specialized units.",
+    "viewAll": "View all products",
     "idealFor": "Ideal for:",
     "mainFeatures": "Main features",
     "meta": {
-      "title": "Nuestros productos | MADFAM",
-      "description": "Platforms y herramientas desarrolladas por nuestras unidades especializadas para resolver problemas reales."
+      "title": "Our Products | MADFAM",
+      "description": "Platforms and tools developed by our specialized units to solve real problems."
     },
     "hero": {
       "subtitle": "Platforms y herramientas desarrolladas por nuestras unidades especializadas para resolver problemas reales."
@@ -393,7 +393,7 @@
       "viewAllUnits": "Ver todas las unidades"
     },
     "cta": {
-      "title": "¿Interesado en nuestros productos?",
+      "title": "Interested in our products?",
       "subtitle": "Contacta con la unidad responsable o agenda una demostración personalizada.",
       "contactNow": "Contactar ahora",
       "viewUnits": "View business units"
@@ -420,11 +420,11 @@
     }
   },
   "programs": {
-    "title": "Programas de transformación",
-    "processDescription": "Proceso estratégico en 3 fases: Estrategia → Piloto → Escala",
-    "updateLabel": "Actualización:",
-    "migrationNotice": "Nuestros servicios L1-L5 ahora son Programas especializados por unidad.",
-    "viewAll": "View all los programas",
+    "title": "Transformation Programs",
+    "processDescription": "Strategic 3-phase process: Strategy → Pilot → Scale",
+    "updateLabel": "Update:",
+    "migrationNotice": "Our L1-L5 services are now specialized Programs by unit.",
+    "viewAll": "View all programs",
     "before": "Before:",
     "scheduleMarket": "Cronograma y mercado",
     "duration": "Duration:",
@@ -530,7 +530,7 @@
     }
   },
   "whyMadfam": {
-    "title": "¿Por qué MADFAM?",
+    "title": "Why MADFAM?",
     "latamFirst": {
       "title": "LATAM-first",
       "description": "Construido desde y para América Latina, con alcance global."
@@ -545,10 +545,10 @@
     }
   },
   "cta": {
-    "title": "¿Listo para transformar tu organización?",
-    "subtitle": "Descubre qué unidad y programa son perfectos para tu proyecto.",
-    "takeAssessment": "Tomar evaluación IA",
-    "contactNow": "Contactar ahora"
+    "title": "Ready to transform your organization?",
+    "subtitle": "Discover which unit and program are perfect for your project.",
+    "takeAssessment": "Take AI Assessment",
+    "contactNow": "Contact Now"
   },
   "badges": {
     "byMadfam": "by MADFAM",

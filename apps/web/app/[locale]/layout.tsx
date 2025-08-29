@@ -5,7 +5,7 @@ import { CookieConsent } from '@/components/CookieConsent';
 import { Footer } from '@/components/Footer';
 import { GlobalAnalytics } from '@/components/GlobalAnalytics';
 import { LoggerProvider } from '@/components/LoggerProvider';
-import { Navbar } from '@/components/Navbar';
+import { LuxuryNavbar } from '@/components/LuxuryNavbar';
 import { OrganizationStructuredData } from '@/components/StructuredData';
 import { locales, getMessages, type Locale } from '@/i18n.config';
 
@@ -34,8 +34,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages} locale={locale}>
           <OrganizationStructuredData />
           <GlobalAnalytics />
-          <Navbar />
-          <div className="pt-16">
+          <LuxuryNavbar />
+          <div>
             {children}
             <Footer />
           </div>

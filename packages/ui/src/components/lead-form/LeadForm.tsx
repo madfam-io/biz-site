@@ -14,7 +14,6 @@ export const LeadForm = React.forwardRef<HTMLDivElement, LeadFormProps>(
   (
     {
       variant = 'simple',
-      tier,
       source = 'website',
       title = 'Solicita información',
       description = 'Completa el formulario y nos pondremos en contacto contigo',
@@ -36,7 +35,7 @@ export const LeadForm = React.forwardRef<HTMLDivElement, LeadFormProps>(
       submitStatus,
       currentStep,
       setCurrentStep,
-    } = useLeadForm({ variant, tier, source, onSubmit, onSuccess });
+    } = useLeadForm({ variant, source, onSubmit, onSuccess });
 
     const totalSteps = variant === 'progressive' ? 3 : 1;
 
@@ -63,11 +62,7 @@ export const LeadForm = React.forwardRef<HTMLDivElement, LeadFormProps>(
               onInputChange={handleInputChange}
               onValidateField={validateField}
             />
-            <ProjectDetailsStep
-              formData={formData}
-              onInputChange={handleInputChange}
-              showTierSelection={!tier}
-            />
+            <ProjectDetailsStep formData={formData} onInputChange={handleInputChange} />
             <AdditionalInfoStep
               formData={formData}
               onInputChange={handleInputChange}
@@ -88,13 +83,7 @@ export const LeadForm = React.forwardRef<HTMLDivElement, LeadFormProps>(
             />
           );
         case 2:
-          return (
-            <ProjectDetailsStep
-              formData={formData}
-              onInputChange={handleInputChange}
-              showTierSelection={!tier}
-            />
-          );
+          return <ProjectDetailsStep formData={formData} onInputChange={handleInputChange} />;
         case 3:
           return (
             <AdditionalInfoStep

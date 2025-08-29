@@ -1,4 +1,3 @@
-import { ServiceTier } from '@madfam/core';
 import { Container, Heading } from '@madfam/ui';
 import { Metadata } from 'next';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
@@ -44,7 +43,7 @@ export default async function CalculatorPage({
           </div>
 
           <div className="space-y-8">
-            <ROICalculator serviceTier={ServiceTier.L3_CONSULTING} />
+            <ROICalculator />
 
             <div className="bg-gradient-to-r from-sun/10 to-leaf/10 rounded-2xl p-8 text-center">
               <h3 className="font-heading text-xl mb-4">{t('calculator.cta.title')}</h3>

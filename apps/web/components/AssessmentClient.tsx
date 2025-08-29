@@ -57,7 +57,7 @@ export function AssessmentClient({ translations, assessmentQuestions }: Assessme
   const handleAssessmentComplete = (result: AssessmentResult) => {
     setAssessmentResult(result);
     setShowLeadForm(true);
-    logServiceInquiry(result.recommendedTier, 'ai-readiness-assessment', {
+    logServiceInquiry('ai_transformation', 'ai-readiness-assessment', {
       result,
       locale: currentLocale,
     });
@@ -80,21 +80,16 @@ export function AssessmentClient({ translations, assessmentQuestions }: Assessme
 
               <LeadForm
                 variant="progressive"
-                tier={assessmentResult?.recommendedTier}
                 source="ai-readiness-assessment"
                 title={translations.requestSession}
                 description={translations.sessionDescription}
                 submitText={translations.scheduleSession}
                 onSubmit={async (data: LeadFormData) => {
-                  logServiceInquiry(
-                    assessmentResult?.recommendedTier || 'unknown',
-                    'assessment-strategy-request',
-                    {
-                      ...data,
-                      assessmentResult,
-                      locale: currentLocale,
-                    }
-                  );
+                  logServiceInquiry('ai_transformation', 'assessment-strategy-request', {
+                    ...data,
+                    assessmentResult,
+                    locale: currentLocale,
+                  });
                   // TODO: Implement actual form submission
                 }}
               />

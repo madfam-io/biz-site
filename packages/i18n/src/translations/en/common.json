@@ -10,7 +10,19 @@
     "arms": "Business Units",
     "programs": "Programs",
     "work": "Work",
-    "security": "Security"
+    "security": "Security",
+    "solutions": "Solutions",
+    "tagline": "Where human creativity meets AI precision",
+    "businessArms": "Business Units",
+    "aureoLabsDesc": "Digital innovation laboratory",
+    "comingSoon": "Coming Soon",
+    "moreArmsDesc": "More units in development",
+    "caseStudies": "Case Studies",
+    "featuredWork": "Featured Work",
+    "allCases": "View All",
+    "securityCompliance": "Security & Compliance",
+    "enterpriseSecurity": "Enterprise Security",
+    "certifications": "Certifications"
   },
   "cta": {
     "learnMore": "Learn more",

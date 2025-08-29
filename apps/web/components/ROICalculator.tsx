@@ -1,7 +1,6 @@
 'use client';
 
 import { useFeatureTracking, useConversionTracking } from '@madfam/analytics';
-import { ServiceTier } from '@madfam/core';
 import { Button } from '@madfam/ui';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, DollarSign, Clock } from 'lucide-react';
@@ -9,11 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useCurrencyFormatter, useNumberFormatter } from '@/lib/formatting';
 
-interface ROICalculatorProps {
-  serviceTier?: ServiceTier;
-}
-
-export function ROICalculator({ serviceTier }: ROICalculatorProps) {
+export function ROICalculator() {
   const t = useTranslations('calculator');
   const { formatCurrency } = useCurrencyFormatter();
   const { formatNumber } = useNumberFormatter();
@@ -35,14 +30,8 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
     paybackPeriod: number;
   } | null>(null);
 
-  // Service tier pricing (MXN)
-  const servicePricing = {
-    [ServiceTier.L1_ESSENTIALS]: 5000,
-    [ServiceTier.L2_ADVANCED]: 15000,
-    [ServiceTier.L3_CONSULTING]: 50000,
-    [ServiceTier.L4_PLATFORMS]: 150000,
-    [ServiceTier.L5_STRATEGIC]: 500000,
-  };
+  // Base service pricing (MXN)
+  const baseServicePrice = 50000;
 
   const calculateROI = () => {
     const { currentCosts, employeeHours, projectsPerMonth, averageProjectValue } = formData;
@@ -53,38 +42,15 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
       result: undefined, // Will be set after calculation
     });
 
-    // Base calculations vary by service tier
-    let efficiencyGain = 0.2; // 20% base efficiency gain
-    let costReduction = 0.15; // 15% base cost reduction
-
-    switch (serviceTier) {
-      case ServiceTier.L1_ESSENTIALS:
-        efficiencyGain = 0.15;
-        costReduction = 0.1;
-        break;
-      case ServiceTier.L2_ADVANCED:
-        efficiencyGain = 0.25;
-        costReduction = 0.2;
-        break;
-      case ServiceTier.L3_CONSULTING:
-        efficiencyGain = 0.35;
-        costReduction = 0.25;
-        break;
-      case ServiceTier.L4_PLATFORMS:
-        efficiencyGain = 0.5;
-        costReduction = 0.35;
-        break;
-      case ServiceTier.L5_STRATEGIC:
-        efficiencyGain = 0.7;
-        costReduction = 0.5;
-        break;
-    }
+    // Base calculations for AI transformation programs
+    const efficiencyGain = 0.35; // 35% efficiency gain
+    const costReduction = 0.25; // 25% cost reduction
 
     const monthlySavings = currentCosts * costReduction;
     const timeSaved = employeeHours * efficiencyGain;
     const additionalRevenue = projectsPerMonth * efficiencyGain * averageProjectValue;
     const totalBenefit = monthlySavings + additionalRevenue / 12;
-    const investment = servicePricing[serviceTier || ServiceTier.L3_CONSULTING];
+    const investment = baseServicePrice;
     const roiPercentage = ((totalBenefit * 12 - investment) / investment) * 100;
     const paybackPeriod = investment / totalBenefit;
 
@@ -104,8 +70,8 @@ export function ROICalculator({ serviceTier }: ROICalculatorProps) {
     });
 
     // Track purchase intent if ROI is positive
-    if (calculatedResults.roiPercentage > 0 && serviceTier) {
-      trackPurchaseIntent(serviceTier, investment);
+    if (calculatedResults.roiPercentage > 0) {
+      trackPurchaseIntent('transformation_program', investment);
     }
   };
 

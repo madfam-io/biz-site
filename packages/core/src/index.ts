@@ -1,8 +1,5 @@
 // Core exports - All code consolidated to avoid module resolution issues
 
-// Service Tiers
-export * from './services';
-
 // Logger
 export * from './logger';
 
@@ -120,7 +117,7 @@ export class FeatureFlagProvider {
 
   getAllFlags(): Record<string, boolean> {
     const flags: Record<string, boolean> = {};
-    
+
     Object.keys(featureFlags).forEach(key => {
       flags[key] = this.isEnabled(key);
     });
@@ -130,10 +127,10 @@ export class FeatureFlagProvider {
 
   private checkRolloutPercentage(flagKey: string, percentage: number): boolean {
     if (!this.userId) return false;
-    
+
     // Create a stable hash based on user ID and flag key
     const hash = this.hashString(`${this.userId}-${flagKey}`);
-    return (hash % 100) < percentage;
+    return hash % 100 < percentage;
   }
 
   private hashString(str: string): number {

@@ -1,6 +1,5 @@
 'use client';
 
-import { ServiceTier } from '@madfam/core';
 import { Button } from '@madfam/ui';
 import { motion } from 'framer-motion';
 import { Calculator, ChevronLeft, DollarSign, Clock, Users } from 'lucide-react';
@@ -20,7 +19,6 @@ interface ProjectRequirements {
 }
 
 interface ProjectEstimate {
-  serviceTier: ServiceTier;
   estimatedCost: { min: number; max: number };
   estimatedDuration: { min: number; max: number };
   recommendedTeam: string[];
@@ -143,21 +141,6 @@ export function ProjectEstimator() {
       max: Math.round(durationBase.max * complexityMultiplier),
     };
 
-    // Determine service tier based on cost
-    let serviceTier: ServiceTier;
-    const avgCost = (estimatedCost.min + estimatedCost.max) / 2;
-    if (avgCost < 30000) {
-      serviceTier = ServiceTier.L1_ESSENTIALS;
-    } else if (avgCost < 80000) {
-      serviceTier = ServiceTier.L2_ADVANCED;
-    } else if (avgCost < 150000) {
-      serviceTier = ServiceTier.L3_CONSULTING;
-    } else if (avgCost < 300000) {
-      serviceTier = ServiceTier.L4_PLATFORMS;
-    } else {
-      serviceTier = ServiceTier.L5_STRATEGIC;
-    }
-
     // Recommend team based on project
     const recommendedTeam = [];
     if (requirements.projectType === 'mobile-app') {
@@ -184,7 +167,6 @@ export function ProjectEstimator() {
     }
 
     setEstimate({
-      serviceTier,
       estimatedCost,
       estimatedDuration,
       recommendedTeam,

@@ -5,7 +5,6 @@ import {
   Hero,
   CTA,
   Features,
-  ServiceCard,
   ProductCard,
   TestimonialCard,
   Container,
@@ -41,20 +40,20 @@ export function ShowcaseContent() {
   const features = [
     {
       icon: <CubeIcon />,
-      title: t('services.tier1.features.0'),
-      description: t('services.tier1.description'),
-      link: { text: t('common.learnMore'), href: '/services/level-1-essentials' },
+      title: t('showcase.features.automation'),
+      description: t('showcase.features.automationDesc'),
+      link: { text: t('common.learnMore'), href: '/programs' },
     },
     {
       icon: <SparkIcon />,
-      title: t('services.tier2.features.0'),
-      description: t('services.tier2.description'),
+      title: t('showcase.features.ai'),
+      description: t('showcase.features.aiDesc'),
       badge: 'Popular',
     },
     {
       icon: <RocketIcon />,
-      title: t('services.tier3.features.0'),
-      description: t('services.tier3.description'),
+      title: t('showcase.features.transformation'),
+      description: t('showcase.features.transformationDesc'),
     },
   ];
 
@@ -118,51 +117,6 @@ export function ShowcaseContent() {
               <Button variant="primary" icon={<SparkIcon />}>
                 {t('showcase.buttons.withIcon')}
               </Button>
-            </div>
-          </Container>
-        </section>
-
-        {/* Service Cards */}
-        <section className="py-16 bg-gray-50 dark:bg-obsidian/5">
-          <Container>
-            <Heading level={2} className="mb-8 text-center">
-              {t('showcase.sections.services')}
-            </Heading>
-            <div className="grid md:grid-cols-3 gap-6">
-              <ServiceCard
-                tier="L1"
-                title={t('services.tier1.title')}
-                description={t('services.tier1.description')}
-                price={{ amount: 5000, currency: 'MXN', period: 'project' }}
-                features={[
-                  t('services.tier1.features.0'),
-                  t('services.tier1.features.1'),
-                  t('services.tier1.features.2'),
-                ]}
-                cta={{ text: t('services.tier1.cta'), href: '#' }}
-                icon={<CubeIcon />}
-              />
-              <ServiceCard
-                tier="L3"
-                title={t('services.tier3.title')}
-                description={t('services.tier3.description')}
-                features={[
-                  t('services.tier3.features.0'),
-                  t('services.tier3.features.1'),
-                  t('services.tier3.features.2'),
-                ]}
-                cta={{ text: t('services.tier3.cta'), href: '#', variant: 'creative' }}
-                badge={t('showcase.badges.recommended')}
-                icon={<SparkIcon />}
-              />
-              <ServiceCard
-                tier="L5"
-                title={t('services.tier5.title')}
-                description={t('services.tier5.description')}
-                features={[t('services.tier5.features.0'), t('services.tier5.features.1')]}
-                cta={{ text: t('services.tier5.cta'), href: '#' }}
-                icon={<RocketIcon />}
-              />
             </div>
           </Container>
         </section>

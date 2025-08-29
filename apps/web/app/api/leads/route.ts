@@ -1,19 +1,9 @@
 import { analytics } from '@madfam/analytics';
-import { ServiceTier } from '@madfam/core';
-import { LeadSource, LeadStatus, ServiceTier as PrismaServiceTier } from '@prisma/client';
+import { LeadSource, LeadStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 import { withRateLimit } from '@/lib/rate-limit';
-
-// Map between core ServiceTier and Prisma ServiceTier
-const serviceTierMap: Record<ServiceTier, PrismaServiceTier> = {
-  [ServiceTier.L1_ESSENTIALS]: PrismaServiceTier.L1_ESSENTIALS,
-  [ServiceTier.L2_ADVANCED]: PrismaServiceTier.L2_ADVANCED,
-  [ServiceTier.L3_CONSULTING]: PrismaServiceTier.L3_CONSULTING,
-  [ServiceTier.L4_PLATFORMS]: PrismaServiceTier.L4_PLATFORMS,
-  [ServiceTier.L5_STRATEGIC]: PrismaServiceTier.L5_STRATEGIC,
-};
 
 // Lead schema validation
 const leadSchema = z.object({
@@ -21,7 +11,6 @@ const leadSchema = z.object({
   name: z.string().min(2, 'Nombre debe tener al menos 2 caracteres'),
   company: z.string().optional(),
   phone: z.string().optional(),
-  tier: z.nativeEnum(ServiceTier).optional(),
   message: z.string().optional(),
   source: z.string().default('website'),
   preferredLanguage: z.enum(['es', 'en']).default('es'),
@@ -57,16 +46,9 @@ function calculateLeadScore(lead: LeadData): number {
     score += 10;
   }
 
-  // Service tier interest
-  if (lead.tier) {
-    const tierScores = {
-      [ServiceTier.L1_ESSENTIALS]: 10,
-      [ServiceTier.L2_ADVANCED]: 20,
-      [ServiceTier.L3_CONSULTING]: 30,
-      [ServiceTier.L4_PLATFORMS]: 40,
-      [ServiceTier.L5_STRATEGIC]: 50,
-    };
-    score += tierScores[lead.tier] || 0;
+  // Message interest shows engagement
+  if (lead.message && lead.message.length > 20) {
+    score += 25; // Additional points for detailed inquiry
   }
 
   // Message length (shows engagement)
@@ -107,9 +89,6 @@ async function handlePOST(request: NextRequest) {
         lastName,
         company: validatedData.company,
         phone: validatedData.phone,
-        tier: validatedData.tier
-          ? serviceTierMap[validatedData.tier]
-          : PrismaServiceTier.L1_ESSENTIALS,
         message: validatedData.message,
         source: LeadSource.WEBSITE,
         score,
@@ -125,7 +104,6 @@ async function handlePOST(request: NextRequest) {
 
     // Track analytics
     analytics.trackLeadCaptured({
-      tier: validatedData.tier,
       source: validatedData.source,
       form: 'main-lead-form',
     });
@@ -136,7 +114,6 @@ async function handlePOST(request: NextRequest) {
         event: 'lead_captured',
         properties: {
           leadId: lead.id,
-          tier: lead.tier,
           score: lead.score,
           source: lead.source,
         },
@@ -156,7 +133,6 @@ async function handlePOST(request: NextRequest) {
         data: {
           name: validatedData.name,
           language: validatedData.preferredLanguage,
-          tier: lead.tier,
         },
       },
     });
@@ -176,7 +152,6 @@ async function handlePOST(request: NextRequest) {
             email: lead.email,
             name: validatedData.name,
             company: lead.company,
-            tier: lead.tier,
             score: lead.score,
             source: lead.source,
           },
@@ -232,12 +207,10 @@ async function handleGET(request: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '20');
     const status = searchParams.get('status') as LeadStatus | null;
-    const tier = searchParams.get('tier') as PrismaServiceTier | null;
 
     // Build where clause
     const where = {
       ...(status && { status }),
-      ...(tier && { tier }),
     };
 
     // Fetch leads with pagination

@@ -1,11 +1,8 @@
-import type { ServiceTier } from '../constants/leadFormOptions';
-
 export interface LeadFormData {
   name: string;
   email: string;
   company?: string;
   phone?: string;
-  tier?: ServiceTier;
   industry?: string;
   companySize?: string;
   budget?: string;
@@ -17,7 +14,6 @@ export interface LeadFormData {
 
 export interface LeadFormProps {
   variant?: 'simple' | 'progressive' | 'detailed';
-  tier?: ServiceTier;
   source?: string;
   title?: string;
   description?: string;

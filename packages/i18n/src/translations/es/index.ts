@@ -4,7 +4,6 @@ import assessment from './assessment.json';
 import calculator from './calculator.json';
 import estimator from './estimator.json';
 import products from './products.json';
-import services from './services.json';
 import corporate from './corporate.json';
 import legal from './legal.json';
 import pages from './pages.json';
@@ -18,7 +17,6 @@ export default {
   calculator,
   estimator,
   products,
-  services,
   corporate,
   ...pages,
   ...forms,

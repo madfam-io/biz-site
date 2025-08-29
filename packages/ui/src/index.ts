@@ -4,7 +4,6 @@ export * from './components/Container';
 export * from './components/Heading';
 export * from './components/Card';
 export * from './components/Spinner';
-export * from './components/ServiceCard';
 export * from './components/ProductCard';
 export * from './components/TestimonialCard';
 export * from './components/Hero';

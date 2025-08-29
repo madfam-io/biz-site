@@ -1,6 +1,5 @@
 import type { LeadFormData } from '../../types/leadForm';
 import {
-  serviceOptions,
   industryOptions,
   companySizeOptions,
   budgetOptions,
@@ -10,34 +9,11 @@ import {
 interface ProjectDetailsStepProps {
   formData: LeadFormData;
   onInputChange: (name: keyof LeadFormData, value: string) => void;
-  showTierSelection?: boolean;
 }
 
-export function ProjectDetailsStep({
-  formData,
-  onInputChange,
-  showTierSelection = true,
-}: ProjectDetailsStepProps) {
+export function ProjectDetailsStep({ formData, onInputChange }: ProjectDetailsStepProps) {
   return (
     <div className="space-y-6">
-      {showTierSelection && (
-        <div>
-          <label className="block text-sm font-medium mb-2">Nivel de servicio de interés</label>
-          <select
-            value={formData.tier || ''}
-            onChange={e => onInputChange('tier', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-          >
-            <option value="">Selecciona un nivel</option>
-            {serviceOptions.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium mb-2">Industria</label>

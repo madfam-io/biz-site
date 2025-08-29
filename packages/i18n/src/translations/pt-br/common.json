@@ -10,7 +10,19 @@
     "arms": "Unidades",
     "programs": "Programas",
     "work": "Casos",
-    "security": "Segurança"
+    "security": "Segurança",
+    "solutions": "Soluções",
+    "tagline": "Onde a criatividade humana encontra a precisão da IA",
+    "businessArms": "Unidades de Negócio",
+    "aureoLabsDesc": "Laboratório de inovação digital",
+    "comingSoon": "Em Breve",
+    "moreArmsDesc": "Mais unidades em desenvolvimento",
+    "caseStudies": "Casos de Sucesso",
+    "featuredWork": "Trabalho em Destaque",
+    "allCases": "Ver Todos",
+    "securityCompliance": "Segurança e Conformidade",
+    "enterpriseSecurity": "Segurança Empresarial",
+    "certifications": "Certificações"
   },
   "cta": {
     "learnMore": "Saiba mais",

@@ -343,13 +343,12 @@ export function PennyProductClient({
 
             <LeadForm
               variant="progressive"
-              tier="L4_PLATFORMS"
               source="penny-demo-request"
               title={translations.demoFormTitle}
               description={translations.demoFormDescription}
               submitText={translations.scheduleDemo}
               onSubmit={async (data: LeadFormData) => {
-                logServiceInquiry('L4_PLATFORMS', 'penny-demo-form', {
+                logServiceInquiry('penny_ai', 'penny-demo-form', {
                   ...data,
                   locale: currentLocale,
                 });

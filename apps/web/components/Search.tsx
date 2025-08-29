@@ -1,7 +1,6 @@
 'use client';
 
-import { serviceTiers } from '@madfam/core';
-import { getLocalizedContent, getLocalizedServiceSlug, type Locale } from '@madfam/i18n';
+import { type Locale } from '@madfam/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -30,20 +29,6 @@ export function Search() {
   // Mock search data - in production, this would come from an API
   const searchableContent: SearchResult[] = useMemo(
     () => [
-      // Services
-      ...Object.values(serviceTiers).map(service => {
-        const localizedSlug = getLocalizedServiceSlug(service.id, locale);
-        const baseRoute =
-          locale === 'es' ? 'servicios' : locale === 'pt-br' ? 'servicos' : 'services';
-
-        return {
-          id: service.id,
-          title: getLocalizedContent(service.name, locale),
-          description: getLocalizedContent(service.description, locale),
-          type: 'service' as const,
-          url: `/${locale}/${baseRoute}/${localizedSlug}`,
-        };
-      }),
       // Products
       {
         id: 'spark',
