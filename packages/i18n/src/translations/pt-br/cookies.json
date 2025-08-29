@@ -1,4 +1,31 @@
 {
+  "title": "Política de Cookies",
+  "lastUpdated": "Última atualização: 15 de março, 2024",
+  "sections": {
+    "whatAreCookies": {
+      "title": "O que são cookies?",
+      "description": "Cookies são pequenos arquivos de texto que são armazenados em seu dispositivo quando você visita nosso site. Eles nos ajudam a proporcionar uma melhor experiência lembrando suas preferências e analisando como você usa nosso site."
+    },
+    "howWeUse": {
+      "title": "Como usamos cookies",
+      "description": "Usamos diferentes tipos de cookies para vários propósitos:",
+      "essential": "Cookies Essenciais",
+      "analytics": "Cookies de Análise",
+      "preference": "Cookies de Preferência",
+      "marketing": "Cookies de Marketing"
+    },
+    "managing": {
+      "title": "Gerenciamento de cookies",
+      "description": "Você pode controlar e gerenciar cookies nas configurações do seu navegador. Observe que remover ou bloquear cookies pode afetar sua experiência do usuário e partes do nosso site podem não ser mais totalmente acessíveis."
+    },
+    "contact": {
+      "title": "Contato",
+      "description": "Se você tiver dúvidas sobre esta Política de Cookies, entre em contato conosco:",
+      "email": "Email: privacy@madfam.io",
+      "phone": "Telefone: +52 55 1234 5678",
+      "address": "Endereço: Cidade do México, México"
+    }
+  },
   "banner": {
     "title": "Usamos cookies",
     "description": "Utilizamos cookies para melhorar sua experiência, analisar o tráfego do site e personalizar conteúdo. Você pode personalizar suas preferências ou aceitar todos os cookies.",

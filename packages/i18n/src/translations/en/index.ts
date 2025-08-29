@@ -9,6 +9,7 @@ import legal from './legal.json';
 import pages from './pages.json';
 import forms from './forms.json';
 import system from './system.json';
+import cookies from './cookies.json';
 
 export default {
   common,
@@ -22,4 +23,5 @@ export default {
   ...forms,
   ...system,
   legal, // Legal namespace must come AFTER pages to prevent overwrite
+  cookies, // Must come AFTER spreads to prevent pages.cookies overwrite
 };

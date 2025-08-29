@@ -1,5 +1,6 @@
 import { Container, Heading } from '@madfam/ui';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { TranslationList } from '@/components/TranslationList';
 
 // Force dynamic rendering to bypass SSG issue
 export const dynamic = 'force-dynamic';
@@ -31,77 +32,31 @@ export default async function PrivacyPage({ params: { locale } }: { params: { lo
 
             <h2>{t('privacy.dataCollection.title')}</h2>
             <h3>{t('privacy.dataCollection.providedInfo.title')}</h3>
-            <ul>
-              {(
-                t('privacy.dataCollection.providedInfo.items', {
-                  returnObjects: true,
-                }) as unknown as string[]
-              ).map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+            <TranslationList t={t} translationKey="privacy.dataCollection.providedInfo.items" />
 
             <h3>{t('privacy.dataCollection.automaticInfo.title')}</h3>
-            <ul>
-              {(
-                t('privacy.dataCollection.automaticInfo.items', {
-                  returnObjects: true,
-                }) as unknown as string[]
-              ).map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+            <TranslationList t={t} translationKey="privacy.dataCollection.automaticInfo.items" />
 
             <h2>{t('privacy.dataUse.title')}</h2>
             <p>{t('privacy.dataUse.description')}</p>
-            <ul>
-              {(t('privacy.dataUse.items', { returnObjects: true }) as unknown as string[]).map(
-                (item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                )
-              )}
-            </ul>
+            <TranslationList t={t} translationKey="privacy.dataUse.items" />
 
             <h2>{t('privacy.dataSharing.title')}</h2>
             <p>{t('privacy.dataSharing.description')}</p>
-            <ul>
-              {(t('privacy.dataSharing.items', { returnObjects: true }) as unknown as string[]).map(
-                (item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                )
-              )}
-            </ul>
+            <TranslationList t={t} translationKey="privacy.dataSharing.items" />
 
             <h2>{t('privacy.dataSecurity.title')}</h2>
             <p>{t('privacy.dataSecurity.description')}</p>
-            <ul>
-              {(
-                t('privacy.dataSecurity.items', { returnObjects: true }) as unknown as string[]
-              ).map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+            <TranslationList t={t} translationKey="privacy.dataSecurity.items" />
 
             <h2>{t('privacy.cookies.title')}</h2>
             <p>{t('privacy.cookies.description')}</p>
-            <ul>
-              {(t('privacy.cookies.items', { returnObjects: true }) as unknown as string[]).map(
-                (item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                )
-              )}
-            </ul>
+            <TranslationList t={t} translationKey="privacy.cookies.items" />
             <p>{t('privacy.cookies.note')}</p>
 
             <h2>{t('privacy.userRights.title')}</h2>
             <p>{t('privacy.userRights.description')}</p>
-            <ul>
-              {(t('privacy.userRights.items', { returnObjects: true }) as unknown as string[]).map(
-                (item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                )
-              )}
-            </ul>
+            <TranslationList t={t} translationKey="privacy.userRights.items" />
 
             <h2>{t('privacy.dataRetention.title')}</h2>
             <p>{t('privacy.dataRetention.content')}</p>

@@ -1,5 +1,6 @@
 import { Container, Heading } from '@madfam/ui';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { TranslationList } from '@/components/TranslationList';
 
 // Force dynamic rendering to bypass SSG issue
 export const dynamic = 'force-dynamic';
@@ -31,13 +32,7 @@ export default async function TermsPage({ params: { locale } }: { params: { loca
 
             <h2>{t('terms.services.title')}</h2>
             <p>{t('terms.services.description')}</p>
-            <ul>
-              {(t('terms.services.items', { returnObjects: true }) as unknown as string[]).map(
-                (item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                )
-              )}
-            </ul>
+            <TranslationList t={t} translationKey="terms.services.items" />
 
             <h2>{t('terms.websiteUse.title')}</h2>
             <h3>{t('terms.websiteUse.license.title')}</h3>
@@ -45,15 +40,7 @@ export default async function TermsPage({ params: { locale } }: { params: { loca
 
             <h3>{t('terms.websiteUse.restrictions.title')}</h3>
             <p>{t('terms.websiteUse.restrictions.description')}</p>
-            <ul>
-              {(
-                t('terms.websiteUse.restrictions.items', {
-                  returnObjects: true,
-                }) as unknown as string[]
-              ).map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+            <TranslationList t={t} translationKey="terms.websiteUse.restrictions.items" />
 
             <h2>{t('terms.intellectualProperty.title')}</h2>
             <h3>{t('terms.intellectualProperty.ourContent.title')}</h3>

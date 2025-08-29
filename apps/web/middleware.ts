@@ -2,8 +2,9 @@ import { i18nConfig } from '@madfam/i18n';
 import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 
+// Create separate middleware for non-hyphenated locales
 const intlMiddleware = createIntlMiddleware({
-  locales: i18nConfig.locales,
+  locales: ['es', 'en'], // Only include non-hyphenated locales
   defaultLocale: i18nConfig.defaultLocale,
   localePrefix: 'always',
   localeDetection: true,
@@ -12,46 +13,51 @@ const intlMiddleware = createIntlMiddleware({
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Special handling for pt-br to prevent redirect loops
+  // Handle pt-br manually to avoid next-intl hyphen issues
   if (pathname === '/pt-br' || pathname.startsWith('/pt-br/')) {
-    console.log('Middleware: Special pt-br handling for:', pathname);
+    // For pt-br routes, just add security headers and continue
+    const response = NextResponse.next();
 
-    // Check if this is a valid pt-br page request
-    if (pathname === '/pt-br' || pathname === '/pt-br/') {
-      // Rewrite to the pt-br locale page instead of redirecting
-      const url = request.nextUrl.clone();
-      url.pathname = '/pt-br';
+    // Add security headers
+    response.headers.set('X-Frame-Options', 'DENY');
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+    response.headers.set('X-XSS-Protection', '1; mode=block');
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    response.headers.set(
+      'Permissions-Policy',
+      'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+    );
 
-      const response = NextResponse.rewrite(url);
+    const cspHeader = `
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      img-src 'self' blob: data: https:;
+      font-src 'self' https://fonts.gstatic.com;
+      connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com;
+      media-src 'self';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      upgrade-insecure-requests;
+    `
+      .replace(/\s{2,}/g, ' ')
+      .trim();
 
-      // Add the same security headers
-      response.headers.set('X-Frame-Options', 'DENY');
-      response.headers.set('X-Content-Type-Options', 'nosniff');
-      response.headers.set('X-XSS-Protection', '1; mode=block');
-      response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    response.headers.set('Content-Security-Policy', cspHeader);
+
+    if (process.env.NODE_ENV === 'production') {
       response.headers.set(
-        'Permissions-Policy',
-        'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+        'Strict-Transport-Security',
+        'max-age=31536000; includeSubDomains; preload'
       );
-      response.headers.set(
-        'Content-Security-Policy',
-        `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;`
-          .replace(/\s{2,}/g, ' ')
-          .trim()
-      );
-
-      if (process.env.NODE_ENV === 'production') {
-        response.headers.set(
-          'Strict-Transport-Security',
-          'max-age=31536000; includeSubDomains; preload'
-        );
-      }
-
-      return response;
     }
+
+    return response;
   }
 
-  // Run the intl middleware for other requests
+  // Run the intl middleware for es and en routes
   const response = intlMiddleware(request);
 
   // Add security headers

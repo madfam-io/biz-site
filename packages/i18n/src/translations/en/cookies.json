@@ -1,4 +1,31 @@
 {
+  "title": "Cookie Policy",
+  "lastUpdated": "Last updated: March 15, 2024",
+  "sections": {
+    "whatAreCookies": {
+      "title": "What are cookies?",
+      "description": "Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better experience by remembering your preferences and analyzing how you use our site."
+    },
+    "howWeUse": {
+      "title": "How we use cookies",
+      "description": "We use different types of cookies for various purposes:",
+      "essential": "Essential Cookies",
+      "analytics": "Analytics Cookies",
+      "preference": "Preference Cookies",
+      "marketing": "Marketing Cookies"
+    },
+    "managing": {
+      "title": "Managing cookies",
+      "description": "You can control and manage cookies in your browser settings. Please note that removing or blocking cookies may impact your user experience and parts of our website may no longer be fully accessible."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have questions about this Cookie Policy, please contact us:",
+      "email": "Email: privacy@madfam.io",
+      "phone": "Phone: +52 55 1234 5678",
+      "address": "Address: Mexico City, Mexico"
+    }
+  },
   "banner": {
     "title": "We use cookies",
     "description": "We use cookies to enhance your experience, analyze site traffic, and personalize content. You can customize your preferences or accept all cookies.",
