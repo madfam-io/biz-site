@@ -1,6 +1,6 @@
 import { i18nConfig } from '@madfam/i18n';
 import createIntlMiddleware from 'next-intl/middleware';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 const intlMiddleware = createIntlMiddleware({
   locales: ['es', 'en', 'pt'],
