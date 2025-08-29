@@ -1,7 +1,7 @@
 export const i18nConfig = {
-  // UPDATED: Normalized locales (es-MX → es, en-US → en, pt-BR → pt-br)
+  // UPDATED: Normalized locales (es-MX → es, en-US → en, pt-BR → pt)
   defaultLocale: 'es',
-  locales: ['es', 'en', 'pt-br'] as const,
+  locales: ['es', 'en', 'pt'] as const,
 
   localeDetection: true,
 
@@ -9,14 +9,14 @@ export const i18nConfig = {
   localeNames: {
     es: 'Español',
     en: 'English',
-    'pt-br': 'Português (Brasil)',
+    pt: 'Português',
   },
 
   // Hreflang mappings for SEO
   hreflangMap: {
     es: 'es-MX',
     en: 'en',
-    'pt-br': 'pt-BR',
+    pt: 'pt-BR',
   },
 
   // Route translations - maps canonical routes to localized routes
@@ -54,8 +54,8 @@ export const i18nConfig = {
       '/terms': '/terminos',
       '/cookies': '/cookies',
     },
-    'pt-br': {
-      // NEW: Corporate structure routes
+    pt: {
+      // Portuguese routes
       '/arms': '/unidades',
       '/arms/aureo-labs': '/unidades/aureo-labs',
       '/arms/primavera3d': '/unidades/primavera3d',
@@ -67,23 +67,13 @@ export const i18nConfig = {
       '/security': '/seguranca',
       '/about': '/sobre',
       '/contact': '/contato',
-
-      // LEGACY: Keep existing service routes for redirects
-      '/services': '/servicos',
-      '/services/level-1-essentials': '/servicos/nivel-1-essenciais',
-      '/services/level-2-advanced': '/servicos/nivel-2-avancado',
-      '/services/level-3-consulting': '/servicos/nivel-3-consultoria',
-      '/services/level-4-platforms': '/servicos/nivel-4-plataformas',
-      '/services/level-5-strategic': '/servicos/nivel-5-estrategico',
-
-      // PRESERVE: Existing routes
-      '/assessment': '/avaliacao',
-      '/calculator': '/calculadora',
-      '/blog': '/blog',
       '/careers': '/carreiras',
       '/case-studies': '/casos-de-sucesso',
       '/docs': '/documentacao',
       '/guides': '/guias',
+      '/assessment': '/avaliacao',
+      '/calculator': '/calculadora',
+      '/estimator': '/estimador',
       '/privacy': '/privacidade',
       '/terms': '/termos',
       '/cookies': '/cookies',

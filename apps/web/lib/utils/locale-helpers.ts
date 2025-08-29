@@ -2,12 +2,12 @@
  * Locale utility helpers for handling multi-language content
  */
 
-export type SupportedLocale = 'en' | 'es' | 'pt-br';
+export type SupportedLocale = 'en' | 'es' | 'pt';
 
 export interface LocalizedContent<T = string> {
   en: T;
   es: T;
-  'pt-br': T;
+  pt: T;
 }
 
 /**
@@ -43,7 +43,7 @@ export function createLocalizedContent<T>(en: T, es: T, ptBr: T): LocalizedConte
   return {
     en,
     es,
-    'pt-br': ptBr,
+    pt: ptBr,
   };
 }
 
@@ -53,7 +53,7 @@ export function createLocalizedContent<T>(en: T, es: T, ptBr: T): LocalizedConte
  * @returns True if locale is supported
  */
 export function isSupportedLocale(locale: string): locale is SupportedLocale {
-  return ['en', 'es', 'pt-br'].includes(locale);
+  return ['en', 'es', 'pt'].includes(locale);
 }
 
 /**
@@ -73,7 +73,7 @@ export function getLocaleDisplayName(locale: string): string {
   const names: LocalizedContent<string> = {
     en: 'English',
     es: 'Español',
-    'pt-br': 'Português',
+    pt: 'Português',
   };
   return names[locale as SupportedLocale] || locale;
 }

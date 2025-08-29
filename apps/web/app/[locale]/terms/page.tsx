@@ -63,7 +63,7 @@ export default async function TermsPage({ params: { locale } }: { params: { loca
                   'Este documento ha sido simplificado para demostrar la internacionalización. La versión completa estará disponible próximamente.'}
                 {locale === 'en' &&
                   'This document has been simplified to demonstrate internationalization. The complete version will be available soon.'}
-                {locale === 'pt-br' &&
+                {locale === 'pt' &&
                   'Este documento foi simplificado para demonstrar a internacionalização. A versão completa estará disponível em breve.'}
               </p>
             </div>

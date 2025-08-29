@@ -11,7 +11,7 @@ const DEFAULT_CURRENCY_CONFIG: CurrencyConfig = { locale: 'en', currency: 'USD',
 const CURRENCY_BY_LOCALE: Record<string, CurrencyConfig> = {
   en: DEFAULT_CURRENCY_CONFIG,
   es: { locale: 'es', currency: 'MXN', symbol: '$' },
-  'pt-br': { locale: 'pt-br', currency: 'BRL', symbol: 'R$' },
+  pt: { locale: 'pt', currency: 'BRL', symbol: 'R$' },
 };
 
 export function useCurrencyFormatter() {

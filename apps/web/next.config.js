@@ -39,7 +39,7 @@ const nextConfig = {
         permanent: true,
       },
 
-      // Legacy locale redirects (es-MX → es, en-US → en, pt-BR → pt-br)
+      // Legacy locale redirects (es-MX → es, en-US → en, pt-BR → pt)
       {
         source: '/es-MX/:path*',
         destination: '/es/:path*',
@@ -52,7 +52,12 @@ const nextConfig = {
       },
       {
         source: '/pt-BR/:path*',
-        destination: '/pt-br/:path*',
+        destination: '/pt/:path*',
+        permanent: true,
+      },
+      {
+        source: '/pt-br/:path*',
+        destination: '/pt/:path*',
         permanent: true,
       },
     ];
@@ -81,34 +86,34 @@ const nextConfig = {
       { source: '/es/unidades/aero', destination: '/es/arms/aero' }
     );
 
-    // Portuguese rewrites - main pages (pt-br → localized routes)
+    // Portuguese rewrites - main pages (pt → localized routes)
     rewrites.push(
-      { source: '/pt-br/unidades', destination: '/pt-br/arms' },
-      { source: '/pt-br/produtos', destination: '/pt-br/products' },
-      { source: '/pt-br/programas', destination: '/pt-br/programs' },
-      { source: '/pt-br/casos', destination: '/pt-br/work' },
-      { source: '/pt-br/seguranca', destination: '/pt-br/security' },
-      { source: '/pt-br/sobre', destination: '/pt-br/about' },
-      { source: '/pt-br/contato', destination: '/pt-br/contact' },
+      { source: '/pt/unidades', destination: '/pt/arms' },
+      { source: '/pt/produtos', destination: '/pt/products' },
+      { source: '/pt/programas', destination: '/pt/programs' },
+      { source: '/pt/casos', destination: '/pt/work' },
+      { source: '/pt/seguranca', destination: '/pt/security' },
+      { source: '/pt/sobre', destination: '/pt/about' },
+      { source: '/pt/contato', destination: '/pt/contact' },
       // Legacy routes
-      { source: '/pt-br/carreiras', destination: '/pt-br/careers' },
-      { source: '/pt-br/casos-de-sucesso', destination: '/pt-br/case-studies' },
-      { source: '/pt-br/documentacao', destination: '/pt-br/docs' },
-      { source: '/pt-br/guias', destination: '/pt-br/guides' },
-      { source: '/pt-br/avaliacao', destination: '/pt-br/assessment' },
-      { source: '/pt-br/calculadora', destination: '/pt-br/calculator' },
-      { source: '/pt-br/estimador', destination: '/pt-br/estimator' },
-      { source: '/pt-br/privacidade', destination: '/pt-br/privacy' },
-      { source: '/pt-br/termos', destination: '/pt-br/terms' },
-      { source: '/pt-br/cookies', destination: '/pt-br/cookies' }
+      { source: '/pt/carreiras', destination: '/pt/careers' },
+      { source: '/pt/casos-de-sucesso', destination: '/pt/case-studies' },
+      { source: '/pt/documentacao', destination: '/pt/docs' },
+      { source: '/pt/guias', destination: '/pt/guides' },
+      { source: '/pt/avaliacao', destination: '/pt/assessment' },
+      { source: '/pt/calculadora', destination: '/pt/calculator' },
+      { source: '/pt/estimador', destination: '/pt/estimator' },
+      { source: '/pt/privacidade', destination: '/pt/privacy' },
+      { source: '/pt/termos', destination: '/pt/terms' },
+      { source: '/pt/cookies', destination: '/pt/cookies' }
     );
 
     // Portuguese rewrites - corporate structure
     rewrites.push(
-      { source: '/pt-br/unidades/aureo-labs', destination: '/pt-br/arms/aureo-labs' },
-      { source: '/pt-br/unidades/primavera3d', destination: '/pt-br/arms/primavera3d' },
-      { source: '/pt-br/unidades/saude', destination: '/pt-br/arms/health' },
-      { source: '/pt-br/unidades/aero', destination: '/pt-br/arms/aero' }
+      { source: '/pt/unidades/aureo-labs', destination: '/pt/arms/aureo-labs' },
+      { source: '/pt/unidades/primavera3d', destination: '/pt/arms/primavera3d' },
+      { source: '/pt/unidades/saude', destination: '/pt/arms/health' },
+      { source: '/pt/unidades/aero', destination: '/pt/arms/aero' }
     );
 
     return rewrites;

@@ -7,7 +7,7 @@ export interface SEOConfig {
   image?: string;
   url?: string;
   type?: 'website' | 'article' | 'product' | 'service';
-  locale?: 'es' | 'en' | 'pt-br';
+  locale?: 'es' | 'en' | 'pt';
   alternateLocales?: string[];
   publishedTime?: string;
   modifiedTime?: string;
@@ -110,7 +110,7 @@ export class SEOService {
     serviceName: string,
     serviceDescription: string,
     serviceTier: string,
-    locale: 'es' | 'en' | 'pt-br' = 'es'
+    locale: 'es' | 'en' | 'pt' = 'es'
   ): Metadata {
     const content = {
       es: {
@@ -139,7 +139,7 @@ export class SEOService {
           'LATAM',
         ],
       },
-      'pt-br': {
+      pt: {
         title: `${serviceName} | Serviços ${serviceTier} | MADFAM`,
         description: serviceDescription,
         keywords: [
@@ -170,7 +170,7 @@ export class SEOService {
   generateProductMetadata(
     productName: string,
     productDescription: string,
-    locale: 'es' | 'en' | 'pt-br' = 'es'
+    locale: 'es' | 'en' | 'pt' = 'es'
   ): Metadata {
     const content = {
       es: {
@@ -199,7 +199,7 @@ export class SEOService {
           'PENNY',
         ],
       },
-      'pt-br': {
+      pt: {
         title: `${productName} | Produtos MADFAM`,
         description: productDescription,
         keywords: [
@@ -232,7 +232,7 @@ export class SEOService {
     author: string,
     publishedTime: string,
     tags: string[],
-    locale: 'es' | 'en' | 'pt-br' = 'es'
+    locale: 'es' | 'en' | 'pt' = 'es'
   ): Metadata {
     return this.generateMetadata({
       title,
@@ -247,7 +247,7 @@ export class SEOService {
     });
   }
 
-  generateHomeMetadata(locale: 'es' | 'en' | 'pt-br' = 'es'): Metadata {
+  generateHomeMetadata(locale: 'es' | 'en' | 'pt' = 'es'): Metadata {
     const content = {
       es: {
         title: 'MADFAM | Transformación Digital e Inteligencia Artificial en México',
@@ -283,7 +283,7 @@ export class SEOService {
           'strategic consulting',
         ],
       },
-      'pt-br': {
+      pt: {
         title: 'MADFAM | Transformação Digital e Soluções de IA no México',
         description:
           'Especialistas em transformação digital, automação inteligente e desenvolvimento de software empresarial. Do design 3D aos serviços estratégicos de vCTO. Serviços L1-L5 no México e LATAM.',

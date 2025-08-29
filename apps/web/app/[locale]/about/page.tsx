@@ -9,17 +9,17 @@ interface TeamMember {
   role: {
     es: string;
     en: string;
-    'pt-br': string;
+    pt: string;
   };
   bio: {
     es: string;
     en: string;
-    'pt-br': string;
+    pt: string;
   };
   expertise: {
     es: string[];
     en: string[];
-    'pt-br': string[];
+    pt: string[];
   };
   image: string;
 }
@@ -29,12 +29,12 @@ interface Value {
   title: {
     es: string;
     en: string;
-    'pt-br': string;
+    pt: string;
   };
   description: {
     es: string;
     en: string;
-    'pt-br': string;
+    pt: string;
   };
 }
 
@@ -43,7 +43,7 @@ interface Milestone {
   event: {
     es: string;
     en: string;
-    'pt-br': string;
+    pt: string;
   };
 }
 
@@ -58,18 +58,17 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       role: {
         es: 'CEO & Fundador',
         en: 'CEO & Founder',
-        'pt-br': 'CEO & Fundador',
+        pt: 'CEO & Fundador',
       },
       bio: {
         es: 'Visionario tecnológico con más de 15 años transformando empresas con IA y creatividad.',
         en: 'Technology visionary with over 15 years transforming companies with AI and creativity.',
-        'pt-br':
-          'Visionário tecnológico com mais de 15 anos transformando empresas com IA e criatividade.',
+        pt: 'Visionário tecnológico com mais de 15 anos transformando empresas com IA e criatividade.',
       },
       expertise: {
         es: ['Estrategia IA', 'Innovación', 'Liderazgo'],
         en: ['AI Strategy', 'Innovation', 'Leadership'],
-        'pt-br': ['Estratégia IA', 'Inovação', 'Liderança'],
+        pt: ['Estratégia IA', 'Inovação', 'Liderança'],
       },
       image: '/team/aldo.jpg',
     },
@@ -78,18 +77,17 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       role: {
         es: 'Directora Creativa',
         en: 'Creative Director',
-        'pt-br': 'Diretora Criativa',
+        pt: 'Diretora Criativa',
       },
       bio: {
         es: 'Experta en diseño 3D y experiencias digitales que conectan marcas con audiencias.',
         en: 'Expert in 3D design and digital experiences that connect brands with audiences.',
-        'pt-br':
-          'Especialista em design 3D e experiências digitais que conectam marcas com audiências.',
+        pt: 'Especialista em design 3D e experiências digitais que conectam marcas com audiências.',
       },
       expertise: {
         es: ['Diseño 3D', 'UX/UI', 'Branding'],
         en: ['3D Design', 'UX/UI', 'Branding'],
-        'pt-br': ['Design 3D', 'UX/UI', 'Branding'],
+        pt: ['Design 3D', 'UX/UI', 'Branding'],
       },
       image: '/team/daniela.jpg',
     },
@@ -98,17 +96,17 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       role: {
         es: 'CTO',
         en: 'CTO',
-        'pt-br': 'CTO',
+        pt: 'CTO',
       },
       bio: {
         es: 'Arquitecto de soluciones que lidera la implementación de plataformas empresariales.',
         en: 'Solutions architect leading enterprise platform implementations.',
-        'pt-br': 'Arquiteto de soluções que lidera a implementação de plataformas empresariais.',
+        pt: 'Arquiteto de soluções que lidera a implementação de plataformas empresariais.',
       },
       expertise: {
         es: ['Arquitectura', 'DevOps', 'Cloud'],
         en: ['Architecture', 'DevOps', 'Cloud'],
-        'pt-br': ['Arquitetura', 'DevOps', 'Cloud'],
+        pt: ['Arquitetura', 'DevOps', 'Cloud'],
       },
       image: '/team/carlos.jpg',
     },
@@ -117,17 +115,17 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       role: {
         es: 'Directora de IA',
         en: 'AI Director',
-        'pt-br': 'Diretora de IA',
+        pt: 'Diretora de IA',
       },
       bio: {
         es: 'Pionera en automatización inteligente y machine learning aplicado a negocios.',
         en: 'Pioneer in intelligent automation and machine learning applied to business.',
-        'pt-br': 'Pioneira em automação inteligente e machine learning aplicado a negócios.',
+        pt: 'Pioneira em automação inteligente e machine learning aplicado a negócios.',
       },
       expertise: {
         es: ['Machine Learning', 'Automatización', 'Data Science'],
         en: ['Machine Learning', 'Automation', 'Data Science'],
-        'pt-br': ['Machine Learning', 'Automação', 'Data Science'],
+        pt: ['Machine Learning', 'Automação', 'Data Science'],
       },
       image: '/team/ana.jpg',
     },
@@ -139,12 +137,12 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       title: {
         es: 'Innovación Constante',
         en: 'Constant Innovation',
-        'pt-br': 'Inovação Constante',
+        pt: 'Inovação Constante',
       },
       description: {
         es: 'Exploramos nuevas tecnologías para mantener a nuestros clientes a la vanguardia.',
         en: 'We explore new technologies to keep our clients at the forefront.',
-        'pt-br': 'Exploramos novas tecnologias para manter nossos clientes na vanguarda.',
+        pt: 'Exploramos novas tecnologias para manter nossos clientes na vanguarda.',
       },
     },
     {
@@ -152,12 +150,12 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       title: {
         es: 'Colaboración Genuina',
         en: 'Genuine Collaboration',
-        'pt-br': 'Colaboração Genuína',
+        pt: 'Colaboração Genuína',
       },
       description: {
         es: 'Trabajamos como extensión de tu equipo, no como proveedores externos.',
         en: 'We work as an extension of your team, not as external vendors.',
-        'pt-br': 'Trabalhamos como extensão da sua equipe, não como fornecedores externos.',
+        pt: 'Trabalhamos como extensão da sua equipe, não como fornecedores externos.',
       },
     },
     {
@@ -165,12 +163,12 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       title: {
         es: 'Excelencia Creativa',
         en: 'Creative Excellence',
-        'pt-br': 'Excelência Criativa',
+        pt: 'Excelência Criativa',
       },
       description: {
         es: 'Combinamos arte y tecnología para crear soluciones únicas y memorables.',
         en: 'We combine art and technology to create unique and memorable solutions.',
-        'pt-br': 'Combinamos arte e tecnologia para criar soluções únicas e memoráveis.',
+        pt: 'Combinamos arte e tecnologia para criar soluções únicas e memoráveis.',
       },
     },
     {
@@ -178,12 +176,12 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       title: {
         es: 'Resultados Medibles',
         en: 'Measurable Results',
-        'pt-br': 'Resultados Mensuráveis',
+        pt: 'Resultados Mensuráveis',
       },
       description: {
         es: 'Cada proyecto se enfoca en generar impacto real y cuantificable.',
         en: 'Every project focuses on generating real and quantifiable impact.',
-        'pt-br': 'Cada projeto se concentra em gerar impacto real e quantificável.',
+        pt: 'Cada projeto se concentra em gerar impacto real e quantificável.',
       },
     },
   ];
@@ -194,7 +192,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       event: {
         es: 'Fundación de MADFAM',
         en: 'MADFAM Founded',
-        'pt-br': 'Fundação da MADFAM',
+        pt: 'Fundação da MADFAM',
       },
     },
     {
@@ -202,7 +200,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       event: {
         es: 'Lanzamiento de SPARK beta',
         en: 'SPARK beta launch',
-        'pt-br': 'Lançamento do SPARK beta',
+        pt: 'Lançamento do SPARK beta',
       },
     },
     {
@@ -210,7 +208,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       event: {
         es: '100+ proyectos completados',
         en: '100+ projects completed',
-        'pt-br': '100+ projetos concluídos',
+        pt: '100+ projetos concluídos',
       },
     },
     {
@@ -218,7 +216,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       event: {
         es: 'Expansión internacional',
         en: 'International expansion',
-        'pt-br': 'Expansão internacional',
+        pt: 'Expansão internacional',
       },
     },
     {
@@ -226,7 +224,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       event: {
         es: 'Lanzamiento de PENNY',
         en: 'PENNY launch',
-        'pt-br': 'Lançamento do PENNY',
+        pt: 'Lançamento do PENNY',
       },
     },
     {
@@ -234,7 +232,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
       event: {
         es: '50+ empresas transformadas',
         en: '50+ companies transformed',
-        'pt-br': '50+ empresas transformadas',
+        pt: '50+ empresas transformadas',
       },
     },
   ];

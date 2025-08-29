@@ -117,7 +117,7 @@ const messagesEs = {
 
 interface WrapperProps {
   children: React.ReactNode;
-  locale?: 'en' | 'es' | 'pt-br';
+  locale?: 'en' | 'es' | 'pt';
 }
 
 function AllTheProviders({ children, locale = 'es' }: WrapperProps) {
@@ -135,7 +135,7 @@ export function renderWithProviders(
   {
     locale = 'es',
     ...renderOptions
-  }: { locale?: 'en' | 'es' | 'pt-br' } & Parameters<typeof rtlRender>[1] = {}
+  }: { locale?: 'en' | 'es' | 'pt' } & Parameters<typeof rtlRender>[1] = {}
 ): RenderResult {
   return rtlRender(ui, {
     wrapper: ({ children }) => <AllTheProviders locale={locale}>{children}</AllTheProviders>,

@@ -11,10 +11,10 @@ export * from './hooks/useTypedTranslations';
 // Translation imports - Now using modular structure
 import esMessages from './translations/es';
 import enMessages from './translations/en';
-import ptMessages from './translations/pt-br';
+import ptMessages from './translations/pt';
 
 export const messages = {
   es: esMessages,
   en: enMessages,
-  'pt-br': ptMessages,
+  pt: ptMessages,
 } as const;

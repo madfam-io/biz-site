@@ -133,7 +133,7 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
         // Generate for all locales
         ...fallbackPosts.flatMap(post => [
           { locale: 'es', slug: post.slug },
-          { locale: 'pt-br', slug: post.slug },
+          { locale: 'pt', slug: post.slug },
         ]),
       ];
     }
@@ -142,14 +142,14 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
     const cmsResults = await Promise.allSettled([
       getPublishedBlogPosts('en', 100, fallbackPosts),
       getPublishedBlogPosts('es', 100, fallbackPosts),
-      getPublishedBlogPosts('pt-br', 100, fallbackPosts),
+      getPublishedBlogPosts('pt', 100, fallbackPosts),
     ]);
 
     const allParams = new Set<string>();
 
     // Add fallback posts first
     fallbackPosts.forEach(post => {
-      ['en', 'es', 'pt-br'].forEach(locale => {
+      ['en', 'es', 'pt'].forEach(locale => {
         allParams.add(`${locale}:${post.slug}`);
       });
     });
@@ -157,7 +157,7 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
     // Add CMS posts
     cmsResults.forEach((result, index) => {
       if (result.status === 'fulfilled' && result.value.source === 'cms') {
-        const locale = ['en', 'es', 'pt-br'][index];
+        const locale = ['en', 'es', 'pt'][index];
         result.value.docs.forEach(post => {
           allParams.add(`${locale}:${post.slug}`);
         });
@@ -177,7 +177,7 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
       ...fallbackPosts.map(post => ({ locale: 'en' as const, slug: post.slug })),
       ...fallbackPosts.flatMap(post => [
         { locale: 'es', slug: post.slug },
-        { locale: 'pt-br', slug: post.slug },
+        { locale: 'pt', slug: post.slug },
       ]),
     ];
   }
