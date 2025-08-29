@@ -44,7 +44,7 @@ export interface AssessmentProps {
   questions: AssessmentQuestion[];
   onComplete?: (result: AssessmentResult) => void;
   className?: string;
-  locale?: 'es' | 'en' | 'pt-br';
+  locale?: 'es' | 'en' | 'pt';
   translations?: {
     resultTitle: string;
     levelLabel: string;
@@ -185,60 +185,60 @@ const defaultQuestions: AssessmentQuestion[] = [
   },
 ];
 
-const getDefaultTranslations = (locale: 'es' | 'en' | 'pt-br' = 'es') => ({
+const getDefaultTranslations = (locale: 'es' | 'en' | 'pt' = 'es') => ({
   resultTitle:
     locale === 'en'
       ? 'Assessment Results'
-      : locale === 'pt-br'
+      : locale === 'pt'
         ? 'Resultados da Avaliação'
         : 'Resultado de tu Evaluación',
-  levelLabel: locale === 'en' ? 'Level' : locale === 'pt-br' ? 'Nível' : 'Nivel',
+  levelLabel: locale === 'en' ? 'Level' : locale === 'pt' ? 'Nível' : 'Nivel',
   recommendationsTitle:
     locale === 'en'
       ? 'Recommendations for your company'
-      : locale === 'pt-br'
+      : locale === 'pt'
         ? 'Recomendações para sua empresa'
         : 'Recomendaciones para tu empresa',
   recommendedServiceTitle:
     locale === 'en'
       ? 'Recommended Service'
-      : locale === 'pt-br'
+      : locale === 'pt'
         ? 'Serviço Recomendado'
         : 'Servicio Recomendado',
   recommendedServiceDescription:
     locale === 'en'
       ? 'Based on your maturity level, this service best fits your current needs'
-      : locale === 'pt-br'
+      : locale === 'pt'
         ? 'Baseado no seu nível de maturidade, este serviço se adapta melhor às suas necessidades atuais'
         : 'Basado en tu nivel de madurez, este servicio se adapta mejor a tus necesidades actuales',
   restartButton:
     locale === 'en'
       ? 'Retake assessment'
-      : locale === 'pt-br'
+      : locale === 'pt'
         ? 'Refazer avaliação'
         : 'Volver a evaluar',
   requestConsultationButton:
     locale === 'en'
       ? 'Request consultation'
-      : locale === 'pt-br'
+      : locale === 'pt'
         ? 'Solicitar consulta'
         : 'Solicitar consulta',
-  previousButton: locale === 'en' ? 'Previous' : locale === 'pt-br' ? 'Anterior' : 'Anterior',
-  nextButton: locale === 'en' ? 'Next' : locale === 'pt-br' ? 'Próximo' : 'Siguiente',
-  finishButton: locale === 'en' ? 'Finish' : locale === 'pt-br' ? 'Finalizar' : 'Finalizar',
+  previousButton: locale === 'en' ? 'Previous' : locale === 'pt' ? 'Anterior' : 'Anterior',
+  nextButton: locale === 'en' ? 'Next' : locale === 'pt' ? 'Próximo' : 'Siguiente',
+  finishButton: locale === 'en' ? 'Finish' : locale === 'pt' ? 'Finalizar' : 'Finalizar',
   categoryLabels: {
-    strategy: locale === 'en' ? 'Strategy' : locale === 'pt-br' ? 'Estratégia' : 'Estrategia',
-    technology: locale === 'en' ? 'Technology' : locale === 'pt-br' ? 'Tecnologia' : 'Tecnología',
-    data: locale === 'en' ? 'Data' : locale === 'pt-br' ? 'Dados' : 'Datos',
-    culture: locale === 'en' ? 'Culture' : locale === 'pt-br' ? 'Cultura' : 'Cultura',
-    processes: locale === 'en' ? 'Processes' : locale === 'pt-br' ? 'Processos' : 'Procesos',
+    strategy: locale === 'en' ? 'Strategy' : locale === 'pt' ? 'Estratégia' : 'Estrategia',
+    technology: locale === 'en' ? 'Technology' : locale === 'pt' ? 'Tecnologia' : 'Tecnología',
+    data: locale === 'en' ? 'Data' : locale === 'pt' ? 'Dados' : 'Datos',
+    culture: locale === 'en' ? 'Culture' : locale === 'pt' ? 'Cultura' : 'Cultura',
+    processes: locale === 'en' ? 'Processes' : locale === 'pt' ? 'Processos' : 'Procesos',
   },
   levelDescriptions: {
-    beginner: locale === 'en' ? 'beginner' : locale === 'pt-br' ? 'iniciante' : 'principiante',
+    beginner: locale === 'en' ? 'beginner' : locale === 'pt' ? 'iniciante' : 'principiante',
     intermediate:
-      locale === 'en' ? 'intermediate' : locale === 'pt-br' ? 'intermediário' : 'intermedio',
-    advanced: locale === 'en' ? 'advanced' : locale === 'pt-br' ? 'avançado' : 'avanzado',
-    expert: locale === 'en' ? 'expert' : locale === 'pt-br' ? 'especialista' : 'experto',
+      locale === 'en' ? 'intermediate' : locale === 'pt' ? 'intermediário' : 'intermedio',
+    advanced: locale === 'en' ? 'advanced' : locale === 'pt' ? 'avançado' : 'avanzado',
+    expert: locale === 'en' ? 'expert' : locale === 'pt' ? 'especialista' : 'experto',
   },
 });
 
@@ -264,7 +264,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
     const defaultTitle =
       locale === 'en'
         ? 'AI Readiness Assessment'
-        : locale === 'pt-br'
+        : locale === 'pt'
           ? 'Avaliação de Maturidade em IA'
           : 'Evaluación de Madurez en IA';
 
@@ -427,13 +427,13 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
                 <p className="text-gray-600 dark:text-gray-400">
                   {locale === 'en'
                     ? 'Your company is at a'
-                    : locale === 'pt-br'
+                    : locale === 'pt'
                       ? 'Sua empresa está em um nível'
                       : 'Tu empresa está en un nivel'}{' '}
                   {t.levelDescriptions[result.level]}{' '}
                   {locale === 'en'
                     ? 'level of AI maturity'
-                    : locale === 'pt-br'
+                    : locale === 'pt'
                       ? 'de maturidade em IA'
                       : 'de madurez en IA'}
                 </p>
@@ -526,7 +526,7 @@ export const Assessment = React.forwardRef<HTMLDivElement, AssessmentProps>(
           <div className="flex items-center justify-between mb-4">
             <CardTitle>{title || defaultTitle}</CardTitle>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {currentQuestion + 1} {locale === 'en' ? 'of' : locale === 'pt-br' ? 'de' : 'de'}{' '}
+              {currentQuestion + 1} {locale === 'en' ? 'of' : locale === 'pt' ? 'de' : 'de'}{' '}
               {questions.length}
             </span>
           </div>
