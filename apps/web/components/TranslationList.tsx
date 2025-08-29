@@ -37,7 +37,7 @@ export async function TranslationList({
         // Stop when we reach a non-existent translation
         break;
       }
-    } catch (error: any) {
+    } catch {
       // Stop on any translation error - most likely means we've reached the end of the array
       break;
     }
