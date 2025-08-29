@@ -4,7 +4,6 @@ import { postgresAdapter } from '@payloadcms/db-postgres';
 import { slateEditor } from '@payloadcms/richtext-slate';
 
 // Collections
-import { Services } from './src/collections/Services';
 import { Products } from './src/collections/Products';
 import { CaseStudies } from './src/collections/CaseStudies';
 import { BlogPosts } from './src/collections/BlogPosts';
@@ -18,35 +17,10 @@ export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3001',
   admin: {
     user: 'users',
-    bundler: webpackBundler({
-      webpack: config => {
-        // Import optimized configuration
-        const optimizedConfig = require('./webpack.config.js');
-
-        // Merge optimization settings
-        if (!config.optimization) {
-          config.optimization = {};
-        }
-
-        config.optimization = {
-          ...config.optimization,
-          ...optimizedConfig.optimization,
-        };
-
-        // Add plugins
-        if (!config.plugins) {
-          config.plugins = [];
-        }
-
-        config.plugins.push(...(optimizedConfig.plugins || []));
-
-        return config;
-      },
-    }),
+    bundler: webpackBundler(),
   },
   editor: slateEditor({}),
   collections: [
-    Services,
     Products,
     CaseStudies,
     BlogPosts,

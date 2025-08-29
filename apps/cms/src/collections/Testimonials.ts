@@ -45,13 +45,5 @@ export const Testimonials: CollectionConfig = {
         description: 'Show on homepage',
       },
     },
-    {
-      name: 'service',
-      type: 'relationship',
-      relationTo: 'services',
-      admin: {
-        description: 'Related service',
-      },
-    },
   ],
 };
