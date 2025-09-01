@@ -35,10 +35,10 @@ export function CorporateHomePage() {
         t('corporate.arms.aureoLabs.capabilities.3'),
       ],
       products: [
-        { name: 'Aureo Studio', url: 'https://aureo.studio' },
-        { name: 'PENNY', url: '/products/penny' },
-        { name: 'Cotiza Studio', url: 'https://cotiza.studio' },
+        { name: 'Penny', url: 'https://www.penny.onl' },
         { name: 'Dhanam', url: 'https://www.dhan.am' },
+        { name: 'Cotiza Studio', url: 'https://cotiza.studio' },
+        { name: 'Forge Sight', url: 'https://forgesight.quest' },
       ],
       externalUrl: 'https://aureolabs.dev',
     },

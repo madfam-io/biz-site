@@ -222,9 +222,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
     {
       year: '2023',
       event: {
-        es: 'Lanzamiento de PENNY',
-        en: 'PENNY launch',
-        pt: 'Lançamento do PENNY',
+        es: 'Lanzamiento de Penny',
+        en: 'Penny launch',
+        pt: 'Lançamento do Penny',
       },
     },
     {

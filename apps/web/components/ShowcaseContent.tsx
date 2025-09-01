@@ -170,7 +170,7 @@ export function ShowcaseContent() {
                 logo={<SparkIcon />}
               />
               <ProductCard
-                name="PENNY"
+                name="Penny"
                 tagline={t('products.penny.tagline')}
                 description={t('products.penny.shortDescription')}
                 features={[

@@ -44,7 +44,7 @@ export function Search() {
       },
       {
         id: 'penny',
-        title: 'PENNY',
+        title: 'Penny',
         description:
           locale === 'en'
             ? 'AI-powered process automation assistant'

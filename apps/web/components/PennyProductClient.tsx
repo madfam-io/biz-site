@@ -103,7 +103,7 @@ export function PennyProductClient({
       {/* Hero Section */}
       <Hero
         variant="product"
-        title="PENNY"
+        title="Penny"
         subtitle={translations.heroSubtitle}
         description={translations.heroDescription}
         cta={{

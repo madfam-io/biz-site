@@ -28,8 +28,8 @@ export function Footer() {
       },
     ],
     productos: [
-      { name: 'Aureo Studio', href: 'https://aureo.studio' },
-      { name: 'PENNY', href: `${getLocalizedUrl('products', locale)}#penny` },
+      { name: 'Penny', href: 'https://www.penny.onl' },
+      { name: 'Dhanam', href: 'https://www.dhan.am' },
       { name: 'Cotiza Studio', href: 'https://cotiza.studio' },
       { name: 'Forge Sight', href: 'https://forgesight.quest' },
     ],

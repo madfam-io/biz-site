@@ -85,7 +85,7 @@ export default async function ProgramsPage({ params }: Props) {
       originalTiers: ['L4'],
       investment: t('platformPilots.investment'),
       color: 'blue' as const,
-      platforms: ['Aureo Studio', 'PENNY'],
+      platforms: ['Penny', 'Dhanam'],
     },
     {
       id: 'strategic-partnerships',
