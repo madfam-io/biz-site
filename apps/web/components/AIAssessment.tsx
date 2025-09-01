@@ -109,35 +109,35 @@ export function AIAssessment() {
   const getRecommendation = (assessmentScore: number) => {
     if (assessmentScore >= 200) {
       return {
-        tier: 'L5 - Strategic',
+        tier: 'Strategic Partnerships',
         title: t('recommendations.l5.title'),
         description: t('recommendations.l5.description'),
         color: 'obsidian',
       };
     } else if (assessmentScore >= 150) {
       return {
-        tier: 'L4 - Platforms',
+        tier: 'Platform Pilots',
         title: t('recommendations.l4.title'),
         description: t('recommendations.l4.description'),
         color: 'creative',
       };
     } else if (assessmentScore >= 100) {
       return {
-        tier: 'L3 - Consulting',
+        tier: 'Strategy & Enablement',
         title: t('recommendations.l3.title'),
         description: t('recommendations.l3.description'),
         color: 'lavender',
       };
     } else if (assessmentScore >= 50) {
       return {
-        tier: 'L2 - Advanced',
+        tier: 'Advanced Design',
         title: t('recommendations.l2.title'),
         description: t('recommendations.l2.description'),
         color: 'sun',
       };
     } else {
       return {
-        tier: 'L1 - Essentials',
+        tier: 'Design & Fabrication',
         title: t('recommendations.l1.title'),
         description: t('recommendations.l1.description'),
         color: 'leaf',

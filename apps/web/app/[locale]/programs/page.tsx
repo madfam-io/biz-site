@@ -27,7 +27,7 @@ export default async function ProgramsPage({ params }: Props) {
   const t = await getTranslations({ locale: params.locale, namespace: 'corporate.programs' });
   const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
 
-  // Programs mapping from old L1-L5 structure
+  // Programs
   const programs = [
     {
       id: 'design-fabrication',
@@ -44,7 +44,6 @@ export default async function ProgramsPage({ params }: Props) {
         t('designFabrication.deliverables.2'),
         t('designFabrication.deliverables.3'),
       ],
-      originalTiers: ['L1', 'L2'],
       investment: t('designFabrication.investment'),
       color: 'green' as const,
     },
@@ -63,7 +62,6 @@ export default async function ProgramsPage({ params }: Props) {
         t('strategyEnablement.deliverables.2'),
         t('strategyEnablement.deliverables.3'),
       ],
-      originalTiers: ['L3'],
       investment: t('strategyEnablement.investment'),
       color: 'amber' as const,
     },
@@ -82,7 +80,6 @@ export default async function ProgramsPage({ params }: Props) {
         t('platformPilots.deliverables.2'),
         t('platformPilots.deliverables.3'),
       ],
-      originalTiers: ['L4'],
       investment: t('platformPilots.investment'),
       color: 'blue' as const,
       platforms: ['Penny', 'Dhanam'],
@@ -102,7 +99,6 @@ export default async function ProgramsPage({ params }: Props) {
         t('strategicPartnerships.deliverables.2'),
         t('strategicPartnerships.deliverables.3'),
       ],
-      originalTiers: ['L5'],
       investment: t('strategicPartnerships.investment'),
       color: 'purple' as const,
     },
@@ -118,18 +114,6 @@ export default async function ProgramsPage({ params }: Props) {
               {t('hero.title')}
             </h1>
             <p className="text-xl text-neutral-600 mb-8 leading-relaxed">{t('hero.subtitle')}</p>
-
-            {/* Migration Notice */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 text-left max-w-2xl mx-auto">
-              <h3 className="font-semibold text-blue-900 mb-2">{t('migration.title')}</h3>
-              <p className="text-blue-800 text-sm">{t('migration.description')}</p>
-              <div className="flex items-center gap-4 mt-3 text-sm text-blue-700">
-                <span>L1-L2 → {t('designFabrication.name')}</span>
-                <span>L3 → {t('strategyEnablement.name')}</span>
-                <span>L4 → {t('platformPilots.name')}</span>
-                <span>L5 → {t('strategicPartnerships.name')}</span>
-              </div>
-            </div>
 
             {/* Assessment CTA */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

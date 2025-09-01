@@ -65,11 +65,11 @@ describe('SEO Service', () => {
       const metadata = seoService.generateServiceMetadata(
         'Consultoría Digital',
         'Transformación digital completa',
-        'L3',
+        'Strategy & Enablement',
         'es-MX'
       );
 
-      expect(metadata.title).toBe('Consultoría Digital | Servicios L3 | MADFAM');
+      expect(metadata.title).toBe('Consultoría Digital | Servicios Strategy & Enablement | MADFAM');
       expect(metadata.description).toBe('Transformación digital completa');
       expect(metadata.openGraph?.type).toBe('service');
       expect(metadata.openGraph?.locale).toBe('es-MX');
@@ -79,11 +79,11 @@ describe('SEO Service', () => {
       const metadata = seoService.generateServiceMetadata(
         'Digital Consulting',
         'Complete digital transformation',
-        'L3',
+        'Strategy & Enablement',
         'en-US'
       );
 
-      expect(metadata.title).toBe('Digital Consulting | L3 Services | MADFAM');
+      expect(metadata.title).toBe('Digital Consulting | Strategy & Enablement Services | MADFAM');
       expect(metadata.description).toBe('Complete digital transformation');
       expect(metadata.openGraph?.locale).toBe('en-US');
     });

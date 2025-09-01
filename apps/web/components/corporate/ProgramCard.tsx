@@ -22,7 +22,6 @@ interface ProgramCardProps {
     timeline: string;
     targetMarket: string;
     deliverables: string[];
-    originalTiers: string[];
     investment: string;
     color: 'green' | 'amber' | 'blue' | 'purple';
     platforms?: string[];
@@ -86,21 +85,7 @@ export function ProgramCard({ program }: ProgramCardProps) {
           </div>
         </div>
 
-        <p className="text-neutral-600 text-sm leading-relaxed mb-4">{program.description}</p>
-
-        {/* Migration info */}
-        <div className="bg-white/60 rounded-lg p-3 mb-4">
-          <div className="flex items-center gap-2 text-xs text-neutral-600">
-            <span>{t('corporate.programs.before')}</span>
-            <div className="flex gap-1">
-              {program.originalTiers.map(tier => (
-                <span key={tier} className={cn('px-2 py-0.5 rounded', colors.badge)}>
-                  {tier}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
+        <p className="text-neutral-600 text-sm leading-relaxed">{program.description}</p>
       </div>
 
       {/* Details Grid */}

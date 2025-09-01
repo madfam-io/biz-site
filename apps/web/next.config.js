@@ -23,6 +23,33 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     // Disable image optimization for static export
     unoptimized: process.env.DEPLOY_TARGET === 'github-pages',
+    dangerouslyAllowSVG: false,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+
+  // Webpack optimizations for production
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+    if (!dev) {
+      config.optimization.splitChunks = {
+        ...config.optimization.splitChunks,
+        cacheGroups: {
+          ...config.optimization.splitChunks.cacheGroups,
+          framerMotion: {
+            name: 'framer-motion',
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            chunks: 'all',
+            enforce: true,
+          },
+          ui: {
+            name: 'ui',
+            test: /[\\/]packages[\\/]ui[\\/]/,
+            chunks: 'all',
+            priority: 10,
+          },
+        },
+      };
+    }
+    return config;
   },
 
   async redirects() {
@@ -187,7 +214,21 @@ const nextConfig = {
   experimental: {
     optimizeCss: false, // Disabled to avoid critters dependency issue
     scrollRestoration: true,
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+    serverMinification: true,
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
+    serverComponentsExternalPackages: ['@prisma/client'],
   },
+
+  // Enable Next.js 15 performance features
+  outputFileTracing: true,
 };
 
 module.exports = withNextIntl(nextConfig);

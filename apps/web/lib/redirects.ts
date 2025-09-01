@@ -1,146 +1,146 @@
 /**
- * MADFAM Corporate Restructure Redirects
- * Handles migration from old structure to new corporate architecture
+ * MADFAM Corporate Redirects
+ * Handles URL routing for corporate architecture
  */
 
-export const legacyRedirects = [
-  // L1-L5 Services to Programs mapping
+export const programRedirects = [
+  // Services to Programs mapping
   {
     source: '/services',
     destination: '/programs',
-    permanent: false, // Temporary during transition
+    permanent: true,
   },
   {
     source: '/:locale/services',
     destination: '/:locale/programs',
-    permanent: false,
+    permanent: true,
   },
 
   // Specific service tiers to programs
   {
     source: '/services/level-1-essentials',
     destination: '/programs#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/services/level-2-advanced',
     destination: '/programs#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/services/level-3-consulting',
     destination: '/programs#strategy-enablement',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/services/level-4-platforms',
     destination: '/programs#platform-pilots',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/services/level-5-strategic',
     destination: '/programs#strategic-partnerships',
-    permanent: false,
+    permanent: true,
   },
 
   // Localized service redirects
   {
     source: '/:locale/services/level-1-essentials',
     destination: '/:locale/programs#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/:locale/services/level-2-advanced',
     destination: '/:locale/programs#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/:locale/services/level-3-consulting',
     destination: '/:locale/programs#strategy-enablement',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/:locale/services/level-4-platforms',
     destination: '/:locale/programs#platform-pilots',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/:locale/services/level-5-strategic',
     destination: '/:locale/programs#strategic-partnerships',
-    permanent: false,
+    permanent: true,
   },
 
   // Localized Spanish service redirects
   {
     source: '/servicios',
     destination: '/programas',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicios/nivel-1-esenciales',
     destination: '/programas#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicios/nivel-2-avanzado',
     destination: '/programas#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicios/nivel-3-consultoria',
     destination: '/programas#strategy-enablement',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicios/nivel-4-plataformas',
     destination: '/programas#platform-pilots',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicios/nivel-5-estrategico',
     destination: '/programas#strategic-partnerships',
-    permanent: false,
+    permanent: true,
   },
 
   // Portuguese service redirects
   {
     source: '/servicos',
     destination: '/programas',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicos/nivel-1-essenciais',
     destination: '/programas#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicos/nivel-2-avancado',
     destination: '/programas#design-fabrication',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicos/nivel-3-consultoria',
     destination: '/programas#strategy-enablement',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicos/nivel-4-plataformas',
     destination: '/programas#platform-pilots',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/servicos/nivel-5-estrategico',
     destination: '/programas#strategic-partnerships',
-    permanent: false,
+    permanent: true,
   },
 ];
 
 /**
  * Corporate structure navigation mapping
- * Maps old URLs to new corporate structure
+ * Maps URLs to corporate structure
  */
 export const corporateMapping = {
-  // Old L1-L5 to new Programs
+  // Service tier to Program mapping
   L1_ESSENTIALS: {
     program: 'design-fabrication',
     arm: 'primavera3d',

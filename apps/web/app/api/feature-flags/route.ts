@@ -1,6 +1,29 @@
 import { FeatureFlagProvider } from '@madfam/core';
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
+
+// Input validation schemas
+const CreateFlagSchema = z.object({
+  key: z
+    .string()
+    .min(1)
+    .max(50)
+    .regex(/^[A-Z_][A-Z0-9_]*$/, 'Key must be uppercase with underscores'),
+  name: z.string().min(1).max(100),
+  description: z.string().max(500).optional(),
+  enabledDev: z.boolean().optional(),
+  enabledStaging: z.boolean().optional(),
+  enabledProd: z.boolean().optional(),
+  rolloutPercentage: z.number().min(0).max(100).optional(),
+  userGroups: z.array(z.string()).optional(),
+});
+
+const ToggleFlagSchema = z.object({
+  key: z.string().min(1).max(50),
+  enabled: z.boolean(),
+  environment: z.enum(['development', 'staging', 'production']).optional(),
+});
 
 // GET /api/feature-flags
 export async function GET(request: NextRequest) {
@@ -131,43 +154,37 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     // TODO: Add authentication check here
-    // if (!isAdmin(request)) {
+    // const session = await getServerSession(authOptions);
+    // if (!session?.user?.isAdmin) {
     //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     // }
 
     const body = await request.json();
-    const {
-      key,
-      name,
-      description,
-      enabledDev,
-      enabledStaging,
-      enabledProd,
-      rolloutPercentage,
-      userGroups,
-    } = body;
+
+    // Validate input
+    const validated = CreateFlagSchema.parse(body);
 
     const featureFlag = await prisma.featureFlag.upsert({
-      where: { key },
+      where: { key: validated.key },
       update: {
-        name,
-        description,
-        enabledDev: enabledDev ?? true,
-        enabledStaging: enabledStaging ?? false,
-        enabledProd: enabledProd ?? false,
-        rolloutPercentage,
-        userGroups: userGroups || [],
+        name: validated.name,
+        description: validated.description,
+        enabledDev: validated.enabledDev ?? true,
+        enabledStaging: validated.enabledStaging ?? false,
+        enabledProd: validated.enabledProd ?? false,
+        rolloutPercentage: validated.rolloutPercentage,
+        userGroups: validated.userGroups || [],
         enabled: true,
       },
       create: {
-        key,
-        name,
-        description,
-        enabledDev: enabledDev ?? true,
-        enabledStaging: enabledStaging ?? false,
-        enabledProd: enabledProd ?? false,
-        rolloutPercentage,
-        userGroups: userGroups || [],
+        key: validated.key,
+        name: validated.name,
+        description: validated.description,
+        enabledDev: validated.enabledDev ?? true,
+        enabledStaging: validated.enabledStaging ?? false,
+        enabledProd: validated.enabledProd ?? false,
+        rolloutPercentage: validated.rolloutPercentage,
+        userGroups: validated.userGroups || [],
         enabled: true,
       },
     });
@@ -177,6 +194,9 @@ export async function POST(request: NextRequest) {
       flag: featureFlag,
     });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
+    }
     console.error('Error creating/updating feature flag:', error);
     return NextResponse.json({ error: 'Failed to create/update feature flag' }, { status: 500 });
   }
@@ -186,11 +206,18 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     // TODO: Add authentication check here
+    // const session = await getServerSession(authOptions);
+    // if (!session?.user?.isAdmin) {
+    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    // }
+
     const body = await request.json();
-    const { key, enabled, environment } = body;
+
+    // Validate input
+    const validated = ToggleFlagSchema.parse(body);
 
     const featureFlag = await prisma.featureFlag.findUnique({
-      where: { key },
+      where: { key: validated.key },
     });
 
     if (!featureFlag) {
@@ -204,22 +231,22 @@ export async function PATCH(request: NextRequest) {
       enabledStaging?: boolean;
       enabledProd?: boolean;
     } = {};
-    switch (environment || 'development') {
+    switch (validated.environment || 'development') {
       case 'development':
-        updateData.enabledDev = enabled;
+        updateData.enabledDev = validated.enabled;
         break;
       case 'staging':
-        updateData.enabledStaging = enabled;
+        updateData.enabledStaging = validated.enabled;
         break;
       case 'production':
-        updateData.enabledProd = enabled;
+        updateData.enabledProd = validated.enabled;
         break;
       default:
-        updateData.enabled = enabled;
+        updateData.enabled = validated.enabled;
     }
 
     const updated = await prisma.featureFlag.update({
-      where: { key },
+      where: { key: validated.key },
       data: updateData,
     });
 
@@ -228,6 +255,9 @@ export async function PATCH(request: NextRequest) {
       flag: updated,
     });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
+    }
     console.error('Error toggling feature flag:', error);
     return NextResponse.json({ error: 'Failed to toggle feature flag' }, { status: 500 });
   }

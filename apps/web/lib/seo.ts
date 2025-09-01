@@ -252,7 +252,7 @@ export class SEOService {
       es: {
         title: 'MADFAM | Transformación Digital e Inteligencia Artificial en México',
         description:
-          'Especialistas en transformación digital, automatización inteligente y desarrollo de software empresarial. Desde diseño 3D hasta vCTO estratégico. Servicios L1-L5 en México y LATAM.',
+          'Especialistas en transformación digital, automatización inteligente y desarrollo de software empresarial. Desde diseño 3D hasta vCTO estratégico. Programas especializados en México y LATAM.',
         keywords: [
           'transformación digital México',
           'inteligencia artificial LATAM',
@@ -269,7 +269,7 @@ export class SEOService {
       en: {
         title: 'MADFAM | Digital Transformation & AI Solutions in Mexico',
         description:
-          'Specialists in digital transformation, intelligent automation, and enterprise software development. From 3D design to strategic vCTO services. L1-L5 services in Mexico and LATAM.',
+          'Specialists in digital transformation, intelligent automation, and enterprise software development. From 3D design to strategic vCTO services. Specialized programs in Mexico and LATAM.',
         keywords: [
           'digital transformation Mexico',
           'artificial intelligence LATAM',
@@ -286,7 +286,7 @@ export class SEOService {
       pt: {
         title: 'MADFAM | Transformação Digital e Soluções de IA no México',
         description:
-          'Especialistas em transformação digital, automação inteligente e desenvolvimento de software empresarial. Do design 3D aos serviços estratégicos de vCTO. Serviços L1-L5 no México e LATAM.',
+          'Especialistas em transformação digital, automação inteligente e desenvolvimento de software empresarial. Do design 3D aos serviços estratégicos de vCTO. Programas especializados no México e LATAM.',
         keywords: [
           'transformação digital México',
           'inteligência artificial LATAM',
