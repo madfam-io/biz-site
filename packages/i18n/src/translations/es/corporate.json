@@ -24,19 +24,12 @@
         "badge": "una Empresa MADFAM",
         "focus": "Diseño 3D, visualización arquitectónica, animación, realidad virtual/aumentada"
       },
-      "health": {
-        "name": "MADFAM Health",
-        "tagline": "Tecnología Médica Avanzada",
-        "description": "Soluciones tecnológicas especializadas para el sector salud y bienestar",
+      "showtech": {
+        "name": "Showtech",
+        "tagline": "División de Innovación en Entretenimiento",
+        "description": "División de Innovación en Hardware y Software de las industrias de la música y el entretenimiento en vivo",
         "badge": "una Empresa MADFAM",
-        "focus": "HealthTech, telemedicina, análisis médico con IA, dispositivos conectados"
-      },
-      "aero": {
-        "name": "MADFAM Aero",
-        "tagline": "Ingeniería Aeroespacial Digital",
-        "description": "Tecnología avanzada para la industria aeroespacial y de drones",
-        "badge": "una Empresa MADFAM",
-        "focus": "Drones autónomos, simulación de vuelo, sistemas aeroespaciales, IoT industrial"
+        "focus": "Hardware de audio, software de producción, experiencias inmersivas, tecnología de eventos"
       }
     },
     "products": {
@@ -325,24 +318,14 @@
         "3": "Fabricación digital"
       }
     },
-    "health": {
-      "tagline": "División de Innovación en Salud",
-      "description": "Tecnología médica avanzada y soluciones de salud",
+    "showtech": {
+      "tagline": "División de Innovación en Entretenimiento",
+      "description": "División de Innovación en Hardware y Software de las industrias de la música y el entretenimiento en vivo",
       "capabilities": {
-        "0": "Desarrollo de Software Médico",
-        "1": "Analítica de Datos de Salud",
-        "2": "Soluciones de Telemedicina",
-        "3": "Integración de Dispositivos Médicos"
-      }
-    },
-    "aero": {
-      "tagline": "División de Innovación Aeroespacial",
-      "description": "Tecnología aeroespacial de vanguardia y soluciones",
-      "capabilities": {
-        "0": "Sistemas de Software Aeroespacial",
-        "1": "Sistemas de Control de Vuelo",
-        "2": "Navegación y Guía",
-        "3": "Analítica de Datos Aeroespaciales"
+        "0": "Hardware de Audio Profesional",
+        "1": "Software de Producción Musical",
+        "2": "Sistemas de Iluminación Inteligente",
+        "3": "Plataformas de Streaming en Vivo"
       }
     },
     "hero": {

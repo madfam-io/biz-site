@@ -82,8 +82,7 @@ const nextConfig = {
     rewrites.push(
       { source: '/es/unidades/aureo-labs', destination: '/es/arms/aureo-labs' },
       { source: '/es/unidades/primavera3d', destination: '/es/arms/primavera3d' },
-      { source: '/es/unidades/salud', destination: '/es/arms/health' },
-      { source: '/es/unidades/aero', destination: '/es/arms/aero' }
+      { source: '/es/unidades/showtech', destination: '/es/arms/showtech' }
     );
 
     // Portuguese rewrites - main pages (pt → localized routes)
@@ -112,8 +111,7 @@ const nextConfig = {
     rewrites.push(
       { source: '/pt/unidades/aureo-labs', destination: '/pt/arms/aureo-labs' },
       { source: '/pt/unidades/primavera3d', destination: '/pt/arms/primavera3d' },
-      { source: '/pt/unidades/saude', destination: '/pt/arms/health' },
-      { source: '/pt/unidades/aero', destination: '/pt/arms/aero' }
+      { source: '/pt/unidades/showtech', destination: '/pt/arms/showtech' }
     );
 
     return rewrites;

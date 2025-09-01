@@ -13,7 +13,7 @@ interface ArmCardProps {
     tagline: string;
     description: string;
     badge: string;
-    accent: 'green' | 'copper' | 'teal' | 'blue';
+    accent: 'green' | 'copper' | 'teal' | 'blue' | 'purple';
     capabilities: string[];
     products: Array<{
       name: string;
@@ -21,6 +21,7 @@ interface ArmCardProps {
       comingSoon?: boolean;
     }>;
     externalUrl?: string;
+    internalUrl?: string;
     comingSoon?: boolean;
   };
 }
@@ -49,6 +50,12 @@ const accentColors = {
     bg: 'bg-gradient-to-br from-blue-50 to-indigo-50',
     accent: 'text-blue-600',
     button: 'bg-blue-100 text-blue-700 hover:bg-blue-200',
+  },
+  purple: {
+    border: 'border-purple-200 hover:border-purple-300',
+    bg: 'bg-gradient-to-br from-purple-50 to-violet-50',
+    accent: 'text-purple-600',
+    button: 'bg-purple-100 text-purple-700 hover:bg-purple-200',
   },
 };
 
@@ -129,9 +136,9 @@ export function ArmCard({ arm }: ArmCardProps) {
 
       {/* Actions */}
       <div className="flex gap-3">
-        {!arm.comingSoon && (
+        {!arm.comingSoon && (arm.internalUrl || !arm.externalUrl) && (
           <Link
-            href={href}
+            href={arm.internalUrl || href}
             className={cn(
               'flex-1 px-4 py-2 rounded-lg text-center text-sm font-medium transition-colors',
               colors.button
@@ -146,9 +153,24 @@ export function ArmCard({ arm }: ArmCardProps) {
             href={arm.externalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 py-2 bg-neutral-100 text-neutral-700 rounded-lg hover:bg-neutral-200 transition-colors"
+            className={cn(
+              'px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2',
+              arm.internalUrl
+                ? 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                : colors.button
+            )}
           >
-            <ArrowUpRightIcon className="w-4 h-4" />
+            {arm.internalUrl ? (
+              <>
+                <span>Sitio web</span>
+                <ArrowUpRightIcon className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                {t('common.visitWebsite')}
+                <ArrowUpRightIcon className="w-4 h-4" />
+              </>
+            )}
           </Link>
         )}
 

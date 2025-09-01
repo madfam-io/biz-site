@@ -24,19 +24,12 @@
         "badge": "a MADFAM Company",
         "focus": "3D design, architectural visualization, animation, virtual/augmented reality"
       },
-      "health": {
-        "name": "MADFAM Health",
-        "tagline": "Advanced Medical Technology",
-        "description": "Specialized technology solutions for the health and wellness sector",
+      "showtech": {
+        "name": "Showtech",
+        "tagline": "Entertainment Innovation Division",
+        "description": "Innovation Division for Hardware and Software in the music and live entertainment industries",
         "badge": "a MADFAM Company",
-        "focus": "HealthTech, telemedicine, AI medical analysis, connected devices"
-      },
-      "aero": {
-        "name": "MADFAM Aero",
-        "tagline": "Digital Aerospace Engineering",
-        "description": "Advanced technology for the aerospace and drone industry",
-        "badge": "a MADFAM Company",
-        "focus": "Autonomous drones, flight simulation, aerospace systems, industrial IoT"
+        "focus": "Audio hardware, production software, immersive experiences, event technology"
       }
     },
     "products": {
@@ -325,24 +318,14 @@
         "3": "Fabricación digital"
       }
     },
-    "health": {
-      "tagline": "Healthcare Innovation Division",
-      "description": "Advanced medical technology and healthcare solutions",
+    "showtech": {
+      "tagline": "Entertainment Innovation Division",
+      "description": "Innovation Division for Hardware and Software in the music and live entertainment industries",
       "capabilities": {
-        "0": "Medical Software Development",
-        "1": "Healthcare Data Analytics",
-        "2": "Telemedicine Solutions",
-        "3": "Medical Device Integration"
-      }
-    },
-    "aero": {
-      "tagline": "Aerospace Innovation Division",
-      "description": "Cutting-edge aerospace technology and solutions",
-      "capabilities": {
-        "0": "Aerospace Software Systems",
-        "1": "Flight Control Systems",
-        "2": "Navigation & Guidance",
-        "3": "Aerospace Data Analytics"
+        "0": "Professional Audio Hardware",
+        "1": "Music Production Software",
+        "2": "Intelligent Lighting Systems",
+        "3": "Live Streaming Platforms"
       }
     },
     "hero": {
