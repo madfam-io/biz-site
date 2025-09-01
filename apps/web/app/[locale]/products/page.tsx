@@ -36,37 +36,15 @@ export default async function ProductsPage({ params }: Props) {
   const products = [
     // Aureo Labs Products
     {
-      name: 'Aureo Studio',
-      description:
-        'Coming Soon: Enterprise AI governance and orchestration platform for complete business automation.',
-      audience: 'Large enterprises and organizations',
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: 'Coming Soon',
-        url: 'https://aureo.studio',
-        external: true,
-      },
-      secondaryCta: {
-        label: commonT('nav.contact'),
-        url: '/contact',
-      },
-      features: [
-        'Control de flujos inteligente',
-        'Integraciones empresariales',
-        'Monitoreo en tiempo real',
-      ],
-      category: 'Platform',
-      arm: 'aureo-labs',
-    },
-    {
-      name: 'PENNY',
+      name: 'Penny',
       description:
         'User-friendly AI chat and workbench platform for consumers and enterprises. Your intelligent assistant for everyday tasks and business automation.',
       audience: 'Consumers and businesses of all sizes',
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: 'Ver PENNY',
-        url: '/products/penny',
+        label: 'Visit Penny',
+        url: 'https://www.penny.onl',
+        external: true,
       },
       secondaryCta: {
         label: commonT('nav.contact'),
@@ -161,30 +139,6 @@ export default async function ProductsPage({ params }: Props) {
       comingSoon: true,
     },
     // MADFAM Direct Products
-    {
-      name: 'Dhanam',
-      description:
-        'Plataforma integral de gestión financiera y contable con IA para empresas latinoamericanas.',
-      audience: 'PyMEs y empresas medianas',
-      badge: 'por MADFAM',
-      primaryCta: {
-        label: 'Próximamente',
-        url: '#',
-        comingSoon: true,
-      },
-      secondaryCta: {
-        label: commonT('nav.contact'),
-        url: '/contact',
-      },
-      features: [
-        'Contabilidad automatizada',
-        'Cumplimiento fiscal LATAM',
-        'Reportes financieros IA',
-      ],
-      category: 'Platform',
-      arm: 'madfam',
-      comingSoon: true,
-    },
     // Open Data
     {
       name: 'RENEC Harvester',
@@ -335,17 +289,15 @@ export default async function ProductsPage({ params }: Props) {
                   inteligentes.
                 </p>
                 <div className="space-y-2">
-                  {['Aureo Studio', 'PENNY', 'Cotiza Studio', 'Forge Sight', 'AVALA'].map(
-                    product => (
-                      <div key={product} className="text-amber-700 text-sm flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
-                        {product}
-                        {['AVALA'].includes(product) && (
-                          <span className="text-xs text-amber-600 opacity-75">(próximamente)</span>
-                        )}
-                      </div>
-                    )
-                  )}
+                  {['Penny', 'Cotiza Studio', 'Forge Sight', 'Dhanam', 'AVALA'].map(product => (
+                    <div key={product} className="text-amber-700 text-sm flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
+                      {product}
+                      {['AVALA'].includes(product) && (
+                        <span className="text-xs text-amber-600 opacity-75">(próximamente)</span>
+                      )}
+                    </div>
+                  ))}
                 </div>
                 <div className="mt-4">
                   <Link
@@ -374,7 +326,7 @@ export default async function ProductsPage({ params }: Props) {
                   específicas.
                 </p>
                 <div className="space-y-2">
-                  {['Dhanam', 'RENEC Harvester', 'Mundii'].map(product => (
+                  {['RENEC Harvester', 'Mundii'].map(product => (
                     <div key={product} className="text-neutral-600 text-sm flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full" />
                       {product}
