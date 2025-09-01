@@ -54,5 +54,14 @@
       "1": "Real-time data visualization",
       "2": "Custom AI models"
     }
+  },
+  "spark": {
+    "tagline": "AI Process Orchestration",
+    "shortDescription": "Intelligent automation platform that connects and optimizes all your business processes.",
+    "features": {
+      "0": "Smart workflow automation",
+      "1": "Cross-platform integration",
+      "2": "Real-time process optimization"
+    }
   }
 }

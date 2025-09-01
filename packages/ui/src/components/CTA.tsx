@@ -33,17 +33,20 @@ const backgroundStyles = {
 };
 
 export const CTA = React.forwardRef<HTMLElement, CTAProps>(
-  ({ 
-    variant = 'default',
-    title,
-    description,
-    cta,
-    secondaryCta,
-    background = 'gradient',
-    icon,
-    image,
-    className
-  }, ref) => {
+  (
+    {
+      variant = 'default',
+      title,
+      description,
+      cta,
+      secondaryCta,
+      background = 'gradient',
+      icon,
+      image,
+      className,
+    },
+    ref
+  ) => {
     const isCentered = variant === 'centered';
     const isSplit = variant === 'split';
     const isMinimal = variant === 'minimal';
@@ -67,20 +70,19 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
         )}
 
         <Container>
-          <div className={cn(
-            'relative z-10',
-            isCentered && 'text-center max-w-3xl mx-auto',
-            isSplit && 'grid md:grid-cols-2 gap-12 items-center',
-            isMinimal && 'max-w-2xl'
-          )}>
+          <div
+            className={cn(
+              'relative z-10',
+              isCentered && 'text-center max-w-3xl mx-auto',
+              isSplit && 'grid md:grid-cols-2 gap-12 items-center',
+              isMinimal && 'max-w-2xl'
+            )}
+          >
             {/* Content */}
             <div className={isSplit ? 'order-2 md:order-1' : ''}>
               {/* Icon */}
               {icon && !isSplit && (
-                <div className={cn(
-                  'mb-6',
-                  isCentered && 'flex justify-center'
-                )}>
+                <div className={cn('mb-6', isCentered && 'flex justify-center')}>
                   <div className="w-16 h-16 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
                     {icon}
                   </div>
@@ -88,33 +90,41 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
               )}
 
               {/* Title */}
-              <h2 className={cn(
-                'font-heading font-bold mb-4',
-                isMinimal ? 'text-heading-2' : 'text-heading-1',
-                background === 'gradient' || background === 'solid' ? 'text-white' : 'text-obsidian dark:text-pearl'
-              )}>
+              <h2
+                className={cn(
+                  'font-heading font-bold mb-4',
+                  isMinimal ? 'text-heading-2' : 'text-heading-1',
+                  background === 'gradient' || background === 'solid'
+                    ? 'text-white'
+                    : 'text-obsidian dark:text-pearl'
+                )}
+              >
                 {title}
               </h2>
 
               {/* Description */}
               {description && (
-                <p className={cn(
-                  'mb-8',
-                  isMinimal ? 'text-base' : 'text-body-lg',
-                  background === 'gradient' || background === 'solid' 
-                    ? 'text-white/90' 
-                    : 'text-gray-600 dark:text-gray-400'
-                )}>
+                <p
+                  className={cn(
+                    'mb-8',
+                    isMinimal ? 'text-base' : 'text-body-lg',
+                    background === 'gradient' || background === 'solid'
+                      ? 'text-white/90'
+                      : 'text-gray-600 dark:text-gray-400'
+                  )}
+                >
                   {description}
                 </p>
               )}
 
               {/* CTAs */}
-              <div className={cn(
-                'flex flex-col sm:flex-row gap-4',
-                isCentered && 'justify-center',
-                isMinimal && 'sm:flex-row'
-              )}>
+              <div
+                className={cn(
+                  'flex flex-col sm:flex-row gap-4',
+                  isCentered && 'justify-center',
+                  isMinimal && 'sm:flex-row'
+                )}
+              >
                 <Button
                   variant={cta.variant || (background === 'none' ? 'primary' : 'secondary')}
                   size={isMinimal ? 'md' : 'lg'}
@@ -124,11 +134,11 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
                       ? 'bg-white text-obsidian hover:bg-white/90'
                       : ''
                   }
-                  asChild
+                  onClick={() => (window.location.href = cta.href)}
                 >
-                  <a href={cta.href}>{cta.text}</a>
+                  {cta.text}
                 </Button>
-                
+
                 {secondaryCta && (
                   <Button
                     variant={secondaryCta.variant || 'ghost'}
@@ -139,9 +149,9 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
                         ? 'text-white border-white hover:bg-white hover:text-obsidian'
                         : ''
                     }
-                    asChild
+                    onClick={() => (window.location.href = secondaryCta.href)}
                   >
-                    <a href={secondaryCta.href}>{secondaryCta.text}</a>
+                    {secondaryCta.text}
                   </Button>
                 )}
               </div>
@@ -152,11 +162,7 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
               <div className="order-1 md:order-2">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-lavender to-sun rounded-2xl transform rotate-3" />
-                  <img
-                    src={image}
-                    alt=""
-                    className="relative rounded-2xl shadow-2xl w-full"
-                  />
+                  <img src={image} alt="" className="relative rounded-2xl shadow-2xl w-full" />
                 </div>
               </div>
             )}

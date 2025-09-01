@@ -200,7 +200,13 @@
     },
     "features": {
       "subtitle": "CAPACIDADES",
-      "description": "Todo lo que necesitas para transformar tu negocio con IA"
+      "description": "Todo lo que necesitas para transformar tu negocio con IA",
+      "automation": "Automatización de Procesos",
+      "automationDesc": "Optimiza tus flujos de trabajo con automatización inteligente que aprende y se adapta a las necesidades de tu negocio.",
+      "ai": "Integración de IA",
+      "aiDesc": "Integra perfectamente la inteligencia artificial en tus sistemas existentes para mejorar la toma de decisiones y la productividad.",
+      "transformation": "Transformación Digital",
+      "transformationDesc": "Transformación empresarial completa con tecnología de vanguardia e implementación estratégica de IA."
     }
   },
   "blog": {

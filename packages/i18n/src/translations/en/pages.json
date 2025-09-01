@@ -200,7 +200,13 @@
     },
     "features": {
       "subtitle": "CAPABILITIES",
-      "description": "Everything you need to transform your business with AI"
+      "description": "Everything you need to transform your business with AI",
+      "automation": "Process Automation",
+      "automationDesc": "Streamline your workflows with intelligent automation that learns and adapts to your business needs.",
+      "ai": "AI Integration",
+      "aiDesc": "Seamlessly integrate artificial intelligence into your existing systems for enhanced decision-making and productivity.",
+      "transformation": "Digital Transformation",
+      "transformationDesc": "Complete business transformation with cutting-edge technology and strategic AI implementation."
     }
   },
   "blog": {

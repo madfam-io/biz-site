@@ -38,19 +38,22 @@ const backgroundStyles = {
 };
 
 export const Hero = React.forwardRef<HTMLElement, HeroProps>(
-  ({ 
-    variant = 'home',
-    title,
-    subtitle,
-    description,
-    cta,
-    background = 'gradient',
-    overlay = true,
-    centered = true,
-    fullHeight = true,
-    children,
-    className
-  }, ref) => {
+  (
+    {
+      variant = 'home',
+      title,
+      subtitle,
+      description,
+      cta,
+      background = 'gradient',
+      overlay = true,
+      centered = true,
+      fullHeight = true,
+      children,
+      className,
+    },
+    ref
+  ) => {
     const isHome = variant === 'home';
     const isService = variant === 'service';
     const isProduct = variant === 'product';
@@ -81,16 +84,10 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
 
         {/* Content */}
         <Container className="relative z-10">
-          <div className={cn(
-            'max-w-5xl',
-            centered ? 'mx-auto text-center' : ''
-          )}>
+          <div className={cn('max-w-5xl', centered ? 'mx-auto text-center' : '')}>
             {/* Subtitle */}
             {subtitle && (
-              <div className={cn(
-                'mb-6',
-                isHome && 'animate-fade-up'
-              )}>
+              <div className={cn('mb-6', isHome && 'animate-fade-up')}>
                 {typeof subtitle === 'string' ? (
                   <p className="text-sun font-mono text-sm md:text-base uppercase tracking-wider">
                     {subtitle}
@@ -102,17 +99,16 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
             )}
 
             {/* Title */}
-            <div className={cn(
-              'mb-6',
-              isHome && 'animate-fade-up animation-delay-200'
-            )}>
+            <div className={cn('mb-6', isHome && 'animate-fade-up animation-delay-200')}>
               {typeof title === 'string' ? (
-                <h1 className={cn(
-                  'font-heading font-bold',
-                  isHome ? 'text-display-xl' : 'text-display',
-                  'text-pearl',
-                  'leading-tight'
-                )}>
+                <h1
+                  className={cn(
+                    'font-heading font-bold',
+                    isHome ? 'text-display-xl' : 'text-display',
+                    'text-pearl',
+                    'leading-tight'
+                  )}
+                >
                   {title}
                 </h1>
               ) : (
@@ -122,15 +118,14 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
 
             {/* Description */}
             {description && (
-              <div className={cn(
-                'mb-10',
-                isHome && 'animate-fade-up animation-delay-400'
-              )}>
+              <div className={cn('mb-10', isHome && 'animate-fade-up animation-delay-400')}>
                 {typeof description === 'string' ? (
-                  <p className={cn(
-                    'text-body-lg text-gray-300',
-                    centered ? 'max-w-3xl mx-auto' : ''
-                  )}>
+                  <p
+                    className={cn(
+                      'text-body-lg text-gray-300',
+                      centered ? 'max-w-3xl mx-auto' : ''
+                    )}
+                  >
                     {description}
                   </p>
                 ) : (
@@ -141,19 +136,21 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
 
             {/* CTAs */}
             {cta && (cta.primary || cta.secondary) && (
-              <div className={cn(
-                'flex flex-col sm:flex-row gap-4',
-                centered ? 'justify-center' : '',
-                isHome && 'animate-fade-up animation-delay-600'
-              )}>
+              <div
+                className={cn(
+                  'flex flex-col sm:flex-row gap-4',
+                  centered ? 'justify-center' : '',
+                  isHome && 'animate-fade-up animation-delay-600'
+                )}
+              >
                 {cta.primary && (
                   <Button
                     variant={cta.primary.variant || 'creative'}
                     size="lg"
                     icon={cta.primary.icon}
-                    asChild
+                    onClick={() => (window.location.href = cta.primary?.href || '#')}
                   >
-                    <a href={cta.primary.href}>{cta.primary.text}</a>
+                    {cta.primary.text}
                   </Button>
                 )}
                 {cta.secondary && (
@@ -162,9 +159,9 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
                     size="lg"
                     icon={cta.secondary.icon}
                     className="border-pearl text-pearl hover:bg-pearl hover:text-obsidian"
-                    asChild
+                    onClick={() => (window.location.href = cta.secondary?.href || '#')}
                   >
-                    <a href={cta.secondary.href}>{cta.secondary.text}</a>
+                    {cta.secondary.text}
                   </Button>
                 )}
               </div>
@@ -172,10 +169,7 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
 
             {/* Additional content */}
             {children && (
-              <div className={cn(
-                'mt-12',
-                isHome && 'animate-fade-up animation-delay-800'
-              )}>
+              <div className={cn('mt-12', isHome && 'animate-fade-up animation-delay-800')}>
                 {children}
               </div>
             )}

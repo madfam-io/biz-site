@@ -38,32 +38,30 @@ const badgeVariants = {
 };
 
 export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
-  ({ 
-    name, 
-    tagline, 
-    description, 
-    features, 
-    image, 
-    logo, 
-    badge, 
-    cta, 
-    gradient = 'from-lavender/10 to-sun/10',
-    className 
-  }, ref) => {
+  (
+    {
+      name,
+      tagline,
+      description,
+      features,
+      image,
+      logo,
+      badge,
+      cta,
+      gradient = 'from-lavender/10 to-sun/10',
+      className,
+    },
+    ref
+  ) => {
     return (
-      <Card
-        ref={ref}
-        variant="product"
-        className={cn(
-          'group relative overflow-hidden',
-          className
-        )}
-      >
+      <Card ref={ref} variant="product" className={cn('group relative overflow-hidden', className)}>
         {/* Background gradient effect */}
-        <div className={cn(
-          'absolute inset-0 opacity-50 group-hover:opacity-70 transition-opacity duration-500',
-          `bg-gradient-to-br ${gradient}`
-        )} />
+        <div
+          className={cn(
+            'absolute inset-0 opacity-50 group-hover:opacity-70 transition-opacity duration-500',
+            `bg-gradient-to-br ${gradient}`
+          )}
+        />
 
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -73,10 +71,12 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
         <div className="relative z-10">
           {badge && (
             <div className="absolute top-4 right-4">
-              <span className={cn(
-                'px-3 py-1 text-xs font-bold rounded-full shadow-md',
-                badgeVariants[badge.variant || 'new']
-              )}>
+              <span
+                className={cn(
+                  'px-3 py-1 text-xs font-bold rounded-full shadow-md',
+                  badgeVariants[badge.variant || 'new']
+                )}
+              >
                 {badge.text}
               </span>
             </div>
@@ -98,9 +98,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
                 </p>
               </div>
             </div>
-            <CardDescription className="text-base">
-              {description}
-            </CardDescription>
+            <CardDescription className="text-base">{description}</CardDescription>
           </CardHeader>
 
           <CardContent>
@@ -124,9 +122,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
                   ) : (
                     <div className="w-2 h-2 rounded-full bg-gradient-to-r from-lavender to-sun mt-2 flex-shrink-0" />
                   )}
-                  <span className="text-gray-700 dark:text-gray-300 text-sm">
-                    {feature.text}
-                  </span>
+                  <span className="text-gray-700 dark:text-gray-300 text-sm">{feature.text}</span>
                 </div>
               ))}
             </div>
@@ -138,18 +134,18 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
                 <Button
                   variant="creative"
                   className="flex-1"
-                  asChild
+                  onClick={() => (window.location.href = cta.primary?.href || '#')}
                 >
-                  <a href={cta.primary.href}>{cta.primary.text}</a>
+                  {cta.primary.text}
                 </Button>
               )}
               {cta.secondary && (
                 <Button
                   variant="outline"
                   className="flex-1"
-                  asChild
+                  onClick={() => (window.location.href = cta.secondary?.href || '#')}
                 >
-                  <a href={cta.secondary.href}>{cta.secondary.text}</a>
+                  {cta.secondary.text}
                 </Button>
               )}
             </CardFooter>

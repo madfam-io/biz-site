@@ -61,5 +61,14 @@
   "cta": {
     "demo": "Solicitar demonstração",
     "trial": "Teste grátis por 14 dias"
+  },
+  "spark": {
+    "tagline": "Orquestração de Processos com IA",
+    "shortDescription": "Plataforma de automação inteligente que conecta e otimiza todos os seus processos empresariais.",
+    "features": {
+      "0": "Automação inteligente de fluxos de trabalho",
+      "1": "Integração multiplataforma",
+      "2": "Otimização de processos em tempo real"
+    }
   }
 }

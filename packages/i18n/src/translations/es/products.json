@@ -54,5 +54,14 @@
       "1": "Visualización de datos en tiempo real",
       "2": "Modelos de IA personalizados"
     }
+  },
+  "spark": {
+    "tagline": "Orquestación de Procesos con IA",
+    "shortDescription": "Plataforma de automatización inteligente que conecta y optimiza todos tus procesos empresariales.",
+    "features": {
+      "0": "Automatización inteligente de flujos de trabajo",
+      "1": "Integración multiplataforma",
+      "2": "Optimización de procesos en tiempo real"
+    }
   }
 }
