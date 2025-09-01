@@ -30,33 +30,14 @@ export default async function AureoLabsPage({ params }: Props) {
 
   const products = [
     {
-      name: 'Aureo Studio',
-      description: t('products.aureoStudio.description'),
-      audience: t('products.aureoStudio.audience'),
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: t('products.aureoStudio.cta'),
-        url: 'https://aureo.studio',
-        external: true,
-      },
-      secondaryCta: {
-        label: commonT('cta.contact'),
-        url: '/contact',
-      },
-      features: [
-        t('products.aureoStudio.features.0'),
-        t('products.aureoStudio.features.1'),
-        t('products.aureoStudio.features.2'),
-      ],
-    },
-    {
-      name: 'PENNY',
+      name: 'Penny',
       description: t('products.penny.description'),
       audience: t('products.penny.audience'),
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: t('products.penny.cta'),
-        url: '/products/penny',
+        url: 'https://www.penny.onl',
+        external: true,
       },
       secondaryCta: {
         label: commonT('cta.contact'),
@@ -172,15 +153,6 @@ export default async function AureoLabsPage({ params }: Props) {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800 transition-colors"
               >
                 {t('links.website')}
-                <ArrowUpRightIcon className="w-4 h-4" />
-              </Link>
-              <Link
-                href="https://aureo.studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-amber-100 text-amber-900 rounded-lg hover:bg-amber-200 transition-colors"
-              >
-                {t('links.studio')}
                 <ArrowUpRightIcon className="w-4 h-4" />
               </Link>
               <Link

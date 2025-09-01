@@ -65,33 +65,14 @@ export function CorporateHomePage() {
   // Featured Products
   const featuredProducts = [
     {
-      name: 'Aureo Studio',
-      description: t('corporate.products.aureoStudio.description'),
-      audience: t('corporate.products.aureoStudio.audience'),
-      badge: t('corporate.badges.aureoLabsProduct'),
-      primaryCta: {
-        label: t('corporate.products.aureoStudio.cta'),
-        url: 'https://aureo.studio',
-        external: true,
-      },
-      secondaryCta: {
-        label: t('common.cta.contact'),
-        url: '/contact',
-      },
-      features: [
-        t('corporate.products.aureoStudio.features.0'),
-        t('corporate.products.aureoStudio.features.1'),
-        t('corporate.products.aureoStudio.features.2'),
-      ],
-    },
-    {
-      name: 'PENNY',
+      name: 'Penny',
       description: t('corporate.products.penny.description'),
       audience: t('corporate.products.penny.audience'),
       badge: t('corporate.badges.aureoLabsProduct'),
       primaryCta: {
         label: t('corporate.products.penny.cta'),
-        url: '/products/penny',
+        url: 'https://www.penny.onl',
+        external: true,
       },
       secondaryCta: {
         label: t('common.cta.contact'),
@@ -101,6 +82,26 @@ export function CorporateHomePage() {
         t('corporate.products.penny.features.0'),
         t('corporate.products.penny.features.1'),
         t('corporate.products.penny.features.2'),
+      ],
+    },
+    {
+      name: 'Dhanam',
+      description: t('corporate.arms.aureoLabs.products.dhanam.description'),
+      audience: t('corporate.arms.aureoLabs.products.dhanam.audience'),
+      badge: t('corporate.badges.aureoLabsProduct'),
+      primaryCta: {
+        label: t('corporate.arms.aureoLabs.products.dhanam.cta'),
+        url: 'https://www.dhan.am',
+        external: true,
+      },
+      secondaryCta: {
+        label: t('common.cta.contact'),
+        url: '/contact',
+      },
+      features: [
+        t('corporate.arms.aureoLabs.products.dhanam.features.0'),
+        t('corporate.arms.aureoLabs.products.dhanam.features.1'),
+        t('corporate.arms.aureoLabs.products.dhanam.features.2'),
       ],
     },
   ];

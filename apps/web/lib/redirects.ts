@@ -4,23 +4,6 @@
  */
 
 export const legacyRedirects = [
-  // SPARK brand migration to Aureo Studio
-  {
-    source: '/spark',
-    destination: '/products#aureo-studio',
-    permanent: true,
-  },
-  {
-    source: '/products/spark',
-    destination: '/products#aureo-studio',
-    permanent: true,
-  },
-  {
-    source: '/:locale/products/spark',
-    destination: '/:locale/products#aureo-studio',
-    permanent: true,
-  },
-
   // L1-L5 Services to Programs mapping
   {
     source: '/services',
@@ -190,11 +173,6 @@ export const corporateMapping = {
  * Defines which ARM owns which product
  */
 export const productOwnership = {
-  'aureo-studio': {
-    arm: 'aureo-labs',
-    badge: 'un producto de Aureo Labs',
-    url: 'https://aureo.studio',
-  },
   penny: {
     arm: 'aureo-labs',
     badge: 'un producto de Aureo Labs',

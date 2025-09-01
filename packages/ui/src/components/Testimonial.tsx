@@ -42,10 +42,7 @@ export const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
       return Array.from({ length: 5 }, (_, i) => (
         <svg
           key={i}
-          className={cn(
-            'w-5 h-5',
-            i < rating ? 'text-sun' : 'text-gray-300'
-          )}
+          className={cn('w-5 h-5', i < rating ? 'text-sun' : 'text-gray-300')}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -61,15 +58,19 @@ export const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
             {/* Quote mark */}
             <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-r from-lavender to-sun rounded-full flex items-center justify-center">
               <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
               </svg>
             </div>
-            
+
             <div className="ml-16">
               <blockquote className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-4">
                 "{content}"
               </blockquote>
-              
+
               <div className="flex items-center gap-4">
                 {author.image && (
                   <img
@@ -107,11 +108,11 @@ export const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
                     </span>
                   )}
                 </div>
-                
+
                 <blockquote className="text-xl font-medium text-gray-800 dark:text-gray-200 mb-6">
                   "{content}"
                 </blockquote>
-                
+
                 <div className="flex items-center gap-4">
                   {author.image && (
                     <img
@@ -124,22 +125,21 @@ export const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
                     <div className="font-semibold text-gray-900 dark:text-gray-100 text-lg">
                       {author.name}
                     </div>
-                    <div className="text-gray-600 dark:text-gray-400">
-                      {author.role}
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-500">
-                      {author.company}
-                    </div>
+                    <div className="text-gray-600 dark:text-gray-400">{author.role}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-500">{author.company}</div>
                   </div>
                 </div>
               </div>
-              
+
               {showResults && results && results.length > 0 && (
                 <div className="lg:col-span-1">
                   <h4 className="font-heading font-bold text-lg mb-4">Resultados</h4>
                   <div className="space-y-4">
                     {results.map((result, index) => (
-                      <div key={index} className="bg-gradient-to-r from-leaf/10 to-sun/10 rounded-lg p-4">
+                      <div
+                        key={index}
+                        className="bg-gradient-to-r from-leaf/10 to-sun/10 rounded-lg p-4"
+                      >
                         <div className="text-2xl font-bold text-leaf">{result.value}</div>
                         <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
                           {result.metric}
@@ -170,11 +170,11 @@ export const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
               </span>
             )}
           </div>
-          
+
           <blockquote className="text-gray-700 dark:text-gray-300 mb-6 flex-1">
             "{content}"
           </blockquote>
-          
+
           <div className="flex items-center gap-3">
             {author.image && (
               <img
@@ -184,24 +184,20 @@ export const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
               />
             )}
             <div>
-              <div className="font-semibold text-gray-900 dark:text-gray-100">
-                {author.name}
-              </div>
+              <div className="font-semibold text-gray-900 dark:text-gray-100">{author.name}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 {author.role} • {author.company}
               </div>
             </div>
           </div>
-          
+
           {showResults && results && results.length > 0 && (
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <div className="grid grid-cols-2 gap-4">
                 {results.slice(0, 2).map((result, index) => (
                   <div key={index} className="text-center">
                     <div className="text-xl font-bold text-leaf">{result.value}</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                      {result.metric}
-                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400">{result.metric}</div>
                   </div>
                 ))}
               </div>
@@ -221,7 +217,7 @@ export const TestimonialGrid = React.forwardRef<HTMLDivElement, TestimonialGridP
       return (
         <div ref={ref} className={cn('w-full', className)}>
           <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-            {testimonials.map((testimonial) => (
+            {testimonials.map(testimonial => (
               <div key={testimonial.id} className="min-w-[400px]">
                 <Testimonial testimonial={testimonial} />
               </div>
@@ -235,7 +231,7 @@ export const TestimonialGrid = React.forwardRef<HTMLDivElement, TestimonialGridP
       return (
         <div ref={ref} className={cn('w-full', className)}>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
-            {testimonials.map((testimonial) => (
+            {testimonials.map(testimonial => (
               <div key={testimonial.id} className="break-inside-avoid mb-6">
                 <Testimonial testimonial={testimonial} />
               </div>
@@ -248,14 +244,16 @@ export const TestimonialGrid = React.forwardRef<HTMLDivElement, TestimonialGridP
     // Default grid variant
     return (
       <div ref={ref} className={cn('w-full', className)}>
-        <div className={cn(
-          'grid gap-6',
-          columns === 1 && 'grid-cols-1',
-          columns === 2 && 'grid-cols-1 md:grid-cols-2',
-          columns === 3 && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-          columns === 4 && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-        )}>
-          {testimonials.map((testimonial) => (
+        <div
+          className={cn(
+            'grid gap-6',
+            columns === 1 && 'grid-cols-1',
+            columns === 2 && 'grid-cols-1 md:grid-cols-2',
+            columns === 3 && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+            columns === 4 && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+          )}
+        >
+          {testimonials.map(testimonial => (
             <Testimonial key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
@@ -270,7 +268,8 @@ TestimonialGrid.displayName = 'TestimonialGrid';
 export const sampleTestimonials: TestimonialData[] = [
   {
     id: '1',
-    content: 'MADFAM transformó completamente nuestros procesos de diseño. Lo que antes nos tomaba semanas, ahora lo hacemos en días con mejor calidad.',
+    content:
+      'MADFAM transformó completamente nuestros procesos de diseño. Lo que antes nos tomaba semanas, ahora lo hacemos en días con mejor calidad.',
     author: {
       name: 'Ana García',
       role: 'Directora de Diseño',
@@ -286,7 +285,8 @@ export const sampleTestimonials: TestimonialData[] = [
   },
   {
     id: '2',
-    content: 'La consultoría de IA nos ayudó a identificar oportunidades que no habíamos considerado. Su enfoque estratégico es excepcional.',
+    content:
+      'La consultoría de IA nos ayudó a identificar oportunidades que no habíamos considerado. Su enfoque estratégico es excepcional.',
     author: {
       name: 'Carlos Mendoza',
       role: 'CTO',
@@ -302,7 +302,8 @@ export const sampleTestimonials: TestimonialData[] = [
   },
   {
     id: '3',
-    content: 'SPARK revolucionó nuestra capacidad de integración. Ahora podemos conectar cualquier sistema sin problemas.',
+    content:
+      'Las plataformas de IA de MADFAM revolucionaron nuestra capacidad de integración. Ahora podemos conectar cualquier sistema sin problemas.',
     author: {
       name: 'María Rodríguez',
       role: 'Gerente de Operaciones',
@@ -313,7 +314,11 @@ export const sampleTestimonials: TestimonialData[] = [
     service: 'L4 - Platforms',
     results: [
       { metric: 'Integraciones activas', value: '50+', description: 'Sistemas conectados' },
-      { metric: 'Tiempo de implementación', value: '80%', description: 'Reducción vs. métodos tradicionales' },
+      {
+        metric: 'Tiempo de implementación',
+        value: '80%',
+        description: 'Reducción vs. métodos tradicionales',
+      },
     ],
   },
 ];

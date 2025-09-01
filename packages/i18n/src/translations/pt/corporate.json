@@ -35,13 +35,6 @@
     "products": {
       "title": "Produtos Principais",
       "subtitle": "Soluções desenvolvidas por nossas unidades especializadas",
-      "spark": {
-        "name": "SPARK",
-        "tagline": "Orquestração Inteligente de IA",
-        "description": "Plataforma completa que conecta, automatiza e otimiza todos os seus processos empresariais através de IA avançada",
-        "badge": "por Aureo Labs, uma Empresa MADFAM",
-        "developer": "Aureo Labs"
-      },
       "penny": {
         "name": "PENNY",
         "tagline": "Automação Inteligente de Processos",
@@ -81,7 +74,7 @@
       },
       "platformPilots": {
         "name": "Pilotos de Plataforma",
-        "description": "Implementação das plataformas SPARK e PENNY",
+        "description": "Implementação de plataformas de IA e automação",
         "units": ["Aureo Labs"],
         "focus": "Implantação de plataforma, integração, treinamento de usuários"
       },
@@ -144,12 +137,12 @@
         "code": "P4",
         "oldCode": "L4",
         "title": "Programa Platforms",
-        "description": "Implementa SPARK y PENNY para transformación completa",
+        "description": "Implementa Penny e outras ferramentas de IA para transformação completa",
         "provider": "Aureo Labs",
         "badge": "uma Empresa MADFAM",
         "duration": "3-12 meses",
         "deliverables": [
-          "Implementación SPARK/PENNY",
+          "Implementação de plataformas de IA",
           "Integración con sistemas",
           "Capacitación de equipo",
           "Soporte continuo"
@@ -242,25 +235,14 @@
       },
       "links": {
         "website": "Site oficial",
-        "studio": "Aureo Studio",
         "security": "Central de Segurança"
       },
       "products": {
         "title": "Nossos Produtos",
-        "aureoStudio": {
-          "description": "Em Breve: Plataforma empresarial de governança e orquestração de IA para automação completa de negócios.",
-          "audience": "Grandes empresas e organizações",
-          "cta": "Visitar Aureo Studio",
-          "features": {
-            "0": "Governança e conformidade de IA",
-            "1": "Orquestração de processos",
-            "2": "Automação empresarial"
-          }
-        },
         "penny": {
           "description": "Plataforma de chat e workbench de IA fácil de usar para consumidores e empresas. Seu assistente inteligente para tarefas diárias e automação empresarial.",
           "audience": "Consumidores e empresas de todos os tamanhos",
-          "cta": "Descobrir PENNY",
+          "cta": "Descobrir Penny",
           "features": {
             "0": "Interface de chat inteligente",
             "1": "Automação pessoal e empresarial",
@@ -316,6 +298,16 @@
         "1": "Diseño paramétrico",
         "2": "Visualización",
         "3": "Fabricación digital"
+      }
+    },
+    "colabs": {
+      "tagline": "Centro de Colaboração e Inovação Educacional",
+      "description": "Espaço de co-criação onde convergem educação, tecnologia e criatividade para formar as novas gerações",
+      "capabilities": {
+        "0": "Programas Educacionais STEAM",
+        "1": "Laboratórios de Inovação",
+        "2": "Workshops e Bootcamps",
+        "3": "Colaborações Estratégicas"
       }
     },
     "showtech": {
@@ -380,16 +372,6 @@
       "subtitle": "Entre em contato com a unidade responsável ou agende uma demonstração personalizada.",
       "contactNow": "Entrar em contato",
       "viewUnits": "Ver unidades"
-    },
-    "aureoStudio": {
-      "description": "Em Breve: Plataforma empresarial de governança e orquestração de IA para automação completa de negócios.",
-      "audience": "Grandes empresas e organizações",
-      "cta": "Em Breve",
-      "features": {
-        "0": "Controle de fluxos inteligente",
-        "1": "Integrações empresariais",
-        "2": "Monitoramento em tempo real"
-      }
     },
     "penny": {
       "description": "Plataforma de chat e workbench de IA fácil de usar para consumidores e empresas.",

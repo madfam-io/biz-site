@@ -82,6 +82,7 @@ const nextConfig = {
     rewrites.push(
       { source: '/es/unidades/aureo-labs', destination: '/es/arms/aureo-labs' },
       { source: '/es/unidades/primavera3d', destination: '/es/arms/primavera3d' },
+      { source: '/es/unidades/colabs', destination: '/es/arms/colabs' },
       { source: '/es/unidades/showtech', destination: '/es/arms/showtech' }
     );
 
@@ -111,6 +112,7 @@ const nextConfig = {
     rewrites.push(
       { source: '/pt/unidades/aureo-labs', destination: '/pt/arms/aureo-labs' },
       { source: '/pt/unidades/primavera3d', destination: '/pt/arms/primavera3d' },
+      { source: '/pt/unidades/colabs', destination: '/pt/arms/colabs' },
       { source: '/pt/unidades/showtech', destination: '/pt/arms/showtech' }
     );
 

@@ -35,13 +35,6 @@
     "products": {
       "title": "Main Products",
       "subtitle": "Solutions developed by our specialized units",
-      "spark": {
-        "name": "SPARK",
-        "tagline": "Intelligent AI Orchestration",
-        "description": "Complete platform that connects, automates and optimizes all your business processes through advanced AI",
-        "badge": "an Aureo Labs product",
-        "developer": "Aureo Labs"
-      },
       "penny": {
         "name": "PENNY",
         "tagline": "Intelligent Process Automation",
@@ -81,7 +74,7 @@
       },
       "platformPilots": {
         "name": "Platform Pilots",
-        "description": "Implementation of SPARK and PENNY platforms",
+        "description": "Implementation of AI and automation platforms",
         "units": ["Aureo Labs"],
         "focus": "Platform deployment, integration, user training"
       },
@@ -144,12 +137,12 @@
         "code": "P4",
         "oldCode": "L4",
         "title": "Programa Platforms",
-        "description": "Implementa SPARK y PENNY para transformación completa",
+        "description": "Implement Penny and other AI tools for complete transformation",
         "provider": "Aureo Labs",
         "badge": "a MADFAM Company",
         "duration": "3-12 meses",
         "deliverables": [
-          "Implementación SPARK/PENNY",
+          "AI platform implementation",
           "Integración con sistemas",
           "Capacitación de equipo",
           "Soporte continuo"
@@ -242,25 +235,14 @@
       },
       "links": {
         "website": "Official website",
-        "studio": "Aureo Studio",
         "security": "Security Center"
       },
       "products": {
         "title": "Our Products",
-        "aureoStudio": {
-          "description": "Coming Soon: Enterprise AI governance and orchestration platform for complete business automation.",
-          "audience": "Large enterprises and organizations",
-          "cta": "Visit Aureo Studio",
-          "features": {
-            "0": "AI governance and compliance",
-            "1": "Process orchestration",
-            "2": "Enterprise automation"
-          }
-        },
         "penny": {
           "description": "User-friendly AI chat and workbench platform for consumers and enterprises. Your intelligent assistant for everyday tasks and business automation.",
           "audience": "Consumers and businesses of all sizes",
-          "cta": "Discover PENNY",
+          "cta": "Discover Penny",
           "features": {
             "0": "Intelligent chat interface",
             "1": "Personal and business automation",
@@ -316,6 +298,16 @@
         "1": "Diseño paramétrico",
         "2": "Visualización",
         "3": "Fabricación digital"
+      }
+    },
+    "colabs": {
+      "tagline": "Collaboration and Educational Innovation Center",
+      "description": "Co-creation space where education, technology and creativity converge to train new generations",
+      "capabilities": {
+        "0": "STEAM Educational Programs",
+        "1": "Innovation Labs",
+        "2": "Workshops and Bootcamps",
+        "3": "Strategic Collaborations"
       }
     },
     "showtech": {
@@ -380,16 +372,6 @@
       "subtitle": "Contacta con la unidad responsable o agenda una demostración personalizada.",
       "contactNow": "Contactar ahora",
       "viewUnits": "View business units"
-    },
-    "aureoStudio": {
-      "description": "Coming Soon: Enterprise AI governance and orchestration platform for complete business automation.",
-      "audience": "Large enterprises and organizations",
-      "cta": "Coming Soon",
-      "features": {
-        "0": "Control de flujos inteligente",
-        "1": "Integraciones empresariales",
-        "2": "Monitoreo en tiempo real"
-      }
     },
     "penny": {
       "description": "User-friendly AI chat and workbench platform for consumers and enterprises.",

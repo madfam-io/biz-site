@@ -1,29 +1,6 @@
 {
   "title": "Nossas plataformas",
   "subtitle": "Soluções tecnológicas que transformam a forma como você faz negócios",
-  "spark": {
-    "title": "SPARK",
-    "tagline": "Orquestração inteligente de IA",
-    "shortDescription": "Plataforma que conecta, automatiza e otimiza processos empresariais com IA.",
-    "description": "Plataforma completa que conecta, automatiza e otimiza todos os seus processos empresariais através de IA avançada.",
-    "features": {
-      "0": "Integração com +100 ferramentas",
-      "1": "Automação sem código",
-      "2": "Analytics em tempo real",
-      "title": "Características principais",
-      "integration": "Integração com +100 ferramentas",
-      "automation": "Automação sem código",
-      "analytics": "Analytics em tempo real",
-      "scalability": "Escalabilidade infinita"
-    },
-    "benefits": {
-      "title": "Benefícios",
-      "efficiency": "Aumento de 70% em eficiência",
-      "cost": "Redução de 50% em custos operacionais",
-      "time": "80% menos tempo em tarefas manuais",
-      "accuracy": "99.9% de precisão em processos"
-    }
-  },
   "penny": {
     "title": "PENNY",
     "tagline": "Seu assistente de IA pessoal",
@@ -49,17 +26,6 @@
     },
     "cta": {
       "demo": "Solicitar demonstração"
-    }
-  },
-  "aureoStudio": {
-    "title": "Aureo Studio",
-    "tagline": "Orquestração de IA empresarial",
-    "shortDescription": "Plataforma para orquestração de IA que governa e automatiza processos empresariais complexos.",
-    "description": "Plataforma completa para orquestração de IA que governa e automatiza processos empresariais complexos.",
-    "features": {
-      "0": "Controle de fluxos inteligente",
-      "1": "Integrações empresariais",
-      "2": "Monitoramento em tempo real"
     }
   },
   "cotizaStudio": {

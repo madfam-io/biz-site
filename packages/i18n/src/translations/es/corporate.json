@@ -35,13 +35,6 @@
     "products": {
       "title": "Productos Principales",
       "subtitle": "Soluciones desarrolladas por nuestras unidades especializadas",
-      "spark": {
-        "name": "SPARK",
-        "tagline": "Orquestación Inteligente de IA",
-        "description": "Plataforma completa que conecta, automatiza y optimiza todos tus procesos empresariales a través de IA avanzada",
-        "badge": "un producto de Aureo Labs",
-        "developer": "Aureo Labs"
-      },
       "penny": {
         "name": "PENNY",
         "tagline": "Tu Asistente Personal de IA",
@@ -120,12 +113,12 @@
         "code": "P4",
         "oldCode": "L4",
         "title": "Programa Platforms",
-        "description": "Implementa SPARK y PENNY para transformación completa",
+        "description": "Implementa Penny y otras herramientas de IA para transformación completa",
         "provider": "Aureo Labs",
         "badge": "una Empresa MADFAM",
         "duration": "3-12 meses",
         "deliverables": [
-          "Implementación SPARK/PENNY",
+          "Implementación de plataformas de IA",
           "Integración con sistemas",
           "Capacitación de equipo",
           "Soporte continuo"
@@ -161,7 +154,7 @@
       },
       "platformPilots": {
         "name": "Pilotos de Plataforma",
-        "description": "Implementación de plataformas SPARK y PENNY",
+        "description": "Implementación de plataformas de IA y automatización",
         "units": ["Aureo Labs"],
         "focus": "Despliegue de plataforma, integración, capacitación de usuarios"
       },
@@ -242,25 +235,14 @@
       },
       "links": {
         "website": "Sitio web oficial",
-        "studio": "Aureo Studio",
         "security": "Centro de Seguridad"
       },
       "products": {
         "title": "Nuestros Productos",
-        "aureoStudio": {
-          "description": "Próximamente: Plataforma empresarial de gobernanza y orquestación de IA para automatización completa de negocios.",
-          "audience": "Grandes empresas y organizaciones",
-          "cta": "Visitar Aureo Studio",
-          "features": {
-            "0": "Gobernanza y cumplimiento de IA",
-            "1": "Orquestación de procesos",
-            "2": "Automatización empresarial"
-          }
-        },
         "penny": {
           "description": "Plataforma de chat y workbench de IA fácil de usar para consumidores y empresas. Tu asistente inteligente para tareas diarias y automatización empresarial.",
           "audience": "Consumidores y empresas de todos los tamaños",
-          "cta": "Descubrir PENNY",
+          "cta": "Descubrir Penny",
           "features": {
             "0": "Interfaz de chat inteligente",
             "1": "Automatización personal y empresarial",
@@ -316,6 +298,16 @@
         "1": "Diseño paramétrico",
         "2": "Visualización",
         "3": "Fabricación digital"
+      }
+    },
+    "colabs": {
+      "tagline": "Centro de Colaboración e Innovación Educativa",
+      "description": "Espacio de co-creación donde convergen educación, tecnología y creatividad para formar a las nuevas generaciones",
+      "capabilities": {
+        "0": "Programas Educativos STEAM",
+        "1": "Laboratorios de Innovación",
+        "2": "Workshops y Bootcamps",
+        "3": "Colaboraciones Estratégicas"
       }
     },
     "showtech": {
@@ -380,16 +372,6 @@
       "subtitle": "Contacta con la unidad responsable o agenda una demostración personalizada.",
       "contactNow": "Contactar ahora",
       "viewUnits": "Ver unidades"
-    },
-    "aureoStudio": {
-      "description": "Próximamente: Plataforma empresarial de gobernanza y orquestación de IA para automatización completa de negocios.",
-      "audience": "Grandes empresas y organizaciones",
-      "cta": "Próximamente",
-      "features": {
-        "0": "Control de flujos inteligente",
-        "1": "Integraciones empresariales",
-        "2": "Monitoreo en tiempo real"
-      }
     },
     "penny": {
       "description": "Plataforma de chat y workbench de IA fácil de usar para consumidores y empresas.",

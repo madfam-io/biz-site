@@ -1,30 +1,6 @@
 {
   "title": "Our Platforms",
   "subtitle": "Technology solutions that transform the way you do business",
-  "spark": {
-    "name": "SPARK",
-    "title": "SPARK",
-    "tagline": "Intelligent AI Orchestration",
-    "shortDescription": "Platform that connects, automates, and optimizes business processes with AI.",
-    "description": "Complete platform that connects, automates, and optimizes all your business processes through advanced AI.",
-    "features": {
-      "0": "Integration with 100+ tools",
-      "1": "No-code automation",
-      "2": "Real-time analytics",
-      "title": "Key Features",
-      "integration": "Integration with 100+ tools",
-      "automation": "No-code automation",
-      "analytics": "Real-time analytics",
-      "scalability": "Infinite scalability"
-    },
-    "benefits": {
-      "title": "Benefits",
-      "efficiency": "70% increase in efficiency",
-      "cost": "50% reduction in operational costs",
-      "time": "80% less time on manual tasks",
-      "accuracy": "99.9% process accuracy"
-    }
-  },
   "penny": {
     "name": "PENNY",
     "title": "PENNY",
@@ -64,13 +40,6 @@
   "cta": {
     "demo": "Request demo",
     "trial": "Free 14-day trial"
-  },
-  "aureoStudio": {
-    "features": {
-      "0": "Intelligent flow control",
-      "1": "Enterprise integrations",
-      "2": "Real-time monitoring"
-    }
   },
   "cotizaStudio": {
     "features": {

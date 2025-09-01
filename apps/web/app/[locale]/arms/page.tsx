@@ -39,8 +39,8 @@ export default async function ArmsPage({ params }: Props) {
         t('aureoLabs.capabilities.3'),
       ],
       products: [
-        { name: 'Aureo Studio', url: 'https://aureo.studio' },
-        { name: 'PENNY', url: '/products/penny' },
+        { name: 'Penny', url: 'https://www.penny.onl' },
+        { name: 'Dhanam', url: 'https://www.dhan.am' },
         { name: 'Cotiza Studio', url: 'https://cotiza.studio' },
         { name: 'Forge Sight', url: 'https://forgesight.quest' },
       ],
@@ -66,6 +66,26 @@ export default async function ArmsPage({ params }: Props) {
       ],
       externalUrl: 'https://www.primavera3d.pro',
       internalUrl: '/arms/primavera3d',
+    },
+    {
+      id: 'colabs',
+      name: 'MADFAM Co-labs',
+      tagline: t('colabs.tagline'),
+      description: t('colabs.description'),
+      badge: 'por MADFAM',
+      accent: 'blue' as const,
+      capabilities: [
+        t('colabs.capabilities.0'),
+        t('colabs.capabilities.1'),
+        t('colabs.capabilities.2'),
+        t('colabs.capabilities.3'),
+      ],
+      products: [
+        { name: 'MADLAB', url: '/arms/colabs#madlab' },
+        { name: 'Workshops', url: '/arms/colabs#workshops' },
+        { name: 'Bootcamps', url: '/arms/colabs#bootcamps' },
+      ],
+      internalUrl: '/arms/colabs',
     },
     {
       id: 'showtech',

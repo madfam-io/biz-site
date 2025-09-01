@@ -198,9 +198,9 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
     {
       year: '2020',
       event: {
-        es: 'Lanzamiento de SPARK beta',
-        en: 'SPARK beta launch',
-        pt: 'Lançamento do SPARK beta',
+        es: 'Lanzamiento de primeras plataformas de IA',
+        en: 'Launch of first AI platforms',
+        pt: 'Lançamento das primeiras plataformas de IA',
       },
     },
     {

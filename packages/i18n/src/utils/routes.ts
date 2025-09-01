@@ -6,6 +6,7 @@ export type RouteKey =
   | 'arms'
   | 'arms.aureo-labs'
   | 'arms.primavera3d'
+  | 'arms.colabs'
   | 'arms.showtech'
   | 'programs'
   | 'work'
@@ -42,6 +43,11 @@ const routes: Record<RouteKey, Record<Locale, string>> = {
     en: '/arms/primavera3d',
     es: '/unidades/primavera3d',
     pt: '/unidades/primavera3d',
+  },
+  'arms.colabs': {
+    en: '/arms/colabs',
+    es: '/unidades/colabs',
+    pt: '/unidades/colabs',
   },
   'arms.showtech': {
     en: '/arms/showtech',
