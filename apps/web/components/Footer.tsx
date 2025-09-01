@@ -65,7 +65,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
+                      className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender"
                     >
                       {item.name}
                     </Link>
@@ -81,7 +81,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
+                      className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender"
                     >
                       {item.name}
                     </Link>
@@ -97,7 +97,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
+                      className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender"
                     >
                       {item.name}
                     </Link>
@@ -113,7 +113,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-obsidian/70 dark:text-white/70 hover:text-obsidian dark:hover:text-white transition-colors"
+                      className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender"
                     >
                       {item.name}
                     </Link>

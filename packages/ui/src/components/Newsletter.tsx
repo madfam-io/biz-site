@@ -168,10 +168,15 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
                 placeholder={finalPlaceholder}
                 disabled={isSubmitting}
                 className={cn(
-                  'flex-1 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 focus:ring-2 focus:ring-sun focus:border-transparent transition-colors',
+                  'flex-1 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white/90 focus:ring-2 focus:ring-sun focus:border-transparent transition-colors focus:outline-none',
                   inputSizeClasses[size],
                   status === 'error' && 'border-red-400'
                 )}
+                required
+                aria-required="true"
+                aria-label={finalPlaceholder}
+                aria-invalid={status === 'error'}
+                aria-describedby={status === 'error' ? `newsletter-error-${variant}` : undefined}
               />
               <Button
                 type="submit"
@@ -185,12 +190,22 @@ export const Newsletter = React.forwardRef<HTMLDivElement, NewsletterProps>(
             </div>
 
             {status === 'success' && (
-              <p className="text-sm text-sun font-medium">
+              <p className="text-sm text-sun font-medium" role="status" aria-live="polite">
                 {getText('newsletter.messages.success', 'Thank you for subscribing!')}
               </p>
             )}
 
-            {status === 'error' && <p className="text-sm text-red-400">{errorMessage}</p>}
+            {status === 'error' && (
+              <p
+                id={`newsletter-error-${variant}`}
+                className="text-sm text-red-400 font-medium"
+                role="alert"
+                aria-live="assertive"
+              >
+                <span className="sr-only">Error:</span>
+                {errorMessage}
+              </p>
+            )}
           </form>
         </div>
       );

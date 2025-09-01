@@ -12,7 +12,8 @@ const buttonVariants = cva(
         primary: 'bg-obsidian text-pearl hover:bg-obsidian/90 shadow-lg hover:shadow-xl',
         secondary: 'bg-sun text-obsidian hover:bg-sun/90 shadow-md hover:shadow-lg',
         ghost: 'hover:bg-obsidian/5 hover:text-obsidian',
-        creative: 'bg-gradient-to-r from-lavender to-sun text-pearl hover:opacity-90 shadow-lg hover:shadow-xl',
+        creative:
+          'bg-gradient-to-r from-lavender to-sun text-pearl hover:opacity-90 shadow-lg hover:shadow-xl',
         outline: 'border-2 border-obsidian text-obsidian hover:bg-obsidian hover:text-pearl',
         danger: 'bg-red-600 text-white hover:bg-red-700 shadow-md hover:shadow-lg',
         success: 'bg-leaf text-white hover:bg-leaf/90 shadow-md hover:shadow-lg',
@@ -47,41 +48,46 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ 
-    className, 
-    variant, 
-    size, 
-    fullWidth,
-    asChild = false, 
-    loading, 
-    children, 
-    disabled,
-    icon,
-    iconPosition = 'left',
-    ...props 
-  }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      fullWidth,
+      asChild = false,
+      loading,
+      children,
+      disabled,
+      icon,
+      iconPosition = 'left',
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : 'button';
-    
+
     const content = (
       <>
         {loading && <Spinner size="sm" className="mr-2" />}
-        {!loading && icon && iconPosition === 'left' && (
-          <span className="mr-2">{icon}</span>
-        )}
+        {!loading && icon && iconPosition === 'left' && <span className="mr-2">{icon}</span>}
         {children}
-        {!loading && icon && iconPosition === 'right' && (
-          <span className="ml-2">{icon}</span>
-        )}
+        {!loading && icon && iconPosition === 'right' && <span className="ml-2">{icon}</span>}
       </>
     );
-    
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, fullWidth, className }))}
         ref={ref}
         disabled={disabled || loading}
+        aria-busy={loading}
+        aria-disabled={disabled || loading}
+        aria-label={
+          loading ? `${props['aria-label'] || 'Button'} loading, please wait` : props['aria-label']
+        }
         {...props}
       >
+        {loading && <span className="sr-only">Loading, please wait</span>}
         {asChild ? children : content}
       </Comp>
     );

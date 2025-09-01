@@ -34,11 +34,17 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages} locale={locale}>
           <OrganizationStructuredData />
           <GlobalAnalytics />
+
+          {/* Skip Navigation Link for Accessibility */}
+          <a href="#main-content" className="skip-link sr-only-focusable">
+            Skip to main content
+          </a>
+
           <LuxuryNavbar />
-          <div>
+          <main id="main-content" tabIndex={-1}>
             {children}
-            <Footer />
-          </div>
+          </main>
+          <Footer />
           <CookieConsent />
         </NextIntlClientProvider>
       </AuthProvider>
