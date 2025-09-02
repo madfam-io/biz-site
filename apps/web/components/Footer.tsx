@@ -30,8 +30,8 @@ export function Footer() {
     productos: [
       { name: 'Penny', href: 'https://www.penny.onl' },
       { name: 'Dhanam', href: 'https://www.dhan.am' },
-      { name: 'Cotiza Studio', href: 'https://cotiza.studio' },
-      { name: 'Forge Sight', href: 'https://forgesight.quest' },
+      { name: 'Cotiza Studio', href: 'https://www.cotiza.studio' },
+      { name: 'Forge Sight', href: 'https://www.forgesight.quest' },
     ],
     empresa: [
       { name: t('footer.company.about'), href: getLocalizedUrl('about', locale) },
@@ -79,12 +79,14 @@ export function Footer() {
               <ul className="space-y-3">
                 {navigation.productos.map(item => (
                   <li key={item.name}>
-                    <Link
+                    <a
                       href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender"
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>

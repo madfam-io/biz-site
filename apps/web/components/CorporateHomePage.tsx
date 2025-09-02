@@ -37,10 +37,10 @@ export function CorporateHomePage() {
       products: [
         { name: 'Penny', url: 'https://www.penny.onl' },
         { name: 'Dhanam', url: 'https://www.dhan.am' },
-        { name: 'Cotiza Studio', url: 'https://cotiza.studio' },
-        { name: 'Forge Sight', url: 'https://forgesight.quest' },
+        { name: 'Cotiza Studio', url: 'https://www.cotiza.studio' },
+        { name: 'Forge Sight', url: 'https://www.forgesight.quest' },
       ],
-      externalUrl: 'https://aureolabs.dev',
+      externalUrl: 'https://www.aureolabs.dev',
     },
     {
       id: 'primavera3d',

@@ -62,7 +62,7 @@ export default async function ProductsPage({ params }: Props) {
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: 'Visitar Cotiza Studio',
-        url: 'https://cotiza.studio',
+        url: 'https://www.cotiza.studio',
         external: true,
       },
       secondaryCta: {
@@ -85,7 +85,7 @@ export default async function ProductsPage({ params }: Props) {
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: 'Visitar Forge Sight',
-        url: 'https://forgesight.quest',
+        url: 'https://www.forgesight.quest',
         external: true,
       },
       secondaryCta: {

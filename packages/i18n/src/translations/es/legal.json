@@ -2,6 +2,7 @@
   "privacy": {
     "title": "Política de Privacidad",
     "lastUpdated": "Última actualización: {date}",
+    "lastUpdatedDate": "Enero 2024",
     "intro": {
       "title": "1. Introducción",
       "content": "En MADFAM (\"nosotros\", \"nuestro\" o \"la empresa\"), valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos tu información personal cuando utilizas nuestro sitio web y servicios."
@@ -108,6 +109,8 @@
   "terms": {
     "title": "Términos y Condiciones",
     "lastUpdated": "Última actualización: {date}",
+    "lastUpdatedDate": "Enero 2024",
+    "disclaimer": "Este documento ha sido simplificado para demostrar la internacionalización. La versión completa estará disponible próximamente.",
     "acceptance": {
       "title": "1. Aceptación de los Términos",
       "content": "Al acceder y utilizar los servicios de MADFAM (\"nosotros\", \"nuestro\" o \"la empresa\"), aceptas estar sujeto a estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de estos términos, no debes usar nuestros servicios."
@@ -150,6 +153,129 @@
       "yourContent": {
         "title": "4.2 Tu Contenido",
         "content": "Mantienes todos los derechos sobre el contenido que nos proporciones. Al compartir contenido con nosotros, nos otorgas una licencia para usarlo en la prestación de nuestros servicios."
+      }
+    },
+    "paymentTerms": {
+      "title": "5. Términos de Pago",
+      "fees": {
+        "title": "5.1 Tarifas de Servicio",
+        "content": "Las tarifas por nuestros servicios se establecen según el alcance y complejidad de cada proyecto. Todas las cotizaciones son válidas por 30 días a menos que se especifique lo contrario."
+      },
+      "payment": {
+        "title": "5.2 Métodos de Pago",
+        "content": "Aceptamos transferencias bancarias, tarjetas de crédito y otros métodos de pago acordados previamente. Las facturas son pagaderas dentro de 30 días de su emisión, salvo acuerdo en contrario."
+      },
+      "lateFees": {
+        "title": "5.3 Pagos Tardíos",
+        "content": "Los pagos tardíos pueden incurrir en cargos por intereses a una tasa del 1.5% mensual o la tasa máxima permitida por ley, lo que sea menor."
+      }
+    },
+    "liability": {
+      "title": "6. Limitación de Responsabilidad",
+      "disclaimer": {
+        "title": "6.1 Descargo de Responsabilidad",
+        "content": "Nuestros servicios se proporcionan 'tal cual' sin garantías de ningún tipo, ya sean expresas o implícitas, excepto según lo requiera la ley."
+      },
+      "limitation": {
+        "title": "6.2 Límites de Responsabilidad",
+        "content": "En la máxima medida permitida por la ley, la responsabilidad total de MADFAM no excederá el monto pagado por usted por los servicios específicos que dieron lugar al reclamo."
+      },
+      "exclusions": {
+        "title": "6.3 Exclusión de Daños",
+        "content": "No somos responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos, incluyendo pérdida de ganancias, datos u oportunidades de negocio."
+      }
+    },
+    "indemnification": {
+      "title": "7. Indemnización",
+      "userIndemnity": {
+        "title": "7.1 Tu Indemnización",
+        "content": "Aceptas indemnizar y mantener a MADFAM libre de cualquier reclamo, pérdida o daño que surja de tu uso de nuestros servicios o violación de estos términos."
+      },
+      "mutualIndemnity": {
+        "title": "7.2 Protección Mutua",
+        "content": "Cada parte acuerda defender a la otra contra reclamos de terceros que surjan de su propia negligencia o mala conducta intencional."
+      }
+    },
+    "termination": {
+      "title": "8. Terminación",
+      "byUser": {
+        "title": "8.1 Terminación por Ti",
+        "content": "Puedes terminar tu uso de nuestros servicios en cualquier momento proporcionando aviso por escrito y liquidando cualquier obligación pendiente."
+      },
+      "byUs": {
+        "title": "8.2 Terminación por MADFAM",
+        "content": "Podemos terminar o suspender los servicios inmediatamente si incumples estos términos o participas en conductas perjudiciales para nuestro negocio u otros usuarios."
+      },
+      "effects": {
+        "title": "8.3 Efectos de la Terminación",
+        "content": "Al terminar, todas las licencias otorgadas a ti cesarán, y debes devolver o destruir cualquier información confidencial en tu posesión."
+      }
+    },
+    "governingLaw": {
+      "title": "9. Ley Aplicable",
+      "jurisdiction": {
+        "title": "9.1 Legislación Aplicable",
+        "content": "Estos términos se rigen por las leyes de México, sin consideración a los principios de conflicto de leyes."
+      },
+      "venue": {
+        "title": "9.2 Jurisdicción",
+        "content": "Cualquier disputa estará sujeta a la jurisdicción exclusiva de los tribunales de la Ciudad de México, México."
+      }
+    },
+    "disputeResolution": {
+      "title": "10. Resolución de Disputas",
+      "negotiation": {
+        "title": "10.1 Negociación de Buena Fe",
+        "content": "Las partes acuerdan intentar resolver disputas mediante negociación de buena fe antes de proceder con procedimientos formales."
+      },
+      "arbitration": {
+        "title": "10.2 Arbitraje",
+        "content": "Si la negociación falla, las disputas se resolverán mediante arbitraje vinculante bajo las reglas del Centro de Arbitraje de México."
+      },
+      "exceptions": {
+        "title": "10.3 Excepciones",
+        "content": "Cualquier parte puede buscar medidas cautelares en los tribunales por violaciones de derechos de propiedad intelectual u obligaciones de confidencialidad."
+      }
+    },
+    "changes": {
+      "title": "11. Cambios a los Términos",
+      "modifications": {
+        "title": "11.1 Derecho a Modificar",
+        "content": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios materiales serán notificados a través de nuestro sitio web o por correo electrónico."
+      },
+      "acceptance": {
+        "title": "11.2 Uso Continuado",
+        "content": "Tu uso continuado de nuestros servicios después de los cambios constituye aceptación de los términos modificados."
+      }
+    },
+    "privacyReference": {
+      "title": "12. Política de Privacidad",
+      "dataProtection": {
+        "title": "12.1 Datos Personales",
+        "content": "Tu uso de nuestros servicios también se rige por nuestra Política de Privacidad, que describe cómo recopilamos, usamos y protegemos tu información personal."
+      },
+      "consent": {
+        "title": "12.2 Consentimiento para el Procesamiento de Datos",
+        "content": "Al usar nuestros servicios, consientes las prácticas de datos descritas en nuestra Política de Privacidad."
+      }
+    },
+    "generalProvisions": {
+      "title": "13. Disposiciones Generales",
+      "entireAgreement": {
+        "title": "13.1 Acuerdo Completo",
+        "content": "Estos términos constituyen el acuerdo completo entre tú y MADFAM con respecto al uso de nuestros servicios."
+      },
+      "severability": {
+        "title": "13.2 Divisibilidad",
+        "content": "Si alguna disposición se encuentra inválida, las disposiciones restantes continuarán en plena vigencia y efecto."
+      },
+      "waiver": {
+        "title": "13.3 Sin Renuncia",
+        "content": "Nuestra falta de hacer cumplir cualquier derecho o disposición no constituirá una renuncia a ese derecho o disposición."
+      },
+      "assignment": {
+        "title": "13.4 Cesión",
+        "content": "No puedes ceder estos términos sin nuestro consentimiento por escrito. Podemos ceder nuestros derechos y obligaciones sin restricción."
       }
     },
     "contact": {

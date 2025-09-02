@@ -1,20 +1,21 @@
-import { buildConfig } from 'payload/config';
+import { buildConfig } from 'payload';
 import { webpackBundler } from '@payloadcms/bundler-webpack';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { slateEditor } from '@payloadcms/richtext-slate';
 
 // Collections
-import { Products } from './src/collections/Products';
-import { CaseStudies } from './src/collections/CaseStudies';
-import { BlogPosts } from './src/collections/BlogPosts';
-import { Resources } from './src/collections/Resources';
-import { TeamMembers } from './src/collections/TeamMembers';
-import { Testimonials } from './src/collections/Testimonials';
-import { Users } from './src/collections/Users';
-import { Media } from './src/collections/Media';
+import { Products } from './src/collections/Products.js';
+import { CaseStudies } from './src/collections/CaseStudies.js';
+import { BlogPosts } from './src/collections/BlogPosts.js';
+import { Resources } from './src/collections/Resources.js';
+import { TeamMembers } from './src/collections/TeamMembers.js';
+import { Testimonials } from './src/collections/Testimonials.js';
+import { Users } from './src/collections/Users.js';
+import { Media } from './src/collections/Media.js';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3001',
+  secret: process.env.PAYLOAD_SECRET || 'your-secret-key',
   admin: {
     user: 'users',
     bundler: webpackBundler(),

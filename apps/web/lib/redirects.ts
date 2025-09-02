@@ -181,12 +181,12 @@ export const productOwnership = {
   'cotiza-studio': {
     arm: 'aureo-labs',
     badge: 'un producto de Aureo Labs',
-    url: 'https://cotiza.studio',
+    url: 'https://www.cotiza.studio',
   },
   'forge-sight': {
     arm: 'aureo-labs',
     badge: 'plataforma de Aureo Labs',
-    url: 'https://forgesight.quest',
+    url: 'https://www.forgesight.quest',
   },
   dhanam: {
     arm: 'madfam',

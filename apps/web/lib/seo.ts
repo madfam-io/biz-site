@@ -247,7 +247,10 @@ export class SEOService {
     });
   }
 
-  generateHomeMetadata(locale: 'es' | 'en' | 'pt' = 'es'): Metadata {
+  generateHomeMetadata(locale: string = 'es'): Metadata {
+    // Ensure locale is valid, fallback to 'es' if not
+    const validLocale = ['es', 'en', 'pt'].includes(locale) ? locale : 'es';
+
     const content = {
       es: {
         title: 'MADFAM | Transformación Digital e Inteligencia Artificial en México',
@@ -302,14 +305,14 @@ export class SEOService {
       },
     };
 
-    const t = content[locale];
+    const t = content[validLocale as 'es' | 'en' | 'pt'];
 
     return this.generateMetadata({
       title: t.title,
       description: t.description,
       keywords: t.keywords,
       type: 'website',
-      locale,
+      locale: validLocale as 'es' | 'en' | 'pt',
       url: '/',
     });
   }

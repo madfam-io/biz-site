@@ -31,7 +31,14 @@ export async function TranslationList({
       const value = await t(key);
 
       // Check if the translation resolved to something other than the key itself
-      if (typeof value === 'string' && value !== key && !value.includes('Missing message')) {
+      // Next-intl returns the key path when translation is missing (e.g., "legal.terms.services.items.5")
+      if (
+        typeof value === 'string' &&
+        !value.startsWith('legal.') && // Check if it's a translation key path
+        !value.includes('.items.') && // Additional check for array item keys
+        !value.includes('Missing message') &&
+        value !== key
+      ) {
         items.push(value);
       } else {
         // Stop when we reach a non-existent translation

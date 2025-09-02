@@ -18,7 +18,7 @@ export default async function PrivacyPage({ params: { locale } }: { params: { lo
               {t('privacy.title')}
             </Heading>
             <p className="text-lg text-obsidian/70">
-              {t('privacy.lastUpdated', { date: 'Enero 2024' })}
+              {t('privacy.lastUpdated', { date: t('privacy.lastUpdatedDate') })}
             </p>
           </div>
         </Container>

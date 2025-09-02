@@ -56,7 +56,7 @@ export default async function AureoLabsPage({ params }: Props) {
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: t('products.cotizaStudio.cta'),
-        url: 'https://cotiza.studio',
+        url: 'https://www.cotiza.studio',
         external: true,
       },
       secondaryCta: {
@@ -76,7 +76,7 @@ export default async function AureoLabsPage({ params }: Props) {
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
         label: t('products.forgeSight.cta'),
-        url: 'https://forgesight.quest',
+        url: 'https://www.forgesight.quest',
         external: true,
       },
       secondaryCta: {
@@ -147,7 +147,7 @@ export default async function AureoLabsPage({ params }: Props) {
             {/* Quick Links */}
             <div className="flex flex-wrap gap-4">
               <Link
-                href="https://aureolabs.dev"
+                href="https://www.aureolabs.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800 transition-colors"

@@ -231,10 +231,10 @@ export default async function ColabsPage({ params }: Props) {
                       </div>
                     </div>
 
-                    {program.id === 'madlab' && (
+                    {program.id === 'madlab' && program.partnerUrl && (
                       <div className="flex-shrink-0">
                         <Link
-                          href={program.partnerUrl!}
+                          href={program.partnerUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors font-medium"
