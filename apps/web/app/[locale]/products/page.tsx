@@ -150,9 +150,10 @@ export default async function ProductsPage({ params }: Props) {
       audience: 'Real estate developers, urban planners, and GIS analysts',
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: 'Visit Factlas',
+        label: 'Coming Soon',
         url: 'https://www.factl.as',
         external: true,
+        comingSoon: true,
       },
       secondaryCta: {
         label: commonT('nav.contact'),
@@ -165,6 +166,7 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Platform',
       arm: 'aureo-labs',
+      comingSoon: true,
     },
   ];
 

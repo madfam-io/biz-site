@@ -75,9 +75,10 @@ export default async function AureoLabsPage({ params }: Props) {
       audience: t('products.factlas.audience'),
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: t('products.factlas.cta'),
+        label: 'Coming Soon',
         url: 'https://www.factl.as',
         external: true,
+        comingSoon: true,
       },
       secondaryCta: {
         label: commonT('cta.contact'),

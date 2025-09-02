@@ -292,7 +292,7 @@
         "factlas": {
           "description": "Geographic intelligence platform that converts geospatial signals into auditable facts with coordinates. STAC-compliant catalog for discovering and analyzing location data.",
           "audience": "Real estate developers, urban planners, and GIS analysts",
-          "cta": "Visit Factlas",
+          "cta": "Coming Soon",
           "features": {
             "0": "Geospatial fact verification and provenance",
             "1": "STAC-compliant data catalog and search",
