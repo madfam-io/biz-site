@@ -45,6 +45,7 @@ export default async function ArmsPage({ params }: Props) {
         { name: 'Forge Sight', url: 'https://www.forgesight.quest' },
       ],
       externalUrl: 'https://www.aureolabs.dev',
+      internalUrl: '/arms/aureo-labs',
     },
     {
       id: 'primavera3d',
