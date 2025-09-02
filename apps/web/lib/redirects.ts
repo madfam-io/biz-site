@@ -196,7 +196,7 @@ export const productOwnership = {
   avala: {
     arm: 'aureo-labs',
     badge: 'by Aureo Labs, a MADFAM Company',
-    url: 'https://www.avala.mx',
+    url: '#',
   },
   factlas: {
     arm: 'aureo-labs',

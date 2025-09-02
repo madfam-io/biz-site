@@ -55,9 +55,9 @@ export default async function AureoLabsPage({ params }: Props) {
       audience: t('products.avala.audience'),
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: t('products.avala.cta'),
-        url: 'https://www.avala.mx',
-        external: true,
+        label: 'Coming Soon',
+        url: '#',
+        comingSoon: true,
       },
       secondaryCta: {
         label: commonT('cta.contact'),
