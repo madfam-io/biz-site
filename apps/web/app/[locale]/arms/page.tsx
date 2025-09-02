@@ -30,7 +30,7 @@ export default async function ArmsPage({ params }: Props) {
       name: 'Aureo Labs',
       tagline: t('aureoLabs.tagline'),
       description: t('aureoLabs.description'),
-      badge: 'por MADFAM',
+      badge: 'a MADFAM Company',
       accent: 'copper' as const,
       capabilities: [
         t('aureoLabs.capabilities.0'),
@@ -52,7 +52,7 @@ export default async function ArmsPage({ params }: Props) {
       name: 'Primavera3D',
       tagline: t('primavera3d.tagline'),
       description: t('primavera3d.description'),
-      badge: 'por MADFAM',
+      badge: 'a MADFAM Company',
       accent: 'green' as const,
       capabilities: [
         t('primavera3d.capabilities.0'),
@@ -73,7 +73,7 @@ export default async function ArmsPage({ params }: Props) {
       name: 'MADFAM Co-labs',
       tagline: t('colabs.tagline'),
       description: t('colabs.description'),
-      badge: 'por MADFAM',
+      badge: 'a MADFAM Company',
       accent: 'blue' as const,
       capabilities: [
         t('colabs.capabilities.0'),
@@ -93,7 +93,7 @@ export default async function ArmsPage({ params }: Props) {
       name: 'Showtech',
       tagline: t('showtech.tagline'),
       description: t('showtech.description'),
-      badge: 'por MADFAM',
+      badge: 'a MADFAM Company',
       accent: 'purple' as const,
       capabilities: [
         t('showtech.capabilities.0'),
