@@ -278,6 +278,26 @@
             "1": "Estrategias de riqueza personalizadas",
             "2": "Seguimiento de portafolio en tiempo real"
           }
+        },
+        "avala": {
+          "description": "Plataforma SaaS para diseñar, impartir y verificar aprendizajes alineados a Estándares de Competencia EC/CONOCER. Genera constancias DC-3 y asegura cumplimiento normativo.",
+          "audience": "Organizaciones de capacitación y empresas en LATAM",
+          "cta": "Conocer más",
+          "features": {
+            "0": "Autoría de formación alineada a EC/CONOCER",
+            "1": "Generación de DC-3 y cumplimiento SIRCE",
+            "2": "Credenciales verificables (Open Badges 3.0)"
+          }
+        },
+        "factlas": {
+          "description": "Plataforma de inteligencia geográfica que convierte señales geoespaciales en hechos auditables con coordenadas. Catálogo compatible con STAC para descubrir y analizar datos de ubicación.",
+          "audience": "Desarrolladores inmobiliarios, urbanistas y analistas GIS",
+          "cta": "Visitar Factlas",
+          "features": {
+            "0": "Verificación y procedencia de hechos geoespaciales",
+            "1": "Catálogo y búsqueda compatible con STAC",
+            "2": "Selección de sitios y detección de cambios con IA"
+          }
         }
       },
       "philosophy": {

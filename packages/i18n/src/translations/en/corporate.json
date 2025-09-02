@@ -278,6 +278,26 @@
             "1": "Personalized wealth strategies",
             "2": "Real-time portfolio tracking"
           }
+        },
+        "avala": {
+          "description": "SaaS platform for designing, delivering, and verifying competency-based training aligned with Mexican EC/CONOCER standards. Generates DC-3 certificates and ensures regulatory compliance.",
+          "audience": "Training organizations and enterprises in LATAM",
+          "cta": "Learn More",
+          "features": {
+            "0": "EC/CONOCER aligned training authoring",
+            "1": "DC-3 certificate generation and SIRCE compliance",
+            "2": "Verifiable credentials (Open Badges 3.0)"
+          }
+        },
+        "factlas": {
+          "description": "Geographic intelligence platform that converts geospatial signals into auditable facts with coordinates. STAC-compliant catalog for discovering and analyzing location data.",
+          "audience": "Real estate developers, urban planners, and GIS analysts",
+          "cta": "Visit Factlas",
+          "features": {
+            "0": "Geospatial fact verification and provenance",
+            "1": "STAC-compliant data catalog and search",
+            "2": "AI-powered site selection and change detection"
+          }
         }
       },
       "philosophy": {

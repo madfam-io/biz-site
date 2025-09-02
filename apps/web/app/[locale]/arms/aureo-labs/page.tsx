@@ -50,6 +50,46 @@ export default async function AureoLabsPage({ params }: Props) {
       ],
     },
     {
+      name: 'AVALA',
+      description: t('products.avala.description'),
+      audience: t('products.avala.audience'),
+      badge: 'by Aureo Labs, a MADFAM Company',
+      primaryCta: {
+        label: t('products.avala.cta'),
+        url: 'https://www.avala.mx',
+        external: true,
+      },
+      secondaryCta: {
+        label: commonT('cta.contact'),
+        url: '/contact',
+      },
+      features: [
+        t('products.avala.features.0'),
+        t('products.avala.features.1'),
+        t('products.avala.features.2'),
+      ],
+    },
+    {
+      name: 'Factlas',
+      description: t('products.factlas.description'),
+      audience: t('products.factlas.audience'),
+      badge: 'by Aureo Labs, a MADFAM Company',
+      primaryCta: {
+        label: t('products.factlas.cta'),
+        url: 'https://www.factl.as',
+        external: true,
+      },
+      secondaryCta: {
+        label: commonT('cta.contact'),
+        url: '/contact',
+      },
+      features: [
+        t('products.factlas.features.0'),
+        t('products.factlas.features.1'),
+        t('products.factlas.features.2'),
+      ],
+    },
+    {
       name: 'Cotiza Studio',
       description: t('products.cotizaStudio.description'),
       audience: t('products.cotizaStudio.audience'),

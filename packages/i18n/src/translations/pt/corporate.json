@@ -278,6 +278,26 @@
             "1": "Estratégias de riqueza personalizadas",
             "2": "Acompanhamento de portfólio em tempo real"
           }
+        },
+        "avala": {
+          "description": "Plataforma SaaS para projetar, entregar e verificar treinamento baseado em competências alinhado com os padrões EC/CONOCER mexicanos. Gera certificados DC-3 e garante conformidade regulatória.",
+          "audience": "Organizações de treinamento e empresas na LATAM",
+          "cta": "Saiba mais",
+          "features": {
+            "0": "Criação de treinamento alinhado a EC/CONOCER",
+            "1": "Geração de DC-3 e conformidade SIRCE",
+            "2": "Credenciais verificáveis (Open Badges 3.0)"
+          }
+        },
+        "factlas": {
+          "description": "Plataforma de inteligência geográfica que converte sinais geoespaciais em fatos auditáveis com coordenadas. Catálogo compatível com STAC para descobrir e analisar dados de localização.",
+          "audience": "Desenvolvedores imobiliários, planejadores urbanos e analistas GIS",
+          "cta": "Visitar Factlas",
+          "features": {
+            "0": "Verificação e procedência de fatos geoespaciais",
+            "1": "Catálogo e pesquisa compatível com STAC",
+            "2": "Seleção de sites e detecção de mudanças com IA"
+          }
         }
       },
       "philosophy": {

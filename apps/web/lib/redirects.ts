@@ -195,12 +195,12 @@ export const productOwnership = {
   },
   avala: {
     arm: 'aureo-labs',
-    badge: 'plataforma de Aureo Labs',
-    url: '#',
+    badge: 'by Aureo Labs, a MADFAM Company',
+    url: 'https://www.avala.mx',
   },
   factlas: {
-    arm: 'tbd',
-    badge: 'por determinar',
-    url: '#',
+    arm: 'aureo-labs',
+    badge: 'by Aureo Labs, a MADFAM Company',
+    url: 'https://www.factl.as',
   },
 };
