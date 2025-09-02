@@ -51,6 +51,7 @@ export default async function AureoLabsPage({ params }: Props) {
     },
     {
       name: 'AVALA',
+      comingSoon: true,
       description: t('products.avala.description'),
       audience: t('products.avala.audience'),
       badge: 'by Aureo Labs, a MADFAM Company',
@@ -71,6 +72,7 @@ export default async function AureoLabsPage({ params }: Props) {
     },
     {
       name: 'Factlas',
+      comingSoon: true,
       description: t('products.factlas.description'),
       audience: t('products.factlas.audience'),
       badge: 'by Aureo Labs, a MADFAM Company',
@@ -152,6 +154,10 @@ export default async function AureoLabsPage({ params }: Props) {
     },
   ];
 
+  // Split products into ready and coming soon
+  const readyProducts = products.filter(p => !p.comingSoon);
+  const comingSoonProducts = products.filter(p => p.comingSoon);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
       {/* Hero Section */}
@@ -208,7 +214,7 @@ export default async function AureoLabsPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Products Section - Ready */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -216,13 +222,39 @@ export default async function AureoLabsPage({ params }: Props) {
               {t('products.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {products.map(product => (
+              {readyProducts.map(product => (
                 <ProductCard key={product.name} product={product} />
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Products Section - Coming Soon */}
+      {comingSoonProducts.length > 0 && (
+        <section className="py-16 bg-amber-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-4 text-center">Coming Soon</h2>
+              <p className="text-xl text-neutral-600 text-center mb-12">
+                New platforms and solutions in development
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {comingSoonProducts.map(product => (
+                  <div key={product.name} className="relative">
+                    <div className="absolute top-4 right-4 z-10">
+                      <span className="px-3 py-1 bg-amber-100 text-amber-800 text-sm rounded-full font-medium">
+                        Coming Soon
+                      </span>
+                    </div>
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Capabilities Section */}
       <section className="py-16 bg-neutral-50">

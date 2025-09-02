@@ -123,6 +123,7 @@ export default async function ProductsPage({ params }: Props) {
     },
     {
       name: 'AVALA',
+      comingSoon: true,
       description:
         'SaaS platform for designing, delivering, and verifying competency-based training aligned with Mexican EC/CONOCER standards. Generates DC-3 certificates and ensures regulatory compliance.',
       audience: 'Training organizations and enterprises in LATAM',
@@ -148,6 +149,7 @@ export default async function ProductsPage({ params }: Props) {
     // TBD
     {
       name: 'Factlas',
+      comingSoon: true,
       description:
         'Geographic intelligence platform that converts geospatial signals into auditable facts with coordinates. STAC-compliant catalog for discovering and analyzing location data.',
       audience: 'Real estate developers, urban planners, and GIS analysts',
@@ -169,9 +171,11 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Platform',
       arm: 'aureo-labs',
-      comingSoon: true,
     },
   ];
+
+  // Filter to show only ready products on the main products page
+  const readyProducts = products.filter(p => !p.comingSoon);
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
@@ -210,7 +214,7 @@ export default async function ProductsPage({ params }: Props) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {products.map(product => (
+            {readyProducts.map(product => (
               <ProductCard key={product.name} product={product} />
             ))}
           </div>
