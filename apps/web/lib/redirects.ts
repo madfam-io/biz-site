@@ -198,12 +198,7 @@ export const productOwnership = {
     badge: 'plataforma de Aureo Labs',
     url: '#',
   },
-  'renec-harvester': {
-    arm: 'open-data',
-    badge: 'datos abiertos',
-    url: '#',
-  },
-  mundii: {
+  factlas: {
     arm: 'tbd',
     badge: 'por determinar',
     url: '#',

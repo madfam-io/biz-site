@@ -1,4 +1,3 @@
-import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { Container } from '@madfam/ui';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -139,30 +138,9 @@ export default async function ProductsPage({ params }: Props) {
       comingSoon: true,
     },
     // MADFAM Direct Products
-    // Open Data
-    {
-      name: 'RENEC Harvester',
-      description:
-        'Herramienta open source para recolección y procesamiento de datos públicos y gubernamentales.',
-      audience: 'Investigadores, periodistas, ONGs',
-      badge: 'datos abiertos',
-      primaryCta: {
-        label: 'Próximamente',
-        url: '#',
-        comingSoon: true,
-      },
-      secondaryCta: {
-        label: commonT('nav.contact'),
-        url: '/contact',
-      },
-      features: ['Extracción automatizada', 'Datos estructurados', 'API pública gratuita'],
-      category: 'Data',
-      arm: 'open-data',
-      comingSoon: true,
-    },
     // TBD
     {
-      name: 'Mundii',
+      name: 'Factlas',
       description: 'Plataforma de colaboración global para equipos distribuidos con IA contextual.',
       audience: 'Equipos remotos y empresas globales',
       badge: 'por determinar',
@@ -258,96 +236,6 @@ export default async function ProductsPage({ params }: Props) {
           </Container>
         </section>
       )}
-
-      {/* Ownership Categories */}
-      <section className="py-16">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-12 text-center">
-              Estructura de productos
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Aureo Labs Products */}
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center font-bold">
-                    AL
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-amber-900">Aureo Labs</h3>
-                    <Badge
-                      variant="by-madfam"
-                      className="bg-amber-100 text-amber-700 border-amber-200"
-                    >
-                      por MADFAM
-                    </Badge>
-                  </div>
-                </div>
-                <p className="text-amber-800 text-sm mb-4">
-                  Laboratorio de innovación digital que desarrolla plataformas y workspaces
-                  inteligentes.
-                </p>
-                <div className="space-y-2">
-                  {['Penny', 'Cotiza Studio', 'Forge Sight', 'Dhanam', 'AVALA'].map(product => (
-                    <div key={product} className="text-amber-700 text-sm flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
-                      {product}
-                      {['AVALA'].includes(product) && (
-                        <span className="text-xs text-amber-600 opacity-75">(próximamente)</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-4">
-                  <Link
-                    href="/arms/aureo-labs"
-                    className="inline-flex items-center text-amber-700 hover:text-amber-800 text-sm font-medium"
-                  >
-                    Ver Aureo Labs
-                    <ArrowUpRightIcon className="w-4 h-4 ml-1" />
-                  </Link>
-                </div>
-              </div>
-
-              {/* MADFAM Direct Products */}
-              <div className="bg-gradient-to-br from-neutral-50 to-gray-50 border border-neutral-200 rounded-xl p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-neutral-100 text-neutral-600 rounded-xl flex items-center justify-center font-bold">
-                    MF
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-neutral-900">MADFAM Direct</h3>
-                    <Badge variant="by-madfam">por MADFAM</Badge>
-                  </div>
-                </div>
-                <p className="text-neutral-600 text-sm mb-4">
-                  Productos desarrollados directamente por la casa matriz para soluciones
-                  específicas.
-                </p>
-                <div className="space-y-2">
-                  {['RENEC Harvester', 'Mundii'].map(product => (
-                    <div key={product} className="text-neutral-600 text-sm flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full" />
-                      {product}
-                      <span className="text-xs text-neutral-500 opacity-75">(próximamente)</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-4">
-                  <Link
-                    href="/arms"
-                    className="inline-flex items-center text-neutral-600 hover:text-neutral-800 text-sm font-medium"
-                  >
-                    Ver todas las unidades
-                    <ArrowUpRightIcon className="w-4 h-4 ml-1" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-neutral-900">
