@@ -260,13 +260,13 @@
           }
         },
         "forgeSight": {
-          "description": "Business intelligence and data visualization platform with AI for strategic decisions.",
-          "audience": "Leaders and data analysts",
+          "description": "Enterprise-grade pricing intelligence platform that continuously harvests, normalizes, and benchmarks prices across the global digital fabrication industry.",
+          "audience": "Digital fabrication companies, 3D printing services, and procurement teams",
           "cta": "Explore Forge Sight",
           "features": {
-            "0": "Interactive dashboards",
-            "1": "AI predictions",
-            "2": "Smart alerts"
+            "0": "AI-powered price discovery from 1000+ vendors globally",
+            "1": "Real-time statistical benchmarking (p10/p50/p90) by material and region",
+            "2": "Enterprise security with OAuth2/JWT and comprehensive audit trails"
           }
         },
         "dhanam": {

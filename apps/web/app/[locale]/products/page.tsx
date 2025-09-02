@@ -79,11 +79,11 @@ export default async function ProductsPage({ params }: Props) {
     {
       name: 'Forge Sight',
       description:
-        'Plataforma de análisis y visualización de datos para toma de decisiones estratégicas.',
-      audience: 'Analistas y tomadores de decisión',
+        'Enterprise-grade pricing intelligence platform for the global digital fabrication industry. Continuously harvests, normalizes, and benchmarks prices from 3D printing to CNC machining.',
+      audience: 'Digital fabrication companies, 3D printing services, and procurement teams',
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: 'Visitar Forge Sight',
+        label: 'Visit Platform',
         url: 'https://www.forgesight.quest',
         external: true,
       },
@@ -91,7 +91,11 @@ export default async function ProductsPage({ params }: Props) {
         label: commonT('nav.contact'),
         url: '/contact',
       },
-      features: ['Análisis predictivo', 'Dashboards interactivos', 'Alertas inteligentes'],
+      features: [
+        'AI-powered price discovery from 1000+ vendors',
+        'Real-time benchmarking with statistical analysis',
+        'Enterprise security and compliance',
+      ],
       category: 'Platform',
       arm: 'aureo-labs',
     },

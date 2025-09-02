@@ -260,13 +260,13 @@
           }
         },
         "forgeSight": {
-          "description": "Plataforma de inteligencia de negocios y visualización de datos con IA para decisiones estratégicas.",
-          "audience": "Líderes y analistas de datos",
+          "description": "Plataforma empresarial de inteligencia de precios que continuamente recopila, normaliza y compara precios en la industria global de fabricación digital.",
+          "audience": "Empresas de fabricación digital, servicios de impresión 3D y equipos de adquisiciones",
           "cta": "Explorar Forge Sight",
           "features": {
-            "0": "Dashboards interactivos",
-            "1": "Predicciones con IA",
-            "2": "Alertas inteligentes"
+            "0": "Descubrimiento de precios con IA de más de 1000 proveedores globales",
+            "1": "Benchmarking estadístico en tiempo real (p10/p50/p90) por material y región",
+            "2": "Seguridad empresarial con OAuth2/JWT y registros de auditoría completos"
           }
         },
         "dhanam": {
