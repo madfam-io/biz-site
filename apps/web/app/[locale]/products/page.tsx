@@ -139,7 +139,6 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Platform',
       arm: 'aureo-labs',
-      comingSoon: true,
     },
     // MADFAM Direct Products
     // TBD
@@ -170,10 +169,6 @@ export default async function ProductsPage({ params }: Props) {
     },
   ];
 
-  // Featured products (ready for production)
-  const featuredProducts = products.filter(p => !p.comingSoon);
-  const upcomingProducts = products.filter(p => p.comingSoon);
-
   return (
     <main className="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
       {/* Hero Section */}
@@ -198,54 +193,25 @@ export default async function ProductsPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* Featured Products */}
+      {/* All Products */}
       <section className="py-16">
         <Container>
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-neutral-900 mb-4 text-center">
-              Productos disponibles
+              Nuestro catálogo
             </h2>
             <p className="text-xl text-neutral-600 text-center max-w-3xl mx-auto">
-              Plataformas y herramientas listas para implementar en tu organización.
+              Plataformas y herramientas desarrolladas por nuestras unidades especializadas.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {featuredProducts.map(product => (
+            {products.map(product => (
               <ProductCard key={product.name} product={product} />
             ))}
           </div>
         </Container>
       </section>
-
-      {/* Upcoming Products */}
-      {upcomingProducts.length > 0 && (
-        <section className="py-16 bg-neutral-50">
-          <Container>
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold text-neutral-900 mb-4 text-center">Próximamente</h2>
-              <p className="text-xl text-neutral-600 text-center max-w-3xl mx-auto">
-                Productos y plataformas en desarrollo por nuestras unidades.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {upcomingProducts.map(product => (
-                <div key={product.name} className="relative">
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full">
-                      Próximamente
-                    </span>
-                  </div>
-                  <div className="opacity-75">
-                    <ProductCard product={product} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
 
       {/* CTA Section */}
       <section className="py-20 bg-neutral-900">
