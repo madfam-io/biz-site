@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { DarkModeToggle } from './DarkModeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Search } from './Search';
+import { NavDropdown } from './NavDropdown';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,14 +17,31 @@ export function Navbar() {
   const tCommon = useTranslations('common');
   const locale = useLocale() as Locale;
 
+  // Business Units dropdown items
+  const businessUnits = [
+    {
+      name: 'Aureo Labs',
+      href: getLocalizedUrl('arms.aureo-labs', locale),
+      description: t('aureoLabsDesc') || 'Digital innovation laboratory',
+    },
+    {
+      name: 'Primavera3D',
+      href: getLocalizedUrl('arms.primavera3d', locale),
+      description: 'Advanced 3D manufacturing',
+    },
+    {
+      name: 'MADFAM Co-Labs',
+      href: getLocalizedUrl('arms.colabs', locale),
+      description: 'Collaborative innovation spaces',
+    },
+  ];
+
+  // Main navigation items (excluding dropdown items)
   const navigation = [
-    // Corporate structure navigation - Home removed as logo serves this purpose
-    { name: t('arms') || 'Unidades', href: getLocalizedUrl('arms', locale) },
     { name: t('products'), href: getLocalizedUrl('products', locale) },
-    { name: t('programs') || 'Programas', href: getLocalizedUrl('programs', locale) },
-    { name: t('work') || 'Casos', href: getLocalizedUrl('work', locale) },
-    { name: t('security') || 'Seguridad', href: getLocalizedUrl('security', locale) },
+    { name: t('programs') || 'Programs', href: getLocalizedUrl('programs', locale) },
     { name: t('impact') || 'Impact', href: getLocalizedUrl('impact', locale) },
+    { name: t('caseStudies') || 'Showcase', href: getLocalizedUrl('showcase', locale) },
     { name: t('about'), href: getLocalizedUrl('about', locale) },
     { name: t('contact'), href: getLocalizedUrl('contact', locale) },
   ];
@@ -53,11 +71,15 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            {/* Business Units Dropdown */}
+            <NavDropdown label={t('businessArms') || 'Business Units'} items={businessUnits} />
+
+            {/* Regular Navigation Items */}
             {navigation.map(item => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-obsidian/70 dark:text-pearl/70 hover-logo-green relative solarpunk-accent transition-colors"
+                className="text-sm font-medium text-obsidian/70 dark:text-pearl/70 hover:text-obsidian dark:hover:text-pearl transition-colors"
               >
                 {item.name}
               </Link>
@@ -111,11 +133,39 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800">
             <div className="flex flex-col space-y-4">
+              {/* Business Units Section */}
+              <div>
+                <div className="text-sm font-semibold text-obsidian/50 dark:text-pearl/50 uppercase tracking-wider px-4 pb-2">
+                  {t('businessArms') || 'Business Units'}
+                </div>
+                {businessUnits.map(unit => (
+                  <Link
+                    key={unit.name}
+                    href={unit.href}
+                    className="block px-4 py-2 text-base font-medium text-obsidian/70 dark:text-pearl/70 hover:text-obsidian dark:hover:text-pearl"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <div>
+                      <div>{unit.name}</div>
+                      {unit.description && (
+                        <div className="text-xs text-gray-500 dark:text-pearl/50 mt-0.5">
+                          {unit.description}
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-gray-100 dark:border-gray-700" />
+
+              {/* Main Navigation Items */}
               {navigation.map(item => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-base font-medium text-obsidian/70 dark:text-pearl/70 hover:text-obsidian dark:hover:text-pearl"
+                  className="px-4 text-base font-medium text-obsidian/70 dark:text-pearl/70 hover:text-obsidian dark:hover:text-pearl"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
