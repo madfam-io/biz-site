@@ -52,6 +52,7 @@ export default async function ProductsPage({ params }: Props) {
       features: ['Interfaz intuitiva', 'Colaboración en equipo', 'Automatización visual'],
       category: 'Workspace',
       arm: 'aureo-labs',
+      sdgs: ['SDG8', 'SDG10', 'SDG12'],
     },
     {
       name: 'Cotiza Studio',
@@ -75,6 +76,7 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Workspace',
       arm: 'aureo-labs',
+      sdgs: ['SDG9', 'SDG12', 'SDG13'],
     },
     {
       name: 'Forge Sight',
@@ -98,6 +100,7 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Platform',
       arm: 'aureo-labs',
+      sdgs: ['SDG7', 'SDG9', 'SDG12'],
     },
     {
       name: 'Dhanam',
@@ -120,6 +123,7 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Platform',
       arm: 'aureo-labs',
+      sdgs: ['SDG8', 'SDG9', 'SDG10'],
     },
     {
       name: 'AVALA',
@@ -144,6 +148,7 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Platform',
       arm: 'aureo-labs',
+      sdgs: ['SDG4', 'SDG8', 'SDG9'],
     },
     // MADFAM Direct Products
     // TBD
@@ -171,6 +176,7 @@ export default async function ProductsPage({ params }: Props) {
       ],
       category: 'Platform',
       arm: 'aureo-labs',
+      sdgs: ['SDG9', 'SDG11', 'SDG12'],
     },
   ];
 

@@ -23,6 +23,7 @@ export function Navbar() {
     { name: t('programs') || 'Programas', href: getLocalizedUrl('programs', locale) },
     { name: t('work') || 'Casos', href: getLocalizedUrl('work', locale) },
     { name: t('security') || 'Seguridad', href: getLocalizedUrl('security', locale) },
+    { name: t('impact') || 'Impact', href: getLocalizedUrl('impact', locale) },
     { name: t('about'), href: getLocalizedUrl('about', locale) },
     { name: t('contact'), href: getLocalizedUrl('contact', locale) },
   ];

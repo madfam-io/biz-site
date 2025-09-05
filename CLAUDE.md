@@ -46,15 +46,18 @@ biz-site/
 ### Corporate Arms (Business Units)
 
 - **Aureo Labs**: Digital innovation lab (a MADFAM Company)
-- Other arms to be defined
+- **Primavera3D**: 3D design & fabrication studio (a MADFAM Company)
+- **MADFAM Co-Labs**: Innovation lab & educational programs (a MADFAM Company)
+- **Showtech**: Technology showcase & events (a MADFAM Company)
 
 ### Products
 
-- **Aureo Studio**: Enterprise AI governance platform (Coming Soon)
 - **PENNY**: AI assistant for consumers & enterprises
 - **Dhanam**: Financial wellness platform (https://www.dhan.am)
 - **Cotiza Studio**: Quoting/estimation tool
 - **Forge Sight**: Analytics platform
+- **AVALA**: Training & certification platform (Coming Soon)
+- **Factlas**: Geographic intelligence platform (Coming Soon)
 
 ### Service Model
 

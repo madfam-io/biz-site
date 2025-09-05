@@ -3,6 +3,7 @@
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { SDGInlineBadge } from '@/components/SDGBadge';
 import { Badge } from './Badge';
 
 interface ProductCardProps {
@@ -15,12 +16,14 @@ interface ProductCardProps {
       label: string;
       url: string;
       external?: boolean;
+      comingSoon?: boolean;
     };
     secondaryCta: {
       label: string;
       url: string;
     };
     features: string[];
+    sdgs?: string[];
   };
 }
 
@@ -32,9 +35,14 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="mb-6">
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-xl font-bold text-neutral-900">{product.name}</h3>
-          <Badge variant={product.badge.includes('Aureo') ? 'aureo-product' : 'by-madfam'}>
-            {product.badge}
-          </Badge>
+          <div className="flex items-center gap-2">
+            {product.sdgs && product.sdgs.length > 0 && (
+              <SDGInlineBadge count={product.sdgs.length} />
+            )}
+            <Badge variant={product.badge.includes('Aureo') ? 'aureo-product' : 'by-madfam'}>
+              {product.badge}
+            </Badge>
+          </div>
         </div>
 
         <p className="text-neutral-600 text-sm leading-relaxed mb-4">{product.description}</p>

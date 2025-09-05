@@ -27,11 +27,12 @@ enum CustomerSegment {
 }
 
 enum ProductFit {
-  AUREO_STUDIO = 'aureo_studio', // AI governance platform
   PENNY = 'penny', // AI assistant
   DHANAM = 'dhanam', // Financial wellness
   COTIZA_STUDIO = 'cotiza_studio', // Quoting tool
   FORGE_SIGHT = 'forge_sight', // Analytics platform
+  AVALA = 'avala', // Training & certification platform
+  FACTLAS = 'factlas', // Geographic intelligence platform
   CUSTOM_SOLUTION = 'custom_solution', // Requires consultation
 }
 ```
@@ -312,16 +313,12 @@ class ProductMatcher {
   private matchCustomerToProducts(profile: ProspectProfile): ProductRecommendation[] {
     const recommendations: ProductRecommendation[] = [];
 
-    // Aureo Studio - Enterprise AI Governance
-    if (
-      profile.companySize >= CompanySize.ENTERPRISE &&
-      profile.aiReadiness >= 60 &&
-      profile.primaryGoal === 'governance'
-    ) {
+    // AVALA - Training & Certification Platform
+    if (profile.primaryGoal === 'training' || profile.industryType === 'education') {
       recommendations.push({
-        product: ProductFit.AUREO_STUDIO,
-        fitScore: 95,
-        reasoning: 'Perfect fit for enterprise AI governance needs',
+        product: ProductFit.AVALA,
+        fitScore: 90,
+        reasoning: 'Ideal for competency-based training and certification needs',
       });
     }
 

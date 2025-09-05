@@ -319,11 +319,12 @@ enum Industry {
 
 // Product Mapping
 enum ProductFit {
-  AUREO_STUDIO = 'aureo_studio',
   PENNY = 'penny',
   DHANAM = 'dhanam',
   COTIZA_STUDIO = 'cotiza_studio',
   FORGE_SIGHT = 'forge_sight',
+  AVALA = 'avala',
+  FACTLAS = 'factlas',
   AUREO_LABS = 'aureo_labs',
   CUSTOM = 'custom',
 }

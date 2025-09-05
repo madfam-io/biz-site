@@ -1,8 +1,7 @@
 import { getLocalizedContent, type Locale } from '@madfam/i18n';
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 
 interface TeamMember {
   name: string;
@@ -24,20 +23,6 @@ interface TeamMember {
   image: string;
 }
 
-interface Value {
-  icon: string;
-  title: {
-    es: string;
-    en: string;
-    pt: string;
-  };
-  description: {
-    es: string;
-    en: string;
-    pt: string;
-  };
-}
-
 interface Milestone {
   year: string;
   event: {
@@ -47,9 +32,10 @@ interface Milestone {
   };
 }
 
-export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function AboutPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
-  const t = useTranslations('about');
+  const t = await getTranslations('about');
+  const corporateT = await getTranslations('corporate');
   const currentLocale = locale as Locale;
 
   const team: TeamMember[] = [
@@ -131,58 +117,30 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
     },
   ];
 
-  const values: Value[] = [
+  const pillars = [
     {
-      icon: '🚀',
-      title: {
-        es: 'Innovación Constante',
-        en: 'Constant Innovation',
-        pt: 'Inovação Constante',
-      },
-      description: {
-        es: 'Exploramos nuevas tecnologías para mantener a nuestros clientes a la vanguardia.',
-        en: 'We explore new technologies to keep our clients at the forefront.',
-        pt: 'Exploramos novas tecnologias para manter nossos clientes na vanguarda.',
-      },
+      icon: '♾️',
+      key: 'circularity',
+      title: corporateT('pillars.circularity.title'),
+      description: corporateT('pillars.circularity.body'),
     },
     {
-      icon: '🤝',
-      title: {
-        es: 'Colaboración Genuina',
-        en: 'Genuine Collaboration',
-        pt: 'Colaboração Genuína',
-      },
-      description: {
-        es: 'Trabajamos como extensión de tu equipo, no como proveedores externos.',
-        en: 'We work as an extension of your team, not as external vendors.',
-        pt: 'Trabalhamos como extensão da sua equipe, não como fornecedores externos.',
-      },
+      icon: '📍',
+      key: 'traceability',
+      title: corporateT('pillars.traceability.title'),
+      description: corporateT('pillars.traceability.body'),
     },
     {
-      icon: '✨',
-      title: {
-        es: 'Excelencia Creativa',
-        en: 'Creative Excellence',
-        pt: 'Excelência Criativa',
-      },
-      description: {
-        es: 'Combinamos arte y tecnología para crear soluciones únicas y memorables.',
-        en: 'We combine art and technology to create unique and memorable solutions.',
-        pt: 'Combinamos arte e tecnologia para criar soluções únicas e memoráveis.',
-      },
+      icon: '🔐',
+      key: 'ethicalData',
+      title: corporateT('pillars.ethicalData.title'),
+      description: corporateT('pillars.ethicalData.body'),
     },
     {
-      icon: '📈',
-      title: {
-        es: 'Resultados Medibles',
-        en: 'Measurable Results',
-        pt: 'Resultados Mensuráveis',
-      },
-      description: {
-        es: 'Cada proyecto se enfoca en generar impacto real y cuantificable.',
-        en: 'Every project focuses on generating real and quantifiable impact.',
-        pt: 'Cada projeto se concentra em gerar impacto real e quantificável.',
-      },
+      icon: '🌎',
+      key: 'latamTalent',
+      title: corporateT('pillars.latamTalent.title'),
+      description: corporateT('pillars.latamTalent.body'),
     },
   ];
 
@@ -284,7 +242,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
               <Heading level={3} className="mb-4">
                 {t('mission.title')}
               </Heading>
-              <p className="text-lg text-obsidian/70">{t('mission.description')}</p>
+              <p className="text-lg text-obsidian/70">{corporateT('mission')}</p>
             </div>
             <div className="text-center md:text-left">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sun/10 mb-6">
@@ -293,13 +251,13 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
               <Heading level={3} className="mb-4">
                 {t('vision.title')}
               </Heading>
-              <p className="text-lg text-obsidian/70">{t('vision.description')}</p>
+              <p className="text-lg text-obsidian/70">{corporateT('vision')}</p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Values */}
+      {/* Pillars */}
       <section className="section bg-pearl">
         <Container>
           <div className="text-center mb-12">
@@ -310,18 +268,14 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
+            {pillars.map(pillar => (
               <div
-                key={index}
+                key={pillar.key}
                 className="text-center p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-shadow"
               >
-                <div className="text-5xl mb-4">{value.icon}</div>
-                <h3 className="font-heading text-lg font-semibold mb-3">
-                  {getLocalizedContent(value.title, currentLocale)}
-                </h3>
-                <p className="text-obsidian/70">
-                  {getLocalizedContent(value.description, currentLocale)}
-                </p>
+                <div className="text-5xl mb-4">{pillar.icon}</div>
+                <h3 className="font-heading text-lg font-semibold mb-3">{pillar.title}</h3>
+                <p className="text-obsidian/70">{pillar.description}</p>
               </div>
             ))}
           </div>

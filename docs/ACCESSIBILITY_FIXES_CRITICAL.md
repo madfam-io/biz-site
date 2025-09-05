@@ -239,7 +239,7 @@ select {
 // Informative images
 <img
   src="product.png"
-  alt="Aureo Studio dashboard showing AI governance metrics"
+  alt="Product dashboard showing platform analytics and metrics"
 />
 
 // Complex images

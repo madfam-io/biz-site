@@ -1,4 +1,25 @@
 {
+  "purpose": "We build intelligent manufacturing and digital systems that turn efficiency and circularity into measurable, regenerative impact.",
+  "mission": "To democratize AI and advanced manufacturing across LATAM—accelerating productivity, circular material flows, and trustworthy data practices—so every project delivers business value and measurable social and environmental gains.",
+  "vision": "An industrial ecosystem in Latin America that is net-positive—where AI amplifies human creativity, supply chains regenerate local economies, and materials cycle with near-zero waste.",
+  "pillars": {
+    "circularity": {
+      "title": "Circular by Design",
+      "body": "Reduce waste, extend product life, and design for reuse and remanufacture across programs and factories."
+    },
+    "traceability": {
+      "title": "Impact, Traceable",
+      "body": "Embed social/environmental impact tracking (S/E/G) in every engagement with transparent dashboards."
+    },
+    "ethicalData": {
+      "title": "Ethical & Privacy-First Data",
+      "body": "Secure-by-default platforms, minimal data collection, and open audit trails."
+    },
+    "latamTalent": {
+      "title": "LATAM Talent & Prosperity",
+      "body": "Upskill teams, strengthen local suppliers, and expand high-value jobs in the region."
+    }
+  },
   "structure": {
     "title": "Corporate Structure",
     "subtitle": "Expert units for real problems",
@@ -190,7 +211,7 @@
     "specializedUnits": "Specialized units",
     "premiumProducts": "Premium products",
     "title": "Advanced Manufacturing & Digital Innovation",
-    "subtitle": "We transform your business with intelligent manufacturing solutions and cutting-edge digital strategies"
+    "subtitle": "We build intelligent manufacturing and digital systems that turn efficiency and circularity into measurable, regenerative impact."
   },
   "arms": {
     "title": "Our operational units",

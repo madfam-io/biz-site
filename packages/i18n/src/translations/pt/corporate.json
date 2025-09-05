@@ -1,4 +1,25 @@
 {
+  "purpose": "Construímos sistemas digitais e de manufatura inteligente que convertem eficiência e circularidade em impacto regenerativo mensurável.",
+  "mission": "Democratizar IA e manufatura avançada em toda a LATAM—acelerando produtividade, fluxos circulares de materiais e práticas confiáveis de dados—para que cada projeto entregue valor de negócio e ganhos sociais e ambientais mensuráveis.",
+  "vision": "Um ecossistema industrial na América Latina que seja positivo líquido—onde a IA amplifica a criatividade humana, cadeias de suprimento regeneram economias locais e materiais circulam com quase zero desperdício.",
+  "pillars": {
+    "circularity": {
+      "title": "Circular por Design",
+      "body": "Reduzir desperdício, estender vida útil do produto e projetar para reutilização e remanufatura em programas e fábricas."
+    },
+    "traceability": {
+      "title": "Impacto, Rastreável",
+      "body": "Incorporar rastreamento de impacto social/ambiental (S/E/G) em cada engajamento com painéis transparentes."
+    },
+    "ethicalData": {
+      "title": "Dados Éticos e Privacidade em Primeiro Lugar",
+      "body": "Plataformas seguras por padrão, coleta mínima de dados e trilhas de auditoria abertas."
+    },
+    "latamTalent": {
+      "title": "Talento e Prosperidade LATAM",
+      "body": "Capacitar equipes, fortalecer fornecedores locais e expandir empregos de alto valor na região."
+    }
+  },
   "structure": {
     "title": "Estrutura Corporativa",
     "subtitle": "Unidades especializadas para problemas reais",
@@ -190,7 +211,7 @@
     "specializedUnits": "Unidades especializadas",
     "premiumProducts": "Produtos premium",
     "title": "Manufatura Avançada e Inovação Digital",
-    "subtitle": "Transformamos seu negócio com soluções inteligentes de manufatura e estratégias digitais de ponta"
+    "subtitle": "Construímos sistemas digitais e de manufatura inteligente que convertem eficiência e circularidade em impacto regenerativo mensurável."
   },
   "arms": {
     "title": "Nuestras unidades operativas",

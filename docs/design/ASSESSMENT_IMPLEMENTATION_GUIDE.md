@@ -457,17 +457,6 @@ export class DynamicQuestionEngine {
 export class ProductMatchingService {
   private products: Product[] = [
     {
-      id: ProductFit.AUREO_STUDIO,
-      name: 'Aureo Studio',
-      description: 'Enterprise AI Governance Platform',
-      idealCustomer: {
-        companySize: ['enterprise', 'large'],
-        aiReadiness: { min: 60 },
-        budget: { min: 250000 },
-        industries: ['financial_services', 'healthcare', 'technology'],
-      },
-    },
-    {
       id: ProductFit.PENNY,
       name: 'PENNY',
       description: 'AI Assistant for Enterprises',
@@ -832,7 +821,6 @@ export class EmailAutomation {
     const topProduct = products[0];
 
     const productTemplates = {
-      [ProductFit.AUREO_STUDIO]: 'aureo-studio-intro',
       [ProductFit.PENNY]: 'penny-trial',
       [ProductFit.DHANAM]: 'dhanam-demo',
     };

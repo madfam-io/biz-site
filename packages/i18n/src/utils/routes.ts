@@ -11,6 +11,7 @@ export type RouteKey =
   | 'programs'
   | 'work'
   | 'security'
+  | 'impact'
   // Core routes
   | 'products'
   | 'about'
@@ -68,6 +69,11 @@ const routes: Record<RouteKey, Record<Locale, string>> = {
     en: '/security',
     es: '/seguridad',
     pt: '/seguranca',
+  },
+  impact: {
+    en: '/impact',
+    es: '/impacto',
+    pt: '/impacto',
   },
   products: {
     en: '/products',
