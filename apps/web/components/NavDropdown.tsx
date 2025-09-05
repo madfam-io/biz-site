@@ -1,10 +1,10 @@
 'use client';
 
-import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import Link from 'next/link';
 import { cn } from '@madfam/ui';
+import Link from 'next/link';
+import { Fragment } from 'react';
 
 interface NavItem {
   name: string;

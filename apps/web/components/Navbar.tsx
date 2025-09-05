@@ -8,8 +8,8 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 import { DarkModeToggle } from './DarkModeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { Search } from './Search';
 import { NavDropdown } from './NavDropdown';
+import { Search } from './Search';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
