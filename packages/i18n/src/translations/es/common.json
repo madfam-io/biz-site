@@ -23,7 +23,10 @@
     "allCases": "Ver Todos",
     "securityCompliance": "Seguridad y Cumplimiento",
     "enterpriseSecurity": "Seguridad Empresarial",
-    "certifications": "Certificaciones"
+    "certifications": "Certificaciones",
+    "company": "Empresa",
+    "careers": "Carreras",
+    "getStarted": "Comenzar"
   },
   "cta": {
     "learnMore": "Conocer más",

@@ -5,7 +5,7 @@ import { CookieConsent } from '@/components/CookieConsent';
 import { Footer } from '@/components/Footer';
 import { GlobalAnalytics } from '@/components/GlobalAnalytics';
 import { LoggerProvider } from '@/components/LoggerProvider';
-import { LuxuryNavbar } from '@/components/LuxuryNavbar';
+import { Navbar } from '@/components/Navbar';
 import { OrganizationStructuredData } from '@/components/StructuredData';
 import { locales, getMessages, type Locale } from '@/i18n.config';
 
@@ -40,7 +40,7 @@ export default async function LocaleLayout({
             Skip to main content
           </a>
 
-          <LuxuryNavbar />
+          <Navbar />
           <main id="main-content" tabIndex={-1}>
             {children}
           </main>
