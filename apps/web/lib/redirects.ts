@@ -173,16 +173,6 @@ export const corporateMapping = {
  * Defines which ARM owns which product
  */
 export const productOwnership = {
-  penny: {
-    arm: 'aureo-labs',
-    badge: 'un producto de Aureo Labs',
-    url: '/products/penny',
-  },
-  'cotiza-studio': {
-    arm: 'aureo-labs',
-    badge: 'un producto de Aureo Labs',
-    url: 'https://www.cotiza.studio',
-  },
   'forge-sight': {
     arm: 'aureo-labs',
     badge: 'plataforma de Aureo Labs',
@@ -197,10 +187,5 @@ export const productOwnership = {
     arm: 'aureo-labs',
     badge: 'by Aureo Labs, a MADFAM Company',
     url: '#',
-  },
-  factlas: {
-    arm: 'aureo-labs',
-    badge: 'by Aureo Labs, a MADFAM Company',
-    url: 'https://www.factl.as',
   },
 };

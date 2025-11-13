@@ -30,27 +30,6 @@ export default async function AureoLabsPage({ params }: Props) {
 
   const products = [
     {
-      name: 'Penny',
-      comingSoon: true,
-      description: t('products.penny.description'),
-      audience: t('products.penny.audience'),
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: 'Coming Soon',
-        url: 'https://www.penny.onl',
-        comingSoon: true,
-      },
-      secondaryCta: {
-        label: commonT('cta.contact'),
-        url: '/contact',
-      },
-      features: [
-        t('products.penny.features.0'),
-        t('products.penny.features.1'),
-        t('products.penny.features.2'),
-      ],
-    },
-    {
       name: 'AVALA',
       comingSoon: true,
       description: t('products.avala.description'),
@@ -69,49 +48,6 @@ export default async function AureoLabsPage({ params }: Props) {
         t('products.avala.features.0'),
         t('products.avala.features.1'),
         t('products.avala.features.2'),
-      ],
-    },
-    {
-      name: 'Factlas',
-      comingSoon: true,
-      description: t('products.factlas.description'),
-      audience: t('products.factlas.audience'),
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: 'Coming Soon',
-        url: 'https://www.factl.as',
-        external: true,
-        comingSoon: true,
-      },
-      secondaryCta: {
-        label: commonT('cta.contact'),
-        url: '/contact',
-      },
-      features: [
-        t('products.factlas.features.0'),
-        t('products.factlas.features.1'),
-        t('products.factlas.features.2'),
-      ],
-    },
-    {
-      name: 'Cotiza Studio',
-      comingSoon: true,
-      description: t('products.cotizaStudio.description'),
-      audience: t('products.cotizaStudio.audience'),
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: 'Coming Soon',
-        url: 'https://www.cotiza.studio',
-        comingSoon: true,
-      },
-      secondaryCta: {
-        label: commonT('cta.contact'),
-        url: '/contact',
-      },
-      features: [
-        t('products.cotizaStudio.features.0'),
-        t('products.cotizaStudio.features.1'),
-        t('products.cotizaStudio.features.2'),
       ],
     },
     {

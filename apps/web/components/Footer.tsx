@@ -28,9 +28,7 @@ export function Footer() {
       },
     ],
     productos: [
-      { name: 'Penny', href: 'https://www.penny.onl' },
       { name: 'Dhanam', href: 'https://www.dhan.am' },
-      { name: 'Cotiza Studio', href: 'https://www.cotiza.studio' },
       { name: 'Forge Sight', href: 'https://www.forgesight.quest' },
     ],
     empresa: [
