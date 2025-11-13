@@ -1,6 +1,7 @@
 import { analytics } from '@madfam/analytics';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 
 // Calculator types (removed unused type)
@@ -327,7 +328,11 @@ export async function POST(request: NextRequest) {
             totalValue,
           },
         }),
-      }).catch(console.error);
+      }).catch((error) => {
+        apiLogger.error('Failed to trigger n8n webhook for calculation', error, 'calculator', {
+          calculationId: calculation.id,
+        });
+      });
     }
 
     return NextResponse.json({
@@ -349,7 +354,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.error('Calculator error:', error);
+    apiLogger.error('Calculator processing error', error as Error, 'calculator');
     return NextResponse.json(
       {
         success: false,
@@ -382,7 +387,7 @@ export async function GET(request: NextRequest) {
       calculation,
     });
   } catch (error) {
-    console.error('Error fetching calculation:', error);
+    apiLogger.error('Error fetching calculation', error as Error, 'calculator');
     return NextResponse.json({ error: 'Failed to fetch calculation' }, { status: 500 });
   }
 }

@@ -35,9 +35,7 @@ export function CorporateHomePage() {
         t('corporate.arms.aureoLabs.capabilities.3'),
       ],
       products: [
-        { name: 'Penny', url: 'https://www.penny.onl' },
         { name: 'Dhanam', url: 'https://www.dhan.am' },
-        { name: 'Cotiza Studio', url: 'https://www.cotiza.studio' },
         { name: 'Forge Sight', url: 'https://www.forgesight.quest' },
       ],
       externalUrl: 'https://www.aureolabs.dev',
@@ -64,26 +62,6 @@ export function CorporateHomePage() {
 
   // Featured Products
   const featuredProducts = [
-    {
-      name: 'Penny',
-      description: t('corporate.products.penny.description'),
-      audience: t('corporate.products.penny.audience'),
-      badge: t('corporate.badges.aureoLabsProduct'),
-      primaryCta: {
-        label: t('corporate.products.penny.cta'),
-        url: 'https://www.penny.onl',
-        external: true,
-      },
-      secondaryCta: {
-        label: t('common.cta.contact'),
-        url: '/contact',
-      },
-      features: [
-        t('corporate.products.penny.features.0'),
-        t('corporate.products.penny.features.1'),
-        t('corporate.products.penny.features.2'),
-      ],
-    },
     {
       name: 'Dhanam',
       description: t('corporate.arms.aureoLabs.products.dhanam.description'),

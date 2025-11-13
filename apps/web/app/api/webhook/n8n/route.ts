@@ -1,7 +1,8 @@
 import { LeadStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
-import { logger } from '@/lib/logger';
+import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
+import { validateWebhookSignature, timingSafeEqual } from '@/lib/security';
 import type {
   WebhookEvent,
   LeadStatusUpdateData,
@@ -11,17 +12,47 @@ import type {
   IntegrationUpdateData,
 } from '@/types/webhooks';
 
-// Validate webhook authentication
-function validateWebhookAuth(request: NextRequest): boolean {
+// Validate webhook authentication with HMAC signature
+async function validateWebhookAuth(request: NextRequest, body: string): Promise<boolean> {
+  const signature = request.headers.get('X-Webhook-Signature');
   const apiKey = request.headers.get('X-API-Key');
   const expectedKey = process.env.N8N_API_KEY;
 
   if (!expectedKey) {
-    console.warn('N8N_API_KEY not configured');
+    apiLogger.error('N8N_API_KEY not configured', new Error('Missing N8N_API_KEY'), 'webhook');
     return false;
   }
 
-  return apiKey === expectedKey;
+  // If signature is provided, verify HMAC
+  if (signature) {
+    const isValid = validateWebhookSignature(body, signature, expectedKey, {
+      algorithm: 'sha256',
+    });
+
+    if (!isValid) {
+      apiLogger.warn('Invalid webhook signature', 'webhook', {
+        ip: request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip'),
+      });
+    }
+
+    return isValid;
+  }
+
+  // Fallback to API key validation with timing-safe comparison (for backward compatibility)
+  if (apiKey) {
+    const isValid = timingSafeEqual(apiKey, expectedKey);
+
+    if (!isValid) {
+      apiLogger.warn('Invalid webhook API key', 'webhook', {
+        ip: request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip'),
+      });
+    }
+
+    return isValid;
+  }
+
+  apiLogger.warn('Webhook authentication missing both signature and API key', 'webhook');
+  return false;
 }
 
 // Handle lead status update
@@ -59,8 +90,10 @@ async function handleLeadStatusUpdate(data: LeadStatusUpdateData) {
         },
       });
     }
+
+    apiLogger.info('Lead status updated', 'webhook', { leadId: data.leadId, status: data.newStatus });
   } catch (error) {
-    logger.error('Failed to handle lead status update', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle lead status update', error as Error, 'webhook', { data });
     throw error;
   }
 }
@@ -90,8 +123,10 @@ async function handleEmailEvent(data: EmailEventData) {
         },
       },
     });
+
+    apiLogger.info('Email event recorded', 'webhook', { leadId, type });
   } catch (error) {
-    logger.error('Failed to handle email event', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle email event', error as Error, 'webhook', { data });
     throw error;
   }
 }
@@ -120,8 +155,10 @@ async function handleCRMSync(data: CRMSyncData) {
         },
       },
     });
+
+    apiLogger.info('CRM sync recorded', 'webhook', { leadId, crmId, action });
   } catch (error) {
-    logger.error('Failed to handle CRM sync', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle CRM sync', error as Error, 'webhook', { data });
     throw error;
   }
 }
@@ -152,8 +189,10 @@ async function handleMeetingScheduled(data: MeetingScheduledData) {
         },
       },
     });
+
+    apiLogger.info('Meeting scheduled', 'webhook', { leadId, meetingId, scheduledAt });
   } catch (error) {
-    logger.error('Failed to handle meeting scheduled', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle meeting scheduled', error as Error, 'webhook', { data });
     throw error;
   }
 }
@@ -183,24 +222,31 @@ async function handleIntegrationUpdate(data: IntegrationUpdateData) {
         config: config ? JSON.stringify(config) : JSON.stringify({}),
       },
     });
+
+    apiLogger.info('Integration updated', 'webhook', { name, status });
   } catch (error) {
-    logger.error('Failed to handle integration update', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle integration update', error as Error, 'webhook', { data });
     throw error;
   }
 }
 
 // Main webhook handler
 export async function POST(request: NextRequest) {
+  let rawBody = '';
+
   try {
-    // Validate authentication
-    if (!validateWebhookAuth(request)) {
+    // Get raw body for signature verification
+    rawBody = await request.text();
+    const body = JSON.parse(rawBody);
+
+    // Validate authentication with HMAC signature
+    if (!(await validateWebhookAuth(request, rawBody))) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await request.json();
     const event: WebhookEvent = body;
 
-    // console.log('Received webhook event:', event.event);
+    apiLogger.debug('Received webhook event', 'webhook', { event: event.event });
 
     // Route to appropriate handler
     switch (event.event) {
@@ -230,7 +276,7 @@ export async function POST(request: NextRequest) {
         break;
 
       default:
-        console.warn('Unknown webhook event:', event.event);
+        apiLogger.warn('Unknown webhook event', 'webhook', { event: event.event });
         // Still return success to avoid retries
         return NextResponse.json({
           success: true,
@@ -243,7 +289,12 @@ export async function POST(request: NextRequest) {
       message: 'Event processed successfully',
     });
   } catch (error) {
-    console.error('Webhook error:', error);
+    const isJsonError = error instanceof SyntaxError;
+    apiLogger.error(
+      isJsonError ? 'Invalid JSON in webhook payload' : 'Webhook processing error',
+      error as Error,
+      'webhook'
+    );
     return NextResponse.json(
       {
         success: false,
@@ -256,26 +307,33 @@ export async function POST(request: NextRequest) {
 
 // GET endpoint for webhook health check
 export async function GET(request: NextRequest) {
-  // Simple health check
-  if (!validateWebhookAuth(request)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  try {
+    // Simple health check with auth validation
+    const isValid = await validateWebhookAuth(request, '');
 
-  return NextResponse.json({
-    status: 'healthy',
-    timestamp: new Date().toISOString(),
-    version: '1.0',
-    supportedEvents: [
-      'lead.status_updated',
-      'email.sent',
-      'email.delivered',
-      'email.opened',
-      'email.clicked',
-      'email.bounced',
-      'crm.synced',
-      'crm.updated',
-      'meeting.scheduled',
-      'integration.updated',
-    ],
-  });
+    if (!isValid) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    return NextResponse.json({
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      version: '1.0',
+      supportedEvents: [
+        'lead.status_updated',
+        'email.sent',
+        'email.delivered',
+        'email.opened',
+        'email.clicked',
+        'email.bounced',
+        'crm.synced',
+        'crm.updated',
+        'meeting.scheduled',
+        'integration.updated',
+      ],
+    });
+  } catch (error) {
+    apiLogger.error('Webhook health check error', error as Error, 'webhook');
+    return NextResponse.json({ error: 'Health check failed' }, { status: 500 });
+  }
 }

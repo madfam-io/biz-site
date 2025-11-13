@@ -1,6 +1,10 @@
 import { FeatureFlagProvider } from '@madfam/core';
+import { UserRole } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth/next';
 import { z } from 'zod';
+import { authOptions } from '@/lib/auth';
+import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 
 // Input validation schemas
@@ -145,7 +149,7 @@ export async function GET(request: NextRequest) {
       });
     }
   } catch (error) {
-    console.error('Error fetching feature flags:', error);
+    apiLogger.error('Error fetching feature flags', error as Error, 'feature-flags');
     return NextResponse.json({ error: 'Failed to fetch feature flags' }, { status: 500 });
   }
 }
@@ -153,11 +157,20 @@ export async function GET(request: NextRequest) {
 // POST /api/feature-flags (admin only)
 export async function POST(request: NextRequest) {
   try {
-    // TODO: Add authentication check here
-    // const session = await getServerSession(authOptions);
-    // if (!session?.user?.isAdmin) {
-    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    // }
+    // Authentication check - admin only
+    const session = await getServerSession(authOptions);
+    if (!session?.user) {
+      apiLogger.warn('Unauthorized feature flag creation attempt - no session', 'feature-flags');
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (session.user.role !== UserRole.ADMIN) {
+      apiLogger.warn('Unauthorized feature flag creation attempt', 'feature-flags', {
+        userId: session.user.id,
+        role: session.user.role,
+      });
+      return NextResponse.json({ error: 'Forbidden - Admin access required' }, { status: 403 });
+    }
 
     const body = await request.json();
 
@@ -197,7 +210,7 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
     }
-    console.error('Error creating/updating feature flag:', error);
+    apiLogger.error('Error creating/updating feature flag', error as Error, 'feature-flags');
     return NextResponse.json({ error: 'Failed to create/update feature flag' }, { status: 500 });
   }
 }
@@ -205,11 +218,20 @@ export async function POST(request: NextRequest) {
 // PATCH /api/feature-flags (toggle flag)
 export async function PATCH(request: NextRequest) {
   try {
-    // TODO: Add authentication check here
-    // const session = await getServerSession(authOptions);
-    // if (!session?.user?.isAdmin) {
-    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    // }
+    // Authentication check - admin only
+    const session = await getServerSession(authOptions);
+    if (!session?.user) {
+      apiLogger.warn('Unauthorized feature flag toggle attempt - no session', 'feature-flags');
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (session.user.role !== UserRole.ADMIN) {
+      apiLogger.warn('Unauthorized feature flag toggle attempt', 'feature-flags', {
+        userId: session.user.id,
+        role: session.user.role,
+      });
+      return NextResponse.json({ error: 'Forbidden - Admin access required' }, { status: 403 });
+    }
 
     const body = await request.json();
 
@@ -258,7 +280,7 @@ export async function PATCH(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
     }
-    console.error('Error toggling feature flag:', error);
+    apiLogger.error('Error toggling feature flag', error as Error, 'feature-flags');
     return NextResponse.json({ error: 'Failed to toggle feature flag' }, { status: 500 });
   }
 }

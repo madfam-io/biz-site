@@ -2,8 +2,10 @@ import { analytics } from '@madfam/analytics';
 import { LeadSource, LeadStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { withRateLimit } from '@/lib/rate-limit';
+import { validateBearerToken } from '@/lib/security';
 
 // Lead schema validation
 const leadSchema = z.object({
@@ -123,6 +125,12 @@ async function handlePOST(request: NextRequest) {
       },
     });
 
+    apiLogger.info('Lead captured successfully', 'leads', {
+      leadId: lead.id,
+      score: lead.score,
+      source: lead.source,
+    });
+
     // Queue welcome email
     await prisma.emailQueue.create({
       data: {
@@ -156,7 +164,11 @@ async function handlePOST(request: NextRequest) {
             source: lead.source,
           },
         }),
-      }).catch(console.error);
+      }).catch((error) => {
+        apiLogger.error('Failed to trigger n8n webhook', error, 'leads', {
+          leadId: lead.id,
+        });
+      });
     }
 
     return NextResponse.json({
@@ -182,7 +194,7 @@ async function handlePOST(request: NextRequest) {
       );
     }
 
-    console.error('Lead creation error:', error);
+    apiLogger.error('Lead creation error', error as Error, 'leads');
     return NextResponse.json(
       {
         success: false,
@@ -196,9 +208,19 @@ async function handlePOST(request: NextRequest) {
 // Get leads (protected endpoint)
 async function handleGET(request: NextRequest) {
   try {
-    // Check authentication
+    // Check authentication with timing-safe comparison
     const authHeader = request.headers.get('authorization');
-    if (authHeader !== `Bearer ${process.env.API_SECRET}`) {
+    const apiSecret = process.env.API_SECRET;
+
+    if (!apiSecret) {
+      apiLogger.error('API_SECRET not configured', new Error('Missing API_SECRET'), 'leads');
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+    }
+
+    if (!validateBearerToken(authHeader, apiSecret)) {
+      apiLogger.warn('Unauthorized leads API access attempt', 'leads', {
+        ip: request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip'),
+      });
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -242,7 +264,7 @@ async function handleGET(request: NextRequest) {
       totalPages: Math.ceil(total / limit),
     });
   } catch (error) {
-    console.error('Error fetching leads:', error);
+    apiLogger.error('Error fetching leads', error as Error, 'leads');
     return NextResponse.json({ error: 'Failed to fetch leads' }, { status: 500 });
   }
 }

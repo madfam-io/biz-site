@@ -2,6 +2,7 @@ import { analytics } from '@madfam/analytics';
 import { AssessmentStatus } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { withRateLimit } from '@/lib/rate-limit';
 
@@ -205,7 +206,7 @@ export async function GET(request: NextRequest) {
       totalQuestions: assessmentQuestions.length,
     });
   } catch (error) {
-    console.error('Error fetching assessment:', error);
+    apiLogger.error('Error fetching assessment', error as Error, 'assessment');
     return NextResponse.json({ error: 'Failed to fetch assessment' }, { status: 500 });
   }
 }
@@ -306,7 +307,11 @@ async function handlePOST(request: NextRequest) {
             score: results.score,
           },
         }),
-      }).catch(console.error);
+      }).catch((error) => {
+        apiLogger.error('Failed to trigger n8n webhook for assessment', error, 'assessment', {
+          assessmentId: assessment.id,
+        });
+      });
     }
 
     return NextResponse.json({
@@ -333,7 +338,7 @@ async function handlePOST(request: NextRequest) {
       );
     }
 
-    console.error('Assessment submission error:', error);
+    apiLogger.error('Assessment submission error', error as Error, 'assessment');
     return NextResponse.json(
       {
         success: false,

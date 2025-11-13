@@ -35,50 +35,6 @@ export default async function ProductsPage({ params }: Props) {
   const products = [
     // Aureo Labs Products
     {
-      name: 'Penny',
-      description:
-        'User-friendly AI chat and workbench platform for consumers and enterprises. Your intelligent assistant for everyday tasks and business automation.',
-      audience: 'Consumers and businesses of all sizes',
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: 'Visit Penny',
-        url: 'https://www.penny.onl',
-        external: true,
-      },
-      secondaryCta: {
-        label: commonT('nav.contact'),
-        url: '/contact',
-      },
-      features: ['Interfaz intuitiva', 'Colaboración en equipo', 'Automatización visual'],
-      category: 'Workspace',
-      arm: 'aureo-labs',
-      sdgs: ['SDG8', 'SDG10', 'SDG12'],
-    },
-    {
-      name: 'Cotiza Studio',
-      description:
-        'Workspace especializado para generación de cotizaciones y presupuestos inteligentes.',
-      audience: 'Empresas de servicios y consultorías',
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: 'Visitar Cotiza Studio',
-        url: 'https://www.cotiza.studio',
-        external: true,
-      },
-      secondaryCta: {
-        label: commonT('nav.contact'),
-        url: '/contact',
-      },
-      features: [
-        'Cotizaciones inteligentes',
-        'Plantillas personalizables',
-        'Seguimiento de propuestas',
-      ],
-      category: 'Workspace',
-      arm: 'aureo-labs',
-      sdgs: ['SDG9', 'SDG12', 'SDG13'],
-    },
-    {
       name: 'Forge Sight',
       description:
         'Enterprise-grade pricing intelligence platform for the global digital fabrication industry. Continuously harvests, normalizes, and benchmarks prices from 3D printing to CNC machining.',
@@ -149,34 +105,6 @@ export default async function ProductsPage({ params }: Props) {
       category: 'Platform',
       arm: 'aureo-labs',
       sdgs: ['SDG4', 'SDG8', 'SDG9'],
-    },
-    // MADFAM Direct Products
-    // TBD
-    {
-      name: 'Factlas',
-      comingSoon: true,
-      description:
-        'Geographic intelligence platform that converts geospatial signals into auditable facts with coordinates. STAC-compliant catalog for discovering and analyzing location data.',
-      audience: 'Real estate developers, urban planners, and GIS analysts',
-      badge: 'by Aureo Labs, a MADFAM Company',
-      primaryCta: {
-        label: 'Coming Soon',
-        url: 'https://www.factl.as',
-        external: true,
-        comingSoon: true,
-      },
-      secondaryCta: {
-        label: commonT('nav.contact'),
-        url: '/contact',
-      },
-      features: [
-        'Geospatial fact verification',
-        'STAC-compliant data catalog',
-        'AI-powered site selection',
-      ],
-      category: 'Platform',
-      arm: 'aureo-labs',
-      sdgs: ['SDG9', 'SDG11', 'SDG12'],
     },
   ];
 

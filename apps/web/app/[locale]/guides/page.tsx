@@ -200,8 +200,8 @@ export default function GuidesPage({ params: { locale } }: { params: { locale: s
               <p className="text-gray-600 dark:text-gray-400 mb-4">
                 {t('videoTutorials.description')}
               </p>
-              <Link 
-                href="https://youtube.com/@madfam"
+              <Link
+                href="https://www.youtube.com/@innovacionesmadfam"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-lavender hover:text-lavender/80 font-medium"
