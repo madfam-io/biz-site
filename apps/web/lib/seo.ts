@@ -353,7 +353,7 @@ export class SEOService {
           sameAs: [
             'https://twitter.com/madfam_io',
             'https://linkedin.com/company/madfam',
-            'https://github.com/madfam',
+            'https://github.com/madfam-io',
           ],
           address: {
             '@type': 'PostalAddress',
@@ -439,40 +439,10 @@ export class SEOService {
         priority: 1.0,
       },
       {
-        url: '/services',
+        url: '/programs',
         lastModified: now,
         changeFrequency: 'weekly',
         priority: 0.9,
-      },
-      {
-        url: '/services/level-1-essentials',
-        lastModified: now,
-        changeFrequency: 'monthly',
-        priority: 0.8,
-      },
-      {
-        url: '/services/level-2-advanced',
-        lastModified: now,
-        changeFrequency: 'monthly',
-        priority: 0.8,
-      },
-      {
-        url: '/services/level-3-consulting',
-        lastModified: now,
-        changeFrequency: 'monthly',
-        priority: 0.8,
-      },
-      {
-        url: '/services/level-4-platforms',
-        lastModified: now,
-        changeFrequency: 'monthly',
-        priority: 0.8,
-      },
-      {
-        url: '/services/level-5-strategic',
-        lastModified: now,
-        changeFrequency: 'monthly',
-        priority: 0.8,
       },
       {
         url: '/products',

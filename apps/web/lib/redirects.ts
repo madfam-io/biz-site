@@ -191,7 +191,7 @@ export const productOwnership = {
   dhanam: {
     arm: 'madfam',
     badge: 'por MADFAM',
-    url: '#',
+    url: 'https://www.dhan.am',
   },
   avala: {
     arm: 'aureo-labs',
