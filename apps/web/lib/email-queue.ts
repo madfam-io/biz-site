@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import { apiLogger } from './logger';
 import { prisma } from './prisma';
 // TODO: Implement email sender
 // import { emailSender } from '@madfam/email/src/sender';
@@ -46,7 +47,9 @@ export class EmailQueueProcessor {
         take: 10, // Process 10 at a time
       });
 
-      // console.log(`Processing ${pendingEmails.length} pending emails`);
+      if (pendingEmails.length > 0) {
+        apiLogger.debug(`Processing ${pendingEmails.length} pending emails`, 'email-queue');
+      }
 
       for (const email of pendingEmails) {
         // Convert the email to the correct type
@@ -62,7 +65,7 @@ export class EmailQueueProcessor {
         await this.processEmail(emailItem);
       }
     } catch (error) {
-      console.error('Email queue processing error:', error);
+      apiLogger.error('Email queue processing error', error as Error, 'email-queue');
     } finally {
       this.isProcessing = false;
     }
@@ -91,7 +94,7 @@ export class EmailQueueProcessor {
           },
         });
 
-        // console.log(`Email sent successfully: ${email.id}`);
+        apiLogger.debug(`Email sent successfully: ${email.id}`, 'email-queue');
       } else {
         // Mark as failed
         await prisma.emailQueue.update({
@@ -102,10 +105,10 @@ export class EmailQueueProcessor {
           },
         });
 
-        console.error(`Email failed: ${email.id}`, 'Mock email failed');
+        apiLogger.error(`Email failed: ${email.id}`, new Error('Mock email failed'), 'email-queue');
       }
     } catch (error) {
-      console.error(`Email processing error for ${email.id}:`, error);
+      apiLogger.error(`Email processing error for ${email.id}`, error as Error, 'email-queue');
 
       // Mark as failed
       await prisma.emailQueue.update({

@@ -17,7 +17,11 @@ export default function Error({
 
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
+    // TODO: Integrate with Sentry or similar error tracking service
+    // if (typeof window !== 'undefined' && window.Sentry) {
+    //   window.Sentry.captureException(error);
+    // }
+    console.error('Application error:', error);
   }, [error]);
 
   return (

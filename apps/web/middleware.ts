@@ -24,9 +24,14 @@ export default function middleware(request: NextRequest) {
   );
 
   // Content Security Policy
+  // NOTE: We keep 'unsafe-inline' for script-src and style-src to support:
+  // 1. Dark mode script that must execute before hydration
+  // 2. Inline styles from Tailwind CSS and component libraries
+  // TODO: Implement nonce-based CSP for better security
+  // See: https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com;
+    script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https:;
     font-src 'self' https://fonts.gstatic.com;
@@ -36,6 +41,9 @@ export default function middleware(request: NextRequest) {
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
+    frame-src 'none';
+    worker-src 'self' blob:;
+    manifest-src 'self';
     upgrade-insecure-requests;
   `
     .replace(/\s{2,}/g, ' ')
