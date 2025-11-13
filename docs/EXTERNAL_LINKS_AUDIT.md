@@ -9,6 +9,15 @@ Comprehensive audit of ALL external URLs/links across the MADFAM biz-site codeba
 **Categories:** 9 major categories identified
 **Date:** November 13, 2025
 
+### ⚠️ Critical Finding
+**Multiple product URLs in the codebase are NOT yet live:**
+- ❌ Penny (https://www.penny.onl) - NOT accessible
+- ❌ Factlas (https://www.factl.as) - NOT accessible
+- ❓ Cotiza Studio (https://www.cotiza.studio) - Status unverified
+- ✅ Only Dhanam and Forge Sight confirmed working
+
+**Recommendation:** Mark non-working products as "Coming Soon" in UI to avoid user confusion
+
 ---
 
 ## 1. SOCIAL MEDIA LINKS (7 URLs)
@@ -29,12 +38,12 @@ Comprehensive audit of ALL external URLs/links across the MADFAM biz-site codeba
 
 | Product | URL | File Locations | Status | Notes |
 |---------|-----|----------------|--------|-------|
-| **Penny** | `https://www.penny.onl` | Footer.tsx (L31), CorporateHomePage.tsx (L38), products/page.tsx (L45), arms/aureo-labs/page.tsx (L39), arms/page.tsx (L42) | ACTIVE | AI assistant for consumers & enterprises |
-| **Dhanam** | `https://www.dhan.am` | Footer.tsx (L32), CorporateHomePage.tsx (L39), products/page.tsx (L112), arms/aureo-labs/page.tsx (L94) | ACTIVE | Financial wellness platform |
-| **Cotiza Studio** | `https://www.cotiza.studio` | Footer.tsx (L33), CorporateHomePage.tsx (L40), products/page.tsx (L65), arms/aureo-labs/page.tsx (L102), redirects.ts (L184) | ACTIVE | Quoting/estimation tool |
-| **Forge Sight** | `https://www.forgesight.quest` | Footer.tsx (L34), CorporateHomePage.tsx (L41), products/page.tsx (L89), arms/aureo-labs/page.tsx (L122), arms/page.tsx (L45), redirects.ts (L189) | ACTIVE | Analytics platform for digital fabrication |
-| **Factlas** | `https://www.factl.as` | products/page.tsx (L164), arms/aureo-labs/page.tsx (L81), redirects.ts (L204) | ACTIVE (COMING SOON) | Geographic intelligence platform |
-| **AVALA** | `#` | arms/aureo-labs/page.tsx (L60) | COMING SOON | Training & certification platform |
+| **Penny** | `https://www.penny.onl` | Footer.tsx (L31), CorporateHomePage.tsx (L38), products/page.tsx (L45), arms/aureo-labs/page.tsx (L39), arms/page.tsx (L42) | ⏳ COMING SOON | AI assistant - URL reserved but site NOT yet live |
+| **Dhanam** | `https://www.dhan.am` | Footer.tsx (L32), CorporateHomePage.tsx (L39), products/page.tsx (L112), arms/aureo-labs/page.tsx (L94) | ✅ LIVE & VERIFIED | Financial wellness platform |
+| **Cotiza Studio** | `https://www.cotiza.studio` | Footer.tsx (L33), CorporateHomePage.tsx (L40), products/page.tsx (L65), arms/aureo-labs/page.tsx (L102), redirects.ts (L184) | ❓ UNVERIFIED | Quoting/estimation tool - needs manual verification |
+| **Forge Sight** | `https://www.forgesight.quest` | Footer.tsx (L34), CorporateHomePage.tsx (L41), products/page.tsx (L89), arms/aureo-labs/page.tsx (L122), arms/page.tsx (L45), redirects.ts (L189) | ✅ LIVE & VERIFIED | Analytics platform for digital fabrication |
+| **Factlas** | `https://www.factl.as` | products/page.tsx (L164), arms/aureo-labs/page.tsx (L81), redirects.ts (L204) | ⏳ COMING SOON | Geographic intelligence - URL reserved but NOT yet live |
+| **AVALA** | `#` | arms/aureo-labs/page.tsx (L60) | ⏳ COMING SOON | Training & certification - placeholder link only |
 
 ---
 
@@ -187,19 +196,33 @@ These are located in `/home/user/biz-site/apps/web/lib/fallback-data.ts` (Lines 
 
 **Recommendation:** Consider centralizing social media URLs in a constants file or configuration
 
-### 2. PLACEHOLDER LINKS
+### 2. NON-WORKING PRODUCT URLs
+**Severity:** MEDIUM
+**Issue:** Multiple product URLs are in codebase but products are not yet live
+**URLs Affected:**
+- `https://www.penny.onl` - URL reserved but site not accessible (COMING SOON)
+- `https://www.factl.as` - URL reserved but site not accessible (COMING SOON)
+- `https://www.cotiza.studio` - Status unverified (needs manual check)
+
+**Files Affected:** Footer.tsx, products pages, arm pages, redirects.ts
+**Recommendation:**
+- Mark these products as "Coming Soon" in UI
+- Consider disabling links or showing a modal indicating product is in development
+- Update when products go live
+
+### 3. PLACEHOLDER LINKS
 **Severity:** LOW
 **Issue:** AVALA product uses `#` as placeholder
 **File:** `/home/user/biz-site/apps/web/app/[locale]/arms/aureo-labs/page.tsx` (L60)
 **Recommendation:** Update with actual URL when product launches or use `/products/avala`
 
-### 3. HARDCODED TEAM PROFILES IN FALLBACK DATA
+### 4. HARDCODED TEAM PROFILES IN FALLBACK DATA
 **Severity:** LOW
 **Issue:** Team member social profiles are hardcoded as fallback data and may be outdated
 **File:** `/home/user/biz-site/apps/web/lib/fallback-data.ts` (Lines 334-368)
 **Recommendation:** Consider if these should be dynamic or verified/updated regularly
 
-### 4. ENVIRONMENT-DEPENDENT BASE URLS
+### 5. ENVIRONMENT-DEPENDENT BASE URLS
 **Severity:** MEDIUM
 **Issue:** Multiple files have conditional logic for base URLs
 **Files Affected:**
@@ -210,13 +233,13 @@ These are located in `/home/user/biz-site/apps/web/lib/fallback-data.ts` (Lines 
 
 **Recommendation:** Already well-managed with environment variables; no changes needed
 
-### 5. MIXED HTTP/HTTPS IN LOCAL DEVELOPMENT
+### 6. MIXED HTTP/HTTPS IN LOCAL DEVELOPMENT
 **Severity:** LOW
 **Issue:** Local development uses `http://localhost` while production uses `https://`
 **Files:** Config files, README
 **Recommendation:** Normal for development; no action needed
 
-### 6. UNDOCUMENTED API ENDPOINTS
+### 7. UNDOCUMENTED API ENDPOINTS
 **Severity:** MEDIUM
 **Issue:** Some API endpoint references in code examples may not match actual implementation
 **File:** `/home/user/biz-site/apps/web/app/[locale]/api/page.tsx`
@@ -261,17 +284,17 @@ export const EXTERNAL_LINKS = {
 
 | Category | Count | Status | Notes |
 |----------|-------|--------|-------|
-| **Social Media** | 7 | All Active | Consistent across files |
-| **Products** | 6 | Mostly Active | AVALA coming soon |
-| **Business Units** | 3 | All Active | Clear ownership |
-| **Company Domains** | 6 | All Active | Production & staging |
-| **External Services** | 10+ | Configured | Well-integrated |
-| **Google Services** | 5 | Active | CSP headers configured |
-| **Vercel/Monitoring** | 2 | Active | Performance tracking |
-| **Documentation** | 15+ | Reference | For developers |
-| **Team Profiles** | 7 | Fallback Data | Needs update cycle |
-| **Asset URLs** | 2 | Active | Logo references |
-| **Localhost/Dev** | 6+ | Local Only | Normal development |
+| **Social Media** | 7 | ✅ All Live & Verified | Consistent across files |
+| **Products** | 6 | ⚠️ Mixed Status | Only 2 verified live (Dhanam, Forge Sight) |
+| **Business Units** | 3 | ❓ Unverified | Needs manual verification |
+| **Company Domains** | 6 | ✅ All Active | Production & staging |
+| **External Services** | 10+ | ✅ Configured | Well-integrated |
+| **Google Services** | 5 | ✅ Active | CSP headers configured |
+| **Vercel/Monitoring** | 2 | ✅ Active | Performance tracking |
+| **Documentation** | 15+ | 📚 Reference | For developers |
+| **Team Profiles** | 7 | ⚠️ Fallback Data | Needs update cycle |
+| **Asset URLs** | 2 | ✅ Active | Logo references |
+| **Localhost/Dev** | 6+ | 🛠️ Local Only | Normal development |
 
 **TOTAL UNIQUE URLs: 50+**
 **TOTAL INSTANCES: 229+**

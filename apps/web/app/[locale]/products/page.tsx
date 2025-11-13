@@ -36,14 +36,15 @@ export default async function ProductsPage({ params }: Props) {
     // Aureo Labs Products
     {
       name: 'Penny',
+      comingSoon: true,
       description:
         'User-friendly AI chat and workbench platform for consumers and enterprises. Your intelligent assistant for everyday tasks and business automation.',
       audience: 'Consumers and businesses of all sizes',
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: 'Visit Penny',
+        label: 'Coming Soon',
         url: 'https://www.penny.onl',
-        external: true,
+        comingSoon: true,
       },
       secondaryCta: {
         label: commonT('nav.contact'),
@@ -56,14 +57,15 @@ export default async function ProductsPage({ params }: Props) {
     },
     {
       name: 'Cotiza Studio',
+      comingSoon: true,
       description:
         'Workspace especializado para generación de cotizaciones y presupuestos inteligentes.',
       audience: 'Empresas de servicios y consultorías',
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: 'Visitar Cotiza Studio',
+        label: 'Coming Soon',
         url: 'https://www.cotiza.studio',
-        external: true,
+        comingSoon: true,
       },
       secondaryCta: {
         label: commonT('nav.contact'),

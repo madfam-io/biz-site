@@ -2,13 +2,14 @@
 
 ## Product Links
 
-| Product | URL |
-|---------|-----|
-| Penny | https://www.penny.onl |
-| Dhanam | https://www.dhan.am |
-| Cotiza Studio | https://www.cotiza.studio |
-| Forge Sight | https://www.forgesight.quest |
-| Factlas | https://www.factl.as |
+| Product | URL | Status |
+|---------|-----|--------|
+| Penny | https://www.penny.onl | ⏳ COMING SOON |
+| Dhanam | https://www.dhan.am | ✅ LIVE |
+| Cotiza Studio | https://www.cotiza.studio | ❓ UNVERIFIED |
+| Forge Sight | https://www.forgesight.quest | ✅ LIVE |
+| Factlas | https://www.factl.as | ⏳ COMING SOON |
+| AVALA | # (placeholder) | ⏳ COMING SOON |
 
 ## Corporate Arms
 

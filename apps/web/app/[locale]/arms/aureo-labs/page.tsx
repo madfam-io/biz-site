@@ -31,13 +31,14 @@ export default async function AureoLabsPage({ params }: Props) {
   const products = [
     {
       name: 'Penny',
+      comingSoon: true,
       description: t('products.penny.description'),
       audience: t('products.penny.audience'),
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: t('products.penny.cta'),
+        label: 'Coming Soon',
         url: 'https://www.penny.onl',
-        external: true,
+        comingSoon: true,
       },
       secondaryCta: {
         label: commonT('cta.contact'),
@@ -94,13 +95,14 @@ export default async function AureoLabsPage({ params }: Props) {
     },
     {
       name: 'Cotiza Studio',
+      comingSoon: true,
       description: t('products.cotizaStudio.description'),
       audience: t('products.cotizaStudio.audience'),
       badge: 'by Aureo Labs, a MADFAM Company',
       primaryCta: {
-        label: t('products.cotizaStudio.cta'),
+        label: 'Coming Soon',
         url: 'https://www.cotiza.studio',
-        external: true,
+        comingSoon: true,
       },
       secondaryCta: {
         label: commonT('cta.contact'),
