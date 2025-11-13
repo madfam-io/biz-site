@@ -346,14 +346,18 @@ export class SEOService {
           logo: `${this.baseUrl}/logo.png`,
           contactPoint: {
             '@type': 'ContactPoint',
-            telephone: '+52-55-1234-5678',
+            telephone: '+52-55-3410-6519',
             contactType: 'Customer Service',
             availableLanguage: ['Spanish', 'English'],
           },
           sameAs: [
-            'https://twitter.com/madfam_io',
+            'https://x.com/madfam_io',
             'https://linkedin.com/company/madfam',
+            'https://instagram.com/madfam.io',
+            'https://www.facebook.com/people/Madfam/61578707019539/',
+            'https://tiktok.com/@madfam.io',
             'https://github.com/madfam-io',
+            'https://www.youtube.com/@innovacionesmadfam',
           ],
           address: {
             '@type': 'PostalAddress',

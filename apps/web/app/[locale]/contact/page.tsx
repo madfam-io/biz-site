@@ -60,8 +60,8 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
                     </div>
                     <div>
                       <p className="font-medium">{t('common.metadata.whatsapp')}</p>
-                      <a href="https://wa.me/525512345678" className="text-leaf hover:underline">
-                        +52 55 1234 5678
+                      <a href="https://api.whatsapp.com/send?phone=525534106519" className="text-leaf hover:underline">
+                        +52 55 3410 6519
                       </a>
                     </div>
                   </div>
