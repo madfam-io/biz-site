@@ -2,7 +2,7 @@ import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-export default function DocsPage({ params: { locale } }: { params: { locale: string } }) {
+export default function DocsPage({ params: { locale: _locale } }: { params: { locale: string } }) {
   const t = useTranslations('docs');
   
   const documentationSections = [

@@ -1,7 +1,7 @@
 import { SignInForm } from '@/components/SignInForm';
 
 export default function SignInPage({
-  params: { locale }
+  params: { locale: _locale }
 }: {
   params: { locale: string };
 }) {

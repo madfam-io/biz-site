@@ -1,7 +1,7 @@
 import { Container, Heading } from '@madfam/ui';
 import { useTranslations } from 'next-intl';
 
-export default function CookiesPage({ params: { locale } }: { params: { locale: string } }) {
+export default function CookiesPage({ params: { locale: _locale } }: { params: { locale: string } }) {
   const t = useTranslations('cookies');
 
   return (

@@ -11,6 +11,6 @@ export async function generateMetadata({
   return seoService.generateHomeMetadata(locale as 'es' | 'en' | 'pt');
 }
 
-export default function Page({ params: { locale } }: { params: { locale: string } }) {
+export default function Page({ params: { locale: _locale } }: { params: { locale: string } }) {
   return <CorporateHomePage />;
 }

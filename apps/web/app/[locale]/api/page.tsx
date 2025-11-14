@@ -106,7 +106,7 @@ const response = await fetch('https://api.madfam.io/api/assessment', {
 });`,
 };
 
-export default function ApiPage({ params: { locale } }: { params: { locale: string } }) {
+export default function ApiPage({ params: { locale: _locale } }: { params: { locale: string } }) {
   const t = useTranslations('api');
   
   return (
