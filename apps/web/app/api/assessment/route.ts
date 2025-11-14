@@ -1,5 +1,5 @@
 import { analytics } from '@madfam/analytics';
-import { AssessmentStatus } from '@prisma/client';
+import { AssessmentStatus } from '@/lib/prisma-types';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiLogger } from '@/lib/logger';
@@ -81,7 +81,7 @@ const assessmentQuestions: AssessmentQuestion[] = [
 // Schema for assessment submission
 const assessmentSchema = z.object({
   email: z.string().email(),
-  answers: z.record(z.number().min(1).max(5)), // Answer values 1-5
+  answers: z.record(z.string(), z.number().min(1).max(5)), // Answer values 1-5
   leadId: z.string().optional(),
 });
 
@@ -329,7 +329,7 @@ async function handlePOST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          errors: error.errors.map(e => ({
+          errors: error.issues.map(e => ({
             field: e.path.join('.'),
             message: e.message,
           })),

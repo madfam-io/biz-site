@@ -1,9 +1,8 @@
 import { Container, Heading, Card, CardContent } from '@madfam/ui';
-import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { LeadForm } from '@/components/LeadForm';
 
 export default async function ContactPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations();
 
   return (

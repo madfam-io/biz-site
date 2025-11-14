@@ -1,12 +1,11 @@
 import { Container, Heading } from '@madfam/ui';
-import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { TranslationList } from '@/components/TranslationList';
 
 // Force dynamic rendering to bypass SSG issue
 export const dynamic = 'force-dynamic';
 
 export default async function TermsPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations('legal');
 
   return (

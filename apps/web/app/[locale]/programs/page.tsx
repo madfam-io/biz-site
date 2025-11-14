@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { Badge } from '@/components/corporate/Badge';
 import { ProgramCard } from '@/components/corporate/ProgramCard';
 
@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProgramsPage({ params }: Props) {
-  unstable_setRequestLocale(params.locale);
   const t = await getTranslations({ locale: params.locale, namespace: 'corporate.programs' });
   const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
 

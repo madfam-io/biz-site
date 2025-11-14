@@ -1,4 +1,3 @@
-import { Prisma } from '@prisma/client';
 import { apiLogger } from './logger';
 import { prisma } from './prisma';
 // TODO: Implement email sender
@@ -11,7 +10,7 @@ export interface EmailQueueItem {
   id: string;
   to: string[];
   template: string;
-  data: Prisma.JsonObject;
+  data: Record<string, unknown>;
   status: string;
   attempts: number;
   error?: string | null;
@@ -57,7 +56,7 @@ export class EmailQueueProcessor {
           id: email.id,
           to: Array.isArray(email.to) ? (email.to as string[]) : [],
           template: email.template,
-          data: email.data as Prisma.JsonObject,
+          data: email.data as Record<string, unknown>,
           status: email.status,
           attempts: email.attempts,
           error: email.error,
@@ -123,7 +122,7 @@ export class EmailQueueProcessor {
 
   async queueEmail(to: string[], template: string, data: Record<string, unknown>): Promise<string> {
     // Ensure data is properly formatted as a Prisma JSON object
-    const jsonData: Prisma.JsonObject = data as Prisma.JsonObject;
+    const jsonData: Record<string, unknown> = data as Record<string, unknown>;
 
     const email = await prisma.emailQueue.create({
       data: {

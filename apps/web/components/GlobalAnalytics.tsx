@@ -9,7 +9,7 @@ export function GlobalAnalytics() {
   const locale = useLocale();
 
   // Track initial values
-  const initialLocale = useRef<string>();
+  const initialLocale = useRef<string | undefined>(undefined);
 
   useEffect(() => {
     // Track language changes

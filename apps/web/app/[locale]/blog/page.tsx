@@ -1,6 +1,6 @@
 import { Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { getPublishedBlogPosts, type BlogPost } from '@/lib/cms';
 import { environment } from '@/lib/environment';
 
@@ -73,7 +73,6 @@ function calculateReadTime(content: string): string {
 }
 
 export default async function BlogPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations('blog');
 
   // Fetch blog posts from CMS or use fallback data

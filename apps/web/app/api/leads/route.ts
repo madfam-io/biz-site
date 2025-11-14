@@ -1,5 +1,5 @@
 import { analytics } from '@madfam/analytics';
-import { LeadSource, LeadStatus } from '@prisma/client';
+import { LeadSource, LeadStatus } from '@/lib/prisma-types';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiLogger } from '@/lib/logger';
@@ -16,7 +16,7 @@ const leadSchema = z.object({
   message: z.string().optional(),
   source: z.string().default('website'),
   preferredLanguage: z.enum(['es', 'en']).default('es'),
-  metadata: z.record(z.unknown()).optional(),
+  metadata: z.record(z.string(), z.unknown()).optional(),
 });
 
 type LeadData = z.infer<typeof leadSchema>;
@@ -185,7 +185,7 @@ async function handlePOST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          errors: error.errors.map(e => ({
+          errors: error.issues.map(e => ({
             field: e.path.join('.'),
             message: e.message,
           })),

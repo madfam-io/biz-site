@@ -1,5 +1,5 @@
 import { FeatureFlagProvider } from '@madfam/core';
-import { UserRole } from '@prisma/client';
+import { UserRole } from '@/lib/prisma-types';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { z } from 'zod';
@@ -208,7 +208,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
     apiLogger.error('Error creating/updating feature flag', error as Error);
     return NextResponse.json({ error: 'Failed to create/update feature flag' }, { status: 500 });
@@ -278,7 +278,7 @@ export async function PATCH(request: NextRequest) {
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 });
     }
     apiLogger.error('Error toggling feature flag', error as Error);
     return NextResponse.json({ error: 'Failed to toggle feature flag' }, { status: 500 });

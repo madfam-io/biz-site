@@ -1,9 +1,7 @@
 import { Container, Heading, Card, Button } from '@madfam/ui';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
 export default function CareersPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = useTranslations('careers');
   
   const openPositions = [

@@ -1,7 +1,7 @@
 import { ArrowUpRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
 type Props = {
   params: { locale: string };
@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Primavera3DPage({ params }: Props) {
-  unstable_setRequestLocale(params.locale);
   const t = await getTranslations({ locale: params.locale, namespace: 'corporate.arms' });
 
   const capabilities = [

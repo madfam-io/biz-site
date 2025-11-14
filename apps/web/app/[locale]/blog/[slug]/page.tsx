@@ -2,7 +2,7 @@ import { Container, Heading } from '@madfam/ui';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { cmsClient, getPublishedBlogPosts, type BlogPost } from '@/lib/cms';
 import { environment } from '@/lib/environment';
 import type { RichTextDocument, RichTextNode } from '@/types/content';
@@ -268,7 +268,6 @@ function calculateReadTime(content: string): string {
 }
 
 export default async function BlogPostPage({ params: { locale, slug } }: BlogPostPageProps) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations('blog');
 
   // Fetch blog post with enhanced fallback handling

@@ -6,7 +6,7 @@ const logEntrySchema = z.object({
   level: z.number(),
   message: z.string(),
   context: z.string().optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
   error: z
     .object({
       name: z.string(),

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@madfam/i18n": "workspace:*",
-    "zod": "^3.25.76"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "tsup": "^8.5.1",

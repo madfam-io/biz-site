@@ -1,6 +1,6 @@
 import { Container, Heading } from '@madfam/ui';
 import { Metadata } from 'next';
-import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { ProjectEstimator } from '@/components/ProjectEstimator';
 
 export async function generateMetadata({
@@ -21,7 +21,6 @@ export default async function EstimatorPage({
 }: {
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations();
   return (
     <main className="py-section">
