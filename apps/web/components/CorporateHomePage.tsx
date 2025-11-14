@@ -190,10 +190,8 @@ export function CorporateHomePage() {
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Forge Sight */}
-            <a
-              href="https://www.forgesight.quest"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/${locale}/demo/forge-sight`}
               className="group p-8 border-2 border-green-200 rounded-2xl hover:border-green-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50/50 to-white"
             >
               <div className="text-5xl mb-6">🏭</div>
@@ -207,13 +205,11 @@ export function CorporateHomePage() {
                 Try Forge Sight Demo
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </div>
-            </a>
+            </Link>
 
             {/* Dhanam */}
-            <a
-              href="https://www.dhan.am"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/${locale}/demo/dhanam`}
               className="group p-8 border-2 border-blue-200 rounded-2xl hover:border-blue-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50/50 to-white"
             >
               <div className="text-5xl mb-6">💰</div>
@@ -227,7 +223,7 @@ export function CorporateHomePage() {
                 Try Dhanam Demo
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </div>
-            </a>
+            </Link>
 
             {/* AI Assessment */}
             <Link
