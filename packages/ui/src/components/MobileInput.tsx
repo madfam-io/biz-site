@@ -152,9 +152,9 @@ const MobileInput = React.forwardRef<HTMLInputElement, MobileInputProps>(
             type={type}
             className={cn(
               mobileInputVariants({ variant: error ? 'error' : variant, inputSize }),
-              icon && 'pl-10',
-              rightElement && 'pr-10',
-              floatingLabel && 'pt-5',
+              Boolean(icon) && 'pl-10',
+              Boolean(rightElement) && 'pr-10',
+              Boolean(floatingLabel) && 'pt-5',
               className
             )}
             disabled={disabled}
