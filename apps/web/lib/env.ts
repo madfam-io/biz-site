@@ -14,6 +14,9 @@ const serverEnvSchema = z.object({
   NEXTAUTH_URL: z.string().url().optional(),
   NEXTAUTH_SECRET: z.string().min(32),
 
+  // Encryption
+  ENCRYPTION_KEY: z.string().min(32, 'Encryption key must be at least 32 characters'),
+
   // API Keys
   API_SECRET: z.string().min(32),
   N8N_API_KEY: z.string().min(16).optional(),
@@ -146,6 +149,16 @@ export function getClientEnv() {
  */
 export type ServerEnv = z.infer<typeof serverEnvSchema>;
 export type ClientEnv = z.infer<typeof clientEnvSchema>;
+
+/**
+ * Typed environment variable export
+ */
+export const env = {
+  ...process.env,
+  ENCRYPTION_KEY: process.env.ENCRYPTION_KEY || '',
+  API_SECRET: process.env.API_SECRET || '',
+  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET || '',
+} as ServerEnv;
 
 // Validate environment variables at module load time (server-side only)
 if (typeof window === 'undefined') {

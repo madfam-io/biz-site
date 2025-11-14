@@ -168,6 +168,34 @@ export function Navbar() {
     }, 150);
   }, []);
 
+  // Keyboard navigation handlers
+  const handleDropdownKeyDown = useCallback(
+    (event: React.KeyboardEvent, itemName: string) => {
+      switch (event.key) {
+        case 'Enter':
+        case ' ':
+          event.preventDefault();
+          setActiveDropdown(prev => (prev === itemName ? null : itemName));
+          break;
+        case 'Escape':
+          event.preventDefault();
+          setActiveDropdown(null);
+          break;
+        case 'ArrowDown':
+          event.preventDefault();
+          if (activeDropdown !== itemName) {
+            setActiveDropdown(itemName);
+          }
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          setActiveDropdown(null);
+          break;
+      }
+    },
+    [activeDropdown]
+  );
+
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -229,7 +257,14 @@ export function Navbar() {
                       onMouseEnter={() => handleDropdownEnter(item.name)}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <button className="relative py-2 text-base font-semibold transition-all duration-300 flex items-center gap-1.5 text-obsidian/90 dark:text-pearl/90 hover:text-obsidian dark:hover:text-pearl">
+                      <button
+                        className="relative py-2 text-base font-semibold transition-all duration-300 flex items-center gap-1.5 text-obsidian/90 dark:text-pearl/90 hover:text-obsidian dark:hover:text-pearl"
+                        onClick={() => setActiveDropdown(prev => (prev === item.name ? null : item.name))}
+                        onKeyDown={e => handleDropdownKeyDown(e, item.name)}
+                        aria-expanded={activeDropdown === item.name}
+                        aria-haspopup="true"
+                        aria-label={`${item.name} menu`}
+                      >
                         {item.name}
                         <svg
                           className={cn(
@@ -239,6 +274,7 @@ export function Navbar() {
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
+                          aria-hidden="true"
                         >
                           <path
                             strokeLinecap="round"
@@ -260,6 +296,8 @@ export function Navbar() {
                             className="absolute top-full left-0 mt-3 min-w-[320px] bg-white dark:bg-obsidian rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden"
                             onMouseEnter={() => handleDropdownEnter(item.name)}
                             onMouseLeave={handleDropdownLeave}
+                            role="menu"
+                            aria-orientation="vertical"
                           >
                             {item.dropdown.map(section => (
                               <div key={section.title} className="p-4">
@@ -271,6 +309,7 @@ export function Navbar() {
                                     key={subItem.name}
                                     href={subItem.href}
                                     className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+                                    role="menuitem"
                                   >
                                     {subItem.icon && (
                                       <span className="text-xl">{subItem.icon}</span>

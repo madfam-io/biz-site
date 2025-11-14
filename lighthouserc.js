@@ -56,7 +56,7 @@ module.exports = {
         'aria-valid-attr': 'error',
         'aria-valid-attr-value': 'error',
         'button-name': 'error',
-        'color-contrast': 'warn',
+        'color-contrast': 'error',
         'document-title': 'error',
         'html-has-lang': 'error',
         'html-lang-valid': 'error',
