@@ -82,19 +82,19 @@ export function Navbar() {
           items: [
             {
               name: 'Aureo Labs',
-              href: getLocalizedUrl('solutions.aureo-labs', locale),
+              href: getLocalizedUrl('arms.aureo-labs', locale),
               description: t('aureoLabsDesc') || 'Digital innovation laboratory',
               icon: '🚀',
             },
             {
               name: 'Primavera3D',
-              href: getLocalizedUrl('solutions.primavera3d', locale),
+              href: getLocalizedUrl('arms.primavera3d', locale),
               description: 'Advanced 3D manufacturing',
               icon: '🏭',
             },
             {
               name: 'MADFAM Co-Labs',
-              href: getLocalizedUrl('solutions.colabs', locale),
+              href: getLocalizedUrl('arms.colabs', locale),
               description: 'Collaborative innovation spaces',
               icon: '🤝',
             },
@@ -259,7 +259,9 @@ export function Navbar() {
                     >
                       <button
                         className="relative py-2 text-base font-semibold transition-all duration-300 flex items-center gap-1.5 text-obsidian/90 dark:text-pearl/90 hover:text-obsidian dark:hover:text-pearl"
-                        onClick={() => setActiveDropdown(prev => (prev === item.name ? null : item.name))}
+                        onClick={() =>
+                          setActiveDropdown(prev => (prev === item.name ? null : item.name))
+                        }
                         onKeyDown={e => handleDropdownKeyDown(e, item.name)}
                         aria-expanded={activeDropdown === item.name}
                         aria-haspopup="true"
