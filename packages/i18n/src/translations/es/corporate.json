@@ -28,9 +28,9 @@
       "tagline": "Manufactura avanzada e innovación digital",
       "description": "Empresa matriz que coordina y dirige todas las unidades de negocio especializadas"
     },
-    "arms": {
-      "title": "Nuestras Unidades",
-      "subtitle": "Cada unidad especializada en resolver problemas específicos",
+    "solutions": {
+      "title": "Nuestras Soluciones",
+      "subtitle": "Cada solución especializada en resolver problemas específicos",
       "aureoLabs": {
         "name": "Aureo Labs",
         "tagline": "Laboratorio de Innovación Digital",
@@ -206,18 +206,20 @@
   },
   "hero": {
     "badge": "Matriz",
-    "viewArms": "Ver unidades",
+    "viewSolutions": "Explorar soluciones",
     "viewProducts": "Ver productos",
-    "specializedUnits": "Unidades especializadas",
-    "premiumProducts": "Productos premium",
-    "title": "Manufactura Avanzada e Innovación Digital",
-    "subtitle": "Construimos sistemas digitales y de manufactura inteligente que convierten la eficiencia y la circularidad en impacto regenerativo medible."
+    "exploreProducts": "Explorar demos de productos",
+    "takeAssessment": "Realizar evaluación de IA",
+    "specializedUnits": "Soluciones especializadas",
+    "premiumProducts": "Plataformas listas para producción",
+    "title": "Transforma Operaciones con IA—Desde Estrategia hasta Producción",
+    "subtitle": "Convertimos desafíos operacionales en crecimiento regenerativo mediante sistemas inteligentes que optimizan eficiencia, cierran ciclos materiales y amplifican la creatividad humana en LATAM."
   },
-  "arms": {
-    "title": "Nuestras unidades operativas",
-    "subtitle": "Equipos especializados que entregan excelencia en software, manufactura y más.",
-    "allByMadfam": "Todas las unidades - Empresas MADFAM",
-    "viewAll": "Ver todas las unidades",
+  "solutions": {
+    "title": "Nuestras Soluciones",
+    "subtitle": "Capacidades especializadas que entregan excelencia en fabricación digital, plataformas de IA y programas de innovación.",
+    "allByMadfam": "Todas las soluciones - Empresas MADFAM",
+    "viewAll": "Ver todas las soluciones",
     "mainCapabilities": "Capacidades principales",
     "mainProducts": "Productos principales",
     "aureoLabs": {
@@ -364,7 +366,7 @@
     "hero": {
       "title": "Nuestras Unidades de Negocio",
       "subtitle": "Equipos especializados entregando excelencia en todas las industrias",
-      "badge": "Unidades de Negocio"
+      "badge": "Soluciones"
     },
     "meta": {
       "title": "Unidades de Negocio - MADFAM",
@@ -406,13 +408,13 @@
         "description": "Productos desarrollados directamente por la casa matriz para soluciones específicas."
       },
       "viewAureoLabs": "Ver Aureo Labs",
-      "viewAllUnits": "Ver todas las unidades"
+      "viewAllUnits": "Ver todas las soluciones"
     },
     "cta": {
       "title": "¿Interesado en nuestros productos?",
       "subtitle": "Contacta con la unidad responsable o agenda una demostración personalizada.",
       "contactNow": "Contactar ahora",
-      "viewUnits": "Ver unidades"
+      "viewSolutions": "Ver soluciones"
     },
     "penny": {
       "description": "Plataforma de chat y workbench de IA fácil de usar para consumidores y empresas.",

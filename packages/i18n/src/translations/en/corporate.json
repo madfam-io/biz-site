@@ -28,9 +28,9 @@
       "tagline": "Advanced manufacturing and digital innovation",
       "description": "Parent company that coordinates and directs all specialized business units"
     },
-    "arms": {
-      "title": "Our Business Units",
-      "subtitle": "Each unit specialized in solving specific problems",
+    "solutions": {
+      "title": "Our Solutions",
+      "subtitle": "Each solution specialized in solving specific problems",
       "aureoLabs": {
         "name": "Aureo Labs",
         "tagline": "Digital Innovation Laboratory",
@@ -206,18 +206,20 @@
   },
   "hero": {
     "badge": "Headquarters",
-    "viewArms": "View business units",
+    "viewSolutions": "Explore solutions",
     "viewProducts": "View products",
-    "specializedUnits": "Specialized units",
-    "premiumProducts": "Premium products",
-    "title": "Advanced Manufacturing & Digital Innovation",
-    "subtitle": "We build intelligent manufacturing and digital systems that turn efficiency and circularity into measurable, regenerative impact."
+    "exploreProducts": "Explore product demos",
+    "takeAssessment": "Take AI Assessment",
+    "specializedUnits": "Specialized solutions",
+    "premiumProducts": "Production-ready platforms",
+    "title": "Transform Operations with AI—From Strategy to Production",
+    "subtitle": "We turn operational challenges into regenerative growth through intelligent systems that optimize efficiency, close material loops, and amplify human creativity across LATAM."
   },
-  "arms": {
-    "title": "Our operational units",
-    "subtitle": "Equipos especializados que entregan excelencia en software, manufactura y más.",
-    "allByMadfam": "All units - MADFAM Companies",
-    "viewAll": "View all units",
+  "solutions": {
+    "title": "Our Solutions",
+    "subtitle": "Specialized capabilities delivering excellence in digital fabrication, AI platforms, and innovation programs.",
+    "allByMadfam": "All solutions - MADFAM Companies",
+    "viewAll": "View all solutions",
     "mainCapabilities": "Capacidades principales",
     "mainProducts": "Main products",
     "aureoLabs": {
@@ -362,17 +364,17 @@
       }
     },
     "hero": {
-      "title": "Our Business Units",
-      "subtitle": "Specialized teams delivering excellence across industries",
-      "badge": "Business Units"
+      "title": "Our Solutions",
+      "subtitle": "Specialized capabilities delivering excellence across digital fabrication, AI platforms, and innovation programs",
+      "badge": "Solutions"
     },
     "meta": {
-      "title": "Business Units - MADFAM",
-      "description": "Learn about our specialized business units delivering solutions in advanced manufacturing, technology and more."
+      "title": "Solutions - MADFAM",
+      "description": "Discover our specialized solutions delivering impact in advanced manufacturing, AI automation, and collaborative innovation."
     },
     "structure": {
-      "title": "Corporate Structure",
-      "description": "MADFAM coordinates and directs multiple specialized units, each focused on solving specific industry problems."
+      "title": "Solution Architecture",
+      "description": "MADFAM coordinates specialized capabilities—each laser-focused on solving specific operational challenges with measurable outcomes."
     }
   },
   "products": {
@@ -406,13 +408,13 @@
         "description": "Productos desarrollados directamente por la casa matriz para soluciones específicas."
       },
       "viewAureoLabs": "Ver Aureo Labs",
-      "viewAllUnits": "Ver todas las unidades"
+      "viewAllUnits": "Ver todas las soluciones"
     },
     "cta": {
       "title": "Interested in our products?",
-      "subtitle": "Contacta con la unidad responsable o agenda una demostración personalizada.",
-      "contactNow": "Contactar ahora",
-      "viewUnits": "View business units"
+      "subtitle": "Contact the solution team or schedule a personalized demo.",
+      "contactNow": "Contact now",
+      "viewSolutions": "Explore solutions"
     },
     "penny": {
       "description": "User-friendly AI chat and workbench platform for consumers and enterprises.",

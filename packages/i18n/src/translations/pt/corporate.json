@@ -206,7 +206,7 @@
   },
   "hero": {
     "badge": "Matriz",
-    "viewArms": "Ver unidades",
+    "viewArms": "Ver soluciones",
     "viewProducts": "Ver produtos",
     "specializedUnits": "Unidades especializadas",
     "premiumProducts": "Produtos premium",
@@ -217,7 +217,7 @@
     "title": "Nuestras unidades operativas",
     "subtitle": "Equipos especializados que entregan excelencia en software, manufactura y más.",
     "allByMadfam": "Todas as unidades - Empresas MADFAM",
-    "viewAll": "Ver todas las unidades",
+    "viewAll": "Ver todas las soluciones",
     "mainCapabilities": "Capacidades principales",
     "mainProducts": "Produtos principais",
     "aureoLabs": {
@@ -412,7 +412,7 @@
       "title": "Interessado em nossos produtos?",
       "subtitle": "Entre em contato com a unidade responsável ou agende uma demonstração personalizada.",
       "contactNow": "Entrar em contato",
-      "viewUnits": "Ver unidades"
+      "viewSolutions": "Ver soluciones"
     },
     "penny": {
       "description": "Plataforma de chat e workbench de IA fácil de usar para consumidores e empresas.",

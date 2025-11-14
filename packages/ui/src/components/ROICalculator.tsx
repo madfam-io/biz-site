@@ -77,6 +77,10 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
     });
 
     const [results, setResults] = useState<ROIResults | null>(null);
+    const [showEmailGate, setShowEmailGate] = useState(false);
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [pendingResults, setPendingResults] = useState<ROIResults | null>(null);
 
     const formatCurrency = (value: number) => {
       return new Intl.NumberFormat('es', {
@@ -111,8 +115,32 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
         investment,
       };
 
-      setResults(calculatedResults);
-      onCalculate?.(calculatedResults);
+      // Show email gate before revealing results
+      setPendingResults(calculatedResults);
+      setShowEmailGate(true);
+    };
+
+    const handleEmailSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+
+      // Validate email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        setEmailError('Por favor ingresa un email válido');
+        return;
+      }
+
+      // Store email in localStorage
+      localStorage.setItem('madfam_roi_email', email);
+
+      // TODO: Send to backend/CRM
+      console.log('ROI Calculator lead captured:', { email, results: pendingResults });
+
+      // Show results
+      setResults(pendingResults);
+      onCalculate?.(pendingResults!);
+      setShowEmailGate(false);
+      setEmailError('');
     };
 
     const InputSlider = ({
@@ -235,18 +263,97 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
               <Button onClick={calculateROI} variant="creative" className="w-full">
                 Calcular ROI
               </Button>
-              {results && (
-                <div className="mt-4 p-4 bg-gradient-to-r from-sun/10 to-leaf/10 rounded-lg">
+              {showEmailGate && (
+                <div className="mt-4 p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg space-y-4">
                   <div className="text-center">
-                    <p className="text-sm text-gray-600 dark:text-gray-400">ROI Estimado</p>
-                    <p className="text-2xl font-heading font-bold text-leaf">
-                      {results.roiPercentage}%
-                    </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Ahorro mensual: {formatCurrency(results.monthlySavings)}
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h4 className="font-bold text-lg text-neutral-900 mb-2">
+                      ¡Tu análisis está listo!
+                    </h4>
+                    <p className="text-sm text-neutral-600 mb-4">
+                      Ingresa tu email para ver los resultados
                     </p>
                   </div>
+
+                  <form onSubmit={handleEmailSubmit} className="space-y-3">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={e => {
+                        setEmail(e.target.value);
+                        setEmailError('');
+                      }}
+                      className={cn(
+                        'w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm',
+                        emailError ? 'border-red-500' : 'border-gray-300'
+                      )}
+                      placeholder="tu@empresa.com"
+                      required
+                    />
+                    {emailError && <p className="text-xs text-red-600">{emailError}</p>}
+                    <Button type="submit" variant="primary" className="w-full" size="sm">
+                      Ver análisis
+                    </Button>
+                  </form>
+
+                  <p className="text-xs text-neutral-500 text-center">
+                    🔒 Información segura y confidencial
+                  </p>
                 </div>
+              )}
+              {results && (
+                <>
+                  <div className="mt-4 p-4 bg-gradient-to-r from-sun/10 to-leaf/10 rounded-lg">
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">ROI Estimado</p>
+                      <p className="text-2xl font-heading font-bold text-leaf">
+                        {results.roiPercentage}%
+                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        Ahorro mensual: {formatCurrency(results.monthlySavings)}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Conversion CTA - Compact */}
+                  <div className="mt-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-4 space-y-3">
+                    <div className="flex items-start gap-2">
+                      <div className="text-2xl">🚀</div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-sm text-neutral-900 mb-1">
+                          Make this ROI a reality
+                        </h4>
+                        <p className="text-xs text-neutral-600 leading-relaxed">
+                          Book a free strategy session to discuss your customized roadmap.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href="https://calendly.com/madfam/strategy-call"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors"
+                      >
+                        Book Free Call
+                      </a>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </CardContent>
@@ -310,7 +417,112 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
 
             {/* Results Section */}
             <div className="space-y-4">
-              {results ? (
+              {showEmailGate ? (
+                <div className="flex items-center justify-center h-full">
+                  <div className="w-full max-w-md space-y-6 animate-fade-in">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg
+                          className="w-8 h-8 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-heading font-bold text-neutral-900 mb-2">
+                        ¡Tu análisis está listo!
+                      </h3>
+                      <p className="text-neutral-600 mb-6">
+                        Ingresa tu email para ver tu ROI personalizado y recibir recomendaciones
+                        específicas para tu negocio.
+                      </p>
+                    </div>
+
+                    <form onSubmit={handleEmailSubmit} className="space-y-4">
+                      <div>
+                        <label
+                          htmlFor="roi-email"
+                          className="block text-sm font-medium text-neutral-700 mb-2"
+                        >
+                          Email corporativo
+                        </label>
+                        <input
+                          id="roi-email"
+                          type="email"
+                          value={email}
+                          onChange={e => {
+                            setEmail(e.target.value);
+                            setEmailError('');
+                          }}
+                          className={cn(
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent',
+                            emailError ? 'border-red-500' : 'border-gray-300'
+                          )}
+                          placeholder="tu@empresa.com"
+                          required
+                        />
+                        {emailError && (
+                          <p className="mt-1 text-sm text-red-600">{emailError}</p>
+                        )}
+                      </div>
+
+                      <Button type="submit" variant="primary" className="w-full" size="lg">
+                        Ver mi análisis ROI
+                        <svg
+                          className="w-5 h-5 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </Button>
+
+                      <p className="text-xs text-neutral-500 text-center">
+                        🔒 Tu información está segura. No compartimos datos con terceros.
+                      </p>
+                    </form>
+
+                    <div className="pt-4 border-t border-neutral-200">
+                      <div className="flex items-start gap-3 text-sm text-neutral-600">
+                        <svg
+                          className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <div>
+                          <p className="font-medium text-neutral-900">
+                            Recibirás análisis personalizado
+                          </p>
+                          <ul className="mt-1 space-y-1">
+                            <li>✓ ROI detallado basado en tu industria</li>
+                            <li>✓ Recomendaciones de productos específicos</li>
+                            <li>✓ Guía de implementación paso a paso</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : results ? (
                 <div className="space-y-4 animate-fade-in">
                   <ResultCard
                     icon={
@@ -362,6 +574,55 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
                       * Estimaciones basadas en datos promedio de la industria y casos de éxito
                       previos. Los resultados pueden variar según el contexto específico de cada
                       empresa.
+                    </p>
+                  </div>
+
+                  {/* Conversion CTA */}
+                  <div className="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl">🚀</div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg text-neutral-900 mb-2">
+                          Ready to make this ROI a reality?
+                        </h3>
+                        <p className="text-sm text-neutral-600 leading-relaxed">
+                          Schedule a free 30-minute strategy session to discuss how we can help you
+                          achieve these results. We'll create a customized implementation roadmap
+                          tailored to your specific operational needs.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href="https://calendly.com/madfam/strategy-call"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                      >
+                        Book Free Strategy Call
+                        <svg
+                          className="w-4 h-4 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </a>
+                      <a
+                        href="/contact"
+                        className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-green-600 text-green-700 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                      >
+                        Contact Our Team
+                      </a>
+                    </div>
+                    <p className="text-xs text-neutral-500 text-center">
+                      No commitment required • Typical response time: 24 hours
                     </p>
                   </div>
                 </div>

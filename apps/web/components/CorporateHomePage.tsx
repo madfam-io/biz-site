@@ -9,30 +9,34 @@ import {
 import { Button, Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import { useState } from 'react';
 import { AnimatedText } from '@/components/AnimatedText';
-import { ArmCard } from '@/components/corporate/ArmCard';
+import { SolutionCard } from '@/components/corporate/SolutionCard';
 import { Badge } from '@/components/corporate/Badge';
 import { ProductCard } from '@/components/corporate/ProductCard';
 import { ScrollProgress } from '@/components/ScrollProgress';
+import { PersonaSelector, usePersonaContent, type Persona } from '@/components/PersonaSelector';
 
 export function CorporateHomePage() {
   const t = useTranslations();
   const locale = useLocale();
+  const [selectedPersona, setSelectedPersona] = useState<Persona>('default');
+  const personaContent = usePersonaContent(selectedPersona);
 
   // Featured Arms
-  const featuredArms = [
+  const featuredSolutions = [
     {
       id: 'aureo-labs',
       name: 'Aureo Labs',
-      tagline: t('corporate.arms.aureoLabs.tagline'),
-      description: t('corporate.arms.aureoLabs.description'),
+      tagline: t('corporate.solutions.aureoLabs.tagline'),
+      description: t('corporate.solutions.aureoLabs.description'),
       badge: t('corporate.badges.byMadfam'),
       accent: 'copper' as const,
       capabilities: [
-        t('corporate.arms.aureoLabs.capabilities.0'),
-        t('corporate.arms.aureoLabs.capabilities.1'),
-        t('corporate.arms.aureoLabs.capabilities.2'),
-        t('corporate.arms.aureoLabs.capabilities.3'),
+        t('corporate.solutions.aureoLabs.capabilities.0'),
+        t('corporate.solutions.aureoLabs.capabilities.1'),
+        t('corporate.solutions.aureoLabs.capabilities.2'),
+        t('corporate.solutions.aureoLabs.capabilities.3'),
       ],
       products: [
         { name: 'Dhanam', url: 'https://www.dhan.am' },
@@ -43,15 +47,15 @@ export function CorporateHomePage() {
     {
       id: 'primavera3d',
       name: 'Primavera3D',
-      tagline: t('corporate.arms.primavera3d.tagline'),
-      description: t('corporate.arms.primavera3d.description'),
+      tagline: t('corporate.solutions.primavera3d.tagline'),
+      description: t('corporate.solutions.primavera3d.description'),
       badge: t('corporate.badges.byMadfam'),
       accent: 'green' as const,
       capabilities: [
-        t('corporate.arms.primavera3d.capabilities.0'),
-        t('corporate.arms.primavera3d.capabilities.1'),
-        t('corporate.arms.primavera3d.capabilities.2'),
-        t('corporate.arms.primavera3d.capabilities.3'),
+        t('corporate.solutions.primavera3d.capabilities.0'),
+        t('corporate.solutions.primavera3d.capabilities.1'),
+        t('corporate.solutions.primavera3d.capabilities.2'),
+        t('corporate.solutions.primavera3d.capabilities.3'),
       ],
       products: [
         { name: 'Diseño 3D', url: '/programs#design-fabrication' },
@@ -64,11 +68,11 @@ export function CorporateHomePage() {
   const featuredProducts = [
     {
       name: 'Dhanam',
-      description: t('corporate.arms.aureoLabs.products.dhanam.description'),
-      audience: t('corporate.arms.aureoLabs.products.dhanam.audience'),
+      description: t('corporate.solutions.aureoLabs.products.dhanam.description'),
+      audience: t('corporate.solutions.aureoLabs.products.dhanam.audience'),
       badge: t('corporate.badges.aureoLabsProduct'),
       primaryCta: {
-        label: t('corporate.arms.aureoLabs.products.dhanam.cta'),
+        label: t('corporate.solutions.aureoLabs.products.dhanam.cta'),
         url: 'https://www.dhan.am',
         external: true,
       },
@@ -77,9 +81,9 @@ export function CorporateHomePage() {
         url: '/contact',
       },
       features: [
-        t('corporate.arms.aureoLabs.products.dhanam.features.0'),
-        t('corporate.arms.aureoLabs.products.dhanam.features.1'),
-        t('corporate.arms.aureoLabs.products.dhanam.features.2'),
+        t('corporate.solutions.aureoLabs.products.dhanam.features.0'),
+        t('corporate.solutions.aureoLabs.products.dhanam.features.1'),
+        t('corporate.solutions.aureoLabs.products.dhanam.features.2'),
       ],
     },
   ];
@@ -121,6 +125,11 @@ export function CorporateHomePage() {
 
         <Container className="relative z-10">
           <div className="max-w-5xl">
+            {/* Persona Selector */}
+            <div className="mb-8 max-w-md animate-fade-up">
+              <PersonaSelector onPersonaChange={setSelectedPersona} />
+            </div>
+
             <AnimatedText variant="fadeUp" className="mb-8">
               <div className="mb-4">
                 <Badge
@@ -131,32 +140,52 @@ export function CorporateHomePage() {
                 </Badge>
               </div>
               <Heading level={1} className="text-white mb-6 relative">
-                <span className="relative z-10">{t('corporate.hero.title')}</span>
+                <span className="relative z-10">{personaContent.title}</span>
                 <span className="absolute -inset-1 bg-gradient-to-r from-[#2c8136]/10 to-[#58326f]/10 blur-lg" />
               </Heading>
               <p className="text-xl text-white/90 mb-8 max-w-4xl leading-relaxed">
-                {t('corporate.hero.subtitle')}
+                {personaContent.subtitle}
               </p>
+
+              {/* Persona-specific benefits */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                {personaContent.benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-start gap-2 text-white/80">
+                    <svg
+                      className="w-5 h-5 text-[#2c8136] flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-sm">{benefit}</span>
+                  </div>
+                ))}
+              </div>
             </AnimatedText>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-up animation-delay-400">
-              <Link href={`/${locale}/arms`}>
+              <Link href={`/${locale}${personaContent.recommendedPath}`}>
                 <Button
                   variant="secondary"
                   size="lg"
                   className="bg-white text-neutral-900 hover:bg-neutral-100"
                 >
-                  {t('corporate.hero.viewArms')}
+                  {personaContent.primaryCTA}
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link href={`/${locale}/products`}>
+              <Link href="#find-solution">
                 <Button
                   variant="outline"
                   size="lg"
                   className="border-white text-white hover:bg-white/10"
                 >
-                  {t('corporate.hero.viewProducts')}
+                  {personaContent.secondaryCTA}
                 </Button>
               </Link>
             </div>
@@ -176,7 +205,99 @@ export function CorporateHomePage() {
         </Container>
       </section>
 
-      {/* Operating Arms Section */}
+      {/* Find Your Solution - Decision Tree */}
+      <section id="find-solution" className="py-20 bg-white">
+        <Container>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+              Find Your Solution
+            </h2>
+            <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+              Choose your path—explore product demos, get strategic guidance, or discover custom solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Forge Sight */}
+            <Link
+              href={`/${locale}/demo/forge-sight`}
+              className="group p-8 border-2 border-green-200 rounded-2xl hover:border-green-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50/50 to-white"
+            >
+              <div className="text-5xl mb-6">🏭</div>
+              <h3 className="font-bold text-xl mb-3 text-neutral-900">
+                Need pricing intelligence?
+              </h3>
+              <p className="text-sm text-neutral-600 mb-6 leading-relaxed">
+                For digital fabrication, 3D printing & manufacturing procurement teams
+              </p>
+              <div className="flex items-center text-green-600 font-semibold group-hover:translate-x-2 transition-transform">
+                Try Forge Sight Demo
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </div>
+            </Link>
+
+            {/* Dhanam */}
+            <Link
+              href={`/${locale}/demo/dhanam`}
+              className="group p-8 border-2 border-blue-200 rounded-2xl hover:border-blue-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50/50 to-white"
+            >
+              <div className="text-5xl mb-6">💰</div>
+              <h3 className="font-bold text-xl mb-3 text-neutral-900">
+                Need financial wellness tools?
+              </h3>
+              <p className="text-sm text-neutral-600 mb-6 leading-relaxed">
+                For individuals, families & financial advisors seeking AI-powered insights
+              </p>
+              <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform">
+                Try Dhanam Demo
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </div>
+            </Link>
+
+            {/* AI Assessment */}
+            <Link
+              href={`/${locale}/assessment`}
+              className="group p-8 border-2 border-purple-200 rounded-2xl hover:border-purple-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-50/50 to-white"
+            >
+              <div className="text-5xl mb-6">🤔</div>
+              <h3 className="font-bold text-xl mb-3 text-neutral-900">
+                Not sure what you need?
+              </h3>
+              <p className="text-sm text-neutral-600 mb-6 leading-relaxed">
+                Take our 3-minute AI assessment to discover the right solution for you
+              </p>
+              <div className="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+                Start AI Assessment
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </div>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Trusted By - Client Logos Placeholder */}
+      <section className="py-12 bg-neutral-50 border-y border-neutral-200">
+        <Container>
+          <p className="text-center text-sm text-neutral-600 mb-8 font-medium">
+            Trusted by 50+ LATAM enterprises building regenerative futures
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center max-w-4xl mx-auto">
+            {[1, 2, 3, 4].map(i => (
+              <div
+                key={i}
+                className="h-20 bg-neutral-200/50 rounded-lg flex items-center justify-center border border-neutral-300/50 grayscale opacity-60 hover:opacity-80 transition-opacity"
+              >
+                <span className="text-neutral-400 font-medium text-sm">Client Logo {i}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-neutral-500 mt-6">
+            Logo placeholders - Replace with actual client logos
+          </p>
+        </Container>
+      </section>
+
+      {/* Our Solutions Section */}
       <section className="py-20 bg-neutral-50 relative">
         {/* Subtle pattern overlay */}
         <div
@@ -189,26 +310,26 @@ export function CorporateHomePage() {
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
-              {t('corporate.arms.title')}
+              {t('corporate.solutions.title')}
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              {t('corporate.arms.subtitle')}
+              {t('corporate.solutions.subtitle')}
             </p>
             <Badge variant="by-madfam" className="mt-4">
-              {t('corporate.arms.allByMadfam')}
+              {t('corporate.solutions.allByMadfam')}
             </Badge>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
-            {featuredArms.map(arm => (
-              <ArmCard key={arm.id} arm={arm} />
+            {featuredSolutions.map(solution => (
+              <SolutionCard key={solution.id} solution={solution} />
             ))}
           </div>
 
           <div className="text-center">
-            <Link href={`/${locale}/arms`}>
+            <Link href={`/${locale}/solutions`}>
               <Button variant="outline" size="lg">
-                {t('corporate.arms.viewAll')}
+                {t('corporate.solutions.viewAll')}
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </Button>
             </Link>

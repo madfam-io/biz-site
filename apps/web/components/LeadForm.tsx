@@ -26,9 +26,7 @@ const createLeadFormSchema = (t: (key: string) => string) =>
   z.object({
     name: z.string().min(2, t('errors.nameMin')),
     email: z.string().email(t('errors.emailInvalid')),
-    company: z.string().optional(),
-    phone: z.string().optional(),
-    message: z.string().optional(),
+    message: z.string().min(10, t('errors.messageMin')),
   });
 
 type LeadFormData = z.infer<ReturnType<typeof createLeadFormSchema>>;
@@ -200,45 +198,18 @@ export function LeadForm({ source = 'website', onSuccess }: LeadFormProps) {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-            {t('fields.company')}
-          </label>
-          <input
-            {...register('company')}
-            type="text"
-            id="company"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-            placeholder={t('placeholders.company')}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-            {t('fields.phone')}
-          </label>
-          <input
-            {...register('phone')}
-            type="tel"
-            id="phone"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-            placeholder={t('placeholders.phone')}
-          />
-        </div>
-      </div>
-
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('fields.message')}
+          What do you need help with? *
         </label>
         <textarea
           {...register('message')}
           id="message"
-          rows={4}
+          rows={5}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lavender focus:border-transparent"
-          placeholder={t('placeholders.message')}
+          placeholder="Tell us about your project, challenges, or questions..."
         />
+        {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>}
       </div>
 
       {submitStatus === 'success' && (
