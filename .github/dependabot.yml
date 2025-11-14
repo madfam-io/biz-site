@@ -1,13 +1,13 @@
 version: 2
 updates:
-  # Enable version updates for npm
+  # Enable version updates for npm (monorepo root)
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     reviewers:
       - "madfam-io/developers"
     assignees:
@@ -26,6 +26,21 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "react-dom"
         update-types: ["version-update:semver-major"]
+    # Group all non-major dependency updates together
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      dev-dependencies:
+        patterns:
+          - "*"
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -39,84 +54,133 @@ updates:
     labels:
       - "ci"
       - "automated"
+    # Group all GitHub Actions updates together
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
   # Enable version updates for apps/web
   - package-ecosystem: "npm"
     directory: "/apps/web"
     schedule:
       interval: "weekly"
-      day: "tuesday"
+      day: "monday"
       time: "09:00"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     commit-message:
       prefix: "chore(web)"
     labels:
       - "dependencies"
       - "web"
       - "automated"
+    # Group web app dependency updates
+    groups:
+      web-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
-  # Enable version updates for packages
+  # Enable version updates for all packages (consolidated)
   - package-ecosystem: "npm"
     directory: "/packages/ui"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+      day: "monday"
       time: "09:00"
     commit-message:
-      prefix: "chore(ui)"
+      prefix: "chore(packages)"
     labels:
       - "dependencies"
       - "packages"
       - "automated"
+    # Group package dependency updates
+    groups:
+      package-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "npm"
     directory: "/packages/core"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+      day: "monday"
       time: "09:00"
     commit-message:
-      prefix: "chore(core)"
+      prefix: "chore(packages)"
     labels:
       - "dependencies"
       - "packages"
       - "automated"
+    groups:
+      package-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "npm"
     directory: "/packages/i18n"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+      day: "monday"
       time: "09:00"
     commit-message:
-      prefix: "chore(i18n)"
+      prefix: "chore(packages)"
     labels:
       - "dependencies"
       - "packages"
       - "automated"
+    groups:
+      package-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "npm"
     directory: "/packages/analytics"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+      day: "monday"
       time: "09:00"
     commit-message:
-      prefix: "chore(analytics)"
+      prefix: "chore(packages)"
     labels:
       - "dependencies"
       - "packages"
       - "automated"
+    groups:
+      package-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "npm"
     directory: "/packages/email"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+      day: "monday"
       time: "09:00"
     commit-message:
-      prefix: "chore(email)"
+      prefix: "chore(packages)"
     labels:
       - "dependencies"
       - "packages"
       - "automated"
+    groups:
+      package-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
