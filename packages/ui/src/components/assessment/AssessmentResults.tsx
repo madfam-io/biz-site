@@ -71,7 +71,7 @@ export function AssessmentResults({ result, translations, onRestart }: Assessmen
 
     // Find weakest categories to target
     const sortedCategories = Object.entries(categoryScores).sort(([, a], [, b]) => a - b);
-    const weakestCategory = sortedCategories[0][0];
+    const weakestCategory = sortedCategories[0]?.[0];
 
     // Recommend products based on level and weak areas
     if (level === 'beginner' || level === 'intermediate') {
@@ -279,8 +279,9 @@ export function AssessmentResults({ result, translations, onRestart }: Assessmen
                   Ready to turn these insights into action?
                 </h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">
-                  Schedule a free 30-minute strategy session with our team. We'll review your results,
-                  answer questions, and create a customized roadmap for your AI transformation journey.
+                  Schedule a free 30-minute strategy session with our team. We'll review your
+                  results, answer questions, and create a customized roadmap for your AI
+                  transformation journey.
                 </p>
               </div>
             </div>
@@ -292,12 +293,7 @@ export function AssessmentResults({ result, translations, onRestart }: Assessmen
                 className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors"
               >
                 Book Free Strategy Call
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
