@@ -2,10 +2,8 @@
 
 import { Container, Button, Card, CardContent } from '@madfam/ui';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function ForgeSightDemoPage() {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     role: '',
@@ -46,13 +44,16 @@ export default function ForgeSightDemoPage() {
     setIsSubmitting(true);
 
     // Store lead data in localStorage
-    localStorage.setItem('madfam_demo_forgesight', JSON.stringify({
-      ...formData,
-      timestamp: new Date().toISOString(),
-    }));
+    localStorage.setItem(
+      'madfam_demo_forgesight',
+      JSON.stringify({
+        ...formData,
+        timestamp: new Date().toISOString(),
+      })
+    );
 
     // TODO: Send to backend/CRM
-    console.log('Forge Sight demo lead captured:', formData);
+    // console.log('Forge Sight demo lead captured:', formData);
 
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -79,11 +80,12 @@ export default function ForgeSightDemoPage() {
               Product Demo
             </div>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-neutral-900 mb-6">
-              Experience Forge Sight's Pricing Intelligence
+              Experience Forge Sight&apos;s Pricing Intelligence
             </h1>
             <p className="text-xl text-neutral-600 leading-relaxed">
-              Before you explore the demo, let's personalize your experience with a few quick questions.
-              This helps us show you the most relevant features for your manufacturing needs.
+              Before you explore the demo, let&apos;s personalize your experience with a few quick
+              questions. This helps us show you the most relevant features for your manufacturing
+              needs.
             </p>
           </div>
 
@@ -121,14 +123,17 @@ export default function ForgeSightDemoPage() {
                     Personalize Your Demo Experience
                   </h2>
                   <p className="text-neutral-600">
-                    Takes less than 1 minute • We'll send you relevant resources after the demo
+                    Takes less than 1 minute • We&apos;ll send you relevant resources after the demo
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Email */}
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-neutral-700 mb-2"
+                    >
                       Work Email *
                     </label>
                     <input
@@ -147,7 +152,10 @@ export default function ForgeSightDemoPage() {
 
                   {/* Role */}
                   <div>
-                    <label htmlFor="role" className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label
+                      htmlFor="role"
+                      className="block text-sm font-medium text-neutral-700 mb-2"
+                    >
                       Your Role *
                     </label>
                     <select
@@ -172,7 +180,10 @@ export default function ForgeSightDemoPage() {
 
                   {/* Use Case */}
                   <div>
-                    <label htmlFor="useCase" className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label
+                      htmlFor="useCase"
+                      className="block text-sm font-medium text-neutral-700 mb-2"
+                    >
                       Primary Use Case *
                     </label>
                     <select
@@ -184,7 +195,7 @@ export default function ForgeSightDemoPage() {
                       }`}
                       required
                     >
-                      <option value="">What's your primary interest?</option>
+                      <option value="">What&apos;s your primary interest?</option>
                       <option value="rapid-prototyping">Rapid Prototyping</option>
                       <option value="production">Low-Volume Production</option>
                       <option value="cost-estimation">Cost Estimation & Quoting</option>
@@ -192,12 +203,17 @@ export default function ForgeSightDemoPage() {
                       <option value="material-selection">Material & Process Selection</option>
                       <option value="other">Other / Just Exploring</option>
                     </select>
-                    {errors.useCase && <p className="mt-1 text-sm text-red-600">{errors.useCase}</p>}
+                    {errors.useCase && (
+                      <p className="mt-1 text-sm text-red-600">{errors.useCase}</p>
+                    )}
                   </div>
 
                   {/* Monthly Volume */}
                   <div>
-                    <label htmlFor="monthlyVolume" className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label
+                      htmlFor="monthlyVolume"
+                      className="block text-sm font-medium text-neutral-700 mb-2"
+                    >
                       Monthly Parts Volume *
                     </label>
                     <select
@@ -217,7 +233,9 @@ export default function ForgeSightDemoPage() {
                       <option value="501+">500+ parts/month</option>
                       <option value="variable">Variable / Project-based</option>
                     </select>
-                    {errors.monthlyVolume && <p className="mt-1 text-sm text-red-600">{errors.monthlyVolume}</p>}
+                    {errors.monthlyVolume && (
+                      <p className="mt-1 text-sm text-red-600">{errors.monthlyVolume}</p>
+                    )}
                   </div>
 
                   {/* Submit Button */}
@@ -273,8 +291,8 @@ export default function ForgeSightDemoPage() {
                   </div>
 
                   <p className="text-xs text-neutral-500 text-center">
-                    🔒 Your information is secure. We'll only use it to personalize your demo experience
-                    and send relevant follow-up resources.
+                    🔒 Your information is secure. We&apos;ll only use it to personalize your demo
+                    experience and send relevant follow-up resources.
                   </p>
                 </form>
               </CardContent>
