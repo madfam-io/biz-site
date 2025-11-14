@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { ArmCard } from '@/components/corporate/ArmCard';
+import { SolutionCard } from '@/components/corporate/SolutionCard';
 
 type Props = {
   params: { locale: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.arms' });
+  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions' });
 
   return {
     title: t('meta.title'),
@@ -20,10 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ArmsPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.arms' });
+export default async function SolutionsPage({ params }: Props) {
+  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions' });
 
-  const arms = [
+  const solutions = [
     {
       id: 'aureo-labs',
       name: 'Aureo Labs',
@@ -42,7 +42,7 @@ export default async function ArmsPage({ params }: Props) {
         { name: 'Forge Sight', url: 'https://www.forgesight.quest' },
       ],
       externalUrl: 'https://www.aureolabs.dev',
-      internalUrl: '/arms/aureo-labs',
+      internalUrl: '/solutions/aureo-labs',
     },
     {
       id: 'primavera3d',
@@ -63,7 +63,7 @@ export default async function ArmsPage({ params }: Props) {
         { name: 'Visualización', url: '/programs#design-fabrication' },
       ],
       externalUrl: 'https://www.primavera3d.pro',
-      internalUrl: '/arms/primavera3d',
+      internalUrl: '/solutions/primavera3d',
     },
     {
       id: 'colabs',
@@ -79,11 +79,11 @@ export default async function ArmsPage({ params }: Props) {
         t('colabs.capabilities.3'),
       ],
       products: [
-        { name: 'MADLAB', url: '/arms/colabs#madlab' },
-        { name: 'Workshops', url: '/arms/colabs#workshops' },
-        { name: 'Bootcamps', url: '/arms/colabs#bootcamps' },
+        { name: 'MADLAB', url: '/solutions/colabs#madlab' },
+        { name: 'Workshops', url: '/solutions/colabs#workshops' },
+        { name: 'Bootcamps', url: '/solutions/colabs#bootcamps' },
       ],
-      internalUrl: '/arms/colabs',
+      internalUrl: '/solutions/colabs',
     },
     {
       id: 'showtech',
@@ -121,25 +121,25 @@ export default async function ArmsPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Arms Grid */}
+      {/* Solutions Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {arms.map(arm => (
-              <ArmCard key={arm.id} arm={arm} />
+            {solutions.map(solution => (
+              <SolutionCard key={solution.id} solution={solution} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Corporate Structure */}
+      {/* Solution Architecture */}
       <section className="py-16 bg-neutral-50">
         <div className="container mx-auto px-4 text-center max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-neutral-900 mb-8">{t('structure.title')}</h2>
           <div className="flex items-center justify-center gap-4 text-lg text-neutral-600">
             <span className="font-semibold text-neutral-900">MADFAM</span>
             <span>→</span>
-            <span>Unidades</span>
+            <span>Soluciones</span>
             <span>→</span>
             <span>Productos</span>
           </div>

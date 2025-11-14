@@ -6,8 +6,8 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { Badge } from './Badge';
 
-interface ArmCardProps {
-  arm: {
+interface SolutionCardProps {
+  solution: {
     id: string;
     name: string;
     tagline: string;
@@ -59,10 +59,10 @@ const accentColors = {
   },
 };
 
-export function ArmCard({ arm }: ArmCardProps) {
+export function SolutionCard({ solution }: SolutionCardProps) {
   const t = useTranslations();
-  const colors = accentColors[arm.accent];
-  const href = `/arms/${arm.id}`;
+  const colors = accentColors[solution.accent];
+  const href = `/solutions/${solution.id}`;
 
   return (
     <div
@@ -70,11 +70,11 @@ export function ArmCard({ arm }: ArmCardProps) {
         'relative p-6 border rounded-xl transition-all duration-200 group',
         colors.border,
         colors.bg,
-        arm.comingSoon && 'opacity-75'
+        solution.comingSoon && 'opacity-75'
       )}
     >
       {/* Coming Soon Badge */}
-      {arm.comingSoon && (
+      {solution.comingSoon && (
         <div className="absolute top-4 right-4">
           <span className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
             {t('common.comingSoon')}
@@ -86,25 +86,25 @@ export function ArmCard({ arm }: ArmCardProps) {
       <div className="mb-6">
         <div className="flex items-start justify-between mb-3">
           <div>
-            <h3 className="text-xl font-bold text-neutral-900 mb-1">{arm.name}</h3>
+            <h3 className="text-xl font-bold text-neutral-900 mb-1">{solution.name}</h3>
             <Badge variant="by-madfam" />
           </div>
         </div>
 
-        <p className={cn('font-medium text-sm mb-3', colors.accent)}>{arm.tagline}</p>
+        <p className={cn('font-medium text-sm mb-3', colors.accent)}>{solution.tagline}</p>
 
-        <p className="text-neutral-600 text-sm leading-relaxed">{arm.description}</p>
+        <p className="text-neutral-600 text-sm leading-relaxed">{solution.description}</p>
       </div>
 
       {/* Capabilities */}
       <div className="mb-6">
         <h4 className="font-semibold text-neutral-900 text-sm mb-3">
-          {t('corporate.arms.mainCapabilities')}
+          {t('corporate.solutions.mainCapabilities')}
         </h4>
         <div className="grid grid-cols-2 gap-2">
-          {arm.capabilities.slice(0, 4).map((capability, index) => (
+          {solution.capabilities.slice(0, 4).map((capability, index) => (
             <div key={index} className="text-xs text-neutral-600 flex items-center gap-1">
-              <span className={cn('w-1.5 h-1.5 rounded-full', `bg-${arm.accent}-400`)} />
+              <span className={cn('w-1.5 h-1.5 rounded-full', `bg-${solution.accent}-400`)} />
               {capability}
             </div>
           ))}
@@ -114,10 +114,10 @@ export function ArmCard({ arm }: ArmCardProps) {
       {/* Products */}
       <div className="mb-6">
         <h4 className="font-semibold text-neutral-900 text-sm mb-3">
-          {t('corporate.arms.mainProducts')}
+          {t('corporate.solutions.mainProducts')}
         </h4>
         <div className="flex flex-wrap gap-2">
-          {arm.products.slice(0, 3).map((product, index) => (
+          {solution.products.slice(0, 3).map((product, index) => (
             <span
               key={index}
               className={cn(
@@ -136,9 +136,9 @@ export function ArmCard({ arm }: ArmCardProps) {
 
       {/* Actions */}
       <div className="flex gap-3">
-        {!arm.comingSoon && (arm.internalUrl || !arm.externalUrl) && (
+        {!solution.comingSoon && (solution.internalUrl || !solution.externalUrl) && (
           <Link
-            href={arm.internalUrl || href}
+            href={solution.internalUrl || href}
             className={cn(
               'flex-1 px-4 py-2 rounded-lg text-center text-sm font-medium transition-colors',
               colors.button
@@ -148,19 +148,19 @@ export function ArmCard({ arm }: ArmCardProps) {
           </Link>
         )}
 
-        {arm.externalUrl && !arm.comingSoon && (
+        {solution.externalUrl && !solution.comingSoon && (
           <Link
-            href={arm.externalUrl}
+            href={solution.externalUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
               'px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2',
-              arm.internalUrl
+              solution.internalUrl
                 ? 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
                 : colors.button
             )}
           >
-            {arm.internalUrl ? (
+            {solution.internalUrl ? (
               <>
                 <span>Sitio web</span>
                 <ArrowUpRightIcon className="w-4 h-4" />
@@ -174,7 +174,7 @@ export function ArmCard({ arm }: ArmCardProps) {
           </Link>
         )}
 
-        {arm.comingSoon && (
+        {solution.comingSoon && (
           <div className="flex-1 px-4 py-2 bg-neutral-100 text-neutral-500 rounded-lg text-center text-sm font-medium cursor-not-allowed">
             {t('common.comingSoon')}
           </div>

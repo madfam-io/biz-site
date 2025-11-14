@@ -10,7 +10,7 @@ import { Button, Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { AnimatedText } from '@/components/AnimatedText';
-import { ArmCard } from '@/components/corporate/ArmCard';
+import { SolutionCard } from '@/components/corporate/SolutionCard';
 import { Badge } from '@/components/corporate/Badge';
 import { ProductCard } from '@/components/corporate/ProductCard';
 import { ScrollProgress } from '@/components/ScrollProgress';
@@ -20,19 +20,19 @@ export function CorporateHomePage() {
   const locale = useLocale();
 
   // Featured Arms
-  const featuredArms = [
+  const featuredSolutions = [
     {
       id: 'aureo-labs',
       name: 'Aureo Labs',
-      tagline: t('corporate.arms.aureoLabs.tagline'),
-      description: t('corporate.arms.aureoLabs.description'),
+      tagline: t('corporate.solutions.aureoLabs.tagline'),
+      description: t('corporate.solutions.aureoLabs.description'),
       badge: t('corporate.badges.byMadfam'),
       accent: 'copper' as const,
       capabilities: [
-        t('corporate.arms.aureoLabs.capabilities.0'),
-        t('corporate.arms.aureoLabs.capabilities.1'),
-        t('corporate.arms.aureoLabs.capabilities.2'),
-        t('corporate.arms.aureoLabs.capabilities.3'),
+        t('corporate.solutions.aureoLabs.capabilities.0'),
+        t('corporate.solutions.aureoLabs.capabilities.1'),
+        t('corporate.solutions.aureoLabs.capabilities.2'),
+        t('corporate.solutions.aureoLabs.capabilities.3'),
       ],
       products: [
         { name: 'Dhanam', url: 'https://www.dhan.am' },
@@ -43,15 +43,15 @@ export function CorporateHomePage() {
     {
       id: 'primavera3d',
       name: 'Primavera3D',
-      tagline: t('corporate.arms.primavera3d.tagline'),
-      description: t('corporate.arms.primavera3d.description'),
+      tagline: t('corporate.solutions.primavera3d.tagline'),
+      description: t('corporate.solutions.primavera3d.description'),
       badge: t('corporate.badges.byMadfam'),
       accent: 'green' as const,
       capabilities: [
-        t('corporate.arms.primavera3d.capabilities.0'),
-        t('corporate.arms.primavera3d.capabilities.1'),
-        t('corporate.arms.primavera3d.capabilities.2'),
-        t('corporate.arms.primavera3d.capabilities.3'),
+        t('corporate.solutions.primavera3d.capabilities.0'),
+        t('corporate.solutions.primavera3d.capabilities.1'),
+        t('corporate.solutions.primavera3d.capabilities.2'),
+        t('corporate.solutions.primavera3d.capabilities.3'),
       ],
       products: [
         { name: 'Diseño 3D', url: '/programs#design-fabrication' },
@@ -64,11 +64,11 @@ export function CorporateHomePage() {
   const featuredProducts = [
     {
       name: 'Dhanam',
-      description: t('corporate.arms.aureoLabs.products.dhanam.description'),
-      audience: t('corporate.arms.aureoLabs.products.dhanam.audience'),
+      description: t('corporate.solutions.aureoLabs.products.dhanam.description'),
+      audience: t('corporate.solutions.aureoLabs.products.dhanam.audience'),
       badge: t('corporate.badges.aureoLabsProduct'),
       primaryCta: {
-        label: t('corporate.arms.aureoLabs.products.dhanam.cta'),
+        label: t('corporate.solutions.aureoLabs.products.dhanam.cta'),
         url: 'https://www.dhan.am',
         external: true,
       },
@@ -77,9 +77,9 @@ export function CorporateHomePage() {
         url: '/contact',
       },
       features: [
-        t('corporate.arms.aureoLabs.products.dhanam.features.0'),
-        t('corporate.arms.aureoLabs.products.dhanam.features.1'),
-        t('corporate.arms.aureoLabs.products.dhanam.features.2'),
+        t('corporate.solutions.aureoLabs.products.dhanam.features.0'),
+        t('corporate.solutions.aureoLabs.products.dhanam.features.1'),
+        t('corporate.solutions.aureoLabs.products.dhanam.features.2'),
       ],
     },
   ];
@@ -146,7 +146,7 @@ export function CorporateHomePage() {
                   size="lg"
                   className="bg-white text-neutral-900 hover:bg-neutral-100"
                 >
-                  {t('corporate.hero.viewArms')}
+                  {t('corporate.hero.viewSolutions')}
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -189,26 +189,26 @@ export function CorporateHomePage() {
         <Container>
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
-              {t('corporate.arms.title')}
+              {t('corporate.solutions.title')}
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              {t('corporate.arms.subtitle')}
+              {t('corporate.solutions.subtitle')}
             </p>
             <Badge variant="by-madfam" className="mt-4">
-              {t('corporate.arms.allByMadfam')}
+              {t('corporate.solutions.allByMadfam')}
             </Badge>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
-            {featuredArms.map(arm => (
-              <ArmCard key={arm.id} arm={arm} />
+            {featuredSolutions.map(arm => (
+              <SolutionCard key={arm.id} solution={solution} />
             ))}
           </div>
 
           <div className="text-center">
             <Link href={`/${locale}/arms`}>
               <Button variant="outline" size="lg">
-                {t('corporate.arms.viewAll')}
+                {t('corporate.solutions.viewAll')}
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </Button>
             </Link>
