@@ -236,17 +236,44 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
                 Calcular ROI
               </Button>
               {results && (
-                <div className="mt-4 p-4 bg-gradient-to-r from-sun/10 to-leaf/10 rounded-lg">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600 dark:text-gray-400">ROI Estimado</p>
-                    <p className="text-2xl font-heading font-bold text-leaf">
-                      {results.roiPercentage}%
-                    </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Ahorro mensual: {formatCurrency(results.monthlySavings)}
-                    </p>
+                <>
+                  <div className="mt-4 p-4 bg-gradient-to-r from-sun/10 to-leaf/10 rounded-lg">
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">ROI Estimado</p>
+                      <p className="text-2xl font-heading font-bold text-leaf">
+                        {results.roiPercentage}%
+                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        Ahorro mensual: {formatCurrency(results.monthlySavings)}
+                      </p>
+                    </div>
                   </div>
-                </div>
+
+                  {/* Conversion CTA - Compact */}
+                  <div className="mt-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-4 space-y-3">
+                    <div className="flex items-start gap-2">
+                      <div className="text-2xl">🚀</div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-sm text-neutral-900 mb-1">
+                          Make this ROI a reality
+                        </h4>
+                        <p className="text-xs text-neutral-600 leading-relaxed">
+                          Book a free strategy session to discuss your customized roadmap.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href="https://calendly.com/madfam/strategy-call"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors"
+                      >
+                        Book Free Call
+                      </a>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </CardContent>
@@ -362,6 +389,55 @@ export const ROICalculator = React.forwardRef<HTMLDivElement, ROICalculatorProps
                       * Estimaciones basadas en datos promedio de la industria y casos de éxito
                       previos. Los resultados pueden variar según el contexto específico de cada
                       empresa.
+                    </p>
+                  </div>
+
+                  {/* Conversion CTA */}
+                  <div className="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl">🚀</div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg text-neutral-900 mb-2">
+                          Ready to make this ROI a reality?
+                        </h3>
+                        <p className="text-sm text-neutral-600 leading-relaxed">
+                          Schedule a free 30-minute strategy session to discuss how we can help you
+                          achieve these results. We'll create a customized implementation roadmap
+                          tailored to your specific operational needs.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href="https://calendly.com/madfam/strategy-call"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                      >
+                        Book Free Strategy Call
+                        <svg
+                          className="w-4 h-4 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </a>
+                      <a
+                        href="/contact"
+                        className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-green-600 text-green-700 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                      >
+                        Contact Our Team
+                      </a>
+                    </div>
+                    <p className="text-xs text-neutral-500 text-center">
+                      No commitment required • Typical response time: 24 hours
                     </p>
                   </div>
                 </div>

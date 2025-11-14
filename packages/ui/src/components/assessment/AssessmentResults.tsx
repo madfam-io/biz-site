@@ -101,8 +101,56 @@ export function AssessmentResults({ result, translations, onRestart }: Assessmen
             </p>
           </div>
 
+          {/* Conversion CTA */}
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="text-3xl">🚀</div>
+              <div className="flex-1">
+                <h3 className="font-bold text-lg text-neutral-900 mb-2">
+                  Ready to turn these insights into action?
+                </h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  Schedule a free 30-minute strategy session with our team. We'll review your results,
+                  answer questions, and create a customized roadmap for your AI transformation journey.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="https://calendly.com/madfam/strategy-call"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors"
+              >
+                Book Free Strategy Call
+                <svg
+                  className="w-4 h-4 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </a>
+              <a
+                href="/contact"
+                className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-green-600 text-green-700 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+              >
+                Contact Our Team
+              </a>
+            </div>
+            <p className="text-xs text-neutral-500 text-center">
+              No commitment required • Typical response time: 24 hours
+            </p>
+          </div>
+
           {/* Restart Button */}
-          <Button onClick={onRestart} className="w-full">
+          <Button onClick={onRestart} variant="outline" className="w-full">
             {translations?.restartButton || 'Realizar Nueva Evaluación'}
           </Button>
         </CardContent>
