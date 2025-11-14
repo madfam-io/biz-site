@@ -444,7 +444,7 @@
 
   /* Section spacing */
   .section {
-    @apply py-section;
+    @apply py-16 md:py-20;
   }
 
   /* Gradient text */
