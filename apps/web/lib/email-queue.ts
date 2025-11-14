@@ -48,7 +48,7 @@ export class EmailQueueProcessor {
       });
 
       if (pendingEmails.length > 0) {
-        apiLogger.debug(`Processing ${pendingEmails.length} pending emails`, 'email-queue');
+        apiLogger.debug(`Processing ${pendingEmails.length} pending emails`);
       }
 
       for (const email of pendingEmails) {
@@ -94,7 +94,7 @@ export class EmailQueueProcessor {
           },
         });
 
-        apiLogger.debug(`Email sent successfully: ${email.id}`, 'email-queue');
+        apiLogger.debug(`Email sent successfully: ${email.id}`);
       } else {
         // Mark as failed
         await prisma.emailQueue.update({

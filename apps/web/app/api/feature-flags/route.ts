@@ -160,12 +160,12 @@ export async function POST(request: NextRequest) {
     // Authentication check - admin only
     const session = await getServerSession(authOptions);
     if (!session?.user) {
-      apiLogger.warn('Unauthorized feature flag creation attempt - no session', 'feature-flags');
+      apiLogger.warn('Unauthorized feature flag creation attempt - no session');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     if (session.user.role !== UserRole.ADMIN) {
-      apiLogger.warn('Unauthorized feature flag creation attempt', 'feature-flags', {
+      apiLogger.warn('Unauthorized feature flag creation attempt', {
         userId: session.user.id,
         role: session.user.role,
       });
@@ -221,12 +221,12 @@ export async function PATCH(request: NextRequest) {
     // Authentication check - admin only
     const session = await getServerSession(authOptions);
     if (!session?.user) {
-      apiLogger.warn('Unauthorized feature flag toggle attempt - no session', 'feature-flags');
+      apiLogger.warn('Unauthorized feature flag toggle attempt - no session');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     if (session.user.role !== UserRole.ADMIN) {
-      apiLogger.warn('Unauthorized feature flag toggle attempt', 'feature-flags', {
+      apiLogger.warn('Unauthorized feature flag toggle attempt', {
         userId: session.user.id,
         role: session.user.role,
       });

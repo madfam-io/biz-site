@@ -125,7 +125,7 @@ async function handlePOST(request: NextRequest) {
       },
     });
 
-    apiLogger.info('Lead captured successfully', 'leads', {
+    apiLogger.info('Lead captured successfully', {
       leadId: lead.id,
       score: lead.score,
       source: lead.source,
@@ -218,7 +218,7 @@ async function handleGET(request: NextRequest) {
     }
 
     if (!validateBearerToken(authHeader, apiSecret)) {
-      apiLogger.warn('Unauthorized leads API access attempt', 'leads', {
+      apiLogger.warn('Unauthorized leads API access attempt', {
         ip: request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip'),
       });
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
