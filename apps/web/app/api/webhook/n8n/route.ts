@@ -19,7 +19,7 @@ async function validateWebhookAuth(request: NextRequest, body: string): Promise<
   const expectedKey = process.env.N8N_API_KEY;
 
   if (!expectedKey) {
-    apiLogger.error('N8N_API_KEY not configured', new Error('Missing N8N_API_KEY'), 'webhook');
+    apiLogger.error('N8N_API_KEY not configured', new Error('Missing N8N_API_KEY'));
     return false;
   }
 
@@ -333,7 +333,7 @@ export async function GET(request: NextRequest) {
       ],
     });
   } catch (error) {
-    apiLogger.error('Webhook health check error', error as Error, 'webhook');
+    apiLogger.error('Webhook health check error', error as Error);
     return NextResponse.json({ error: 'Health check failed' }, { status: 500 });
   }
 }

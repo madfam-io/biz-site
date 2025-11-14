@@ -206,7 +206,7 @@ export async function GET(request: NextRequest) {
       totalQuestions: assessmentQuestions.length,
     });
   } catch (error) {
-    apiLogger.error('Error fetching assessment', error as Error, 'assessment');
+    apiLogger.error('Error fetching assessment', error as Error);
     return NextResponse.json({ error: 'Failed to fetch assessment' }, { status: 500 });
   }
 }
@@ -308,7 +308,7 @@ async function handlePOST(request: NextRequest) {
           },
         }),
       }).catch((error) => {
-        apiLogger.error('Failed to trigger n8n webhook for assessment', error, 'assessment', {
+        apiLogger.error('Failed to trigger n8n webhook for assessment', error, {
           assessmentId: assessment.id,
         });
       });
@@ -338,7 +338,7 @@ async function handlePOST(request: NextRequest) {
       );
     }
 
-    apiLogger.error('Assessment submission error', error as Error, 'assessment');
+    apiLogger.error('Assessment submission error', error as Error);
     return NextResponse.json(
       {
         success: false,
