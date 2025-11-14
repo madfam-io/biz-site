@@ -65,7 +65,7 @@ export class EmailQueueProcessor {
         await this.processEmail(emailItem);
       }
     } catch (error) {
-      apiLogger.error('Email queue processing error', error as Error, 'email-queue');
+      apiLogger.error('Email queue processing error', error as Error);
     } finally {
       this.isProcessing = false;
     }
@@ -105,10 +105,10 @@ export class EmailQueueProcessor {
           },
         });
 
-        apiLogger.error(`Email failed: ${email.id}`, new Error('Mock email failed'), 'email-queue');
+        apiLogger.error(`Email failed: ${email.id}`, new Error('Mock email failed'));
       }
     } catch (error) {
-      apiLogger.error(`Email processing error for ${email.id}`, error as Error, 'email-queue');
+      apiLogger.error(`Email processing error for ${email.id}`, error as Error);
 
       // Mark as failed
       await prisma.emailQueue.update({

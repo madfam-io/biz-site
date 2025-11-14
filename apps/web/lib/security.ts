@@ -21,7 +21,7 @@ export function timingSafeEqual(a: string, b: string): boolean {
 
     return crypto.timingSafeEqual(bufferA, bufferB);
   } catch (error) {
-    apiLogger.error('Error in timing-safe comparison', error as Error, 'security');
+    apiLogger.error('Error in timing-safe comparison', error as Error);
     return false;
   }
 }

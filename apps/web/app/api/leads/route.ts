@@ -165,7 +165,7 @@ async function handlePOST(request: NextRequest) {
           },
         }),
       }).catch((error) => {
-        apiLogger.error('Failed to trigger n8n webhook', error, 'leads', {
+        apiLogger.error('Failed to trigger n8n webhook', error, {
           leadId: lead.id,
         });
       });
@@ -194,7 +194,7 @@ async function handlePOST(request: NextRequest) {
       );
     }
 
-    apiLogger.error('Lead creation error', error as Error, 'leads');
+    apiLogger.error('Lead creation error', error as Error);
     return NextResponse.json(
       {
         success: false,
@@ -213,7 +213,7 @@ async function handleGET(request: NextRequest) {
     const apiSecret = process.env.API_SECRET;
 
     if (!apiSecret) {
-      apiLogger.error('API_SECRET not configured', new Error('Missing API_SECRET'), 'leads');
+      apiLogger.error('API_SECRET not configured', new Error('Missing API_SECRET'));
       return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
     }
 
@@ -264,7 +264,7 @@ async function handleGET(request: NextRequest) {
       totalPages: Math.ceil(total / limit),
     });
   } catch (error) {
-    apiLogger.error('Error fetching leads', error as Error, 'leads');
+    apiLogger.error('Error fetching leads', error as Error);
     return NextResponse.json({ error: 'Failed to fetch leads' }, { status: 500 });
   }
 }

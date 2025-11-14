@@ -329,7 +329,7 @@ export async function POST(request: NextRequest) {
           },
         }),
       }).catch((error) => {
-        apiLogger.error('Failed to trigger n8n webhook for calculation', error, 'calculator', {
+        apiLogger.error('Failed to trigger n8n webhook for calculation', error, {
           calculationId: calculation.id,
         });
       });
@@ -354,7 +354,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    apiLogger.error('Calculator processing error', error as Error, 'calculator');
+    apiLogger.error('Calculator processing error', error as Error);
     return NextResponse.json(
       {
         success: false,
@@ -387,7 +387,7 @@ export async function GET(request: NextRequest) {
       calculation,
     });
   } catch (error) {
-    apiLogger.error('Error fetching calculation', error as Error, 'calculator');
+    apiLogger.error('Error fetching calculation', error as Error);
     return NextResponse.json({ error: 'Failed to fetch calculation' }, { status: 500 });
   }
 }

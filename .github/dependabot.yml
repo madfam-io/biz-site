@@ -1,0 +1,122 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "madfam-io/developers"
+    assignees:
+      - "madfam-io/developers"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "automated"
+    ignore:
+      # Ignore major version updates for these packages
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "ci"
+      - "automated"
+
+  # Enable version updates for apps/web
+  - package-ecosystem: "npm"
+    directory: "/apps/web"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(web)"
+    labels:
+      - "dependencies"
+      - "web"
+      - "automated"
+
+  # Enable version updates for packages
+  - package-ecosystem: "npm"
+    directory: "/packages/ui"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    commit-message:
+      prefix: "chore(ui)"
+    labels:
+      - "dependencies"
+      - "packages"
+      - "automated"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/core"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    commit-message:
+      prefix: "chore(core)"
+    labels:
+      - "dependencies"
+      - "packages"
+      - "automated"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/i18n"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    commit-message:
+      prefix: "chore(i18n)"
+    labels:
+      - "dependencies"
+      - "packages"
+      - "automated"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/analytics"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    commit-message:
+      prefix: "chore(analytics)"
+    labels:
+      - "dependencies"
+      - "packages"
+      - "automated"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/email"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    commit-message:
+      prefix: "chore(email)"
+    labels:
+      - "dependencies"
+      - "packages"
+      - "automated"

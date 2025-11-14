@@ -154,6 +154,7 @@ if (typeof window === 'undefined') {
     console.warn('⚠️  Server started with invalid environment variables.');
     console.warn('⚠️  Some features may not work correctly.');
   } else {
+    // eslint-disable-next-line no-console
     console.log('✅ Server environment variables validated successfully');
   }
 }

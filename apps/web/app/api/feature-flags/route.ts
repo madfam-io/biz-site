@@ -149,7 +149,7 @@ export async function GET(request: NextRequest) {
       });
     }
   } catch (error) {
-    apiLogger.error('Error fetching feature flags', error as Error, 'feature-flags');
+    apiLogger.error('Error fetching feature flags', error as Error);
     return NextResponse.json({ error: 'Failed to fetch feature flags' }, { status: 500 });
   }
 }
@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
     }
-    apiLogger.error('Error creating/updating feature flag', error as Error, 'feature-flags');
+    apiLogger.error('Error creating/updating feature flag', error as Error);
     return NextResponse.json({ error: 'Failed to create/update feature flag' }, { status: 500 });
   }
 }
@@ -280,7 +280,7 @@ export async function PATCH(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 });
     }
-    apiLogger.error('Error toggling feature flag', error as Error, 'feature-flags');
+    apiLogger.error('Error toggling feature flag', error as Error);
     return NextResponse.json({ error: 'Failed to toggle feature flag' }, { status: 500 });
   }
 }
