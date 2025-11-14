@@ -35,11 +35,15 @@ jobs:
       - name: Run security audit (Critical only)
         run: |
           echo "🔒 Checking for CRITICAL vulnerabilities..."
-          if pnpm audit --audit-level critical --json > audit-critical.json 2>&1; then
+          pnpm audit --json > audit-results.json || true
+
+          CRITICAL_COUNT=$(node -e "const data = require('./audit-results.json'); console.log(data.metadata?.vulnerabilities?.critical || 0)")
+
+          if [ "$CRITICAL_COUNT" -eq 0 ]; then
             echo "✅ No critical vulnerabilities found"
           else
-            echo "❌ CRITICAL vulnerabilities detected!"
-            cat audit-critical.json
+            echo "❌ CRITICAL vulnerabilities detected: $CRITICAL_COUNT"
+            cat audit-results.json
             exit 1
           fi
           
