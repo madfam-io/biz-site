@@ -1,5 +1,18 @@
 'use client';
 
+/**
+ * Simple Lead Capture Form - Web App Specific Implementation
+ *
+ * This is a SIMPLIFIED, single-step form optimized for the main website.
+ * Includes web-app specific analytics integration and staging environment handling.
+ *
+ * Note: This is NOT a duplicate of @madfam/ui LeadForm
+ * - @madfam/ui LeadForm: Multi-step, feature-rich, reusable component
+ * - This component: Simple, single-step, web-app specific with custom analytics
+ *
+ * Both serve different purposes and are intentionally separate implementations.
+ */
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFormTracking, useConversionTracking, useErrorTracking } from '@madfam/analytics';
 import { logger } from '@madfam/core';
