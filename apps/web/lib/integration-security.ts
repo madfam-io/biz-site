@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client';
-import { encryptData, decryptData } from './security';
-import { apiLogger } from './logger';
 import { env } from './env';
+import { apiLogger } from './logger';
+import { encryptData, decryptData } from './security';
 
 /**
  * Integration Security Layer
@@ -95,7 +95,11 @@ export function decryptIntegrationData(encryptedData: {
  * Create integration with encrypted data
  */
 export async function createEncryptedIntegration(
-  prisma: any,
+  prisma: {
+    integration: {
+      create: (args: { data: Record<string, unknown> }) => Promise<unknown>;
+    };
+  },
   data: {
     name: string;
     enabled?: boolean;
@@ -124,7 +128,15 @@ export async function createEncryptedIntegration(
  * Update integration with encrypted data
  */
 export async function updateEncryptedIntegration(
-  prisma: any,
+  prisma: {
+    integration: {
+      findUnique: (args: { where: { id: string } }) => Promise<{
+        config: Prisma.JsonValue;
+        apiKey: string | null;
+      } | null>;
+      update: (args: { where: { id: string }; data: Record<string, unknown> }) => Promise<unknown>;
+    };
+  },
   id: string,
   data: {
     name?: string;
@@ -134,7 +146,7 @@ export async function updateEncryptedIntegration(
     apiKey?: string;
   }
 ) {
-  const updateData: any = {};
+  const updateData: Record<string, unknown> = {};
 
   if (data.name !== undefined) updateData.name = data.name;
   if (data.enabled !== undefined) updateData.enabled = data.enabled;
@@ -174,7 +186,23 @@ export async function updateEncryptedIntegration(
 /**
  * Get integration with decrypted data
  */
-export async function getDecryptedIntegration(prisma: any, nameOrId: string) {
+export async function getDecryptedIntegration(
+  prisma: {
+    integration: {
+      findFirst: (args: {
+        where: {
+          OR: Array<{ id: string } | { name: string }>;
+        };
+      }) => Promise<{
+        id: string;
+        name: string;
+        config: Prisma.JsonValue;
+        apiKey: string | null;
+      } | null>;
+    };
+  },
+  nameOrId: string
+) {
   const integration = await prisma.integration.findFirst({
     where: {
       OR: [

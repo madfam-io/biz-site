@@ -4,8 +4,8 @@ import type { NextAuthOptions } from 'next-auth';
 import type { Adapter } from 'next-auth/adapters';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { UserRole } from '@/lib/prisma-types';
-import { generateCsrfToken } from './security';
 import { prisma } from './prisma';
+import { generateCsrfToken } from './security';
 
 /**
  * NextAuth configuration
