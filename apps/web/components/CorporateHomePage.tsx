@@ -9,15 +9,19 @@ import {
 import { Button, Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import { useState } from 'react';
 import { AnimatedText } from '@/components/AnimatedText';
 import { SolutionCard } from '@/components/corporate/SolutionCard';
 import { Badge } from '@/components/corporate/Badge';
 import { ProductCard } from '@/components/corporate/ProductCard';
 import { ScrollProgress } from '@/components/ScrollProgress';
+import { PersonaSelector, usePersonaContent, type Persona } from '@/components/PersonaSelector';
 
 export function CorporateHomePage() {
   const t = useTranslations();
   const locale = useLocale();
+  const [selectedPersona, setSelectedPersona] = useState<Persona>('default');
+  const personaContent = usePersonaContent(selectedPersona);
 
   // Featured Arms
   const featuredSolutions = [
@@ -121,6 +125,11 @@ export function CorporateHomePage() {
 
         <Container className="relative z-10">
           <div className="max-w-5xl">
+            {/* Persona Selector */}
+            <div className="mb-8 max-w-md animate-fade-up">
+              <PersonaSelector onPersonaChange={setSelectedPersona} />
+            </div>
+
             <AnimatedText variant="fadeUp" className="mb-8">
               <div className="mb-4">
                 <Badge
@@ -131,22 +140,42 @@ export function CorporateHomePage() {
                 </Badge>
               </div>
               <Heading level={1} className="text-white mb-6 relative">
-                <span className="relative z-10">{t('corporate.hero.title')}</span>
+                <span className="relative z-10">{personaContent.title}</span>
                 <span className="absolute -inset-1 bg-gradient-to-r from-[#2c8136]/10 to-[#58326f]/10 blur-lg" />
               </Heading>
               <p className="text-xl text-white/90 mb-8 max-w-4xl leading-relaxed">
-                {t('corporate.hero.subtitle')}
+                {personaContent.subtitle}
               </p>
+
+              {/* Persona-specific benefits */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                {personaContent.benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-start gap-2 text-white/80">
+                    <svg
+                      className="w-5 h-5 text-[#2c8136] flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-sm">{benefit}</span>
+                  </div>
+                ))}
+              </div>
             </AnimatedText>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-up animation-delay-400">
-              <Link href={`/${locale}/assessment`}>
+              <Link href={`/${locale}${personaContent.recommendedPath}`}>
                 <Button
                   variant="secondary"
                   size="lg"
                   className="bg-white text-neutral-900 hover:bg-neutral-100"
                 >
-                  {t('corporate.hero.takeAssessment')}
+                  {personaContent.primaryCTA}
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -156,7 +185,7 @@ export function CorporateHomePage() {
                   size="lg"
                   className="border-white text-white hover:bg-white/10"
                 >
-                  {t('corporate.hero.exploreProducts')}
+                  {personaContent.secondaryCTA}
                 </Button>
               </Link>
             </div>
