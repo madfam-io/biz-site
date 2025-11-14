@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Register custom colors for Tailwind v4 utilities */
+  --color-sun: #FFD93D;
+  --color-leaf: #6BCB77;
+  --color-lavender: #9B59B6;
+  --color-obsidian: #0A0E27;
+  --color-pearl: #FAFAFA;
+  --color-surface: #FAFAFA;
+}
 
 @layer base {
   :root {
