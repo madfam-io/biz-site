@@ -1,7 +1,7 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { getPublishedCaseStudies, type CaseStudy } from '@/lib/cms';
 import { environment } from '@/lib/environment';
 
@@ -92,7 +92,6 @@ export default async function CaseStudiesPage({
 }: {
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations('caseStudies');
 
   // Fetch case studies from CMS or use fallback data

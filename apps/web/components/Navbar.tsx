@@ -41,7 +41,7 @@ export function Navbar() {
 
   // Refs
   const lastScrollY = useRef(0);
-  const dropdownTimeout = useRef<NodeJS.Timeout>();
+  const dropdownTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
 
   // Scroll handling with hide/show behavior
   const { scrollY } = useScroll();

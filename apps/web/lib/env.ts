@@ -64,9 +64,9 @@ const clientEnvSchema = z.object({
   NEXT_PUBLIC_ENV: z.enum(['development', 'staging', 'production']).optional().default('development'),
   NEXT_PUBLIC_FEATURE_FLAGS_ENABLED: z
     .string()
-    .transform(val => val === 'true')
     .optional()
-    .default('true'),
+    .default('true')
+    .transform(val => val === 'true'),
   NEXT_PUBLIC_PLAUSIBLE_DOMAIN: z.string().optional(),
   NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
   NEXT_PUBLIC_RECAPTCHA_SITE_KEY: z.string().optional(),
@@ -83,13 +83,13 @@ export function validateServerEnv() {
     return { success: true as const, data: parsed };
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const missingVars = error.errors.map(err => `  - ${err.path.join('.')}: ${err.message}`).join('\n');
+      const missingVars = error.issues.map(err => `  - ${err.path.join('.')}: ${err.message}`).join('\n');
 
       console.error('❌ Invalid server environment variables:');
       console.error(missingVars);
       console.error('\nPlease check your .env file and ensure all required variables are set.');
 
-      return { success: false as const, error: error.errors };
+      return { success: false as const, error: error.issues };
     }
     throw error;
   }
@@ -105,12 +105,12 @@ export function validateClientEnv() {
     return { success: true as const, data: parsed };
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const missingVars = error.errors.map(err => `  - ${err.path.join('.')}: ${err.message}`).join('\n');
+      const missingVars = error.issues.map(err => `  - ${err.path.join('.')}: ${err.message}`).join('\n');
 
       console.error('❌ Invalid client environment variables:');
       console.error(missingVars);
 
-      return { success: false as const, error: error.errors };
+      return { success: false as const, error: error.issues };
     }
     throw error;
   }

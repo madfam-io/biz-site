@@ -1,7 +1,6 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
 const guides = [
   {
@@ -103,7 +102,6 @@ const guides = [
 ];
 
 export default function GuidesPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = useTranslations('guides');
   
   const difficultyColors = {

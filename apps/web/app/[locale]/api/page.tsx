@@ -1,7 +1,6 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
 const apiEndpoints = [
   {
@@ -108,7 +107,6 @@ const response = await fetch('https://api.madfam.io/api/assessment', {
 };
 
 export default function ApiPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = useTranslations('api');
   
   return (

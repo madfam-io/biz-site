@@ -1,7 +1,7 @@
 import { Container } from '@madfam/ui';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { Badge } from '@/components/corporate/Badge';
 import { ProductCard } from '@/components/corporate/ProductCard';
 
@@ -28,7 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductsPage({ params }: Props) {
-  unstable_setRequestLocale(params.locale);
   const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
 
   // All products with ownership badges

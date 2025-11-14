@@ -1,7 +1,7 @@
 import { getLocalizedContent, type Locale } from '@madfam/i18n';
 import { Container, Heading, Button } from '@madfam/ui';
 import Link from 'next/link';
-import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
 interface TeamMember {
   name: string;
@@ -33,7 +33,6 @@ interface Milestone {
 }
 
 export default async function AboutPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations('about');
   const corporateT = await getTranslations('corporate');
   const currentLocale = locale as Locale;

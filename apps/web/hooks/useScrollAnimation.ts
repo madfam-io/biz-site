@@ -12,7 +12,7 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
 ) {
   const { threshold = 0.1, once = true } = options;
   const ref = useRef<T>(null);
-  const isInView = useInView(ref, { once, amount: threshold });
+  const isInView = useInView(ref as React.RefObject<Element>, { once, amount: threshold });
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export function useStaggeredReveal<T extends HTMLElement = HTMLDivElement>(
   staggerDelay: number = 0.1
 ) {
   const containerRef = useRef<T>(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+  const isInView = useInView(containerRef as React.RefObject<Element>, { once: true, amount: 0.2 });
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
 
   useEffect(() => {

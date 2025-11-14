@@ -1,5 +1,5 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { UserRole } from '@prisma/client';
+import { UserRole } from '@/lib/prisma-types';
 import bcrypt from 'bcryptjs';
 import type { NextAuthOptions } from 'next-auth';
 import type { Adapter } from 'next-auth/adapters';

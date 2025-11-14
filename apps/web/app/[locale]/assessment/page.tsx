@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { AssessmentClient } from '@/components/AssessmentClient';
 
 interface AssessmentPageProps {
@@ -20,7 +20,6 @@ export async function generateMetadata({
 }
 
 export default async function AssessmentPage({ params: { locale } }: AssessmentPageProps) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations('assessment');
   const tCommon = await getTranslations('common');
 

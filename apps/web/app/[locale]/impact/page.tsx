@@ -1,6 +1,6 @@
 import { Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
-import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const t = await getTranslations({ locale: params.locale, namespace: 'impact' });
@@ -19,7 +19,6 @@ interface SDGMapping {
 }
 
 export default async function ImpactPage({ params: { locale } }: { params: { locale: string } }) {
-  unstable_setRequestLocale(locale);
   const t = await getTranslations('impact');
   const corporateT = await getTranslations('corporate');
 
