@@ -172,8 +172,8 @@ importers:
         specifier: ^7.48.2
         version: 7.48.2(react@18.3.1)
       tailwind-merge:
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^3.4.0
+        version: 3.4.0
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -339,8 +339,8 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       tailwind-merge:
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^3.4.0
+        version: 3.4.0
     devDependencies:
       '@types/react':
         specifier: ^18.2.48
@@ -13285,10 +13285,8 @@ packages:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
     dev: false
 
-  /tailwind-merge@2.2.0:
-    resolution: {integrity: sha512-SqqhhaL0T06SW59+JVNfAqKdqLs0497esifRrZ7jOaefP3o64fdFNDMrAQWZFMxTLJPiHVjRLUywT8uFz1xNWQ==}
-    dependencies:
-      '@babel/runtime': 7.27.6
+  /tailwind-merge@3.4.0:
+    resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
     dev: false
 
   /tailwindcss@3.4.1:
