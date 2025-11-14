@@ -1,15 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { cn } from '@madfam/ui';
+import { useState, useEffect } from 'react';
 
-export type Persona =
-  | 'ceo'
-  | 'cfo'
-  | 'cto'
-  | 'designer'
-  | 'educator'
-  | 'default';
+export type Persona = 'ceo' | 'cfo' | 'cto' | 'designer' | 'educator' | 'default';
 
 interface PersonaSelectorProps {
   onPersonaChange?: (persona: Persona) => void;
@@ -74,9 +68,7 @@ export function PersonaSelector({ onPersonaChange, className }: PersonaSelectorP
   return (
     <div className={cn('relative', className)}>
       {/* Label */}
-      <label className="block text-sm font-medium text-neutral-700 mb-2">
-        I'm a...
-      </label>
+      <label className="block text-sm font-medium text-neutral-700 mb-2">I&apos;m a...</label>
 
       {/* Dropdown Button */}
       <button
@@ -109,10 +101,7 @@ export function PersonaSelector({ onPersonaChange, className }: PersonaSelectorP
           )}
         </div>
         <svg
-          className={cn(
-            'w-5 h-5 text-neutral-500 transition-transform',
-            isOpen && 'rotate-180'
-          )}
+          className={cn('w-5 h-5 text-neutral-500 transition-transform', isOpen && 'rotate-180')}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -125,14 +114,11 @@ export function PersonaSelector({ onPersonaChange, className }: PersonaSelectorP
       {isOpen && (
         <>
           {/* Backdrop */}
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setIsOpen(false)}
-          />
+          <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
 
           {/* Menu */}
           <div className="absolute z-20 w-full mt-2 bg-white border-2 border-neutral-200 rounded-xl shadow-xl overflow-hidden">
-            {personas.map((persona) => (
+            {personas.map(persona => (
               <button
                 key={persona.id}
                 type="button"
@@ -150,11 +136,7 @@ export function PersonaSelector({ onPersonaChange, className }: PersonaSelectorP
                   <div className="text-xs text-neutral-500">{persona.description}</div>
                 </div>
                 {selectedPersona === persona.id && (
-                  <svg
-                    className="w-5 h-5 text-green-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
+                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                     <path
                       fillRule="evenodd"
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -176,7 +158,8 @@ export function usePersonaContent(persona: Persona) {
   const content = {
     ceo: {
       title: 'Transform Operations with AI—Drive Strategic Growth',
-      subtitle: 'Leverage intelligent systems to amplify efficiency, accelerate innovation, and unlock new revenue streams across your organization.',
+      subtitle:
+        'Leverage intelligent systems to amplify efficiency, accelerate innovation, and unlock new revenue streams across your organization.',
       primaryCTA: 'View Strategic Roadmap',
       secondaryCTA: 'Calculate ROI',
       benefits: [
@@ -189,7 +172,8 @@ export function usePersonaContent(persona: Persona) {
     },
     cfo: {
       title: 'Optimize Costs & Maximize ROI with AI',
-      subtitle: 'Turn operational expenses into strategic investments. Our AI solutions deliver measurable cost reductions and efficiency gains from day one.',
+      subtitle:
+        'Turn operational expenses into strategic investments. Our AI solutions deliver measurable cost reductions and efficiency gains from day one.',
       primaryCTA: 'Calculate Your ROI',
       secondaryCTA: 'View Pricing',
       benefits: [
@@ -202,7 +186,8 @@ export function usePersonaContent(persona: Persona) {
     },
     cto: {
       title: 'Build Scalable AI Infrastructure—From POC to Production',
-      subtitle: 'Enterprise-grade AI platforms that integrate seamlessly with your existing tech stack. Built for scale, security, and developer productivity.',
+      subtitle:
+        'Enterprise-grade AI platforms that integrate seamlessly with your existing tech stack. Built for scale, security, and developer productivity.',
       primaryCTA: 'Explore Technical Docs',
       secondaryCTA: 'Book Technical Demo',
       benefits: [
@@ -215,7 +200,8 @@ export function usePersonaContent(persona: Persona) {
     },
     designer: {
       title: 'Amplify Creativity with AI-Powered Digital Fabrication',
-      subtitle: 'From concept to physical prototype in record time. Intelligent tools that optimize designs, estimate costs, and streamline production.',
+      subtitle:
+        'From concept to physical prototype in record time. Intelligent tools that optimize designs, estimate costs, and streamline production.',
       primaryCTA: 'Explore Primavera3D',
       secondaryCTA: 'Try Forge Sight',
       benefits: [
@@ -228,7 +214,8 @@ export function usePersonaContent(persona: Persona) {
     },
     educator: {
       title: 'Empower the Next Generation with AI Education',
-      subtitle: 'Comprehensive AI training programs, certifications, and innovation labs designed for educational institutions and research teams.',
+      subtitle:
+        'Comprehensive AI training programs, certifications, and innovation labs designed for educational institutions and research teams.',
       primaryCTA: 'Explore Co-Labs',
       secondaryCTA: 'View Programs',
       benefits: [
@@ -241,7 +228,8 @@ export function usePersonaContent(persona: Persona) {
     },
     default: {
       title: 'Transform Operations with AI—From Strategy to Production',
-      subtitle: 'We turn operational challenges into regenerative growth through intelligent systems that optimize efficiency, close material loops, and amplify human creativity across LATAM.',
+      subtitle:
+        'We turn operational challenges into regenerative growth through intelligent systems that optimize efficiency, close material loops, and amplify human creativity across LATAM.',
       primaryCTA: 'Take AI Assessment',
       secondaryCTA: 'Explore Solutions',
       benefits: [

@@ -11,11 +11,11 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 import { AnimatedText } from '@/components/AnimatedText';
-import { SolutionCard } from '@/components/corporate/SolutionCard';
 import { Badge } from '@/components/corporate/Badge';
 import { ProductCard } from '@/components/corporate/ProductCard';
-import { ScrollProgress } from '@/components/ScrollProgress';
+import { SolutionCard } from '@/components/corporate/SolutionCard';
 import { PersonaSelector, usePersonaContent, type Persona } from '@/components/PersonaSelector';
+import { ScrollProgress } from '@/components/ScrollProgress';
 
 export function CorporateHomePage() {
   const t = useTranslations();
@@ -213,7 +213,8 @@ export function CorporateHomePage() {
               Find Your Solution
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              Choose your path—explore product demos, get strategic guidance, or discover custom solutions
+              Choose your path—explore product demos, get strategic guidance, or discover custom
+              solutions
             </p>
           </div>
 
@@ -260,9 +261,7 @@ export function CorporateHomePage() {
               className="group p-8 border-2 border-purple-200 rounded-2xl hover:border-purple-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-50/50 to-white"
             >
               <div className="text-5xl mb-6">🤔</div>
-              <h3 className="font-bold text-xl mb-3 text-neutral-900">
-                Not sure what you need?
-              </h3>
+              <h3 className="font-bold text-xl mb-3 text-neutral-900">Not sure what you need?</h3>
               <p className="text-sm text-neutral-600 mb-6 leading-relaxed">
                 Take our 3-minute AI assessment to discover the right solution for you
               </p>
