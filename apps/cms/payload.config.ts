@@ -4,14 +4,14 @@ import { postgresAdapter } from '@payloadcms/db-postgres';
 import { slateEditor } from '@payloadcms/richtext-slate';
 
 // Collections
-import { Products } from './src/collections/Products.js';
-import { CaseStudies } from './src/collections/CaseStudies.js';
-import { BlogPosts } from './src/collections/BlogPosts.js';
-import { Resources } from './src/collections/Resources.js';
-import { TeamMembers } from './src/collections/TeamMembers.js';
-import { Testimonials } from './src/collections/Testimonials.js';
-import { Users } from './src/collections/Users.js';
-import { Media } from './src/collections/Media.js';
+import { Products } from './src/collections/Products.ts';
+import { CaseStudies } from './src/collections/CaseStudies.ts';
+import { BlogPosts } from './src/collections/BlogPosts.ts';
+import { Resources } from './src/collections/Resources.ts';
+import { TeamMembers } from './src/collections/TeamMembers.ts';
+import { Testimonials } from './src/collections/Testimonials.ts';
+import { Users } from './src/collections/Users.ts';
+import { Media } from './src/collections/Media.ts';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3001',
