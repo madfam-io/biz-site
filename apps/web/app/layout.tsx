@@ -41,14 +41,12 @@ export const viewport = {
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
 }) {
   return (
     <html
-      lang={params.locale}
+      suppressHydrationWarning
       className={`${inter.variable} ${poppins.variable} ${spaceMono.variable}`}
     >
       <head>
