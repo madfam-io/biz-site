@@ -5,7 +5,7 @@ import { TranslationList } from '@/components/TranslationList';
 // Force dynamic rendering to bypass SSG issue
 export const dynamic = 'force-dynamic';
 
-export default async function TermsPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function TermsPage({ params: { locale: _locale } }: { params: { locale: string } }) {
   const t = await getTranslations('legal');
 
   return (

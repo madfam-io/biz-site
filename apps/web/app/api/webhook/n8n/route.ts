@@ -1,7 +1,7 @@
-import { LeadStatus } from '@/lib/prisma-types';
 import { NextRequest, NextResponse } from 'next/server';
 import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
+import { LeadStatus } from '@/lib/prisma-types';
 import { validateWebhookSignature, timingSafeEqual } from '@/lib/security';
 import type {
   WebhookEvent,

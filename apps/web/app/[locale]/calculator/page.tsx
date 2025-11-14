@@ -17,7 +17,7 @@ export async function generateMetadata({
 }
 
 export default async function CalculatorPage({
-  params: { locale },
+  params: { locale: _locale },
 }: {
   params: { locale: string };
 }) {

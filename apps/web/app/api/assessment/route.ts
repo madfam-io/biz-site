@@ -1,9 +1,9 @@
 import { analytics } from '@madfam/analytics';
-import { AssessmentStatus } from '@/lib/prisma-types';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
+import { AssessmentStatus } from '@/lib/prisma-types';
 import { withRateLimit } from '@/lib/rate-limit';
 
 // Assessment question types

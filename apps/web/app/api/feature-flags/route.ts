@@ -1,11 +1,11 @@
 import { FeatureFlagProvider } from '@madfam/core';
-import { UserRole } from '@/lib/prisma-types';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { z } from 'zod';
 import { authOptions } from '@/lib/auth';
 import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
+import { UserRole } from '@/lib/prisma-types';
 
 // Input validation schemas
 const CreateFlagSchema = z.object({

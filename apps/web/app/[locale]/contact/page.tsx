@@ -2,7 +2,7 @@ import { Container, Heading, Card, CardContent } from '@madfam/ui';
 import { getTranslations } from 'next-intl/server';
 import { LeadForm } from '@/components/LeadForm';
 
-export default async function ContactPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ContactPage({ params: { locale: _locale } }: { params: { locale: string } }) {
   const t = await getTranslations();
 
   return (

@@ -101,7 +101,7 @@ const guides = [
   },
 ];
 
-export default function GuidesPage({ params: { locale } }: { params: { locale: string } }) {
+export default function GuidesPage({ params: { locale: _locale } }: { params: { locale: string } }) {
   const t = useTranslations('guides');
   
   const difficultyColors = {
