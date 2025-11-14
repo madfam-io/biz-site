@@ -3,11 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { z } from 'zod';
 import { authOptions } from '@/lib/auth';
+import { withCsrfProtection } from '@/lib/csrf';
 import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { AssessmentStatus } from '@/lib/prisma-types';
 import { withRateLimit } from '@/lib/rate-limit';
-import { withCsrfProtection } from '@/lib/csrf';
 
 // Assessment question types
 interface AssessmentQuestion {

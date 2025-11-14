@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { generateCsrfToken } from '@/lib/security';
 import { apiLogger } from '@/lib/logger';
+import { generateCsrfToken } from '@/lib/security';
 
 /**
  * GET /api/csrf-token
  * Returns a CSRF token for the current session
  */
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const session = await getServerSession(authOptions);
 

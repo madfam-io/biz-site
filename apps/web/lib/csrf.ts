@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './auth';
-import { validateCsrfToken } from './security';
 import { apiLogger } from './logger';
+import { validateCsrfToken } from './security';
 
 /**
  * CSRF Protection Middleware
@@ -12,7 +12,7 @@ export async function withCsrfProtection(
   request: Request,
   handler: () => Promise<NextResponse>
 ): Promise<NextResponse> {
-  const method = request.method;
+  const { method } = request;
 
   // Only validate CSRF for state-changing methods
   if (!['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
@@ -54,7 +54,7 @@ export async function withCsrfProtection(
  */
 export function requiresCsrfProtection(request: Request): boolean {
   const url = new URL(request.url);
-  const method = request.method;
+  const { method } = request;
 
   // Only protect state-changing methods
   if (!['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
