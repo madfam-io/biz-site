@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
-    "build": "cross-env NODE_ENV=production payload build",
+    "build": "echo 'Payload v3 does not require a separate build step'",
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "generate:types": "payload generate:types",
     "generate:schema": "payload generate:graphQLSchema"
