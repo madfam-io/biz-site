@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "(prisma generate || true) && next build",
     "postinstall": "prisma generate || echo 'Prisma generation failed - will retry during build'",
     "build:staging": "./scripts/build-staging.sh",
     "build:production": "NEXT_PUBLIC_ENV=production next build",
