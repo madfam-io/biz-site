@@ -1,10 +1,13 @@
 import { analytics } from '@madfam/analytics';
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
 import { z } from 'zod';
+import { authOptions } from '@/lib/auth';
 import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { AssessmentStatus } from '@/lib/prisma-types';
 import { withRateLimit } from '@/lib/rate-limit';
+import { withCsrfProtection } from '@/lib/csrf';
 
 // Assessment question types
 interface AssessmentQuestion {
@@ -175,6 +178,9 @@ export async function GET(request: NextRequest) {
     const assessmentId = searchParams.get('assessmentId');
 
     if (assessmentId) {
+      // Get session for authorization
+      const session = await getServerSession(authOptions);
+
       // Fetch existing assessment results
       const assessment = await prisma.assessment.findUnique({
         where: { id: assessmentId },
@@ -192,6 +198,35 @@ export async function GET(request: NextRequest) {
 
       if (!assessment) {
         return NextResponse.json({ error: 'Assessment not found' }, { status: 404 });
+      }
+
+      // Authorization: Verify user owns this assessment or is an admin
+      if (!session) {
+        apiLogger.warn('Unauthorized assessment access attempt', {
+          assessmentId,
+          ip: request.headers.get('x-forwarded-for')?.split(',')[0],
+        });
+        return NextResponse.json(
+          { error: 'Authentication required' },
+          { status: 401 }
+        );
+      }
+
+      // Check if user owns this assessment (via lead email) or is admin
+      const userEmail = session.user?.email;
+      const isAdmin = session.user?.role === 'ADMIN';
+      const ownsAssessment = assessment.lead?.email === userEmail;
+
+      if (!ownsAssessment && !isAdmin) {
+        apiLogger.warn('Forbidden assessment access attempt', {
+          assessmentId,
+          userEmail,
+          leadEmail: assessment.lead?.email,
+        });
+        return NextResponse.json(
+          { error: 'You do not have permission to access this assessment' },
+          { status: 403 }
+        );
       }
 
       return NextResponse.json({
@@ -349,5 +384,10 @@ async function handlePOST(request: NextRequest) {
   }
 }
 
+// Compose POST handler with CSRF protection and rate limiting
+const handlePOSTWithSecurity = async (request: NextRequest) => {
+  return withCsrfProtection(request, () => handlePOST(request));
+};
+
 // Apply rate limiting
-export const POST = withRateLimit(handlePOST, { maxRequests: 5, windowMs: 60000 }); // 5 assessments per minute
+export const POST = withRateLimit(handlePOSTWithSecurity, { maxRequests: 5, windowMs: 60000 }); // 5 assessments per minute

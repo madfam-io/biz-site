@@ -4,6 +4,7 @@ import type { NextAuthOptions } from 'next-auth';
 import type { Adapter } from 'next-auth/adapters';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { UserRole } from '@/lib/prisma-types';
+import { generateCsrfToken } from './security';
 import { prisma } from './prisma';
 
 /**
@@ -16,6 +17,18 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   session: {
     strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  cookies: {
+    sessionToken: {
+      name: `${process.env.NODE_ENV === 'production' ? '__Secure-' : ''}next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      },
+    },
   },
   pages: {
     signIn: '/auth/signin',
@@ -61,11 +74,17 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user) {
         token.id = user.id;
         token.role = (user as { role?: UserRole }).role || UserRole.VIEWER;
       }
+
+      // Generate CSRF token on sign in or if not present
+      if (!token.csrfToken || trigger === 'signIn') {
+        token.csrfToken = generateCsrfToken();
+      }
+
       return token;
     },
     async session({ session, token }) {
@@ -73,6 +92,10 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id as string;
         session.user.role = token.role as UserRole;
       }
+
+      // Add CSRF token to session
+      session.csrfToken = token.csrfToken as string;
+
       return session;
     },
   },
@@ -92,6 +115,7 @@ declare module 'next-auth' {
       name?: string | null;
       image?: string | null;
     };
+    csrfToken: string;
   }
 }
 
@@ -99,5 +123,6 @@ declare module 'next-auth/jwt' {
   interface JWT {
     id: string;
     role: UserRole;
+    csrfToken: string;
   }
 }

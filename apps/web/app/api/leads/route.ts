@@ -1,6 +1,7 @@
 import { analytics } from '@madfam/analytics';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { withCsrfProtection } from '@/lib/csrf';
 import { apiLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { LeadSource, LeadStatus } from '@/lib/prisma-types';
@@ -269,6 +270,11 @@ async function handleGET(request: NextRequest) {
   }
 }
 
+// Compose POST handler with CSRF protection and rate limiting
+const handlePOSTWithSecurity = async (request: NextRequest) => {
+  return withCsrfProtection(request, () => handlePOST(request));
+};
+
 // Apply rate limiting to exports
-export const POST = withRateLimit(handlePOST, { maxRequests: 10, windowMs: 60000 }); // 10 requests per minute
+export const POST = withRateLimit(handlePOSTWithSecurity, { maxRequests: 10, windowMs: 60000 }); // 10 requests per minute
 export const GET = withRateLimit(handleGET, { maxRequests: 100, windowMs: 60000 }); // 100 requests per minute

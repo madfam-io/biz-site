@@ -109,3 +109,84 @@ export function isValidApiKeyFormat(apiKey: string): boolean {
   // API keys should be at least 32 characters and contain only alphanumeric and basic special chars
   return /^[a-zA-Z0-9_\-]{32,}$/.test(apiKey);
 }
+
+/**
+ * CSRF Protection
+ */
+
+/**
+ * Generate a CSRF token
+ */
+export function generateCsrfToken(): string {
+  return generateSecureToken(32);
+}
+
+/**
+ * Validate CSRF token from request headers
+ */
+export function validateCsrfToken(request: Request, sessionToken: string | null): boolean {
+  if (!sessionToken) {
+    return false;
+  }
+
+  // Get CSRF token from header
+  const csrfToken = request.headers.get('x-csrf-token') || request.headers.get('X-CSRF-Token');
+
+  if (!csrfToken) {
+    return false;
+  }
+
+  return timingSafeEqual(csrfToken, sessionToken);
+}
+
+/**
+ * Encrypt sensitive data using AES-256-GCM
+ */
+export function encryptData(data: string, key: string): { encrypted: string; iv: string; tag: string } {
+  // Derive a 32-byte key from the provided key
+  const derivedKey = crypto.createHash('sha256').update(key).digest();
+
+  // Generate a random IV
+  const iv = crypto.randomBytes(16);
+
+  // Create cipher
+  const cipher = crypto.createCipheriv('aes-256-gcm', derivedKey, iv);
+
+  // Encrypt the data
+  let encrypted = cipher.update(data, 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+
+  // Get the auth tag
+  const tag = cipher.getAuthTag();
+
+  return {
+    encrypted,
+    iv: iv.toString('hex'),
+    tag: tag.toString('hex'),
+  };
+}
+
+/**
+ * Decrypt sensitive data using AES-256-GCM
+ */
+export function decryptData(encrypted: string, iv: string, tag: string, key: string): string {
+  try {
+    // Derive a 32-byte key from the provided key
+    const derivedKey = crypto.createHash('sha256').update(key).digest();
+
+    // Create decipher
+    const decipher = crypto.createDecipheriv('aes-256-gcm', derivedKey, Buffer.from(iv, 'hex'));
+
+    // Set the auth tag
+    decipher.setAuthTag(Buffer.from(tag, 'hex'));
+
+    // Decrypt the data
+    let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+
+    return decrypted;
+  } catch (error) {
+    apiLogger.error('Error decrypting data', error as Error);
+    throw new Error('Decryption failed');
+  }
+}
