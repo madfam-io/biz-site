@@ -140,23 +140,23 @@ export function CorporateHomePage() {
             </AnimatedText>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-up animation-delay-400">
-              <Link href={`/${locale}/arms`}>
+              <Link href={`/${locale}/assessment`}>
                 <Button
                   variant="secondary"
                   size="lg"
                   className="bg-white text-neutral-900 hover:bg-neutral-100"
                 >
-                  {t('corporate.hero.viewSolutions')}
+                  {t('corporate.hero.takeAssessment')}
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link href={`/${locale}/products`}>
+              <Link href="#find-solution">
                 <Button
                   variant="outline"
                   size="lg"
                   className="border-white text-white hover:bg-white/10"
                 >
-                  {t('corporate.hero.viewProducts')}
+                  {t('corporate.hero.exploreProducts')}
                 </Button>
               </Link>
             </div>
@@ -176,7 +176,103 @@ export function CorporateHomePage() {
         </Container>
       </section>
 
-      {/* Operating Arms Section */}
+      {/* Find Your Solution - Decision Tree */}
+      <section id="find-solution" className="py-20 bg-white">
+        <Container>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+              Find Your Solution
+            </h2>
+            <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+              Choose your path—explore product demos, get strategic guidance, or discover custom solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Forge Sight */}
+            <a
+              href="https://www.forgesight.quest"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group p-8 border-2 border-green-200 rounded-2xl hover:border-green-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50/50 to-white"
+            >
+              <div className="text-5xl mb-6">🏭</div>
+              <h3 className="font-bold text-xl mb-3 text-neutral-900">
+                Need pricing intelligence?
+              </h3>
+              <p className="text-sm text-neutral-600 mb-6 leading-relaxed">
+                For digital fabrication, 3D printing & manufacturing procurement teams
+              </p>
+              <div className="flex items-center text-green-600 font-semibold group-hover:translate-x-2 transition-transform">
+                Try Forge Sight Demo
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </div>
+            </a>
+
+            {/* Dhanam */}
+            <a
+              href="https://www.dhan.am"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group p-8 border-2 border-blue-200 rounded-2xl hover:border-blue-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50/50 to-white"
+            >
+              <div className="text-5xl mb-6">💰</div>
+              <h3 className="font-bold text-xl mb-3 text-neutral-900">
+                Need financial wellness tools?
+              </h3>
+              <p className="text-sm text-neutral-600 mb-6 leading-relaxed">
+                For individuals, families & financial advisors seeking AI-powered insights
+              </p>
+              <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform">
+                Try Dhanam Demo
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </div>
+            </a>
+
+            {/* AI Assessment */}
+            <Link
+              href={`/${locale}/assessment`}
+              className="group p-8 border-2 border-purple-200 rounded-2xl hover:border-purple-400 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-50/50 to-white"
+            >
+              <div className="text-5xl mb-6">🤔</div>
+              <h3 className="font-bold text-xl mb-3 text-neutral-900">
+                Not sure what you need?
+              </h3>
+              <p className="text-sm text-neutral-600 mb-6 leading-relaxed">
+                Take our 3-minute AI assessment to discover the right solution for you
+              </p>
+              <div className="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+                Start AI Assessment
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </div>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Trusted By - Client Logos Placeholder */}
+      <section className="py-12 bg-neutral-50 border-y border-neutral-200">
+        <Container>
+          <p className="text-center text-sm text-neutral-600 mb-8 font-medium">
+            Trusted by 50+ LATAM enterprises building regenerative futures
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center max-w-4xl mx-auto">
+            {[1, 2, 3, 4].map(i => (
+              <div
+                key={i}
+                className="h-20 bg-neutral-200/50 rounded-lg flex items-center justify-center border border-neutral-300/50 grayscale opacity-60 hover:opacity-80 transition-opacity"
+              >
+                <span className="text-neutral-400 font-medium text-sm">Client Logo {i}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-neutral-500 mt-6">
+            Logo placeholders - Replace with actual client logos
+          </p>
+        </Container>
+      </section>
+
+      {/* Our Solutions Section */}
       <section className="py-20 bg-neutral-50 relative">
         {/* Subtle pattern overlay */}
         <div
@@ -200,13 +296,13 @@ export function CorporateHomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
-            {featuredSolutions.map(arm => (
-              <SolutionCard key={arm.id} solution={solution} />
+            {featuredSolutions.map(solution => (
+              <SolutionCard key={solution.id} solution={solution} />
             ))}
           </div>
 
           <div className="text-center">
-            <Link href={`/${locale}/arms`}>
+            <Link href={`/${locale}/solutions`}>
               <Button variant="outline" size="lg">
                 {t('corporate.solutions.viewAll')}
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
