@@ -121,15 +121,13 @@ export class EmailQueueProcessor {
   }
 
   async queueEmail(to: string[], template: string, data: Record<string, unknown>): Promise<string> {
-    // Ensure data is properly formatted as a Prisma JSON object
-    const jsonData: Record<string, unknown> = data as Record<string, unknown>;
-
     const email = await prisma.emailQueue.create({
       data: {
         to,
         subject: `Template: ${template}`, // Will be replaced by actual subject
         template,
-        data: jsonData,
+        // Ensure data is JSON-serializable by parsing and stringifying
+        data: JSON.parse(JSON.stringify(data)),
         status: 'pending',
         attempts: 0,
       },
