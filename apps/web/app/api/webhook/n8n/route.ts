@@ -30,7 +30,7 @@ async function validateWebhookAuth(request: NextRequest, body: string): Promise<
     });
 
     if (!isValid) {
-      apiLogger.warn('Invalid webhook signature', 'webhook', {
+      apiLogger.warn('Invalid webhook signature', {
         ip: request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip'),
       });
     }
@@ -43,7 +43,7 @@ async function validateWebhookAuth(request: NextRequest, body: string): Promise<
     const isValid = timingSafeEqual(apiKey, expectedKey);
 
     if (!isValid) {
-      apiLogger.warn('Invalid webhook API key', 'webhook', {
+      apiLogger.warn('Invalid webhook API key', {
         ip: request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip'),
       });
     }
@@ -51,7 +51,7 @@ async function validateWebhookAuth(request: NextRequest, body: string): Promise<
     return isValid;
   }
 
-  apiLogger.warn('Webhook authentication missing both signature and API key', 'webhook');
+  apiLogger.warn('Webhook authentication missing both signature and API key');
   return false;
 }
 
@@ -91,9 +91,9 @@ async function handleLeadStatusUpdate(data: LeadStatusUpdateData) {
       });
     }
 
-    apiLogger.info('Lead status updated', 'webhook', { leadId: data.leadId, status: data.newStatus });
+    apiLogger.info('Lead status updated', { leadId: data.leadId, status: data.newStatus });
   } catch (error) {
-    apiLogger.error('Failed to handle lead status update', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle lead status update', error as Error, { data });
     throw error;
   }
 }
@@ -124,9 +124,9 @@ async function handleEmailEvent(data: EmailEventData) {
       },
     });
 
-    apiLogger.info('Email event recorded', 'webhook', { leadId, type });
+    apiLogger.info('Email event recorded', { leadId, type });
   } catch (error) {
-    apiLogger.error('Failed to handle email event', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle email event', error as Error, { data });
     throw error;
   }
 }
@@ -156,9 +156,9 @@ async function handleCRMSync(data: CRMSyncData) {
       },
     });
 
-    apiLogger.info('CRM sync recorded', 'webhook', { leadId, crmId, action });
+    apiLogger.info('CRM sync recorded', { leadId, crmId, action });
   } catch (error) {
-    apiLogger.error('Failed to handle CRM sync', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle CRM sync', error as Error, { data });
     throw error;
   }
 }
@@ -190,9 +190,9 @@ async function handleMeetingScheduled(data: MeetingScheduledData) {
       },
     });
 
-    apiLogger.info('Meeting scheduled', 'webhook', { leadId, meetingId, scheduledAt });
+    apiLogger.info('Meeting scheduled', { leadId, meetingId, scheduledAt });
   } catch (error) {
-    apiLogger.error('Failed to handle meeting scheduled', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle meeting scheduled', error as Error, { data });
     throw error;
   }
 }
@@ -223,9 +223,9 @@ async function handleIntegrationUpdate(data: IntegrationUpdateData) {
       },
     });
 
-    apiLogger.info('Integration updated', 'webhook', { name, status });
+    apiLogger.info('Integration updated', { name, status });
   } catch (error) {
-    apiLogger.error('Failed to handle integration update', error as Error, 'webhook', { data });
+    apiLogger.error('Failed to handle integration update', error as Error, { data });
     throw error;
   }
 }
@@ -246,7 +246,7 @@ export async function POST(request: NextRequest) {
 
     const event: WebhookEvent = body;
 
-    apiLogger.debug('Received webhook event', 'webhook', { event: event.event });
+    apiLogger.debug('Received webhook event', { event: event.event });
 
     // Route to appropriate handler
     switch (event.event) {
@@ -276,7 +276,7 @@ export async function POST(request: NextRequest) {
         break;
 
       default:
-        apiLogger.warn('Unknown webhook event', 'webhook', { event: event.event });
+        apiLogger.warn('Unknown webhook event', { event: event.event });
         // Still return success to avoid retries
         return NextResponse.json({
           success: true,
@@ -292,8 +292,7 @@ export async function POST(request: NextRequest) {
     const isJsonError = error instanceof SyntaxError;
     apiLogger.error(
       isJsonError ? 'Invalid JSON in webhook payload' : 'Webhook processing error',
-      error as Error,
-      'webhook'
+      error as Error
     );
     return NextResponse.json(
       {

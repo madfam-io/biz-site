@@ -35,7 +35,7 @@ export function validateBearerToken(authHeader: string | null, expectedSecret: s
   }
 
   const match = authHeader.match(/^Bearer\s+(.+)$/i);
-  if (!match) {
+  if (!match || !match[1]) {
     return false;
   }
 
