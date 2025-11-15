@@ -6,11 +6,12 @@ import { Badge } from '@/components/corporate/Badge';
 import { ProductCard } from '@/components/corporate/ProductCard';
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.products' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'corporate.products' });
 
   return {
     title: t('meta.title') || 'Productos | MADFAM',
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductsPage({ params }: Props) {
-  const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
+  const { locale } = await params;
+  const commonT = await getTranslations({ locale, namespace: 'common' });
 
   // All products with ownership badges
   const products = [

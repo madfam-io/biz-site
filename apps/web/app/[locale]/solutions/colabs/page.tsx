@@ -11,12 +11,13 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: params.locale,
+    locale,
     namespace: 'corporate.solutions.colabs',
   });
 
@@ -32,7 +33,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ColabsPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions' });
+  const { locale } = await params;
+
+  const t = await getTranslations({ locale, namespace: 'corporate.solutions' });
 
   const capabilities = [
     {
@@ -103,7 +106,7 @@ export default async function ColabsPage({ params }: Props) {
       {/* Navigation */}
       <div className="container mx-auto px-4 py-4">
         <Link
-          href={`/${params.locale}/solutions`}
+          href={`/${locale}/solutions`}
           className="inline-flex items-center gap-2 text-neutral-600 hover:text-neutral-900 transition-colors"
         >
           <ArrowLeftIcon className="w-4 h-4" />
@@ -130,7 +133,7 @@ export default async function ColabsPage({ params }: Props) {
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href={`/${params.locale}/contact`}
+                href={`/${locale}/contact`}
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
               >
                 Iniciar colaboración
@@ -303,7 +306,7 @@ export default async function ColabsPage({ params }: Props) {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href={`/${params.locale}/contact`}
+              href={`/${locale}/contact`}
               className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium"
             >
               Iniciar colaboración

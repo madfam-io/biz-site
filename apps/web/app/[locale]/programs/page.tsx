@@ -5,11 +5,12 @@ import { Badge } from '@/components/corporate/Badge';
 import { ProgramCard } from '@/components/corporate/ProgramCard';
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.programs' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'corporate.programs' });
 
   return {
     title: t('meta.title'),
@@ -23,8 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProgramsPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.programs' });
-  const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'corporate.programs' });
+  const commonT = await getTranslations({ locale, namespace: 'common' });
 
   // Programs
   const programs = [

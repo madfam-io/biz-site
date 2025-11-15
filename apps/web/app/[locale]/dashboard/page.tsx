@@ -3,11 +3,8 @@ import { getServerSession } from 'next-auth';
 import { DashboardContent } from '@/components/DashboardContent';
 import { authOptions } from '@/lib/auth';
 
-export default async function DashboardPage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export default async function DashboardPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const session = await getServerSession(authOptions);
 
   if (!session) {

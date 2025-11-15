@@ -5,10 +5,11 @@ import { getTranslations } from 'next-intl/server';
 import { ROICalculator } from '@/components/ROICalculator';
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale });
 
   return {
@@ -17,11 +18,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function CalculatorPage({
-  params: { locale: _locale },
-}: {
-  params: { locale: string };
-}) {
+export default async function CalculatorPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
   const t = await getTranslations();
   return (
     <main className="py-section">

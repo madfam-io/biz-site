@@ -6,11 +6,12 @@ import { Badge } from '@/components/corporate/Badge';
 import { ProductCard } from '@/components/corporate/ProductCard';
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions.aureoLabs' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'corporate.solutions.aureoLabs' });
 
   return {
     title: t('meta.title'),
@@ -24,8 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function AureoLabsPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions.aureoLabs' });
-  const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
+  const { locale } = await params;
+
+  const t = await getTranslations({ locale, namespace: 'corporate.solutions.aureoLabs' });
+  const commonT = await getTranslations({ locale, namespace: 'common' });
 
   const products = [
     {

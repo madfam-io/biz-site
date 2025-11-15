@@ -87,11 +87,8 @@ const fallbackCaseStudies: CommonCaseStudy[] = [
   },
 ];
 
-export default async function CaseStudiesPage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export default async function CaseStudiesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('caseStudies');
 
   // Fetch case studies from CMS or use fallback data

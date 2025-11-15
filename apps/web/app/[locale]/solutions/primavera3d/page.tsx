@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: params.locale,
+    locale,
     namespace: 'corporate.solutions.primavera3d',
   });
 
@@ -25,7 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Primavera3DPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions' });
+  const { locale } = await params;
+
+  const t = await getTranslations({ locale, namespace: 'corporate.solutions' });
 
   const capabilities = [
     t('primavera3d.capabilities.0'),
@@ -62,7 +65,7 @@ export default async function Primavera3DPage({ params }: Props) {
       {/* Navigation */}
       <div className="container mx-auto px-4 py-4">
         <Link
-          href={`/${params.locale}/solutions`}
+          href={`/${locale}/solutions`}
           className="inline-flex items-center gap-2 text-neutral-600 hover:text-neutral-900 transition-colors"
         >
           <ArrowLeftIcon className="w-4 h-4" />
@@ -99,7 +102,7 @@ export default async function Primavera3DPage({ params }: Props) {
               </Link>
 
               <Link
-                href={`/${params.locale}/contact`}
+                href={`/${locale}/contact`}
                 className="inline-flex items-center px-6 py-3 bg-neutral-100 text-neutral-700 rounded-lg hover:bg-neutral-200 transition-colors font-medium"
               >
                 Solicitar cotización
@@ -172,7 +175,7 @@ export default async function Primavera3DPage({ params }: Props) {
               <ArrowUpRightIcon className="w-5 h-5" />
             </Link>
             <Link
-              href={`/${params.locale}/contact`}
+              href={`/${locale}/contact`}
               className="inline-flex items-center px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors font-medium"
             >
               Contactar ahora

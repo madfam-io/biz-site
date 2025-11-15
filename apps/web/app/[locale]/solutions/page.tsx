@@ -3,11 +3,12 @@ import { getTranslations } from 'next-intl/server';
 import { SolutionCard } from '@/components/corporate/SolutionCard';
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'corporate.solutions' });
 
   return {
     title: t('meta.title'),
@@ -21,7 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SolutionsPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions' });
+  const { locale } = await params;
+
+  const t = await getTranslations({ locale, namespace: 'corporate.solutions' });
 
   const solutions = [
     {
