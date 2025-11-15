@@ -2,7 +2,8 @@ import { Container, Heading, Card, CardContent } from '@madfam/ui';
 import { getTranslations } from 'next-intl/server';
 import { LeadForm } from '@/components/LeadForm';
 
-export default async function ContactPage({ params: { locale: _locale } }: { params: { locale: string } }) {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
   const t = await getTranslations();
 
   return (
@@ -59,7 +60,10 @@ export default async function ContactPage({ params: { locale: _locale } }: { par
                     </div>
                     <div>
                       <p className="font-medium">{t('common.metadata.whatsapp')}</p>
-                      <a href="https://api.whatsapp.com/send?phone=525534106519" className="text-leaf hover:underline">
+                      <a
+                        href="https://api.whatsapp.com/send?phone=525534106519"
+                        className="text-leaf hover:underline"
+                      >
                         +52 55 3410 6519
                       </a>
                     </div>

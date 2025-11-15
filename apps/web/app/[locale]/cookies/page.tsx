@@ -1,8 +1,9 @@
 import { Container, Heading } from '@madfam/ui';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function CookiesPage({ params: { locale: _locale } }: { params: { locale: string } }) {
-  const t = useTranslations('cookies');
+export default async function CookiesPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
+  const t = await getTranslations('cookies');
 
   return (
     <main className="min-h-screen py-20">

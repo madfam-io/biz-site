@@ -1,6 +1,7 @@
 import { ShowcaseContent } from '@/components/ShowcaseContent';
 
-export default function ShowcasePage({ params: { locale: _locale } }: { params: { locale: string } }) {
-  
+export default async function ShowcasePage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
+
   return <ShowcaseContent />;
 }

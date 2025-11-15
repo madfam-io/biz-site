@@ -1,6 +1,6 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 const guides = [
   {
@@ -15,7 +15,7 @@ const guides = [
       },
       {
         title: 'Platform Overview',
-        description: 'Understanding MADFAM\'s service architecture and capabilities',
+        description: "Understanding MADFAM's service architecture and capabilities",
         duration: '15 min',
         difficulty: 'Beginner',
       },
@@ -101,15 +101,18 @@ const guides = [
   },
 ];
 
-export default function GuidesPage({ params: { locale: _locale } }: { params: { locale: string } }) {
-  const t = useTranslations('guides');
-  
+export default async function GuidesPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
+  const t = await getTranslations('guides');
+
   const difficultyColors = {
-    [t('difficulty.beginner')]: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
-    [t('difficulty.intermediate')]: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400',
+    [t('difficulty.beginner')]:
+      'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
+    [t('difficulty.intermediate')]:
+      'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400',
     [t('difficulty.advanced')]: 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400',
   };
-  
+
   return (
     <main className="min-h-screen py-20">
       <Container>
@@ -132,10 +135,8 @@ export default function GuidesPage({ params: { locale: _locale } }: { params: { 
             <Heading level={3} className="mb-2">
               {t('featured.title')}
             </Heading>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              {t('featured.description')}
-            </p>
-            <Link 
+            <p className="text-gray-600 dark:text-gray-400 mb-4">{t('featured.description')}</p>
+            <Link
               href="/guides/complete-integration"
               className="inline-flex items-center text-lavender hover:text-lavender/80 font-medium"
             >
@@ -157,27 +158,47 @@ export default function GuidesPage({ params: { locale: _locale } }: { params: { 
                       <div className="flex items-start justify-between mb-3">
                         <h3 className="font-bold text-lg">{guide.title}</h3>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-400 mb-4">
-                        {guide.description}
-                      </p>
+                      <p className="text-gray-600 dark:text-gray-400 mb-4">{guide.description}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 text-sm">
                           <span className="flex items-center gap-1 text-gray-500">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <svg
+                              className="w-4 h-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
                             </svg>
                             {guide.duration}
                           </span>
-                          <span className={`px-2 py-1 rounded text-xs font-medium ${difficultyColors[guide.difficulty as keyof typeof difficultyColors]}`}>
+                          <span
+                            className={`px-2 py-1 rounded text-xs font-medium ${difficultyColors[guide.difficulty as keyof typeof difficultyColors]}`}
+                          >
                             {guide.difficulty}
                           </span>
                         </div>
-                        <Link 
+                        <Link
                           href={`/guides/${guide.title.toLowerCase().replace(/\s+/g, '-')}`}
                           className="text-lavender hover:text-lavender/80"
                         >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
                           </svg>
                         </Link>
                       </div>
@@ -206,7 +227,12 @@ export default function GuidesPage({ params: { locale: _locale } }: { params: { 
               >
                 {t('videoTutorials.watchYoutube')}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
                 </svg>
               </Link>
             </Card>

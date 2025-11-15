@@ -1,10 +1,11 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function DocsPage({ params: { locale: _locale } }: { params: { locale: string } }) {
-  const t = useTranslations('docs');
-  
+export default async function DocsPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
+  const t = await getTranslations('docs');
+
   const documentationSections = [
     {
       title: t('categories.gettingStarted.title'),
@@ -92,9 +93,7 @@ export default function DocsPage({ params: { locale: _locale } }: { params: { lo
                 <Heading level={3} className="mb-2">
                   {section.title}
                 </Heading>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {section.description}
-                </p>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">{section.description}</p>
                 <ul className="space-y-2">
                   {section.items.map((item, itemIndex) => (
                     <li key={itemIndex}>
@@ -127,7 +126,7 @@ export default function DocsPage({ params: { locale: _locale } }: { params: { lo
                 'Data Security',
                 'Integration',
                 'Migration',
-              ].map((topic) => (
+              ].map(topic => (
                 <Link
                   key={topic}
                   href={`/docs/${topic.toLowerCase().replace(' ', '-')}`}
@@ -144,9 +143,7 @@ export default function DocsPage({ params: { locale: _locale } }: { params: { lo
             <Heading level={3} className="mb-4">
               {t('needHelp.title')}
             </Heading>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              {t('needHelp.subtitle')}
-            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">{t('needHelp.subtitle')}</p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"

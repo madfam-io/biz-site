@@ -1,10 +1,7 @@
 import { SignInForm } from '@/components/SignInForm';
 
-export default function SignInPage({
-  params: { locale: _locale }
-}: {
-  params: { locale: string };
-}) {
+export default async function SignInPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
 
   return <SignInForm />;
 }
