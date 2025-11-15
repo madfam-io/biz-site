@@ -96,7 +96,7 @@ const nextConfig = {
 
     // Spanish rewrites - main pages (es → localized routes)
     rewrites.push(
-      { source: '/es/unidades', destination: '/es/arms' },
+      { source: '/es/soluciones', destination: '/es/solutions' },
       { source: '/es/productos', destination: '/es/products' },
       { source: '/es/programas', destination: '/es/programs' },
       { source: '/es/casos', destination: '/es/work' },
@@ -107,15 +107,15 @@ const nextConfig = {
 
     // Spanish rewrites - corporate structure
     rewrites.push(
-      { source: '/es/unidades/aureo-labs', destination: '/es/arms/aureo-labs' },
-      { source: '/es/unidades/primavera3d', destination: '/es/arms/primavera3d' },
-      { source: '/es/unidades/colabs', destination: '/es/arms/colabs' },
-      { source: '/es/unidades/showtech', destination: '/es/arms/showtech' }
+      { source: '/es/soluciones/aureo-labs', destination: '/es/solutions/aureo-labs' },
+      { source: '/es/soluciones/primavera3d', destination: '/es/solutions/primavera3d' },
+      { source: '/es/soluciones/colabs', destination: '/es/solutions/colabs' },
+      { source: '/es/soluciones/showtech', destination: '/es/solutions/showtech' }
     );
 
     // Portuguese rewrites - main pages (pt → localized routes)
     rewrites.push(
-      { source: '/pt/unidades', destination: '/pt/arms' },
+      { source: '/pt/solucoes', destination: '/pt/solutions' },
       { source: '/pt/produtos', destination: '/pt/products' },
       { source: '/pt/programas', destination: '/pt/programs' },
       { source: '/pt/casos', destination: '/pt/work' },
@@ -137,10 +137,10 @@ const nextConfig = {
 
     // Portuguese rewrites - corporate structure
     rewrites.push(
-      { source: '/pt/unidades/aureo-labs', destination: '/pt/arms/aureo-labs' },
-      { source: '/pt/unidades/primavera3d', destination: '/pt/arms/primavera3d' },
-      { source: '/pt/unidades/colabs', destination: '/pt/arms/colabs' },
-      { source: '/pt/unidades/showtech', destination: '/pt/arms/showtech' }
+      { source: '/pt/solucoes/aureo-labs', destination: '/pt/solutions/aureo-labs' },
+      { source: '/pt/solucoes/primavera3d', destination: '/pt/solutions/primavera3d' },
+      { source: '/pt/solucoes/colabs', destination: '/pt/solutions/colabs' },
+      { source: '/pt/solucoes/showtech', destination: '/pt/solutions/showtech' }
     );
 
     return rewrites;
