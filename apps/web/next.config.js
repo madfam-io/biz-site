@@ -5,7 +5,6 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   transpilePackages: ['@madfam/ui', '@madfam/core', '@madfam/analytics', '@madfam/i18n'],
 
   // Use static export only for GitHub Pages
@@ -228,24 +227,25 @@ const nextConfig = {
     ];
   },
 
+  // Next.js 15+ external packages configuration
+  serverExternalPackages: ['@prisma/client'],
+
   experimental: {
     optimizeCss: false, // Disabled to avoid critters dependency issue
     scrollRestoration: true,
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
     serverMinification: true,
     optimizePackageImports: ['framer-motion', 'lucide-react'],
-    serverComponentsExternalPackages: ['@prisma/client'],
   },
 
-  // Enable Next.js 15 performance features
-  outputFileTracing: true,
+  // Turbopack configuration for Next.js 15+
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
 };
 
 module.exports = withNextIntl(nextConfig);
