@@ -15,10 +15,10 @@ export const dynamicParams = true; // Allow dynamic params not generated at buil
 export const dynamic = 'force-static'; // Force static generation where possible
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     locale: string;
     slug: string;
-  };
+  }>;
 }
 
 interface GenerateStaticParamsProps {
@@ -184,9 +184,8 @@ export async function generateStaticParams(): Promise<GenerateStaticParamsProps[
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({
-  params: { locale, slug },
-}: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { locale, slug } = await params;
   let post: BlogPost | null = null;
 
   // Try to fetch from CMS first
@@ -267,7 +266,8 @@ function calculateReadTime(content: string): string {
   return `${minutes} min read`;
 }
 
-export default async function BlogPostPage({ params: { locale, slug } }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { locale, slug } = await params;
   const t = await getTranslations('blog');
 
   // Fetch blog post with enhanced fallback handling
