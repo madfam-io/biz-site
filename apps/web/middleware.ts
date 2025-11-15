@@ -10,7 +10,7 @@ const intlMiddleware = createIntlMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  // Run the intl middleware for es and en routes
+  // Let next-intl middleware handle all routing including root path
   const response = intlMiddleware(request);
 
   // Add security headers

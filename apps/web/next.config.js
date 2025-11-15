@@ -29,6 +29,23 @@ const nextConfig = {
 
   // Webpack optimizations for production
   webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+    // Suppress Edge Runtime warnings for React 19 compatibility
+    // These warnings are non-breaking - React uses process.emit internally but
+    // it's not actually called in our Edge Runtime middleware
+    if (nextRuntime === 'edge') {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        // Provide empty stubs for Node.js modules in Edge Runtime
+        process: false,
+      };
+
+      // Suppress the specific warnings about Node.js API usage
+      config.ignoreWarnings = [
+        ...(config.ignoreWarnings || []),
+        /A Node.js API is used \(process\.emit/,
+      ];
+    }
+
     if (!dev) {
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
