@@ -3,14 +3,13 @@ import { getTranslations } from 'next-intl/server';
 import { AssessmentClient } from '@/components/AssessmentClient';
 
 interface AssessmentPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({
-  params: { locale },
-}: AssessmentPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: AssessmentPageProps): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'assessment' });
 
   return {
@@ -19,7 +18,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function AssessmentPage({ params: { locale } }: AssessmentPageProps) {
+export default async function AssessmentPage({ params }: AssessmentPageProps) {
+  const { locale } = await params;
   const t = await getTranslations('assessment');
   const tCommon = await getTranslations('common');
 
