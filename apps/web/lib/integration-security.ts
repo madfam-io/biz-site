@@ -1,4 +1,3 @@
-import { Prisma } from '@prisma/client';
 import { env } from './env';
 import { apiLogger } from './logger';
 import { encryptData, decryptData } from './security';
@@ -7,6 +6,9 @@ import { encryptData, decryptData } from './security';
  * Integration Security Layer
  * Handles encryption/decryption of sensitive integration data
  */
+
+// Fallback type for JsonValue when Prisma client is not generated
+type JsonValue = string | number | boolean | null | { [key: string]: JsonValue } | JsonValue[];
 
 interface EncryptedIntegrationData {
   config: {
@@ -25,7 +27,7 @@ interface EncryptedIntegrationData {
  * Encrypt integration config and API key before storing
  */
 export function encryptIntegrationData(data: {
-  config: Prisma.JsonValue;
+  config: JsonValue;
   apiKey?: string | null;
 }): EncryptedIntegrationData {
   const encryptionKey = env.ENCRYPTION_KEY;
@@ -35,9 +37,7 @@ export function encryptIntegrationData(data: {
   const encryptedConfig = encryptData(configString, encryptionKey);
 
   // Encrypt API key if provided
-  const encryptedApiKey = data.apiKey
-    ? encryptData(data.apiKey, encryptionKey)
-    : undefined;
+  const encryptedApiKey = data.apiKey ? encryptData(data.apiKey, encryptionKey) : undefined;
 
   return {
     config: encryptedConfig,
@@ -49,10 +49,10 @@ export function encryptIntegrationData(data: {
  * Decrypt integration config and API key after retrieval
  */
 export function decryptIntegrationData(encryptedData: {
-  config: Prisma.JsonValue;
+  config: JsonValue;
   apiKey?: string | null;
 }): {
-  config: Prisma.JsonValue;
+  config: JsonValue;
   apiKey?: string | null;
 } {
   try {
@@ -71,14 +71,12 @@ export function decryptIntegrationData(encryptedData: {
     const decryptedConfig = JSON.parse(decryptedConfigString);
 
     // Decrypt API key if present
-    const apiKeyData = encryptedData.apiKey as EncryptedIntegrationData['apiKey'] | null | undefined;
+    const apiKeyData = encryptedData.apiKey as
+      | EncryptedIntegrationData['apiKey']
+      | null
+      | undefined;
     const decryptedApiKey = apiKeyData
-      ? decryptData(
-          apiKeyData.encrypted,
-          apiKeyData.iv,
-          apiKeyData.tag,
-          encryptionKey
-        )
+      ? decryptData(apiKeyData.encrypted, apiKeyData.iv, apiKeyData.tag, encryptionKey)
       : null;
 
     return {
@@ -103,7 +101,7 @@ export async function createEncryptedIntegration(
   data: {
     name: string;
     enabled?: boolean;
-    config: Prisma.JsonValue;
+    config: JsonValue;
     webhookUrl?: string;
     apiKey?: string;
   }
@@ -131,7 +129,7 @@ export async function updateEncryptedIntegration(
   prisma: {
     integration: {
       findUnique: (args: { where: { id: string } }) => Promise<{
-        config: Prisma.JsonValue;
+        config: JsonValue;
         apiKey: string | null;
       } | null>;
       update: (args: { where: { id: string }; data: Record<string, unknown> }) => Promise<unknown>;
@@ -141,7 +139,7 @@ export async function updateEncryptedIntegration(
   data: {
     name?: string;
     enabled?: boolean;
-    config?: Prisma.JsonValue;
+    config?: JsonValue;
     webhookUrl?: string;
     apiKey?: string;
   }
@@ -158,12 +156,18 @@ export async function updateEncryptedIntegration(
     const current = await prisma.integration.findUnique({ where: { id } });
 
     const toEncrypt = {
-      config: data.config !== undefined ? data.config : (
-        current?.config ? decryptIntegrationData({ config: current.config, apiKey: null }).config : {}
-      ),
-      apiKey: data.apiKey !== undefined ? data.apiKey : (
-        current?.apiKey ? decryptIntegrationData({ config: {}, apiKey: current.apiKey }).apiKey : null
-      ),
+      config:
+        data.config !== undefined
+          ? data.config
+          : current?.config
+            ? decryptIntegrationData({ config: current.config, apiKey: null }).config
+            : {},
+      apiKey:
+        data.apiKey !== undefined
+          ? data.apiKey
+          : current?.apiKey
+            ? decryptIntegrationData({ config: {}, apiKey: current.apiKey }).apiKey
+            : null,
     };
 
     const encrypted = encryptIntegrationData(toEncrypt);
@@ -196,7 +200,7 @@ export async function getDecryptedIntegration(
       }) => Promise<{
         id: string;
         name: string;
-        config: Prisma.JsonValue;
+        config: JsonValue;
         apiKey: string | null;
       } | null>;
     };
@@ -205,10 +209,7 @@ export async function getDecryptedIntegration(
 ) {
   const integration = await prisma.integration.findFirst({
     where: {
-      OR: [
-        { id: nameOrId },
-        { name: nameOrId },
-      ],
+      OR: [{ id: nameOrId }, { name: nameOrId }],
     },
   });
 

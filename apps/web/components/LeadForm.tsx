@@ -73,8 +73,6 @@ export function LeadForm({ source = 'website', onSuccess }: LeadFormProps) {
     if (process.env.NEXT_PUBLIC_ENV === 'staging') {
       logger.info('Staging environment - Lead form submission', 'LEAD_FORM', {
         source,
-        hasCompany: !!data.company,
-        hasPhone: !!data.phone,
         locale,
       });
 

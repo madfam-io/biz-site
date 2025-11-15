@@ -49,7 +49,11 @@ export function Footer() {
     { name: t('footer.social.linkedin'), href: 'https://linkedin.com/company/madfam', icon: 'in' },
     { name: t('footer.social.twitter'), href: 'https://x.com/madfam_io', icon: 'X' },
     { name: t('footer.social.instagram'), href: 'https://instagram.com/madfam.io', icon: 'ig' },
-    { name: t('footer.social.facebook'), href: 'https://www.facebook.com/people/Madfam/61578707019539/', icon: 'fb' },
+    {
+      name: t('footer.social.facebook'),
+      href: 'https://www.facebook.com/people/Madfam/61578707019539/',
+      icon: 'fb',
+    },
     { name: t('footer.social.tiktok'), href: 'https://tiktok.com/@madfam.io', icon: 'tt' },
     { name: t('footer.social.github'), href: 'https://github.com/madfam-io', icon: 'gh' },
   ];

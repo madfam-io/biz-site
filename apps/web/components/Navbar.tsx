@@ -259,7 +259,9 @@ export function Navbar() {
                     >
                       <button
                         className="relative py-2 text-base font-semibold transition-all duration-300 flex items-center gap-1.5 text-obsidian/90 dark:text-pearl/90 hover:text-obsidian dark:hover:text-pearl"
-                        onClick={() => setActiveDropdown(prev => (prev === item.name ? null : item.name))}
+                        onClick={() =>
+                          setActiveDropdown(prev => (prev === item.name ? null : item.name))
+                        }
                         onKeyDown={e => handleDropdownKeyDown(e, item.name)}
                         aria-expanded={activeDropdown === item.name}
                         aria-haspopup="true"
