@@ -1,6 +1,6 @@
 import { Container, Heading, Card } from '@madfam/ui';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 const apiEndpoints = [
   {
@@ -89,7 +89,7 @@ const response = await fetch('https://api.madfam.io/api/auth/login', {
 });
 
 const { token } = await response.json();`,
-  
+
   assessment: `// Assessment Example
 const response = await fetch('https://api.madfam.io/api/assessment', {
   method: 'POST',
@@ -106,9 +106,10 @@ const response = await fetch('https://api.madfam.io/api/assessment', {
 });`,
 };
 
-export default function ApiPage({ params: { locale: _locale } }: { params: { locale: string } }) {
-  const t = useTranslations('api');
-  
+export default async function ApiPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Validate params exist
+  const t = await getTranslations('api');
+
   return (
     <main className="min-h-screen py-20">
       <Container>
@@ -160,21 +161,21 @@ export default function ApiPage({ params: { locale: _locale } }: { params: { loc
                     <Card key={endpointIndex} className="p-6">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-4">
-                          <span className={`px-3 py-1 text-sm font-semibold rounded ${
-                            endpoint.method === 'GET' 
-                              ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
-                              : endpoint.method === 'POST'
-                              ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
-                              : 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400'
-                          }`}>
+                          <span
+                            className={`px-3 py-1 text-sm font-semibold rounded ${
+                              endpoint.method === 'GET'
+                                ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
+                                : endpoint.method === 'POST'
+                                  ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
+                                  : 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400'
+                            }`}
+                          >
                             {endpoint.method}
                           </span>
                           <code className="font-mono text-lg">{endpoint.path}</code>
                         </div>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-400">
-                        {endpoint.description}
-                      </p>
+                      <p className="text-gray-600 dark:text-gray-400">{endpoint.description}</p>
                     </Card>
                   ))}
                 </div>
@@ -212,21 +213,25 @@ export default function ApiPage({ params: { locale: _locale } }: { params: { loc
             <Heading level={3} className="mb-4">
               {t('rateLimiting.title')}
             </Heading>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              {t('rateLimiting.subtitle')}
-            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">{t('rateLimiting.subtitle')}</p>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
                 <div className="text-2xl font-bold text-lavender">100</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{t('rateLimiting.perMinute')}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {t('rateLimiting.perMinute')}
+                </div>
               </div>
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
                 <div className="text-2xl font-bold text-lavender">1000</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{t('rateLimiting.perHour')}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {t('rateLimiting.perHour')}
+                </div>
               </div>
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
                 <div className="text-2xl font-bold text-lavender">10000</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{t('rateLimiting.perDay')}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {t('rateLimiting.perDay')}
+                </div>
               </div>
             </div>
           </Card>
