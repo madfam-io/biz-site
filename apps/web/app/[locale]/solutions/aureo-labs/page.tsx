@@ -10,7 +10,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.arms.aureoLabs' });
+  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions.aureoLabs' });
 
   return {
     title: t('meta.title'),
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function AureoLabsPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.arms.aureoLabs' });
+  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions.aureoLabs' });
   const commonT = await getTranslations({ locale: params.locale, namespace: 'common' });
 
   const products = [
@@ -104,10 +104,10 @@ export default async function AureoLabsPage({ params }: Props) {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <Link
-                href="/arms"
+                href="/solutions"
                 className="text-neutral-500 hover:text-neutral-700 transition-colors"
               >
-                {commonT('nav.arms')}
+                {commonT('nav.solutions')}
               </Link>
               <span className="mx-2 text-neutral-300">/</span>
               <span className="text-neutral-900">Aureo Labs</span>
