@@ -10,11 +10,12 @@
 ### 🔧 Development
 
 - [Architecture Overview](./development/ARCHITECTURE.md)
-- [Developer Guide](./development/DEVELOPER_GUIDE.md)
+- [Developer Onboarding](./development/DEVELOPER_ONBOARDING.md)
 - [Local Development](./development/LOCAL_DEVELOPMENT.md)
 - [Contributing](./development/CONTRIBUTING.md)
 - [Database Schema](./development/DATABASE_SCHEMA.md)
-- [Security](./development/SECURITY.md)
+- [Security](./development/security/) - Security guidelines and implementation
+- [MCP Documentation](./development/mcp/) - Model Context Protocol setup
 
 ### 🚀 Deployment
 
@@ -25,11 +26,16 @@
 
 ### 📖 Guides
 
-- [Brand Implementation](./guides/BRAND_IMPLEMENTATION_GUIDE.md)
+- [Brand Guidelines](./guides/brand/) - Brand implementation and consistency
+- [Internationalization](./guides/i18n/) - i18n and translation management
 - [Mobile Optimization](./guides/MOBILE_OPTIMIZATION_GUIDE.md)
-- [Internationalization](./guides/INTERNATIONALIZATION.md)
-- [UI Components](./guides/MADFAM-UI-DOCUMENTATION.md)
-- [Translations](./guides/merge-translations-guide.md)
+- [UI Components](./guides/ui/) - UI component documentation
+- [User Guide](./guides/USER_GUIDE.md)
+- [External Links Reference](./guides/EXTERNAL_LINKS_QUICK_REFERENCE.md)
+
+### 📋 Planning
+
+- [UX Roadmap](./planning/UX_ROADMAP.md) - User experience planning and roadmap
 
 ## 🗂️ Structure
 
@@ -38,17 +44,28 @@ docs/
 ├── README.md              # This file
 ├── API.md                 # API documentation
 ├── TESTING.md             # Testing documentation
-├── development/           # Development guides
-├── deployment/           # Deployment guides
-├── guides/               # Implementation guides
-├── design/               # Design specifications
-├── infrastructure/       # Infrastructure documentation
-├── fixes/                # Fix documentation
-└── archive/              # Historical documentation
-    ├── audits/           # Historical audit reports
-    ├── fixes/            # Historical fix documentation
-    ├── dependencies/     # Historical dependency updates
-    └── releases/         # Historical release documentation
+│
+├── development/           # Developer documentation
+│   ├── security/         # Security guidelines
+│   ├── mcp/              # MCP server configuration
+│   └── guide/            # Step-by-step guides
+│
+├── deployment/            # Deployment guides
+├── design/                # Design specifications
+├── infrastructure/        # Infrastructure docs
+│
+├── guides/                # Implementation guides
+│   ├── brand/            # Brand guidelines
+│   ├── i18n/             # Internationalization
+│   └── ui/               # UI components
+│
+├── planning/              # Roadmaps and planning
+│
+└── archive/               # Historical documentation
+    ├── audits/            # Audit reports
+    ├── fixes/             # Fix documentation
+    ├── dependencies/      # Dependency updates
+    └── releases/          # Release notes
 ```
 
 ## 🎯 Getting Started
@@ -69,14 +86,18 @@ docs/
 
 ## 🔍 Finding Information
 
-| Looking for...    | Check...                                                     |
-| ----------------- | ------------------------------------------------------------ |
-| API endpoints     | [API.md](./API.md)                                           |
-| Component usage   | [UI Documentation](./guides/MADFAM-UI-DOCUMENTATION.md)      |
-| Testing approach  | [TESTING.md](./TESTING.md)                                   |
-| Deploy process    | [Deployment Guide](./deployment/DEPLOYMENT.md)               |
-| Mobile guidelines | [Mobile Optimization](./guides/MOBILE_OPTIMIZATION_GUIDE.md) |
-| Translation help  | [Internationalization](./guides/INTERNATIONALIZATION.md)     |
+| Looking for...      | Check...                                              |
+| ------------------- | ----------------------------------------------------- |
+| API endpoints       | [API.md](./API.md)                                    |
+| UI components       | [UI Documentation](./guides/ui/)                      |
+| Testing approach    | [TESTING.md](./TESTING.md)                            |
+| Deploy process      | [Deployment Guide](./deployment/DEPLOYMENT.md)        |
+| Brand guidelines    | [Brand Guidelines](./guides/brand/)                   |
+| i18n & Translation  | [Internationalization](./guides/i18n/)                |
+| Mobile optimization | [Mobile Guide](./guides/MOBILE_OPTIMIZATION_GUIDE.md) |
+| Security practices  | [Security Docs](./development/security/)              |
+| MCP setup           | [MCP Documentation](./development/mcp/)               |
+| Historical audits   | [Archive](./archive/audits/)                          |
 
 ## 📦 Historical Documentation
 

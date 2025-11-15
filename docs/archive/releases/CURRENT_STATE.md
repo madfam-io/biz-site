@@ -15,12 +15,14 @@ The MADFAM corporate website is a Next.js 14 monorepo featuring a Solarpunk-bran
 ## Technology Stack
 
 ### Core Framework
+
 - **Next.js 14.2+** - App Router, Server Components, Route Handlers
 - **React 18** - Client & Server Components
 - **TypeScript 5** - Strict mode enabled
 - **Turborepo** - Monorepo management
 
 ### Styling & UI
+
 - **Tailwind CSS 3** - Utility-first CSS
 - **CVA** (class-variance-authority) - Component variants
 - **Radix UI** - Accessible primitives
@@ -28,18 +30,21 @@ The MADFAM corporate website is a Next.js 14 monorepo featuring a Solarpunk-bran
 - **Custom Design System** (`@madfam/ui` package)
 
 ### State & Data
+
 - **React Hook Form** - Form management
 - **Zod** - Schema validation
 - **localStorage** - Client-side persistence
 - **next-intl** - Internationalization (ES/EN/PT-BR)
 
 ### Analytics & Tracking
+
 - **@madfam/analytics** package
 - Event tracking hooks
 - Conversion funnel tracking
 - Error tracking
 
 ### Build & Deploy
+
 - **Vercel** - Hosting & deployment
 - **pnpm** - Package manager
 - **ESLint** - Linting
@@ -118,6 +123,7 @@ biz-site/
 **Status**: ✅ Production Ready
 
 **Personas:**
+
 1. 💼 CEO/Founder → Strategic transformation focus
 2. 💰 CFO/Finance → ROI & cost optimization focus
 3. 🔧 CTO/Tech Leader → Technical implementation focus
@@ -125,6 +131,7 @@ biz-site/
 5. 📚 Educator/Researcher → Learning & innovation focus
 
 **Features:**
+
 - Dropdown selector on homepage hero
 - Stores selection in localStorage (`madfam_persona`)
 - Dynamic hero content (title, subtitle, benefits, CTAs)
@@ -132,11 +139,12 @@ biz-site/
 - Foundation for site-wide personalization
 
 **Integration:**
+
 ```tsx
 const [persona, setPersona] = useState<Persona>('default');
 const personaContent = usePersonaContent(persona);
 
-<PersonaSelector onPersonaChange={setPersona} />
+<PersonaSelector onPersonaChange={setPersona} />;
 ```
 
 ---
@@ -148,6 +156,7 @@ const personaContent = usePersonaContent(persona);
 **Status**: ✅ Production Ready
 
 **Features:**
+
 - Interactive sliders for cost inputs
 - Real-time ROI calculation
 - **Email gate before showing results** ⭐
@@ -157,6 +166,7 @@ const personaContent = usePersonaContent(persona);
 - Stores email in localStorage (`madfam_roi_email`)
 
 **Calculation Formula:**
+
 ```typescript
 monthlySavings = currentCosts × tierMultiplier.costReduction
 timeSaved = employeeHours × tierMultiplier.efficiency
@@ -166,6 +176,7 @@ paybackPeriod = investment / totalBenefit
 ```
 
 **Service Tiers:**
+
 - L1_ESSENTIALS: 15% efficiency, 10% cost reduction
 - L2_ADVANCED: 25% efficiency, 20% cost reduction
 - L3_CONSULTING: 35% efficiency, 25% cost reduction
@@ -181,6 +192,7 @@ paybackPeriod = investment / totalBenefit
 **Status**: ✅ Production Ready
 
 **Features:**
+
 - Multi-step questionnaire
 - 5 categories: Strategy, Technology, Data, Culture, Processes
 - 4 maturity levels: Beginner, Intermediate, Advanced, Expert
@@ -189,6 +201,7 @@ paybackPeriod = investment / totalBenefit
 - Conversion CTA (Calendly + Contact)
 
 **Recommendation Algorithm:**
+
 ```typescript
 // Based on maturity level and category weaknesses
 if (level === 'beginner' || 'intermediate') {
@@ -212,6 +225,7 @@ if (categoryScores.strategy < 60) {
 ### 🎬 Demo Prep Pages
 
 **Routes**:
+
 - `/demo/dhanam`
 - `/demo/forge-sight`
 
@@ -219,6 +233,7 @@ if (categoryScores.strategy < 60) {
 **Status**: ✅ Production Ready
 
 **Features:**
+
 - Email capture before external redirect
 - 3 qualifying questions (role, use case, volume/size)
 - Product-specific benefits grid
@@ -228,6 +243,7 @@ if (categoryScores.strategy < 60) {
 - Social proof placeholders
 
 **Data Capture:**
+
 ```typescript
 // Stored in localStorage
 {
@@ -243,6 +259,7 @@ if (categoryScores.strategy < 60) {
 ```
 
 **Redirect with Tracking:**
+
 ```
 Dhanam:
 https://www.dhan.am?source=madfam-demo-prep&role=hr&use_case=employee-wellness&team_size=51-200
@@ -260,6 +277,7 @@ https://www.forgesight.quest?source=madfam-demo-prep&role=designer&use_case=rapi
 **Status**: ✅ Production Ready
 
 **Changes:**
+
 - **Removed**: Company and Phone fields (reduced friction)
 - **Required**: Name, Email, Message (min 10 chars)
 - **Updated**: Message label to "What do you need help with?"
@@ -268,6 +286,7 @@ https://www.forgesight.quest?source=madfam-demo-prep&role=designer&use_case=rapi
 - Analytics tracking
 
 **Form Fields:**
+
 1. Name (min 2 chars)
 2. Email (validated)
 3. Message (min 10 chars, 5 rows)
@@ -331,12 +350,12 @@ User Clicks "Try Demo" → Demo Prep Page → Fill Form → localStorage → Ext
 
 ## localStorage Keys
 
-| Key | Type | Purpose |
-|-----|------|---------|
-| `madfam_persona` | `Persona` | Selected persona type |
-| `madfam_roi_email` | `string` | ROI calculator email |
-| `madfam_demo_dhanam` | `JSON` | Dhanam demo lead data |
-| `madfam_demo_forgesight` | `JSON` | Forge Sight demo lead data |
+| Key                      | Type      | Purpose                    |
+| ------------------------ | --------- | -------------------------- |
+| `madfam_persona`         | `Persona` | Selected persona type      |
+| `madfam_roi_email`       | `string`  | ROI calculator email       |
+| `madfam_demo_dhanam`     | `JSON`    | Dhanam demo lead data      |
+| `madfam_demo_forgesight` | `JSON`    | Forge Sight demo lead data |
 
 ---
 
@@ -382,11 +401,13 @@ SENDGRID_API_KEY=                  # For email sequences
 ## Translations
 
 **Supported Languages:**
+
 - 🇺🇸 English (`en`)
 - 🇪🇸 Spanish (`es`)
 - 🇧🇷 Portuguese - Brazil (`pt-br`)
 
 **Translation Files:**
+
 ```
 packages/i18n/src/translations/
   ├── en/
@@ -401,6 +422,7 @@ packages/i18n/src/translations/
 ```
 
 **Key Namespaces:**
+
 - `common` - Shared UI strings (navbar, footer, buttons)
 - `corporate` - Corporate pages (homepage, solutions, about)
 - `products` - Product pages
@@ -413,23 +435,20 @@ packages/i18n/src/translations/
 ### Brand Colors (Solarpunk Theme)
 
 ```css
---color-leaf: #2c8136      /* Green */
---color-lavender: #58326f  /* Purple */
---color-sun: #eebc15       /* Yellow */
---color-obsidian: #1a1a1a  /* Dark */
---color-copper: #c77c4a    /* Accent */
+--color-leaf: #2c8136 /* Green */ --color-lavender: #58326f /* Purple */ --color-sun: #eebc15
+  /* Yellow */ --color-obsidian: #1a1a1a /* Dark */ --color-copper: #c77c4a /* Accent */;
 ```
 
 ### Typography
 
 ```css
---font-heading: 'Space Grotesk', sans-serif
---font-body: 'Inter', sans-serif
+--font-heading: 'Space Grotesk', sans-serif --font-body: 'Inter', sans-serif;
 ```
 
 ### Components
 
 **Button Variants:**
+
 - `primary` - Filled, lavender background
 - `secondary` - Filled, white background
 - `outline` - Border only
@@ -437,6 +456,7 @@ packages/i18n/src/translations/
 - `creative` - Gradient background
 
 **Card Variants:**
+
 - `default` - Standard card
 - `elevated` - Shadow
 - `outlined` - Border only
@@ -479,11 +499,13 @@ packages/i18n/src/translations/
 ### Automated Testing
 
 **Current:**
+
 - TypeScript compilation (`pnpm typecheck`)
 - ESLint (`pnpm lint`)
 - Prettier formatting (`pnpm format`)
 
 **Needed:**
+
 - Unit tests for components
 - Integration tests for user flows
 - E2E tests with Playwright/Cypress
@@ -496,10 +518,12 @@ packages/i18n/src/translations/
 
 **Hosting**: Vercel
 **Domains**:
+
 - Production: `madfam.io`
 - Staging: `staging.madfam.io` (if configured)
 
 **Deployment Flow:**
+
 ```
 git push → Vercel Build → Deploy to Preview
 ↓
@@ -528,22 +552,26 @@ pnpm clean
 ## Known Issues & Technical Debt
 
 ### Critical
+
 - [ ] Backend integration needed for lead capture (currently localStorage only)
 - [ ] Email drip sequences not implemented
 - [ ] CRM integration pending
 
 ### High Priority
+
 - [ ] Client logos still placeholders
 - [ ] Video testimonials not added
 - [ ] Analytics not fully instrumented
 
 ### Medium Priority
+
 - [ ] Unit tests missing
 - [ ] E2E tests missing
 - [ ] Documentation could be more comprehensive
 - [ ] Some translations incomplete (PT-BR)
 
 ### Low Priority
+
 - [ ] Bundle size could be smaller
 - [ ] Some components could be more reusable
 - [ ] Code splitting could be optimized
@@ -574,6 +602,7 @@ pnpm clean
 ## Browser Support
 
 **Supported Browsers:**
+
 - Chrome/Edge 90+
 - Firefox 88+
 - Safari 14+
@@ -581,6 +610,7 @@ pnpm clean
 - Mobile Chrome (Android 10+)
 
 **Not Supported:**
+
 - IE 11 (end of life)
 - Older mobile browsers
 
@@ -712,12 +742,14 @@ export function NewComponent({ className }: NewComponentProps) {
 ## Resources
 
 ### Documentation
+
 - [Next.js 14 Docs](https://nextjs.org/docs)
 - [Tailwind CSS](https://tailwindcss.com/docs)
 - [Radix UI](https://www.radix-ui.com/docs/primitives)
 - [next-intl](https://next-intl-docs.vercel.app/)
 
 ### Internal Docs
+
 - [`/docs/UX_IMPROVEMENTS_2025.md`](./UX_IMPROVEMENTS_2025.md) - Phase 1 UX work
 - [`/docs/UX_ROADMAP.md`](./UX_ROADMAP.md) - Future improvements
 - [`/docs/CLAUDE.md`](../CLAUDE.md) - AI assistant context
@@ -725,6 +757,7 @@ export function NewComponent({ className }: NewComponentProps) {
 - [`/docs/BRAND_IMPLEMENTATION_GUIDE.md`](./BRAND_IMPLEMENTATION_GUIDE.md) - Brand guidelines
 
 ### Support
+
 - Development team Slack channel
 - Weekly standup meetings
 - Code review process

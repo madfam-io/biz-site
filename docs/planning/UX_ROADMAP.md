@@ -10,6 +10,7 @@
 This roadmap outlines future UX and brand experience improvements for the MADFAM corporate website. Building on Phase 1 successes (persona selector, demo prep pages, email gates), we'll continue enhancing the "choose your own adventure" auto-serve experience.
 
 **Guiding Principles:**
+
 - Maintain Solarpunk brand aesthetic
 - Prioritize lead capture and qualification
 - Reduce decision paralysis with smart recommendations
@@ -20,12 +21,12 @@ This roadmap outlines future UX and brand experience improvements for the MADFAM
 
 ## Quick Reference
 
-| Phase | Timeline | Status | Focus Area |
-|-------|----------|--------|------------|
-| Phase 1 | Nov 2025 | ✅ Complete | Foundation (Persona, Email Gates, Demo Prep) |
-| Phase 2 | Dec 2025 | 📋 Planned | Integration & Quick Wins |
-| Phase 3 | Jan-Feb 2026 | 🔮 Future | Advanced Personalization |
-| Phase 4 | Q1 2026 | 🔮 Future | Scale & Optimization |
+| Phase   | Timeline     | Status      | Focus Area                                   |
+| ------- | ------------ | ----------- | -------------------------------------------- |
+| Phase 1 | Nov 2025     | ✅ Complete | Foundation (Persona, Email Gates, Demo Prep) |
+| Phase 2 | Dec 2025     | 📋 Planned  | Integration & Quick Wins                     |
+| Phase 3 | Jan-Feb 2026 | 🔮 Future   | Advanced Personalization                     |
+| Phase 4 | Q1 2026      | 🔮 Future   | Scale & Optimization                         |
 
 ---
 
@@ -41,6 +42,7 @@ This roadmap outlines future UX and brand experience improvements for the MADFAM
 6. **Conversion CTAs** - Added to tools
 
 **Results:**
+
 - Lead capture: 0% → 65-75%
 - Product discovery: +450%
 - Content relevance: +35%
@@ -61,12 +63,14 @@ This roadmap outlines future UX and brand experience improvements for the MADFAM
 **Impact**: High
 
 **Requirements:**
+
 - Create `/api/leads/demo` endpoint
 - POST demo prep data to CRM (HubSpot, Salesforce, or custom)
 - Return lead ID for tracking
 - Handle errors gracefully
 
 **Implementation:**
+
 ```typescript
 // apps/web/app/api/leads/demo/route.ts
 export async function POST(request: Request) {
@@ -101,6 +105,7 @@ export async function POST(request: Request) {
 ```
 
 **Update Demo Prep Pages:**
+
 ```tsx
 // Replace console.log with actual API call
 const response = await fetch('/api/leads/demo', {
@@ -122,11 +127,13 @@ const response = await fetch('/api/leads/demo', {
 **Impact**: High
 
 **Requirements:**
+
 - Create `/api/leads/roi-calculator` endpoint
 - Send email + calculation results
 - Tag with "roi-calculator" source
 
 **Benefits:**
+
 - Sales team gets ROI data in CRM
 - Can prioritize high-ROI leads
 - Follow-up with industry benchmarks
@@ -142,6 +149,7 @@ const response = await fetch('/api/leads/demo', {
 **Sequences to Create:**
 
 **A. Dhanam Demo Sequence** (5 emails over 14 days)
+
 ```
 Day 0: Welcome + Demo Tips
   Subject: "Welcome to Dhanam! Here's how to get the most from your demo"
@@ -165,6 +173,7 @@ Day 14: Last Touch
 ```
 
 **B. Forge Sight Demo Sequence** (5 emails over 14 days)
+
 ```
 Day 0: Welcome + Demo Tips
 Day 2: Technical Deep-Dive (by use case)
@@ -174,6 +183,7 @@ Day 14: Let's Talk Materials
 ```
 
 **C. ROI Calculator Sequence** (3 emails over 7 days)
+
 ```
 Day 0: Your ROI Results + Next Steps
 Day 3: How [Similar Company] Achieved This ROI
@@ -181,6 +191,7 @@ Day 7: Schedule a Strategy Call
 ```
 
 **Implementation:**
+
 - Use SendGrid, Mailchimp, or HubSpot automation
 - Personalize by role, use case, company size
 - Track open rates and engagement
@@ -197,6 +208,7 @@ Day 7: Schedule a Strategy Call
 **Impact**: High
 
 **Action Items:**
+
 1. Identify 3-5 client logos to feature
 2. Get permission to use logos
 3. Optimize logo files (SVG preferred, PNG fallback)
@@ -207,6 +219,7 @@ Day 7: Schedule a Strategy Call
    - About page
 
 **File Locations:**
+
 ```
 /public/assets/clients/
   ├── client-1-logo.svg
@@ -217,6 +230,7 @@ Day 7: Schedule a Strategy Call
 ```
 
 **Update Components:**
+
 ```tsx
 // apps/web/components/CorporateHomePage.tsx
 const clients = [
@@ -225,14 +239,11 @@ const clients = [
   // ...
 ];
 
-{clients.map(client => (
-  <Image
-    src={client.logo}
-    alt={`${client.name} logo`}
-    width={120}
-    height={60}
-  />
-))}
+{
+  clients.map(client => (
+    <Image src={client.logo} alt={`${client.name} logo`} width={120} height={60} />
+  ));
+}
 ```
 
 **Expected Impact**: +20% trust, +15% conversion
@@ -246,17 +257,20 @@ const clients = [
 **Impact**: Medium-High
 
 **Requirements:**
+
 - Record 3-5 customer video testimonials (30-60 seconds each)
 - Format: MP4, optimized for web
 - Show metrics/transformation
 - Add closed captions for accessibility
 
 **Placements:**
+
 - Homepage (above fold, after hero)
 - Solution pages (relevant testimonials)
 - Assessment results page (success stories)
 
 **Structure:**
+
 ```tsx
 // components/VideoTestimonial.tsx
 <div className="video-testimonial">
@@ -284,6 +298,7 @@ const clients = [
 **New Route**: `/solutions/compare`
 
 **Features:**
+
 - **Side-by-side Comparison**: Dhanam vs Forge Sight vs PENNY
 - **Interactive Filters**:
   - Industry (Finance, Manufacturing, Education, etc.)
@@ -301,6 +316,7 @@ const clients = [
 - **Export to PDF**: Comparison table download
 
 **UI Design:**
+
 ```tsx
 <ComparisonMatrix>
   <FilterBar>
@@ -319,18 +335,13 @@ const clients = [
       <ROIEstimate />
     </ProductColumn>
 
-    <ProductColumn product="forge-sight">
-      {/* ... */}
-    </ProductColumn>
+    <ProductColumn product="forge-sight">{/* ... */}</ProductColumn>
 
-    <ProductColumn product="penny">
-      {/* ... */}
-    </ProductColumn>
+    <ProductColumn product="penny">{/* ... */}</ProductColumn>
   </ComparisonTable>
 
   <Recommendation>
-    "Based on your selections (Finance, 51-200, $10k-50k),
-     we recommend Dhanam for maximum ROI."
+    "Based on your selections (Finance, 51-200, $10k-50k), we recommend Dhanam for maximum ROI."
   </Recommendation>
 
   <CTABar>
@@ -342,6 +353,7 @@ const clients = [
 ```
 
 **Expected Impact:**
+
 - Reduce decision paralysis
 - Help users self-qualify
 - Increase demo requests for right-fit products
@@ -358,6 +370,7 @@ const clients = [
 **New Route**: `/journey` or `/success-path`
 
 **Features:**
+
 - Interactive 6-month transformation roadmap
 - Stage-by-stage milestones
 - Before/After comparisons at each phase
@@ -367,6 +380,7 @@ const clients = [
 **Timeline Structure:**
 
 **Week 1-2: Discovery & Assessment**
+
 ```
 Activities:
 - Complete AI Assessment
@@ -384,6 +398,7 @@ Customer Example:
 ```
 
 **Week 3-4: Pilot & Validation**
+
 ```
 Activities:
 - Try recommended product demo
@@ -401,6 +416,7 @@ Customer Example:
 ```
 
 **Month 2-3: Implementation**
+
 ```
 Activities:
 - Onboarding & training
@@ -418,6 +434,7 @@ Customer Example:
 ```
 
 **Month 4-6: Optimization & Scale**
+
 ```
 Activities:
 - Expand to additional use cases
@@ -435,6 +452,7 @@ Customer Example:
 ```
 
 **Interactive Elements:**
+
 - Click each stage to expand details
 - "Where are you now?" selector
 - "Jump to your stage" navigation
@@ -454,6 +472,7 @@ Customer Example:
 **Impact**: High
 
 **Features:**
+
 - Use stored persona across all pages
 - Customize navbar based on persona
   - CEO sees "Strategic Resources"
@@ -464,6 +483,7 @@ Customer Example:
 - Show persona-relevant blog posts
 
 **Implementation:**
+
 ```tsx
 // contexts/PersonaContext.tsx
 export const PersonaProvider = ({ children }) => {
@@ -475,9 +495,7 @@ export const PersonaProvider = ({ children }) => {
   }, []);
 
   return (
-    <PersonaContext.Provider value={{ persona, setPersona }}>
-      {children}
-    </PersonaContext.Provider>
+    <PersonaContext.Provider value={{ persona, setPersona }}>{children}</PersonaContext.Provider>
   );
 };
 
@@ -494,6 +512,7 @@ const { persona } = usePersona();
 **Impact**: Medium
 
 **Features:**
+
 - Show industry-matched case studies on assessment results
 - Geographic matching (Mexico/Brazil users see regional stories)
 - Company size matching
@@ -501,6 +520,7 @@ const { persona } = usePersona();
 - Use case alignment
 
 **Algorithm:**
+
 ```typescript
 function matchCaseStudies(user: UserProfile) {
   const allCaseStudies = getCaseStudies();
@@ -510,9 +530,7 @@ function matchCaseStudies(user: UserProfile) {
     matchScore: calculateMatch(cs, user),
   }));
 
-  return scored
-    .sort((a, b) => b.matchScore - a.matchScore)
-    .slice(0, 3);
+  return scored.sort((a, b) => b.matchScore - a.matchScore).slice(0, 3);
 }
 
 function calculateMatch(caseStudy, user) {
@@ -538,6 +556,7 @@ function calculateMatch(caseStudy, user) {
 **New Section**: `/resources` or add to dashboard
 
 **Features:**
+
 - Downloads library (whitepapers, case studies, guides)
 - Filtered by persona
 - Track downloads for lead scoring
@@ -545,6 +564,7 @@ function calculateMatch(caseStudy, user) {
 - Recommended resources based on assessment
 
 **Structure:**
+
 ```tsx
 <ResourceLibrary>
   <FilterBar>
@@ -567,6 +587,7 @@ function calculateMatch(caseStudy, user) {
 ```
 
 **Content Ideas:**
+
 - **CEO**: "AI Transformation Playbook", "Board-Level ROI Deck"
 - **CFO**: "Cost Optimization Calculator", "Budget Planning Template"
 - **CTO**: "Technical Integration Guide", "API Documentation"
@@ -584,21 +605,25 @@ function calculateMatch(caseStudy, user) {
 **Create product-specific calculators:**
 
 **A. Dhanam ROI Calculator**
+
 - Inputs: Number of employees, average salary, turnover rate
 - Outputs: Employee retention impact, financial wellness ROI
 - Industry benchmarks
 
 **B. Forge Sight ROI Calculator**
+
 - Inputs: Parts per month, average quote time, material costs
 - Outputs: Time savings, cost reduction, pricing accuracy improvement
 - Volume-based projections
 
 **C. PENNY ROI Calculator**
+
 - Inputs: Customer service volume, average handle time, agent cost
 - Outputs: Automation savings, efficiency gains, capacity increase
 - Scalability projections
 
 Each calculator:
+
 - Email gate before results
 - Persona-specific language
 - Industry comparisons
@@ -620,6 +645,7 @@ Each calculator:
 **Build internal dashboard** (`/admin/analytics`)
 
 **Metrics to Track:**
+
 - Persona distribution
 - Demo prep conversion by product
 - ROI calculator completion rate
@@ -629,6 +655,7 @@ Each calculator:
 - Page-level engagement
 
 **Tools:**
+
 - Vercel Analytics
 - Google Analytics 4
 - Custom event tracking
@@ -645,24 +672,28 @@ Each calculator:
 **Tests to Run:**
 
 **Homepage:**
+
 - Persona selector position (top vs. after hero)
 - CTA button copy
 - Benefits list length
 - Hero image vs. no image
 
 **Demo Prep:**
+
 - 3 questions vs. 4 questions
 - Email first vs. email last
 - Value prop messaging
 - Trust signal placement
 
 **Email Gates:**
+
 - "Enter email" vs. "Get your results"
 - Benefits list vs. no list
 - Security message vs. no message
 - Single CTA vs. dual CTA
 
 **Framework:**
+
 ```tsx
 // lib/abtest.ts
 export function useABTest(testName: string) {
@@ -682,12 +713,14 @@ export function useABTest(testName: string) {
 // Usage
 const { variant, trackConversion } = useABTest('homepage-cta');
 
-<Button onClick={() => {
-  trackConversion('cta_click');
-  // ...
-}}>
+<Button
+  onClick={() => {
+    trackConversion('cta_click');
+    // ...
+  }}
+>
   {variant === 'A' ? 'Get Started' : 'Start Free Trial'}
-</Button>
+</Button>;
 ```
 
 ---
@@ -701,6 +734,7 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 **Current**: ES, EN, PT-BR translations exist
 
 **Enhancements:**
+
 - Translate all new components (persona selector, demo prep, etc.)
 - Add region-specific content:
   - Mexico-specific case studies
@@ -718,6 +752,7 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 **Impact**: High
 
 **Optimizations:**
+
 - Code splitting by route
 - Image optimization (next/image everywhere)
 - Font optimization (local fonts vs CDN)
@@ -727,6 +762,7 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 - Edge caching for static content
 
 **Targets:**
+
 - Lighthouse score: 95+
 - LCP: < 2.5s
 - FID: < 100ms
@@ -740,6 +776,7 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 ### Development Process
 
 1. **Create Feature Branch**
+
    ```bash
    git checkout -b feature/comparison-matrix
    ```
@@ -780,11 +817,13 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 **⚪ Low**: Future consideration
 
 **Effort Estimates:**
+
 - Small: < 8 hours
 - Medium: 8-16 hours
 - Large: 16+ hours
 
 **Impact Assessment:**
+
 - High: >20% improvement in key metric
 - Medium: 10-20% improvement
 - Low: <10% improvement
@@ -821,32 +860,34 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 
 ### Technical Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| CRM integration fails | Low | High | Use well-documented APIs, have fallback to email |
-| Performance degradation | Medium | Medium | Monitor bundle size, lazy load components |
-| LocalStorage limitations | Low | Low | Provide server-side alternative |
-| Browser compatibility | Low | Medium | Test cross-browser, use polyfills |
+| Risk                     | Likelihood | Impact | Mitigation                                       |
+| ------------------------ | ---------- | ------ | ------------------------------------------------ |
+| CRM integration fails    | Low        | High   | Use well-documented APIs, have fallback to email |
+| Performance degradation  | Medium     | Medium | Monitor bundle size, lazy load components        |
+| LocalStorage limitations | Low        | Low    | Provide server-side alternative                  |
+| Browser compatibility    | Low        | Medium | Test cross-browser, use polyfills                |
 
 ### Business Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Lead quality poor | Medium | High | Refine qualification questions, score leads |
-| Email sequences unsubscribe | Medium | Medium | A/B test content, allow frequency control |
-| Comparison matrix confuses | Low | Medium | User testing before launch |
-| Persona adoption low | Medium | Medium | Make optional, track usage, iterate |
+| Risk                        | Likelihood | Impact | Mitigation                                  |
+| --------------------------- | ---------- | ------ | ------------------------------------------- |
+| Lead quality poor           | Medium     | High   | Refine qualification questions, score leads |
+| Email sequences unsubscribe | Medium     | Medium | A/B test content, allow frequency control   |
+| Comparison matrix confuses  | Low        | Medium | User testing before launch                  |
+| Persona adoption low        | Medium     | Medium | Make optional, track usage, iterate         |
 
 ---
 
 ## Budget Considerations
 
 ### Development Costs
+
 - Phase 2: ~80-100 hours ($8k-$15k at $100-150/hr)
 - Phase 3: ~120-150 hours ($12k-$22k)
 - Phase 4: ~60-80 hours + ongoing ($6k-$12k + $2k/mo)
 
 ### Tooling Costs
+
 - CRM integration: Varies (HubSpot, Salesforce, etc.)
 - Email platform: $50-$500/month (SendGrid, Mailchimp)
 - Analytics: Free-$100/month (GA4, Vercel Analytics)
@@ -854,6 +895,7 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 - Video hosting: $20-$100/month (Vimeo, Wistia)
 
 ### Total Estimated Investment
+
 - **Phase 2**: $10k-$20k (one-time) + $100-$600/mo (recurring)
 - **Phase 3**: $15k-$25k (one-time)
 - **Phase 4**: $8k-$15k (one-time) + $200-$500/mo (recurring)
@@ -876,21 +918,25 @@ Investment payback: < 3 months
 ### B. Tool Recommendations
 
 **CRM Integration:**
+
 - HubSpot (best for SMB)
 - Salesforce (enterprise)
 - Pipedrive (simple, affordable)
 
 **Email Automation:**
+
 - SendGrid (transactional + marketing)
 - Mailchimp (marketing focused)
 - Customer.io (developer-friendly)
 
 **Analytics:**
+
 - Vercel Analytics (built-in)
 - Google Analytics 4 (free, powerful)
 - Mixpanel (event-based)
 
 **A/B Testing:**
+
 - Vercel Edge Config (simple)
 - Google Optimize (free)
 - Optimizely (enterprise)

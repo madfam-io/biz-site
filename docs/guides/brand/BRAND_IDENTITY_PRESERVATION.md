@@ -377,13 +377,11 @@ const brandDecisionTree = {
 ## Next Steps
 
 1. **Immediate Actions**
-
    - Copy logo to proper location in project
    - Create initial LogoSystem component
    - Set up brand color variables
 
 2. **Short-term Goals**
-
    - Implement theme bridge system
    - Update critical touchpoints
    - Create brand component library

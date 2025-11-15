@@ -168,18 +168,15 @@ function getPreferredLocale(request: NextRequest): string {
 ## Implementation Steps
 
 1. **Fix HomePage.tsx** (if keeping it):
-
    - Replace all hardcoded text with translation keys
    - Update hero title to use separate keys instead of split
 
 2. **Update Translation Files**:
-
    - Add missing keys for service quick descriptions
    - Add split hero title keys
    - Ensure all "Learn More" uses `common.cta.learnMore`
 
 3. **Enhance Middleware**:
-
    - Add geo-location detection
    - Implement cookie-based preference storage
    - Improve browser language detection

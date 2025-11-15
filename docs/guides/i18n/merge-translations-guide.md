@@ -128,17 +128,14 @@ jq . pt-BR.json > /dev/null && echo "pt-BR.json is valid"
 After merging translations, update these components to use the new keys:
 
 1. `/app/[locale]/calculator/page.tsx`
-
    - Replace hardcoded Spanish text with translation keys
    - Update metadata to use translations
 
 2. `/app/[locale]/contact/page.tsx`
-
    - Replace all hardcoded text with translation keys
    - Ensure form labels use translations
 
 3. `/app/[locale]/estimator/page.tsx`
-
    - Replace hardcoded Spanish text with translation keys
    - Update metadata to use translations
 
