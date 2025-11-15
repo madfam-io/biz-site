@@ -72,7 +72,8 @@ function calculateReadTime(content: string): string {
   return `${minutes} min read`;
 }
 
-export default async function BlogPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('blog');
 
   // Fetch blog posts from CMS or use fallback data

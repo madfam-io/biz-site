@@ -32,7 +32,8 @@ interface Milestone {
   };
 }
 
-export default async function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('about');
   const corporateT = await getTranslations('corporate');
   const currentLocale = locale as Locale;

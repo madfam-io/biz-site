@@ -2,8 +2,9 @@ import { Container, Heading } from '@madfam/ui';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'impact' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'impact' });
 
   return {
     title: t('meta.title'),
@@ -18,7 +19,8 @@ interface SDGMapping {
   icon?: string;
 }
 
-export default async function ImpactPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ImpactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('impact');
   const corporateT = await getTranslations('corporate');
 
