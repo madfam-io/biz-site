@@ -16,6 +16,7 @@ This document outlines critical security and accessibility improvements implemen
 **Issue:** All POST/PATCH/DELETE endpoints were vulnerable to Cross-Site Request Forgery attacks.
 
 **Solution:**
+
 - Created CSRF token generation and validation functions in `apps/web/lib/security.ts`
 - Implemented CSRF middleware wrapper in `apps/web/lib/csrf.ts`
 - Added CSRF token to user sessions via NextAuth JWT callback
@@ -25,6 +26,7 @@ This document outlines critical security and accessibility improvements implemen
   - `/api/assessment` (POST)
 
 **Files Modified:**
+
 - `apps/web/lib/security.ts` - Added `generateCsrfToken()`, `validateCsrfToken()`
 - `apps/web/lib/csrf.ts` - New file with `withCsrfProtection()` middleware
 - `apps/web/lib/auth.ts` - Added CSRF token to JWT and session
@@ -41,6 +43,7 @@ This document outlines critical security and accessibility improvements implemen
 **Issue:** Session cookies lacked security attributes (httpOnly, secure, sameSite).
 
 **Solution:**
+
 - Configured NextAuth session cookies with security best practices
 - Added `httpOnly: true` to prevent XSS access
 - Added `secure: true` in production (HTTPS only)
@@ -48,6 +51,7 @@ This document outlines critical security and accessibility improvements implemen
 - Prefixed cookie name with `__Secure-` in production
 
 **Files Modified:**
+
 - `apps/web/lib/auth.ts` - Updated `authOptions.cookies` configuration
 
 **Impact:** Session hijacking and XSS risks significantly reduced.
@@ -59,17 +63,20 @@ This document outlines critical security and accessibility improvements implemen
 **Issue:** Integration API keys and sensitive config stored in plaintext in database.
 
 **Solution:**
+
 - Implemented AES-256-GCM encryption/decryption functions in `apps/web/lib/security.ts`
 - Created integration security layer with transparent encryption/decryption
 - Added encrypted CRUD operations for Integration model
 - Added `ENCRYPTION_KEY` environment variable validation
 
 **Files Modified:**
+
 - `apps/web/lib/security.ts` - Added `encryptData()`, `decryptData()`
 - `apps/web/lib/integration-security.ts` - New file with encrypted operations
 - `apps/web/lib/env.ts` - Added `ENCRYPTION_KEY` validation
 
 **Functions Created:**
+
 - `encryptIntegrationData()` - Encrypts config and API keys before storage
 - `decryptIntegrationData()` - Decrypts config and API keys after retrieval
 - `createEncryptedIntegration()` - Create with automatic encryption
@@ -87,15 +94,18 @@ This document outlines critical security and accessibility improvements implemen
 **Issue:** Any authenticated user could access any assessment or calculation by ID (enumeration attack).
 
 **Solution:**
+
 - Added session-based authorization to assessment GET endpoint
 - Implemented ownership verification (user email must match lead email)
 - Added admin role bypass for authorized access
 - Added comprehensive logging for unauthorized access attempts
 
 **Files Modified:**
+
 - `apps/web/app/api/assessment/route.ts` - Added ownership checks
 
 **Authorization Logic:**
+
 ```typescript
 // Verify user owns this assessment (via lead email) or is admin
 const userEmail = session.user?.email;
@@ -116,12 +126,14 @@ if (!ownsAssessment && !isAdmin) {
 ### 5. Form Labels Fixed (WCAG 3.3.2) ✅
 
 **Issue:** Forms in `BasicInfoStep.tsx` failed WCAG 3.3.2 (Labels or Instructions) - Level A compliance.
+
 - Labels not programmatically linked to inputs
 - No `htmlFor` attributes on labels
 - No `id` attributes on inputs
 - Error messages not announced to screen readers
 
 **Solution:**
+
 - Added unique `id` attributes to all inputs
 - Added corresponding `htmlFor` attributes to all labels
 - Added `aria-invalid` attribute when field has errors
@@ -129,9 +141,11 @@ if (!ownsAssessment && !isAdmin) {
 - Added `role="alert"` to error messages for screen reader announcements
 
 **Files Modified:**
+
 - `packages/ui/src/components/lead-form/BasicInfoStep.tsx`
 
 **Example Fix:**
+
 ```tsx
 // Before (inaccessible)
 <label className="...">Nombre completo *</label>
@@ -157,6 +171,7 @@ if (!ownsAssessment && !isAdmin) {
 ```
 
 **Fields Fixed:**
+
 - Name input (id: `name-input`)
 - Email input (id: `email-input`)
 - Company input (id: `company-input`)
@@ -171,6 +186,7 @@ if (!ownsAssessment && !isAdmin) {
 **Issue:** Navbar dropdowns only responded to mouse hover, making them inaccessible to keyboard users (WCAG 2.1.1 violation).
 
 **Solution:**
+
 - Added `onClick` handler for click/tap activation
 - Implemented `onKeyDown` handler with full keyboard support:
   - `Enter` / `Space`: Toggle dropdown open/close
@@ -186,9 +202,11 @@ if (!ownsAssessment && !isAdmin) {
   - `aria-hidden="true"` on decorative icon
 
 **Files Modified:**
+
 - `apps/web/components/Navbar.tsx`
 
 **Implementation:**
+
 ```typescript
 // Keyboard navigation handler
 const handleDropdownKeyDown = useCallback(
@@ -228,10 +246,12 @@ const handleDropdownKeyDown = useCallback(
 **Issue:** Lighthouse CI configured to only warn about color contrast issues, not fail builds.
 
 **Solution:**
+
 - Updated Lighthouse configuration to treat color contrast failures as errors
 - Changed `'color-contrast': 'warn'` to `'color-contrast': 'error'`
 
 **Files Modified:**
+
 - `lighthouserc.js` - Line 59
 
 **Impact:** Builds will now fail if color contrast doesn't meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text).
@@ -243,6 +263,7 @@ const handleDropdownKeyDown = useCallback(
 ### Security Testing
 
 1. **CSRF Protection:**
+
    ```bash
    # Test CSRF token requirement
    curl -X POST http://localhost:3000/api/leads \
@@ -312,15 +333,15 @@ Before deploying these changes:
 
 ## 📊 Impact Summary
 
-| Category | Before | After | Status |
-|----------|--------|-------|--------|
-| **CSRF Protection** | ❌ None | ✅ All endpoints | Fixed |
-| **Session Cookies** | ⚠️ Insecure | ✅ Secure | Fixed |
-| **Database Encryption** | ❌ Plaintext | ✅ AES-256-GCM | Fixed |
-| **Resource Authorization** | ❌ None | ✅ Ownership checks | Fixed |
-| **Form Accessibility** | ❌ WCAG Fail | ✅ WCAG Pass | Fixed |
-| **Keyboard Navigation** | ❌ Mouse-only | ✅ Full support | Fixed |
-| **Color Contrast** | ⚠️ Warn | ✅ Error | Enforced |
+| Category                   | Before        | After               | Status   |
+| -------------------------- | ------------- | ------------------- | -------- |
+| **CSRF Protection**        | ❌ None       | ✅ All endpoints    | Fixed    |
+| **Session Cookies**        | ⚠️ Insecure   | ✅ Secure           | Fixed    |
+| **Database Encryption**    | ❌ Plaintext  | ✅ AES-256-GCM      | Fixed    |
+| **Resource Authorization** | ❌ None       | ✅ Ownership checks | Fixed    |
+| **Form Accessibility**     | ❌ WCAG Fail  | ✅ WCAG Pass        | Fixed    |
+| **Keyboard Navigation**    | ❌ Mouse-only | ✅ Full support     | Fixed    |
+| **Color Contrast**         | ⚠️ Warn       | ✅ Error            | Enforced |
 
 ---
 

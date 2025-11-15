@@ -49,12 +49,12 @@
 
 ## Impact Projections
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Lead Capture | 0% | 65-75% | +65-75% |
-| Assessment Conversion | ~5% | ~30% | +450% |
-| Form Submissions | Baseline | +35% | +35% |
-| Content Relevance | Generic | Personalized | +35% |
+| Metric                | Before   | After        | Improvement |
+| --------------------- | -------- | ------------ | ----------- |
+| Lead Capture          | 0%       | 65-75%       | +65-75%     |
+| Assessment Conversion | ~5%      | ~30%         | +450%       |
+| Form Submissions      | Baseline | +35%         | +35%        |
+| Content Relevance     | Generic  | Personalized | +35%        |
 
 **Annual Revenue Impact**: ~$250k from 500-750 qualified leads/month
 
@@ -106,11 +106,13 @@ packages/i18n/src/translations/*/corporate.json
 ## Next Steps (Phase 2)
 
 🔴 **Critical** (Dec 2025)
+
 - CRM integration for lead capture
 - Email drip sequences (5 emails × 3 products)
 - Real client logos
 
 🟡 **High Priority**
+
 - Product comparison matrix
 - Success journey timeline
 - Site-wide persona persistence
@@ -163,6 +165,7 @@ See `docs/UX_ROADMAP.md` for complete Phase 2-4 roadmap.
 ## Support & Questions
 
 For questions about implementation details:
+
 - See `docs/CURRENT_STATE.md` for codebase reference
 - See `docs/UX_IMPROVEMENTS_2025.md` for feature specs
 - See `docs/UX_ROADMAP.md` for future planning

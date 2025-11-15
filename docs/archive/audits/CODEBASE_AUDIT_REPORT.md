@@ -13,19 +13,19 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 
 ### Overall Scores
 
-| Category | Score | Status |
-|----------|-------|--------|
-| **Architecture** | 8.5/10 | ✅ Excellent |
-| **Code Quality** | 8.5/10 | ✅ Excellent |
-| **TypeScript** | 9.0/10 | ✅ Excellent |
-| **Dependencies** | 7.5/10 | ⚠️ Good |
-| **Performance** | 6.0/10 | ⚠️ Needs Work |
-| **Security** | 6.5/10 | 🚨 Critical Issues |
-| **i18n** | 8.5/10 | ✅ Excellent |
-| **Testing** | 3.0/10 | 🚨 Critical Gap |
-| **Build Config** | 8.0/10 | ✅ Good |
-| **Accessibility** | 7.5/10 | ⚠️ Good |
-| **OVERALL** | 7.3/10 | ⚠️ Good with Critical Issues |
+| Category          | Score  | Status                       |
+| ----------------- | ------ | ---------------------------- |
+| **Architecture**  | 8.5/10 | ✅ Excellent                 |
+| **Code Quality**  | 8.5/10 | ✅ Excellent                 |
+| **TypeScript**    | 9.0/10 | ✅ Excellent                 |
+| **Dependencies**  | 7.5/10 | ⚠️ Good                      |
+| **Performance**   | 6.0/10 | ⚠️ Needs Work                |
+| **Security**      | 6.5/10 | 🚨 Critical Issues           |
+| **i18n**          | 8.5/10 | ✅ Excellent                 |
+| **Testing**       | 3.0/10 | 🚨 Critical Gap              |
+| **Build Config**  | 8.0/10 | ✅ Good                      |
+| **Accessibility** | 7.5/10 | ⚠️ Good                      |
+| **OVERALL**       | 7.3/10 | ⚠️ Good with Critical Issues |
 
 ---
 
@@ -34,6 +34,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 ### 🔴 CRITICAL Priority (Fix Within 48 Hours)
 
 #### 1. No CSRF Protection
+
 - **Severity:** CRITICAL
 - **Impact:** All POST/PATCH/DELETE endpoints vulnerable to CSRF attacks
 - **Location:** All API routes in `apps/web/app/api/**/*`
@@ -42,6 +43,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 - **Effort:** 4-6 hours
 
 #### 2. Database Secrets Not Encrypted
+
 - **Severity:** CRITICAL
 - **Impact:** Integration API keys stored in plaintext
 - **Location:** `apps/web/prisma/schema.prisma` lines 261, 263
@@ -50,6 +52,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 - **Effort:** 4-6 hours
 
 #### 3. Form Labels Missing (Accessibility)
+
 - **Severity:** CRITICAL (A11y)
 - **Impact:** Forms inaccessible to screen reader users
 - **Location:** `packages/ui/src/components/lead-form/BasicInfoStep.tsx`
@@ -60,6 +63,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 ### 🟠 HIGH Priority (Fix Within 1 Week)
 
 #### 4. Missing Resource Authorization
+
 - **Severity:** HIGH (Security)
 - **Impact:** Users can access others' assessments and calculations
 - **Location:** `apps/web/app/api/assessment/route.ts`, `apps/web/app/api/calculator/route.ts`
@@ -68,6 +72,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 - **Effort:** 4-6 hours
 
 #### 5. Zero Testing Coverage (<10%)
+
 - **Severity:** HIGH (Quality)
 - **Impact:** High regression risk, untested business logic
 - **Location:** All packages, most components
@@ -76,6 +81,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 - **Effort:** 40-60 hours
 
 #### 6. Navigation Anti-Pattern (window.location.href)
+
 - **Severity:** HIGH (Performance)
 - **Impact:** Full page reloads, breaks Next.js client-side navigation
 - **Location:** 4 files (Hero.tsx, ProductCard.tsx, CTA.tsx, ProjectEstimator.tsx)
@@ -84,6 +90,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 - **Effort:** 1-2 hours
 
 #### 7. No Lazy Loading (Performance)
+
 - **Severity:** HIGH (Performance)
 - **Impact:** Large initial JavaScript bundles
 - **Location:** All client components (32 files marked 'use client')
@@ -92,6 +99,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 - **Effort:** 8-12 hours
 
 #### 8. Incomplete Translations
+
 - **Severity:** HIGH (i18n)
 - **Impact:** ~40 Spanish strings in English/Portuguese translations
 - **Location:** `packages/i18n/src/translations/en/corporate.json`, `pt/corporate.json`
@@ -108,6 +116,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 **Score: 8.5/10**
 
 #### ✅ Strengths
+
 - **Monorepo Structure:** Clean separation with Turborepo (8 packages, 2 apps)
 - **Package Organization:** Well-defined packages (ui, core, i18n, analytics, email)
 - **Next.js 14 App Router:** Modern architecture with proper separation
@@ -115,11 +124,13 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 - **Clear Separation:** Client/server components properly separated
 
 #### ⚠️ Areas for Improvement
+
 - **Large Components:** Navbar (453 lines), CorporateHomePage (393 lines) could be split
 - **Data Colocation:** Inline data structures should be extracted to config files
 - **No Package Tests:** Zero test infrastructure in shared packages
 
 #### 📊 Stats
+
 - **Files:** 208 TypeScript files
 - **Packages:** 8 packages (ui, core, i18n, analytics, email, web, cms, root)
 - **Components:** 38+ in packages/ui, 43+ in apps/web/components
@@ -132,6 +143,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 **Score: 8.5/10**
 
 #### ✅ Strengths
+
 - **Excellent TypeScript Usage:**
   - All components use explicit interfaces
   - Proper React.forwardRef with generic types
@@ -154,6 +166,7 @@ This comprehensive audit analyzed the MADFAM corporate website codebase across 1
 #### ⚠️ Issues Found
 
 **Navigation Anti-Pattern (4 files):**
+
 ```typescript
 // ❌ Bad - causes full page reload
 onClick={() => (window.location.href = '/path')}
@@ -165,14 +178,17 @@ onClick={() => router.push('/path')}
 ```
 
 **Console Logging in Production:**
+
 - `packages/ui/src/hooks/useLeadForm.ts` line 95
 - Should use logger service instead
 
 **Hardcoded Spanish Text:**
+
 - `packages/ui/src/components/lead-form/LeadForm.tsx` has Spanish defaults
 - Should use i18n or be language-agnostic
 
 #### 📋 Recommendations
+
 1. Replace `window.location.href` with Next.js router (HIGH)
 2. Remove console.log statements (MEDIUM)
 3. Refactor large components (MEDIUM)
@@ -185,6 +201,7 @@ onClick={() => router.push('/path')}
 **Score: 7.5/10**
 
 #### ✅ Strengths
+
 - **Security Patches:** Comprehensive pnpm overrides for vulnerabilities
 - **Modern Stack:** Next.js 14.2.33, React 19.2.0, TypeScript 5.9.3
 - **Good Tooling:** Husky, lint-staged, Prettier, ESLint configured
@@ -193,6 +210,7 @@ onClick={() => router.push('/path')}
 #### ⚠️ Issues
 
 **Security Vulnerability:**
+
 ```
 fast-redact@3.5.0 - CVE-2025-57319 (LOW severity)
 Prototype pollution vulnerability
@@ -201,15 +219,18 @@ Override configured but not preventing installation
 ```
 
 **Version Conflicts:**
+
 - Framer Motion: Two versions (11.18.0 in web, 12.23.12 in root)
 - Could cause bundle size issues
 
 **Outdated Packages:**
+
 - `framer-motion`: 12.23.12 available (current: 12.23.12 root, 11.18.0 web)
 - `axe-core`: 4.11.0 available (current: 4.10.2)
 - `next`: 16.0.3 available (current: 14.2.33) - major update
 
 #### 📋 Recommendations
+
 1. Upgrade fast-redact to patched version (LOW - dev dependency only)
 2. Resolve framer-motion version conflict (MEDIUM)
 3. Review Next.js 15/16 upgrade path (LOW - breaking changes)
@@ -224,12 +245,14 @@ Override configured but not preventing installation
 #### 🚨 Critical Performance Issues
 
 **1. Heavy Framer Motion Usage (20+ files)**
+
 - **Impact:** 100-200KB gzipped library loaded on every page
 - **Location:** Navbar, AnimatedButton, AnimatedCard, BrandParticles, etc.
 - **Issue:** Two versions installed, no lazy loading
 - **Estimated Impact:** -30-40% bundle size if optimized
 
 **2. No Lazy Loading (0 instances)**
+
 ```typescript
 // ❌ Current - all components loaded upfront
 import ProjectEstimator from '@/components/ProjectEstimator'; // 505 lines
@@ -239,6 +262,7 @@ const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'));
 ```
 
 **Heavy Components Not Lazy Loaded:**
+
 - ProjectEstimator (505 lines)
 - Navbar (453 lines)
 - CorporateHomePage (393 lines)
@@ -250,17 +274,20 @@ const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'));
 - ROICalculator (211 lines)
 
 **3. Minimal React Optimization:**
+
 - `useMemo`: Only 11 instances
 - `useCallback`: Only 11 instances
 - `React.memo`: Only 11 instances
 - Large components rebuilt on every render
 
 **4. Memory Leak Risks:**
+
 - `BrandParticles.tsx`: requestAnimationFrame without cleanup checks
 - `AnimatedCounter.tsx`: setInterval at 16ms without visibility check
 - `Navbar.tsx`: useMotionValueEvent on every scroll pixel (no throttling)
 
 #### ✅ Good Practices
+
 - SWC minification enabled
 - Image optimization configured (AVIF/WebP)
 - Custom webpack optimization for framer-motion
@@ -270,11 +297,13 @@ const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'));
 #### 📋 Priority Recommendations
 
 **HIGH Priority:**
+
 1. **Implement Lazy Loading** (-30% bundle)
+
    ```typescript
-   const Search = dynamic(() => import('@/components/Search'))
-   const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'))
-   const ROICalculator = dynamic(() => import('@/components/ROICalculator'))
+   const Search = dynamic(() => import('@/components/Search'));
+   const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'));
+   const ROICalculator = dynamic(() => import('@/components/ROICalculator'));
    ```
 
 2. **Optimize Framer Motion**
@@ -284,6 +313,7 @@ const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'));
    - Use `m.div` instead of `motion.div` (smaller bundle)
 
 3. **Add Bundle Analysis**
+
    ```json
    "analyze": "ANALYZE=true next build"
    ```
@@ -292,12 +322,10 @@ const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'));
    - Navbar scroll handling
    - BrandParticles mouse tracking
 
-**MEDIUM Priority:**
-5. Memoize large components (Navbar items, calculators)
-6. Add loading.tsx for routes (only 2 exist)
-7. Implement Suspense boundaries
+**MEDIUM Priority:** 5. Memoize large components (Navbar items, calculators) 6. Add loading.tsx for routes (only 2 exist) 7. Implement Suspense boundaries
 
 **Estimated Gains (if implemented):**
+
 - Initial Bundle: -30-40%
 - Time to Interactive: -25-35%
 - FCP: -10-15%
@@ -312,6 +340,7 @@ const ProjectEstimator = dynamic(() => import('@/components/ProjectEstimator'));
 #### 🔴 CRITICAL Vulnerabilities
 
 **1. No CSRF Protection**
+
 ```typescript
 // ❌ All API routes vulnerable
 export async function POST(request: Request) {
@@ -329,6 +358,7 @@ export async function POST(request: Request) {
 ```
 
 **2. Database Secrets Not Encrypted**
+
 ```prisma
 model Integration {
   config  Json     // ❌ Contains API keys in plaintext
@@ -341,6 +371,7 @@ model Integration {
 #### 🟠 HIGH Severity Issues
 
 **3. Missing Resource Authorization**
+
 ```typescript
 // ❌ Any authenticated user can access any assessment
 GET /api/assessment?assessmentId=X  // No ownership check
@@ -348,13 +379,16 @@ GET /api/calculator?id=X            // No ownership check
 ```
 
 **4. CORS Wildcard Configuration**
+
 ```javascript
 // next.config.js
 'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || 'https://madfam.io'
 ```
+
 If env var misconfigured, could allow unauthorized origins
 
 **5. JWT Secret Validation**
+
 ```typescript
 // Requires 32+ chars but only warns in dev
 // Production could proceed with weak secret
@@ -386,6 +420,7 @@ If env var misconfigured, could allow unauthorized origins
 5. **Switch to distributed rate limiting** (2-3 hours)
 
 **OWASP Top 10 Status:**
+
 - ✅ A03 Injection: Protected
 - 🚨 A01 Access Control: Needs work
 - 🚨 A02 Cryptographic Failures: Critical issue
@@ -408,20 +443,22 @@ If env var misconfigured, could allow unauthorized origins
 #### 🟠 Critical Issue: Incomplete Translations
 
 **English translations with Spanish content:**
+
 ```json
 // packages/i18n/src/translations/en/corporate.json
 {
   "essentials": {
-    "duration": "1-2 semanas",  // ❌ Should be "1-2 weeks"
+    "duration": "1-2 semanas", // ❌ Should be "1-2 weeks"
     "deliverables": [
-      "Modelado 3D",           // ❌ Should be "3D Modeling"
-      "Diseño gráfico"         // ❌ Should be "Graphic Design"
+      "Modelado 3D", // ❌ Should be "3D Modeling"
+      "Diseño gráfico" // ❌ Should be "Graphic Design"
     ]
   }
 }
 ```
 
 **Lines affected:**
+
 - English: ~40 untranslated Spanish strings (lines 108-187, 339-410)
 - Portuguese: ~40 untranslated Spanish strings (lines 113-187, 200-427)
 
@@ -456,6 +493,7 @@ If env var misconfigured, could allow unauthorized origins
 **Current Coverage: <10%**
 
 **Test Files Found:**
+
 - Unit tests: 4 files
 - E2E tests: 3 files
 - **Total: 7 test files for 100+ components**
@@ -463,6 +501,7 @@ If env var misconfigured, could allow unauthorized origins
 #### ❌ What's NOT Tested (0% coverage)
 
 **Packages (CRITICAL):**
+
 - @madfam/ui - No tests, no test scripts
 - @madfam/core - No tests, no test scripts
 - @madfam/analytics - No tests, no test scripts
@@ -470,17 +509,21 @@ If env var misconfigured, could allow unauthorized origins
 - @madfam/email - No tests, no test scripts
 
 **Components (5% coverage):**
+
 - Tested: LeadForm, Footer (2/38+)
 - Untested: Navbar, HomePage, AIAssessment, ROICalculator, LanguageSwitcher, DarkModeToggle, CookieConsent, etc.
 
 **Utilities (5% coverage):**
+
 - Tested: seo.ts (1/20+)
 - Untested: api-client.ts, auth.ts, password.ts, rate-limit.ts, security.ts, etc.
 
 **Hooks (0% coverage):**
+
 - All hooks untested: useFeatureFlag, useScrollAnimation, useFormValidation, useLeadForm
 
 **API Routes (0% coverage):**
+
 - No API route tests found
 - Critical: /api/lead-capture, /api/assessment, /api/calculator
 
@@ -494,6 +537,7 @@ If env var misconfigured, could allow unauthorized origins
 #### 📋 Priority Testing Actions
 
 **HIGH Priority (This Week):**
+
 1. **Test Critical Business Logic**
    - api-client.ts (lead submission, assessment)
    - useFormValidation.ts hook
@@ -502,7 +546,7 @@ If env var misconfigured, could allow unauthorized origins
 
 2. **Add API Route Tests**
    - Set up API route testing
-   - Test all /api/* routes
+   - Test all /api/\* routes
    - Test error handling
 
 3. **Setup Package Testing**
@@ -510,10 +554,7 @@ If env var misconfigured, could allow unauthorized origins
    - Add test scripts
    - Start with @madfam/core
 
-**MEDIUM Priority:**
-4. Test complex components (Navbar, AIAssessment, ROICalculator)
-5. Add multi-language E2E tests
-6. Test all hooks
+**MEDIUM Priority:** 4. Test complex components (Navbar, AIAssessment, ROICalculator) 5. Add multi-language E2E tests 6. Test all hooks
 
 **Estimated Effort:** 40-60 hours to reach 60% coverage
 
@@ -526,6 +567,7 @@ If env var misconfigured, could allow unauthorized origins
 #### ✅ Excellent Configuration
 
 **Next.js Configuration:**
+
 - Proper next-intl integration
 - Security headers comprehensive
 - Webpack optimization for code splitting
@@ -533,11 +575,13 @@ If env var misconfigured, could allow unauthorized origins
 - Image optimization configured
 
 **Turborepo:**
+
 - Proper task dependencies
 - Cache configuration
 - Environment variable management
 
 **Tooling:**
+
 - **ESLint:** Comprehensive rules (TypeScript, React, imports, security)
 - **Prettier:** Consistent formatting
 - **Husky:** Git hooks for quality
@@ -545,6 +589,7 @@ If env var misconfigured, could allow unauthorized origins
 - **TypeScript:** Strict mode, proper paths
 
 **Test Configuration:**
+
 - **Vitest:** Proper jsdom environment, aliases configured
 - **Playwright:** 5 browsers, auto-start dev server
 - **Lighthouse CI:** A11y threshold 90%
@@ -552,20 +597,24 @@ If env var misconfigured, could allow unauthorized origins
 #### ⚠️ Minor Issues
 
 **1. CSS Optimization Disabled**
+
 ```javascript
 experimental: {
   optimizeCss: false, // Disabled to avoid critters dependency issue
 }
 ```
+
 Should investigate and re-enable
 
 **2. No Bundle Analysis Script**
+
 ```json
 // Should add
 "analyze": "ANALYZE=true next build"
 ```
 
 **3. Color Contrast Set to Warn**
+
 ```javascript
 // lighthouserc.js
 'color-contrast': 'warn',  // Should be 'error'
@@ -587,6 +636,7 @@ Should investigate and re-enable
 #### ✅ Excellent Foundations
 
 **Global CSS System:**
+
 - Focus-visible properly implemented
 - Color contrast ratios documented
 - No dangerous focus outline removal (fixed!)
@@ -594,11 +644,13 @@ Should investigate and re-enable
 - High contrast mode support
 
 **Component Examples:**
+
 - **MobileInput** ⭐⭐⭐⭐⭐: Perfect implementation
 - **Newsletter** ⭐⭐⭐⭐: Excellent ARIA usage
 - **Button** ⭐⭐⭐⭐: Proper loading states
 
 **Infrastructure:**
+
 - Automated testing with axe-core
 - Lighthouse CI (90% threshold)
 - Keyboard navigation tests
@@ -607,6 +659,7 @@ Should investigate and re-enable
 #### 🔴 Critical A11y Issues
 
 **1. Form Labels Not Linked (WCAG Fail)**
+
 ```typescript
 // ❌ BasicInfoStep.tsx - inaccessible
 <label>Nombre completo</label>
@@ -626,6 +679,7 @@ Should investigate and re-enable
 **WCAG:** Fails 3.3.2 Labels or Instructions (Level A)
 
 **2. Navbar Dropdown Keyboard Navigation**
+
 - Hover-only interaction
 - No keyboard events (Enter, Escape, Arrow keys)
 - Missing `aria-controls`, `aria-label`
@@ -634,28 +688,26 @@ Should investigate and re-enable
 
 #### ⚠️ WCAG 2.1 Level AA Compliance
 
-| Criterion | Status | Notes |
-|-----------|--------|-------|
-| 1.1.1 Non-text Content | ✅ Pass | Alt text implemented |
-| 1.3.1 Info & Relationships | ⚠️ Partial | Form labels issue |
-| 1.4.3 Contrast | ⚠️ Needs Test | Good system, verify |
-| 2.1.1 Keyboard | ⚠️ Partial | Dropdown issue |
-| 2.4.7 Focus Visible | ✅ Pass | Excellent |
-| 3.3.2 Labels/Instructions | ❌ Fail | BasicInfoStep |
-| 4.1.2 Name, Role, Value | ⚠️ Partial | Incomplete |
+| Criterion                  | Status        | Notes                |
+| -------------------------- | ------------- | -------------------- |
+| 1.1.1 Non-text Content     | ✅ Pass       | Alt text implemented |
+| 1.3.1 Info & Relationships | ⚠️ Partial    | Form labels issue    |
+| 1.4.3 Contrast             | ⚠️ Needs Test | Good system, verify  |
+| 2.1.1 Keyboard             | ⚠️ Partial    | Dropdown issue       |
+| 2.4.7 Focus Visible        | ✅ Pass       | Excellent            |
+| 3.3.2 Labels/Instructions  | ❌ Fail       | BasicInfoStep        |
+| 4.1.2 Name, Role, Value    | ⚠️ Partial    | Incomplete           |
 
 **Overall:** 60% Pass, 30% Partial, 10% Fail
 
 #### 📋 Priority A11y Actions
 
 **CRITICAL (48 hours):**
+
 1. Fix BasicInfoStep form labels
 2. Update Lighthouse color contrast to 'error'
 
-**HIGH (1 week):**
-3. Add keyboard navigation to Navbar dropdown
-4. Verify color contrast ratios
-5. Expand reduced motion coverage
+**HIGH (1 week):** 3. Add keyboard navigation to Navbar dropdown 4. Verify color contrast ratios 5. Expand reduced motion coverage
 
 **Estimated Score After Fixes:** 9.5/10 (Excellent)
 
@@ -698,12 +750,14 @@ Should investigate and re-enable
 ## Long-term Recommendations
 
 ### Code Quality
+
 - Refactor large components (Navbar, CorporateHomePage)
 - Standardize component typing patterns
 - Extract inline data to config files
 - Add Storybook for component documentation
 
 ### Performance
+
 - Implement Suspense boundaries
 - Add loading.tsx for all routes
 - Memoize expensive calculations
@@ -711,6 +765,7 @@ Should investigate and re-enable
 - Create performance budget targets
 
 ### Security
+
 - Implement nonce-based CSP
 - Add request size limits
 - Implement log sanitization
@@ -718,6 +773,7 @@ Should investigate and re-enable
 - Migrate to PostgreSQL (if using SQLite)
 
 ### Testing
+
 - Achieve 60% test coverage
 - Add visual regression testing (Chromatic/Percy)
 - Implement MSW for API mocking
@@ -725,12 +781,14 @@ Should investigate and re-enable
 - Add coverage thresholds to CI
 
 ### Accessibility
+
 - Manual screen reader testing (NVDA, JAWS, VoiceOver)
 - Add route change announcements
 - Document accessibility patterns
 - Create a11y checklist for PRs
 
 ### i18n
+
 - Add translation validation to CI
 - Generate types from translation files
 - Implement translation caching

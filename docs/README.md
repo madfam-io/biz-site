@@ -41,7 +41,14 @@ docs/
 ├── development/           # Development guides
 ├── deployment/           # Deployment guides
 ├── guides/               # Implementation guides
-└── archive/              # Historical/outdated docs
+├── design/               # Design specifications
+├── infrastructure/       # Infrastructure documentation
+├── fixes/                # Fix documentation
+└── archive/              # Historical documentation
+    ├── audits/           # Historical audit reports
+    ├── fixes/            # Historical fix documentation
+    ├── dependencies/     # Historical dependency updates
+    └── releases/         # Historical release documentation
 ```
 
 ## 🎯 Getting Started
@@ -70,6 +77,15 @@ docs/
 | Deploy process    | [Deployment Guide](./deployment/DEPLOYMENT.md)               |
 | Mobile guidelines | [Mobile Optimization](./guides/MOBILE_OPTIMIZATION_GUIDE.md) |
 | Translation help  | [Internationalization](./guides/INTERNATIONALIZATION.md)     |
+
+## 📦 Historical Documentation
+
+Historical documentation (audits, fixes, releases) has been organized in the `archive/` directory:
+
+- **Audits**: [archive/audits/](./archive/audits/) - Codebase audits and security assessments
+- **Fixes**: [archive/fixes/](./archive/fixes/) - Critical fixes and issue resolutions
+- **Dependencies**: [archive/dependencies/](./archive/dependencies/) - Dependency update history
+- **Releases**: [archive/releases/](./archive/releases/) - Release notes and summaries
 
 ---
 

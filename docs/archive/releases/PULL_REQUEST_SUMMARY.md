@@ -11,6 +11,7 @@
 ## 📋 Overview
 
 This PR combines two essential maintenance tasks:
+
 1. **Critical codebase fixes** from comprehensive audit
 2. **Safe dependency updates** (22 packages) from Dependabot consolidation
 
@@ -23,17 +24,21 @@ Both changes are low-risk, backward compatible, and ready for immediate merge.
 ### Issues Resolved
 
 #### 1. 🔴 Orphaned Workspace Configuration (CRITICAL)
+
 **Problem:** `services/*` referenced in workspace config but directory doesn't exist
 **Impact:** Monorepo dependency resolution failures
 **Fix:**
+
 - Removed from `package.json` workspaces
 - Removed from `pnpm-workspace.yaml`
 
 **Files:**
+
 - `/package.json:11`
 - `/pnpm-workspace.yaml:4`
 
 #### 2. 🔴 Security Vulnerabilities (CRITICAL)
+
 **Problem:** Multiple CVEs in dependencies (vite, axios, tar-fs, dompurify, etc.)
 **Impact:** Potential security exploits
 **Fix:** Added pnpm overrides for 6 vulnerable packages
@@ -52,16 +57,19 @@ Both changes are low-risk, backward compatible, and ready for immediate merge.
 **File:** `/package.json:83-89`
 
 #### 3. 🟡 Component Architecture Clarified (MEDIUM)
+
 **Problem:** LeadForm/Assessment components appeared duplicated, causing confusion
 **Finding:** NOT duplicates - intentional architecture pattern
 **Fix:** Enhanced documentation with JSDoc comments
 
 **Files:**
+
 - `/packages/ui/src/components/LeadForm.tsx` - Documented as re-export for backward compatibility
 - `/packages/ui/src/components/Assessment.tsx` - Documented as public API re-export
 - `/apps/web/components/LeadForm.tsx` - Documented as app-specific implementation
 
 **Architecture Pattern:**
+
 - Package re-exports: Public API for consumers
 - Modular implementations: Actual component code
 - App-specific versions: Specialized with custom analytics
@@ -75,6 +83,7 @@ Both changes are low-risk, backward compatible, and ready for immediate merge.
 All updates are **minor/patch versions** (backward compatible).
 
 ### Root Package (3 updates)
+
 ```json
 "@axe-core/playwright": "4.10.2 → 4.11.0"  // Accessibility testing
 "lint-staged": "16.1.5 → 16.2.6"            // Git hooks
@@ -82,6 +91,7 @@ All updates are **minor/patch versions** (backward compatible).
 ```
 
 ### apps/web - Production Dependencies (7 updates)
+
 ```json
 "@headlessui/react": "2.2.7 → 2.2.9"
 "@prisma/client": "6.11.1 → 6.19.0"         // ⭐ Security fixes
@@ -93,6 +103,7 @@ All updates are **minor/patch versions** (backward compatible).
 ```
 
 ### apps/web - Dev Dependencies (10 updates)
+
 ```json
 "@playwright/test": "1.53.2 → 1.56.1"
 "@tailwindcss/forms": "0.5.7 → 0.5.10"
@@ -107,6 +118,7 @@ All updates are **minor/patch versions** (backward compatible).
 ```
 
 ### Packages (3 updates across ui, email)
+
 ```json
 // packages/ui
 "@radix-ui/react-slot": "1.0.2 → 1.2.4"
@@ -117,11 +129,13 @@ All updates are **minor/patch versions** (backward compatible).
 ```
 
 ### Security Highlights ⭐
+
 - **Next.js** 14.2.33 - Security patch
 - **@prisma/client** 6.19.0 - Security fixes
 - **bcryptjs** 3.0.3 - Security patch
 
 ### Dependabot PRs Closed by This Consolidation (4)
+
 1. ✅ `dependabot/npm_and_yarn/apps/web/web-dependencies-3cda558165`
 2. ✅ `dependabot/npm_and_yarn/dependencies-4686499f91`
 3. ✅ `dependabot/npm_and_yarn/packages/ui/package-dependencies-48d4f057f0`
@@ -132,20 +146,22 @@ All updates are **minor/patch versions** (backward compatible).
 **Why deferred?** These contain **major version breaking changes** requiring dedicated migration:
 
 #### 🚨 Critical Breaking Changes (Requires 1-2 weeks)
+
 1. **tailwindcss 3 → 4** - Complete rewrite (2-3 days)
 2. **next-intl 3 → 4** - i18n API changes (1-2 days)
 3. **zod 3 → 4** - Validation schema changes (1-2 days)
 4. **eslint 8 → 9** - Flat config migration (1 day)
 
 #### ⚠️ Medium Priority (Requires 1-2 days)
+
 5. **vitest 3 → 4** - Test suite updates
 6. **@vitejs/plugin-react 4 → 5** - Build process
 7. **@types/node 20 → 24** - Type definitions
 8. **cross-env 7 → 10** - CMS scripts only
 
 #### 🔄 Other
-9-12. Already consolidated in this PR
-13. GitHub Actions (needs review)
+
+9-12. Already consolidated in this PR 13. GitHub Actions (needs review)
 
 **Full deferred analysis:** See `DEPENDABOT_CONSOLIDATION.md`
 
@@ -154,26 +170,29 @@ All updates are **minor/patch versions** (backward compatible).
 ## 📊 Combined Impact
 
 ### Files Changed (10 files)
-| File | Audit Fixes | Dependency Updates | Total Lines |
-|------|-------------|-------------------|-------------|
-| `package.json` | ✅ Workspace, overrides | ✅ Dependencies | ~15 |
-| `pnpm-workspace.yaml` | ✅ Workspace | - | 1 |
-| `apps/web/package.json` | - | ✅ 17 dependencies | ~17 |
-| `packages/ui/package.json` | - | ✅ 2 dependencies | 2 |
-| `packages/email/package.json` | - | ✅ 1 dependency | 1 |
-| `apps/web/components/LeadForm.tsx` | ✅ Docs | - | +13 |
-| `packages/ui/src/components/LeadForm.tsx` | ✅ Docs | - | +10 |
-| `packages/ui/src/components/Assessment.tsx` | ✅ Docs | - | +10 |
-| `CRITICAL_FIXES.md` | ✅ New | - | +200 |
-| `DEPENDABOT_CONSOLIDATION.md` | - | ✅ New | +315 |
-| **TOTAL** | **6 files** | **4 files** | **~650 lines** |
+
+| File                                        | Audit Fixes             | Dependency Updates | Total Lines    |
+| ------------------------------------------- | ----------------------- | ------------------ | -------------- |
+| `package.json`                              | ✅ Workspace, overrides | ✅ Dependencies    | ~15            |
+| `pnpm-workspace.yaml`                       | ✅ Workspace            | -                  | 1              |
+| `apps/web/package.json`                     | -                       | ✅ 17 dependencies | ~17            |
+| `packages/ui/package.json`                  | -                       | ✅ 2 dependencies  | 2              |
+| `packages/email/package.json`               | -                       | ✅ 1 dependency    | 1              |
+| `apps/web/components/LeadForm.tsx`          | ✅ Docs                 | -                  | +13            |
+| `packages/ui/src/components/LeadForm.tsx`   | ✅ Docs                 | -                  | +10            |
+| `packages/ui/src/components/Assessment.tsx` | ✅ Docs                 | -                  | +10            |
+| `CRITICAL_FIXES.md`                         | ✅ New                  | -                  | +200           |
+| `DEPENDABOT_CONSOLIDATION.md`               | -                       | ✅ New             | +315           |
+| **TOTAL**                                   | **6 files**             | **4 files**        | **~650 lines** |
 
 ### Security Improvements
+
 - ✅ 6 CVE patches via pnpm overrides (audit fixes)
 - ✅ 3 security updates via dependency bumps (next, prisma, bcryptjs)
 - ✅ **Total: 9 security improvements**
 
 ### Maintenance Score
+
 - ✅ Fixed 3 critical issues
 - ✅ Updated 22 packages safely
 - ✅ Deferred 8 breaking changes properly
@@ -188,6 +207,7 @@ All updates are **minor/patch versions** (backward compatible).
 ### Required Before Merge
 
 #### Automated Tests
+
 - [ ] `pnpm install` succeeds (applies new workspace config + dependencies)
 - [ ] `pnpm audit --audit-level=critical` passes (verifies security fixes)
 - [ ] `pnpm typecheck` passes (all packages)
@@ -196,6 +216,7 @@ All updates are **minor/patch versions** (backward compatible).
 - [ ] `pnpm build` succeeds (all apps + packages)
 
 #### Manual Testing (5-10 minutes)
+
 - [ ] Dev server starts: `pnpm dev`
 - [ ] Homepage loads without errors
 - [ ] Contact form works (LeadForm - apps/web/components)
@@ -205,6 +226,7 @@ All updates are **minor/patch versions** (backward compatible).
 - [ ] All [locale] routes accessible
 
 #### CI/CD Verification
+
 - [ ] All GitHub Actions workflows pass
 - [ ] Bundle size within limits
 - [ ] Lighthouse CI passes
@@ -230,6 +252,7 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build
 ### 2. Close Consolidated Dependabot PRs (4 PRs)
 
 Via GitHub UI or CLI:
+
 ```bash
 gh pr close dependabot/npm_and_yarn/apps/web/web-dependencies-3cda558165 \
   --comment "Consolidated in #<PR_NUMBER>"
@@ -246,6 +269,7 @@ gh pr close dependabot/npm_and_yarn/packages/email/package-dependencies-68fe2cda
 Create GitHub issues for deferred updates:
 
 **Issue Template:**
+
 ```markdown
 ### Dependency Upgrade: [package] [old] → [new]
 
@@ -254,9 +278,11 @@ Create GitHub issues for deferred updates:
 **Estimated Effort:** [X days]
 
 **Breaking Changes:**
+
 - [List from DEPENDABOT_CONSOLIDATION.md]
 
 **Migration Checklist:**
+
 - [ ] Review upgrade guide
 - [ ] Update configuration files
 - [ ] Fix breaking API changes
@@ -273,14 +299,18 @@ Create GitHub issues for deferred updates:
 ## 📚 Documentation Added
 
 ### CRITICAL_FIXES.md (~200 lines)
+
 Complete audit fix documentation:
+
 - Issue descriptions and impacts
 - Code changes made
 - Testing checklist
 - Next steps for remaining issues
 
 ### DEPENDABOT_CONSOLIDATION.md (~315 lines)
+
 Comprehensive dependency analysis:
+
 - All 14 Dependabot PRs analyzed
 - Safe vs. breaking change categorization
 - Migration guides for deferred updates
@@ -302,6 +332,7 @@ These issues were **identified but intentionally not fixed** in this PR:
 5. **i18n Package Size** - 289KB (could optimize with lazy loading)
 
 **Why not fixed?** These require:
+
 - Dedicated development time
 - Comprehensive testing
 - Team coordination
@@ -327,37 +358,40 @@ This PR is successful if:
 
 ## 📊 Statistics Summary
 
-| Metric | Value |
-|--------|-------|
-| **Commits** | 2 |
-| **Files Changed** | 10 |
-| **Lines Added** | ~650 |
-| **Critical Fixes** | 3 |
-| **Security Patches** | 9 |
-| **Packages Updated** | 22 |
-| **Dependabot PRs Closed** | 4 of 14 (28%) |
+| Metric                      | Value          |
+| --------------------------- | -------------- |
+| **Commits**                 | 2              |
+| **Files Changed**           | 10             |
+| **Lines Added**             | ~650           |
+| **Critical Fixes**          | 3              |
+| **Security Patches**        | 9              |
+| **Packages Updated**        | 22             |
+| **Dependabot PRs Closed**   | 4 of 14 (28%)  |
 | **Dependabot PRs Deferred** | 10 of 14 (72%) |
-| **Breaking Changes** | 0 |
-| **Risk Level** | LOW |
-| **Estimated Test Time** | 10-15 minutes |
-| **Estimated Review Time** | 15-20 minutes |
+| **Breaking Changes**        | 0              |
+| **Risk Level**              | LOW            |
+| **Estimated Test Time**     | 10-15 minutes  |
+| **Estimated Review Time**   | 15-20 minutes  |
 
 ---
 
 ## 🔗 Related Resources
 
 ### Documentation
+
 - Full audit report: See PR description
 - Critical fixes: `CRITICAL_FIXES.md`
 - Dependency analysis: `DEPENDABOT_CONSOLIDATION.md`
 - Codebase guidelines: `CLAUDE.md`
 
 ### Dependabot PRs
+
 - Consolidated (4): Will be closed after merge
 - Deferred (10): Remain open for future work
 - See `DEPENDABOT_CONSOLIDATION.md` for complete list
 
 ### Previous Work
+
 - PR #56: Safe dependency updates (already merged)
 - Related audit findings: See `CRITICAL_FIXES.md`
 
@@ -424,6 +458,7 @@ Before approving:
 ## 🎉 Post-Merge Celebration
 
 Once merged, you will have:
+
 - ✅ Fixed 3 critical codebase issues
 - ✅ Patched 9 security vulnerabilities
 - ✅ Updated 22 packages safely
