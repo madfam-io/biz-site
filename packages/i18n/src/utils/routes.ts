@@ -3,11 +3,11 @@ import { Locale } from '../config';
 export type RouteKey =
   | 'home'
   // Corporate structure routes
-  | 'arms'
-  | 'arms.aureo-labs'
-  | 'arms.primavera3d'
-  | 'arms.colabs'
-  | 'arms.showtech'
+  | 'solutions'
+  | 'solutions.aureo-labs'
+  | 'solutions.primavera3d'
+  | 'solutions.colabs'
+  | 'solutions.showtech'
   | 'programs'
   | 'work'
   | 'security'
@@ -31,30 +31,30 @@ const routes: Record<RouteKey, Record<Locale, string>> = {
     pt: '/',
   },
   // NEW: Corporate structure routes
-  arms: {
-    en: '/arms',
-    es: '/unidades',
-    pt: '/unidades',
+  solutions: {
+    en: '/solutions',
+    es: '/soluciones',
+    pt: '/solucoes',
   },
-  'arms.aureo-labs': {
-    en: '/arms/aureo-labs',
-    es: '/unidades/aureo-labs',
-    pt: '/unidades/aureo-labs',
+  'solutions.aureo-labs': {
+    en: '/solutions/aureo-labs',
+    es: '/soluciones/aureo-labs',
+    pt: '/solucoes/aureo-labs',
   },
-  'arms.primavera3d': {
-    en: '/arms/primavera3d',
-    es: '/unidades/primavera3d',
-    pt: '/unidades/primavera3d',
+  'solutions.primavera3d': {
+    en: '/solutions/primavera3d',
+    es: '/soluciones/primavera3d',
+    pt: '/solucoes/primavera3d',
   },
-  'arms.colabs': {
-    en: '/arms/colabs',
-    es: '/unidades/colabs',
-    pt: '/unidades/colabs',
+  'solutions.colabs': {
+    en: '/solutions/colabs',
+    es: '/soluciones/colabs',
+    pt: '/solucoes/colabs',
   },
-  'arms.showtech': {
-    en: '/arms/showtech',
-    es: '/unidades/showtech',
-    pt: '/unidades/showtech',
+  'solutions.showtech': {
+    en: '/solutions/showtech',
+    es: '/soluciones/showtech',
+    pt: '/solucoes/showtech',
   },
   programs: {
     en: '/programs',

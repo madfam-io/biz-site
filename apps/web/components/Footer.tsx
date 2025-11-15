@@ -33,7 +33,7 @@ export function Footer() {
     ],
     empresa: [
       { name: t('footer.company.about'), href: getLocalizedUrl('about', locale) },
-      { name: t('footer.company.units'), href: getLocalizedUrl('arms', locale) },
+      { name: t('footer.company.units'), href: getLocalizedUrl('solutions', locale) },
       { name: t('footer.company.caseStudies'), href: getLocalizedUrl('work', locale) },
       { name: t('footer.company.careers'), href: `/${locale}/careers` },
     ],

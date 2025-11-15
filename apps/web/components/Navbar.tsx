@@ -82,19 +82,19 @@ export function Navbar() {
           items: [
             {
               name: 'Aureo Labs',
-              href: getLocalizedUrl('arms.aureo-labs', locale),
+              href: getLocalizedUrl('solutions.aureo-labs', locale),
               description: t('aureoLabsDesc') || 'Digital innovation laboratory',
               icon: '🚀',
             },
             {
               name: 'Primavera3D',
-              href: getLocalizedUrl('arms.primavera3d', locale),
+              href: getLocalizedUrl('solutions.primavera3d', locale),
               description: 'Advanced 3D manufacturing',
               icon: '🏭',
             },
             {
               name: 'MADFAM Co-Labs',
-              href: getLocalizedUrl('arms.colabs', locale),
+              href: getLocalizedUrl('solutions.colabs', locale),
               description: 'Collaborative innovation spaces',
               icon: '🤝',
             },
