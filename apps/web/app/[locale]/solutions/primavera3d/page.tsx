@@ -10,7 +10,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({
     locale: params.locale,
-    namespace: 'corporate.arms.primavera3d',
+    namespace: 'corporate.solutions.primavera3d',
   });
 
   return {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Primavera3DPage({ params }: Props) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.arms' });
+  const t = await getTranslations({ locale: params.locale, namespace: 'corporate.solutions' });
 
   const capabilities = [
     t('primavera3d.capabilities.0'),
@@ -62,7 +62,7 @@ export default async function Primavera3DPage({ params }: Props) {
       {/* Navigation */}
       <div className="container mx-auto px-4 py-4">
         <Link
-          href={`/${params.locale}/arms`}
+          href={`/${params.locale}/solutions`}
           className="inline-flex items-center gap-2 text-neutral-600 hover:text-neutral-900 transition-colors"
         >
           <ArrowLeftIcon className="w-4 h-4" />

@@ -28,7 +28,7 @@
       "tagline": "Manufatura avançada e inovação digital",
       "description": "Empresa-mãe que coordena e dirige todas as unidades de negócio especializadas"
     },
-    "arms": {
+    "solutions": {
       "title": "Nossas Unidades",
       "subtitle": "Cada unidade especializada em resolver problemas específicos",
       "aureoLabs": {
@@ -213,7 +213,7 @@
     "title": "Manufatura Avançada e Inovação Digital",
     "subtitle": "Construímos sistemas digitais e de manufatura inteligente que convertem eficiência e circularidade em impacto regenerativo mensurável."
   },
-  "arms": {
+  "solutions": {
     "title": "Nuestras unidades operativas",
     "subtitle": "Equipos especializados que entregan excelencia en software, manufactura y más.",
     "allByMadfam": "Todas as unidades - Empresas MADFAM",
