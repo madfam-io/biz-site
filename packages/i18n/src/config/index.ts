@@ -22,12 +22,12 @@ export const i18nConfig = {
   // Route translations - maps canonical routes to localized routes
   routes: {
     es: {
-      // NEW: Corporate structure routes
-      '/arms': '/unidades',
-      '/arms/aureo-labs': '/unidades/aureo-labs',
-      '/arms/primavera3d': '/unidades/primavera3d',
-      '/arms/colabs': '/unidades/colabs',
-      '/arms/showtech': '/unidades/showtech',
+      // NEW: Corporate structure routes (updated to use '/solutions')
+      '/solutions': '/soluciones',
+      '/solutions/aureo-labs': '/soluciones/aureo-labs',
+      '/solutions/primavera3d': '/soluciones/primavera3d',
+      '/solutions/colabs': '/soluciones/colabs',
+      '/solutions/showtech': '/soluciones/showtech',
       '/products': '/productos',
       '/programs': '/programas',
       '/work': '/casos',
@@ -55,12 +55,12 @@ export const i18nConfig = {
       '/cookies': '/cookies',
     },
     pt: {
-      // Portuguese routes
-      '/arms': '/unidades',
-      '/arms/aureo-labs': '/unidades/aureo-labs',
-      '/arms/primavera3d': '/unidades/primavera3d',
-      '/arms/colabs': '/unidades/colabs',
-      '/arms/showtech': '/unidades/showtech',
+      // Portuguese routes (updated to use '/solutions')
+      '/solutions': '/solucoes',
+      '/solutions/aureo-labs': '/solucoes/aureo-labs',
+      '/solutions/primavera3d': '/solucoes/primavera3d',
+      '/solutions/colabs': '/solucoes/colabs',
+      '/solutions/showtech': '/solucoes/showtech',
       '/products': '/produtos',
       '/programs': '/programas',
       '/work': '/casos',
