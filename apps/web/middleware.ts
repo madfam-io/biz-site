@@ -1,6 +1,6 @@
 import { i18nConfig } from '@madfam/i18n';
 import createIntlMiddleware from 'next-intl/middleware';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const intlMiddleware = createIntlMiddleware({
   locales: ['es', 'en', 'pt'],
@@ -10,7 +10,13 @@ const intlMiddleware = createIntlMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  // Run the intl middleware for es and en routes
+  // Explicitly handle root path to ensure proper redirect
+  if (request.nextUrl.pathname === '/') {
+    const locale = request.cookies.get('NEXT_LOCALE')?.value || i18nConfig.defaultLocale;
+    return NextResponse.redirect(new URL(`/${locale}`, request.url));
+  }
+
+  // Run the intl middleware for all other routes
   const response = intlMiddleware(request);
 
   // Add security headers
