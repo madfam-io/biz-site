@@ -97,6 +97,8 @@
     "badge": "Matriz",
     "viewSolutions": "Ver soluções",
     "viewProducts": "Ver produtos",
+    "exploreProducts": "Explorar demos de produtos",
+    "takeAssessment": "Fazer avaliação de IA",
     "specializedUnits": "Unidades especializadas",
     "premiumProducts": "Produtos premium",
     "title": "Manufatura Avançada e Inovação Digital",
@@ -436,11 +438,6 @@
   "research": {
     "title": "Pesquisa e Incubação",
     "description": "Além de nossos produtos principais, a MADFAM opera iniciativas de pesquisa em legal-tech, eletroquímica, logística comunitária e mais. Nem todo projeto se torna um produto—mas cada projeto nos ensina algo."
-  },
-  "trustedBy": {
-    "label": "Impulsionado pelo ecossistema MADFAM",
-    "title": "O ecossistema MADFAM",
-    "subtitle": "Plataformas em produção em uso em toda a LATAM."
   },
   "engagementTracks": {
     "title": "Duas formas de trabalhar conosco",
