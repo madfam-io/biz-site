@@ -17,35 +17,11 @@
     "viewSolutions": "Ver soluções",
     "ctaButton": "Junte-se ao Ecossistema"
   },
-  "penny": {
-    "name": "PENNY",
-    "title": "PENNY",
-    "tagline": "Automação Inteligente de Processos",
-    "shortDescription": "Automação inteligente que aprende e melhora continuamente seus processos.",
-    "description": "Automação inteligente que aprende com seus processos e melhora continuamente, tornando sua equipe mais produtiva.",
-    "features": {
-      "0": "Aprendizado contínuo",
-      "1": "Processamento de linguagem natural",
-      "2": "Sugestões proativas",
-      "3": "Segurança enterprise",
-      "title": "Características principais",
-      "learning": "Aprendizado contínuo",
-      "natural": "Processamento de linguagem natural",
-      "proactive": "Sugestões proativas",
-      "secure": "Segurança enterprise"
-    },
-    "benefits": {
-      "title": "Benefícios",
-      "productivity": "3x mais produtividade",
-      "satisfaction": "95% satisfação dos usuários",
-      "onboarding": "Implementação em 24h",
-      "roi": "ROI em 30 dias"
-    },
-    "cta": {
-      "demo": "Solicitar demonstração"
-    }
+  "spark": {
+    "name": "SPARK"
   },
   "cotizaStudio": {
+    "name": "Cotiza Studio",
     "title": "Cotiza Studio",
     "tagline": "Cotações instantâneas com IA",
     "shortDescription": "Gerador de cotações e propostas alimentado por IA para fechar negócios mais rápido.",
@@ -57,6 +33,7 @@
     }
   },
   "forgeSight": {
+    "name": "Forge Sight",
     "title": "Forge Sight",
     "tagline": "Previsão e análise preditiva",
     "shortDescription": "Análise preditiva avançada para tomada de decisões baseada em dados.",

@@ -44,15 +44,13 @@ const TASTE_COMPONENTS: Record<string, ReturnType<typeof dynamic>> = {
   avala: dynamic(() => import('./tastes/AvalaTaste').then(m => ({ default: m.AvalaTaste })), {
     ssr: false,
   }),
-  penny: dynamic(() => import('./tastes/PennyTaste').then(m => ({ default: m.PennyTaste })), {
-    ssr: false,
-  }),
 };
 
 // Map slugs to i18n keys (camelCase)
 function getI18nKey(slug: string): string {
   const map: Record<string, string> = {
     'cotiza-studio': 'cotizaStudio',
+    'coforma-studio': 'coformaStudio',
     'forge-sight': 'forgeSight',
     'pravara-mes': 'pravaraMes',
   };
