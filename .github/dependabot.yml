@@ -1,6 +1,32 @@
 version: 2
+
+# ---------------------------------------------------------------------------
+# THIS IS A SINGLE-LOCKFILE pnpm WORKSPACE.
+#
+# There is exactly one lockfile — `/pnpm-lock.yaml` — and it covers every
+# workspace member listed in `pnpm-workspace.yaml` (`apps/*`, `packages/*`).
+#
+# Therefore there must be exactly ONE npm update config, rooted at "/".
+#
+# Do NOT add per-directory configs (e.g. directory: "/apps/web"). Dependabot
+# treats each such directory as an independent project: it finds only that
+# directory's package.json, and — because no lockfile lives there — it updates
+# the manifest and NEVER touches the root pnpm-lock.yaml. The resulting PR is
+# born broken and can never go green, because CI, Quality Gates, Security Audit
+# and PR Checks all begin with `pnpm install --frozen-lockfile`, which fails
+# with ERR_PNPM_OUTDATED_LOCKFILE the moment a manifest and the lockfile
+# disagree. Four red workflows, every time, forever.
+#
+# The root config below is proven to handle the whole workspace correctly: it
+# updates apps/cms, apps/web, packages/* AND pnpm-lock.yaml in a single PR.
+#
+# A second consequence of per-directory configs: they do not inherit the
+# `ignore` rules below, so major bumps this repo has explicitly opted out of
+# (next, react, react-dom) get raised anyway.
+# ---------------------------------------------------------------------------
+
 updates:
-  # Enable version updates for npm (monorepo root)
+  # npm — the entire pnpm workspace, from the root (the only lockfile).
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -19,14 +45,19 @@ updates:
       - "dependencies"
       - "automated"
     ignore:
-      # Ignore major version updates for these packages
+      # Major upgrades for these are deliberate, coordinated migrations
+      # (React 19 + Turbopack + middleware→proxy), not dependency bumps.
       - dependency-name: "next"
         update-types: ["version-update:semver-major"]
       - dependency-name: "react"
         update-types: ["version-update:semver-major"]
       - dependency-name: "react-dom"
         update-types: ["version-update:semver-major"]
-    # Group all non-major dependency updates together
+    # One group for every non-major update across the workspace. A previous
+    # `dev-dependencies` group was removed: it also used `patterns: ["*"]`, and
+    # since a dependency joins the FIRST group it matches, it never captured
+    # anything — `dependencies` already covers dev deps (see PR #263, which
+    # grouped all 25 updates, prod and dev alike, under `dependencies`).
     groups:
       dependencies:
         patterns:
@@ -34,15 +65,8 @@ updates:
         update-types:
           - "minor"
           - "patch"
-      dev-dependencies:
-        patterns:
-          - "*"
-        dependency-type: "development"
-        update-types:
-          - "minor"
-          - "patch"
 
-  # Enable version updates for GitHub Actions
+  # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -54,133 +78,7 @@ updates:
     labels:
       - "ci"
       - "automated"
-    # Group all GitHub Actions updates together
     groups:
       github-actions:
         patterns:
           - "*"
-
-  # Enable version updates for apps/web
-  - package-ecosystem: "npm"
-    directory: "/apps/web"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 3
-    commit-message:
-      prefix: "chore(web)"
-    labels:
-      - "dependencies"
-      - "web"
-      - "automated"
-    # Group web app dependency updates
-    groups:
-      web-dependencies:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-
-  # Enable version updates for all packages (consolidated)
-  - package-ecosystem: "npm"
-    directory: "/packages/ui"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    commit-message:
-      prefix: "chore(packages)"
-    labels:
-      - "dependencies"
-      - "packages"
-      - "automated"
-    # Group package dependency updates
-    groups:
-      package-dependencies:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-
-  - package-ecosystem: "npm"
-    directory: "/packages/core"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    commit-message:
-      prefix: "chore(packages)"
-    labels:
-      - "dependencies"
-      - "packages"
-      - "automated"
-    groups:
-      package-dependencies:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-
-  - package-ecosystem: "npm"
-    directory: "/packages/i18n"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    commit-message:
-      prefix: "chore(packages)"
-    labels:
-      - "dependencies"
-      - "packages"
-      - "automated"
-    groups:
-      package-dependencies:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-
-  - package-ecosystem: "npm"
-    directory: "/packages/analytics"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    commit-message:
-      prefix: "chore(packages)"
-    labels:
-      - "dependencies"
-      - "packages"
-      - "automated"
-    groups:
-      package-dependencies:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-
-  - package-ecosystem: "npm"
-    directory: "/packages/email"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    commit-message:
-      prefix: "chore(packages)"
-    labels:
-      - "dependencies"
-      - "packages"
-      - "automated"
-    groups:
-      package-dependencies:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"

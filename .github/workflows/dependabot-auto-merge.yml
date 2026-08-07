@@ -1,11 +1,17 @@
 name: Dependabot Auto-Merge
 
+# NOTE (operator): this workflow is inert until `Allow auto-merge` is enabled
+# in repository Settings → General. Until then `gh pr merge --auto` cannot
+# succeed. It is kept — rather than deleted — so the intent survives.
+#
+# The `workflow_run` trigger was removed: it fired on every "Quality Gates"/"CI"
+# completion, including pushes to main, where there is no pull request in the
+# event payload. `dependabot/fetch-metadata` then hard-failed with
+# "PR is not from Dependabot, nothing to do.", painting main permanently red.
+# It was also redundant — `gh pr merge --auto` already waits for checks.
 on:
   pull_request_target:
     types: [opened, reopened, synchronize]
-  workflow_run:
-    workflows: ["Quality Gates", "CI"]
-    types: [completed]
 
 permissions:
   pull-requests: write
