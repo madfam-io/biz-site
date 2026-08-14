@@ -26,7 +26,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
 
       <section className="section">
         <Container>
-          <div className="max-w-4xl mx-auto prose prose-lg">
+          <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert">
             <h2>{t('privacy.intro.title')}</h2>
             <p>{t('privacy.intro.content')}</p>
 

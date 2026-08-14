@@ -26,7 +26,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
 
       <section className="section">
         <Container>
-          <div className="max-w-4xl mx-auto prose prose-lg">
+          <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert">
             <h2>{t('terms.acceptance.title')}</h2>
             <p>{t('terms.acceptance.content')}</p>
 
