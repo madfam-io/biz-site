@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* TAILWIND v4 DOES NOT READ `tailwind.config.ts` PLUGINS.
+   The three plugins below are installed and declared in that file's v3-style
+   `plugins: [require(...)]` array, which v4 ignores — so every one of them was
+   loaded by nobody. The visible casualty was `prose`: /es/privacy and /es/terms
+   use correct semantic markup (real h2, h3, ul) and rendered as an
+   undifferentiated wall of body text, because prose emitted no styles at all.
+   A privacy notice nobody can skim is a privacy notice nobody reads.
+   In v4, plugins are registered here. */
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
+
 @theme {
   /* Register custom colors for Tailwind v4 utilities */
   --color-sun: #FFD93D;
