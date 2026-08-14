@@ -8,6 +8,25 @@
    undifferentiated wall of body text, because prose emitted no styles at all.
    A privacy notice nobody can skim is a privacy notice nobody reads.
    In v4, plugins are registered here. */
+/* DARK MODE IS CLASS-BASED, AND v4 HAD TO BE TOLD.
+   `darkMode: 'class'` is declared in tailwind.config.ts — which v4 does not
+   read. Without this line every `dark:` utility in the codebase keys off the
+   OS `prefers-color-scheme` instead of the `.dark` class that
+   `DarkModeToggle.tsx` and `dark-mode-script.tsx` actually set. So the site's
+   own toggle moved the CSS variables under `.dark` while every `dark:`
+   utility ignored it and followed the operating system. The two could
+   disagree completely, which is what "looks like ass in dark mode" was.
+
+   Both signals are honoured: the explicit class wins, and a visitor whose OS
+   is dark still gets dark before any script runs — except when they have
+   explicitly chosen light, which `.light` records. */
+@custom-variant dark {
+  &:where(.dark, .dark *) { @slot; }
+  @media (prefers-color-scheme: dark) {
+    &:where(:not(.light *)) { @slot; }
+  }
+}
+
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/container-queries";
