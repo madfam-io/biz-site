@@ -234,7 +234,9 @@ export function NewComponent({ className }: NewComponentProps) {
 
 - Tailwind CSS only (no inline styles)
 - Mobile-first responsive design
-- Use design tokens from tailwind.config
+- Use design tokens from the `@theme` block in `apps/web/app/globals.css`.
+  **Not `tailwind.config.ts`** — Tailwind v4 never reads it (no `@config`
+  directive exists), so anything added there silently emits nothing.
 
 ### Git Commits
 
@@ -311,7 +313,10 @@ pnpm test
 - **Build errors**: Run `pnpm clean && pnpm install`
 - **Type errors**: Check `pnpm typecheck`
 - **Import errors**: Verify package exports
-- **Style issues**: Check Tailwind config
+- **Style issues**: Check `apps/web/app/globals.css` — the `@theme` block for
+  tokens, the `@plugin` lines for plugins. `tailwind.config.ts` is inert under
+  v4 and is the wrong file to debug in; a utility that emits no CSS is usually
+  one that only exists there.
 
 ### Useful Commands
 

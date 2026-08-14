@@ -104,6 +104,13 @@ Create a complete theme system in `apps/web/app/globals.css`:
 
 ### 2. Tailwind Configuration Update
 
+> [!WARNING]
+> **Inert as written (checked 2026-08-14).** Under Tailwind v4 nothing reads
+> `tailwind.config.ts` unless a stylesheet pulls it in with `@config`, and none
+> in this repo does. Put these mappings in the `@theme` block of
+> `apps/web/app/globals.css` instead; edits to the config file below are
+> silently discarded.
+
 Update `tailwind.config.ts` to use CSS variables:
 
 ```typescript
@@ -348,7 +355,8 @@ elements.forEach(el => {
 ### Phase 1: Core Setup (Day 1)
 
 1. [ ] Update `globals.css` with complete CSS variables
-2. [ ] Update `tailwind.config.ts` with semantic colors
+2. [ ] Add the semantic colors to the `@theme` block in
+   `apps/web/app/globals.css` (**not** `tailwind.config.ts` — v4 does not read it)
 3. [ ] Create utility classes
 4. [ ] Test theme toggle functionality
 
