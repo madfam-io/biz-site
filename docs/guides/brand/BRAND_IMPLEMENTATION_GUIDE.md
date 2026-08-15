@@ -21,6 +21,15 @@ pnpm add @fontsource/inter @fontsource-variable/clash-display @fontsource/jetbra
 
 ### Step 2: Update Tailwind Configuration
 
+> [!WARNING]
+> **This step no longer works as written (checked 2026-08-14).** The repo is on
+> Tailwind v4, which reads a JS/TS config only when a stylesheet requests it
+> with `@config` — and none does. Colours, animation and keyframes added to
+> `apps/web/tailwind.config.ts` emit nothing at all. The live surface is the
+> `@theme` block in `apps/web/app/globals.css`; plugins go in `@plugin` lines
+> beside it. The snippet below is kept because it still records *which* tokens
+> are wanted, not *where* to put them.
+
 ```javascript
 // apps/web/tailwind.config.ts
 import { tailwindColors } from '@madfam/ui/themes/brand-colors';
@@ -187,7 +196,9 @@ import { cn } from '@madfam/ui/lib/utils';
 - [x] Move logo to `/public/assets/brand/`
 - [x] Create `LogoSystem` component
 - [x] Set up `BrandThemeProvider`
-- [x] Configure Tailwind with brand colors
+- [ ] Configure Tailwind with brand colors — was ticked against
+      `tailwind.config.ts`, which v4 does not read. Only the five colours in
+      `globals.css`'s `@theme` block are live (see Step 2).
 
 ### Phase 2: Core Components (Week 1)
 

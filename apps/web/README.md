@@ -24,12 +24,13 @@ apps/web/
 │   ├── api/               # API routes
 │   ├── (pages)/          # Page routes
 │   ├── layout.tsx        # Root layout
-│   └── globals.css       # Global styles
+│   └── globals.css       # Global styles AND the live Tailwind config
+│                         #   (@theme tokens, @plugin registrations)
 ├── components/            # React components
 ├── lib/                  # Utilities
 ├── public/               # Static assets
 ├── next.config.js        # Next.js config
-├── tailwind.config.ts    # Tailwind config
+├── tailwind.config.ts    # INERT under Tailwind v4 — nothing reads it
 └── tsconfig.json         # TypeScript config
 ```
 

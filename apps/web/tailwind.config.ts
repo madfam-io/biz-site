@@ -1,3 +1,38 @@
+/**
+ * NOTHING IN THIS FILE IS READ. Verified 2026-08-14 by compiling `globals.css`
+ * through `@tailwindcss/postcss` and grepping the output.
+ *
+ * Tailwind v4 does not auto-discover a JS/TS config. It loads one only when a
+ * stylesheet asks for it with `@config`, and no stylesheet in this repo does —
+ * `grep -rn "@config" apps packages` returns nothing. `app/globals.css` starts
+ * at `@import "tailwindcss";`, so `darkMode`, `content`, `theme.extend` and
+ * `plugins` below are all inert.
+ *
+ * How that was proved, rather than reasoned about — compile `globals.css` and
+ * look for utilities that exist ONLY here:
+ *
+ *     .prose            (registered via @plugin in globals.css)  -> emitted
+ *     --color-sun       (declared in @theme in globals.css)      -> emitted
+ *     .font-heading     (only in this file)                      -> NOT emitted
+ *     .text-brand-green (only in this file)                      -> NOT emitted
+ *     .animate-fade-up  (only in this file)                      -> NOT emitted
+ *
+ * The `plugins` array cost us `prose`: /es/privacy and /es/terms used correct
+ * semantic markup and rendered as an undifferentiated wall of text, because the
+ * typography plugin was loaded by nobody. #271 fixed that by moving plugin
+ * registration into `globals.css`. The rest of this file has the same defect and
+ * has not been migrated.
+ *
+ * STILL OUTSTANDING, and the reason this file is annotated rather than deleted:
+ * `font-heading` is used in 16 files, `text-brand-green` in 2 and
+ * `animate-fade-up` in 1, and every one of them currently emits no CSS. The
+ * values below are the record of what those utilities are meant to be. Migrating
+ * them into `@theme` / `@utility` in `globals.css` is a visual change that wants
+ * reviewing on its own; deleting this file first would throw the record away.
+ *
+ * DO NOT add anything here expecting it to take effect. Design tokens go in the
+ * `@theme` block in `app/globals.css`; plugins go in `@plugin` lines beside it.
+ */
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -106,6 +141,9 @@ const config: Config = {
       },
     },
   },
+  // DEAD under v4 — the live registration is `@plugin` in `app/globals.css`.
+  // These three were installed, listed here, and loaded by nobody until #271.
+  // Adding a fourth here would repeat that; add it to `globals.css` instead.
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
