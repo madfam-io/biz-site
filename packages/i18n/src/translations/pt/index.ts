@@ -14,6 +14,7 @@ import cookies from './cookies.json';
 import impact from './impact.json';
 import ecosystem from './ecosystem.json';
 import platforms from './platforms.json';
+import valueLadder from './valueLadder.json';
 
 export default {
   common,
@@ -32,4 +33,5 @@ export default {
   impact,
   ecosystem,
   platforms,
+  valueLadder,
 };
