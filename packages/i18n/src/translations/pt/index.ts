@@ -15,6 +15,7 @@ import impact from './impact.json';
 import ecosystem from './ecosystem.json';
 import platforms from './platforms.json';
 import valueLadder from './valueLadder.json';
+import nauta from './nauta.json';
 
 export default {
   common,
@@ -34,4 +35,5 @@ export default {
   ecosystem,
   platforms,
   valueLadder,
+  nauta,
 };

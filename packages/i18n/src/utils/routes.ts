@@ -15,6 +15,7 @@ export type RouteKey =
   | 'platforms'
   | 'products'
   | 'value-ladder'
+  | 'nauta'
   | 'about'
   | 'contact'
   | 'blog'
@@ -86,6 +87,11 @@ const routes: Record<RouteKey, Record<Locale, string>> = {
     en: '/value-ladder',
     es: '/value-ladder',
     pt: '/value-ladder',
+  },
+  nauta: {
+    en: '/nauta',
+    es: '/nauta',
+    pt: '/nauta',
   },
   about: {
     en: '/about',
