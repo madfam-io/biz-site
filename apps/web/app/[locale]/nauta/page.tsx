@@ -270,7 +270,17 @@ export default async function NautaPage({ params }: Props) {
                 {t('cta.discoveryCall')}
               </a>
             </div>
-            <p className="mt-8 text-sm text-white/50">
+            <p className="mt-8 text-sm text-white/70">
+              <a
+                href="https://nauta.quest"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline hover:text-white transition-colors"
+              >
+                {t('closing.visitSite')}
+              </a>
+            </p>
+            <p className="mt-3 text-sm text-white/50">
               <Link
                 href={getLocalizedUrl('value-ladder', validLocale)}
                 className="underline hover:text-white/80 transition-colors"
