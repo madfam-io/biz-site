@@ -2,69 +2,22 @@ import { i18nConfig } from '@madfam/i18n';
 import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 
-const LOCALES = ['es', 'en', 'pt'] as const;
-
 const intlMiddleware = createIntlMiddleware({
-  locales: LOCALES as unknown as string[],
+  locales: ['es', 'en', 'pt'],
   defaultLocale: i18nConfig.defaultLocale,
   localePrefix: 'always',
   localeDetection: true,
 });
 
-/**
- * The Nauta product apex.
- *
- * `nauta.quest` is the standalone Nauta product's own front door — it is served
- * by THIS app (madfam-web), but its home is the Nauta landing (`/[locale]/nauta`),
- * not the MADFAM corporate homepage. So for the Nauta host, and ONLY for the
- * locale-root path (`/es`, `/en`, `/pt` — where next-intl lands `/` after its
- * always-prefix redirect), we internally REWRITE to the Nauta page. The address
- * bar stays at `nauta.quest/es`; every other path on the host (e.g. deep links,
- * `/products`) is served unchanged, so the whole site stays reachable under the
- * apex. `madfam.io` is untouched — this branch only fires for the nauta host.
- */
-const NAUTA_HOSTS = new Set(['nauta.quest', 'www.nauta.quest']);
-
-function hostname(request: NextRequest): string {
-  // Behind the Cloudflare tunnel the forwarded host is authoritative; fall back
-  // to the request host for local/dev.
-  const forwarded = request.headers.get('x-forwarded-host');
-  const host = (forwarded ?? request.headers.get('host') ?? '').toLowerCase();
-  // Strip any port for a clean comparison.
-  return host.split(':')[0] ?? host;
-}
-
-/** True when `pathname` is exactly a bare locale root (`/es`, `/en`, `/pt`). */
-function isLocaleRoot(pathname: string): boolean {
-  return LOCALES.some(l => pathname === `/${l}`);
-}
-
 export default function middleware(request: NextRequest) {
-  // The Nauta apex serves the Nauta landing as its home. next-intl runs first
-  // (so `/` → `/{detected-locale}` and locale detection both still work); we then
-  // rewrite the resulting locale root to `/{locale}/nauta` for the nauta host.
-  const isNautaHost = NAUTA_HOSTS.has(hostname(request));
-
-  // Let next-intl middleware handle all routing including root path
+  // Let next-intl middleware handle all routing including root path.
+  //
+  // NOTE: nauta.quest is NOT served here. The Nauta product front door moved to
+  // the standalone `nauta` repo (served by nauta-web at the nauta.quest apex as
+  // its own 'marketing' surface). madfam-web serves only madfam.io. The
+  // `/[locale]/nauta` page in THIS app is a corporate "about Nauta" page that
+  // links out to nauta.quest — it is not the apex's landing.
   const response = intlMiddleware(request);
-
-  if (isNautaHost) {
-    const { pathname } = request.nextUrl;
-    // Only the locale root is rewritten to the Nauta landing; a redirect
-    // response from next-intl (bare `/` → `/{locale}`) is left to complete first,
-    // and the follow-up request for `/{locale}` is the one we rewrite.
-    if (isLocaleRoot(pathname) && response.status === 200) {
-      const locale = pathname.slice(1);
-      const url = request.nextUrl.clone();
-      url.pathname = `/${locale}/nauta`;
-      const rewrite = NextResponse.rewrite(url, { request });
-      // Carry over the headers next-intl set on the original response (locale
-      // cookie, etc.) so behaviour is otherwise identical.
-      response.headers.forEach((value, key) => rewrite.headers.set(key, value));
-      return applySecurityHeaders(rewrite);
-    }
-  }
-
   return applySecurityHeaders(response);
 }
 
