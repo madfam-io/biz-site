@@ -81,6 +81,11 @@ export function Footer() {
     ],
     ecosystem: [
       {
+        name: t('footer.ecosystem.nauta'),
+        href: getLocalizedUrl('nauta', locale),
+        external: false,
+      },
+      {
         name: t('footer.ecosystem.valueLadder'),
         href: getLocalizedUrl('value-ladder', locale),
         external: false,

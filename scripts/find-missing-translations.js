@@ -40,6 +40,7 @@ function mergeRuntimeMessages(modules) {
     ecosystem: modules.ecosystem || {},
     platforms: modules.platforms || {},
     valueLadder: modules.valueLadder || {},
+    nauta: modules.nauta || {},
   };
 }
 

@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "Nauta — tu negocio, unificado",
+    "description": "Nauta reúne cada herramienta que ya usas en una sola cabina de operaciones, con un CTO fraccional listo para operarla cuando lo necesites. ERP autoservicio por asiento; vCTO cuando quieras que alguien lo maneje por ti."
+  },
+  "hero": {
+    "eyebrow": "Nauta · por MADFAM",
+    "title": "Tu negocio, unificado.",
+    "subtitle": "Un solo acceso reúne cada servicio MADFAM al que tu empresa tiene derecho —facturación, agenda, dinero, cumplimiento— en una sola cabina de operaciones. Y cuando quieras que alguien lo opere por ti, súbete al vCTO.",
+    "ctaSelfServe": "Empieza en autoservicio",
+    "ctaDiscoveryCall": "Agenda una llamada",
+    "ctaExplore": "Ver cómo funciona"
+  },
+  "pillars": {
+    "title": "Por qué Nauta",
+    "subtitle": "No es otra herramienta más. Es el lugar donde todas tus herramientas viven juntas.",
+    "oneLogin": {
+      "title": "Un solo acceso",
+      "description": "Una identidad para todo el ecosistema. Entras una vez y tienes a la mano cada servicio al que tienes derecho —sin doce contraseñas ni doce pestañas."
+    },
+    "salidaDigna": {
+      "title": "Tuyo, para quedarte",
+      "description": "Salida digna por diseño. Si algún día dejas el vCTO, el ERP y tus datos siguen siendo tuyos. Nunca te quedas rehén de tu proveedor."
+    },
+    "fiscalNative": {
+      "title": "Fiscal mexicano de origen",
+      "description": "CFDI, RFC y cumplimiento SAT integrados desde el primer día —no atornillados después. Construido para operar en México, no adaptado a la fuerza."
+    },
+    "vctoOnTap": {
+      "title": "Un CTO cuando lo quieras",
+      "description": "¿Prefieres que alguien lo opere? Súbete al vCTO y un operador técnico maneja el stack por ti. Subes o bajas de nivel sin perder nada."
+    }
+  },
+  "product": {
+    "title": "Dos formas de usar Nauta",
+    "subtitle": "Empieza en autoservicio con el ERP. Cuando quieras que lo operemos por ti, sube al vCTO. El mismo negocio, el mismo acceso —nada se pierde al cambiar de nivel.",
+    "priceFrom": "desde",
+    "perSeatMonth": "por asiento/mes",
+    "perMonth": "al mes",
+    "rungs": {
+      "erp": {
+        "name": "Nauta ERP",
+        "tagline": "La cabina de operaciones",
+        "oneLine": "Reúne cada servicio al que tienes derecho en un solo lugar, y opéralo tú mismo. Autoservicio, por asiento.",
+        "valueVs": "Reemplaza la maraña de suscripciones sueltas y hojas de cálculo por una sola cabina —a una fracción de lo que cuesta un ERP tradicional."
+      },
+      "vcto": {
+        "name": "Nauta vCTO",
+        "tagline": "Que lo operen por ti",
+        "oneLine": "Un CTO fraccional y su equipo operan tu stack: deciden, integran y ejecutan por ti. Con alcance a la medida.",
+        "valueVs": "Un director de tecnología de tiempo completo cuesta millones al año. El vCTO te da esa capacidad de operación por una fracción, y solo cuando la necesitas."
+      }
+    }
+  },
+  "rungs": {
+    "erp-self-serve": {
+      "name": "Autoservicio",
+      "description": "Para operar en solitario o en equipo pequeño. Un acceso, tus servicios, listo hoy."
+    },
+    "erp-team": {
+      "name": "Equipo",
+      "description": "Para equipos en crecimiento. Roles, permisos y la cabina completa para varios asientos."
+    },
+    "erp-biz": {
+      "name": "Negocio",
+      "description": "Para una operación establecida. Todo el catálogo, gobernanza y soporte prioritario."
+    },
+    "vcto-esencial": {
+      "name": "Esencial",
+      "description": "Un operador técnico fraccional que lleva tu stack, con un ritmo de trabajo definido."
+    },
+    "vcto-ecosistema": {
+      "name": "Ecosistema",
+      "description": "Operación técnica de mayor alcance a través de todo el ecosistema MADFAM."
+    },
+    "vcto-escala": {
+      "name": "Escala",
+      "description": "Un equipo técnico dedicado para operar y escalar toda tu tecnología."
+    }
+  },
+  "catalog": {
+    "title": "Lo que Nauta reúne",
+    "subtitle": "Cada uno de estos servicios vive bajo un mismo acceso en tu ERP. Empieza con uno; súmalos cuando los necesites.",
+    "note": "El precio de cada servicio vive en su propia página. El ERP los reúne bajo un solo acceso.",
+    "extra": {
+      "crea-map": { "name": "Crea MAP" },
+      "kalya": { "name": "Kalya" },
+      "selva": { "name": "Selva" },
+      "symbiosis": { "name": "Symbiosis" },
+      "acervo": { "name": "Acervo" }
+    }
+  },
+  "cta": {
+    "selfServe": "Empezar en autoservicio",
+    "discoveryCall": "Agendar una llamada"
+  },
+  "closing": {
+    "title": "Empieza donde tenga sentido para ti.",
+    "subtitle": "Prueba el ERP hoy en autoservicio, o agenda una llamada y diseñamos juntos cómo el vCTO opera tu tecnología.",
+    "exploreLadder": "Ver todo lo que hace MADFAM"
+  }
+}
