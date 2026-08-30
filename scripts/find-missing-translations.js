@@ -39,6 +39,7 @@ function mergeRuntimeMessages(modules) {
     impact: modules.impact || {},
     ecosystem: modules.ecosystem || {},
     platforms: modules.platforms || {},
+    valueLadder: modules.valueLadder || {},
   };
 }
 
