@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+// MADFAM self-hosts Plausible; keep this in step with apps/web/lib/plausible.ts.
+const plausibleHostname = new URL(
+  process.env.NEXT_PUBLIC_PLAUSIBLE_HOST || 'https://plausible.madfam.io'
+).hostname.toLowerCase();
+
 test.describe('Lead Capture Flow', () => {
   test('should successfully submit a lead form', async ({ page }) => {
     await page.goto('/contact');
@@ -40,16 +45,18 @@ test.describe('Lead Capture Flow', () => {
     const analyticsRequests: string[] = [];
 
     page.on('request', request => {
-      // Match plausible.io strictly by hostname (not substring) to avoid
-      // CodeQL js/incomplete-url-substring-sanitization. Falsy hostname
-      // checks would let `attacker-plausible.io.example.com` slip through.
+      // Match the configured Plausible host strictly by hostname (not
+      // substring) to avoid CodeQL js/incomplete-url-substring-sanitization.
+      // Falsy hostname checks would let `attacker-plausible.io.example.com`
+      // slip through. MADFAM self-hosts, so the host is configurable.
       let hostname = '';
       try {
         hostname = new URL(request.url()).hostname.toLowerCase();
       } catch {
         // Non-URL request entries (e.g. data: URIs) — ignore.
       }
-      const isPlausible = hostname === 'plausible.io' || hostname.endsWith('.plausible.io');
+      const isPlausible =
+        hostname === plausibleHostname || hostname.endsWith(`.${plausibleHostname}`);
       if (isPlausible || request.url().includes('/api/analytics')) {
         analyticsRequests.push(request.url());
       }

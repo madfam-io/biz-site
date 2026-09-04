@@ -13,6 +13,19 @@ const devLog = (category: string, event: string, ...args: unknown[]) => {
   }
 };
 
+// MADFAM runs its own Plausible instance; events never go to Plausible Cloud.
+// Kept in sync with apps/web/lib/plausible.ts, which is where the app-side
+// value lives. Both are NEXT_PUBLIC_*, so they are inlined at build time.
+const DEFAULT_PLAUSIBLE_HOST = 'https://plausible.madfam.io';
+
+function plausibleHost(): string {
+  const host =
+    (typeof window !== 'undefined' ? (window as any).__PLAUSIBLE_HOST__ : undefined) ||
+    process.env.NEXT_PUBLIC_PLAUSIBLE_HOST ||
+    DEFAULT_PLAUSIBLE_HOST;
+  return String(host).replace(/\/+$/, '');
+}
+
 // Send events to Plausible via sendBeacon when configured
 function sendPlausibleEvent(eventName: string, props?: Record<string, unknown>): void {
   const domain =
@@ -28,7 +41,7 @@ function sendPlausibleEvent(eventName: string, props?: Record<string, unknown>):
       domain,
       props: props || {},
     });
-    navigator.sendBeacon('https://plausible.io/api/event', payload);
+    navigator.sendBeacon(`${plausibleHost()}/api/event`, payload);
   }
 }
 

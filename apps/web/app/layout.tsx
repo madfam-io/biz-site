@@ -3,6 +3,7 @@ import { headers } from 'next/headers';
 import { Inter, Poppins, Space_Mono } from 'next/font/google';
 import { DarkModeScript } from './dark-mode-script';
 import { BrandThemeProvider } from '@/components/ui';
+import { PLAUSIBLE_HOST } from '@/lib/plausible';
 import './globals.css';
 
 const inter = Inter({
@@ -43,6 +44,7 @@ export const viewport = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const headersList = await headers();
   const nonce = headersList.get('x-nonce') ?? undefined;
+  const plausibleHost = PLAUSIBLE_HOST;
 
   return (
     <html
@@ -55,7 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <script
             defer
             data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
-            src="https://plausible.io/js/script.js"
+            src={`${plausibleHost}/js/script.js`}
             nonce={nonce}
           />
         )}
@@ -63,7 +65,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <script
             nonce={nonce}
             dangerouslySetInnerHTML={{
-              __html: `window.__PLAUSIBLE_DOMAIN__="${process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}";`,
+              __html:
+                `window.__PLAUSIBLE_DOMAIN__="${process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}";` +
+                `window.__PLAUSIBLE_HOST__="${plausibleHost}";`,
             }}
           />
         )}
