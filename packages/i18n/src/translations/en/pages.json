@@ -16,13 +16,7 @@
     },
     "products": {
       "title": "Our products",
-      "subtitle": "Platforms and tools built by our specialized units",
-      "spark": {
-        "description": "AI-powered productivity experiments and automations for early-stage workflows."
-      },
-      "penny": {
-        "description": "AI assistant platform currently in development. Will learn, adapt, and continuously improve your workflow."
-      }
+      "subtitle": "Platforms and tools built by our specialized units"
     },
     "cta": {
       "title": "Ready to transform your business?",

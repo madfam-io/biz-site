@@ -16,13 +16,7 @@
     },
     "products": {
       "title": "Nuestros productos",
-      "subtitle": "Plataformas y herramientas desarrolladas por nuestras unidades especializadas",
-      "spark": {
-        "description": "Experimentos de productividad y automatizaciones con IA para flujos de trabajo iniciales."
-      },
-      "penny": {
-        "description": "Plataforma de asistente IA actualmente en desarrollo. Aprenderá, se adaptará y mejorará continuamente tu flujo de trabajo."
-      }
+      "subtitle": "Plataformas y herramientas desarrolladas por nuestras unidades especializadas"
     },
     "cta": {
       "title": "¿Listo para transformar tu negocio?",
