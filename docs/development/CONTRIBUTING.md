@@ -25,8 +25,8 @@ By participating in this project, you agree to:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/madfam-org/biz-site.git
-   cd biz-site
+   git clone https://github.com/madfam-org/madfam-site.git
+   cd madfam-site
    ```
 
 2. **Install dependencies**
