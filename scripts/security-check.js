@@ -11,6 +11,13 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
+// Every path in this script is repo-root relative ('apps/web/middleware.ts',
+// 'apps/web/app/api', ...), but `pnpm --filter @madfam/web test:security` runs
+// it with cwd = apps/web, where none of them resolve: every check reported
+// "not found" and the run failed for the wrong reason. Anchor on the script's
+// own location so the result is the same from any cwd.
+process.chdir(path.resolve(__dirname, '..'));
+
 class SecurityAuditor {
   constructor() {
     // Findings raised by this script's own configuration checks.
