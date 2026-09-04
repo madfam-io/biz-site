@@ -19,41 +19,26 @@
     },
     "animotion": {
       "command": "npx",
-      "args": [
-        "-y",
-        "animotion-mcp"
-      ]
+      "args": ["-y", "animotion-mcp"]
     },
     "sketchfab": {
       "command": "npx",
-      "args": [
-        "-y",
-        "sketchfab-mcp-server"
-      ],
+      "args": ["-y", "sketchfab-mcp-server"],
       "env": {
         "SKETCHFAB_API_KEY": ""
       }
     },
     "threejs": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-threejs"
-      ]
+      "args": ["-y", "@modelcontextprotocol/server-threejs"]
     },
     "@magicuidesign/mcp": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@magicuidesign/mcp@latest"
-      ]
+      "args": ["-y", "@magicuidesign/mcp@latest"]
     },
     "shadcn": {
       "command": "npx",
-      "args": [
-        "shadcn@latest",
-        "mcp"
-      ]
+      "args": ["shadcn@latest", "mcp"]
     }
   }
 }

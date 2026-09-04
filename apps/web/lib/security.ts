@@ -46,7 +46,11 @@ export function validateBearerToken(authHeader: string | null, expectedSecret: s
 /**
  * Generate HMAC signature for webhook verification
  */
-export function generateHmacSignature(payload: string, secret: string, algorithm = 'sha256'): string {
+export function generateHmacSignature(
+  payload: string,
+  secret: string,
+  algorithm = 'sha256'
+): string {
   return crypto.createHmac(algorithm, secret).update(payload).digest('hex');
 }
 
@@ -142,7 +146,10 @@ export function validateCsrfToken(request: Request, sessionToken: string | null)
 /**
  * Encrypt sensitive data using AES-256-GCM
  */
-export function encryptData(data: string, key: string): { encrypted: string; iv: string; tag: string } {
+export function encryptData(
+  data: string,
+  key: string
+): { encrypted: string; iv: string; tag: string } {
   // Derive a 32-byte key from the provided key
   const derivedKey = crypto.createHash('sha256').update(key).digest();
 

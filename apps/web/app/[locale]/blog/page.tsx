@@ -91,21 +91,19 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       const cmsData = await getPublishedBlogPosts(locale, 10);
       if (cmsData.docs.length > 0) {
         // Transform CMS data to common interface
-        blogPosts = cmsData.docs.map(
-          (post: BlogPost): CommonBlogPost => ({
-            id: post.id,
-            title: post.title,
-            excerpt: post.excerpt,
-            publishedDate: post.publishedDate,
-            author: post.author,
-            slug: post.slug,
-            tags: post.tags,
-            status: post.status,
-            createdAt: post.createdAt,
-            updatedAt: post.updatedAt,
-            content: post.content,
-          })
-        );
+        blogPosts = cmsData.docs.map((post: BlogPost): CommonBlogPost => ({
+          id: post.id,
+          title: post.title,
+          excerpt: post.excerpt,
+          publishedDate: post.publishedDate,
+          author: post.author,
+          slug: post.slug,
+          tags: post.tags,
+          status: post.status,
+          createdAt: post.createdAt,
+          updatedAt: post.updatedAt,
+          content: post.content,
+        }));
       }
     } catch (error) {
       console.warn('Failed to fetch blog posts from CMS, using fallback data:', error);

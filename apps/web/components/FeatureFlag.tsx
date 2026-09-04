@@ -9,12 +9,7 @@ interface FeatureFlagProps {
   onChange?: (enabled: boolean) => void;
 }
 
-export function FeatureFlag({ 
-  flag, 
-  fallback = null, 
-  children,
-  onChange 
-}: FeatureFlagProps) {
+export function FeatureFlag({ flag, fallback = null, children, onChange }: FeatureFlagProps) {
   const isEnabled = useFeatureFlag(flag);
 
   React.useEffect(() => {
@@ -97,9 +92,7 @@ export function FeatureFlagDebug() {
         {Object.entries(flags).map(([key, enabled]) => (
           <li key={key} className="flex items-center justify-between">
             <span>{key}:</span>
-            <span className={enabled ? 'text-leaf' : 'text-red-400'}>
-              {enabled ? '✓' : '✗'}
-            </span>
+            <span className={enabled ? 'text-leaf' : 'text-red-400'}>{enabled ? '✓' : '✗'}</span>
           </li>
         ))}
       </ul>

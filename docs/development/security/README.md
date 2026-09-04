@@ -21,9 +21,7 @@ Security guidelines, implementation details, and best practices.
 ```typescript
 // Input validation with Zod
 import { z } from 'zod';
-const schema = z.object({
-  /* ... */
-});
+const schema = z.object({/* ... */});
 const validated = schema.parse(input);
 
 // CSRF protection

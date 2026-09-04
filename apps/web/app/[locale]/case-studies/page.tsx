@@ -135,23 +135,21 @@ export default async function CaseStudiesPage({ params }: { params: Promise<{ lo
       const cmsData = await getPublishedCaseStudies(locale, 10);
       if (cmsData.docs.length > 0) {
         // Transform CMS data to common interface
-        caseStudies = cmsData.docs.map(
-          (study: CaseStudy): CommonCaseStudy => ({
-            id: study.id,
-            title: study.title,
-            client: study.client,
-            industry: study.industry,
-            challenge: study.challenge,
-            solution: study.solution,
-            results: study.results,
-            slug: study.slug,
-            status: study.status,
-            publishedDate: study.publishedDate,
-            createdAt: study.createdAt,
-            updatedAt: study.updatedAt,
-            featuredImage: study.featuredImage,
-          })
-        );
+        caseStudies = cmsData.docs.map((study: CaseStudy): CommonCaseStudy => ({
+          id: study.id,
+          title: study.title,
+          client: study.client,
+          industry: study.industry,
+          challenge: study.challenge,
+          solution: study.solution,
+          results: study.results,
+          slug: study.slug,
+          status: study.status,
+          publishedDate: study.publishedDate,
+          createdAt: study.createdAt,
+          updatedAt: study.updatedAt,
+          featuredImage: study.featuredImage,
+        }));
       }
     } catch (error) {
       console.warn('Failed to fetch case studies from CMS, using fallback data:', error);

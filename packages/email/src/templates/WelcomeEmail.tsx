@@ -20,19 +20,18 @@ interface WelcomeEmailProps {
   tier: string;
 }
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000';
 
-export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({
-  name,
-  language = 'es-MX',
-  tier,
-}) => {
+export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({ name, language = 'es-MX', tier }) => {
   const content = {
     'es-MX': {
       preview: 'Bienvenido a MADFAM - Tu socio en transformación digital',
       greeting: `¡Hola ${name}!`,
       welcome: 'Bienvenido a MADFAM',
-      intro: 'Gracias por tu interés en nuestros servicios. Somos especialistas en transformación digital y automatización inteligente.',
+      intro:
+        'Gracias por tu interés en nuestros servicios. Somos especialistas en transformación digital y automatización inteligente.',
       tierInfo: `Basado en tu consulta, creemos que nuestro servicio ${tier} podría ser perfecto para ti.`,
       nextSteps: 'Próximos pasos:',
       step1: 'Revisaremos tu solicitud en las próximas 24 horas',
@@ -46,14 +45,15 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({
       preview: 'Welcome to MADFAM - Your digital transformation partner',
       greeting: `Hello ${name}!`,
       welcome: 'Welcome to MADFAM',
-      intro: 'Thank you for your interest in our services. We specialize in digital transformation and intelligent automation.',
+      intro:
+        'Thank you for your interest in our services. We specialize in digital transformation and intelligent automation.',
       tierInfo: `Based on your inquiry, we believe our ${tier} service could be perfect for you.`,
       nextSteps: 'Next steps:',
       step1: 'We will review your request within the next 24 hours',
       step2: 'We will contact you to schedule a free consultation',
       step3: 'We will develop a personalized proposal',
       cta: 'Schedule a consultation',
-      footer: 'If you have any questions, please don\'t hesitate to contact us.',
+      footer: "If you have any questions, please don't hesitate to contact us.",
       signature: 'MADFAM Team',
     },
   };
@@ -66,18 +66,12 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({
       <Preview>{t.preview}</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img
-            src={`${baseUrl}/logo.png`}
-            width="170"
-            height="50"
-            alt="MADFAM"
-            style={logo}
-          />
+          <Img src={`${baseUrl}/logo.png`} width="170" height="50" alt="MADFAM" style={logo} />
           <Heading style={h1}>{t.welcome}</Heading>
           <Text style={text}>{t.greeting}</Text>
           <Text style={text}>{t.intro}</Text>
           <Text style={text}>{t.tierInfo}</Text>
-          
+
           <Section style={buttonContainer}>
             <Button style={button} href={`${baseUrl}/contact`}>
               {t.cta}
@@ -94,7 +88,7 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({
           <Hr style={hr} />
           <Text style={text}>{t.footer}</Text>
           <Text style={signature}>{t.signature}</Text>
-          
+
           <Hr style={hr} />
           <Text style={footer}>
             <Link href={`${baseUrl}`} style={link}>

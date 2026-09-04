@@ -356,7 +356,7 @@ elements.forEach(el => {
 
 1. [ ] Update `globals.css` with complete CSS variables
 2. [ ] Add the semantic colors to the `@theme` block in
-   `apps/web/app/globals.css` (**not** `tailwind.config.ts` — v4 does not read it)
+       `apps/web/app/globals.css` (**not** `tailwind.config.ts` — v4 does not read it)
 3. [ ] Create utility classes
 4. [ ] Test theme toggle functionality
 

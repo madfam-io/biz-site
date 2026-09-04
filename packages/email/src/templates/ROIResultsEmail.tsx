@@ -34,7 +34,9 @@ interface ROIResultsEmailProps {
   language?: 'es-MX' | 'en-US';
 }
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000';
 
 export const ROIResultsEmail: React.FC<ROIResultsEmailProps> = ({
   calculationId,
@@ -55,7 +57,8 @@ export const ROIResultsEmail: React.FC<ROIResultsEmailProps> = ({
       costReductionLabel: 'Reducción de costos:',
       months: 'meses',
       cta: 'Agendar consulta para implementación',
-      footer: 'Estos resultados son estimaciones basadas en la información proporcionada. Nuestro equipo puede ayudarte a desarrollar un plan de implementación detallado.',
+      footer:
+        'Estos resultados son estimaciones basadas en la información proporcionada. Nuestro equipo puede ayudarte a desarrollar un plan de implementación detallado.',
       signature: 'Equipo MADFAM',
     },
     'en-US': {
@@ -71,7 +74,8 @@ export const ROIResultsEmail: React.FC<ROIResultsEmailProps> = ({
       costReductionLabel: 'Cost reduction:',
       months: 'months',
       cta: 'Schedule implementation consultation',
-      footer: 'These results are estimates based on the information provided. Our team can help you develop a detailed implementation plan.',
+      footer:
+        'These results are estimates based on the information provided. Our team can help you develop a detailed implementation plan.',
       signature: 'MADFAM Team',
     },
   };
@@ -100,19 +104,13 @@ export const ROIResultsEmail: React.FC<ROIResultsEmailProps> = ({
       <Preview>{t.preview}</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img
-            src={`${baseUrl}/logo.png`}
-            width="170"
-            height="50"
-            alt="MADFAM"
-            style={logo}
-          />
+          <Img src={`${baseUrl}/logo.png`} width="170" height="50" alt="MADFAM" style={logo} />
           <Heading style={h1}>{t.title}</Heading>
-          
+
           <Section style={roiContainer}>
             <div style={roiBox}>
               <Text style={roiLabel}>{t.roiTitle}</Text>
-              <Text style={{...roiNumber, color: getROIColor(results.roi.percentage)}}>
+              <Text style={{ ...roiNumber, color: getROIColor(results.roi.percentage) }}>
                 {results.roi.percentage}%
               </Text>
               <Text style={roiSubLabel}>
@@ -124,15 +122,11 @@ export const ROIResultsEmail: React.FC<ROIResultsEmailProps> = ({
           <Section style={metricsContainer}>
             <div style={metricBox}>
               <Text style={metricLabel}>{t.savingsTitle}</Text>
-              <Text style={metricValue}>
-                {formatCurrency(results.futureState.annualSavings)}
-              </Text>
+              <Text style={metricValue}>{formatCurrency(results.futureState.annualSavings)}</Text>
             </div>
             <div style={metricBox}>
               <Text style={metricLabel}>{t.fiveYearTitle}</Text>
-              <Text style={metricValue}>
-                {formatCurrency(results.roi.fiveYearNetSavings)}
-              </Text>
+              <Text style={metricValue}>{formatCurrency(results.roi.fiveYearNetSavings)}</Text>
             </div>
           </Section>
 
@@ -163,7 +157,7 @@ export const ROIResultsEmail: React.FC<ROIResultsEmailProps> = ({
           <Hr style={hr} />
           <Text style={text}>{t.footer}</Text>
           <Text style={signature}>{t.signature}</Text>
-          
+
           <Hr style={hr} />
           <Text style={footer}>
             <Link href={`${baseUrl}`} style={link}>

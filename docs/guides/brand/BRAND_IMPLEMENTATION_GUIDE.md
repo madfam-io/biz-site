@@ -27,8 +27,8 @@ pnpm add @fontsource/inter @fontsource-variable/clash-display @fontsource/jetbra
 > with `@config` — and none does. Colours, animation and keyframes added to
 > `apps/web/tailwind.config.ts` emit nothing at all. The live surface is the
 > `@theme` block in `apps/web/app/globals.css`; plugins go in `@plugin` lines
-> beside it. The snippet below is kept because it still records *which* tokens
-> are wanted, not *where* to put them.
+> beside it. The snippet below is kept because it still records _which_ tokens
+> are wanted, not _where_ to put them.
 
 ```javascript
 // apps/web/tailwind.config.ts
