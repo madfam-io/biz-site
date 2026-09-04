@@ -20,8 +20,11 @@
 
 # Documentation
 /docs/ @madfam-io/developers @madfam-io/technical-writers
+AGENTS.md @madfam-io/developers
 CLAUDE.md @madfam-io/developers
 README.md @madfam-io/developers
+llms.txt @madfam-io/developers
+llms-full.txt @madfam-io/developers
 
 # Apps
 /apps/web/ @madfam-io/web-team
