@@ -1,4 +1,4 @@
-import { createLogger, LogLevel } from '@madfam/core';
+import { createLogger, LogLevel } from '@madfam-site/core';
 
 // Create application-specific logger instance
 export const appLogger = createLogger({

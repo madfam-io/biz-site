@@ -1,6 +1,6 @@
 'use client';
 
-import { type Locale } from '@madfam/i18n';
+import { type Locale } from '@madfam-site/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search as SearchIcon, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';

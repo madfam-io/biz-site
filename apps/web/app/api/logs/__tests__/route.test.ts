@@ -5,7 +5,7 @@ import { NextRequest } from 'next/server';
 // Mocks
 // ---------------------------------------------------------------------------
 
-vi.mock('@madfam/core', () => ({
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),

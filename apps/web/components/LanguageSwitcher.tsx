@@ -1,6 +1,6 @@
 'use client';
 
-import { i18nConfig, type Locale } from '@madfam/i18n';
+import { i18nConfig, type Locale } from '@madfam-site/i18n';
 import { ChevronDown } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';

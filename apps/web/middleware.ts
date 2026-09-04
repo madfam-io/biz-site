@@ -1,4 +1,4 @@
-import { i18nConfig } from '@madfam/i18n';
+import { i18nConfig } from '@madfam-site/i18n';
 import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 

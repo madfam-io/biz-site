@@ -41,14 +41,14 @@ vi.mock('@/lib/redis', () => ({
   getRedisClient: vi.fn().mockReturnValue(null),
 }));
 
-vi.mock('@madfam/analytics', () => ({
+vi.mock('@madfam-site/analytics', () => ({
   analytics: {
     track: vi.fn(),
     trackLeadCaptured: vi.fn(),
   },
 }));
 
-vi.mock('@madfam/core', () => ({
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),

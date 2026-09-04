@@ -1,4 +1,4 @@
-import { messages } from '@madfam/i18n';
+import { messages } from '@madfam-site/i18n';
 import { getRequestConfig } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 

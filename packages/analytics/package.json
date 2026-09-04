@@ -1,5 +1,5 @@
 {
-  "name": "@madfam/analytics",
+  "name": "@madfam-site/analytics",
   "version": "0.1.0",
   "private": true,
   "main": "./src/index.ts",

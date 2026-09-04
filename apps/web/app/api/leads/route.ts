@@ -1,4 +1,4 @@
-import { analytics } from '@madfam/analytics';
+import { analytics } from '@madfam-site/analytics';
 import { LeadSource, LeadStatus, Prisma } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';

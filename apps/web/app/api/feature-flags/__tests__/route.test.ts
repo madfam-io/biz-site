@@ -50,7 +50,7 @@ vi.mock('@/lib/logger', () => ({
   },
 }));
 
-vi.mock('@madfam/core', () => ({
+vi.mock('@madfam-site/core', () => ({
   FeatureFlagProvider: MockFeatureFlagProvider,
   logger: {
     info: vi.fn(),

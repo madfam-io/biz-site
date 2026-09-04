@@ -1,4 +1,4 @@
-import { getLocalizedContent, type Locale } from '@madfam/i18n';
+import { getLocalizedContent, type Locale } from '@madfam-site/i18n';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
