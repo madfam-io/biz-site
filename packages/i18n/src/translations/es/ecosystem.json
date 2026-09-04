@@ -49,7 +49,7 @@
       "all": "Todas las plataformas",
       "none": "—",
       "single": "Completo (una plataforma)",
-      "discount": "Hasta 20% de descuento",
+      "discount": "Descuentos especiales próximamente",
       "standard": "Soporte por email",
       "priority": "Soporte prioritario",
       "yes": "Sí"
@@ -70,9 +70,9 @@
     "membershipTitle": "Membresía del Ecosistema",
     "features": {
       "0": "Capacidades elegibles de la plataforma",
-      "1": "Hasta 20% de descuento en pedidos Maker Node",
+      "1": "Descuentos y beneficios especiales en pedidos Maker Node — próximamente",
       "2": "Soporte prioritario",
-      "3": "Acceso anticipado a PENNY y AVALA",
+      "3": "Acceso anticipado a nuevas capacidades de Selva y Avala",
       "4": "Comunidad exclusiva para miembros"
     },
     "cta": "Únete al Ecosistema",
@@ -82,12 +82,12 @@
     "title": "Primavera Maker Node",
     "badge": "Fabricación Física",
     "subtitle": "Del diseño digital a la realidad física — los miembros obtienen fabricación con descuento.",
-    "description": "Impresión 3D, maquinado CNC y corte láser — integrado con Yantra4D para diseño y Cotiza Studio para cotización.",
-    "description2": "Los miembros del ecosistema reciben hasta 20% de descuento en todos los pedidos.",
-    "discount": "Hasta 20% de descuento para miembros",
+    "description": "Impresión 3D, maquinado CNC y corte láser — integrado con Yantra4D para diseño y Cotiza para cotización.",
+    "description2": "Descuentos y beneficios especiales para los miembros del ecosistema, próximamente.",
+    "discount": "Descuentos especiales próximamente para miembros",
     "discountCalloutLabel": "Descuento para miembros del ecosistema",
     "discountHeadline": "Beneficio de Miembro",
-    "discountBody": "Hasta 20% de descuento en todos los pedidos de fabricación física — impresión 3D, maquinado CNC y corte láser.",
+    "discountBody": "Descuentos y beneficios especiales en pedidos de fabricación física — impresión 3D, maquinado CNC y corte láser — próximamente.",
     "cta": "Explorar Maker Node",
     "servicesLabel": "Servicios disponibles",
     "services": {
@@ -124,12 +124,12 @@
         "answer": "El acceso público varía por plataforma. La Membresía del Ecosistema desbloquea capacidades elegibles, soporte coordinado y ventajas del maker node cuando aplican."
       },
       "q3": {
-        "question": "¿Qué pasa cuando lancen PENNY y AVALA?",
-        "answer": "Se incluyen automáticamente en tu Membresía del Ecosistema sin costo extra. Obtienes acceso Pro desde el primer día."
+        "question": "¿Cómo entran Selva y Avala en la membresía?",
+        "answer": "Ambas están incluidas en tu Membresía del Ecosistema sin costo extra — Selva en https://selva.town y Avala en https://avala.studio."
       },
       "q4": {
         "question": "¿Cómo funciona el descuento en Maker Node?",
-        "answer": "Los Miembros del Ecosistema reciben hasta 20% de descuento en todos los pedidos de fabricación física."
+        "answer": "Los Miembros del Ecosistema recibirán descuentos y beneficios especiales en los pedidos de fabricación física a través de Primavera Maker Node — impresión 3D, maquinado CNC y corte láser. Detalles próximamente."
       },
       "q5": {
         "question": "¿Puedo cancelar en cualquier momento?",
@@ -176,8 +176,8 @@
     "makerHighlight": {
       "title": "Primavera Maker Node",
       "subtitle": "Del diseño digital a la realidad física",
-      "description": "Impresión 3D, maquinado CNC y corte láser — integrado con Yantra4D y Cotiza Studio.",
-      "memberDiscount": "Los miembros ahorran hasta 20%"
+      "description": "Impresión 3D, maquinado CNC y corte láser — integrado con Yantra4D y Cotiza.",
+      "memberDiscount": "Descuentos y beneficios especiales próximamente"
     },
     "metrics": {
       "vendors": "proveedores rastreados",
@@ -251,8 +251,8 @@
         },
         "quote": {
           "title": "Cotiza",
-          "description": "Obtén precios al instante con Cotiza Studio",
-          "platform": "Cotiza Studio"
+          "description": "Obtén precios al instante con Cotiza",
+          "platform": "Cotiza"
         },
         "fabricate": {
           "title": "Fabrica",
@@ -261,15 +261,15 @@
         },
         "track": {
           "title": "Rastrea",
-          "description": "Monitorea producción con Pravara-MES",
-          "platform": "Pravara-MES"
+          "description": "Monitorea producción con Pravara MES",
+          "platform": "Pravara MES"
         }
       }
     },
     "ecosystem": {
       "title": "Parte del Ecosistema MADFAM",
       "subtitle": "Maker Node se conecta con cada plataforma MADFAM.",
-      "memberBenefit": "Los miembros ahorran hasta 20% en todos los pedidos"
+      "memberBenefit": "Descuentos y beneficios especiales para miembros — próximamente"
     },
     "cta": {
       "title": "¿Listo Para Hacerlo Real?",

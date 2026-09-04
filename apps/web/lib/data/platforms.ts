@@ -171,7 +171,7 @@ export const PLATFORMS: Platform[] = [
   // ── Intelligence Layer ────────────────────────────────────────────────────
   {
     slug: 'forge-sight',
-    name: 'Forge Sight',
+    name: 'Forgesight',
     icon: '🏭',
     layer: 'intelligence',
     status: 'production-beta',
@@ -374,10 +374,12 @@ export const PLATFORMS: Platform[] = [
   },
   {
     slug: 'avala',
-    name: 'AVALA',
+    name: 'Avala',
     icon: '🎓',
     layer: 'standards',
-    status: 'coming-soon',
+    status: 'production-beta',
+    statusPercent: 95,
+    externalUrl: 'https://avala.studio',
     track: 'ecosystem',
     accentColor: {
       gradient: 'from-teal-500/20 to-teal-600/10',
@@ -386,8 +388,9 @@ export const PLATFORMS: Platform[] = [
       bg: 'bg-teal-500/10',
     },
     primaryCTA: {
-      type: 'waitlist',
+      type: 'external',
       labelKey: 'avala.cta.primary',
+      url: 'https://avala.studio',
     },
     secondaryCTA: {
       type: 'external',
@@ -412,7 +415,7 @@ export const PLATFORMS: Platform[] = [
     layer: 'applications',
     status: 'production',
     statusPercent: 100,
-    externalUrl: 'https://4d-app.madfam.io',
+    externalUrl: 'https://yantra4d.com',
     track: 'ecosystem',
     accentColor: {
       gradient: 'from-purple-500/20 to-purple-600/10',
@@ -423,7 +426,7 @@ export const PLATFORMS: Platform[] = [
     primaryCTA: {
       type: 'external',
       labelKey: 'yantra4d.cta.primary',
-      url: 'https://4d-app.madfam.io',
+      url: 'https://yantra4d.com',
     },
     secondaryCTA: {
       type: 'contact',
@@ -441,7 +444,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     slug: 'cotiza-studio',
-    name: 'Cotiza Studio',
+    name: 'Cotiza',
     icon: '📊',
     layer: 'applications',
     status: 'production',
@@ -475,7 +478,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     slug: 'pravara-mes',
-    name: 'Pravara-MES',
+    name: 'Pravara MES',
     icon: '⚙️',
     layer: 'applications',
     status: 'production-beta',

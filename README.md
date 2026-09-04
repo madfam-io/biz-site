@@ -116,12 +116,12 @@ Three conversion paths into the MADFAM ecosystem:
 - **Enclii** - Sovereign cloud PaaS powering MADFAM's infrastructure
 - **Janua** - Self-hosted identity platform with SSO, MFA, and Passkeys
 - **Dhanam** - Wealth & finance platform for LATAM founders at [dhan.am](https://www.dhan.am)
-- **Forge Sight** - Pricing intelligence for digital fabrication
-- **Cotiza Studio** - Intelligent quoting and budgeting system
+- **Forgesight** - Pricing intelligence for digital fabrication
+- **Cotiza** - Intelligent quoting and budgeting system
 - **Yantra4D** - Open parametric design platform
-- **Pravara-MES** - Manufacturing execution system
-- **AVALA** - Competency-based training platform (Coming Soon)
-- **PENNY** - AI assistant platform (In Development)
+- **Pravara MES** - Manufacturing execution system
+- **Avala** - Competency-based training platform at [avala.studio](https://avala.studio)
+- **Selva** - Self-hosted AI agent platform at [selva.town](https://selva.town)
 
 ### Solutions
 
