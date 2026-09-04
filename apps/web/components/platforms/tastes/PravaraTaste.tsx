@@ -41,7 +41,7 @@ export function PravaraTaste() {
               aria-hidden="true"
             />
             <span className="text-xs font-semibold text-gray-300 tracking-wide uppercase">
-              Pravara-MES Live
+              Pravara MES Live
             </span>
           </div>
           <span className="text-[10px] text-gray-500 font-mono">4 machines connected</span>

@@ -85,7 +85,7 @@
     },
     "connections": {
       "janua": "Camada de autenticação para todas as apps no Enclii",
-      "pravara": "Hospeda instâncias de produção do Pravara-MES"
+      "pravara": "Hospeda instâncias de produção do Pravara MES"
     },
     "comparison": {
       "title": "Enclii vs. Nuvem Tradicional",
@@ -165,7 +165,7 @@
     "tagline": "Inteligência de Preços para Fabricação Digital",
     "valueProp": "Descoberta de preços com IA de 1.000+ fornecedores. Saiba exatamente quanto a fabricação deveria custar antes de comprar.",
     "problem": "Os preços de fabricação digital são opacos. Cada fornecedor cota diferente, não há preços padronizados, e equipes de compras desperdiçam horas comparando cotações manualmente.",
-    "solution": "Forge Sight coleta, normaliza e compara preços continuamente de 1.000+ fornecedores mundiais. Obtenha inteligência de mercado em tempo real para impressão 3D, CNC, corte a laser e mais.",
+    "solution": "Forgesight coleta, normaliza e compara preços continuamente de 1.000+ fornecedores mundiais. Obtenha inteligência de mercado em tempo real para impressão 3D, CNC, corte a laser e mais.",
     "features": {
       "0": "Descoberta de preços com IA de 1.000+ fornecedores",
       "1": "Benchmarking em tempo real com análise estatística",
@@ -179,12 +179,12 @@
       "secondary": "Solicitar Demo"
     },
     "connections": {
-      "cotiza": "Alimenta o motor de preços do Cotiza Studio",
+      "cotiza": "Alimenta o motor de preços do Cotiza",
       "dhanam": "Envia dados de custos para o planejamento financeiro do Dhanam"
     },
     "comparison": {
-      "title": "Forge Sight vs. Pesquisa Manual",
-      "headers": ["Capacidade", "Forge Sight", "Pesquisa Manual", "Ferramentas Genéricas"],
+      "title": "Forgesight vs. Pesquisa Manual",
+      "headers": ["Capacidade", "Forgesight", "Pesquisa Manual", "Ferramentas Genéricas"],
       "rows": {
         "vendors": ["Cobertura de Fornecedores", "1.000+", "10-20", "Variável"],
         "realtime": ["Atualizações em Tempo Real", "Sim", "Não", "Limitado"],
@@ -198,7 +198,7 @@
       "apis": "API REST com 15 endpoints",
       "protocols": "HTTPS, WebSocket (preços ao vivo)",
       "sdks": "JavaScript, Python",
-      "license": "Proprietário (acesso API com Pro)"
+      "license": "AGPL-3.0 + DATA_LICENSE"
     },
     "metrics": {
       "vendors": "1.000+ fornecedores",
@@ -245,11 +245,11 @@
   },
   "tezca": {
     "tagline": "Inteligência Regulatória Mexicana",
-    "valueProp": "Pesquise, entenda e cumpra a lei mexicana — com inteligência artificial. 11.696 leis indexadas e crescendo.",
+    "valueProp": "Pesquise, entenda e cumpra a lei mexicana — com inteligência artificial. Um índice crescente de leis e normas mexicanas.",
     "problem": "A conformidade regulatória mexicana é um labirinto. Milhares de leis, normas e padrões dispersos em sites governamentais. Empresas perdem semanas pesquisando requisitos.",
-    "solution": "Tezca indexa 11.696 leis e normas mexicanas, tornando-as pesquisáveis, referenciadas e acionáveis. Análise com IA ajuda você a entender o que se aplica ao seu negócio.",
+    "solution": "Tezca indexa leis e normas mexicanas, tornando-as pesquisáveis, referenciadas e acionáveis. Análise com IA ajuda você a entender o que se aplica ao seu negócio.",
     "features": {
-      "0": "11.696 leis e normas mexicanas indexadas",
+      "0": "Leis e normas mexicanas indexadas",
       "1": "Pesquisa regulatória com IA",
       "2": "Análise de referência cruzada entre leis",
       "3": "Exportação em múltiplos formatos (PDF, DOCX, JSON)",
@@ -260,17 +260,17 @@
       "secondary": "Solicitar Demo"
     },
     "connections": {
-      "avala": "Requisitos regulatórios alimentam os currículos do AVALA",
+      "avala": "Requisitos regulatórios alimentam os currículos do Avala",
       "pravara": "Regras de conformidade integradas em fluxos de manufatura"
     },
     "techSpecs": {
       "apis": "API REST com pesquisa, referência cruzada, exportação",
       "protocols": "HTTPS",
       "sdks": "JavaScript, Python",
-      "license": "Proprietário (acesso API com Pro)"
+      "license": "AGPL-3.0"
     },
     "metrics": {
-      "laws": "11.696 leis",
+      "laws": "Leis mexicanas indexadas",
       "formats": "3 formatos de exportação",
       "search": "Pesquisa com IA"
     }
@@ -279,7 +279,7 @@
     "tagline": "Plataforma de Treinamento por Competências",
     "valueProp": "Projete, entregue e verifique treinamento baseado em competências — com geração de certificados DC-3 e conformidade regulatória.",
     "problem": "Organizações de treinamento no México precisam cumprir padrões CONOCER/EC e gerar certificados DC-3. Ferramentas atuais são fragmentadas e manuais.",
-    "solution": "AVALA é uma plataforma para projetar treinamento por competências alinhado com padrões EC/CONOCER. Gera certificados DC-3 automaticamente e emite credenciais verificáveis com Open Badges 3.0.",
+    "solution": "Avala é uma plataforma para projetar treinamento por competências alinhado com padrões EC/CONOCER. Gera certificados DC-3 automaticamente e emite credenciais verificáveis com Open Badges 3.0.",
     "features": {
       "0": "Design de treinamento alinhado a EC/CONOCER",
       "1": "Geração de certificados DC-3",
@@ -287,7 +287,7 @@
       "3": "Ferramentas de avaliação por competências"
     },
     "cta": {
-      "primary": "Entrar na Lista de Espera",
+      "primary": "Abrir Avala",
       "secondary": "Explorar Ecossistema"
     },
     "connections": {
@@ -302,7 +302,7 @@
   },
   "yantra4d": {
     "tagline": "Plataforma de Design Paramétrico Aberto",
-    "valueProp": "Envie modelos paramétricos OpenSCAD, obtenha visualizações 3D instantâneas, exporte arquivos STL. 40+ designs open-source nos comuns.",
+    "valueProp": "Envie modelos paramétricos OpenSCAD, obtenha visualizações 3D instantâneas, exporte arquivos STL. 36 designs open-source nos comuns.",
     "problem": "Ferramentas de design paramétrico são caras (SolidWorks), proprietárias (Fusion 360) ou apenas linha de comando (OpenSCAD). Compartilhar designs paramétricos é fragmentado.",
     "solution": "Yantra4D é uma plataforma web para modelos OpenSCAD paramétricos. Envie, visualize em 3D, ajuste parâmetros e exporte STL — tudo no navegador.",
     "features": {
@@ -318,7 +318,7 @@
     },
     "connections": {
       "cotiza": "Exporte designs direto para Cotiza para cotações instantâneas",
-      "pravara": "Envie designs para Pravara-MES para fabricação"
+      "pravara": "Envie designs para Pravara MES para fabricação"
     },
     "techSpecs": {
       "apis": "API REST para gestão e renderização de modelos",
@@ -327,29 +327,29 @@
       "license": "AGPL-3.0"
     },
     "metrics": {
-      "designs": "40+ modelos open-source",
+      "designs": "36 modelos open-source",
       "formats": "OpenSCAD → STL",
       "preview": "3D em tempo real"
     }
   },
   "cotizaStudio": {
     "tagline": "Cotação e Estimativa Automatizada",
-    "valueProp": "Envie um design, selecione materiais e processos, obtenha uma cotação de fabricação instantânea. Integrado com Forge Sight.",
+    "valueProp": "Envie um design, selecione materiais e processos, obtenha uma cotação de fabricação instantânea. Integrado com Forgesight.",
     "problem": "Obter uma cotação de fabricação leva dias. Envia um arquivo, espera revisão, negocia ida e volta. Os preços são inconsistentes e opacos.",
-    "solution": "Cotiza Studio automatiza todo o processo de cotação. Envie seu design, selecione materiais e processos, e obtenha um preço instantâneo com dados de mercado do Forge Sight.",
+    "solution": "Cotiza automatiza todo o processo de cotação. Envie seu design, selecione materiais e processos, e obtenha um preço instantâneo com dados de mercado do Forgesight.",
     "features": {
       "0": "Cálculos de preço instantâneos para fabricação",
       "1": "Suporte multi-processo (3D, CNC, laser)",
       "2": "Biblioteca de materiais com preços em tempo real",
-      "3": "Integração com inteligência Forge Sight",
+      "3": "Integração com inteligência Forgesight",
       "4": "Compartilhamento e colaboração em cotações"
     },
     "cta": {
-      "primary": "Abrir Cotiza Studio",
+      "primary": "Abrir Cotiza",
       "secondary": "Fale Conosco"
     },
     "connections": {
-      "forgeSight": "Dados de preços em tempo real do Forge Sight",
+      "forgeSight": "Dados de preços em tempo real do Forgesight",
       "yantra4d": "Importação direta de designs paramétricos"
     },
     "metrics": {
@@ -362,7 +362,7 @@
     "tagline": "Sistema de Execução de Manufatura",
     "valueProp": "Rastreie trabalhos, gerencie filas e monitore produção em tempo real. Suporte multi-protocolo para máquinas modernas e legadas.",
     "problem": "Oficinas de fabricação pequenas e médias ainda rastreiam produção em quadros e planilhas. O status das máquinas é desconhecido. O agendamento é manual.",
-    "solution": "Pravara-MES traz monitoramento de produção em tempo real, rastreamento de trabalhos e gestão de filas para oficinas de fabricação digital. Conecta-se via OPC-UA, MQTT e REST.",
+    "solution": "Pravara MES traz monitoramento de produção em tempo real, rastreamento de trabalhos e gestão de filas para oficinas de fabricação digital. Conecta-se via OPC-UA, MQTT e REST.",
     "features": {
       "0": "Monitoramento de produção em tempo real",
       "1": "Rastreamento de trabalhos e gestão de filas",
@@ -455,11 +455,11 @@
   },
   "selva": {
     "tagline": "Plataforma de agentes autônomos",
-    "valueProp": "Plataforma multi-agente self-hosted com 240+ ferramentas e protocolo A2A — executa fluxos de back-office sem SaaS por usuário.",
+    "valueProp": "Plataforma multi-agente self-hosted com 236 ferramentas e protocolo A2A — executa fluxos de back-office sem SaaS por usuário.",
     "problem": "As plataformas de agentes são chatbots brinquedos ou SaaS por usuário que prendem os dados no fornecedor. Operadores que precisam de agentes que toquem sistemas reais ficam de fora.",
-    "solution": "A Selva é uma plataforma de agentes self-hosted com 240+ ferramentas, protocolo agente-a-agente, permissões por papel e registro auditável.",
+    "solution": "A Selva é uma plataforma de agentes self-hosted com 236 ferramentas, protocolo agente-a-agente, permissões por papel e registro auditável.",
     "features": {
-      "0": "240+ ferramentas de primeira parte",
+      "0": "236 ferramentas de primeira parte",
       "1": "Protocolo agente-a-agente (A2A)",
       "2": "Modos de permissões em camadas",
       "3": "Registro auditável de eventos",

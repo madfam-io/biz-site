@@ -73,14 +73,14 @@ export function AvalaTaste() {
   return (
     <div
       role="img"
-      aria-label="AVALA competency-based training platform coming soon preview with feature highlights and waitlist"
+      aria-label="Avala competency-based training platform preview with feature highlights and a link to avala.studio"
     >
-      {/* Heading with coming-soon badge */}
+      {/* Heading with live badge */}
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-3">
-          <h3 className="text-2xl font-bold text-gray-400 dark:text-gray-500">AVALA</h3>
+          <h3 className="text-2xl font-bold text-gray-400 dark:text-gray-500">Avala</h3>
           <span className="px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-700">
-            Coming Soon
+            Live
           </span>
         </div>
         <p className="mt-2 text-sm text-gray-400 dark:text-gray-500">
@@ -103,19 +103,12 @@ export function AvalaTaste() {
         ))}
       </div>
 
-      {/* Waitlist form (visual only) */}
+      {/* Product front door (visual only) */}
       <div className="max-w-md mx-auto">
-        <div className="flex gap-2">
-          <div className="flex-1 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm text-gray-400 dark:text-gray-500">
-            you@example.com
-          </div>
-          <div className="px-5 py-2.5 rounded-lg bg-gray-300 dark:bg-gray-600 text-sm font-medium text-white dark:text-gray-300 cursor-default">
-            Join Waitlist
-          </div>
+        <div className="px-5 py-2.5 rounded-lg bg-gray-300 dark:bg-gray-600 text-sm font-medium text-white dark:text-gray-300 text-center cursor-default">
+          Open Avala
         </div>
-        <p className="mt-2 text-[10px] text-gray-400 text-center">
-          Be the first to know when AVALA launches
-        </p>
+        <p className="mt-2 text-[10px] text-gray-400 text-center">Live at avala.studio</p>
       </div>
     </div>
   );
