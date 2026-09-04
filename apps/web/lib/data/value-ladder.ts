@@ -5,6 +5,10 @@
 //   internal-devops/docs/strategy/2026-08-29-madfam-value-ladder-and-self-selection.md
 //   (§2 the four bands + doctrine, §3 the self-selector, §4 benchmarked prices)
 //
+// Boundary note: that path is in the PRIVATE internal-devops repo and is cited by
+// name only. Never copy its pricing rationale, cost bands or client detail here.
+// Policy: internal-devops/docs/repo-boundary-contract.md
+//
 // The ladder is the catalog, arranged: four ascending BANDS, each holding one or
 // more RUNGS (a SKU-tier or a slice). Copy for every user-visible string lives in
 // the `valueLadder` i18n namespace (es/en/pt); this module holds only the

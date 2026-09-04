@@ -5,6 +5,12 @@ const path = require('path');
 
 const ARCHIVE_DIR = 'archive/large-files-pre-split';
 
+// Boundary checkpoint (2026-09-04, madfam-site): this script used to hardcode an
+// operator's macOS home directory, which carries a personal account name into a
+// public repository. Paths are resolved from the repository root instead.
+// Policy: internal-devops/docs/repo-boundary-contract.md
+const REPO_ROOT = path.resolve(__dirname, '..');
+
 function ensureDirectoryExists(dirPath) {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, { recursive: true });
@@ -16,7 +22,7 @@ function countLines(text) {
 }
 
 function archiveFile(originalPath, reason) {
-  const relativePath = originalPath.replace('/Users/aldoruizluna/labspace/biz-site/', '');
+  const relativePath = path.relative(REPO_ROOT, originalPath);
   const filename = path.basename(originalPath);
 
   // Create archive structure
@@ -56,24 +62,24 @@ function main() {
 
   const filesToArchive = [
     {
-      path: '/Users/aldoruizluna/labspace/biz-site/packages/i18n/src/translations/backup/es.json',
+      path: path.join(REPO_ROOT, 'packages/i18n/src/translations/backup/es.json'),
       replacement: 'Split into modular files in `packages/i18n/src/translations/backup/split/es/`',
     },
     {
-      path: '/Users/aldoruizluna/labspace/biz-site/packages/i18n/src/translations/backup/en.json',
+      path: path.join(REPO_ROOT, 'packages/i18n/src/translations/backup/en.json'),
       replacement: 'Split into modular files in `packages/i18n/src/translations/backup/split/en/`',
     },
     {
-      path: '/Users/aldoruizluna/labspace/biz-site/packages/i18n/src/translations/backup/pt-br.json',
+      path: path.join(REPO_ROOT, 'packages/i18n/src/translations/backup/pt-br.json'),
       replacement:
         'Split into modular files in `packages/i18n/src/translations/backup/split/pt-br/`',
     },
     {
-      path: '/Users/aldoruizluna/labspace/biz-site/docs/guides/MADFAM-UI-DOCUMENTATION.md',
+      path: path.join(REPO_ROOT, 'docs/guides/MADFAM-UI-DOCUMENTATION.md'),
       replacement: 'Split into focused guides in `docs/guides/ui/`',
     },
     {
-      path: '/Users/aldoruizluna/labspace/biz-site/docs/development/DEVELOPER_GUIDE.md',
+      path: path.join(REPO_ROOT, 'docs/development/DEVELOPER_GUIDE.md'),
       replacement: 'Split into workflow-based guides in `docs/development/guide/`',
     },
   ];

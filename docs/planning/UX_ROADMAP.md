@@ -1,3 +1,5 @@
+<!-- Boundary checkpoint (public-safe): scope and sequencing only. Build budgets, internal rates and revenue projections live in the private sink (internal-devops). Policy: internal-devops/docs/repo-boundary-contract.md -->
+
 # UX Enhancement Roadmap - 2025-2026
 
 **Last Updated**: Friday, November 14, 2025
@@ -880,29 +882,9 @@ const { variant, trackConversion } = useABTest('homepage-cta');
 
 ## Budget Considerations
 
-### Development Costs
-
-- Phase 2: ~80-100 hours ($8k-$15k at $100-150/hr)
-- Phase 3: ~120-150 hours ($12k-$22k)
-- Phase 4: ~60-80 hours + ongoing ($6k-$12k + $2k/mo)
-
-### Tooling Costs
-
-- CRM integration: Varies (HubSpot, Salesforce, etc.)
-- Email platform: $50-$500/month (SendGrid, Mailchimp)
-- Analytics: Free-$100/month (GA4, Vercel Analytics)
-- A/B testing: Free-$200/month (internal tool vs. Optimizely)
-- Video hosting: $20-$100/month (Vimeo, Wistia)
-
-### Total Estimated Investment
-
-- **Phase 2**: $10k-$20k (one-time) + $100-$600/mo (recurring)
-- **Phase 3**: $15k-$25k (one-time)
-- **Phase 4**: $8k-$15k (one-time) + $200-$500/mo (recurring)
-
-**ROI Projection**:
-With 500 monthly leads @ 5% close rate @ $10k ACV = $250k annual revenue
-Investment payback: < 3 months
+Budget, internal rates and revenue projections for these phases are tracked
+privately (`internal-devops/roadmaps/`). Scope and sequencing stay here;
+economics do not.
 
 ---
 
