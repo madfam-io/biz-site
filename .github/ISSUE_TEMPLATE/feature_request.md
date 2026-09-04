@@ -166,7 +166,7 @@ If yes, describe migration path:
 **For MADFAM Team:**
 
 - Business Unit: [ ] Co-Labs [ ] Showtech [ ] General
-- Product: [ ] PENNY [ ] Dhanam [ ] Cotiza Studio [ ] Forge Sight [ ] AVALA [ ] Factlas [ ] None
+- Product: [ ] Selva [ ] Dhanam [ ] Cotiza [ ] Forgesight [ ] Avala [ ] Factlas [ ] None
 - Sprint:
 - Estimated effort:
 - Assigned to:

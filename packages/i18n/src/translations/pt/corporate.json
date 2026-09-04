@@ -42,15 +42,7 @@
     },
     "products": {
       "title": "Produtos Principais",
-      "subtitle": "Soluções desenvolvidas por nossas unidades especializadas",
-      "penny": {
-        "name": "PENNY",
-        "tagline": "Automação Inteligente de Processos",
-        "description": "Assistente de IA que aprenderá com seus processos e melhorará continuamente seu fluxo de trabalho",
-        "badge": "por MADFAM",
-        "developer": "MADFAM",
-        "status": "development"
-      }
+      "subtitle": "Soluções desenvolvidas por nossas unidades especializadas"
     },
     "programs": {
       "title": "Programas Estratégicos",
@@ -229,16 +221,6 @@
       "contactNow": "Entrar em contato",
       "viewSolutions": "Ver soluções"
     },
-    "penny": {
-      "description": "Plataforma de chat e workbench de IA fácil de usar para consumidores e empresas.",
-      "audience": "Consumidores e empresas",
-      "cta": "Ver PENNY",
-      "features": {
-        "0": "Interface intuitiva",
-        "1": "Colaboração em equipe",
-        "2": "Automação visual"
-      }
-    },
     "dhanam": {
       "description": "Plataforma de finanças e patrimônio projetada para fundadores LATAM. Unifica orçamentos pessoais e empresariais com inteligência ESG.",
       "audience": "Indivíduos e consultores financeiros",
@@ -404,29 +386,29 @@
   "poweredBy": {
     "title": "Alimentado pelo Nosso Próprio Stack",
     "subtitle": "Usamos o que construímos. Cada produto que criamos, utilizamos.",
-    "description": "Este site roda no Enclii (nossa PaaS soberana) e autentica com Janua (nossa plataforma de identidade). Cotiza Studio e Forge Sight são construídos junto à nossa infraestrutura pela mesma equipe. Quando dizemos que nossas ferramentas funcionam em produção, é sério.",
+    "description": "Este site roda no Enclii (nossa PaaS soberana) e autentica com Janua (nossa plataforma de identidade). Cotiza e Forgesight são construídos junto à nossa infraestrutura pela mesma equipe. Quando dizemos que nossas ferramentas funcionam em produção, é sério.",
     "items": {
       "enclii": "Implantado no Enclii",
       "janua": "Autenticado pelo Janua",
-      "cotiza": "Construído junto ao Cotiza Studio",
-      "forgesight": "Construído junto ao Forge Sight"
+      "cotiza": "Construído junto ao Cotiza",
+      "forgesight": "Construído junto ao Forgesight"
     }
   },
   "openSource": {
     "title": "Construído em Aberto",
-    "subtitle": "60+ repositórios públicos. Construímos em aberto e contribuímos para os comuns.",
-    "description": "Do Janua (plataforma de identidade AGPL-3.0) ao Yantra4D Commons (40+ designs paramétricos livres para qualquer pessoa), acreditamos que código aberto é como infraestrutura real é construída. Nosso código é nosso currículo.",
+    "subtitle": "69 repositórios públicos. Construímos em aberto e contribuímos para os comuns.",
+    "description": "Do Janua (plataforma de identidade AGPL-3.0) ao Yantra4D Commons (36 designs paramétricos livres para qualquer pessoa), acreditamos que código aberto é como infraestrutura real é construída. Nosso código é nosso currículo.",
     "cta": "Ver no GitHub",
     "highlights": {
-      "repos": "60+ repositórios públicos",
-      "designs": "40+ designs paramétricos nos comuns",
+      "repos": "69 repositórios públicos",
+      "designs": "36 designs paramétricos nos comuns",
       "license": "Código aberto (AGPL-3.0, MIT)"
     }
   },
   "bitsToAtoms": {
     "title": "De Bits a Átomos",
     "subtitle": "Um pipeline completo da nuvem soberana à manufatura física.",
-    "description": "O ecossistema da MADFAM conecta toda a cadeia de valor: infraestrutura de nuvem soberana (Enclii) → identidade e acesso (Janua) → design paramétrico (Yantra4D) → execução de manufatura (Pravara-MES) → inteligência financeira (Dhanam). Do software ao hardware, de bits a átomos.",
+    "description": "O ecossistema da MADFAM conecta toda a cadeia de valor: infraestrutura de nuvem soberana (Enclii) → identidade e acesso (Janua) → design paramétrico (Yantra4D) → execução de manufatura (Pravara MES) → inteligência financeira (Dhanam). Do software ao hardware, de bits a átomos.",
     "stages": {
       "cloud": "Nuvem Soberana (Enclii)",
       "identity": "Identidade e Acesso (Janua)",
@@ -445,7 +427,7 @@
     "selfServe": {
       "label": "Self-service",
       "title": "Experimente nossas plataformas hoje",
-      "description": "Cadastre-se direto na Karafiel, Dhanam, Forge Sight, Fortuna, Rondelio, Tezca. Camada gratuita ou trial em cada. Sem precisar marcar reunião.",
+      "description": "Cadastre-se direto na Karafiel, Dhanam, Forgesight, Fortuna, Rondelio, Tezca. Camada gratuita ou trial em cada. Sem precisar marcar reunião.",
       "cta": "Ver nossas plataformas"
     },
     "whiteGlove": {

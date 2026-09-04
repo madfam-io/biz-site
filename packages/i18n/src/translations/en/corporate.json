@@ -42,15 +42,7 @@
     },
     "products": {
       "title": "Main Products",
-      "subtitle": "Solutions developed by our specialized units",
-      "penny": {
-        "name": "PENNY",
-        "tagline": "Intelligent Process Automation",
-        "description": "AI assistant that will learn, adapt, and continuously improve your workflow processes",
-        "badge": "a MADFAM product",
-        "developer": "MADFAM",
-        "status": "development"
-      }
+      "subtitle": "Solutions developed by our specialized units"
     },
     "programs": {
       "title": "Strategic Programs",
@@ -229,16 +221,6 @@
       "contactNow": "Contact now",
       "viewSolutions": "Explore solutions"
     },
-    "penny": {
-      "description": "User-friendly AI chat and workbench platform for consumers and enterprises.",
-      "audience": "Consumers and businesses",
-      "cta": "View PENNY",
-      "features": {
-        "0": "Intuitive interface",
-        "1": "Team collaboration",
-        "2": "Visual automation"
-      }
-    },
     "dhanam": {
       "description": "Wealth and finance platform purpose-built for LATAM founders. Unifies personal and business budgeting with ESG insight.",
       "audience": "Individuals and financial advisors",
@@ -404,29 +386,29 @@
   "poweredBy": {
     "title": "Powered by Our Own Stack",
     "subtitle": "We eat our own cooking. Every product we build, we use.",
-    "description": "This website runs on Enclii (our sovereign PaaS) and authenticates with Janua (our identity platform). Cotiza Studio and Forge Sight are built alongside our infrastructure by the same team. When we say our tools work in production, we mean it.",
+    "description": "This website runs on Enclii (our sovereign PaaS) and authenticates with Janua (our identity platform). Cotiza and Forgesight are built alongside our infrastructure by the same team. When we say our tools work in production, we mean it.",
     "items": {
       "enclii": "Deployed on Enclii",
       "janua": "Authenticated by Janua",
-      "cotiza": "Built alongside Cotiza Studio",
-      "forgesight": "Built alongside Forge Sight"
+      "cotiza": "Built alongside Cotiza",
+      "forgesight": "Built alongside Forgesight"
     }
   },
   "openSource": {
     "title": "Built in the Open",
-    "subtitle": "60+ public repositories. We build in the open and contribute to the commons.",
-    "description": "From Janua (AGPL-3.0 identity platform) to Yantra4D Commons (40+ parametric designs free for anyone to use), we believe open source is how real infrastructure gets built. Our code is our resume.",
+    "subtitle": "69 public repositories. We build in the open and contribute to the commons.",
+    "description": "From Janua (AGPL-3.0 identity platform) to Yantra4D Commons (36 parametric designs free for anyone to use), we believe open source is how real infrastructure gets built. Our code is our resume.",
     "cta": "View on GitHub",
     "highlights": {
-      "repos": "60+ public repositories",
-      "designs": "40+ parametric designs in the commons",
+      "repos": "69 public repositories",
+      "designs": "36 parametric designs in the commons",
       "license": "Open source (AGPL-3.0, MIT)"
     }
   },
   "bitsToAtoms": {
     "title": "From Bits to Atoms",
     "subtitle": "A complete pipeline from sovereign cloud to physical manufacturing.",
-    "description": "MADFAM's ecosystem connects the entire value chain: sovereign cloud infrastructure (Enclii) → identity and access (Janua) → parametric design (Yantra4D) → manufacturing execution (Pravara-MES) → financial intelligence (Dhanam). From software to hardware, from bits to atoms.",
+    "description": "MADFAM's ecosystem connects the entire value chain: sovereign cloud infrastructure (Enclii) → identity and access (Janua) → parametric design (Yantra4D) → manufacturing execution (Pravara MES) → financial intelligence (Dhanam). From software to hardware, from bits to atoms.",
     "stages": {
       "cloud": "Sovereign Cloud (Enclii)",
       "identity": "Identity & Access (Janua)",
@@ -445,7 +427,7 @@
     "selfServe": {
       "label": "Self-serve",
       "title": "Try our platforms today",
-      "description": "Sign up directly on Karafiel, Dhanam, Forge Sight, Fortuna, Rondelio, Tezca. Free tier or trial on each. No call required.",
+      "description": "Sign up directly on Karafiel, Dhanam, Forgesight, Fortuna, Rondelio, Tezca. Free tier or trial on each. No call required.",
       "cta": "See our platforms"
     },
     "whiteGlove": {

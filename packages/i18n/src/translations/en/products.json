@@ -17,9 +17,6 @@
     "viewSolutions": "View Solutions",
     "ctaButton": "Join the Ecosystem"
   },
-  "spark": {
-    "name": "SPARK"
-  },
   "comparison": {
     "title": "Compare our platforms",
     "feature": "Feature",
@@ -33,8 +30,8 @@
     "trial": "Free 14-day trial"
   },
   "cotizaStudio": {
-    "name": "Cotiza Studio",
-    "title": "Cotiza Studio",
+    "name": "Cotiza",
+    "title": "Cotiza",
     "tagline": "AI-Powered Instant Quotes",
     "shortDescription": "AI-powered quote and proposal generator to close deals faster.",
     "description": "Intelligent quoting and proposal system that uses AI to create personalized documents and streamline your sales process.",
@@ -45,8 +42,8 @@
     }
   },
   "forgeSight": {
-    "name": "Forge Sight",
-    "title": "Forge Sight",
+    "name": "Forgesight",
+    "title": "Forgesight",
     "tagline": "Predictive Analytics & Forecasting",
     "shortDescription": "Advanced predictive analytics for data-driven decision making.",
     "description": "Predictive analytics platform using AI to forecast trends and optimize business decisions with real-time data visualization.",
@@ -87,12 +84,12 @@
     "title": "Yantra4D",
     "tagline": "Open Parametric Design Platform",
     "shortDescription": "Web platform for parametric OpenSCAD models with instant 3D previews and STL export.",
-    "description": "Upload parametric designs, get instant 3D previews, export STL files. Powers 40+ open-source parametric designs in the commons.",
+    "description": "Upload parametric designs, get instant 3D previews, export STL files. Powers 36 open-source parametric designs in the commons.",
     "status": "active",
     "features": {
       "0": "Parametric OpenSCAD models",
       "1": "Instant 3D preview & STL export",
-      "2": "40+ open-source designs"
+      "2": "36 open-source designs"
     }
   }
 }

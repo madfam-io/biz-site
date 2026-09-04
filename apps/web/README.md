@@ -82,7 +82,7 @@ API_SECRET=your-secret-key
 
 - `/` - Homepage
 - `/services` - Transformation programs overview
-- `/products` - Product portfolio (Enclii, Janua, Dhanam, Forge Sight, etc.)
+- `/products` - Product portfolio (Enclii, Janua, Dhanam, Forgesight, etc.)
 - `/assessment` - AI readiness assessment
 - `/contact` - Contact form
 - `/about` - About MADFAM (coming soon)

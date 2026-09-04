@@ -17,12 +17,9 @@
     "viewSolutions": "Ver soluções",
     "ctaButton": "Junte-se ao Ecossistema"
   },
-  "spark": {
-    "name": "SPARK"
-  },
   "cotizaStudio": {
-    "name": "Cotiza Studio",
-    "title": "Cotiza Studio",
+    "name": "Cotiza",
+    "title": "Cotiza",
     "tagline": "Cotações instantâneas com IA",
     "shortDescription": "Gerador de cotações e propostas alimentado por IA para fechar negócios mais rápido.",
     "description": "Sistema inteligente de geração de cotações e propostas que usa IA para criar documentos personalizados.",
@@ -33,8 +30,8 @@
     }
   },
   "forgeSight": {
-    "name": "Forge Sight",
-    "title": "Forge Sight",
+    "name": "Forgesight",
+    "title": "Forgesight",
     "tagline": "Previsão e análise preditiva",
     "shortDescription": "Análise preditiva avançada para tomada de decisões baseada em dados.",
     "description": "Plataforma de análise preditiva que usa IA para prever tendências e otimizar decisões empresariais.",
@@ -92,7 +89,7 @@
     "features": {
       "0": "Modelos paramétricos OpenSCAD",
       "1": "Preview 3D instantâneo e exportação STL",
-      "2": "40+ designs de código aberto"
+      "2": "36 designs de código aberto"
     }
   }
 }
