@@ -1,6 +1,6 @@
 'use client';
 
-import { analytics } from '@madfam/analytics';
+import { analytics } from '@madfam-site/analytics';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Button, Card, CardContent, Heading } from '@/components/ui';

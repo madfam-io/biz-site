@@ -16,7 +16,7 @@ vi.mock('@prisma/client', () => ({
   UserRole: { ADMIN: 'ADMIN', EDITOR: 'EDITOR', VIEWER: 'VIEWER' },
 }));
 
-vi.mock('@madfam/core', () => ({
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),

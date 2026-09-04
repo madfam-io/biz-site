@@ -15,7 +15,7 @@ vi.mock('../environment', () => ({
   environment: mockEnvironment,
 }));
 
-vi.mock('@madfam/core', () => ({
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),

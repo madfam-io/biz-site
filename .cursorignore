@@ -7,3 +7,9 @@ build/
 coverage/
 **/__pycache__/
 .pnpm-store/
+
+# Secrets: this repo ships .env.example and its agent docs tell agents to edit
+# .env / .env.local. Keep real env files out of the codebase index.
+**/.env
+**/.env.*
+!**/.env.example

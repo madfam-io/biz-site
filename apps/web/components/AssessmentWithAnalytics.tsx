@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { Assessment, AssessmentProps, AssessmentResult } from '@/components/ui';
-import { useFeatureTracking, useConversionTracking } from '@madfam/analytics';
+import { useFeatureTracking, useConversionTracking } from '@madfam-site/analytics';
 import { logBusinessEvent } from '@/lib/logger';
 
 interface AssessmentWithAnalyticsProps extends AssessmentProps {

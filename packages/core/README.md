@@ -1,8 +1,13 @@
-# @madfam/core
+# @madfam-site/core
 
 Core business logic, types, and utilities for MADFAM applications.
 
 ## Overview
+
+> **Boundary checkpoint (2026-09-04, madfam-site).** Public repository (Lane C). This README
+> describes a private workspace package's modules and usage only; nothing here names hosts,
+> credentials, tunnel identifiers or cost figures, which belong in the private `internal-devops`
+> repo. Policy: `internal-devops/docs/repo-boundary-contract.md`; checklist: `docs/PUBLIC_REPO_BOUNDARY.md`.
 
 This package contains the business logic, type definitions, and core functionality shared across MADFAM applications. It includes transformation program definitions, feature flags, and domain models.
 
@@ -11,7 +16,7 @@ This package contains the business logic, type definitions, and core functionali
 This package is part of the monorepo and is automatically available to other packages.
 
 ```typescript
-import { ServiceTier, FeatureFlagProvider } from '@madfam/core';
+import { ServiceTier, FeatureFlagProvider } from '@madfam-site/core';
 ```
 
 ## Modules
@@ -21,7 +26,7 @@ import { ServiceTier, FeatureFlagProvider } from '@madfam/core';
 The core of MADFAM's business model - four transformation programs.
 
 ```typescript
-import { ProgramType, programs } from '@madfam/core';
+import { ProgramType, programs } from '@madfam-site/core';
 
 // Access a specific program
 const strategyProgram = programs[ProgramType.STRATEGY_ENABLEMENT];
@@ -72,7 +77,7 @@ interface ProgramConfig {
 Control feature availability across environments.
 
 ```typescript
-import { FeatureFlagProvider } from '@madfam/core';
+import { FeatureFlagProvider } from '@madfam-site/core';
 
 // Initialize
 const flags = new FeatureFlagProvider();
@@ -118,7 +123,7 @@ const featureFlags = {
 ### Program Selection
 
 ```typescript
-import { ProgramType, programs } from '@madfam/core';
+import { ProgramType, programs } from '@madfam-site/core';
 
 function ProgramSelector() {
   const allPrograms = Object.values(programs);
@@ -138,7 +143,7 @@ function ProgramSelector() {
 ### Feature Flag Hook
 
 ```typescript
-import { FeatureFlagProvider } from '@madfam/core';
+import { FeatureFlagProvider } from '@madfam-site/core';
 import { useEffect, useState } from 'react';
 
 function useFeatureFlag(flagKey: string): boolean {
@@ -167,7 +172,7 @@ function MyComponent() {
 ### Program Pricing Display
 
 ```typescript
-import { programs, ProgramType } from '@madfam/core';
+import { programs, ProgramType } from '@madfam-site/core';
 
 function PricingTable() {
   const featured = [
@@ -323,7 +328,7 @@ When contributing to the core package:
 
 | Property         | Value                     |
 | ---------------- | ------------------------- |
-| **Package Name** | @madfam/core              |
+| **Package Name** | @madfam-site/core         |
 | **Version**      | 0.1.0                     |
 | **Last Updated** | July 2025                 |
 | **Dependencies** | Minimal (TypeScript only) |

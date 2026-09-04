@@ -1,4 +1,4 @@
-import { i18nConfig, type Locale } from '@madfam/i18n';
+import { i18nConfig, type Locale } from '@madfam-site/i18n';
 
 /**
  * Translates a route from one locale to another

@@ -1,6 +1,6 @@
 'use client';
 
-import { getLocalizedUrl, type Locale } from '@madfam/i18n';
+import { getLocalizedUrl, type Locale } from '@madfam-site/i18n';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -7,7 +7,7 @@ on:
 jobs:
   pr-validation:
     name: PR Validation
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
 
     steps:
       - name: Checkout code
@@ -34,7 +34,7 @@ jobs:
 
   changed-files:
     name: Detect Changed Files
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
     outputs:
       web: ${{ steps.filter.outputs.web }}
       packages: ${{ steps.filter.outputs.packages }}
@@ -59,7 +59,7 @@ jobs:
 
   lighthouse:
     name: Lighthouse CI
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
     needs: changed-files
     if: needs.changed-files.outputs.web == 'true'
 
@@ -104,7 +104,7 @@ jobs:
 
   size-limit:
     name: Bundle Size Check
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
     needs: changed-files
     if: needs.changed-files.outputs.web == 'true'
 
@@ -149,7 +149,7 @@ jobs:
 
   accessibility:
     name: Accessibility Tests
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
     needs: changed-files
     if: needs.changed-files.outputs.web == 'true'
 
@@ -192,7 +192,7 @@ jobs:
 
   comment:
     name: PR Comment
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
     needs: [pr-validation, lighthouse, size-limit]
     if: always()
     permissions:

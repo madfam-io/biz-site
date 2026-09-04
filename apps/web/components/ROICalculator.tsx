@@ -1,6 +1,6 @@
 'use client';
 
-import { useFeatureTracking, useConversionTracking } from '@madfam/analytics';
+import { useFeatureTracking, useConversionTracking } from '@madfam-site/analytics';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, DollarSign, Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';

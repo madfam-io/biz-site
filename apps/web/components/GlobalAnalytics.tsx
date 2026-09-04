@@ -1,6 +1,6 @@
 'use client';
 
-import { useAnalytics } from '@madfam/analytics';
+import { useAnalytics } from '@madfam-site/analytics';
 import { useLocale } from 'next-intl';
 import { useEffect, useRef } from 'react';
 

@@ -1,3 +1,11 @@
+# ARCHIVED: This document is historical. Production now runs on Enclii/K8s.
+
+> **Warning**: The Vercel deployment configuration described below is no longer the active deployment strategy. MADFAM has completely migrated off Vercel onto Enclii (owner confirmation, 2026-09-04); `vercel.json`, `vercel-minimal.json` and `.vercelignore` were deleted from this repository on that date. This document is retained for historical reference only. See `docs/deployment/DEPLOYMENT.md` and `docs/infrastructure/INFRASTRUCTURE_REQUIREMENTS.md` for current deployment information.
+
+> **Boundary checkpoint (2026-09-04, madfam-site):** public-safe historical document. No credentials, project identifiers or provider account detail belong here; the private sink is `internal-devops`. Policy: `internal-devops/docs/repo-boundary-contract.md`.
+
+---
+
 # Vercel Deployment Configuration
 
 This monorepo requires specific configuration for successful Vercel deployment.

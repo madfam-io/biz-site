@@ -1,4 +1,4 @@
-import { getLocalizedUrl, type Locale } from '@madfam/i18n';
+import { getLocalizedUrl, type Locale } from '@madfam-site/i18n';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Container } from '@/components/ui';

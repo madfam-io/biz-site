@@ -1,6 +1,6 @@
 # AI Assistant Context Documentation
 
-> **ARCHIVED**: This document is superseded by the root `/CLAUDE.md`. The L1-L5 service tier model described here has been replaced by 4 transformation programs: Design & Fabrication, Strategy & Enablement, Platform Pilots, and Strategic Partnerships. See the root CLAUDE.md for current context.
+> **ARCHIVED**: This document is superseded by [`AGENTS.md`](../../AGENTS.md) at the repository root, which is the canonical instruction file for every LLM agent. The root `CLAUDE.md` is only a compatibility redirect to it and carries no policy. The L1-L5 service tier model described here has been replaced by 4 transformation programs: Design & Fabrication, Strategy & Enablement, Platform Pilots, and Strategic Partnerships. See `AGENTS.md` for current context.
 
 This document provides context for AI assistants (like Claude, GPT-4, etc.) working on the MADFAM corporate website codebase.
 

@@ -4,7 +4,7 @@ vi.mock('../environment', () => ({
   environment: { isDevelopment: false },
 }));
 
-vi.mock('@madfam/core', () => ({
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),

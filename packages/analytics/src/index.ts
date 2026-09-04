@@ -1,5 +1,5 @@
 /**
- * @madfam/analytics - Local Analytics Package
+ * @madfam-site/analytics - Local Analytics Package
  *
  * Provides analytics utilities for the MADFAM web app.
  * This is a stub implementation - apps should implement their own analytics

@@ -1,3 +1,5 @@
+<!-- Boundary checkpoint (public-safe, 2026-09-04, madfam-site): deployment troubleshooting shape only. No credentials, cluster identifiers or provider account detail; the private sink is internal-devops. Policy: internal-devops/docs/repo-boundary-contract.md -->
+
 # Deployment Troubleshooting Guide
 
 ## Overview
@@ -93,7 +95,8 @@ This guide helps troubleshoot common deployment issues for both GitHub Pages (st
    - Set Root Directory to `apps/web`
    - Clear build cache and redeploy
 
-2. **Remove Root vercel.json**
+2. **Remove Root vercel.json** _(historical — Vercel was retired 2026-09-04 and
+   the file no longer exists in this repo; kept for context on old branches)_
    - Root-level vercel.json can interfere with monorepo detection
    - Keep only app-level vercel.json if needed
 

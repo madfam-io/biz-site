@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { getLocalizedUrl, type Locale } from '@madfam/i18n';
+import { getLocalizedUrl, type Locale } from '@madfam-site/i18n';
 import { Container } from '@/components/ui';
 import {
   ValueLadderSelector,

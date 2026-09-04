@@ -1,24 +1,123 @@
-# Madfam Site Full LLM Context
+# madfam-site — full LLM context
 
-Generated: 2026-05-13
+Generated: 2026-09-04 (curated — this file was the generic template until this
+date and described no package, app, route or script).
 
 ## Purpose
 
-This file gives LLM agents a stable, tool-agnostic map for working in this
-repository without depending on vendor-specific instruction files.
+A stable, tool-agnostic map for working in this repository without depending on
+vendor-specific instruction files.
 
 ## Canonical instruction order
 
-1. `AGENTS.md`
-2. `README.md` if present
-3. `ECOSYSTEM.md` if present
-4. Relevant files under `docs/`, `infra/`, `.github/workflows/`, and source
-   directories for the specific task
+1. `AGENTS.md` — canonical. Contains the repo-boundary contract.
+2. `llms.txt` — the compact index.
+3. `docs/development/ARCHITECTURE.md`
+4. `ECOSYSTEM.md`, `README.md`
+5. Task-relevant files under `docs/`, `k8s/`, `infra/`, `.github/workflows/`
+   and the source tree.
 
-## Agent compatibility
+`CLAUDE.md` exists only to redirect Claude and other legacy agent integrations
+to `AGENTS.md`. It carries no policy, and neither should any file that is not
+`AGENTS.md`.
 
-`AGENTS.md` is the source of truth. `CLAUDE.md` exists only to redirect Claude
-and other legacy agent integrations to `AGENTS.md`.
+## What this repository is
+
+The MADFAM corporate website — `madfam.io` — plus the Payload CMS that editors
+use for blog posts, case studies and team members. It is a pnpm + Turborepo
+monorepo on Next.js, shipping Spanish, English and Portuguese.
+
+It is **Lane C: a public corporate-site repository**.
+
+## Repo-boundary contract
+
+- `internal-devops` *(private, Lane A)* is the canonical source for production
+  topology, node identity, capacity, costs, secrets, incident evidence, client
+  engagements and operational runbooks.
+- `solarpunk-foundry` *(public, Lane B)* is the designated public ecosystem
+  contract repo, permanently public by owner statement (2026-09-04). The
+  canonical cross-repo ecosystem map lives there.
+- This repo keeps marketing surface, public product copy, and the code that
+  renders them.
+
+**Never write into this repo:** node hostnames, public IP addresses, hardware
+models or capacity figures, Cloudflare tunnel identifiers, Vault paths or secret
+names with retrieval detail, cost ledgers, internal rates, revenue or ROI
+projections, incident diagnoses and evidence trails, client identities or
+engagement detail, operator local paths, or any live credential.
+
+**Public and staying public:** the topology shape — a 4-node bare-metal k3s
+cluster (one control plane, one worker, two CI builders), ingress through a
+single Cloudflare Tunnel with zero exposed node ports, Longhorn CSI block
+storage, Cloudflare R2 object storage, ArgoCD GitOps with self-heal.
+
+Checklist: `docs/PUBLIC_REPO_BOUNDARY.md`. Policy:
+`internal-devops/docs/repo-boundary-contract.md`. Two CI guards enforce part of
+it — `scripts/public-hygiene-check.sh` and `scripts/boundary-checkpoint-check.sh`,
+run by `.github/workflows/public-hygiene.yml`. Read their `classes_skipped=` and
+`source=` output: a green run is not proof a change is boundary-clean.
+
+## Applications
+
+- **`apps/web`** — the Next.js site. Every route is locale-prefixed under
+  `apps/web/app/[locale]/`; `getLocalizedUrl()` is the navigation helper and
+  middleware handles locale detection. Shared server logic is in
+  `apps/web/lib/` (`environment.ts`, `seo.ts`, `rate-limit.ts`, `redis.ts`,
+  `security.ts`, `cms/`, `data/`).
+- **`apps/cms`** — Payload CMS with Postgres. Optional by construction: the CMS
+  integration is enabled only when `NEXT_PUBLIC_CMS_URL` is set, and the blog
+  and case-study routes ship i18n fallback content, so a dead CMS degrades
+  silently rather than breaking the site.
+
+## Packages
+
+- `packages/core` — business logic, feature flags, logger.
+- `packages/i18n` — translations for es, en and pt. Parity across the three
+  locales is checked by `pnpm check:translations`.
+- `packages/analytics` — Plausible integration.
+- `packages/email` — templates and the Resend sender.
+- `packages/ui` — themes and design tokens only. UI components are app-owned:
+  `solarpunk-foundry/docs/architecture/SELF_CONTAINED_SERVICES.md` (2026-07-25)
+  ratified shared contracts and infrastructure, per-app UI and theming.
+
+## Key data files
+
+- `apps/web/lib/data/platforms.ts` — the platform registry and the source of
+  truth for which platforms exist. It declares 16 slugs as of 2026-09-04; read
+  the file rather than trusting a number quoted in prose.
+- `apps/web/lib/data/value-ladder.ts` — the public value-ladder structure.
+- `packages/i18n/src/translations/{en,es,pt}/*.json` — every user-visible
+  string, including the platform copy.
+
+## Styling
+
+Tailwind v4. Design tokens live in the `@theme` block in
+`apps/web/app/globals.css`. **`tailwind.config.ts` is inert** — no `@config`
+directive exists, so anything added there silently emits nothing. A utility that
+produces no CSS is usually one that exists only in that file.
+
+## Commands
+
+`pnpm dev`, `pnpm build`, `pnpm test`, `pnpm typecheck`, `pnpm lint`,
+`pnpm format`, `pnpm check:translations`, `pnpm validate:translations`,
+`pnpm find:missing-translations`. There is no `pnpm analyze`.
+
+## Scripts
+
+`scripts/check-networkpolicy-ports.py`, `security-check.js`,
+`validate-translations.js`, `find-missing-translations.js`,
+`split-translations.js`, `finalize-file-splitting.js`, `split-dev-guide.js`,
+`split-ui-docs.js`, `split-ui-docs-improved.js`, `security-fixes.sh`,
+`public-hygiene-check.sh`, `boundary-checkpoint-check.sh`,
+`tests/test-public-hygiene.sh`.
+
+## Deployment
+
+**Enclii only.** Push to `main` → GitHub Actions builds → GHCR → a digest commit
+into `k8s/production` → ArgoCD syncs. MADFAM has completely migrated off Vercel
+(owner confirmation, 2026-09-04) and the Vercel configuration was deleted from
+this repository on that date. Any document describing a Vercel deploy path is
+historical and is banner-labelled as such.
 
 ## Enclii-first operations contract
 
@@ -30,19 +129,18 @@ Raw `kubectl`, `helm`, SSH, provider CLIs/APIs, `docker exec`, and direct
 container access are allowed only for platform bootstrap or documented
 break-glass emergencies when Enclii is unavailable or lacks an implemented
 adapter. Any break-glass use must record the actor, reason, target
-service/environment, commands executed, result, and follow-up Enclii adapter
-gap or incident link.
+service/environment, commands executed, result, and the follow-up Enclii
+adapter gap or incident link.
 
-## Repo entrypoints detected
+## Secrets
 
-- `README.md`
-- `ECOSYSTEM.md`
-- `docs/`
-- `infra/`
-- `.github/workflows/`
+Keep environment examples placeholder-only. Never add live credentials,
+base64-encoded secrets, token-shaped examples or production webhook URLs to
+docs, templates, workflow logs, issues, PRs, or agent chat.
 
 ## Maintenance
 
-These files are maintained by `internal-devops/scripts/sync-agent-docs.py`.
-If repo-specific long-form agent guidance is needed, put it in `AGENTS.md`,
-not `CLAUDE.md`.
+`internal-devops/scripts/sync-agent-docs.py` keeps the agent-doc set coherent.
+It preserves curated `llms.txt` and `llms-full.txt` rather than overwriting them,
+which is why this file is hand-written. Repo-specific long-form guidance belongs
+in `AGENTS.md`, never in `CLAUDE.md`.
