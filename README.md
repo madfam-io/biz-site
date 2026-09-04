@@ -46,7 +46,7 @@ pnpm typecheck
 
 Visit [http://localhost:3000](http://localhost:3000) to see the site (auto-redirects to Spanish locale).
 
-> **Note**: Server may start on port 3001 if 3000 is in use.
+> **Note**: The web dev server listens on port 3000; `apps/cms` uses 3001.
 
 ### Available Scripts
 
@@ -251,7 +251,7 @@ docker-compose up web postgres
 The Docker configuration includes:
 
 - Production-ready Next.js build (port 3000)
-- Development server with hot reload (port 3001)
+- Development server with hot reload (port 3000)
 - PostgreSQL 15 database for CMS and data persistence
 
 ## 📚 Documentation
