@@ -46,7 +46,7 @@ const WORKFLOW_STEPS = [
   {
     key: 'quote',
     icon: '💰',
-    platform: 'Cotiza Studio',
+    platform: 'Cotiza',
     platformColor: 'from-amber-500/20 to-amber-600/10',
     platformBorder: 'border-sun/40',
     platformText: 'text-amber-600 dark:text-amber-400',
@@ -64,7 +64,7 @@ const WORKFLOW_STEPS = [
   {
     key: 'track',
     icon: '📊',
-    platform: 'Pravara-MES',
+    platform: 'Pravara MES',
     platformColor: 'from-blue-500/20 to-blue-600/10',
     platformBorder: 'border-blue-400/40',
     platformText: 'text-blue-600 dark:text-blue-400',
@@ -82,7 +82,7 @@ const ECOSYSTEM_CONNECTIONS = [
     accent: 'text-purple-600 dark:text-purple-400',
   },
   {
-    name: 'Cotiza Studio',
+    name: 'Cotiza',
     icon: '💰',
     descriptionKey: 'cotiza',
     color: 'from-amber-500/20 to-amber-600/10',
@@ -90,7 +90,7 @@ const ECOSYSTEM_CONNECTIONS = [
     accent: 'text-amber-600 dark:text-amber-400',
   },
   {
-    name: 'Pravara-MES',
+    name: 'Pravara MES',
     icon: '📊',
     descriptionKey: 'pravara',
     color: 'from-blue-500/20 to-blue-600/10',

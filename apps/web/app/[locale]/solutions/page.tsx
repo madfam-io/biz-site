@@ -42,8 +42,8 @@ export default async function SolutionsPage({ params }: Props) {
       ],
       products: [
         { name: 'Yantra4D', url: 'https://4d.madfam.io' },
-        { name: 'Cotiza Studio', url: 'https://cotiza.studio' },
-        { name: 'Pravara-MES', url: 'https://mes.madfam.io' },
+        { name: 'Cotiza', url: 'https://cotiza.studio' },
+        { name: 'Pravara MES', url: 'https://mes.madfam.io' },
       ],
       internalUrl: '/solutions/maker-node',
     },
