@@ -7,120 +7,178 @@
 > access as platform bootstrap or documented break-glass only, and record any
 > missing Enclii adapter gap.
 
-> **Official MADFAM corporate website — madfam.io + cms.madfam.io.**
+> **Last updated:** 2026-09-04
+> **Verification anchors:**
+>
+> - Repo roles, product names and visibility — `internal-devops/ecosystem/repo-registry.md`, _Last Verified 2026-08-24_.
+> - Routes and domains — `internal-devops/ecosystem/domain-map.md`, _Last Verified 2026-08-24_ (live HTTP probes).
+> - Topology _shape_ — `internal-devops/infrastructure/nodes.md` (_Last Updated 2026-08-05_; 4-node cluster since 2026-08-06).
+> - GitOps app count — live `enclii ops apps status` control-plane read, 2026-08-24.
+> - Image-policy posture — `internal-devops/ECOSYSTEM.md` and the Kyverno manifests in the `enclii` repo (2026-05-04 to 2026-07-11).
+>
+> This document runs no probes of its own. Where something is documented but unverified, it
+> says so rather than picking a winner.
 
-This file is self-contained: a Claude session on a fresh machine can operate
-this service by reading only this one document. No external links are
-load-bearing — the MADFAM ecosystem map and the full enclii CLI reference are
-embedded below.
+> **Boundary checkpoint (2026-09-04, madfam-site).** This is a public repo (Lane C, public
+> corporate site). Node hostnames, IP addresses, hardware models and capacity figures, the
+> Cloudflare tunnel identifier, Vault paths, cost ledgers and break-glass procedures live
+> **only** in the private `internal-devops` repo. What follows is the public-safe shape:
+> roles, classes and dated counts, never identities. Canonical policy:
+> `internal-devops/docs/repo-boundary-contract.md` (2026-06-14). Public checklist:
+> [`docs/PUBLIC_REPO_BOUNDARY.md`](docs/PUBLIC_REPO_BOUNDARY.md).
+
+This file is intended to stand alone: an agent on a fresh machine can operate this service by
+reading only this document. The one thing it cannot give you is current operational state —
+for that, use Enclii or the private repo.
 
 ---
 
 ## 1. What this repo is
 
-The public face of MADFAM: platform map, ecosystem vision, blog, investor-facing material. Built on Next.js 14 monorepo. Separately ships the CMS (`cms.madfam.io`) that editors use to manage content.
+The public face of MADFAM: platform map, ecosystem vision, blog, and investor-facing
+material. Next.js monorepo. It separately ships a Payload CMS that editors use to manage
+content.
 
 **Pillar**: Brand / Corporate
 **Type**: site
-**Status**: production
+**Status**: production for `madfam.io`; see the CMS caveat below.
 
 ### Deployed services
 
-| Service      | Public domain | Container port |
-| ------------ | ------------- | -------------- |
-| `madfam-web` | madfam.io     | 3000           |
-| `madfam-cms` | cms.madfam.io | 3001           |
+| Service      | Public domain | Container port | Status                                                                                    |
+| ------------ | ------------- | -------------- | ----------------------------------------------------------------------------------------- |
+| `madfam-web` | madfam.io     | 3000           | live                                                                                      |
+| `madfam-cms` | cms.madfam.io | 3000           | **served a 404 error page at the 2026-08-24 probe**, not CMS content; needs an owner look |
+
+The CMS container port is **3000** (`internal-devops/ecosystem/domain-map.md`, 2026-08-24 —
+earlier editions of this file said 3001, which was wrong). The site degrades gracefully when
+the CMS is unreachable: `apps/web/lib/environment.ts` enables the CMS integration only when
+`NEXT_PUBLIC_CMS_URL` is set, and the blog and case-study routes fall back to shipped i18n
+content.
 
 **Kubernetes namespace**: `madfam-site`
-**Cluster**: bare-metal k3s on Hetzner (see topology section below).
+**Cluster**: bare-metal k3s — shape only, in §3 below.
 
 ### Upstream dependencies (this repo consumes)
 
-- cloudflare (CDN)
-- cms database (postgres)
-- phynd-crm (contact form → lead webhook)
+- Cloudflare (CDN + ingress)
+- CMS database (PostgreSQL)
+- PhyndCRM (contact form → lead webhook)
 
 ### Downstream consumers (this repo is consumed by)
 
 - public visitors
-- phynd-crm (inbound leads)
+- PhyndCRM (inbound leads)
 
 ### Key environment variables
 
-- `DATABASE_URL — CMS`
-- `CRM_WEBHOOK_URL / CRM_WEBHOOK_SECRET — lead routing`
+- `DATABASE_URL` — CMS
+- `CRM_WEBHOOK_URL` / `CRM_WEBHOOK_SECRET` — lead routing
+
+Values are never in this repo. See `apps/web/.env.example` for the shape, and Enclii secrets
+for the source.
 
 ---
 
-## MADFAM Ecosystem Map
+## 2. MADFAM ecosystem map — public-safe
 
-MADFAM runs ~40 services on sovereign bare-metal infrastructure. Everything
-below is embedded here so this document stands alone.
+MADFAM runs a portfolio of products on sovereign bare-metal infrastructure. The **canonical**
+ecosystem map — repository names, per-repo visibility, and the cross-repo contract — lives in
+the public ecosystem-contract repo, `madfam-org/solarpunk-foundry` (`ECOSYSTEM.md` there).
+This corporate-site repo deliberately carries only the product-level view below: role and
+public surface, no repository topology.
 
-### The platforms every repo should know about
+| Platform        | Role                                                               | Public surface   |
+| --------------- | ------------------------------------------------------------------ | ---------------- |
+| **Enclii**      | PaaS control plane — every deploy goes through it                  | enclii.dev       |
+| **Janua**       | OIDC / OAuth 2.0 provider — RS256 JWKS                             | janua.dev        |
+| **Dhanam**      | Billing, entitlements and payment gateways                         | dhan.am          |
+| **Selva**       | LLM inference routing + agent orchestration                        | selva.town       |
+| **Karafiel**    | Operational compliance — CFDI, NOM-151, e.firma, SAT-adjacent      | karafiel.mx      |
+| **Tezca**       | Mexican regulatory intelligence (informational; feeds Karafiel)    | tezca.mx         |
+| **Cotiza**      | Quoting engine (fabrication + services)                            | cotiza.studio    |
+| **Forgesight**  | Digital-fabrication industry intelligence (pricing feed to Cotiza) | forgesight.quest |
+| **Pravara MES** | Fabrication-node routing and dispatch (physical jobs)              | —                |
+| **PhyndCRM**    | Client-facing deliverables portal                                  | —                |
+| **Fortuna**     | Problem intelligence / zeitgeist analysis                          | fortuna.tube     |
+| **Avala**       | Learning and competency verification                               | avala.studio     |
+| **Yantra4D**    | Parametric design platform                                         | yantra4d.com     |
 
-| Platform        | Repo                         | Role                                                                                               |
-| --------------- | ---------------------------- | -------------------------------------------------------------------------------------------------- |
-| **Enclii**      | `madfam-org/enclii`          | PaaS control plane — all deploys go through this                                                   |
-| **Janua**       | `madfam-org/janua`           | OIDC/OAuth 2.0 provider — RS256 JWKS at `auth.madfam.io/.well-known/jwks.json`                     |
-| **Dhanam**      | `madfam-org/dhanam`          | Billing + payment gateways (Stripe, Mercado Pago, SPEI, etc.)                                      |
-| **Selva**       | `madfam-org/selva-office`    | LLM inference routing + agent orchestration (formerly `selva-office`)                              |
-| **Karafiel**    | `madfam-org/karafiel`        | Operational compliance — CFDI, NOM-151, e.firma, SAT-adjacent. Owns legal-ops / contract templates |
-| **Tezca**       | `madfam-org/tezca`           | Mexican law oracle (informational only — feeds Karafiel)                                           |
-| **Cotiza**      | `madfam-org/digifab-quoting` | MADFAM's quoting engine (fabrication + services)                                                   |
-| **Forgesight**  | `madfam-org/forgesight`      | Digital fabrication industry intelligence (pricing/vendor feed to Cotiza)                          |
-| **Pravara MES** | `madfam-org/pravara-mes`     | Fabrication-node routing and dispatch (physical jobs)                                              |
-| **PhyndCRM**    | `madfam-org/phynd-crm`       | Client-facing deliverables portal (single pane of glass per engagement)                            |
-| **Fortuna**     | `madfam-org/fortuna`         | Problem intelligence / zeitgeist analysis                                                          |
-| **Avala**       | `madfam-org/avala`           | Learning verification platform                                                                     |
+Names and roles follow `internal-devops/ecosystem/repo-registry.md` (_Last Verified
+2026-08-24_). A dash in the last column means the product has no public self-serve surface —
+not that it does not exist.
 
 ### Cross-repo conventions
 
 - **Auth**: every authenticated service verifies Janua JWTs via JWKS at
-  `https://auth.madfam.io/.well-known/jwks.json`. RS256 only — HS256 is
-  fail-closed after the 2026-04-23 audit (H3/H4).
-- **Billing**: credit metering + entitlements flow through Dhanam. See
-  `madfam-org/dhanam` for the meter/entitlement/invoice APIs.
-- **Inference**: every LLM call should route through Selva
-  (`selva-office`, formerly `selva-office`) at `/v1` (OpenAI-compatible). Do not talk directly
-  to OpenAI / Anthropic from service code.
-- **CORS**: explicit allowlist per service. Wildcards are banned
-  (audit 2026-04-23 H2/H5/H6).
-- **Images**: `@sha256:`-pinned in every manifest. Kyverno fail-closes on
-  `:latest` or mutable tags.
-- **Onboarding**: `POST /v1/admin/onboard` on switchyard-api creates
-  namespace, ArgoCD app, Cloudflare tunnel routes, Janua client, and
-  NetworkPolicies in one shot. See `enclii/docs/guides/ONBOARDING_GUIDE.md`.
-
-### Production topology
-
-Bare-metal k3s (v1.33+) on Hetzner, 3 nodes:
-
-- `foundry-cp` (Hetzner EX44, 14C/20T, 128 GB) — control-plane + primary workload
-- `foundry-worker-01` (Hetzner AX41-NVMe, Ryzen 5 3600, 64 GB) — worker + Longhorn 2nd replica
-- `foundry-builder-01` (Hetzner VPS, 2 vCPU, 4 GB, tainted `builder=true:NoSchedule`) — ARC runners only
-
-**Ingress**: Cloudflare Tunnel → 2× cloudflared pods → K8s ClusterIP → container port.
-Zero exposed node ports. TLS terminated at Cloudflare edge.
-
-**Storage**: Longhorn CSI v1.7+ in 2-replica mode across dedicated nodes.
-Object storage: Cloudflare R2 (zero egress).
-
-**GitOps**: ArgoCD App-of-Apps (~28 apps across ~22 namespaces) with self-heal.
-Push to `main` → CI builds → GHCR → `kustomize edit set image` commits digest →
-ArgoCD syncs → Switchyard tracks lifecycle events.
-
-**Operational access** (SSH, kubeconfigs, server IPs, cost ledger): private repo
-`madfam-org/internal-devops`. Not in any public repo.
+  `https://auth.madfam.io/.well-known/jwks.json`. RS256 only — HS256 is fail-closed after the
+  2026-04-23 audit (H3/H4).
+- **Billing**: credit metering and entitlements flow through Dhanam.
+- **Inference**: every LLM call routes through Selva's OpenAI-compatible `/v1` surface at
+  `https://inference.selva.town` (2026-07-07 cutover). Service code must not call model
+  providers directly. **The GitHub repository is still named `selva-office`; the rename to
+  `selva` is pending** (`internal-devops/ecosystem/repo-registry.md`, 2026-08-24). Earlier
+  editions of this file asserted the rename had already happened, and one line read
+  "formerly `selva-office`" about `selva-office` itself.
+- **CORS**: explicit allowlist per service; wildcards are banned (audit 2026-04-23 H2/H5/H6).
+- **Images**: first-party images in active production overlays _should_ be pinned by
+  `@sha256:` digest, and CI enforces that on infrastructure manifests. **Admission control is
+  weaker than earlier editions of this file claimed.** Of the three Kyverno image-tag
+  policies recorded at the 2026-05-04 snapshot, only `block-latest-ifnotpresent` is
+  **Enforce**, and only for `:latest` _combined with_ `imagePullPolicy: IfNotPresent`;
+  `disallow-latest-tag` and `require-image-digest` are **Audit**. A pod using `:latest` with
+  `imagePullPolicy: Always` therefore passes admission. Digest pinning is the goal, not a
+  uniform fact. Verify current state in `internal-devops/ECOSYSTEM.md` and the Kyverno
+  manifests in the `enclii` repo before making any enforcement claim.
+- **Onboarding**: a single admin onboarding call provisions namespace, ArgoCD app, tunnel
+  routes, Janua client and NetworkPolicies. See `enclii/docs/guides/ONBOARDING_GUIDE.md`.
 
 ---
 
-## Enclii CLI — DevOps Reference
+## 3. Infrastructure — shape only
 
-**Strong preference: use `enclii` over `kubectl`** for all operational
-tasks. The CLI routes through Switchyard API, which gives you audit
-logging, lifecycle event tracking, and service-scoped context. Escape
-to kubectl only for the gaps listed at the end of this section.
+> Boundary checkpoint: node hostnames, IP addresses, hardware models, capacity figures, costs
+> and the Cloudflare tunnel identifier are documented **only** in `internal-devops`. This
+> section keeps the shape, by class, and dates every count.
+
+**Cluster.** Bare-metal k3s, **4 nodes** since 2026-08-06, stated by class:
+
+- one control-plane node — control plane plus primary workload
+- one worker node — workloads plus the second Longhorn replica
+- two CI builder nodes — the second added 2026-08-06, removing the single-builder SPOF; both
+  tainted and labelled so that only ARC GitHub Actions runners schedule there
+
+No node names, models or capacity figures belong in this file. Source:
+`internal-devops/infrastructure/nodes.md` (_Last Updated 2026-08-05_).
+
+**Ingress.** Internet → Cloudflare edge → cloudflared pods → Kubernetes Service → container
+port. TLS terminates at the Cloudflare edge. A single named Cloudflare Tunnel carries all
+ingress; its identifier is private. Zero exposed node ports for application traffic.
+
+**Storage.** Longhorn CSI in 2-replica mode across the two non-builder nodes. Object storage
+is Cloudflare R2 (zero egress). The Longhorn _version_ appears in exactly one undated place
+across the ecosystem and should be treated as unverified.
+
+**GitOps.** ArgoCD App-of-Apps with self-heal. A live `enclii ops apps status` read on
+**2026-08-24** returned **81 Applications** (71 Healthy / 7 Degraded / 2 Progressing /
+1 Missing; 73 Synced). That is an _Application_ count, not a per-container service count. The
+older "~28 apps across ~22 namespaces" and "~40 services" figures were the 2026-05-04 snapshot
+and a pre-2026 round number respectively; both are retired. Name the measurement when quoting
+a number.
+
+Push to `main` → CI builds → GHCR → digest commit into `k8s/production` → ArgoCD syncs.
+
+**Operational access** (SSH, kubeconfigs, node identity, capacity data, cost ledger): private
+repo `madfam-org/internal-devops`. Not in any public repo.
+
+---
+
+## 4. Enclii CLI — DevOps reference
+
+**Strong preference: use `enclii` over `kubectl`** for all operational tasks. The CLI routes
+through the Switchyard API, which gives audit logging, lifecycle event tracking, and
+service-scoped context. Escape to raw tooling only for the documented break-glass cases at the
+end of this section.
 
 ### Install
 
@@ -143,15 +201,13 @@ enclii whoami                 # verify active session
 enclii logout                 # clear local creds
 ```
 
-Env vars: `ENCLII_API_URL` (default `https://api.enclii.dev`),
-`ENCLII_TOKEN` (alternative to interactive login),
-`ENCLII_PROJECT`, `ENCLII_ENV`.
+Env vars: `ENCLII_API_URL` (default `https://api.enclii.dev`), `ENCLII_TOKEN` (alternative to
+interactive login), `ENCLII_PROJECT`, `ENCLII_ENV`.
 
 ### Day-to-day for madfam-web
 
-The commands below default to `madfam-web` — the primary service name for
-this repo as registered in Switchyard. For any other service in the
-ecosystem, swap the name.
+The commands below default to `madfam-web` — the primary service name for this repo as
+registered in Switchyard. For any other service, swap the name.
 
 ```bash
 # Status + where the pods are running
@@ -201,7 +257,7 @@ enclii local logs
 enclii local down
 ```
 
-### Full onboarding (only used when adding a brand-new service)
+### Full onboarding (only when adding a brand-new service)
 
 ```bash
 # One-shot: namespace + ArgoCD app + tunnel routes + Janua client + netpol
@@ -210,8 +266,8 @@ enclii onboard --repo madfam-org/<name> --db-name <db> --secrets-file .env
 
 ### Enclii-first production operations
 
-Enclii is the required control plane for routine production operations.
-Use the web UI, API, or CLI before reaching for raw infrastructure tools:
+Enclii is the required control plane for routine production operations. Use the web UI, API,
+or CLI before reaching for raw infrastructure tools:
 
 - ArgoCD sync / diff / rollback — `enclii ops apps ...`
 - Pod logs, diagnosis, and safe restarts — `enclii ops pods ...`
@@ -220,21 +276,23 @@ Use the web UI, API, or CLI before reaching for raw infrastructure tools:
 - ExternalSecrets and Vault readiness — `enclii ops secrets ...`
 - ARC runner inspection and drain workflows — `enclii ops runners ...`
 - DNS, tunnels, SaaS hostnames, providers, and repo automation — `enclii providers ...`
-- Service lifecycle, domains, secrets, jobs, and observability — `enclii deploy`, `enclii rollback`, `enclii logs`, `enclii observe`, `enclii domains`, `enclii secrets`, `enclii jobs`
+- Service lifecycle, domains, secrets, jobs, and observability — `enclii deploy`,
+  `enclii rollback`, `enclii logs`, `enclii observe`, `enclii domains`, `enclii secrets`,
+  `enclii jobs`
 
 ### Break-glass-only access
 
-Raw `kubectl`, `helm`, SSH, provider CLIs/APIs, `docker exec`, and direct
-container access are allowed only for platform bootstrap or documented
-break-glass emergencies when Enclii is unavailable or lacks an implemented
-adapter. Record the actor, reason, target service/environment, commands
-executed, result, and follow-up Enclii adapter gap or incident link.
+Raw `kubectl`, `helm`, SSH, provider CLIs/APIs, `docker exec`, and direct container access are
+allowed only for platform bootstrap or documented break-glass emergencies when Enclii is
+unavailable or lacks an implemented adapter. Record the actor, reason, target
+service/environment, commands executed, result, and the follow-up Enclii adapter gap or
+incident link.
 
 ### Cluster access
 
-kubeconfig + SSH keys live in `madfam-org/internal-devops` (private repo)
-for bootstrap and break-glass use only. Routine production operations must
-go through Enclii web, API, or CLI.
+Credentials for bootstrap and break-glass use live in the private `madfam-org/internal-devops`
+repository and are named there, never here. Routine production operations must go through
+Enclii web, API, or CLI.
 
 ### Exit codes (scripting against the CLI)
 
@@ -251,7 +309,16 @@ go through Enclii web, API, or CLI.
 
 ## Document provenance
 
-Generated 2026-04-23 as part of the "each repo stands alone" docs sweep. If the
-ecosystem map or CLI reference drifts from reality, update the generator at
-`madfam-org/enclii/docs/templates/ECOSYSTEM.md.template` and re-render — don't
-edit per-repo copies in isolation.
+Originally generated 2026-04-23 as part of the "each repo stands alone" docs sweep, and never
+hand-corrected until **2026-09-04**, when it was rewritten against the sanitized shape of
+`solarpunk-foundry/ECOSYSTEM.md` and the 2026-08-24 private-registry reads. That rewrite
+removed a production node roster with hardware models and capacity figures from a public
+repository, corrected the cluster to 4 nodes, replaced the 2026-05-04 ArgoCD snapshot with the
+2026-08-24 control-plane read, withdrew a false claim that Kyverno fail-closes on mutable
+image tags, fixed the CMS port and added its 404 caveat, and corrected the Selva rename status.
+
+If the ecosystem map or CLI reference drifts again, fix the generator at
+`madfam-org/enclii/docs/templates/ecosystem/generator.py` and re-render — **note that the path
+this document previously cited (`enclii/docs/templates/ECOSYSTEM.md.template`) does not
+exist**, checked 2026-07-25. Do not edit per-repo copies in isolation, and do not let the
+generator re-introduce the corrections above.
