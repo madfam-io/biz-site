@@ -4,6 +4,11 @@ Core business logic, types, and utilities for MADFAM applications.
 
 ## Overview
 
+> **Boundary checkpoint (2026-09-04, madfam-site).** Public repository (Lane C). This README
+> describes a private workspace package's modules and usage only; nothing here names hosts,
+> credentials, tunnel identifiers or cost figures, which belong in the private `internal-devops`
+> repo. Policy: `internal-devops/docs/repo-boundary-contract.md`; checklist: `docs/PUBLIC_REPO_BOUNDARY.md`.
+
 This package contains the business logic, type definitions, and core functionality shared across MADFAM applications. It includes transformation program definitions, feature flags, and domain models.
 
 ## Installation
