@@ -4,6 +4,11 @@ The main Next.js 14 application for the MADFAM corporate website.
 
 ## Overview
 
+> **Boundary checkpoint (2026-09-04, madfam-site).** Public repository (Lane C). This README
+> documents application structure, commands and variable names only; hostnames, credentials,
+> tunnel identifiers and cost figures belong in the private `internal-devops` repo. Policy:
+> `internal-devops/docs/repo-boundary-contract.md`; checklist: `docs/PUBLIC_REPO_BOUNDARY.md`.
+
 This is the primary web application that serves the MADFAM corporate website. It's built with Next.js 14 using the App Router, TypeScript, and Tailwind CSS.
 
 ## Features
