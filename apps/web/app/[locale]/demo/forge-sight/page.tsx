@@ -61,14 +61,14 @@ export default function ForgeSightDemoPage() {
           name: formData.email.split('@')[0],
           email: formData.email,
           source: 'DEMO_REQUEST',
-          message: `Forge Sight demo request — Role: ${formData.role}, Use case: ${formData.useCase}, Monthly volume: ${formData.monthlyVolume}`,
+          message: `Forgesight demo request — Role: ${formData.role}, Use case: ${formData.useCase}, Monthly volume: ${formData.monthlyVolume}`,
         }),
       });
     } catch {
       // Continue with redirect even if lead capture fails
     }
 
-    // Redirect to Forge Sight with tracking params
+    // Redirect to Forgesight with tracking params
     const trackingParams = new URLSearchParams({
       source: 'madfam-demo-prep',
       role: formData.role,
@@ -90,7 +90,7 @@ export default function ForgeSightDemoPage() {
               Product Demo
             </div>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-neutral-900 mb-6">
-              Experience Forge Sight&apos;s Pricing Intelligence
+              Experience Forgesight&apos;s Pricing Intelligence
             </h1>
             <p className="text-xl text-neutral-600 leading-relaxed">
               Before you explore the demo, let&apos;s personalize your experience with a few quick
@@ -258,7 +258,7 @@ export default function ForgeSightDemoPage() {
                       loading={isSubmitting}
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Launching Demo...' : 'Launch Forge Sight Demo'}
+                      {isSubmitting ? 'Launching Demo...' : 'Launch Forgesight Demo'}
                       <svg
                         className="w-5 h-5 ml-2"
                         fill="none"
@@ -311,7 +311,7 @@ export default function ForgeSightDemoPage() {
 
           {/* Ecosystem Note */}
           <div className="max-w-2xl mx-auto mt-8 text-center">
-            <p className="text-sm text-neutral-500">Forge Sight is built by MADFAM</p>
+            <p className="text-sm text-neutral-500">Forgesight is built by MADFAM</p>
           </div>
         </Container>
       </section>

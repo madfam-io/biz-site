@@ -1,3 +1,10 @@
+## Boundary checkpoint
+
+- [ ] This change stays in the `madfam-site` public corporate-site lane.
+- [ ] Public docs avoid private topology, credentials, costs, provider account detail, customer data, and incident evidence.
+- [ ] Roadmap/status/ecosystem docs include a boundary checkpoint when cross-repo context changes.
+- [ ] Relevant checks were run: `scripts/public-hygiene-check.sh` and `scripts/boundary-checkpoint-check.sh`.
+
 ## Description
 
 <!-- Provide a brief description of the changes in this PR -->
@@ -98,7 +105,7 @@
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published
 - [ ] I have checked my code and corrected any misspellings
-- [ ] I have updated CLAUDE.md if needed
+- [ ] I have updated AGENTS.md if needed (`CLAUDE.md` is a compatibility shim; policy lives in `AGENTS.md`)
 
 ## Reviewer Notes
 

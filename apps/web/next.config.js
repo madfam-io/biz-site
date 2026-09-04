@@ -6,7 +6,7 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: [
-    '@madfam/ui',
+    '@madfam-site/ui',
     '@madfam/core',
     '@madfam/analytics',
     '@madfam/i18n',

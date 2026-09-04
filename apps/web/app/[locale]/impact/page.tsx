@@ -33,13 +33,13 @@ export default async function ImpactPage({ params }: { params: Promise<{ locale:
       icon: '🏦',
     },
     {
-      product: 'Cotiza Studio',
+      product: 'Cotiza',
       summary: t('sdgMap.cotizaStudio.summary'),
       sdgs: t.raw('sdgMap.cotizaStudio.sdgs') as string[],
       icon: '📊',
     },
     {
-      product: 'Forge Sight',
+      product: 'Forgesight',
       summary: t('sdgMap.forgeSight.summary'),
       sdgs: t.raw('sdgMap.forgeSight.sdgs') as string[],
       icon: '🔍',

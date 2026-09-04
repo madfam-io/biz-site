@@ -61,7 +61,7 @@ function calculateDemoLeadScore(lead: DemoLeadData): number {
     }
   }
 
-  // Monthly volume (for Forge Sight)
+  // Monthly volume (for Forgesight)
   if (lead.monthlyVolume) {
     const volume = lead.monthlyVolume.toLowerCase();
     if (volume.includes('1000') || volume.includes('high')) {
@@ -296,9 +296,9 @@ function getEmailSubject(product: string, lang: string): string {
       pt: 'Bem-vindo ao Dhanam! Sua demo está pronta',
     },
     'forge-sight': {
-      es: '¡Bienvenido a Forge Sight! Tu demo está lista',
-      en: 'Welcome to Forge Sight! Your demo is ready',
-      pt: 'Bem-vindo ao Forge Sight! Sua demo está pronta',
+      es: '¡Bienvenido a Forgesight! Tu demo está lista',
+      en: 'Welcome to Forgesight! Your demo is ready',
+      pt: 'Bem-vindo ao Forgesight! Sua demo está pronta',
     },
     cotiza: {
       es: '¡Bienvenido a Cotiza! Tu demo está lista',

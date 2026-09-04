@@ -1,0 +1,48 @@
+name: Documentation Lint
+
+# DocGuard lives in the public ecosystem-contract repo and is consumed here at a
+# pinned SHA. Never @main: a mutable ref gives every pusher in that repo code
+# execution in this repo's CI.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - '*.md'
+      - '.env.example'
+      - '.github/workflows/doc-lint.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - '*.md'
+      - '.env.example'
+      - '.github/workflows/doc-lint.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  doc-guard:
+    name: DocGuard
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Run DocGuard
+        # v1 @ solarpunk-foundry main, resolved 2026-09-04.
+        uses: madfam-org/solarpunk-foundry/.github/actions/doc-guard@05f164e7d3d0a701632d5970f01c01f56c40e583
+        with:
+          doc-path: './docs'
+          # strict: false means DocGuard WARNINGS NEVER FAIL THIS JOB. A green
+          # check here is not evidence the warnings were addressed — read the
+          # job log. Flip to true only when the existing warning backlog is
+          # cleared, or the setting silently becomes a backlog of its own.
+          strict: false
+          # Link checking needs aiohttp and live HTTP and has never been
+          # exercised green upstream; enabling it here would make this job fail
+          # for reasons unrelated to this repo.
+          check-links: false
+          check-env-vars: true
+          check-terminology: true

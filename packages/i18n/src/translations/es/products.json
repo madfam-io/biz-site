@@ -17,9 +17,6 @@
     "viewSolutions": "Ver soluciones",
     "ctaButton": "Únete al Ecosistema"
   },
-  "spark": {
-    "name": "SPARK"
-  },
   "comparison": {
     "title": "Compara nuestras plataformas",
     "feature": "Característica",
@@ -33,8 +30,8 @@
     "trial": "Prueba gratis por 14 días"
   },
   "cotizaStudio": {
-    "name": "Cotiza Studio",
-    "title": "Cotiza Studio",
+    "name": "Cotiza",
+    "title": "Cotiza",
     "tagline": "Cotizaciones Instantáneas con IA",
     "shortDescription": "Generador de cotizaciones y propuestas impulsado por IA para cerrar negocios más rápido.",
     "description": "Sistema inteligente de generación de cotizaciones y propuestas que usa IA para crear documentos personalizados.",
@@ -45,8 +42,8 @@
     }
   },
   "forgeSight": {
-    "name": "Forge Sight",
-    "title": "Forge Sight",
+    "name": "Forgesight",
+    "title": "Forgesight",
     "tagline": "Análisis Predictivo y Pronóstico",
     "shortDescription": "Análisis predictivo avanzado para toma de decisiones basada en datos.",
     "description": "Plataforma de análisis predictivo que usa IA para prever tendencias y optimizar decisiones empresariales.",
@@ -92,7 +89,7 @@
     "features": {
       "0": "Modelos paramétricos OpenSCAD",
       "1": "Preview 3D instantáneo y exportación STL",
-      "2": "40+ diseños de código abierto"
+      "2": "36 diseños de código abierto"
     }
   }
 }
