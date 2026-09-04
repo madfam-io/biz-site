@@ -72,9 +72,14 @@ jobs:
       - name: ESLint
         run: pnpm lint
 
+      - name: Translation parity
+        run: pnpm check:translations
+
       - name: Prettier check
-        run: pnpm format --check || echo "No format script, skipping"
-        continue-on-error: true
+        run: pnpm format:check
+
+      - name: Script gates
+        run: pnpm test:scripts
 
       - name: Run tests
         run: pnpm test -- -- --run

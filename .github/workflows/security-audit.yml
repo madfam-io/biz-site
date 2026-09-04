@@ -77,10 +77,15 @@ jobs:
             echo "⚠️ Rate limiting might be missing"
           fi
           
+      - name: Application security check
+        run: pnpm --filter @madfam/web test:security
+
       - name: Upload audit results
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: security-audit-results
-          path: audit-*.json
+          path: |
+            audit-*.json
+            security-report.json
           retention-days: 30

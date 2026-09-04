@@ -10,10 +10,16 @@ const path = require('path');
 
 class SecurityAuditor {
   constructor() {
+    // Findings raised by this script's own configuration checks.
     this.issues = [];
-    this.criticalCount = 0;
-    this.moderateCount = 0;
-    this.lowCount = 0;
+    // Vulnerability counts reported by `pnpm audit`. Kept on separate fields
+    // from the findings above: they used to share `criticalCount` etc., and
+    // because checkDependencies() runs last it silently overwrote every
+    // finding with the audit metadata — two visible ❌ lines still summarised
+    // as "Critical: 0 ... Status: PASS", exit 0.
+    this.depCritical = 0;
+    this.depModerate = 0;
+    this.depLow = 0;
   }
 
   log(message, level = 'info') {
@@ -183,7 +189,13 @@ class SecurityAuditor {
       };
     }
 
-    const apiFiles = this.findFiles(apiDir, /route\.(ts|js)$/);
+    // Only routes that actually read request input can be missing input
+    // validation. Counting `GET /api/health`, which reads nothing, as an
+    // unvalidated route made the rate meaningless.
+    const readsInput =
+      /request\.json\(|req\.json\(|\.formData\(|searchParams|request\.text\(|req\.text\(/;
+    const allFiles = this.findFiles(apiDir, /route\.(ts|js)$/);
+    const apiFiles = allFiles.filter(file => readsInput.test(fs.readFileSync(file, 'utf-8')));
     let validatedFiles = 0;
 
     for (const file of apiFiles) {
@@ -193,7 +205,7 @@ class SecurityAuditor {
       }
     }
 
-    const validationRate = apiFiles.length > 0 ? validatedFiles / apiFiles.length : 0;
+    const validationRate = apiFiles.length > 0 ? validatedFiles / apiFiles.length : 1;
 
     if (validationRate >= 0.8) {
       return { passed: true };
@@ -202,9 +214,18 @@ class SecurityAuditor {
         passed: false,
         message: `Only ${Math.round(validationRate * 100)}% of API routes have input validation`,
         details: {
-          totalFiles: apiFiles.length,
+          totalRoutes: allFiles.length,
+          inputAcceptingRoutes: apiFiles.length,
           validatedFiles,
           validationRate: Math.round(validationRate * 100),
+          unvalidated: apiFiles.filter(file => {
+            const content = fs.readFileSync(file, 'utf-8');
+            return !(
+              content.includes('zod') ||
+              content.includes('z.') ||
+              content.includes('.parse(')
+            );
+          }),
         },
       };
     }
@@ -243,6 +264,67 @@ class SecurityAuditor {
     }
   }
 
+  /**
+   * Placeholder markers used across this repo's .env.example files. A value
+   * carrying one of these is documentation, not a credential.
+   */
+  static get PLACEHOLDER_MARKERS() {
+    return [
+      '__change_me__',
+      'change_me',
+      'changeme',
+      'replace-with',
+      'replace_with',
+      'replace me',
+      'your-',
+      'your_',
+      '<',
+      '{',
+      '[',
+      '${',
+      'xxx',
+      'example',
+      'placeholder',
+      'localhost',
+    ];
+  }
+
+  /**
+   * Returns the variable names in `content` whose value looks like a real
+   * secret: a secret-shaped NAME assigned a value that is long enough to be
+   * one and carries no placeholder marker.
+   */
+  static findSecretAssignments(content) {
+    const nameLooksSecret = /(password|secret|token|_key|^key)$/i;
+    const found = [];
+
+    for (const rawLine of content.split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#')) continue;
+
+      const match = line.match(/^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+      if (!match) continue;
+
+      const [, name, rawValue] = match;
+      if (!nameLooksSecret.test(name)) continue;
+
+      // Strip surrounding quotes and any trailing comment.
+      const value = rawValue
+        .replace(/\s+#.*$/, '')
+        .trim()
+        .replace(/^(['"])(.*)\1$/, '$2')
+        .trim();
+
+      if (value.length < 12) continue; // too short to be a live credential
+      const lowered = value.toLowerCase();
+      if (SecurityAuditor.PLACEHOLDER_MARKERS.some(marker => lowered.includes(marker))) continue;
+
+      found.push(name);
+    }
+
+    return found;
+  }
+
   checkEnvironmentSecurity() {
     const envFiles = ['.env.example', 'apps/web/.env.example'];
     const issues = [];
@@ -251,18 +333,14 @@ class SecurityAuditor {
       if (fs.existsSync(envFile)) {
         const content = fs.readFileSync(envFile, 'utf-8');
 
-        // Check for hardcoded secrets (basic patterns)
-        const suspiciousPatterns = [
-          /password\s*=\s*[^<{\[]/i,
-          /secret\s*=\s*[^<{\[]/i,
-          /key\s*=\s*[^<{\[]/i,
-          /token\s*=\s*[^<{\[]/i,
-        ];
-
-        for (const pattern of suspiciousPatterns) {
-          if (pattern.test(content)) {
-            issues.push(`Potential hardcoded secret in ${envFile}`);
-          }
+        // Look for secret-shaped ASSIGNMENTS, not merely secret-shaped NAMES.
+        // The old patterns (/key\s*=\s*[^<{[]/i and friends) matched every
+        // ordinary `NEXT_PUBLIC_..._KEY=` line in a placeholder template, so
+        // the check was red on a file that contained no secret at all — the
+        // fastest way to get a gate switched off.
+        const findings = SecurityAuditor.findSecretAssignments(content);
+        for (const finding of findings) {
+          issues.push(`Potential hardcoded secret in ${envFile}: ${finding}`);
         }
       }
     }
@@ -328,9 +406,9 @@ class SecurityAuditor {
       const audit = JSON.parse(auditResult);
       const metadata = audit.metadata?.vulnerabilities || {};
 
-      this.criticalCount = metadata.critical || 0;
-      this.moderateCount = metadata.moderate || 0;
-      this.lowCount = metadata.low || 0;
+      this.depCritical = metadata.critical || 0;
+      this.depModerate = metadata.moderate || 0;
+      this.depLow = metadata.low || 0;
 
       this.log(
         `Dependencies: ${metadata.critical || 0} critical, ${metadata.moderate || 0} moderate, ${metadata.low || 0} low`,
@@ -342,42 +420,76 @@ class SecurityAuditor {
     }
   }
 
+  /**
+   * Summary over both axes: findings raised by this script, and vulnerability
+   * counts from `pnpm audit`. A run fails when either axis has a critical.
+   */
+  buildReport() {
+    const bySeverity = this.issues.reduce(
+      (acc, issue) => {
+        acc[issue.level] = (acc[issue.level] || 0) + 1;
+        return acc;
+      },
+      { critical: 0, moderate: 0, low: 0 }
+    );
+
+    const failing = bySeverity.critical + this.depCritical;
+
+    return {
+      timestamp: new Date().toISOString(),
+      summary: {
+        findings: {
+          critical: bySeverity.critical,
+          moderate: bySeverity.moderate,
+          low: bySeverity.low,
+          total: this.issues.length,
+        },
+        dependencies: {
+          critical: this.depCritical,
+          moderate: this.depModerate,
+          low: this.depLow,
+        },
+        failing,
+      },
+      issues: this.issues,
+      status: failing === 0 ? 'PASS' : 'FAIL',
+    };
+  }
+
   async generateReport() {
     this.log('Generating security report...', 'info');
 
-    const report = {
-      timestamp: new Date().toISOString(),
-      summary: {
-        critical: this.criticalCount,
-        moderate: this.moderateCount,
-        low: this.lowCount,
-        totalIssues: this.issues.length,
-      },
-      issues: this.issues,
-      status: this.criticalCount === 0 ? 'PASS' : 'FAIL',
-    };
+    const report = this.buildReport();
+    const { findings, dependencies, failing } = report.summary;
 
     // Write report to file
     fs.writeFileSync('security-report.json', JSON.stringify(report, null, 2));
 
-    // Console summary
+    // Console summary — the two axes are printed separately so a reader can
+    // tell a misconfiguration from a vulnerable dependency.
     console.log('\n' + '='.repeat(60));
     console.log('🔒 SECURITY AUDIT SUMMARY');
     console.log('='.repeat(60));
     console.log(`Status: ${report.status === 'PASS' ? '✅ PASS' : '❌ FAIL'}`);
-    console.log(`Critical: ${report.summary.critical}`);
-    console.log(`Moderate: ${report.summary.moderate}`);
-    console.log(`Low: ${report.summary.low}`);
-    console.log(`Total Issues: ${report.summary.totalIssues}`);
+    console.log(
+      `Findings:     ${findings.critical} critical, ${findings.moderate} moderate, ${findings.low} low (${findings.total} total)`
+    );
+    console.log(
+      `Dependencies: ${dependencies.critical} critical, ${dependencies.moderate} moderate, ${dependencies.low} low`
+    );
     console.log('='.repeat(60));
 
-    if (this.criticalCount > 0) {
-      console.log('\n❌ CRITICAL ISSUES FOUND - Security audit FAILED');
-      process.exit(1);
-    } else {
-      console.log('\n✅ No critical security issues found');
-      process.exit(0);
+    for (const issue of this.issues) {
+      console.log(`  [${issue.level}] ${issue.message}`);
     }
+
+    if (failing > 0) {
+      console.log(`\n❌ ${failing} CRITICAL ISSUE(S) FOUND - Security audit FAILED`);
+      process.exit(1);
+    }
+
+    console.log('\n✅ No critical security issues found');
+    process.exit(0);
   }
 
   findFiles(dir, pattern) {

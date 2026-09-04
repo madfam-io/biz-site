@@ -20,6 +20,7 @@
     "lint": "turbo lint",
     "clean": "turbo clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,json,md}\"",
     "typecheck": "turbo typecheck",
     "docker:dev": "docker-compose up web-dev",
     "docker:prod": "docker-compose up web",
@@ -27,7 +28,8 @@
     "prepare": "husky",
     "validate:translations": "node scripts/validate-translations.js",
     "find:missing-translations": "node scripts/find-missing-translations.js",
-    "check:translations": "npm run validate:translations && npm run find:missing-translations"
+    "check:translations": "npm run validate:translations && npm run find:missing-translations",
+    "test:scripts": "node --test \"scripts/__tests__/*.test.mjs\""
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
@@ -51,11 +53,11 @@
   "packageManager": "pnpm@9.15.0",
   "lint-staged": {
     "apps/web/**/*.{ts,tsx,js,jsx}": [
-      "cd apps/web && pnpm lint --fix",
-      "cd apps/web && pnpm typecheck"
+      "pnpm --filter @madfam/web lint --fix",
+      "pnpm --filter @madfam/web typecheck"
     ],
-    "apps/cms/**/*.{ts,js}": [
-      "cd apps/cms && npm run lint"
+    "packages/i18n/src/translations/**/*.json": [
+      "pnpm check:translations"
     ],
     "**/*.{ts,tsx,js,jsx,json,md}": [
       "prettier --write"

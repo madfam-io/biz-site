@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
+
+const unsubscribeSchema = z.object({
+  email: z.string().trim().toLowerCase().email(),
+});
 
 /**
  * POST /api/unsubscribe
@@ -12,12 +17,13 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const email = body?.email?.trim()?.toLowerCase();
+    const parsed = unsubscribeSchema.safeParse(await request.json());
 
-    if (!email || !email.includes('@')) {
+    if (!parsed.success) {
       return NextResponse.json({ error: 'Valid email address is required' }, { status: 400 });
     }
+
+    const { email } = parsed.data;
 
     // Log the unsubscribe (server-side, always succeeds).
     // Strip CR/LF/control chars before logging to prevent log-injection (CWE-117).
