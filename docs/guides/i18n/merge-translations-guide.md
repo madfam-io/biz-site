@@ -52,7 +52,7 @@ This guide provides instructions for merging the missing translations into the e
 ### Step 1: Backup Current Files
 
 ```bash
-cd /Users/aldoruizluna/labspace/biz-site/packages/i18n/src/translations
+cd "$(git rev-parse --show-toplevel)/packages/i18n/src/translations"
 cp en-US.json en-US.json.backup
 cp es-MX.json es-MX.json.backup
 cp pt-BR.json pt-BR.json.backup
