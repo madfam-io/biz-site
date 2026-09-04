@@ -162,7 +162,7 @@ const fallbackCaseStudies: CaseStudy[] = [
     challenge:
       'A network of 12 makerspaces across Mexico and Colombia struggled with manual quoting, inconsistent pricing, and disconnected production tracking across locations.',
     solution:
-      'Deployed Forge Sight for pricing intelligence, Cotiza Studio for automated quoting, and Pravara-MES for production tracking — all integrated through the MADFAM ecosystem.',
+      'Deployed Forgesight for pricing intelligence, Cotiza for automated quoting, and Pravara MES for production tracking — all integrated through the MADFAM ecosystem.',
     results: [
       {
         metric: 'Quoting Time',
@@ -181,9 +181,9 @@ const fallbackCaseStudies: CaseStudy[] = [
       },
     ],
     technologies: [
-      { technology: 'Forge Sight' },
-      { technology: 'Cotiza Studio' },
-      { technology: 'Pravara-MES' },
+      { technology: 'Forgesight' },
+      { technology: 'Cotiza' },
+      { technology: 'Pravara MES' },
       { technology: 'Enclii' },
     ],
     status: 'published',

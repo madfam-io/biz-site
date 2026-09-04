@@ -2,6 +2,13 @@
 
 > **Warning**: The Vercel + Railway migration described below is no longer the active deployment strategy. Production infrastructure has moved to Kubernetes via Enclii. This document is retained for historical reference only. See `docs/deployment/DEPLOYMENT.md` and `docs/infrastructure/INFRASTRUCTURE_REQUIREMENTS.md` for current deployment information.
 
+> **Boundary checkpoint (2026-09-04, madfam-site):** public-safe historical
+> document. The provider anycast address it once carried was replaced with a
+> placeholder on 2026-09-04 — this is a public repository and IP literals are a
+> banned class. No topology, credential or cost detail belongs here; the private
+> sink is `internal-devops`. Policy:
+> `internal-devops/docs/repo-boundary-contract.md`.
+
 ---
 
 # Vercel + Railway Migration Guide (Historical)
@@ -284,7 +291,7 @@ aws s3 sync ./media s3://madfam-media/ \
 
 ```dns
 # Main site (Vercel)
-A     @     76.76.21.21
+A     @     <VERCEL_ANYCAST_IP>
 AAAA  @     2606:4700:3000::6812:1515
 CNAME www   cname.vercel-dns.com
 

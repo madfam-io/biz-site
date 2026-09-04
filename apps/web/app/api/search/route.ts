@@ -57,7 +57,7 @@ function getStaticContent(locale: Locale): Omit<SearchResult, 'score'>[] {
     },
     {
       id: 'forge-sight',
-      title: 'Forge Sight',
+      title: 'Forgesight',
       description:
         l === 'en'
           ? 'Pricing intelligence for digital fabrication'
@@ -69,7 +69,7 @@ function getStaticContent(locale: Locale): Omit<SearchResult, 'score'>[] {
     },
     {
       id: 'cotiza-studio',
-      title: 'Cotiza Studio',
+      title: 'Cotiza',
       description:
         l === 'en'
           ? 'Automated quoting and estimation'
@@ -93,7 +93,7 @@ function getStaticContent(locale: Locale): Omit<SearchResult, 'score'>[] {
     },
     {
       id: 'pravara-mes',
-      title: 'Pravara-MES',
+      title: 'Pravara MES',
       description:
         l === 'en'
           ? 'Manufacturing execution system'

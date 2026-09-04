@@ -133,9 +133,13 @@ describe('SEO Service', () => {
     it('should generate sitemap entries for all main pages', () => {
       const sitemap = seoService.generateSitemapData();
 
-      expect(sitemap).toHaveLength(29);
+      expect(sitemap).toHaveLength(30);
       expect(sitemap[0].url).toBe('/');
       expect(sitemap[0].priority).toBe(1.0);
+
+      // Avala is live at avala.studio and keeps an in-site detail page, so it
+      // is part of madfam.io's sitemap (audit 01 #6).
+      expect(sitemap.some(entry => entry.url === '/platforms/avala')).toBe(true);
 
       const programPages = sitemap.filter(entry => entry.url.includes('/programs#'));
       expect(programPages).toHaveLength(4);
@@ -153,7 +157,7 @@ describe('SEO Service', () => {
 
       // Platform entries
       const platformPages = sitemap.filter(entry => entry.url.includes('/platforms/'));
-      expect(platformPages).toHaveLength(8);
+      expect(platformPages).toHaveLength(9);
 
       const platformsIndex = sitemap.find(entry => entry.url === '/platforms');
       expect(platformsIndex).toBeDefined();
