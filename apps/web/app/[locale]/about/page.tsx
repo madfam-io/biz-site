@@ -175,9 +175,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     {
       year: '2025',
       event: {
-        es: 'Dhanam (finanzas), Forge Sight (precios) y Tezca (regulación) en producción',
-        en: 'Dhanam (finance), Forge Sight (pricing) and Tezca (regulation) in production',
-        pt: 'Dhanam (finanças), Forge Sight (preços) e Tezca (regulação) em produção',
+        es: 'Dhanam (finanzas), Forgesight (precios) y Tezca (regulación) en producción',
+        en: 'Dhanam (finance), Forgesight (pricing) and Tezca (regulation) in production',
+        pt: 'Dhanam (finanças), Forgesight (preços) e Tezca (regulação) em produção',
       },
     },
     {

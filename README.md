@@ -20,6 +20,12 @@
 
 **📅 Last Updated:** 2026-07-06
 
+> **Boundary checkpoint (2026-09-04, madfam-site).** This is a public repository (Lane C, public
+> corporate site). Setup steps, ports and variable *names* are public-safe; node hostnames, IP
+> addresses, credentials, tunnel identifiers, cost figures and incident evidence live **only** in
+> the private `internal-devops` repo. Policy: `internal-devops/docs/repo-boundary-contract.md`.
+> Public checklist: [`docs/PUBLIC_REPO_BOUNDARY.md`](docs/PUBLIC_REPO_BOUNDARY.md).
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -46,7 +52,7 @@ pnpm typecheck
 
 Visit [http://localhost:3000](http://localhost:3000) to see the site (auto-redirects to Spanish locale).
 
-> **Note**: Server may start on port 3001 if 3000 is in use.
+> **Note**: The web dev server listens on port 3000; `apps/cms` uses 3001.
 
 ### Available Scripts
 
@@ -116,12 +122,12 @@ Three conversion paths into the MADFAM ecosystem:
 - **Enclii** - Sovereign cloud PaaS powering MADFAM's infrastructure
 - **Janua** - Self-hosted identity platform with SSO, MFA, and Passkeys
 - **Dhanam** - Wealth & finance platform for LATAM founders at [dhan.am](https://www.dhan.am)
-- **Forge Sight** - Pricing intelligence for digital fabrication
-- **Cotiza Studio** - Intelligent quoting and budgeting system
+- **Forgesight** - Pricing intelligence for digital fabrication
+- **Cotiza** - Intelligent quoting and budgeting system
 - **Yantra4D** - Open parametric design platform
-- **Pravara-MES** - Manufacturing execution system
-- **AVALA** - Competency-based training platform (Coming Soon)
-- **PENNY** - AI assistant platform (In Development)
+- **Pravara MES** - Manufacturing execution system
+- **Avala** - Competency-based training platform at [avala.studio](https://avala.studio)
+- **Selva** - Self-hosted AI agent platform at [selva.town](https://selva.town)
 
 ### Solutions
 
@@ -251,7 +257,7 @@ docker-compose up web postgres
 The Docker configuration includes:
 
 - Production-ready Next.js build (port 3000)
-- Development server with hot reload (port 3001)
+- Development server with hot reload (port 3000)
 - PostgreSQL 15 database for CMS and data persistence
 
 ## 📚 Documentation

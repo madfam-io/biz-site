@@ -1,3 +1,6 @@
+// Boundary checkpoint (2026-09-04, madfam-site): public repo (Lane C). This file names
+// repo paths, commands and check names only; no hosts, credentials or identifiers.
+// Policy: internal-devops/docs/repo-boundary-contract.md.
 /**
  * Every lint-staged command must resolve to a script that exists.
  *

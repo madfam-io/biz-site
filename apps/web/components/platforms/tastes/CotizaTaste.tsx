@@ -110,7 +110,7 @@ export function CotizaTaste() {
   return (
     <div
       role="img"
-      aria-label="Cotiza Studio automated quoting flow: upload file, select material, choose process, receive instant price"
+      aria-label="Cotiza automated quoting flow: upload file, select material, choose process, receive instant price"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 items-start">
         {STEPS.map((step, i) => (

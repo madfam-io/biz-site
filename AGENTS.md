@@ -46,6 +46,47 @@ redirect and should not become the source of truth again.
 - `AGENTS.md` is canonical for agent instructions.
 - `CLAUDE.md` redirects here for Claude compatibility.
 
+## Repo-boundary contract
+
+> Boundary checkpoint (2026-09-04, madfam-site): this section states lane
+> membership and the banned classes by name. It contains no values, no
+> identities and no operational detail. Policy:
+> `internal-devops/docs/repo-boundary-contract.md`.
+
+- `internal-devops` is the private canonical source for production topology,
+  node identity, capacity, costs, secrets, incident evidence, client
+  engagements, and operational runbooks. It is **Lane A**.
+- `solarpunk-foundry` is the designated **public ecosystem contract repo**
+  (Lane B). The canonical cross-repo ecosystem map lives there, not here.
+- **This repo is Lane C: the public corporate site.** Its job is marketing
+  surface, public product copy and the code that renders them. Keep sensitive
+  operational, pricing, client and audit context out.
+- Use redacted summaries and canonical links when cross-referencing private
+  context. Never copy Vault paths, secret names with retrieval detail, or raw
+  break-glass `kubectl`/SSH procedures into this repo.
+- If uncertain, place the detail in `internal-devops` and keep a short pointer
+  here.
+- Any public doc carrying ecosystem context must include one short boundary note
+  with a canonical link target.
+
+**Never publish from this repo:** node hostnames, any public IP, hardware model
+numbers or capacity figures, the Cloudflare tunnel identifier, cost ledgers,
+internal hourly rates, revenue or ROI projections, Vault paths or secret names
+with retrieval detail, incident diagnoses and evidence trails, client identities
+or engagement detail, operator local paths.
+
+**Already public and stays public:** the topology _shape_ — a 4-node bare-metal
+k3s cluster (one control plane, one worker, two CI builders), ingress through a
+single Cloudflare Tunnel with zero exposed node ports, Longhorn CSI block
+storage, Cloudflare R2 object storage, ArgoCD GitOps with self-heal.
+
+The public checklist is [`docs/PUBLIC_REPO_BOUNDARY.md`](docs/PUBLIC_REPO_BOUNDARY.md).
+Two CI guards enforce part of it — `scripts/public-hygiene-check.sh` and
+`scripts/boundary-checkpoint-check.sh`, both run by
+`.github/workflows/public-hygiene.yml`. Read their `classes_skipped=` and
+`source=` lines: a green run is not proof a change is boundary-clean, and the
+node-identity class is deliberately not expressed in a public script.
+
 ## Maintenance
 
 Regenerate or repair these files with
