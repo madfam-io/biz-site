@@ -16,8 +16,20 @@ COPY packages/core/package.json ./packages/core/
 COPY packages/email/package.json ./packages/email/
 COPY packages/i18n/package.json ./packages/i18n/
 COPY packages/ui/package.json ./packages/ui/
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Install dependencies.
+# The lockfile requires @janua/nextjs and @janua/ui from npm.madfam.io, so the
+# build needs the registry token. It arrives as a BuildKit secret, never as an
+# ARG or ENV: an ARG is readable in `docker history` and in the image config.
+# The _authToken line is appended and removed inside a single RUN, so it is
+# never committed to a layer. Builds without the secret still work for the
+# public subset of the tree.
+RUN --mount=type=secret,id=npm_token \
+    set -eu; \
+    if [ -s /run/secrets/npm_token ]; then \
+      printf '\n//npm.madfam.io/:_authToken=%s\n' "$(cat /run/secrets/npm_token)" >> .npmrc; \
+    fi; \
+    pnpm install --frozen-lockfile; \
+    sed -i '/_authToken=/d' .npmrc
 
 # Builder stage
 FROM base AS builder

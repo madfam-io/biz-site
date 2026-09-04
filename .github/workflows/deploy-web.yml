@@ -64,6 +64,10 @@ jobs:
           context: .
           file: apps/web/Dockerfile
           push: true
+          # BuildKit secret, not a build-arg: a build-arg is readable in
+          # `docker history` on a public image.
+          secrets: |
+            npm_token=${{ secrets.NPM_MADFAM_TOKEN }}
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest

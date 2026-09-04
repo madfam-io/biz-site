@@ -28,6 +28,15 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
+      - name: Authenticate to npm.madfam.io
+        # The lockfile requires @janua/nextjs and @janua/ui from npm.madfam.io
+        # (.npmrc:9); without this every install below fetches them unauthenticated.
+        # Pinned to a reviewed SHA, never @main — a mutable ref on a cross-repo
+        # action is an open token-exfiltration path.
+        uses: madfam-org/solarpunk-foundry/.github/actions/npm-madfam-auth@05f164e7d3d0a701632d5970f01c01f56c40e583
+        with:
+          token: ${{ secrets.NPM_MADFAM_TOKEN }}
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -122,6 +131,15 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+
+      - name: Authenticate to npm.madfam.io
+        # The lockfile requires @janua/nextjs and @janua/ui from npm.madfam.io
+        # (.npmrc:9); without this every install below fetches them unauthenticated.
+        # Pinned to a reviewed SHA, never @main — a mutable ref on a cross-repo
+        # action is an open token-exfiltration path.
+        uses: madfam-org/solarpunk-foundry/.github/actions/npm-madfam-auth@05f164e7d3d0a701632d5970f01c01f56c40e583
+        with:
+          token: ${{ secrets.NPM_MADFAM_TOKEN }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
