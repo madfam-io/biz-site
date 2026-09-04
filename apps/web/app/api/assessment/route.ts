@@ -1,4 +1,4 @@
-import { analytics } from '@madfam/analytics';
+import { analytics } from '@madfam-site/analytics';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getServerAuth } from '@/lib/auth';

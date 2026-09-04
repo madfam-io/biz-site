@@ -32,8 +32,8 @@ vi.mock('@janua/nextjs', () => ({
   useAuth: () => ({ isAuthenticated: false, isLoading: false, signOut: vi.fn() }),
 }));
 
-// Mock @madfam/analytics — aligned with packages/analytics/src/index.ts exports
-vi.mock('@madfam/analytics', () => ({
+// Mock @madfam-site/analytics — aligned with packages/analytics/src/index.ts exports
+vi.mock('@madfam-site/analytics', () => ({
   analytics: {
     track: vi.fn(),
     identify: vi.fn(),
@@ -85,8 +85,8 @@ vi.mock('@madfam/analytics', () => ({
   })),
 }));
 
-// Mock @madfam/core — aligned with packages/core/src/index.ts exports
-vi.mock('@madfam/core', () => ({
+// Mock @madfam-site/core — aligned with packages/core/src/index.ts exports
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),

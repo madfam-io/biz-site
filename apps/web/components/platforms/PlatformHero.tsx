@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { getLocalizedUrl, type Locale } from '@madfam/i18n';
+import { getLocalizedUrl, type Locale } from '@madfam-site/i18n';
 import type { Platform } from '@/lib/data/platforms';
 import { Badge } from '@/components/corporate/Badge';
 import { Newsletter } from '@/components/ui/Newsletter';

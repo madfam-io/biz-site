@@ -1,4 +1,4 @@
-import { FeatureFlagProvider, logger } from '@madfam/core';
+import { FeatureFlagProvider, logger } from '@madfam-site/core';
 import { useEffect, useState } from 'react';
 
 // Cache for feature flags to avoid multiple provider instances

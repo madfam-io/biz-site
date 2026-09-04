@@ -8,8 +8,8 @@ import { render, screen, waitFor } from '@/test-utils/providers';
 const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
-// Mock @madfam/core logger
-vi.mock('@madfam/core', () => ({
+// Mock @madfam-site/core logger
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),
@@ -25,7 +25,7 @@ const mockTrackLeadCaptured = vi.fn();
 const mockTrackServiceFunnelStep = vi.fn();
 const mockTrackError = vi.fn();
 
-vi.mock('@madfam/analytics', () => ({
+vi.mock('@madfam-site/analytics', () => ({
   useFormTracking: vi.fn(() => ({
     trackFieldInteraction: vi.fn(),
     trackFormStart: vi.fn(),

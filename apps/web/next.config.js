@@ -7,9 +7,9 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: [
     '@madfam/ui',
-    '@madfam/core',
-    '@madfam/analytics',
-    '@madfam/i18n',
+    '@madfam-site/core',
+    '@madfam-site/analytics',
+    '@madfam-site/i18n',
     '@janua/nextjs',
     '@janua/ui',
   ],

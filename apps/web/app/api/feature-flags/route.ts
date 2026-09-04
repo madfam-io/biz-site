@@ -1,5 +1,5 @@
 import { createHash } from 'crypto';
-import { FeatureFlagProvider } from '@madfam/core';
+import { FeatureFlagProvider } from '@madfam-site/core';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getServerAuth } from '@/lib/auth';

@@ -51,7 +51,7 @@ vi.mock('../../performance-monitor', () => ({
   },
 }));
 
-vi.mock('@madfam/core', () => ({
+vi.mock('@madfam-site/core', () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),

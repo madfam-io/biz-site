@@ -1,4 +1,4 @@
-import { getLocalizedUrl, type Locale } from '@madfam/i18n';
+import { getLocalizedUrl, type Locale } from '@madfam-site/i18n';
 
 export type OfferPathId = 'platform' | 'build' | 'ecosystem' | 'partner';
 

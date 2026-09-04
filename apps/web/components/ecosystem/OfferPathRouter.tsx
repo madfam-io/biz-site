@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import type { Locale } from '@madfam/i18n';
+import type { Locale } from '@madfam-site/i18n';
 import { Container } from '@/components/ui';
 import { getOfferPaths } from '@/lib/data/offer-paths';
 
