@@ -58,8 +58,6 @@ README.md @madfam-io/developers
 /scripts/ @madfam-io/devops
 **/*deploy*.yml @madfam-io/devops
 **/*ci*.yml @madfam-io/devops
-vercel.json @madfam-io/devops
-.vercelignore @madfam-io/devops
 
 # Testing
 **/*.test.* @madfam-io/qa-team @madfam-io/developers
