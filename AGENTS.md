@@ -1,13 +1,14 @@
 # Madfam Site Agent Operating Guide
 
 > [!IMPORTANT]
-> MADFAM-ENCLII-FIRST-LEGACY-RAW v1: This document contains legacy raw infrastructure command examples.
 > Routine production operations must use Enclii web, API, or CLI. Treat raw
 > `kubectl`, `helm`, SSH, provider CLI/API, `docker exec`, and direct container
 > access as platform bootstrap or documented break-glass only, and record any
 > missing Enclii adapter gap.
 
 <!-- MADFAM-AGENTS-CANONICAL v1 -->
+
+> Last Updated: 2026-09-04
 
 This is the canonical instruction file for Claude, Codex, and any other LLM
 agent working in this repository. `CLAUDE.md` is kept only as a compatibility
@@ -45,6 +46,48 @@ redirect and should not become the source of truth again.
 - `llms-full.txt` is the durable full-context map and operating contract.
 - `AGENTS.md` is canonical for agent instructions.
 - `CLAUDE.md` redirects here for Claude compatibility.
+
+## Repo-boundary contract
+
+> Boundary checkpoint (2026-09-04, madfam-site): this section states lane
+> membership and the banned classes by name. It contains no values, no
+> identities and no operational detail. Policy:
+> `internal-devops/docs/repo-boundary-contract.md`.
+
+- `internal-devops` is the private canonical source for production topology,
+  node identity, capacity, costs, secrets, incident evidence, client
+  engagements, and operational runbooks. It is **Lane A**.
+- `solarpunk-foundry` is the designated **public ecosystem contract repo**
+  (Lane B), and is **permanently public** by owner statement (2026-09-04). The
+  canonical cross-repo ecosystem map lives there, not here.
+- **This repo is Lane C: the public corporate site.** Its job is marketing
+  surface, public product copy, and the code that renders them. Keep sensitive
+  operational, pricing, client and audit context out.
+- Use redacted summaries and canonical links when cross-referencing private
+  context. Never copy Vault paths, secret names with retrieval detail, or raw
+  break-glass `kubectl`/SSH procedures into this repo.
+- If uncertain, place the detail in `internal-devops` and keep a short pointer
+  here.
+- Any public doc carrying ecosystem context must include one short boundary note
+  with a canonical link target.
+
+**Never publish from this repo:** node hostnames, any public IP, hardware model
+numbers or capacity figures, the Cloudflare tunnel identifier, cost ledgers,
+internal hourly rates, revenue or ROI projections, Vault paths or secret names
+with retrieval detail, incident diagnoses and evidence trails, client identities
+or engagement detail, operator local paths.
+
+**Already public and stays public:** the topology _shape_ — a 4-node bare-metal
+k3s cluster (one control plane, one worker, two CI builders), ingress through a
+single Cloudflare Tunnel with zero exposed node ports, Longhorn CSI block
+storage, Cloudflare R2 object storage, ArgoCD GitOps with self-heal.
+
+The public checklist is [`docs/PUBLIC_REPO_BOUNDARY.md`](docs/PUBLIC_REPO_BOUNDARY.md).
+Two CI guards enforce part of it — `scripts/public-hygiene-check.sh` and
+`scripts/boundary-checkpoint-check.sh`, both run by
+`.github/workflows/public-hygiene.yml`. Read their `classes_skipped=` and
+`source=` lines: a green run is not proof a change is boundary-clean, and the
+node-identity class is deliberately not expressed in a public script.
 
 ## Maintenance
 
@@ -86,19 +129,22 @@ pnpm typecheck
 ## Repository Structure
 
 ```
-biz-site/
+madfam-site/
 ├── apps/
 │   ├── web/           # Main Next.js website
 │   └── cms/           # Payload CMS (optional)
 ├── packages/
-│   ├── ui/            # Shared themes/tokens (components dissolved to apps/web)
+│   ├── ui/            # Themes/tokens only. UI components are app-owned:
+│   │                  # solarpunk-foundry/docs/architecture/SELF_CONTAINED_SERVICES.md
+│   │                  # (2026-07-25) rules theming and UI per-app, contracts shared.
 │   ├── core/          # Business logic, feature flags, logger
 │   ├── i18n/          # Translations (es, en, pt)
 │   ├── analytics/     # Tracking (Plausible integration)
 │   └── email/         # Email templates and Resend sender
 ├── docs/              # All documentation
 ├── README.md          # Project README
-└── CLAUDE.md          # This file
+├── AGENTS.md          # This file — canonical for agents
+└── CLAUDE.md          # Compatibility redirect to AGENTS.md
 ```
 
 ## Business Context
@@ -107,7 +153,10 @@ biz-site/
 
 MADFAM is a solarpunk ecosystem of open platforms for creators, makers, and entrepreneurs in LATAM. Three conversion paths:
 
-1. **Use a MADFAM Platform** — 10 digital platforms (each with Free + Pro tiers)
+1. **Use a MADFAM Platform** — the digital platforms (each with Free + Pro tiers).
+   `apps/web/lib/data/platforms.ts` is the source of truth for how many and which;
+   it declares **16** slugs as of 2026-09-04. Count it there rather than restating
+   a number here — the lists below are illustrative, not exhaustive.
 2. **Use Primavera Maker Node** — Physical fabrication (3D printing, CNC, laser cutting)
 3. **Become an Ecosystem Member** — One membership unlocks Pro across all platforms + discounted fabrication
 
@@ -118,7 +167,7 @@ Self-serve flagships (public sign-up, pricing, free tier or trial):
 - **Karafiel** (https://karafiel.mx): Mexican CFDI / RFC / SAT compliance
 - **Dhanam** (https://dhan.am): Financial wellness + ecosystem billing backbone
 - **Forge Sight** (https://forgesight.quest): Digital fabrication pricing intelligence
-- **Tezca** (https://tezca.mx): LATAM regulatory intelligence
+- **Tezca** (https://tezca.mx): Mexican regulatory intelligence
 - **Fortuna** (https://fortuna.tube): Problem intelligence / NBI scoring API
 - **Rondelio** (https://rondel.io): Game intelligence cloud (TCG / tabletop)
 
@@ -134,7 +183,10 @@ Ecosystem services (consumed by other platforms):
 - **Yantra4D**: Parametric design platform
 - **Pravara-MES**: Manufacturing execution system
 - **AVALA**: Competency-based training (Coming Soon)
-- **PENNY**: AI assistant (In Development)
+
+**Retired — never render on the site:** PENNY is absorbed by **Selva**
+(https://selva.town). Where a successor mention reads naturally, say Selva;
+otherwise delete. SPARK and Primavera3D are likewise retired brands.
 
 ### Solutions
 
@@ -167,7 +219,9 @@ Ecosystem services (consumed by other platforms):
 
 - Products/Platforms: "by MADFAM"
 - Co-Labs / Showtech: "a MADFAM Company"
-- No references to deprecated SPARK, Innovaciones MADFAM, or Primavera3D
+- No references to the retired SPARK or Primavera3D brands
+- "Innovaciones MADFAM S.A.S. de C.V." is the **legal entity** and is not a
+  retired brand: it belongs on legal and footer surfaces
 - Maker Node is "Primavera Maker Node" (formerly Primavera3D)
 
 ### Mobile Optimization
@@ -178,9 +232,9 @@ Ecosystem services (consumed by other platforms):
 
 ## Key Data Files
 
-- **Platform Registry**: `apps/web/lib/data/platforms.ts` — Single source of truth for all 10 platform metadata. Used by platform detail pages, homepage, products page, navbar, footer.
+- **Platform Registry**: `apps/web/lib/data/platforms.ts` — single source of truth for platform metadata (16 slugs as of 2026-09-04). Used by platform detail pages, homepage, products page, navbar, footer.
 - **Platform Translations**: `packages/i18n/src/translations/{en,es,pt}/platforms.json` — ~290 keys per locale with taglines, value props, features, CTAs, comparison tables, tech specs.
-- **Platform Detail Pages**: `apps/web/app/[locale]/platforms/[slug]/page.tsx` — Dynamic route with `generateStaticParams` for all 10 slugs.
+- **Platform Detail Pages**: `apps/web/app/[locale]/platforms/[slug]/page.tsx` — dynamic route with `generateStaticParams` over every slug in `platforms.ts`.
 - **Integration Flow**: Design (Yantra4D) → Quote (Cotiza) → Price (Forge Sight) → Finance (Dhanam) → Manufacture (Pravara-MES) → Comply (Tezca/AVALA)
 
 ## Common Tasks
@@ -286,7 +340,10 @@ pnpm test
 
 - **Development**: `pnpm dev`
 - **Staging**: Push to staging branch
-- **Production**: Push to main branch → Kubernetes via Enclii (Vercel available as preview/fallback)
+- **Production**: push to `main` → CI builds → GHCR → digest commit into
+  `k8s/production` → ArgoCD syncs. **Enclii is the only deployment path.** MADFAM
+  migrated completely off Vercel (owner confirmation, 2026-09-04); the Vercel
+  configuration was deleted from this repo on that date.
 
 ## Performance Guidelines
 
@@ -324,7 +381,6 @@ pnpm test
 pnpm clean           # Clean all caches
 pnpm build           # Build all packages
 pnpm dev             # Start dev server
-pnpm analyze         # Bundle analysis
 ```
 
 ## AI Assistant Notes
@@ -343,12 +399,13 @@ When working on this codebase:
 
 All detailed documentation is in `/docs/`:
 
-- Architecture details: `docs/ARCHITECTURE.md`
+- Architecture details: `docs/development/ARCHITECTURE.md`
 - API documentation: `docs/API.md`
 - Testing guide: `docs/TESTING.md`
-- Deployment guide: `docs/DEPLOYMENT.md`
-- Brand guidelines: `docs/BRAND_IMPLEMENTATION_GUIDE.md`
-- Mobile guide: `docs/MOBILE_OPTIMIZATION_GUIDE.md`
+- Deployment guide: `docs/deployment/DEPLOYMENT.md`
+- Brand guidelines: `docs/guides/brand/BRAND_IMPLEMENTATION_GUIDE.md`
+- Mobile guide: `docs/guides/MOBILE_OPTIMIZATION_GUIDE.md`
+- Public/private boundary: `docs/PUBLIC_REPO_BOUNDARY.md`
 
 ## Infrastructure
 
@@ -361,8 +418,7 @@ All detailed documentation is in `/docs/`:
 
 ---
 
-**Last Updated**: March 2026
-**Version**: 3.0.0
-**Maintained by**: MADFAM Development Team
+**Maintained by**: MADFAM Development Team. The document stamp is the ISO
+`Last Updated` line in the banner at the top of this file.
 
 <!-- END LEGACY_CLAUDE_IMPORT -->
