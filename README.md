@@ -21,7 +21,7 @@
 **📅 Last Updated:** 2026-07-06
 
 > **Boundary checkpoint (2026-09-04, madfam-site).** This is a public repository (Lane C, public
-> corporate site). Setup steps, ports and variable *names* are public-safe; node hostnames, IP
+> corporate site). Setup steps, ports and variable _names_ are public-safe; node hostnames, IP
 > addresses, credentials, tunnel identifiers, cost figures and incident evidence live **only** in
 > the private `internal-devops` repo. Policy: `internal-devops/docs/repo-boundary-contract.md`.
 > Public checklist: [`docs/PUBLIC_REPO_BOUNDARY.md`](docs/PUBLIC_REPO_BOUNDARY.md).
