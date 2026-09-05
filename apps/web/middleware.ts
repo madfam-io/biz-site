@@ -1,4 +1,5 @@
 import { i18nConfig } from '@madfam-site/i18n';
+import { PLAUSIBLE_HOST } from '@/lib/plausible';
 import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -45,11 +46,11 @@ function applySecurityHeaders(response: NextResponse): NextResponse {
   // - style-src keeps 'unsafe-inline' because Tailwind injects styles at runtime
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com https://plausible.io;
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com ${PLAUSIBLE_HOST};
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https:;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com https://plausible.io;
+    connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com ${PLAUSIBLE_HOST};
     media-src 'self';
     object-src 'none';
     base-uri 'self';
