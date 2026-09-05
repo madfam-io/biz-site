@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { interpolate } from '../utils/translations';
 
-export type TranslationNamespace = 
+export type TranslationNamespace =
   | 'common'
   | 'home'
   | 'services'

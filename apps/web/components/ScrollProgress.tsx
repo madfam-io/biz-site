@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion, useScroll, useSpring } from 'framer-motion';
 
@@ -7,7 +7,7 @@ export function ScrollProgress() {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   return (
@@ -54,11 +54,7 @@ export function CircularScrollProgress() {
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="absolute inset-0 flex items-center justify-center text-xs font-medium"
       >
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          style={{ scale: progress }}
-        >
+        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ scale: progress }}>
           ↑
         </motion.span>
       </button>

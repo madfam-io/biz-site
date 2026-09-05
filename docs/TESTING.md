@@ -111,11 +111,13 @@ test('should submit lead form', async ({ page }) => {
 ## CI/CD Integration
 
 Tests run automatically on:
+
 - Pull requests
 - Push to main branch
 - Before deployment
 
 The CI pipeline will fail if:
+
 - Any test fails
 - Coverage drops below threshold
 - TypeScript errors are found

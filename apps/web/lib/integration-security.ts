@@ -72,9 +72,7 @@ export function decryptIntegrationData(encryptedData: {
 
     // Decrypt API key if present
     const apiKeyData = encryptedData.apiKey as
-      | EncryptedIntegrationData['apiKey']
-      | null
-      | undefined;
+      EncryptedIntegrationData['apiKey'] | null | undefined;
     const decryptedApiKey = apiKeyData
       ? decryptData(apiKeyData.encrypted, apiKeyData.iv, apiKeyData.tag, encryptionKey)
       : null;

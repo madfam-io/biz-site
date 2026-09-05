@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { CMSCache } from '@/lib/cms/cache';
 import { apiLogger } from '@/lib/logger';
 
 const cmsCache = new CMSCache();
+
+const cmsWebhookSchema = z.object({
+  collection: z.string().min(1).max(128),
+  operation: z.enum(['create', 'update', 'delete']).optional(),
+  id: z.string().max(256).optional(),
+});
 
 /**
  * POST /api/webhook/cms
@@ -27,16 +34,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 
   try {
-    const body = await request.json();
-    const { collection, operation, id } = body as {
-      collection?: string;
-      operation?: string;
-      id?: string;
-    };
+    const parsed = cmsWebhookSchema.safeParse(await request.json());
 
-    if (!collection) {
-      return NextResponse.json({ error: 'Missing collection field' }, { status: 400 });
+    if (!parsed.success) {
+      return NextResponse.json({ error: 'Invalid webhook payload' }, { status: 400 });
     }
+
+    const { collection, operation, id } = parsed.data;
 
     // Invalidate cache for the affected collection
     cmsCache.clear(collection);

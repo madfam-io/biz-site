@@ -62,7 +62,7 @@ describe('LeadForm Component', () => {
     followUp = 'email',
   } = {}) {
     await user.type(screen.getByLabelText(/nombre/i), 'Juan Perez');
-    await user.type(screen.getByLabelText(/correo electr/i), 'juan@empresa.com');
+    await user.type(screen.getByLabelText(/email corporativo/i), 'juan@empresa.com');
     await user.selectOptions(screen.getByLabelText(/qué te trae/i), intent);
     await user.selectOptions(screen.getByLabelText(/tiempo estimado/i), timeline);
     await user.selectOptions(screen.getByLabelText(/presupuesto/i), budget);
@@ -75,7 +75,7 @@ describe('LeadForm Component', () => {
     render(<LeadForm />);
 
     expect(screen.getByLabelText(/nombre/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/correo electr/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/email corporativo/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/empresa/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/teléfono/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/qué te trae/i)).toBeInTheDocument();
@@ -84,7 +84,7 @@ describe('LeadForm Component', () => {
     expect(screen.getByLabelText(/región/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/seguimiento preferido/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/cómo podemos ayudarte/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /enviar consulta/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /enviar solicitud/i })).toBeInTheDocument();
   });
 
   it('should initialize intent from a valid offer-path query value', () => {
@@ -96,15 +96,15 @@ describe('LeadForm Component', () => {
   it('should show validation errors for required fields', async () => {
     render(<LeadForm />);
 
-    const submitButton = screen.getByRole('button', { name: /enviar consulta/i });
+    const submitButton = screen.getByRole('button', { name: /enviar solicitud/i });
     await user.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/el nombre es requerido/i)).toBeInTheDocument();
+      expect(screen.getByText(/nombre debe tener al menos/i)).toBeInTheDocument();
       expect(screen.getByText(/email inv/i)).toBeInTheDocument();
       expect(screen.getByText(/selecciona un tiempo estimado/i)).toBeInTheDocument();
       expect(screen.getByText(/indica tu región/i)).toBeInTheDocument();
-      expect(screen.getByText(/el mensaje es requerido/i)).toBeInTheDocument();
+      expect(screen.getByText(/mensaje debe tener al menos/i)).toBeInTheDocument();
     });
   });
 
@@ -113,7 +113,7 @@ describe('LeadForm Component', () => {
 
     // Fill name and message with valid data so only email error remains
     await user.type(screen.getByLabelText(/nombre/i), 'Test User');
-    await user.type(screen.getByLabelText(/correo electr/i), 'invalid-email');
+    await user.type(screen.getByLabelText(/email corporativo/i), 'invalid-email');
     await user.selectOptions(screen.getByLabelText(/tiempo estimado/i), 'quarter');
     await user.type(screen.getByLabelText(/región/i), 'CDMX');
     await user.type(
@@ -149,7 +149,7 @@ describe('LeadForm Component', () => {
     await fillRequiredFields();
 
     // Submit the form
-    const submitButton = screen.getByRole('button', { name: /enviar consulta/i });
+    const submitButton = screen.getByRole('button', { name: /enviar solicitud/i });
     await user.click(submitButton);
 
     await waitFor(() => {
@@ -202,7 +202,7 @@ describe('LeadForm Component', () => {
 
     await fillRequiredFields({ message: 'This is a test message for the form' });
 
-    const submitButton = screen.getByRole('button', { name: /enviar consulta/i });
+    const submitButton = screen.getByRole('button', { name: /enviar solicitud/i });
     await user.click(submitButton);
 
     // Button should be disabled while submitting.
@@ -221,12 +221,12 @@ describe('LeadForm Component', () => {
 
     await fillRequiredFields({ message: 'This is a test message for the form' });
 
-    const submitButton = screen.getByRole('button', { name: /enviar consulta/i });
+    const submitButton = screen.getByRole('button', { name: /enviar solicitud/i });
     await user.click(submitButton);
 
     await waitFor(() => {
       // Error message from t('messages.error') = "Ocurrió un error. Por favor intenta de nuevo."
-      expect(screen.getByText(/ocurri.*error/i)).toBeInTheDocument();
+      expect(screen.getByText(/hubo un error al enviar/i)).toBeInTheDocument();
     });
   });
 
@@ -239,10 +239,10 @@ describe('LeadForm Component', () => {
 
     await fillRequiredFields({ message: 'This is a test message for the form' });
 
-    await user.click(screen.getByRole('button', { name: /enviar consulta/i }));
+    await user.click(screen.getByRole('button', { name: /enviar solicitud/i }));
 
     await waitFor(() => {
-      expect(screen.getByText(/ocurri.*error/i)).toBeInTheDocument();
+      expect(screen.getByText(/hubo un error al enviar/i)).toBeInTheDocument();
       expect(mockTrackError).toHaveBeenCalledWith(
         'Lead form submission failed',
         'form-submission',
@@ -259,12 +259,12 @@ describe('LeadForm Component', () => {
     render(<LeadForm />);
 
     const nameInput = screen.getByLabelText(/nombre/i) as HTMLInputElement;
-    const emailInput = screen.getByLabelText(/correo electr/i) as HTMLInputElement;
+    const emailInput = screen.getByLabelText(/email corporativo/i) as HTMLInputElement;
     const messageInput = screen.getByLabelText(/cómo podemos ayudarte/i) as HTMLTextAreaElement;
 
     await fillRequiredFields({ message: 'This is a test message for the form' });
 
-    await user.click(screen.getByRole('button', { name: /enviar consulta/i }));
+    await user.click(screen.getByRole('button', { name: /enviar solicitud/i }));
 
     await waitFor(() => {
       expect(nameInput.value).toBe('');
@@ -284,7 +284,7 @@ describe('LeadForm Component', () => {
 
     await fillRequiredFields({ message: 'This is a test message for the form' });
 
-    await user.click(screen.getByRole('button', { name: /enviar consulta/i }));
+    await user.click(screen.getByRole('button', { name: /enviar solicitud/i }));
 
     await waitFor(() => {
       expect(onSuccess).toHaveBeenCalled();
@@ -300,7 +300,7 @@ describe('LeadForm Component', () => {
 
     await fillRequiredFields({ message: 'This is a test message for the form' });
 
-    await user.click(screen.getByRole('button', { name: /enviar consulta/i }));
+    await user.click(screen.getByRole('button', { name: /enviar solicitud/i }));
 
     await waitFor(() => {
       const fetchBody = JSON.parse(mockFetch.mock.calls[0][1].body);

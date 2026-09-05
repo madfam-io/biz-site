@@ -7,10 +7,7 @@
 ```typescript
 interface ServiceCardProps {
   program:
-    | 'design-fabrication'
-    | 'strategy-enablement'
-    | 'platform-pilots'
-    | 'strategic-partnerships';
+    'design-fabrication' | 'strategy-enablement' | 'platform-pilots' | 'strategic-partnerships';
   title: string;
   description: string;
   price?: {

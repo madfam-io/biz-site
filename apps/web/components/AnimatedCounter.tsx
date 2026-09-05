@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
@@ -32,11 +32,11 @@ export function AnimatedCounter({
     if (isInView) {
       const timeout = setTimeout(() => {
         const startTime = Date.now();
-        
+
         const timer = setInterval(() => {
           const now = Date.now();
           const progress = Math.min((now - startTime) / (duration * 1000), 1);
-          
+
           if (progress === 1) {
             clearInterval(timer);
             setCount(to);

@@ -328,7 +328,7 @@ export async function POST(request: NextRequest) {
             totalValue,
           },
         }),
-      }).catch((error) => {
+      }).catch(error => {
         apiLogger.error('Failed to trigger n8n webhook for calculation', error, {
           calculationId: calculation.id,
         });

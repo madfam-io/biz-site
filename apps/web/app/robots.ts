@@ -8,14 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/api/',
-          '/dashboard/',
-          '/auth/',
-          '/_next/',
-          '/admin/',
-          '/private/',
-        ],
+        disallow: ['/api/', '/dashboard/', '/auth/', '/_next/', '/admin/', '/private/'],
       },
       {
         userAgent: 'GPTBot',
@@ -28,14 +21,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'GoogleBot',
         allow: '/',
-        disallow: [
-          '/api/',
-          '/dashboard/',
-          '/auth/',
-          '/_next/',
-          '/admin/',
-          '/private/',
-        ],
+        disallow: ['/api/', '/dashboard/', '/auth/', '/_next/', '/admin/', '/private/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

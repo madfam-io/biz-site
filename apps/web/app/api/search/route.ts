@@ -1,4 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
+
+const searchQuerySchema = z.object({
+  q: z.string().trim().min(2).max(200),
+  locale: z.enum(['en', 'es', 'pt']).default('es'),
+});
 
 interface SearchResult {
   id: string;
@@ -236,12 +242,16 @@ function scoreResult(item: Omit<SearchResult, 'score'>, query: string): number {
  */
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const { searchParams } = request.nextUrl;
-  const q = searchParams.get('q')?.trim();
-  const locale = (searchParams.get('locale') || 'es') as Locale;
+  const parsed = searchQuerySchema.safeParse({
+    q: searchParams.get('q') ?? undefined,
+    locale: searchParams.get('locale') ?? undefined,
+  });
 
-  if (!q || q.length < 2) {
+  if (!parsed.success) {
     return NextResponse.json({ results: [] });
   }
+
+  const { q, locale } = parsed.data;
 
   // Search static content
   const staticContent = getStaticContent(locale);

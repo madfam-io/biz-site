@@ -36,10 +36,7 @@ interface AssessmentResult {
   categoryScores: Record<string, number>;
   recommendations: string[];
   recommendedProgram:
-    | 'DESIGN_FABRICATION'
-    | 'STRATEGY_ENABLEMENT'
-    | 'PLATFORM_PILOTS'
-    | 'STRATEGIC_PARTNERSHIPS';
+    'DESIGN_FABRICATION' | 'STRATEGY_ENABLEMENT' | 'PLATFORM_PILOTS' | 'STRATEGIC_PARTNERSHIPS';
 }
 ```
 
