@@ -47,9 +47,6 @@ const serverEnvSchema = z.object({
   // reCAPTCHA (optional)
   RECAPTCHA_SECRET_KEY: z.string().optional(),
 
-  // Slack Notifications (optional)
-  SLACK_WEBHOOK_URL: z.string().url().optional(),
-
   // Cloudflare (optional)
   CLOUDFLARE_ZONE_ID: z.string().optional(),
   CLOUDFLARE_API_TOKEN: z.string().optional(),
