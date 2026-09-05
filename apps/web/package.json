@@ -11,6 +11,8 @@
     "start": "next start",
     "preview": "DEPLOY_TARGET=preview next build && next start",
     "lint": "next lint",
+    "lint:staged": "eslint --fix",
+    "typecheck:staged": "sh -c 'exec tsc --noEmit'",
     "typecheck": "tsc --noEmit",
     "export": "next export",
     "db:generate": "prisma generate",
