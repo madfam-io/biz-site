@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { PLATFORMS } from '@/lib/data/platforms';
 
 const searchQuerySchema = z.object({
   q: z.string().trim().min(2).max(200),
@@ -18,133 +19,76 @@ interface SearchResult {
 type Locale = 'en' | 'es' | 'pt';
 
 /**
+ * Search blurbs for the products that carry one, keyed by registry slug. Only
+ * the blurb is hand-kept: the product's name, its existence and its place in
+ * the catalog all come from the ecosystem registry via PLATFORMS, so the search
+ * index cannot advertise a product the registry does not know, nor one it has
+ * retired.
+ */
+const PRODUCT_BLURBS: Record<string, Record<Locale, string>> = {
+  enclii: {
+    en: 'Sovereign cloud platform — GitOps-native PaaS built on Kubernetes',
+    pt: 'Plataforma de nuvem soberana — PaaS GitOps-nativa construída sobre Kubernetes',
+    es: 'Plataforma de nube soberana — PaaS GitOps-nativa construida sobre Kubernetes',
+  },
+  janua: {
+    en: 'Self-hosted identity platform with enterprise SSO, MFA, and Passkeys',
+    pt: 'Plataforma de identidade auto-hospedada com SSO empresarial, MFA e Passkeys',
+    es: 'Plataforma de identidad auto-hospedada con SSO empresarial, MFA y Passkeys',
+  },
+  dhanam: {
+    en: 'Wealth & finance platform for LATAM founders',
+    pt: 'Plataforma de riqueza e finanças para fundadores LATAM',
+    es: 'Plataforma de riqueza y finanzas para fundadores LATAM',
+  },
+  'forge-sight': {
+    en: 'Pricing intelligence for digital fabrication',
+    pt: 'Inteligência de precificação para fabricação digital',
+    es: 'Inteligencia de precios para fabricación digital',
+  },
+  'cotiza-studio': {
+    en: 'Automated quoting and estimation',
+    pt: 'Cotação e estimativa automatizadas',
+    es: 'Cotización y estimación automatizadas',
+  },
+  yantra4d: {
+    en: 'Parametric design platform',
+    pt: 'Plataforma de design paramétrico',
+    es: 'Plataforma de diseño paramétrico',
+  },
+  'pravara-mes': {
+    en: 'Manufacturing execution system',
+    pt: 'Sistema de execução de manufatura',
+    es: 'Sistema de ejecución de manufactura',
+  },
+  voxa: {
+    en: 'Augmentative & alternative communication platform',
+    pt: 'Plataforma de comunicação aumentativa e alternativa',
+    es: 'Plataforma de comunicación aumentativa y alternativa',
+  },
+};
+
+/**
  * Static content index — products, pages, and services.
  * Keyed by locale for fast lookup.
  */
 function getStaticContent(locale: Locale): Omit<SearchResult, 'score'>[] {
   const l = locale;
   return [
-    // Products
-    {
-      id: 'enclii',
-      title: 'Enclii',
-      description:
-        l === 'en'
-          ? 'Sovereign cloud platform — GitOps-native PaaS built on Kubernetes'
-          : l === 'pt'
-            ? 'Plataforma de nuvem soberana — PaaS GitOps-nativa construída sobre Kubernetes'
-            : 'Plataforma de nube soberana — PaaS GitOps-nativa construida sobre Kubernetes',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#enclii`,
-    },
-    {
-      id: 'janua',
-      title: 'Janua',
-      description:
-        l === 'en'
-          ? 'Self-hosted identity platform with enterprise SSO, MFA, and Passkeys'
-          : l === 'pt'
-            ? 'Plataforma de identidade auto-hospedada com SSO empresarial, MFA e Passkeys'
-            : 'Plataforma de identidad auto-hospedada con SSO empresarial, MFA y Passkeys',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#janua`,
-    },
-    {
-      id: 'dhanam',
-      title: 'Dhanam',
-      description:
-        l === 'en'
-          ? 'Wealth & finance platform for LATAM founders'
-          : l === 'pt'
-            ? 'Plataforma de riqueza e finanças para fundadores LATAM'
-            : 'Plataforma de riqueza y finanzas para fundadores LATAM',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#dhanam`,
-    },
-    {
-      id: 'forge-sight',
-      title: 'Forgesight',
-      description:
-        l === 'en'
-          ? 'Pricing intelligence for digital fabrication'
-          : l === 'pt'
-            ? 'Inteligência de precificação para fabricação digital'
-            : 'Inteligencia de precios para fabricación digital',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#forge-sight`,
-    },
-    {
-      id: 'cotiza-studio',
-      title: 'Cotiza',
-      description:
-        l === 'en'
-          ? 'Automated quoting and estimation'
-          : l === 'pt'
-            ? 'Cotação e estimativa automatizadas'
-            : 'Cotización y estimación automatizadas',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#cotiza-studio`,
-    },
-    {
-      id: 'yantra4d',
-      title: 'Yantra4D',
-      description:
-        l === 'en'
-          ? 'Parametric design platform'
-          : l === 'pt'
-            ? 'Plataforma de design paramétrico'
-            : 'Plataforma de diseño paramétrico',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#yantra4d`,
-    },
-    {
-      id: 'pravara-mes',
-      title: 'Pravara MES',
-      description:
-        l === 'en'
-          ? 'Manufacturing execution system'
-          : l === 'pt'
-            ? 'Sistema de execução de manufatura'
-            : 'Sistema de ejecución de manufactura',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#pravara-mes`,
-    },
-    {
-      id: 'voxa',
-      title: 'Voxa',
-      description:
-        l === 'en'
-          ? 'Augmentative & alternative communication platform'
-          : l === 'pt'
-            ? 'Plataforma de comunicação aumentativa e alternativa'
-            : 'Plataforma de comunicación aumentativa y alternativa',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#voxa`,
-    },
-    {
-      id: 'routecraft',
-      title: 'RouteCraft',
-      description:
-        l === 'en'
-          ? 'Intelligent trip planning'
-          : l === 'pt'
-            ? 'Planejamento inteligente de viagens'
-            : 'Planeación inteligente de viajes',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#routecraft`,
-    },
-    {
-      id: 'coforma-studio',
-      title: 'Coforma Studio',
-      description:
-        l === 'en'
-          ? 'Customer advisory board platform'
-          : l === 'pt'
-            ? 'Plataforma de conselhos consultivos de clientes'
-            : 'Plataforma de consejos consultivos de clientes',
-      type: 'product',
-      url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#coforma-studio`,
-    },
+    // Products — rendered from the ecosystem registry; blurbs from PRODUCT_BLURBS.
+    ...PLATFORMS.flatMap(p => {
+      const blurb = PRODUCT_BLURBS[p.slug];
+      if (!blurb) return [];
+      return [
+        {
+          id: p.slug,
+          title: p.name,
+          description: blurb[l],
+          type: 'product' as const,
+          url: `/${l}/${l === 'es' ? 'productos' : l === 'pt' ? 'produtos' : 'products'}#${p.slug}`,
+        },
+      ];
+    }),
     // Pages
     {
       id: 'about',

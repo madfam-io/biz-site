@@ -2,66 +2,23 @@ import { getLocalizedUrl, type Locale } from '@madfam-site/i18n';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Container } from '@/components/ui';
+import { getFooterPlatforms } from '@/lib/data/platforms';
 
 export function Footer() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const currentYear = new Date().getFullYear();
 
+  // The platform column is rendered from the ecosystem registry (names, order
+  // and hrefs all come from apps/web/lib/data/platforms.generated.ts). It used
+  // to be a hand-kept list in every locale bundle, which is how it drifted out
+  // of step with the catalog it advertises.
   const navigation = {
-    platforms: [
-      // Self-serve products first — these are what most visitors should
-      // sign up for directly. New flagships (Karafiel, Fortuna, Rondelio)
-      // link to their public domain since the in-site detail page does not
-      // yet exist; this avoids 404s while keeping the catalog truthful.
-      {
-        name: t('footer.platforms.karafiel'),
-        href: 'https://karafiel.mx',
-        external: true,
-      },
-      { name: t('footer.platforms.dhanam'), href: `/${locale}/platforms/dhanam`, external: false },
-      {
-        name: t('footer.platforms.forgeSight'),
-        href: `/${locale}/platforms/forge-sight`,
-        external: false,
-      },
-      {
-        name: t('footer.platforms.fortuna'),
-        href: 'https://fortuna.tube',
-        external: true,
-      },
-      {
-        name: t('footer.platforms.rondelio'),
-        href: 'https://rondel.io',
-        external: true,
-      },
-      { name: t('footer.platforms.tezca'), href: `/${locale}/platforms/tezca`, external: false },
-      // Platform / infrastructure services
-      { name: t('footer.platforms.enclii'), href: `/${locale}/platforms/enclii`, external: false },
-      { name: t('footer.platforms.janua'), href: `/${locale}/platforms/janua`, external: false },
-      { name: t('footer.platforms.selva'), href: 'https://selva.town', external: true },
-      // Ecosystem services
-      {
-        name: t('footer.platforms.cotizaStudio'),
-        href: `/${locale}/platforms/cotiza-studio`,
-        external: false,
-      },
-      {
-        name: t('footer.platforms.yantra4d'),
-        href: `/${locale}/platforms/yantra4d`,
-        external: false,
-      },
-      {
-        name: t('footer.platforms.pravaraMes'),
-        href: `/${locale}/platforms/pravara-mes`,
-        external: false,
-      },
-      {
-        name: t('footer.platforms.avala'),
-        href: getLocalizedUrl('products', locale),
-        external: false,
-      },
-    ],
+    platforms: getFooterPlatforms(locale).map(item => ({
+      name: item.name,
+      href: item.href,
+      external: item.external,
+    })),
     services: [
       {
         name: t('footer.services.makerNode'),

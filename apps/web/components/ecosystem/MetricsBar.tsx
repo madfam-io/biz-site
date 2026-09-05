@@ -14,6 +14,9 @@ interface Metric {
   animate: boolean;
 }
 
+// R11 (2026-09-04 coherence programme): publish no number the ecosystem
+// registry does not carry. The Tezca corpus counter that used to sit here was
+// hand-set, and wrong — it is omitted until the registry owns it.
 const METRICS: Metric[] = [
   {
     id: 'vendors',
@@ -22,14 +25,6 @@ const METRICS: Metric[] = [
     descriptionKey: 'vendors',
     accentClass: 'text-amber-400',
     suffix: '+',
-    animate: true,
-  },
-  {
-    id: 'laws',
-    value: 11696,
-    displayValue: '11,696',
-    descriptionKey: 'laws',
-    accentClass: 'text-rose-400',
     animate: true,
   },
   {

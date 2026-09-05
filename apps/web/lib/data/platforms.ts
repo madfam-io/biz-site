@@ -1,32 +1,80 @@
 // ─── Platform Data Registry ──────────────────────────────────────────────────
-// Single source of truth for all MADFAM platform data.
-// Used by: platform detail pages, homepage, products page, navbar, footer, PlatformGrid
+// The public platform catalog, assembled at import time from two halves:
+//
+//   platforms.generated.ts    — GENERATED from the vendored ecosystem registry
+//                               projection. Every product FACT: name, icon,
+//                               category, layer, track, status, product URL,
+//                               GitHub URL, licence, catalog order.
+//   platforms.presentation.ts — HAND-KEPT. Only what this website decides:
+//                               accent palette, feature count, detail-page
+//                               existence, ecosystem relationships, CTA shape.
+//
+// The merged `Platform` shape below is unchanged from when this file held the
+// catalog by hand, so every consumer (value ladder, footer, navbar, platform
+// pages, PlatformGrid, sitemap) is untouched.
+//
+// A product renders here only if the registry knows it AND the overlay dresses
+// it. Neither half can add a product on its own, and a retired product cannot
+// be added by either — see scripts/__tests__/platform-registry.test.mjs.
+//
+// Used by: platform detail pages, homepage, products page, navbar, footer,
+// PlatformGrid, search index, sitemap.
 
-export type PlatformLayer = 'infrastructure' | 'intelligence' | 'standards' | 'applications';
+import {
+  REGISTRY_PRODUCTS,
+  REGISTRY_PRODUCT_ORDER,
+  RETIRED_PRODUCTS,
+  type EngagementTrack,
+  type PlatformLayer,
+  type PlatformStatus,
+  type RegistryProduct,
+  type RetiredProduct,
+} from './platforms.generated';
+import {
+  PLATFORM_PRESENTATION,
+  type EcosystemConnection,
+  type PlatformPresentation,
+  type PresentationCTA,
+} from './platforms.presentation';
 
-export type PlatformStatus =
-  | 'production' // 100% — fully live
-  | 'production-beta' // 90-99% — live with caveats
-  | 'coming-soon' // Alpha / announced
-  | 'in-development'; // Not yet announced publicly
-
-// Engagement track for the platform — drives self-serve vs white-glove CTA paths.
-//   self-serve : public sign-up, pricing page, free tier or trial.
-//   platform   : foundational service consumed by the rest of the ecosystem,
-//                also sold to enterprises (white-glove default).
-//   ecosystem  : building block consumed primarily by other MADFAM platforms;
-//                public detail page exists, but engagement is contact-led.
-export type EngagementTrack = 'self-serve' | 'platform' | 'ecosystem';
+/**
+ * Re-exported so that consumers keep importing the whole catalog vocabulary
+ * from `@/lib/data/platforms`, as they did when this file owned it.
+ *
+ * `PlatformLayer` is the registry's site category (Infrastructure /
+ * Intelligence / Standards / Applications), lower-cased.
+ *
+ * `PlatformStatus` is derived from the registry's `lifecycle`:
+ *   live        → 'production'        fully live
+ *   beta        → 'production-beta'   live with caveats
+ *   degraded    → 'production-beta'   live, with a known impairment
+ *   incubating  → 'coming-soon'       announced, not yet public
+ *   retired     → never rendered at all
+ * The site no longer carries a hand-set completion percentage: the registry
+ * records a lifecycle and a probe date, not a number, and a published number
+ * that no source owns is a number nobody can check.
+ *
+ * `EngagementTrack` drives self-serve vs white-glove CTA paths:
+ *   self-serve : public sign-up, pricing page, free tier or trial.
+ *   platform   : foundational service consumed by the rest of the ecosystem,
+ *                also sold to enterprises (white-glove default).
+ *   ecosystem  : building block consumed primarily by other MADFAM platforms;
+ *                public detail page exists, but engagement is contact-led.
+ */
+export type {
+  EcosystemConnection,
+  EngagementTrack,
+  PlatformLayer,
+  PlatformPresentation,
+  PlatformStatus,
+  RegistryProduct,
+  RetiredProduct,
+};
 
 export interface PlatformCTA {
   type: 'external' | 'contact' | 'waitlist';
   labelKey: string; // i18n key within platforms namespace
   url?: string;
-}
-
-export interface EcosystemConnection {
-  slug: string;
-  relationKey: string; // i18n key describing the relationship
 }
 
 export interface Platform {
@@ -35,7 +83,6 @@ export interface Platform {
   icon: string;
   layer: PlatformLayer;
   status: PlatformStatus;
-  statusPercent?: number;
   externalUrl?: string;
   githubUrl?: string;
   /** Track that determines how this platform is sold/consumed. */
@@ -55,557 +102,64 @@ export interface Platform {
   /** True when a dedicated platform detail page exists at /platforms/[slug]. */
   hasDetailPage: boolean;
   category: string; // Display category for products page grouping
+  /** SPDX identifier, from the registry. */
+  license: string;
+  /** Separate data licence, where the product ships one (Forgesight). */
+  dataLicense?: string;
 }
 
-// ─── Platform Registry ─────────────────────────────────────────────────────────
+// ─── The merge ───────────────────────────────────────────────────────────────
 
-export const PLATFORMS: Platform[] = [
-  // ── Infrastructure Layer ──────────────────────────────────────────────────
-  {
-    slug: 'enclii',
-    name: 'Enclii',
-    icon: '☁️',
-    layer: 'infrastructure',
-    status: 'production-beta',
-    statusPercent: 95,
-    externalUrl: 'https://enclii.dev',
-    githubUrl: 'https://github.com/madfam-org/enclii',
-    track: 'platform',
-    accentColor: {
-      gradient: 'from-blue-500/20 to-blue-600/10',
-      border: 'border-blue-200 dark:border-blue-800',
-      text: 'text-blue-600 dark:text-blue-400',
-      bg: 'bg-blue-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'enclii.cta.primary',
-      url: 'https://enclii.dev',
-    },
-    secondaryCTA: {
-      type: 'external',
-      labelKey: 'enclii.cta.secondary',
-      url: 'https://github.com/madfam-org/enclii',
-    },
-    ecosystemConnections: [
-      { slug: 'janua', relationKey: 'enclii.connections.janua' },
-      { slug: 'pravara-mes', relationKey: 'enclii.connections.pravara' },
-    ],
-    featureCount: 6,
-    hasComparison: true,
-    hasTechSpecs: true,
-    hasDetailPage: true,
-    category: 'Infrastructure',
-  },
-  {
-    slug: 'janua',
-    name: 'Janua',
-    icon: '🔐',
-    layer: 'infrastructure',
-    status: 'production',
-    statusPercent: 100,
-    externalUrl: 'https://janua.dev',
-    githubUrl: 'https://github.com/madfam-org/janua',
-    track: 'platform',
-    accentColor: {
-      gradient: 'from-indigo-500/20 to-indigo-600/10',
-      border: 'border-indigo-200 dark:border-indigo-800',
-      text: 'text-indigo-600 dark:text-indigo-400',
-      bg: 'bg-indigo-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'janua.cta.primary',
-      url: 'https://janua.dev',
-    },
-    secondaryCTA: {
-      type: 'external',
-      labelKey: 'janua.cta.secondary',
-      url: 'https://github.com/madfam-org/janua',
-    },
-    ecosystemConnections: [
-      { slug: 'enclii', relationKey: 'janua.connections.enclii' },
-      { slug: 'dhanam', relationKey: 'janua.connections.dhanam' },
-    ],
-    featureCount: 6,
-    hasComparison: true,
-    hasTechSpecs: true,
-    hasDetailPage: true,
-    category: 'Infrastructure',
-  },
-  {
-    slug: 'selva',
-    name: 'Selva',
-    icon: '🌳',
-    layer: 'infrastructure',
-    status: 'production-beta',
-    statusPercent: 90,
-    externalUrl: 'https://selva.town',
-    track: 'platform',
-    accentColor: {
-      gradient: 'from-green-500/20 to-green-600/10',
-      border: 'border-green-200 dark:border-green-800',
-      text: 'text-green-600 dark:text-green-400',
-      bg: 'bg-green-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'selva.cta.primary',
-      url: 'https://selva.town',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'selva.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'enclii', relationKey: 'selva.connections.enclii' },
-      { slug: 'janua', relationKey: 'selva.connections.janua' },
-    ],
-    featureCount: 5,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: false,
-    category: 'Infrastructure',
-  },
+function resolveCTA(cta: PresentationCTA, product: RegistryProduct): PlatformCTA {
+  const url =
+    cta.urlFrom === 'github'
+      ? product.githubUrl
+      : cta.urlFrom === 'external'
+        ? product.externalUrl
+        : undefined;
 
-  // ── Intelligence Layer ────────────────────────────────────────────────────
-  {
-    slug: 'forge-sight',
-    name: 'Forgesight',
-    icon: '🏭',
-    layer: 'intelligence',
-    status: 'production-beta',
-    statusPercent: 95,
-    externalUrl: 'https://forgesight.quest',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-amber-500/20 to-amber-600/10',
-      border: 'border-amber-200 dark:border-amber-800',
-      text: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'forgeSight.cta.primary',
-      url: 'https://forgesight.quest',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'forgeSight.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'cotiza-studio', relationKey: 'forgeSight.connections.cotiza' },
-      { slug: 'dhanam', relationKey: 'forgeSight.connections.dhanam' },
-    ],
-    featureCount: 6,
-    hasComparison: true,
-    hasTechSpecs: true,
-    hasDetailPage: true,
-    category: 'Intelligence',
-  },
-  {
-    slug: 'dhanam',
-    name: 'Dhanam',
-    icon: '💰',
-    layer: 'intelligence',
-    status: 'production',
-    statusPercent: 100,
-    externalUrl: 'https://dhan.am',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-emerald-500/20 to-emerald-600/10',
-      border: 'border-emerald-200 dark:border-emerald-800',
-      text: 'text-emerald-600 dark:text-emerald-400',
-      bg: 'bg-emerald-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'dhanam.cta.primary',
-      url: 'https://dhan.am',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'dhanam.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'forge-sight', relationKey: 'dhanam.connections.forgeSight' },
-      { slug: 'cotiza-studio', relationKey: 'dhanam.connections.cotiza' },
-    ],
-    featureCount: 5,
-    hasComparison: true,
-    hasTechSpecs: false,
-    hasDetailPage: true,
-    category: 'Intelligence',
-  },
-  {
-    slug: 'fortuna',
-    name: 'Fortuna',
-    icon: '🔮',
-    layer: 'intelligence',
-    status: 'production-beta',
-    statusPercent: 85,
-    externalUrl: 'https://fortuna.tube',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-violet-500/20 to-violet-600/10',
-      border: 'border-violet-200 dark:border-violet-800',
-      text: 'text-violet-600 dark:text-violet-400',
-      bg: 'bg-violet-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'fortuna.cta.primary',
-      url: 'https://fortuna.tube',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'fortuna.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'selva', relationKey: 'fortuna.connections.selva' },
-      { slug: 'dhanam', relationKey: 'fortuna.connections.dhanam' },
-    ],
-    featureCount: 5,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: false,
-    category: 'Intelligence',
-  },
-  {
-    slug: 'rondelio',
-    name: 'Rondelio',
-    icon: '🎲',
-    layer: 'intelligence',
-    status: 'production-beta',
-    statusPercent: 80,
-    externalUrl: 'https://rondel.io',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-fuchsia-500/20 to-fuchsia-600/10',
-      border: 'border-fuchsia-200 dark:border-fuchsia-800',
-      text: 'text-fuchsia-600 dark:text-fuchsia-400',
-      bg: 'bg-fuchsia-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'rondelio.cta.primary',
-      url: 'https://rondel.io',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'rondelio.cta.secondary',
-    },
-    ecosystemConnections: [{ slug: 'fortuna', relationKey: 'rondelio.connections.fortuna' }],
-    featureCount: 5,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: false,
-    category: 'Intelligence',
-  },
+  return url
+    ? { type: cta.type, labelKey: cta.labelKey, url }
+    : { type: cta.type, labelKey: cta.labelKey };
+}
 
-  // ── Standards Layer ───────────────────────────────────────────────────────
-  {
-    slug: 'karafiel',
-    name: 'Karafiel',
-    icon: '📜',
-    layer: 'standards',
-    status: 'production-beta',
-    statusPercent: 90,
-    externalUrl: 'https://karafiel.mx',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-red-500/20 to-red-600/10',
-      border: 'border-red-200 dark:border-red-800',
-      text: 'text-red-600 dark:text-red-400',
-      bg: 'bg-red-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'karafiel.cta.primary',
-      url: 'https://karafiel.mx',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'karafiel.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'tezca', relationKey: 'karafiel.connections.tezca' },
-      { slug: 'dhanam', relationKey: 'karafiel.connections.dhanam' },
-    ],
-    featureCount: 5,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: false,
-    category: 'Standards',
-  },
-  {
-    slug: 'tezca',
-    name: 'Tezca',
-    icon: '⚖️',
-    layer: 'standards',
-    status: 'production-beta',
-    statusPercent: 90,
-    externalUrl: 'https://tezca.mx',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-rose-500/20 to-rose-600/10',
-      border: 'border-rose-200 dark:border-rose-800',
-      text: 'text-rose-600 dark:text-rose-400',
-      bg: 'bg-rose-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'tezca.cta.primary',
-      url: 'https://tezca.mx',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'tezca.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'avala', relationKey: 'tezca.connections.avala' },
-      { slug: 'pravara-mes', relationKey: 'tezca.connections.pravara' },
-    ],
-    featureCount: 5,
-    hasComparison: false,
-    hasTechSpecs: true,
-    hasDetailPage: true,
-    category: 'Standards',
-  },
-  {
-    slug: 'avala',
-    name: 'Avala',
-    icon: '🎓',
-    layer: 'standards',
-    status: 'production-beta',
-    statusPercent: 95,
-    externalUrl: 'https://avala.studio',
-    track: 'ecosystem',
-    accentColor: {
-      gradient: 'from-teal-500/20 to-teal-600/10',
-      border: 'border-teal-200 dark:border-teal-800',
-      text: 'text-teal-600 dark:text-teal-400',
-      bg: 'bg-teal-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'avala.cta.primary',
-      url: 'https://avala.studio',
-    },
-    secondaryCTA: {
-      type: 'external',
-      labelKey: 'avala.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'tezca', relationKey: 'avala.connections.tezca' },
-      { slug: 'pravara-mes', relationKey: 'avala.connections.pravara' },
-    ],
-    featureCount: 4,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: true,
-    category: 'Standards',
-  },
+function mergePlatform(product: RegistryProduct, presentation: PlatformPresentation): Platform {
+  return {
+    slug: product.slug,
+    name: product.name,
+    icon: product.icon,
+    layer: product.layer,
+    status: product.status,
+    ...(product.externalUrl ? { externalUrl: product.externalUrl } : {}),
+    ...(product.githubUrl ? { githubUrl: product.githubUrl } : {}),
+    track: product.track,
+    accentColor: presentation.accentColor,
+    primaryCTA: resolveCTA(presentation.primaryCTA, product),
+    secondaryCTA: resolveCTA(presentation.secondaryCTA, product),
+    ecosystemConnections: presentation.ecosystemConnections,
+    featureCount: presentation.featureCount,
+    hasComparison: presentation.hasComparison,
+    hasTechSpecs: presentation.hasTechSpecs,
+    hasDetailPage: presentation.hasDetailPage,
+    category: product.category,
+    license: product.license,
+    ...(product.dataLicense ? { dataLicense: product.dataLicense } : {}),
+  };
+}
 
-  // ── Applications Layer ────────────────────────────────────────────────────
-  {
-    slug: 'yantra4d',
-    name: 'Yantra4D',
-    icon: '📐',
-    layer: 'applications',
-    status: 'production',
-    statusPercent: 100,
-    externalUrl: 'https://yantra4d.com',
-    track: 'ecosystem',
-    accentColor: {
-      gradient: 'from-purple-500/20 to-purple-600/10',
-      border: 'border-purple-200 dark:border-purple-800',
-      text: 'text-purple-600 dark:text-purple-400',
-      bg: 'bg-purple-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'yantra4d.cta.primary',
-      url: 'https://yantra4d.com',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'yantra4d.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'cotiza-studio', relationKey: 'yantra4d.connections.cotiza' },
-      { slug: 'pravara-mes', relationKey: 'yantra4d.connections.pravara' },
-    ],
-    featureCount: 5,
-    hasComparison: false,
-    hasTechSpecs: true,
-    hasDetailPage: true,
-    category: 'Applications',
-  },
-  {
-    slug: 'cotiza-studio',
-    name: 'Cotiza',
-    icon: '📊',
-    layer: 'applications',
-    status: 'production',
-    statusPercent: 100,
-    externalUrl: 'https://cotiza.studio',
-    track: 'ecosystem',
-    accentColor: {
-      gradient: 'from-cyan-500/20 to-cyan-600/10',
-      border: 'border-cyan-200 dark:border-cyan-800',
-      text: 'text-cyan-600 dark:text-cyan-400',
-      bg: 'bg-cyan-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'cotizaStudio.cta.primary',
-      url: 'https://cotiza.studio',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'cotizaStudio.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'forge-sight', relationKey: 'cotizaStudio.connections.forgeSight' },
-      { slug: 'yantra4d', relationKey: 'cotizaStudio.connections.yantra4d' },
-    ],
-    featureCount: 5,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: true,
-    category: 'Applications',
-  },
-  {
-    slug: 'pravara-mes',
-    name: 'Pravara MES',
-    icon: '⚙️',
-    layer: 'applications',
-    status: 'production-beta',
-    statusPercent: 97,
-    externalUrl: 'https://mes.madfam.io',
-    track: 'ecosystem',
-    accentColor: {
-      gradient: 'from-orange-500/20 to-orange-600/10',
-      border: 'border-orange-200 dark:border-orange-800',
-      text: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'pravaraMes.cta.primary',
-      url: 'https://mes.madfam.io',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'pravaraMes.cta.secondary',
-    },
-    ecosystemConnections: [
-      { slug: 'yantra4d', relationKey: 'pravaraMes.connections.yantra4d' },
-      { slug: 'tezca', relationKey: 'pravaraMes.connections.tezca' },
-    ],
-    featureCount: 6,
-    hasComparison: false,
-    hasTechSpecs: true,
-    hasDetailPage: true,
-    category: 'Applications',
-  },
-  {
-    slug: 'voxa',
-    name: 'Voxa',
-    icon: '🗣️',
-    layer: 'applications',
-    status: 'production',
-    statusPercent: 100,
-    externalUrl: 'https://voxa.madfam.io',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-sky-500/20 to-sky-600/10',
-      border: 'border-sky-200 dark:border-sky-800',
-      text: 'text-sky-600 dark:text-sky-400',
-      bg: 'bg-sky-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'voxa.cta.primary',
-      url: 'https://voxa.madfam.io',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'voxa.cta.secondary',
-    },
-    ecosystemConnections: [],
-    featureCount: 4,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: false,
-    category: 'Applications',
-  },
-  {
-    slug: 'routecraft',
-    name: 'RouteCraft',
-    icon: '🧭',
-    layer: 'intelligence',
-    status: 'production-beta',
-    statusPercent: 90,
-    externalUrl: 'https://routecraft.app',
-    track: 'self-serve',
-    accentColor: {
-      gradient: 'from-pink-500/20 to-pink-600/10',
-      border: 'border-pink-200 dark:border-pink-800',
-      text: 'text-pink-600 dark:text-pink-400',
-      bg: 'bg-pink-500/10',
-    },
-    primaryCTA: {
-      type: 'external',
-      labelKey: 'routecraft.cta.primary',
-      url: 'https://routecraft.app',
-    },
-    secondaryCTA: {
-      type: 'contact',
-      labelKey: 'routecraft.cta.secondary',
-    },
-    ecosystemConnections: [{ slug: 'dhanam', relationKey: 'routecraft.connections.dhanam' }],
-    featureCount: 3,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: false,
-    category: 'Intelligence',
-  },
-  {
-    slug: 'coforma-studio',
-    name: 'Coforma Studio',
-    icon: '🤝',
-    layer: 'applications',
-    status: 'production-beta',
-    statusPercent: 85,
-    externalUrl: 'https://coforma.studio',
-    // Contact-led: the product is in use, but its public site is not yet
-    // a self-serve destination — do not route visitors to a sign-up.
-    track: 'ecosystem',
-    accentColor: {
-      gradient: 'from-lime-500/20 to-lime-600/10',
-      border: 'border-lime-200 dark:border-lime-800',
-      text: 'text-lime-600 dark:text-lime-400',
-      bg: 'bg-lime-500/10',
-    },
-    primaryCTA: {
-      type: 'contact',
-      labelKey: 'coformaStudio.cta.primary',
-    },
-    secondaryCTA: {
-      type: 'external',
-      labelKey: 'coformaStudio.cta.secondary',
-      url: 'https://coforma.studio',
-    },
-    ecosystemConnections: [],
-    featureCount: 3,
-    hasComparison: false,
-    hasTechSpecs: false,
-    hasDetailPage: false,
-    category: 'Applications',
-  },
-];
+/**
+ * The public catalog, in the registry's own order. A registry product with no
+ * presentation overlay is simply not surfaced yet; an overlay entry with no
+ * registry product cannot exist, because CI fails first.
+ */
+export const PLATFORMS: Platform[] = REGISTRY_PRODUCT_ORDER.map(slug => {
+  const product = REGISTRY_PRODUCTS[slug];
+  const presentation = PLATFORM_PRESENTATION[slug];
+  return product && presentation ? mergePlatform(product, presentation) : null;
+}).filter((platform): platform is Platform => platform !== null);
+
+/** Slugs the registry has retired. Nothing here may ever render. */
+export const RETIRED_PLATFORM_SLUGS: string[] = RETIRED_PRODUCTS.map(product => product.slug);
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -653,6 +207,28 @@ export function getSelfServeFlagships(): Platform[] {
 
 export function isComingSoon(platform: Platform): boolean {
   return platform.status === 'coming-soon' || platform.status === 'in-development';
+}
+
+export interface FooterPlatformLink {
+  slug: string;
+  name: string;
+  href: string;
+  external: boolean;
+}
+
+/**
+ * The footer's platform column, in the registry's order. A platform with an
+ * in-site detail page links to it; one whose canonical landing is its own
+ * domain links there. Neither the names nor the hrefs are hand-kept any more —
+ * this replaces the `footer.platforms.*` block that used to be maintained by
+ * hand in every locale bundle and had drifted out of step with the catalog.
+ */
+export function getFooterPlatforms(locale: string): FooterPlatformLink[] {
+  return PLATFORMS.filter(p => !isComingSoon(p)).map(p =>
+    p.hasDetailPage || !p.externalUrl
+      ? { slug: p.slug, name: p.name, href: `/${locale}/platforms/${p.slug}`, external: false }
+      : { slug: p.slug, name: p.name, href: p.externalUrl, external: true }
+  );
 }
 
 // Layer display metadata (i18n keys)

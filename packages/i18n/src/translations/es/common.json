@@ -54,21 +54,6 @@
       "ecosystem": "Ecosistema",
       "company": "Empresa"
     },
-    "platforms": {
-      "enclii": "Enclii",
-      "janua": "Janua",
-      "dhanam": "Dhanam",
-      "forgeSight": "Forgesight",
-      "cotizaStudio": "Cotiza",
-      "yantra4d": "Yantra4D",
-      "tezca": "Tezca",
-      "pravaraMes": "Pravara MES",
-      "avala": "Avala",
-      "karafiel": "Karafiel",
-      "fortuna": "Fortuna",
-      "rondelio": "Rondelio",
-      "selva": "Selva"
-    },
     "services": {
       "makerNode": "Primavera Maker Node",
       "colabs": "MADFAM Co-Labs",

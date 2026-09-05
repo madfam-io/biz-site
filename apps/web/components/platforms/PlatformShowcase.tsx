@@ -50,7 +50,6 @@ const TASTE_COMPONENTS: Record<string, ReturnType<typeof dynamic>> = {
 function getI18nKey(slug: string): string {
   const map: Record<string, string> = {
     'cotiza-studio': 'cotizaStudio',
-    'coforma-studio': 'coformaStudio',
     'forge-sight': 'forgeSight',
     'pravara-mes': 'pravaraMes',
   };
@@ -140,7 +139,9 @@ export function PlatformShowcase({ platform, locale }: PlatformShowcaseProps) {
       <PlatformEcosystem platform={platform} i18nKey={key} locale={locale} />
 
       {/* 7. Technical Specs (optional) */}
-      {platform.hasTechSpecs && !comingSoon && <PlatformTechSpecs i18nKey={key} />}
+      {platform.hasTechSpecs && !comingSoon && (
+        <PlatformTechSpecs i18nKey={key} slug={platform.slug} />
+      )}
 
       {/* 8. Final CTA */}
       <PlatformCTA platform={platform} i18nKey={key} locale={locale} comingSoon={comingSoon} />

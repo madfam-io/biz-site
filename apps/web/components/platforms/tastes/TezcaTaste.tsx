@@ -83,13 +83,9 @@ export function TezcaTaste() {
           ))}
         </div>
 
-        {/* Footer counter */}
-        <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/80">
-          <p className="text-xs text-gray-400 text-center">
-            <span className="font-semibold text-gray-600 dark:text-gray-300">11,696</span> laws
-            indexed
-          </p>
-        </div>
+        {/* A corpus-size counter used to sit here. It was hand-set and wrong;
+            the ecosystem registry carries no such number, so nothing is
+            published until it does (R11, 2026-09-04 coherence programme). */}
       </div>
     </div>
   );

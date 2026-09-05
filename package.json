@@ -27,9 +27,11 @@
     "docker:build": "docker-compose build",
     "prepare": "husky",
     "validate:translations": "node scripts/validate-translations.js",
+    "generate:platforms": "node scripts/generate-platform-registry.mjs --apply",
+    "check:platforms": "node scripts/generate-platform-registry.mjs --check",
     "find:missing-translations": "node scripts/find-missing-translations.js",
     "check:translations": "npm run validate:translations && npm run find:missing-translations",
-    "test:scripts": "node --test scripts/__tests__/format-check.test.mjs scripts/__tests__/lint-staged-config.test.mjs scripts/__tests__/security-check.test.mjs"
+    "test:scripts": "node --test scripts/__tests__/format-check.test.mjs scripts/__tests__/lint-staged-config.test.mjs scripts/__tests__/platform-registry.test.mjs scripts/__tests__/security-check.test.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",

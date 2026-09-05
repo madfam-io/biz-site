@@ -14,6 +14,7 @@ import cookies from './cookies.json';
 import impact from './impact.json';
 import ecosystem from './ecosystem.json';
 import platforms from './platforms.json';
+import platformsRegistry from './platforms.registry.json';
 import valueLadder from './valueLadder.json';
 import nauta from './nauta.json';
 
@@ -34,6 +35,7 @@ export default {
   impact,
   ecosystem,
   platforms,
+  platformsRegistry,
   valueLadder,
   nauta,
 };
