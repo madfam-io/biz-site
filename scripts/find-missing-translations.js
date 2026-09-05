@@ -2,6 +2,10 @@
 
 /**
  * Find missing translations by scanning source files for common next-intl usage.
+ *
+ * Boundary checkpoint (2026-09-05, madfam-site): this file names translation
+ * namespaces and nothing else. Public sink.
+ * Policy: internal-devops/docs/repo-boundary-contract.md.
  */
 
 const fs = require('fs');
@@ -39,6 +43,9 @@ function mergeRuntimeMessages(modules) {
     impact: modules.impact || {},
     ecosystem: modules.ecosystem || {},
     platforms: modules.platforms || {},
+    // Emitted as platforms.registry.json, mounted as the `platformsRegistry`
+    // namespace by packages/i18n/src/translations/<locale>/index.ts.
+    platformsRegistry: modules['platforms.registry'] || {},
     valueLadder: modules.valueLadder || {},
     nauta: modules.nauta || {},
   };

@@ -20,8 +20,6 @@ const SLUG_TO_I18N_KEY: Record<string, string> = {
   'cotiza-studio': 'cotizaStudio',
   'pravara-mes': 'pravaraMes',
   voxa: 'voxa',
-  routecraft: 'routecraft',
-  'coforma-studio': 'coformaStudio',
 };
 
 function PlatformCard({

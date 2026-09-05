@@ -102,8 +102,7 @@
     "techSpecs": {
       "apis": "12 REST + 3 gRPC endpoints",
       "protocols": "HTTPS, gRPC, WebSocket",
-      "sdks": "CLI, Node.js, Go",
-      "license": "AGPL-3.0"
+      "sdks": "CLI, Node.js, Go"
     },
     "metrics": {
       "cost": "$55/mo vs $2K+",
@@ -147,8 +146,7 @@
     "techSpecs": {
       "apis": "OAuth 2.0, OIDC, SAML 2.0, SCIM 2.0",
       "protocols": "HTTPS, LDAP",
-      "sdks": "JavaScript, Python, Go, Java",
-      "license": "AGPL-3.0"
+      "sdks": "JavaScript, Python, Go, Java"
     },
     "metrics": {
       "users": "Unlimited",
@@ -192,8 +190,7 @@
     "techSpecs": {
       "apis": "REST API with 15 endpoints",
       "protocols": "HTTPS, WebSocket (live pricing)",
-      "sdks": "JavaScript, Python",
-      "license": "AGPL-3.0 + DATA_LICENSE"
+      "sdks": "JavaScript, Python"
     },
     "metrics": {
       "vendors": "1,000+ vendors",
@@ -261,8 +258,7 @@
     "techSpecs": {
       "apis": "REST API with search, cross-reference, export",
       "protocols": "HTTPS",
-      "sdks": "JavaScript, Python",
-      "license": "AGPL-3.0"
+      "sdks": "JavaScript, Python"
     },
     "metrics": {
       "laws": "Mexican laws indexed",
@@ -318,8 +314,7 @@
     "techSpecs": {
       "apis": "REST API for model management and rendering",
       "protocols": "HTTPS, WebSocket (live preview)",
-      "sdks": "JavaScript",
-      "license": "AGPL-3.0"
+      "sdks": "JavaScript"
     },
     "metrics": {
       "designs": "36 open-source models",
@@ -377,8 +372,7 @@
     "techSpecs": {
       "apis": "REST API with 20+ endpoints",
       "protocols": "OPC-UA, MQTT, REST, WebSocket",
-      "sdks": "JavaScript, Python",
-      "license": "AGPL-3.0"
+      "sdks": "JavaScript, Python"
     },
     "metrics": {
       "protocols": "4 machine protocols",
@@ -483,40 +477,6 @@
     "cta": {
       "primary": "Open Voxa",
       "secondary": "Talk to us"
-    },
-    "connections": {}
-  },
-  "routecraft": {
-    "tagline": "Intelligent trip planning",
-    "valueProp": "Scores city-date opportunities across business, culture, and aesthetic dimensions to turn business travel into strategy.",
-    "problem": "Business travel gets planned around logistics, not opportunity.",
-    "solution": "RouteCraft evaluates every city-date option with a multi-dimensional scoring engine, with self-serve onboarding and a free trial.",
-    "features": {
-      "0": "Multi-dimensional opportunity scoring",
-      "1": "Business, culture, and aesthetic fit",
-      "2": "Self-serve onboarding with free trial"
-    },
-    "cta": {
-      "primary": "Start at routecraft.app",
-      "secondary": "Contact us"
-    },
-    "connections": {
-      "dhanam": "Settles payments through Dhanam"
-    }
-  },
-  "coformaStudio": {
-    "tagline": "Advisory-as-a-Service",
-    "valueProp": "A platform for planning and running customer advisory boards (CABs).",
-    "problem": "Advisory programs live in slide decks and spreadsheets, so boards are hard to run consistently.",
-    "solution": "Coforma Studio structures the full advisory cycle — membership, sessions, and follow-through — in one place.",
-    "features": {
-      "0": "Board and membership management",
-      "1": "Session planning and facilitation",
-      "2": "Follow-through tracking"
-    },
-    "cta": {
-      "primary": "Contact the team",
-      "secondary": "Visit coforma.studio"
     },
     "connections": {}
   }

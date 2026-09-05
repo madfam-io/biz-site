@@ -8,7 +8,7 @@
 
 <!-- MADFAM-AGENTS-CANONICAL v1 -->
 
-> Last Updated: 2026-09-04
+> Last Updated: 2026-09-05
 
 This is the canonical instruction file for Claude, Codex, and any other LLM
 agent working in this repository. `CLAUDE.md` is kept only as a compatibility
@@ -154,9 +154,13 @@ madfam-site/
 MADFAM is a solarpunk ecosystem of open platforms for creators, makers, and entrepreneurs in LATAM. Three conversion paths:
 
 1. **Use a MADFAM Platform** — the digital platforms (each with Free + Pro tiers).
-   `apps/web/lib/data/platforms.ts` is the source of truth for how many and which;
-   it declares **16** slugs as of 2026-09-04. Count it there rather than restating
-   a number here — the lists below are illustrative, not exhaustive.
+   The catalog is **generated**, not hand-kept: `apps/web/lib/data/platforms.generated.ts`
+   is derived from the vendored ecosystem registry projection
+   (`apps/web/lib/data/projection.public.json`), and
+   `apps/web/lib/data/platforms.ts` merges it with the hand-kept presentation
+   overlay. Count the catalog there rather than restating a number anywhere —
+   including here. The lists below are illustrative, not exhaustive, and a
+   product that is not in the registry does not render on the site at all.
 2. **Use Primavera Maker Node** — Physical fabrication (3D printing, CNC, laser cutting)
 3. **Become an Ecosystem Member** — One membership unlocks Pro across all platforms + discounted fabrication
 
@@ -166,7 +170,7 @@ Self-serve flagships (public sign-up, pricing, free tier or trial):
 
 - **Karafiel** (https://karafiel.mx): Mexican CFDI / RFC / SAT compliance
 - **Dhanam** (https://dhan.am): Financial wellness + ecosystem billing backbone
-- **Forge Sight** (https://forgesight.quest): Digital fabrication pricing intelligence
+- **Forgesight** (https://forgesight.quest): Digital fabrication pricing intelligence
 - **Tezca** (https://tezca.mx): Mexican regulatory intelligence
 - **Fortuna** (https://fortuna.tube): Problem intelligence / NBI scoring API
 - **Rondelio** (https://rondel.io): Game intelligence cloud (TCG / tabletop)
@@ -179,10 +183,10 @@ Platform / infrastructure (B2B, white-glove default):
 
 Ecosystem services (consumed by other platforms):
 
-- **Cotiza Studio**: Automated quoting and estimation
+- **Cotiza**: Automated quoting and estimation
 - **Yantra4D**: Parametric design platform
-- **Pravara-MES**: Manufacturing execution system
-- **AVALA**: Competency-based training (Coming Soon)
+- **Pravara MES**: Manufacturing execution system
+- **Avala** (https://avala.studio): Competency-based training
 
 **Retired — never render on the site:** PENNY is absorbed by **Selva**
 (https://selva.town). Where a successor mention reads naturally, say Selva;
@@ -232,10 +236,13 @@ otherwise delete. SPARK and Primavera3D are likewise retired brands.
 
 ## Key Data Files
 
-- **Platform Registry**: `apps/web/lib/data/platforms.ts` — single source of truth for platform metadata (16 slugs as of 2026-09-04). Used by platform detail pages, homepage, products page, navbar, footer.
+- **Platform Registry (generated)**: `apps/web/lib/data/platforms.generated.ts` — every product FACT (name, icon, category, layer, track, status, product URL, GitHub URL, licence, order), generated from `apps/web/lib/data/projection.public.json` by `pnpm generate:platforms`. Never edit either by hand: `pnpm test:scripts` verifies the projection's SHA-256 against the stamp in the generated file, and re-derives every output.
+- **Platform Presentation Overlay (hand-kept)**: `apps/web/lib/data/platforms.presentation.ts` — accent palette, feature count, detail-page existence, ecosystem relationships, CTA shape. Presentation only; a product fact typed here is a CI failure. Adding a slug here is how a registry product gets surfaced — it must exist in the registry and must not be retired.
+- **Platform Catalog (merged)**: `apps/web/lib/data/platforms.ts` — merges the two at import time into `PLATFORMS`. Used by platform detail pages, homepage, products page, navbar, footer, search index, sitemap.
+- **Registry i18n bundle (generated)**: `packages/i18n/src/translations/{en,es,pt}/platforms.registry.json` — registry names and licences as an i18n namespace (`platformsRegistry`). Identical in all three locales by construction; display names are brand marks and are not translated.
 - **Platform Translations**: `packages/i18n/src/translations/{en,es,pt}/platforms.json` — ~290 keys per locale with taglines, value props, features, CTAs, comparison tables, tech specs.
 - **Platform Detail Pages**: `apps/web/app/[locale]/platforms/[slug]/page.tsx` — dynamic route with `generateStaticParams` over every slug in `platforms.ts`.
-- **Integration Flow**: Design (Yantra4D) → Quote (Cotiza) → Price (Forge Sight) → Finance (Dhanam) → Manufacture (Pravara-MES) → Comply (Tezca/AVALA)
+- **Integration Flow**: Design (Yantra4D) → Quote (Cotiza) → Price (Forgesight) → Finance (Dhanam) → Manufacture (Pravara MES) → Comply (Tezca/Avala)
 
 ## Common Tasks
 

@@ -18,7 +18,6 @@ interface PlatformPageProps {
 function slugToI18nKey(slug: string): string {
   const map: Record<string, string> = {
     'cotiza-studio': 'cotizaStudio',
-    'coforma-studio': 'coformaStudio',
     'forge-sight': 'forgeSight',
     'pravara-mes': 'pravaraMes',
   };

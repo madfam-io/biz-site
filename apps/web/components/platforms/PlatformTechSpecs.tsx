@@ -5,6 +5,8 @@ import { cn } from '@/components/ui/utils';
 
 interface PlatformTechSpecsProps {
   i18nKey: string;
+  /** Registry slug — the licence row is read from the registry, not from copy. */
+  slug: string;
 }
 
 const SPEC_ITEMS = [
@@ -82,8 +84,16 @@ const SPEC_ITEMS = [
   },
 ] as const;
 
-export function PlatformTechSpecs({ i18nKey }: PlatformTechSpecsProps) {
+export function PlatformTechSpecs({ i18nKey, slug }: PlatformTechSpecsProps) {
   const t = useTranslations('platforms');
+  // Licences are registry facts, never marketing copy: they are read from the
+  // generated `platformsRegistry` bundle so that a hand-typed licence string
+  // cannot reappear in `platforms.json` the way "Proprietary" once did.
+  const tRegistry = useTranslations('platformsRegistry');
+  const dataLicenseKey = `${slug}.dataLicense`;
+  const license = tRegistry.has(dataLicenseKey)
+    ? `${tRegistry(`${slug}.license`)} + ${tRegistry(dataLicenseKey)}`
+    : tRegistry(`${slug}.license`);
 
   return (
     <section
@@ -149,7 +159,7 @@ export function PlatformTechSpecs({ i18nKey }: PlatformTechSpecsProps) {
               <div className="px-6 pb-6 pt-0">
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
                   <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
-                    {t(`${i18nKey}.techSpecs.${item.key}`)}
+                    {item.key === 'license' ? license : t(`${i18nKey}.techSpecs.${item.key}`)}
                   </p>
                 </div>
               </div>
