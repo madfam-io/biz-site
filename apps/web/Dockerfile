@@ -31,6 +31,12 @@ RUN cd apps/web && npx prisma generate || echo "Prisma generation skipped"
 # Build-time env vars required by Janua auth (NEXT_PUBLIC_* are baked at build time)
 ARG NEXT_PUBLIC_JANUA_URL=https://auth.madfam.io
 ENV NEXT_PUBLIC_JANUA_URL=${NEXT_PUBLIC_JANUA_URL}
+# Analytics is also NEXT_PUBLIC_*, so it must be present at build time — setting
+# it in the runtime Secret or Deployment env does nothing (Next inlines it).
+ARG NEXT_PUBLIC_PLAUSIBLE_DOMAIN=madfam.io
+ENV NEXT_PUBLIC_PLAUSIBLE_DOMAIN=${NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+ARG NEXT_PUBLIC_PLAUSIBLE_HOST=https://plausible.madfam.io
+ENV NEXT_PUBLIC_PLAUSIBLE_HOST=${NEXT_PUBLIC_PLAUSIBLE_HOST}
 # Build the web app
 RUN pnpm turbo build --filter=@madfam/web
 

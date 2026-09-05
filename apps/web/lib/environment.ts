@@ -52,7 +52,10 @@ interface EnvironmentConfig {
   // External services
   services: {
     plausible: {
-      domain: string;
+      /** Undefined when NEXT_PUBLIC_PLAUSIBLE_DOMAIN was unset at build time. */
+      domain?: string;
+      /** Self-hosted Plausible origin serving the script and receiving events. */
+      host: string;
       enabled: boolean;
     };
     n8n: {
@@ -153,8 +156,16 @@ function createEnvironmentConfig(): EnvironmentConfig {
     // External services
     services: {
       plausible: {
-        domain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'madfam.io',
-        enabled: !isDev || process.env.ENABLE_ANALYTICS_IN_DEV === 'true',
+        // No fabricated default: the render paths (app/layout.tsx and
+        // @madfam/analytics) inject nothing when the domain is unset, so
+        // claiming 'madfam.io' here reported analytics as configured on builds
+        // where it was inert. Both vars are NEXT_PUBLIC_* and therefore
+        // build-time — see apps/web/lib/plausible.ts.
+        domain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN,
+        host: process.env.NEXT_PUBLIC_PLAUSIBLE_HOST || 'https://plausible.madfam.io',
+        enabled:
+          !!process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN &&
+          (!isDev || process.env.ENABLE_ANALYTICS_IN_DEV === 'true'),
       },
       n8n: {
         enabled: !isStaticExport,

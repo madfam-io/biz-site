@@ -74,6 +74,7 @@ const clientEnvSchema = z.object({
     .default('true')
     .transform(val => val === 'true'),
   NEXT_PUBLIC_PLAUSIBLE_DOMAIN: z.string().optional(),
+  NEXT_PUBLIC_PLAUSIBLE_HOST: z.string().url().optional(),
   NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
   NEXT_PUBLIC_RECAPTCHA_SITE_KEY: z.string().optional(),
   NEXT_PUBLIC_VERSION: z.string().optional(),

@@ -1,3 +1,5 @@
+<!-- Boundary checkpoint (public-safe): archived release note. Revenue and cost projections were removed on 2026-09-04 and are tracked in the private sink (internal-devops). Policy: internal-devops/docs/repo-boundary-contract.md -->
+
 # Phase 1 UX Improvements - Executive Summary
 
 **Date Completed**: Friday, November 14, 2025
@@ -56,7 +58,7 @@
 | Form Submissions      | Baseline | +35%         | +35%        |
 | Content Relevance     | Generic  | Personalized | +35%        |
 
-**Annual Revenue Impact**: ~$250k from 500-750 qualified leads/month
+**Annual Revenue Impact**: (Revenue projection removed — tracked privately.)
 
 ---
 
@@ -174,4 +176,4 @@ For questions about implementation details:
 
 **Phase 1 Status**: ✅ **COMPLETE**
 **Ready for**: Production deployment + Phase 2 planning
-**Estimated Value**: $250k annual revenue from improved conversion
+**Estimated Value**: (Revenue projection removed — tracked privately.)

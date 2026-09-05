@@ -12,7 +12,7 @@ on:
 jobs:
   security-audit:
     name: Security Vulnerability Audit
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest' }}
     
     steps:
       - name: Checkout code

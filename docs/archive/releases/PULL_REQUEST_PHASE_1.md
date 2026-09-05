@@ -1,3 +1,5 @@
+<!-- Boundary checkpoint (public-safe): archived release note. Revenue and cost projections were removed on 2026-09-04 and are tracked in the private sink (internal-devops). Policy: internal-devops/docs/repo-boundary-contract.md -->
+
 # Phase 1 UX Improvements: Brand Positioning, Personalization & Lead Capture
 
 **Date**: Friday, November 14, 2025
@@ -16,7 +18,7 @@ This PR implements comprehensive UX enhancements focused on brand positioning, s
 | Contact Form Friction          | High (5 fields) | Low (3 fields)              | -40% fields    |
 | Content Personalization        | Generic         | 5 personas                  | New capability |
 
-**Projected Annual Impact**: 500-750 qualified leads/month = $250k annual revenue potential
+**Projected Annual Impact**: (Revenue projection removed — tracked privately.)
 
 ---
 
@@ -253,7 +255,7 @@ See `docs/UX_ROADMAP.md` for complete Phase 2 details:
 - Site-wide persona persistence
 
 Estimated Phase 2 Duration: 3-4 weeks
-Estimated Phase 2 Cost: $15,000-$20,000
+Estimated Phase 2 Cost: (Cost estimate removed — tracked privately.)
 
 ---
 
@@ -301,7 +303,7 @@ Phase 1 delivers a complete transformation of the MADFAM website's user experien
 
 This foundation enables Phase 2's backend integration and advanced personalization features.
 
-**Estimated Annual Revenue Impact**: $250k from improved lead capture and qualification.
+**Estimated Annual Revenue Impact**: (Revenue projection removed — tracked privately.)
 
 ---
 

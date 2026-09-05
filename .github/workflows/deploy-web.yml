@@ -23,7 +23,7 @@ env:
 jobs:
   build-and-push:
     name: Build & Push Web Image
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.DEPLOY_RUNNER_LABEL != '' && vars.DEPLOY_RUNNER_LABEL || (vars.ARC_BOOTSTRAP_COMPLETE == 'true' && 'madfam-runners-blue' || 'ubuntu-latest') }}
     permissions:
       contents: write
       packages: write
@@ -64,6 +64,11 @@ jobs:
           context: .
           file: apps/web/Dockerfile
           push: true
+          # NEXT_PUBLIC_* are inlined by Next at build time, so analytics config
+          # has to arrive here, not in the runtime Secret.
+          build-args: |
+            NEXT_PUBLIC_PLAUSIBLE_DOMAIN=${{ vars.PLAUSIBLE_DOMAIN || 'madfam.io' }}
+            NEXT_PUBLIC_PLAUSIBLE_HOST=${{ vars.PLAUSIBLE_HOST || 'https://plausible.madfam.io' }}
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
