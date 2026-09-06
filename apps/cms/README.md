@@ -58,19 +58,19 @@ database, because the startup probe has to pass before migrations finish.
 
 Names only — values come from the cluster secret. See `.env.example`.
 
-| Variable | Required | Purpose |
-| --- | --- | --- |
-| `PAYLOAD_SECRET` | yes | Payload signing secret |
-| `DATABASE_URL` | yes | Postgres connection string |
-| `PAYLOAD_PUBLIC_SERVER_URL` | recommended | Absolute URL of this CMS |
-| `PORT` | no (3000) | HTTP port |
-| `CMS_ALLOWED_ORIGINS` | no | Comma-separated CORS/CSRF allow-list; defaults to `http://localhost:3000,https://madfam.io,https://staging.madfam.io` |
-| `CMS_REBUILD_WEBHOOK_URL` | no | Consumer cache-invalidation endpoint; the webhook is skipped when unset |
-| `CMS_WEBHOOK_SECRET` | with the above | Shared secret sent as `x-webhook-secret` |
-| `R2_BUCKET` | for uploads | S3-compatible bucket name |
-| `R2_ENDPOINT` | for uploads | S3 API endpoint for the bucket |
-| `R2_ACCESS_KEY_ID` | for uploads | Access key |
-| `R2_SECRET_ACCESS_KEY` | for uploads | Secret key |
+| Variable                    | Required       | Purpose                                                                                                               |
+| --------------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `PAYLOAD_SECRET`            | yes            | Payload signing secret                                                                                                |
+| `DATABASE_URL`              | yes            | Postgres connection string                                                                                            |
+| `PAYLOAD_PUBLIC_SERVER_URL` | recommended    | Absolute URL of this CMS                                                                                              |
+| `PORT`                      | no (3000)      | HTTP port                                                                                                             |
+| `CMS_ALLOWED_ORIGINS`       | no             | Comma-separated CORS/CSRF allow-list; defaults to `http://localhost:3000,https://madfam.io,https://staging.madfam.io` |
+| `CMS_REBUILD_WEBHOOK_URL`   | no             | Consumer cache-invalidation endpoint; the webhook is skipped when unset                                               |
+| `CMS_WEBHOOK_SECRET`        | with the above | Shared secret sent as `x-webhook-secret`                                                                              |
+| `R2_BUCKET`                 | for uploads    | S3-compatible bucket name                                                                                             |
+| `R2_ENDPOINT`               | for uploads    | S3 API endpoint for the bucket                                                                                        |
+| `R2_ACCESS_KEY_ID`          | for uploads    | Access key                                                                                                            |
+| `R2_SECRET_ACCESS_KEY`      | for uploads    | Secret key                                                                                                            |
 
 All four `R2_*` variables must be present or the storage adapter stays off and
 uploads fall back to local disk — which cannot work in the cluster, where the
@@ -129,6 +129,6 @@ Wave 0 (this app) is single-tenant: MADFAM content only. Multi-tenancy —
 a `tenants` collection, a `tenant` field on every content collection,
 tenant-scoped access with **Postgres row-level security underneath it**, dynamic
 CORS from tenant domains, a dedicated database, Janua OIDC on the admin, and a
-tenant-scoped export — is Wave 2+ of the plan *"Multi-tenant CMS — implementation
-and integration plan"* (MADFAM internal strategy record). Do not assume tenant
+tenant-scoped export — is Wave 2+ of the plan _"Multi-tenant CMS — implementation
+and integration plan"_ (MADFAM internal strategy record). Do not assume tenant
 isolation from this app: there is none yet.

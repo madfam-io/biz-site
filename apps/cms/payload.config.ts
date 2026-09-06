@@ -42,7 +42,7 @@ const allowedOrigins = (
     ? process.env.CMS_ALLOWED_ORIGINS.split(',')
     : DEFAULT_ALLOWED_ORIGINS
 )
-  .map((origin) => origin.trim())
+  .map(origin => origin.trim())
   .filter(Boolean);
 
 // R2 is S3-compatible. Without all four values the adapter stays off and uploads
@@ -50,9 +50,9 @@ const allowedOrigins = (
 // with readOnlyRootFilesystem.
 const r2Configured = Boolean(
   process.env.R2_BUCKET &&
-    process.env.R2_ENDPOINT &&
-    process.env.R2_ACCESS_KEY_ID &&
-    process.env.R2_SECRET_ACCESS_KEY
+  process.env.R2_ENDPOINT &&
+  process.env.R2_ACCESS_KEY_ID &&
+  process.env.R2_SECRET_ACCESS_KEY
 );
 
 const storagePlugins = r2Configured
